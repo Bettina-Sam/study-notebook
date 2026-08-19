@@ -1,17 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conservation of Energy • Study Notebook</title>
-  <link rel="icon" href="../../../../assets/icons/favicon.svg">
-
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../../css/common.css">
-    <link rel="stylesheet" href="../../../../css/article.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conservation of Energy • Study Notebook</title>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<!-- Styles -->
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<style>
         /* AI Links */
         .ai-links {
             display: flex;
@@ -73,221 +71,190 @@
             }
         }
     </style>
-
-    <!-- MathJax Configuration -->
-    <script>
+<!-- MathJax Configuration -->
+<script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']]
             }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Theme Init -->
-    <script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Theme Init -->
+<script>
         const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.body && document.body.setAttribute('data-theme', savedTheme);
     </script>
-
-    <!-- Libs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-
-    <nav class="sticky">
-        <div class="nav-bg"></div>
-        <a href="../../../../index.html" class="logo">
-            <i data-lucide="arrow-left" width="16"></i>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html">
+<i data-lucide="arrow-left" width="16"></i>
             Physics Journey
         </a>
-        <button id="themeBtn">
-            <i data-lucide="moon" width="16"></i> Theme
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
         </button>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="text-reveal-wrapper">
-            <h1 class="hero-title">Conservation<br>of Energy</h1>
-            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="text-reveal-wrapper">
+<h1 class="hero-title">Conservation<br/>of Energy</h1>
+<p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
                 Energy cannot be created or destroyed, only transformed from one form to another. The total energy in an
                 isolated system remains constant.
             </p>
-        </div>
-    </section>
-
-    <!-- CHAPTER 1: THE PRINCIPLE -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">01. The Principle</h3>
-                <h2>Energy Transformation</h2>
-                <p>
+</div>
+</section>
+<!-- CHAPTER 1: THE PRINCIPLE -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">01. The Principle</h3>
+<h2>Energy Transformation</h2>
+<p>
                     A simple pendulum is a classic example of energy transformation. As the pendulum swings downwards,
                     it loses gravitational potential energy ($PE$) and gains kinetic energy ($KE$). As it swings
                     upwards, the reverse process occurs.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$E_{total} = KE + PE = \text{constant}$$
                 </div>
-
-                <!-- ETU CARD -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World System</span>
-                    <h4 style="margin-bottom:0.5rem;">Friction and Heat</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- ETU CARD -->
+<div class="etu-card">
+<span class="etu-tag">Real World System</span>
+<h4 style="margin-bottom:0.5rem;">Friction and Heat</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         In reality, complete isolation is impossible. Air resistance and friction at the pivot slowly
                         transform the pendulum's mechanical energy into thermal energy (heat), dampening the swing over
                         time. The energy isn't lost, just transformed into a less useful form.
                     </p>
-                </div>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('energy_pendulum', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('energy_pendulum', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('energy_pendulum', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('energy_pendulum', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('energy_pendulum', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <div class="sim-controls">
-                    <div style="margin-bottom: 1rem;">
-                        <button id="btn-release1"
-                            style="width: 100%; padding:12px; background:var(--accent); color:white; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Release
+</div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('energy_pendulum', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('energy_pendulum', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('energy_pendulum', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('energy_pendulum', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('energy_pendulum', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div style="margin-bottom: 1rem;">
+<button id="btn-release1" style="width: 100%; padding:12px; background:var(--accent); color:white; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Release
                             Pendulum</button>
-                    </div>
-                    <div class="slider-group">
-                        <label>Initial Angle (<span id="val-angle">45</span>°)</label>
-                        <input type="range" id="input-angle" min="10" max="80" step="1" value="45">
-                    </div>
-                    <div class="slider-group">
-                        <label>Damping/Friction (<span id="val-damping">0.0</span>)</label>
-                        <input type="range" id="input-damping" min="0" max="0.05" step="0.005" value="0.0">
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-pendulum" style="background: rgba(0,0,0,0.02);"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <!-- CHAPTER 2: KINETIC & POTENTIAL -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent-secondary);">02. Gravitational Potential to Kinetic
+</div>
+<div class="slider-group">
+<label>Initial Angle (<span id="val-angle">45</span>°)</label>
+<input id="input-angle" max="80" min="10" step="1" type="range" value="45"/>
+</div>
+<div class="slider-group">
+<label>Damping/Friction (<span id="val-damping">0.0</span>)</label>
+<input id="input-damping" max="0.05" min="0" step="0.005" type="range" value="0.0"/>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-pendulum" style="background: rgba(0,0,0,0.02);"></canvas>
+</div>
+</div>
+</section>
+<!-- CHAPTER 2: KINETIC & POTENTIAL -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent-secondary);">02. Gravitational Potential to Kinetic
                 </h3>
-                <h2>The Rollercoaster Drop</h2>
-                <p>
+<h2>The Rollercoaster Drop</h2>
+<p>
                     Gravitational potential energy depends on an object's mass and height. As it falls, this energy is
                     converted linearly into kinetic energy. If it drops without friction, all $PE$ turns into $KE$.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$PE = mgh \quad \rightarrow \quad KE = \frac{1}{2}mv^2$$
                 </div>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('energy_rollercoaster', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('energy_rollercoaster', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('energy_rollercoaster', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('energy_rollercoaster', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('energy_rollercoaster', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <div class="sim-controls">
-                    <div style="margin-bottom: 1rem;">
-                        <button id="btn-drop2"
-                            style="width: 100%; padding:12px; background:var(--accent-secondary); color:white; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Drop
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('energy_rollercoaster', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('energy_rollercoaster', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('energy_rollercoaster', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('energy_rollercoaster', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('energy_rollercoaster', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div style="margin-bottom: 1rem;">
+<button id="btn-drop2" style="width: 100%; padding:12px; background:var(--accent-secondary); color:white; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Drop
                             Cart</button>
-                    </div>
-                    <div class="slider-group">
-                        <label>Drop Height <span id="val-height">100</span> m</label>
-                        <input type="range" id="input-height" min="20" max="150" step="5" value="100">
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-rollercoaster" style="background: rgba(0,0,0,0.02);"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <!-- CHAPTER 3: ELASTIC POTENTIAL -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--text-main);">03. Elastic Potential Energy</h3>
-                <h2>Springs and Oscillation</h2>
-                <p>
+</div>
+<div class="slider-group">
+<label>Drop Height <span id="val-height">100</span> m</label>
+<input id="input-height" max="150" min="20" step="5" type="range" value="100"/>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-rollercoaster" style="background: rgba(0,0,0,0.02);"></canvas>
+</div>
+</div>
+</section>
+<!-- CHAPTER 3: ELASTIC POTENTIAL -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--text-main);">03. Elastic Potential Energy</h3>
+<h2>Springs and Oscillation</h2>
+<p>
                     Energy can also be stored in the deformation of elastic materials, like springs. The energy stored
                     is proportional to the square of the displacement $x$ from equilibrium.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$PE_{elastic} = \frac{1}{2}kx^2$$
                 </div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('energy_spring', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('energy_spring', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('energy_spring', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('energy_spring', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('energy_spring', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div style="margin-bottom: 1rem;">
+<button id="btn-pull3" style="width: 100%; padding:12px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; font-weight:600; cursor:pointer;">Pull
+                            &amp; Release Spring</button>
+</div>
+<div class="slider-group">
+<label>Spring Constant $(k)$ <span id="val-k">20</span> N/m</label>
+<input id="input-k" max="50" min="5" step="5" type="range" value="20"/>
+</div>
+<div class="slider-group">
+<label>Amplitude $(x)$ <span id="val-x">50</span> cm</label>
+<input id="input-x" max="100" min="10" step="10" type="range" value="50"/>
+</div>
+<div class="slider-group">
+<label>Damping/Friction <span id="val-spring-damping">0.02</span></label>
+<input id="input-spring-damping" max="0.1" min="0" step="0.01" type="range" value="0.02"/>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-spring" style="background: rgba(0,0,0,0.02);"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
 
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('energy_spring', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('energy_spring', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('energy_spring', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('energy_spring', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('energy_spring', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <div class="sim-controls">
-                    <div style="margin-bottom: 1rem;">
-                        <button id="btn-pull3"
-                            style="width: 100%; padding:12px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; font-weight:600; cursor:pointer;">Pull
-                            & Release Spring</button>
-                    </div>
-                    <div class="slider-group">
-                        <label>Spring Constant $(k)$ <span id="val-k">20</span> N/m</label>
-                        <input type="range" id="input-k" min="5" max="50" step="5" value="20">
-                    </div>
-                    <div class="slider-group">
-                        <label>Amplitude $(x)$ <span id="val-x">50</span> cm</label>
-                        <input type="range" id="input-x" min="10" max="100" step="10" value="50">
-                    </div>
-                    <div class="slider-group">
-                        <label>Damping/Friction <span id="val-spring-damping">0.02</span></label>
-                        <input type="range" id="input-spring-damping" min="0" max="0.1" step="0.01" value="0.02">
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-spring" style="background: rgba(0,0,0,0.02);"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section class="references">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3>Academic References</h3>
-            <ul>
-                <li><strong>Joule, J. P.</strong> (1845). <em>On the Mechanical Equivalent of Heat</em>.</li>
-                <li><strong>Feynman, R. P.</strong> (1963). <em>The Feynman Lectures on Physics, Vol. 1</em>
-                    (Conservation of Energy).</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="../../../../js/common.js"></script>
-    <script>
+<!-- Scripts -->
+<script src="../../../../js/common.js"></script>
+<script>
         function openAI(topic, model) {
             let prompt = "";
             switch (topic) {
@@ -777,8 +744,6 @@
 
         window.onload = () => APP.init();
     </script>
-
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 </body>
-
 </html>

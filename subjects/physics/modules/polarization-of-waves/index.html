@@ -1,18 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polarization of Waves • Study Notebook</title>
-  <link rel="icon" href="../../../../assets/icons/favicon.svg">
-
-
-    <!-- Standard Framework Styles -->
-    <link rel="stylesheet" href="../../../../css/common.css">
-    <link rel="stylesheet" href="../../../../css/article.css">
-    
-    <!-- Page Specific Styles -->
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polarization of Waves • Study Notebook</title>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<!-- Standard Framework Styles -->
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<!-- Page Specific Styles -->
+<style>
         /* AI Links & Buttons styling */
         .ai-links {
             display: flex;
@@ -58,203 +56,169 @@
             border-radius: 8px;
         }
     </style>
-
-    <!-- MathJax (LaTeX) Support -->
-    <script>
+<!-- MathJax (LaTeX) Support -->
+<script>
         window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Theme Initialization -->
-    <script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Theme Initialization -->
+<script>
         const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
-
-    <!-- Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="sticky">
-        <div class="nav-bg"></div>
-        <a href="../../../../index.html" class="logo"><i data-lucide="arrow-left" width="16"></i> Physics Journey</a>
-        <button id="themeBtn"><i data-lucide="moon" width="16"></i> Theme</button>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="text-reveal-wrapper">
-            <h1 class="hero-title">Polarization<br>of Waves</h1>
-            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+<!-- Navbar -->
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html"><i data-lucide="arrow-left" width="16"></i> Physics Journey</a>
+<button id="themeBtn"><i data-lucide="moon" width="16"></i> Theme</button>
+</nav>
+<!-- Hero Section -->
+<section class="hero">
+<div class="text-reveal-wrapper">
+<h1 class="hero-title">Polarization<br/>of Waves</h1>
+<p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
                 The geometric orientation of a wave's oscillations and its behavior as it passes through filters.
             </p>
-        </div>
-    </section>
+</div>
+</section>
+<!-- Section 1: Linear Polarization -->
+<section>
+<div class="split-layout">
+<!-- Left: Content -->
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">01. Linear Polarization</h3>
+<h2>Oscillating in One Plane</h2>
+<p>An electromagnetic wave consists of electric and magnetic fields oscillating perpendicular to the direction of travel. In a linearly polarized wave, the electric field vector is confined to a single plane along the direction of propagation.</p>
+<!-- Math Block -->
+<div class="math-block">$$ \vec{E}(z,t) = E_0 \cos(kz - \omega t) \hat{n} $$</div>
+<!-- Setup/Analogy Card -->
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">Shaking a Rope</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">Imagine shaking a rope up and down to create a wave. If you only move your hand vertically, the wave is vertically polarized. If you shake it side-to-side, it is horizontally polarized.</p>
+</div>
+<!-- AI Links -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('linear_polarization', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('linear_polarization', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('linear_polarization', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('linear_polarization', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('linear_polarization', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<!-- Interactive Controls (Optional) -->
+<div class="sim-controls">
+<div class="slider-group">
+<label>Polarization Angle (θ) <span id="val-theta">45</span>°</label>
+<input id="input-theta" max="360" min="0" step="1" type="range" value="45"/>
+</div>
+</div>
+</div>
+<!-- Right: Visualization -->
+<div class="visual-col">
+<canvas id="canvas-linear"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- Section 2: Wave Superposition & Polarization States -->
+<section>
+<div class="split-layout">
+<!-- Left: Content -->
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">02. Polarization States</h3>
+<h2>Circular and Elliptical</h2>
+<p>When two orthogonal linearly polarized waves (e.g., in the x and y directions) superpose, their combined state depends on their relative amplitudes and the phase difference $\delta$ between them. A phase difference of $90^\circ$ ($\pi/2$) with equal amplitudes produces circularly polarized light.</p>
+<!-- Math Block -->
+<div class="math-block">$$ E_x = E_{0x} \cos(\omega t) \quad ; \quad E_y = E_{0y} \cos(\omega t + \delta) $$</div>
+<!-- Setup/Analogy Card -->
+<div class="etu-card">
+<span class="etu-tag">Visualizing the Trace</span>
+<h4 style="margin-bottom:0.5rem;">Lissajous Figures</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">Looking at the wave head-on, the tip of the electric field vector traces out a shape over time. It can be a straight line, a circle, or an ellipse, forming Lissajous figures depending on the phase and amplitude ratios.</p>
+</div>
+<!-- AI Links -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('circular_polarization', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('circular_polarization', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('circular_polarization', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('circular_polarization', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('circular_polarization', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<!-- Interactive Controls (Optional) -->
+<div class="sim-controls">
+<div class="slider-group">
+<label>E_x Amplitude <span id="val-ex">1.0</span></label>
+<input id="input-ex" max="2" min="0" step="0.1" type="range" value="1.0"/>
+</div>
+<div class="slider-group">
+<label>E_y Amplitude <span id="val-ey">1.0</span></label>
+<input id="input-ey" max="2" min="0" step="0.1" type="range" value="1.0"/>
+</div>
+<div class="slider-group">
+<label>Phase Diff (δ) <span id="val-delta">90</span>°</label>
+<input id="input-delta" max="180" min="-180" step="5" type="range" value="90"/>
+</div>
+</div>
+</div>
+<!-- Right: Visualization -->
+<div class="visual-col">
+<canvas id="canvas-states"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- Section 3: Malus's Law -->
+<section>
+<div class="split-layout">
+<!-- Left: Content -->
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">03. Malus's Law</h3>
+<h2>Passing Through Polarizers</h2>
+<p>When linearly polarized light of intensity $I_0$ passes through a polarizing filter (analyzer) whose transmission axis is at an angle $\theta$ relative to the incoming polarization, the transmitted intensity $I$ is reduced according to Malus's Law.</p>
+<!-- Math Block -->
+<div class="math-block">$$ I = I_0 \cos^2(\theta) $$</div>
+<!-- Setup/Analogy Card -->
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">Picket Fence</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">If you shake a rope to make a wave and pass it through the vertical slats of a picket fence, only vertical waves get through. If you try to pass horizontal waves through the same vertical fence, they are completely blocked.</p>
+</div>
+<!-- AI Links -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('malus_law', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('malus_law', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('malus_law', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('malus_law', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('malus_law', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<!-- Interactive Controls (Optional) -->
+<div class="sim-controls">
+<div class="slider-group">
+<label>Analyzer Angle (θ) <span id="val-analyzer">45</span>°</label>
+<input id="input-analyzer" max="90" min="0" step="1" type="range" value="45"/>
+</div>
+</div>
+</div>
+<!-- Right: Visualization -->
+<div class="visual-col">
+<canvas id="canvas-malus"></canvas>
+</div>
+</div>
+</section>
+<!-- References -->
 
-    <!-- Section 1: Linear Polarization -->
-    <section>
-        <div class="split-layout">
-            <!-- Left: Content -->
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">01. Linear Polarization</h3>
-                <h2>Oscillating in One Plane</h2>
-                <p>An electromagnetic wave consists of electric and magnetic fields oscillating perpendicular to the direction of travel. In a linearly polarized wave, the electric field vector is confined to a single plane along the direction of propagation.</p>
-                
-                <!-- Math Block -->
-                <div class="math-block">$$ \vec{E}(z,t) = E_0 \cos(kz - \omega t) \hat{n} $$</div>
-                
-                <!-- Setup/Analogy Card -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">Shaking a Rope</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">Imagine shaking a rope up and down to create a wave. If you only move your hand vertically, the wave is vertically polarized. If you shake it side-to-side, it is horizontally polarized.</p>
-                </div>
-
-                <!-- AI Links -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('linear_polarization', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('linear_polarization', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('linear_polarization', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('linear_polarization', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('linear_polarization', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-                
-                <!-- Interactive Controls (Optional) -->
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Polarization Angle (θ) <span id="val-theta">45</span>°</label>
-                        <input type="range" id="input-theta" min="0" max="360" step="1" value="45">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Visualization -->
-            <div class="visual-col">
-                <canvas id="canvas-linear"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Section 2: Wave Superposition & Polarization States -->
-    <section>
-        <div class="split-layout">
-            <!-- Left: Content -->
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">02. Polarization States</h3>
-                <h2>Circular and Elliptical</h2>
-                <p>When two orthogonal linearly polarized waves (e.g., in the x and y directions) superpose, their combined state depends on their relative amplitudes and the phase difference $\delta$ between them. A phase difference of $90^\circ$ ($\pi/2$) with equal amplitudes produces circularly polarized light.</p>
-                
-                <!-- Math Block -->
-                <div class="math-block">$$ E_x = E_{0x} \cos(\omega t) \quad ; \quad E_y = E_{0y} \cos(\omega t + \delta) $$</div>
-                
-                <!-- Setup/Analogy Card -->
-                <div class="etu-card">
-                    <span class="etu-tag">Visualizing the Trace</span>
-                    <h4 style="margin-bottom:0.5rem;">Lissajous Figures</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">Looking at the wave head-on, the tip of the electric field vector traces out a shape over time. It can be a straight line, a circle, or an ellipse, forming Lissajous figures depending on the phase and amplitude ratios.</p>
-                </div>
-
-                <!-- AI Links -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('circular_polarization', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('circular_polarization', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('circular_polarization', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('circular_polarization', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('circular_polarization', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-                
-                <!-- Interactive Controls (Optional) -->
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>E_x Amplitude <span id="val-ex">1.0</span></label>
-                        <input type="range" id="input-ex" min="0" max="2" step="0.1" value="1.0">
-                    </div>
-                    <div class="slider-group">
-                        <label>E_y Amplitude <span id="val-ey">1.0</span></label>
-                        <input type="range" id="input-ey" min="0" max="2" step="0.1" value="1.0">
-                    </div>
-                    <div class="slider-group">
-                        <label>Phase Diff (δ) <span id="val-delta">90</span>°</label>
-                        <input type="range" id="input-delta" min="-180" max="180" step="5" value="90">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Visualization -->
-            <div class="visual-col">
-                <canvas id="canvas-states"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Section 3: Malus's Law -->
-    <section>
-        <div class="split-layout">
-            <!-- Left: Content -->
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">03. Malus's Law</h3>
-                <h2>Passing Through Polarizers</h2>
-                <p>When linearly polarized light of intensity $I_0$ passes through a polarizing filter (analyzer) whose transmission axis is at an angle $\theta$ relative to the incoming polarization, the transmitted intensity $I$ is reduced according to Malus's Law.</p>
-                
-                <!-- Math Block -->
-                <div class="math-block">$$ I = I_0 \cos^2(\theta) $$</div>
-                
-                <!-- Setup/Analogy Card -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">Picket Fence</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">If you shake a rope to make a wave and pass it through the vertical slats of a picket fence, only vertical waves get through. If you try to pass horizontal waves through the same vertical fence, they are completely blocked.</p>
-                </div>
-
-                <!-- AI Links -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('malus_law', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('malus_law', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('malus_law', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('malus_law', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('malus_law', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-                
-                <!-- Interactive Controls (Optional) -->
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Analyzer Angle (θ) <span id="val-analyzer">45</span>°</label>
-                        <input type="range" id="input-analyzer" min="0" max="90" step="1" value="45">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Visualization -->
-            <div class="visual-col">
-                <canvas id="canvas-malus"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <!-- References -->
-    <section class="references">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3>Academic References</h3>
-            <ul>
-                <li><strong>Hecht, E.</strong> (2017). <em>Optics (5th Edition)</em>, Pearson. Section 8.1 on Polarization states and Malus's Law.</li>
-                <li><strong>Feynman, R. P., Leighton, R. B., & Sands, M.</strong> (1963). <em>The Feynman Lectures on Physics, Vol. I</em>, Basic Books. Chapter 33, Polarization.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="../../../../js/common.js"></script>
-    <script>
+<!-- Scripts -->
+<script src="../../../../js/common.js"></script>
+<script>
         // AI Prompts
         function openAI(topic, model) {
             let prompt = "";
@@ -709,7 +673,6 @@
 
         window.onload = () => APP.init();
     </script>
-
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 </body>
 </html>

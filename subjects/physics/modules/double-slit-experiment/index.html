@@ -1,17 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Double Slit Experiment • Study Notebook</title>
-  <link rel="icon" href="../../../../assets/icons/favicon.svg">
-
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../../css/common.css">
-    <link rel="stylesheet" href="../../../../css/article.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Double Slit Experiment • Study Notebook</title>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<!-- Styles -->
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<style>
         /* AI Links */
         .ai-links {
             display: flex;
@@ -94,230 +92,202 @@
             transform: translateX(24px);
         }
     </style>
-
-    <!-- MathJax Configuration -->
-    <script>
+<!-- MathJax Configuration -->
+<script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']]
             }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Theme Init -->
-    <script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Theme Init -->
+<script>
         const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.body && document.body.setAttribute('data-theme', savedTheme);
     </script>
-
-    <!-- Libs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-    <nav class="sticky">
-        <div class="nav-bg"></div>
-        <a href="../../../../index.html" class="logo">
-            <i data-lucide="arrow-left" width="16"></i>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html">
+<i data-lucide="arrow-left" width="16"></i>
             Physics Journey
         </a>
-        <button id="themeBtn">
-            <i data-lucide="moon" width="16"></i> Theme
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
         </button>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="text-reveal-wrapper">
-            <h1 class="hero-title">The Double Slit<br>Experiment</h1>
-            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="text-reveal-wrapper">
+<h1 class="hero-title">The Double Slit<br/>Experiment</h1>
+<p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
                 The experiment that revealed the wave-particle duality at the heart of quantum mechanics.
             </p>
-        </div>
-    </section>
-
-    <!-- SECTION 1: Classical Wave Behavior -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">01. Classical Waves</h3>
-                <h2>Interference Patterns</h2>
-                <p>
+</div>
+</section>
+<!-- SECTION 1: Classical Wave Behavior -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">01. Classical Waves</h3>
+<h2>Interference Patterns</h2>
+<p>
                     When waves pass through two slits, they create an <strong>interference pattern</strong>.
                     Regions where crests meet crests produce bright fringes (constructive interference),
                     while crests meeting troughs create dark fringes (destructive interference).
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$d \sin\theta = m\lambda \quad \text{(constructive, } m = 0, \pm1, \pm2, \ldots\text{)}$$
                 </div>
-                <p>
+<p>
                     Here, $d$ is the slit separation, $\theta$ is the angle to the fringe,
                     $\lambda$ is the wavelength, and $m$ is the order number.
                 </p>
-
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">Ripples on a Pond</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">Ripples on a Pond</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Drop two pebbles in a calm pond. The circular ripples overlap, creating regions
                         where the water is calm (destructive) and regions where waves are amplified (constructive).
                     </p>
-                </div>
-
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('classical', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('classical', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('classical', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('classical', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('classical', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Wavelength ($\lambda$) <span id="val-wavelength">1.0</span></label>
-                        <input type="range" id="input-wavelength" min="0.5" max="2.0" step="0.1" value="1.0">
-                    </div>
-                    <div class="slider-group">
-                        <label>Slit Separation ($d$) <span id="val-slit-sep">1.0</span></label>
-                        <input type="range" id="input-slit-sep" min="0.5" max="2.0" step="0.1" value="1.0">
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-classical"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- SECTION 2: Quantum Behavior -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent-secondary);">02. The Quantum Twist</h3>
-                <h2>Photons & Electrons</h2>
-                <p>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('classical', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('classical', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('classical', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('classical', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('classical', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Wavelength ($\lambda$) <span id="val-wavelength">1.0</span></label>
+<input id="input-wavelength" max="2.0" min="0.5" step="0.1" type="range" value="1.0"/>
+</div>
+<div class="slider-group">
+<label>Slit Separation ($d$) <span id="val-slit-sep">1.0</span></label>
+<input id="input-slit-sep" max="2.0" min="0.5" step="0.1" type="range" value="1.0"/>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-classical"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- SECTION 2: Quantum Behavior -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent-secondary);">02. The Quantum Twist</h3>
+<h2>Photons &amp; Electrons</h2>
+<p>
                     When we send <strong>individual photons or electrons</strong> through the double slit one at a time,
                     each particle creates a single dot on the detector. But over time, these dots accumulate into
                     the same interference pattern—as if each particle "interferes with itself."
                 </p>
-                <p>
+<p>
                     This challenges our classical intuition: How can a single particle go through both slits
                     simultaneously?
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$|\Psi\rangle = \frac{1}{\sqrt{2}}\left(|\text{slit}_1\rangle + |\text{slit}_2\rangle\right)$$
                 </div>
-
-                <div class="etu-card">
-                    <span class="etu-tag">Deep Concept</span>
-                    <h4 style="margin-bottom:0.5rem;">Superposition</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<div class="etu-card">
+<span class="etu-tag">Deep Concept</span>
+<h4 style="margin-bottom:0.5rem;">Superposition</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Until measured, the particle exists in a superposition—simultaneously taking both paths.
                         The act of measurement collapses this superposition to a definite state.
                     </p>
-                </div>
-
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('quantum', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('quantum', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('quantum', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('quantum', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('quantum', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Emission Rate <span id="val-emission">6</span> frames</label>
-                        <input type="range" id="input-emission" min="3" max="30" step="1" value="6">
-                    </div>
-                    <div style="margin-top:0.5rem; text-align:right;">
-                        <button id="btn-clear-quantum"
-                            style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Clear
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('quantum', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('quantum', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('quantum', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('quantum', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('quantum', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Emission Rate <span id="val-emission">6</span> frames</label>
+<input id="input-emission" max="30" min="3" step="1" type="range" value="6"/>
+</div>
+<div style="margin-top:0.5rem; text-align:right;">
+<button id="btn-clear-quantum" style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Clear
                             Pattern</button>
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-quantum"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- SECTION 3: Observer Effect -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--text-muted);">03. Measurement</h3>
-                <h2>The Observer Effect</h2>
-                <p>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-quantum"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- SECTION 3: Observer Effect -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--text-muted);">03. Measurement</h3>
+<h2>The Observer Effect</h2>
+<p>
                     If we try to determine <strong>which slit</strong> the particle goes through by placing a detector,
                     the interference pattern disappears! The particle suddenly behaves like a classical particle,
                     creating two separate bands instead of an interference pattern.
                 </p>
-                <p>
+<p>
                     This demonstrates that <strong>observation fundamentally alters</strong> the quantum system.
                     Measurement collapses the wave function, forcing the particle to "choose" a definite path.
                 </p>
-
-                <div class="etu-card">
-                    <span class="etu-tag">Philosophical Implication</span>
-                    <h4 style="margin-bottom:0.5rem;">Reality and Observation</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<div class="etu-card">
+<span class="etu-tag">Philosophical Implication</span>
+<h4 style="margin-bottom:0.5rem;">Reality and Observation</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         The experiment suggests that at the quantum level, reality is not independent of observation.
                         The act of measurement plays an active role in determining the outcome.
                     </p>
-                </div>
-
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('observer', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('observer', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('observer', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('observer', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('observer', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-                <div class="sim-controls">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <label style="font-weight: 500;">Observe Which Slit?</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="toggle-observe">
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <span id="observe-status" style="color: var(--accent); font-weight: 500;">OFF</span>
-                    </div>
-                    <div style="margin-top:0.5rem; text-align:right;">
-                        <button id="btn-clear-observer"
-                            style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Clear
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('observer', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('observer', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('observer', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('observer', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('observer', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+<label style="font-weight: 500;">Observe Which Slit?</label>
+<label class="toggle-switch">
+<input id="toggle-observe" type="checkbox"/>
+<span class="toggle-slider"></span>
+</label>
+<span id="observe-status" style="color: var(--accent); font-weight: 500;">OFF</span>
+</div>
+<div style="margin-top:0.5rem; text-align:right;">
+<button id="btn-clear-observer" style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Clear
                             Pattern</button>
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-observer"></canvas>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-observer"></canvas>
+</div>
+</div>
+</section>
 
-    <section class="references">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3>Academic References</h3>
-            <ul>
-                <li><strong>Feynman, R. P.</strong> <em>The Feynman Lectures on Physics</em>, Vol. III, Chapter 1.</li>
-                <li><strong>Griffiths, D. J.</strong> (2016). <em>Introduction to Quantum Mechanics</em>.</li>
-            </ul>
-        </div>
-    </section>
-
-    <script src="../../../../js/common.js"></script>
-    <script>
+<script src="../../../../js/common.js"></script>
+<script>
         function openAI(topic, model) {
             let prompt = "";
             switch (topic) {
@@ -835,8 +805,6 @@
 
         window.onload = () => APP.init();
     </script>
-
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 </body>
-
 </html>

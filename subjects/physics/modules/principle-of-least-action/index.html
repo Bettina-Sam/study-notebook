@@ -1,18 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principle of Least Action • Study Notebook</title>
-  <link rel="icon" href="../../../../assets/icons/favicon.svg">
-
-    <meta name="description" content="Explore Hamilton's Principle and the Principle of Least Action — the variational foundation that unifies classical mechanics, optics, and quantum field theory through stationary action.">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../../css/common.css">
-    <link rel="stylesheet" href="../../../../css/article.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Principle of Least Action • Study Notebook</title>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<meta content="Explore Hamilton's Principle and the Principle of Least Action — the variational foundation that unifies classical mechanics, optics, and quantum field theory through stationary action." name="description"/>
+<!-- Styles -->
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<style>
         /* AI Links */
         .ai-links {
             display: flex;
@@ -57,206 +55,176 @@
             border-radius: 8px;
         }
     </style>
-
-    <!-- MathJax Configuration -->
-    <script>
+<!-- MathJax Configuration -->
+<script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']]
             }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Theme Init -->
-    <script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Theme Init -->
+<script>
         const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.body && document.body.setAttribute('data-theme', savedTheme);
     </script>
-
-    <!-- Libs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-    <nav class="sticky">
-        <div class="nav-bg"></div>
-        <a href="../../../../index.html" class="logo">
-            <i data-lucide="arrow-left" width="16"></i>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html">
+<i data-lucide="arrow-left" width="16"></i>
             Physics Journey
         </a>
-        <button id="themeBtn">
-            <i data-lucide="moon" width="16"></i> Theme
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
         </button>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="text-reveal-wrapper">
-            <h1 class="hero-title">Principle of<br>Least Action</h1>
-            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="text-reveal-wrapper">
+<h1 class="hero-title">Principle of<br/>Least Action</h1>
+<p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
                 Nature is parsimonious: every physical system evolves along the unique path that makes its action stationary.
             </p>
-        </div>
-    </section>
-
-    <!-- SECTION 1: The Action Functional -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">01. The Action Integral</h3>
-                <h2>Hamilton's Principle</h2>
-                <p>
+</div>
+</section>
+<!-- SECTION 1: The Action Functional -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">01. The Action Integral</h3>
+<h2>Hamilton's Principle</h2>
+<p>
                     The <strong>Action</strong> ($S$) is a single scalar number — the time-integral of the Lagrangian $L = T - V$ along a path between two fixed states. Hamilton's Principle asserts that the path actually taken by a physical system is the one for which the action is <strong>stationary</strong> ($\delta S = 0$): not necessarily a minimum, but an extremum.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$S[q] = \int_{t_1}^{t_2} L(q_i, \dot{q}_i, t)\, dt, \qquad \delta S = 0$$
                 </div>
-                <p>
+<p>
                     Applying calculus of variations to this condition yields the <strong>Euler-Lagrange equations</strong> — the equations of motion for any generalized coordinate $q_i$, free of constraint forces.
                 </p>
-
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">Fermat's Principle of Light</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">Fermat's Principle of Light</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Just as a ray of light always travels the path that minimizes travel time (Fermat's Principle), a particle travels the path that makes mechanical action stationary. Both are instances of the same deep variational logic.
                     </p>
-                </div>
-
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('action', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('action', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('action', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('action', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('action', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Gravity (g) <span id="val-g1">9.8</span> m/s²</label>
-                        <input type="range" id="input-g1" min="1.0" max="20.0" step="0.5" value="9.8">
-                    </div>
-                    <div class="slider-group">
-                        <label>Length (l) <span id="val-l1">1.5</span> m</label>
-                        <input type="range" id="input-l1" min="0.5" max="2.5" step="0.1" value="1.5">
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-action" aria-label="Pendulum simulation showing the stationary-action path"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- SECTION 2: Euler-Lagrange & Path Comparison -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent-secondary);">02. Variational Calculus</h3>
-                <h2>Euler-Lagrange Equations</h2>
-                <p>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('action', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('action', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('action', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('action', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('action', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Gravity (g) <span id="val-g1">9.8</span> m/s²</label>
+<input id="input-g1" max="20.0" min="1.0" step="0.5" type="range" value="9.8"/>
+</div>
+<div class="slider-group">
+<label>Length (l) <span id="val-l1">1.5</span> m</label>
+<input id="input-l1" max="2.5" min="0.5" step="0.1" type="range" value="1.5"/>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas aria-label="Pendulum simulation showing the stationary-action path" id="canvas-action"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- SECTION 2: Euler-Lagrange & Path Comparison -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent-secondary);">02. Variational Calculus</h3>
+<h2>Euler-Lagrange Equations</h2>
+<p>
                     By demanding $\delta S = 0$ for all small path variations $\delta q_i(t)$ that vanish at the endpoints, integration by parts produces the <strong>Euler-Lagrange equations</strong>:
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$\frac{d}{dt}\!\left(\frac{\partial L}{\partial \dot{q}_i}\right) - \frac{\partial L}{{\partial q_i}} = 0$$
                 </div>
-                <p>
+<p>
                     These second-order ODEs replace Newton's $\mathbf{F} = m\mathbf{a}$ in any coordinate system. For a free particle ($V = 0$) they give uniform motion; for a pendulum they reproduce the nonlinear swing equation — all from one scalar $L$.
                 </p>
-
-                <div class="etu-card">
-                    <span class="etu-tag">Key Insight</span>
-                    <h4 style="margin-bottom:0.5rem;">Coordinate Independence</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<div class="etu-card">
+<span class="etu-tag">Key Insight</span>
+<h4 style="margin-bottom:0.5rem;">Coordinate Independence</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Because the Lagrangian is a scalar, the Euler-Lagrange equations hold in <em>any</em> generalized coordinates — polar, spherical, or curvilinear — without rewriting force components. Constraints are handled automatically.
                     </p>
-                </div>
-
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('euler-lagrange', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('euler-lagrange', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('euler-lagrange', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('euler-lagrange', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('euler-lagrange', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Path Variants (n) <span id="val-paths">5</span></label>
-                        <input type="range" id="input-paths" min="3" max="9" step="1" value="5">
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-euler" aria-label="Path comparison visualization showing action values for varied paths"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- SECTION 3: Universality — Optics, QM, GR -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--text-muted);">03. Universal Reach</h3>
-                <h2>From Classical to Quantum</h2>
-                <p>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('euler-lagrange', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('euler-lagrange', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('euler-lagrange', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('euler-lagrange', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('euler-lagrange', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Path Variants (n) <span id="val-paths">5</span></label>
+<input id="input-paths" max="9" min="3" step="1" type="range" value="5"/>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas aria-label="Path comparison visualization showing action values for varied paths" id="canvas-euler"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- SECTION 3: Universality — Optics, QM, GR -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--text-muted);">03. Universal Reach</h3>
+<h2>From Classical to Quantum</h2>
+<p>
                     The principle extends far beyond classical mechanics. In <strong>optics</strong>, Fermat's principle minimizes optical path length. In <strong>quantum mechanics</strong>, Feynman's path integral formulation sums $e^{iS/\hbar}$ over <em>all</em> paths — the classical stationary path dominates as $\hbar \to 0$. In <strong>General Relativity</strong>, the Einstein–Hilbert action $S = \int R\sqrt{-g}\, d^4x$ yields Einstein's field equations.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$\mathcal{Z} = \int \mathcal{D}[q]\, e^{iS[q]/\hbar}$$
                 </div>
-                <p>
+<p>
                     The simulation below shows how Feynman's sum-over-paths concept works: many random paths, each weighted by a phase $e^{iS/\hbar}$, with constructive interference selecting the classical trajectory.
                 </p>
-
-                <div class="etu-card">
-                    <span class="etu-tag">Scientific Milestone</span>
-                    <h4 style="margin-bottom:0.5rem;">Noether's Theorem Connection</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<div class="etu-card">
+<span class="etu-tag">Scientific Milestone</span>
+<h4 style="margin-bottom:0.5rem;">Noether's Theorem Connection</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Every continuous symmetry of the action produces a conserved quantity. Time-translation symmetry → energy conservation. Spatial symmetry → momentum. Rotational symmetry → angular momentum. The action principle is the bridge between symmetry and conservation laws.
                     </p>
-                </div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('feynman', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('feynman', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('feynman', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('feynman', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('feynman', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+</div>
+<div class="visual-col">
+<canvas aria-label="Feynman path integral visualization showing multiple paths with phase interference" id="canvas-feynman"></canvas>
+</div>
+</div>
+</section>
+<!-- REFERENCES -->
 
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('feynman', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('feynman', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('feynman', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('feynman', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('feynman', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-feynman" aria-label="Feynman path integral visualization showing multiple paths with phase interference"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <!-- REFERENCES -->
-    <section class="references">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3>Academic References</h3>
-            <ul>
-                <li><strong>Landau, L. D., &amp; Lifshitz, E. M.</strong> (1976). <em>Mechanics</em>, Vol. 1 of <em>Course of Theoretical Physics</em>, 3rd Edition. Butterworth-Heinemann.</li>
-                <li><strong>Goldstein, H., Poole, C., &amp; Safko, J.</strong> (2001). <em>Classical Mechanics</em>, 3rd Edition. Pearson.</li>
-                <li><strong>Feynman, R. P., &amp; Hibbs, A. R.</strong> (1965). <em>Quantum Mechanics and Path Integrals</em>. McGraw-Hill.</li>
-                <li><strong>Taylor, J. R.</strong> (2005). <em>Classical Mechanics</em>. University Science Books.</li>
-            </ul>
-        </div>
-    </section>
-
-    <script src="../../../../js/common.js"></script>
-    <script>
+<script src="../../../../js/common.js"></script>
+<script>
         function openAI(topic, model) {
             let prompt = "";
             switch (topic) {
@@ -653,8 +621,6 @@
 
         window.onload = () => APP.init();
     </script>
-
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 </body>
-
 </html>

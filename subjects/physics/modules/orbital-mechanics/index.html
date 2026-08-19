@@ -1,17 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbital Mechanics • Study Notebook</title>
-  <link rel="icon" href="../../../../assets/icons/favicon.svg">
-
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../../css/common.css">
-    <link rel="stylesheet" href="../../../../css/article.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orbital Mechanics • Study Notebook</title>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<!-- Styles -->
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<style>
         /* AI Links */
         .ai-links {
             display: flex;
@@ -94,231 +92,202 @@
             transform: translateX(24px);
         }
     </style>
-
-    <!-- MathJax Configuration -->
-    <script>
+<!-- MathJax Configuration -->
+<script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']]
             }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Theme Init -->
-    <script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Theme Init -->
+<script>
         const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.body && document.body.setAttribute('data-theme', savedTheme);
     </script>
-
-    <!-- Libs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-
-    <nav class="sticky">
-        <div class="nav-bg"></div>
-        <a href="../../../../index.html" class="logo">
-            <i data-lucide="arrow-left" width="16"></i>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html">
+<i data-lucide="arrow-left" width="16"></i>
             Physics Journey
         </a>
-        <button id="themeBtn">
-            <i data-lucide="moon" width="16"></i> Theme
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
         </button>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="text-reveal-wrapper">
-            <h1 class="hero-title">Orbital<br>Mechanics</h1>
-            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="text-reveal-wrapper">
+<h1 class="hero-title">Orbital<br/>Mechanics</h1>
+<p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
                 Exploring the celestial dance governed by Kepler's Laws and Newton's Universal Gravitation.
             </p>
-        </div>
-    </section>
-
-    <!-- CHAPTER 1: KEPLER'S LAWS -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">01. The Motion</h3>
-                <h2>Kepler's Laws</h2>
-                <p>
+</div>
+</section>
+<!-- CHAPTER 1: KEPLER'S LAWS -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">01. The Motion</h3>
+<h2>Kepler's Laws</h2>
+<p>
                     Johannes Kepler discovered that planets move in <strong>elliptical orbits</strong> with the Sun at
                     one
                     focus. This observation fundamentally changed our understanding of the solar system.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$r = \frac{p}{1 + e \cos \theta}$$
                 </div>
-                <p>
+<p>
                     His second law states that a line segment joining a planet and the Sun sweeps out equal areas during
                     equal intervals of time. This means planets move faster when they are closer to the Sun (perihelion)
                     and slower when they are farther away (aphelion).
                 </p>
-                <!-- SIM CONTROLS: KEPLER -->
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Eccentricity ($e$) <span id="val-eccentricity">0.6</span></label>
-                        <input type="range" id="input-eccentricity" min="0.0" max="0.8" step="0.05" value="0.6">
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
-                        <label style="font-weight: 500;">Show Sweep Area</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="toggle-sweep">
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- ETU CARD -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">The Ice Skater</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- SIM CONTROLS: KEPLER -->
+<div class="sim-controls">
+<div class="slider-group">
+<label>Eccentricity ($e$) <span id="val-eccentricity">0.6</span></label>
+<input id="input-eccentricity" max="0.8" min="0.0" step="0.05" type="range" value="0.6"/>
+</div>
+<div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+<label style="font-weight: 500;">Show Sweep Area</label>
+<label class="toggle-switch">
+<input id="toggle-sweep" type="checkbox"/>
+<span class="toggle-slider"></span>
+</label>
+</div>
+</div>
+<!-- ETU CARD -->
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">The Ice Skater</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Think of a figure skater spinning. As they pull their arms in (reducing distance/radius), they
                         spin faster to conserve angular momentum. Similarly, as a planet gets closer to the Sun, it
                         speeds up.
                     </p>
-                </div>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('kepler', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('kepler', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('kepler', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('kepler', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('kepler', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-kepler"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- CHAPTER 2: GRAVITY -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent-secondary);">02. The Force</h3>
-                <h2>Universal Gravitation</h2>
-                <p>
+</div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('kepler', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('kepler', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('kepler', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('kepler', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('kepler', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-kepler"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- CHAPTER 2: GRAVITY -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent-secondary);">02. The Force</h3>
+<h2>Universal Gravitation</h2>
+<p>
                     Isaac Newton unified the motion of planets with the falling of an apple. He proposed that every
                     particle
                     attracts every other particle with a force directly proportional to the product of their masses and
                     inversely proportional to the square of the distance between them.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$F = G \frac{m_1 m_2}{r^2}$$
                 </div>
-                <p>
+<p>
                     Where $G$ is the gravitational constant. This inverse-square law enables the stable, elliptical
                     orbits
                     we observe in the cosmos.
                 </p>
-                <!-- SIM CONTROLS: GRAVITY -->
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Mass 1 ($m_1$) <span id="val-m1">40</span></label>
-                        <input type="range" id="input-m1" min="10" max="80" step="5" value="40">
-                    </div>
-                    <div class="slider-group">
-                        <label>Mass 2 ($m_2$) <span id="val-m2">20</span></label>
-                        <input type="range" id="input-m2" min="5" max="40" step="5" value="20">
-                    </div>
-                    <div class="slider-group">
-                        <label>Distance ($r$) <span id="val-r">150</span></label>
-                        <input type="range" id="input-r" min="80" max="250" step="10" value="150">
-                    </div>
-                </div>
-
-                <!-- ETU CARD -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">The Tetherball</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- SIM CONTROLS: GRAVITY -->
+<div class="sim-controls">
+<div class="slider-group">
+<label>Mass 1 ($m_1$) <span id="val-m1">40</span></label>
+<input id="input-m1" max="80" min="10" step="5" type="range" value="40"/>
+</div>
+<div class="slider-group">
+<label>Mass 2 ($m_2$) <span id="val-m2">20</span></label>
+<input id="input-m2" max="40" min="5" step="5" type="range" value="20"/>
+</div>
+<div class="slider-group">
+<label>Distance ($r$) <span id="val-r">150</span></label>
+<input id="input-r" max="250" min="80" step="10" type="range" value="150"/>
+</div>
+</div>
+<!-- ETU CARD -->
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">The Tetherball</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Gravity acts like the rope in tetherball, constantly pulling the ball toward the pole (center).
                         Without this pull, the ball would fly off in a straight line.
                     </p>
-                </div>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('gravity', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('gravity', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('gravity', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('gravity', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('gravity', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-gravity"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- CHAPTER 3: ORBIT SIMULATION -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--text-muted);">03. Simulation</h3>
-                <h2>Orbits in Action</h2>
-                <p>
+</div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('gravity', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('gravity', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('gravity', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('gravity', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('gravity', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-gravity"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- CHAPTER 3: ORBIT SIMULATION -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--text-muted);">03. Simulation</h3>
+<h2>Orbits in Action</h2>
+<p>
                     Adjust the initial velocity and mass to see how they affect the orbit. Too slow, and the planet
                     crashes
                     into the star. Too fast, and it escapes into deep space (hyperbolic trajectory).
                 </p>
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Initial Velocity ($v$) <span id="val-v">3.0</span></label>
-                        <input type="range" id="input-v" min="1.0" max="6.0" step="0.1" value="3.0">
-                    </div>
-                    <div class="slider-group">
-                        <label>Mass of Planet ($m$) <span id="val-m">1.0</span></label>
-                        <input type="range" id="input-m" min="0.5" max="5.0" step="0.5" value="1.0">
-                    </div>
-                    <div
-                        style="margin-top:0.5rem; text-align:right; display:flex; gap:0.5rem; justify-content:flex-end;">
-                        <button id="btn-clear-trail"
-                            style="padding:8px 16px; background:var(--bg-color); color:var(--text-main); border:1px solid var(--line-subtle); border-radius:4px; cursor:pointer;">Clear
+<div class="sim-controls">
+<div class="slider-group">
+<label>Initial Velocity ($v$) <span id="val-v">3.0</span></label>
+<input id="input-v" max="6.0" min="1.0" step="0.1" type="range" value="3.0"/>
+</div>
+<div class="slider-group">
+<label>Mass of Planet ($m$) <span id="val-m">1.0</span></label>
+<input id="input-m" max="5.0" min="0.5" step="0.5" type="range" value="1.0"/>
+</div>
+<div style="margin-top:0.5rem; text-align:right; display:flex; gap:0.5rem; justify-content:flex-end;">
+<button id="btn-clear-trail" style="padding:8px 16px; background:var(--bg-color); color:var(--text-main); border:1px solid var(--line-subtle); border-radius:4px; cursor:pointer;">Clear
                             Trail</button>
-                        <button id="btn-reset"
-                            style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Reset
+<button id="btn-reset" style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Reset
                             System</button>
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-orbit"></canvas>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-orbit"></canvas>
+</div>
+</div>
+</section>
 
-    <section class="references">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3>Academic References</h3>
-            <ul>
-                <li><strong>Thornton, S. T., & Marion, J. B.</strong> (2003). <em>Classical Dynamics of Particles and
-                        Systems</em>.</li>
-                <li><strong>Murray, C. D., & Dermott, S. F.</strong> <em>Solar System Dynamics</em>, Chapter 2.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="../../../../js/common.js"></script>
-    <script>
+<!-- Scripts -->
+<script src="../../../../js/common.js"></script>
+<script>
         function openAI(topic, model) {
             let prompt = "";
             switch (topic) {
@@ -772,8 +741,6 @@
         window.onload = () => APP.init();
 
     </script>
-
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 </body>
-
 </html>

@@ -1,17 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projectile Motion • Study Notebook</title>
-  <link rel="icon" href="../../../../assets/icons/favicon.svg">
-
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../../css/common.css">
-    <link rel="stylesheet" href="../../../../css/article.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projectile Motion • Study Notebook</title>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<!-- Styles -->
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<style>
         /* AI Links */
         .ai-links {
             display: flex;
@@ -48,240 +46,207 @@
             fill: currentColor;
         }
     </style>
-
-    <!-- MathJax Configuration -->
-    <script>
+<!-- MathJax Configuration -->
+<script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']]
             }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Theme Init -->
-    <script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Theme Init -->
+<script>
         const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.body && document.body.setAttribute('data-theme', savedTheme);
     </script>
-
-    <!-- Libs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-
-    <nav class="sticky">
-        <div class="nav-bg"></div>
-        <a href="../../../../index.html" class="logo">
-            <i data-lucide="arrow-left" width="16"></i>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html">
+<i data-lucide="arrow-left" width="16"></i>
             Physics Journey
         </a>
-        <button id="themeBtn">
-            <i data-lucide="moon" width="16"></i> Theme
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
         </button>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="text-reveal-wrapper">
-            <h1 class="hero-title">Projectile<br>Motion</h1>
-            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="text-reveal-wrapper">
+<h1 class="hero-title">Projectile<br/>Motion</h1>
+<p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
                 Exploring the parabolic trajectory of objects in free fall and the influence of air resistance.
             </p>
-        </div>
-    </section>
-
-    <!-- CHAPTER 1: KINEMATICS -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">01. The Parabola</h3>
-                <h2>Independent Motions</h2>
-                <p>
+</div>
+</section>
+<!-- CHAPTER 1: KINEMATICS -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">01. The Parabola</h3>
+<h2>Independent Motions</h2>
+<p>
                     Projectile motion can be decomposed into two independent components: constant velocity horizontal
                     motion and constant acceleration vertical motion (due to gravity $g$).
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$x(t) = v_0 \cos(\theta) t$$
                     $$y(t) = v_0 \sin(\theta) t - \frac{1}{2}gt^2$$
                 </div>
-                <p>
+<p>
                     By combining these equations to eliminate $t$, we find that the path $y(x)$ is a downwards-opening
                     parabola:
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$y(x) = (\tan \theta) x - \frac{g}{2 v_0^2 \cos^2 \theta} x^2$$
                 </div>
-
-                <!-- ETU CARD -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">The Water Fountain</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- ETU CARD -->
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">The Water Fountain</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Observe a stream of water from a drinking fountain. Each water molecule acts as an independent
                         projectile. Despite the chaos of the stream, every single drop traces a perfect parabolic arc,
                         governed by the same kinetic rules, creating a smooth, predictable curve.
                     </p>
-                </div>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('parabola', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('parabola', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('parabola', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('parabola', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('parabola', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Initial Velocity (v₀) <span id="val-v">50</span> m/s</label>
-                        <input type="range" id="input-v" min="10" max="100" step="1" value="50">
-                    </div>
-                    <div class="slider-group">
-                        <label>Angle (θ) <span id="val-ang">45</span>°</label>
-                        <input type="range" id="input-ang" min="0" max="90" step="1" value="45">
-                    </div>
-                    <div class="slider-group">
-                        <label>Gravity (g) <span id="val-g">9.8</span> m/s²</label>
-                        <input type="range" id="input-g" min="1.6" max="25" step="0.1" value="9.8">
-                    </div>
-                    <div style="margin-top:1rem; display:flex; gap:10px;">
-                        <button id="btn-fire"
-                            style="flex:1; padding:12px; background:var(--accent); color:white; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Fire
+</div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('parabola', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('parabola', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('parabola', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('parabola', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('parabola', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Initial Velocity (v₀) <span id="val-v">50</span> m/s</label>
+<input id="input-v" max="100" min="10" step="1" type="range" value="50"/>
+</div>
+<div class="slider-group">
+<label>Angle (θ) <span id="val-ang">45</span>°</label>
+<input id="input-ang" max="90" min="0" step="1" type="range" value="45"/>
+</div>
+<div class="slider-group">
+<label>Gravity (g) <span id="val-g">9.8</span> m/s²</label>
+<input id="input-g" max="25" min="1.6" step="0.1" type="range" value="9.8"/>
+</div>
+<div style="margin-top:1rem; display:flex; gap:10px;">
+<button id="btn-fire" style="flex:1; padding:12px; background:var(--accent); color:white; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Fire
                             Projectile</button>
-                        <button id="btn-clear"
-                            style="padding:12px; background:var(--line-subtle); color:var(--text-main); border:none; border-radius:4px; cursor:pointer;">Clear</button>
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-projectile"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <!-- CHAPTER 2: AIR RESISTANCE -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent-secondary);">02. Drag</h3>
-                <h2>The Air Strikes Back</h2>
-                <p>
+<button id="btn-clear" style="padding:12px; background:var(--line-subtle); color:var(--text-main); border:none; border-radius:4px; cursor:pointer;">Clear</button>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-projectile"></canvas>
+</div>
+</div>
+</section>
+<!-- CHAPTER 2: AIR RESISTANCE -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent-secondary);">02. Drag</h3>
+<h2>The Air Strikes Back</h2>
+<p>
                     In the real world, objects moving through a fluid (like air) experience a drag force $F_d$ that
                     opposes their motion. For high speeds, this force is often proportional to the square of velocity:
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$F_d = \frac{1}{2} \rho v^2 C_d A$$
                 </div>
-                <p>
+<p>
                     This force constantly changes direction and magnitude, making numerical integration necessary.
                 </p>
-                <!-- ETU CARD -->
-                <div class="etu-card">
-                    <span class="etu-tag">Effect</span>
-                    <h4 style="margin-bottom:0.5rem;">Terminal Velocity</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- ETU CARD -->
+<div class="etu-card">
+<span class="etu-tag">Effect</span>
+<h4 style="margin-bottom:0.5rem;">Terminal Velocity</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         As an object falls faster, drag increases. Eventually, drag equals gravity ($F_d = mg$). At this
                         point, the object stops accelerating.
                     </p>
-                </div>
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('drag', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('drag', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('drag', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('drag', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('drag', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <div class="sim-controls" style="margin-top: 2rem;">
-                    <div class="slider-group">
-                        <label>Drag Coefficient <span id="val-drag">0.00</span></label>
-                        <input type="range" id="input-drag" min="0" max="0.1" step="0.001" value="0">
-                    </div>
-                    <p style="font-size: 0.85rem; margin-top: 0.5rem; margin-bottom:0;">
-                        Set to > 0 to enable air resistance. Notice how the path becomes asymmetric!
+</div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('drag', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('drag', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('drag', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('drag', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('drag', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls" style="margin-top: 2rem;">
+<div class="slider-group">
+<label>Drag Coefficient <span id="val-drag">0.00</span></label>
+<input id="input-drag" max="0.1" min="0" step="0.001" type="range" value="0"/>
+</div>
+<p style="font-size: 0.85rem; margin-top: 0.5rem; margin-bottom:0;">
+                        Set to &gt; 0 to enable air resistance. Notice how the path becomes asymmetric!
                     </p>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-drag"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <!-- CHAPTER 3: MAXIMUM RANGE -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--secondary);">03. The Sweet Spot</h3>
-                <h2>Maximum Range & Complementary Angles</h2>
-                <p>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-drag"></canvas>
+</div>
+</div>
+</section>
+<!-- CHAPTER 3: MAXIMUM RANGE -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--secondary);">03. The Sweet Spot</h3>
+<h2>Maximum Range &amp; Complementary Angles</h2>
+<p>
                     In a vacuum, a projectile travels the furthest horizontally when launched at exactly
                     <strong>45°</strong>.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$R = \frac{v_0^2 \sin(2\theta)}{g}$$
                 </div>
-                <p>
+<p>
                     Because of the $\sin(2\theta)$ term, any two angles that add up to 90° (complementary angles, like
                     30° and 60°) will yield the exact same horizontal range, though their time in the air and peak
                     heights will differ drastically.
                 </p>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('range', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('range', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('range', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('range', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('range', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <div class="sim-controls" style="margin-top: 2rem;">
-                    <div class="slider-group">
-                        <label>Initial Velocity (v₀) <span id="val-range-v">60</span> m/s</label>
-                        <input type="range" id="input-range-v" min="20" max="100" step="1" value="60">
-                    </div>
-                    <div style="margin-top:1rem; display:flex; gap:10px;">
-                        <button id="btn-fire-range"
-                            style="flex:1; padding:12px; background:var(--secondary); color:white; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Fire
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('range', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('range', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('range', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('range', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('range', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls" style="margin-top: 2rem;">
+<div class="slider-group">
+<label>Initial Velocity (v₀) <span id="val-range-v">60</span> m/s</label>
+<input id="input-range-v" max="100" min="20" step="1" type="range" value="60"/>
+</div>
+<div style="margin-top:1rem; display:flex; gap:10px;">
+<button id="btn-fire-range" style="flex:1; padding:12px; background:var(--secondary); color:white; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Fire
                             Multi-Angle</button>
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-range"></canvas>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-range"></canvas>
+</div>
+</div>
+</section>
 
-    <section class="references">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3>Academic References</h3>
-            <ul>
-                <li><strong>Halliday, D., Resnick, R., & Walker, J.</strong> (2013). <a
-                        href="https://www.wiley.com/en-us/Fundamentals+of+Physics%2C+10th+Edition-p-9781118230718"
-                        target="_blank" rel="noopener noreferrer">Fundamentals of Physics</a>. 10th Edition. Wiley.</li>
-                <li><strong>Serway, R. A., & Jewett, J. W.</strong> (2018). <a
-                        href="https://www.cengage.com/c/physics-for-scientists-and-engineers-10e-serway/9781337553278/"
-                        target="_blank" rel="noopener noreferrer">Physics for Scientists and Engineers with Modern Physics</a>. Cengage Learning.
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="../../../../js/common.js"></script>
-    <script>
+<!-- Scripts -->
+<script src="../../../../js/common.js"></script>
+<script>
         function openAI(topic, model) {
             let prompt = "";
             switch (topic) {
@@ -899,8 +864,6 @@
         window.onload = () => APP.init();
 
     </script>
-
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 </body>
-
 </html>

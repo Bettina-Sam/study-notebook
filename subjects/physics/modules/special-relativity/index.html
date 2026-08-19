@@ -1,18 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Relativity • Study Notebook</title>
-  <link rel="icon" href="../../../../assets/icons/favicon.svg">
-
-    
-    <!-- Standard Framework Styles -->
-    <link rel="stylesheet" href="../../../../css/common.css">
-    <link rel="stylesheet" href="../../../../css/article.css">
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Special Relativity • Study Notebook</title>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<!-- Standard Framework Styles -->
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<style>
         /* Interactive controls dashboard layout */
         .sim-controls {
             margin-top: 1.5rem;
@@ -118,215 +115,182 @@
             fill: currentColor;
         }
     </style>
-
-    <!-- MathJax (LaTeX) Support -->
-    <script>
+<!-- MathJax (LaTeX) Support -->
+<script>
         window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Theme Initialization -->
-    <script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Theme Initialization -->
+<script>
         const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
-
-    <!-- Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-    <!-- Navbar -->
-    <nav class="sticky">
-        <div class="nav-bg"></div>
-        <a href="../../../../index.html" class="logo"><i data-lucide="arrow-left" width="16"></i> Physics Journey</a>
-        <button id="themeBtn"><i data-lucide="moon" width="16"></i> Theme</button>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="text-reveal-wrapper">
-            <h1 class="hero-title">Special<br>Relativity</h1>
-            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+<!-- Navbar -->
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html"><i data-lucide="arrow-left" width="16"></i> Physics Journey</a>
+<button id="themeBtn"><i data-lucide="moon" width="16"></i> Theme</button>
+</nav>
+<!-- Hero Section -->
+<section class="hero">
+<div class="text-reveal-wrapper">
+<h1 class="hero-title">Special<br/>Relativity</h1>
+<p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
                 Exploring Einstein's revolutionary concepts of light speed invariance, relative time dilation, length contraction, and the ultimate cosmic velocity limit.
             </p>
-        </div>
-    </section>
-
-    <!-- 1. Time Dilation -->
-    <section>
-        <div class="split-layout">
-            <!-- Left: Content -->
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">01. Time Dilation</h3>
-                <h2>The Relativistic Light Clock</h2>
-                <p>
+</div>
+</section>
+<!-- 1. Time Dilation -->
+<section>
+<div class="split-layout">
+<!-- Left: Content -->
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">01. Time Dilation</h3>
+<h2>The Relativistic Light Clock</h2>
+<p>
                     Einstein's first postulate states that the speed of light $c$ is constant for all inertial observers. If a light pulse bounces vertically inside a moving train, an outside stationary observer sees the light trace a longer diagonal path. 
                 </p>
-                <p>
+<p>
                     Because the speed of light is absolute, the diagonal journey takes more time. Thus, moving clocks tick slower relative to clocks at rest.
                 </p>
-
-                <!-- Math Block -->
-                <div class="math-block">
+<!-- Math Block -->
+<div class="math-block">
                     $$\Delta t = \gamma \Delta t_0 = \frac{\Delta t_0}{\sqrt{1 - v^2/c^2}}$$
                 </div>
-
-                <!-- Setup Card -->
-                <div class="etu-card">
-                    <span class="etu-tag">Key Insight</span>
-                    <h4 style="margin-bottom:0.5rem;">Lorentz Factor ($\gamma$)</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- Setup Card -->
+<div class="etu-card">
+<span class="etu-tag">Key Insight</span>
+<h4 style="margin-bottom:0.5rem;">Lorentz Factor ($\gamma$)</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         As velocity $v$ approaches $c$, the Lorentz factor $\gamma$ approaches infinity, causing time to slow to a complete standstill from an external frame.
                     </p>
-                </div>
-
-                <!-- AI Links -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('time-dilation', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('time-dilation', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('time-dilation', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('time-dilation', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('time-dilation', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <!-- Interactive Controls -->
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Velocity ($v/c$) <span id="val-td-speed">0.60</span></label>
-                        <input type="range" id="input-td-speed" min="0.0" max="0.99" step="0.01" value="0.60">
-                    </div>
-                    <div class="btn-group">
-                        <button id="btn-run-td" class="btn btn-primary">Start Clock</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Visualization -->
-            <div class="visual-col">
-                <canvas id="canvas-time-dilation"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- 2. Length Contraction -->
-    <section>
-        <div class="split-layout">
-            <!-- Left: Content -->
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">02. Length Contraction</h3>
-                <h2>Relativistic Lorentz Compression</h2>
-                <p>
+</div>
+<!-- AI Links -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('time-dilation', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('time-dilation', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('time-dilation', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('time-dilation', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('time-dilation', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<!-- Interactive Controls -->
+<div class="sim-controls">
+<div class="slider-group">
+<label>Velocity ($v/c$) <span id="val-td-speed">0.60</span></label>
+<input id="input-td-speed" max="0.99" min="0.0" step="0.01" type="range" value="0.60"/>
+</div>
+<div class="btn-group">
+<button class="btn btn-primary" id="btn-run-td">Start Clock</button>
+</div>
+</div>
+</div>
+<!-- Right: Visualization -->
+<div class="visual-col">
+<canvas id="canvas-time-dilation"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- 2. Length Contraction -->
+<section>
+<div class="split-layout">
+<!-- Left: Content -->
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">02. Length Contraction</h3>
+<h2>Relativistic Lorentz Compression</h2>
+<p>
                     As an elegant consequence of time dilation and relativity of simultaneity, space itself contracts along the direction of motion for an observer at rest.
                 </p>
-                <p>
+<p>
                     A traveling relativistic grid or vehicle appears contracted horizontally by the factor $1/\gamma$ when viewed from a stationary frame, while the transverse dimensions remain unaffected.
                 </p>
-
-                <!-- Math Block -->
-                <div class="math-block">
+<!-- Math Block -->
+<div class="math-block">
                     $$L = \frac{L_0}{\gamma} = L_0 \sqrt{1 - v^2/c^2}$$
                 </div>
-
-                <!-- AI Links -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('length-contraction', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('length-contraction', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('length-contraction', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('length-contraction', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('length-contraction', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <!-- Interactive Controls -->
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Velocity ($v/c$) <span id="val-lc-speed">0.80</span></label>
-                        <input type="range" id="input-lc-speed" min="0.0" max="0.99" step="0.01" value="0.80">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Visualization -->
-            <div class="visual-col">
-                <canvas id="canvas-length-contraction"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- 3. Speed Limit -->
-    <section>
-        <div class="split-layout">
-            <!-- Left: Content -->
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">03. Mass-Energy Limit</h3>
-                <h2>The Cosmic Speed Limit</h2>
-                <p>
+<!-- AI Links -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('length-contraction', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('length-contraction', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('length-contraction', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('length-contraction', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('length-contraction', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<!-- Interactive Controls -->
+<div class="sim-controls">
+<div class="slider-group">
+<label>Velocity ($v/c$) <span id="val-lc-speed">0.80</span></label>
+<input id="input-lc-speed" max="0.99" min="0.0" step="0.01" type="range" value="0.80"/>
+</div>
+</div>
+</div>
+<!-- Right: Visualization -->
+<div class="visual-col">
+<canvas id="canvas-length-contraction"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- 3. Speed Limit -->
+<section>
+<div class="split-layout">
+<!-- Left: Content -->
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">03. Mass-Energy Limit</h3>
+<h2>The Cosmic Speed Limit</h2>
+<p>
                     As a particle accelerates towards the speed of light, its momentum increases indefinitely ($p = \gamma m_0 v$). This means the force required to yield subsequent acceleration increases without bound.
                 </p>
-                <p>
+<p>
                     Under a constant accelerating force, a particle's velocity will asymptotically approach the speed of light $c$ but can never exceed or even reach it, showing that $c$ is the absolute speed limit of our universe.
                 </p>
-
-                <!-- Math Block -->
-                <div class="math-block">
+<!-- Math Block -->
+<div class="math-block">
                     $$v(t) = \frac{(F \cdot t)}{\sqrt{m_0^2 + (F \cdot t / c)^2}}$$
                 </div>
+<!-- AI Links -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('mass-energy', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('mass-energy', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('mass-energy', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('mass-energy', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('mass-energy', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<!-- Interactive Controls -->
+<div class="sim-controls">
+<div class="slider-group">
+<label>Constant Force ($F$) <span id="val-me-force">4.0</span> N</label>
+<input id="input-me-force" max="10.0" min="1.0" step="0.5" type="range" value="4.0"/>
+</div>
+<div class="slider-group">
+<label>Rest Mass ($m_0$) <span id="val-me-mass">2.0</span> kg</label>
+<input id="input-me-mass" max="5.0" min="0.5" step="0.1" type="range" value="2.0"/>
+</div>
+<div class="btn-group">
+<button class="btn btn-primary" id="btn-run-me">Start Accelerator</button>
+</div>
+</div>
+</div>
+<!-- Right: Visualization -->
+<div class="visual-col">
+<canvas id="canvas-mass-energy"></canvas>
+</div>
+</div>
+</section>
+<!-- References -->
 
-                <!-- AI Links -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('mass-energy', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('mass-energy', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('mass-energy', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('mass-energy', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('mass-energy', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-
-                <!-- Interactive Controls -->
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Constant Force ($F$) <span id="val-me-force">4.0</span> N</label>
-                        <input type="range" id="input-me-force" min="1.0" max="10.0" step="0.5" value="4.0">
-                    </div>
-                    <div class="slider-group">
-                        <label>Rest Mass ($m_0$) <span id="val-me-mass">2.0</span> kg</label>
-                        <input type="range" id="input-me-mass" min="0.5" max="5.0" step="0.1" value="2.0">
-                    </div>
-                    <div class="btn-group">
-                        <button id="btn-run-me" class="btn btn-primary">Start Accelerator</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Visualization -->
-            <div class="visual-col">
-                <canvas id="canvas-mass-energy"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <!-- References -->
-    <section class="references">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3>Academic References</h3>
-            <ul>
-                <li><strong>Einstein, A.</strong> (1905). <em>On the Electrodynamics of Moving Bodies</em>. Annalen der Physik, 17, 891-921.</li>
-                <li><strong>Taylor, E. F., & Wheeler, J. A.</strong> (1992). <em>Spacetime Physics: Introduction to Special Relativity</em>. W. H. Freeman and Company.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Standard Scripts -->
-    <script src="../../../../js/common.js"></script>
-    <script>
+<!-- Standard Scripts -->
+<script src="../../../../js/common.js"></script>
+<script>
         // AI query setups
         function openAI(topic, model) {
             let prompt = "";
@@ -1099,8 +1063,6 @@
 
         window.onload = () => APP.init();
     </script>
-
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 </body>
-
 </html>

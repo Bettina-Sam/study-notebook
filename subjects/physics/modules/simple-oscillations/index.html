@@ -1,17 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harmonic Oscillator • Study Notebook</title>
-  <link rel="icon" href="../../../../assets/icons/favicon.svg">
-
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../../css/common.css">
-    <link rel="stylesheet" href="../../../../css/article.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Harmonic Oscillator • Study Notebook</title>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<!-- Styles -->
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<style>
         /* AI Links */
         .ai-links {
             display: flex;
@@ -48,231 +46,203 @@
             fill: currentColor;
         }
     </style>
-
-    <!-- MathJax Configuration -->
-    <script>
+<!-- MathJax Configuration -->
+<script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']]
             }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Theme Init -->
-    <script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Theme Init -->
+<script>
         const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         document.body && document.body.setAttribute('data-theme', savedTheme);
     </script>
-
-    <!-- Libs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-
-    <nav class="sticky">
-        <div class="nav-bg"></div>
-        <a href="../../../../index.html" class="logo">
-            <i data-lucide="arrow-left" width="16"></i>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html">
+<i data-lucide="arrow-left" width="16"></i>
             Physics Journey
         </a>
-        <button id="themeBtn">
-            <i data-lucide="moon" width="16"></i> Theme
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
         </button>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="text-reveal-wrapper">
-            <h1 class="hero-title">Simple Harmonic<br>Motion</h1>
-            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="text-reveal-wrapper">
+<h1 class="hero-title">Simple Harmonic<br/>Motion</h1>
+<p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
                 A rigorous exploration of restoring forces, differential equations, and the conservation of energy.
             </p>
-        </div>
-    </section>
-
-    <!-- CHAPTER 1: THE RESTORE -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent);">01. The Principle</h3>
-                <h2>Hooke's Law & Dynamics</h2>
-                <p>
+</div>
+</section>
+<!-- CHAPTER 1: THE RESTORE -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent);">01. The Principle</h3>
+<h2>Hooke's Law &amp; Dynamics</h2>
+<p>
                     At the heart of all oscillation is a <strong>Restoring Force</strong>. For an ideal spring, this
                     force is linearly proportional to the displacement from equilibrium ($x=0$) but acts in the opposite
                     direction.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$F_{restoring} = -kx$$
                 </div>
-                <p>
+<p>
                     Combining this with Newton's Second Law ($F=ma$), we derive the governing differential equation:
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$m\frac{d^2x}{dt^2} = -kx \quad \Rightarrow \quad \frac{d^2x}{dt^2} + \frac{k}{m}x = 0$$
                 </div>
-                <p>
+<p>
                     The solution to this second-order differential equation is a sinusoidal function:
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$x(t) = A \cos(\omega t + \phi)$$
                 </div>
-                <!-- ETU CARD -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">The "Invisible Leash"</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- ETU CARD -->
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">The "Invisible Leash"</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Imagine a dog (the mass) tied to a post (equilibrium) by a rubber bungee cord (the spring). The
                         further the dog runs away, the harder the cord pulls back.
                     </p>
-                </div>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('hooke', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('hooke', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('hooke', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('hooke', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('hooke', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-hooke"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- CHAPTER 2: ENERGY -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--accent-secondary);">02. Conservation</h3>
-                <h2>The Dance of Energy</h2>
-                <p>
+</div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('hooke', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('hooke', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('hooke', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('hooke', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('hooke', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-hooke"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- CHAPTER 2: ENERGY -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--accent-secondary);">02. Conservation</h3>
+<h2>The Dance of Energy</h2>
+<p>
                     In an ideal system, energy is never lost; it merely transforms between Kinetic ($K$) and Potential
                     ($U$).
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$K = \frac{1}{2}mv^2 \quad \quad U = \frac{1}{2}kx^2$$
                 </div>
-                <p>
+<p>
                     The total mechanical energy $E$ remains constant throughout the cycle.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$E_{total} = \frac{1}{2}kA^2 = constant$$
                 </div>
-
-                <!-- ETU CARD -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">The Playground Swing</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- ETU CARD -->
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">The Playground Swing</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Think of a child on a swing. At the very top of the arc (highest point), the child stops for a
                         split second (maximum Potential Energy, zero Kinetic Energy). At the very bottom, they are
                         moving fastest (maximum Kinetic Energy, minimum Potential Energy). The total energy of the swing
                         persists.
                     </p>
-                </div>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('energy', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('energy', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('energy', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('energy', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('energy', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-energy"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- CHAPTER 3: DAMPING -->
-    <section>
-        <div class="split-layout">
-            <div class="content-col">
-                <h3 class="section-label" style="color: var(--text-muted);">03. Reality</h3>
-                <h2>Damped Oscillation</h2>
-                <p>
+</div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('energy', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('energy', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('energy', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('energy', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('energy', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-energy"></canvas>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- CHAPTER 3: DAMPING -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--text-muted);">03. Reality</h3>
+<h2>Damped Oscillation</h2>
+<p>
                     Real systems lose energy to friction. We model this as a <strong>damping force</strong> proportional
                     to velocity: $F_d = -bv$.
                 </p>
-                <div class="math-block">
+<div class="math-block">
                     $$m\frac{d^2x}{dt^2} + b\frac{dx}{dt} + kx = 0$$
                 </div>
-
-                <!-- ETU CARD -->
-                <div class="etu-card">
-                    <span class="etu-tag">Real World Analogy</span>
-                    <h4 style="margin-bottom:0.5rem;">Car Shock Absorbers</h4>
-                    <p style="font-size: 0.95rem; margin-bottom:0;">
+<!-- ETU CARD -->
+<div class="etu-card">
+<span class="etu-tag">Real World Analogy</span>
+<h4 style="margin-bottom:0.5rem;">Car Shock Absorbers</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
                         Without shocks, your car would bounce up and down endlessly after every bump (simple harmonic
                         motion). Shock absorbers use viscous fluid to dissipate this energy, quickly damping out the
                         oscillation so the ride becomes smooth again.
                     </p>
-                </div>
-
-                <!-- AI LINKS -->
-                <div class="ai-links">
-                    <span class="ai-label">Ask AI:</span>
-                    <button onclick="openAI('damping', 'claude')" class="ai-btn" title="Ask Claude"></button>
-                    <button onclick="openAI('damping', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
-                    <button onclick="openAI('damping', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
-                    <button onclick="openAI('damping', 'grok')" class="ai-btn" title="Ask Grok"></button>
-                    <button onclick="openAI('damping', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
-                </div>
-                <div class="sim-controls">
-                    <div class="slider-group">
-                        <label>Mass ($m$) <span id="val-m">2.0</span> kg</label>
-                        <input type="range" id="input-m" min="0.5" max="5" step="0.1" value="2.0">
-                    </div>
-                    <div class="slider-group">
-                        <label>Spring Constant ($k$) <span id="val-k">1.0</span> N/m</label>
-                        <input type="range" id="input-k" min="0.5" max="3" step="0.1" value="1.0">
-                    </div>
-                    <div class="slider-group">
-                        <label>Damping ($b$) <span id="val-b">0.1</span> Ns/m</label>
-                        <input type="range" id="input-b" min="0.0" max="1.0" step="0.05" value="0.1">
-                    </div>
-                    <div style="margin-top:0.5rem; text-align:right;">
-                        <button id="btn-reset"
-                            style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Reset
+</div>
+<!-- AI LINKS -->
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('damping', 'claude')" title="Ask Claude"></button>
+<button class="ai-btn" onclick="openAI('damping', 'gemini')" title="Ask Gemini"></button>
+<button class="ai-btn" onclick="openAI('damping', 'chatgpt')" title="Ask ChatGPT"></button>
+<button class="ai-btn" onclick="openAI('damping', 'grok')" title="Ask Grok"></button>
+<button class="ai-btn" onclick="openAI('damping', 'perplexity')" title="Ask Perplexity"></button>
+</div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Mass ($m$) <span id="val-m">2.0</span> kg</label>
+<input id="input-m" max="5" min="0.5" step="0.1" type="range" value="2.0"/>
+</div>
+<div class="slider-group">
+<label>Spring Constant ($k$) <span id="val-k">1.0</span> N/m</label>
+<input id="input-k" max="3" min="0.5" step="0.1" type="range" value="1.0"/>
+</div>
+<div class="slider-group">
+<label>Damping ($b$) <span id="val-b">0.1</span> Ns/m</label>
+<input id="input-b" max="1.0" min="0.0" step="0.05" type="range" value="0.1"/>
+</div>
+<div style="margin-top:0.5rem; text-align:right;">
+<button id="btn-reset" style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Reset
                             System</button>
-                    </div>
-                </div>
-            </div>
-            <div class="visual-col">
-                <canvas id="canvas-damped"></canvas>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</div>
+<div class="visual-col">
+<canvas id="canvas-damped"></canvas>
+</div>
+</div>
+</section>
 
-    <section class="references">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h3>Academic References</h3>
-            <ul>
-                <li><strong>Young, H. D., & Freedman, R. A.</strong> (2015). <em>University Physics with Modern
-                        Physics</em>.</li>
-                <li><strong>Feynman, R. P.</strong> <em>The Feynman Lectures on Physics</em>, Vol. I, Chapter 21.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="../../../../js/common.js"></script>
-    <script>
+<!-- Scripts -->
+<script src="../../../../js/common.js"></script>
+<script>
         function openAI(topic, model) {
             let prompt = "";
             switch (topic) {
@@ -784,8 +754,6 @@
         window.onload = () => APP.init();
 
     </script>
-
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 </body>
-
 </html>

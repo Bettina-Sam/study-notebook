@@ -1,37 +1,19 @@
 # Study Notebook
 
-Interactive science learning platform for Physics, Chemistry and Biology.
+Interactive science learning across Physics, Chemistry and Biology.
 
-## Learning model
+Designed & developed by **Bettina Anne Sam**.
 
-See → Predict → Interact → Observe → Calculate / Explain → Apply → Connect.
-
-## Project structure
-
-```text
-index.html
-subjects/
-  physics/modules/<concept>/index.html
-  chemistry/modules/<concept>/index.html + simulation.js
-  biology/modules/<concept>/index.html + simulation.js
-css/
-js/
-assets/
-manifest.webmanifest
-sw.js
-```
-
-Every visible learning module has its own route and module folder. Shared files under `js/` contain reusable rendering/helpers only; module definitions are kept with their own lesson.
-
-## Local preview
-
-```bash
-npm install
-npm run dev
-```
-
-Or serve the folder with any static HTTP server. PWA installation requires localhost or HTTPS.
+## Structure
+- `subjects/physics/modules/` — Physics modules
+- `subjects/chemistry/modules/` — Chemistry modules
+- `subjects/biology/modules/` — Biology modules
+- `assets/` — icons and fonts
+- `css/` and `js/` — shared presentation and helpers
+- `vercel.json` — Vercel static deployment settings
 
 ## Deployment
+Deploy the repository root directly to Vercel using Framework Preset **Other**.
+No build command or output directory is required.
 
-The project is static and can be hosted directly on Vercel.
+Legacy `/Concepts/*.html` routes are kept as lightweight redirects so older links do not return 404.

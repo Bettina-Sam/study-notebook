@@ -1,1 +1,29 @@
-const CACHE='study-notebook-v2';const CORE=['./','./index.html','./css/common.css','./css/home.css','./assets/fonts/inter-latin.woff2','./assets/fonts/dm-serif-display-latin.woff2'];self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE))));self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))));self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{const copy=res.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return res}).catch(()=>caches.match('./index.html'))))});
+const CACHE='study-notebook-v7';
+const CORE=['./','./index.html','./css/common.css','./css/home.css','./assets/icons/favicon.svg'];
+self.addEventListener('install',event=>{
+  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)));
+  self.skipWaiting();
+});
+self.addEventListener('activate',event=>{
+  event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));
+  self.clients.claim();
+});
+self.addEventListener('fetch',event=>{
+  const req=event.request;
+  if(req.method!=='GET') return;
+  let url;
+  try{url=new URL(req.url);}catch{return;}
+  if(url.protocol!=='http:' && url.protocol!=='https:') return;
+  event.respondWith(
+    caches.match(req).then(hit=>hit||fetch(req).then(res=>{
+      if(res && res.ok && res.type!=='opaque'){
+        const copy=res.clone();
+        caches.open(CACHE).then(cache=>cache.put(req,copy)).catch(()=>{});
+      }
+      return res;
+    }).catch(()=>{
+      if(req.mode==='navigate') return caches.match('./index.html');
+      return Response.error();
+    }))
+  );
+});
