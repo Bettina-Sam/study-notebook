@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="A structured interactive science learning journey across Physics, Chemistry and Biology.">
+  <title>Study Notebook — Learn Science by Exploring</title>
+  <link rel="icon" href="assets/icons/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Study Notebook home">
+      <span class="brand-mark">∴</span>
+      <span><strong>Study Notebook</strong><small>Explore • Calculate • Understand</small></span>
+    </a>
+    <nav class="top-actions" aria-label="Primary navigation">
+      <a href="#journey">Learning Journey</a>
+      <button id="installBtn" class="install-btn" type="button">Install App</button>
+      <button id="themeBtn" class="icon-btn" type="button" aria-label="Toggle theme">◐</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">YOUR SCIENCE LEARNING SPACE</span>
+        <h1>Don’t memorize science.<br><em>Make it move.</em></h1>
+        <p>Follow a clear path, change real variables, watch the idea respond, see the calculation, and understand <strong>why</strong> it happened.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#physics-path">Continue Physics <span>→</span></a>
+          <a class="text-btn" href="#subjects">Explore subjects</a>
+        </div>
+        <div class="learning-loop" aria-label="Learning method">
+          <span>See it</span><b>→</b><span>Change it</span><b>→</b><span>Calculate it</span><b>→</b><span>Explain it</span>
+        </div>
+      </div>
+      <div class="hero-lab" aria-label="Interactive science preview">
+        <div class="lab-note">A tiny idea becomes understanding when you can play with it.</div>
+        <svg viewBox="0 0 520 360" role="img" aria-label="Animated notebook combining motion, atoms and cells">
+          <path class="paper-line" d="M45 290 H475"/>
+          <path class="trajectory" d="M70 270 Q230 45 450 250"/>
+          <circle class="projectile-dot" r="9"/>
+          <g class="atom-demo">
+            <ellipse cx="365" cy="105" rx="62" ry="23"/>
+            <ellipse cx="365" cy="105" rx="62" ry="23" transform="rotate(60 365 105)"/>
+            <ellipse cx="365" cy="105" rx="62" ry="23" transform="rotate(120 365 105)"/>
+            <circle cx="365" cy="105" r="10" class="nucleus"/>
+          </g>
+          <g class="cell-demo">
+            <ellipse cx="120" cy="105" rx="65" ry="45"/>
+            <circle cx="110" cy="105" r="19"/>
+            <path d="M143 84 q18 10 0 20 q-18 10 0 20"/>
+          </g>
+          <text x="60" y="325">motion</text><text x="335" y="42">matter</text><text x="77" y="42">life</text>
+        </svg>
+      </div>
+    </section>
+
+    <section id="subjects" class="section">
+      <div class="section-heading">
+        <div><span class="eyebrow">ONE NOTEBOOK • THREE WAYS OF THINKING</span><h2>Choose a science</h2></div>
+        <p>The structure stays familiar, but the interaction changes to fit the subject.</p>
+      </div>
+      <div class="subject-grid">
+        <a class="subject-card physics" href="#physics-path">
+          <div class="subject-visual">
+            <svg viewBox="0 0 300 150" aria-hidden="true">
+              <path class="track" d="M20 125 Q120 10 275 105"/>
+              <circle class="ball-on-path" r="8"/>
+              <path class="force-arrow" d="M45 105 h55 m0 0 -12 -8 m12 8 -12 8"/>
+              <text x="24" y="28">F = ma</text>
+            </svg>
+          </div>
+          <span class="subject-no">01</span><h3>Physics</h3>
+          <p>Motion, energy, waves, fields and the universe.</p>
+          <span class="status live">Learning path ready →</span>
+        </a>
+        <a class="subject-card chemistry" href="#chemistry-path">
+          <div class="subject-visual">
+            <svg viewBox="0 0 300 150" aria-hidden="true">
+              <g class="molecule-left"><circle cx="65" cy="75" r="18"/><circle cx="100" cy="75" r="12"/><line x1="82" y1="75" x2="88" y2="75"/></g>
+              <path class="reaction-arrow" d="M125 75 h45 m0 0 -10 -7 m10 7 -10 7"/>
+              <g class="molecule-right"><circle cx="215" cy="75" r="20"/><circle cx="245" cy="58" r="10"/><circle cx="245" cy="92" r="10"/></g>
+              <text x="22" y="28">atoms → bonds → reactions</text>
+            </svg>
+          </div>
+          <span class="subject-no">02</span><h3>Chemistry</h3>
+          <p>Atoms, bonding, reactions, equilibrium and materials.</p>
+          <span class="status live">Explore learning path →</span>
+        </a>
+        <a class="subject-card biology" href="#biology-path">
+          <div class="subject-visual">
+            <svg viewBox="0 0 300 150" aria-hidden="true">
+              <ellipse class="cell-wall" cx="70" cy="75" rx="45" ry="35"/><circle class="cell-nucleus" cx="62" cy="75" r="13"/>
+              <path class="dna" d="M150 35 C190 55 190 95 230 115 M230 35 C190 55 190 95 150 115"/>
+              <g class="dna-rungs"><path d="M166 45h48M157 62h66M157 88h66M166 105h48"/></g>
+            </svg>
+          </div>
+          <span class="subject-no">03</span><h3>Biology</h3>
+          <p>Cells, genetics, physiology, organisms and ecosystems.</p>
+          <span class="status live">Explore learning path →</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="journey" class="section learning-philosophy">
+      <div class="section-heading">
+        <div><span class="eyebrow">HOW A STUDENT MOVES THROUGH A TOPIC</span><h2>One clear learning rhythm</h2></div>
+      </div>
+      <div class="rhythm">
+        <div><b>1</b><strong>See</strong><span>Meet the phenomenon visually.</span></div>
+        <i>→</i><div><b>2</b><strong>Understand</strong><span>Get the idea in plain language.</span></div>
+        <i>→</i><div><b>3</b><strong>Interact</strong><span>Change the important variables.</span></div>
+        <i>→</i><div><b>4</b><strong>Calculate</strong><span>Watch every formula step update.</span></div>
+        <i>→</i><div><b>5</b><strong>Discover</strong><span>Explain what changed and why.</span></div>
+      </div>
+    </section>
+
+    <section id="physics-path" class="section path-section">
+      <div class="section-heading">
+        <div><span class="eyebrow">PHYSICS • STRUCTURED JOURNEY</span><h2>Build ideas in the right order</h2></div>
+        <p>Start with motion. Later ideas unlock naturally from what you already understand.</p>
+      </div>
+      <div id="pathContainer"></div>
+    </section>
+
+    <section id="chemistry-path" class="section path-section subject-path chemistry-path">
+      <div class="section-heading">
+        <div><span class="eyebrow">CHEMISTRY • TRANSFORM MATTER</span><h2>See particles become reactions</h2></div>
+        <p>Predict what matter will do, manipulate particles and conditions, then explain the transformation.</p>
+      </div>
+      <div class="subject-method"><span>Predict</span><b>→</b><span>Change matter</span><b>→</b><span>Observe</span><b>→</b><span>Explain</span></div>
+      <div id="chemistryContainer"></div>
+    </section>
+
+    <section id="biology-path" class="section path-section subject-path biology-path">
+      <div class="section-heading">
+        <div><span class="eyebrow">BIOLOGY • EXPLORE LIVING SYSTEMS</span><h2>Watch life respond</h2></div>
+        <p>Change a biological condition, observe the system response, and connect structure to function.</p>
+      </div>
+      <div class="subject-method"><span>Predict</span><b>→</b><span>Change condition</span><b>→</b><span>Observe response</span><b>→</b><span>Explain mechanism</span></div>
+      <div id="biologyContainer"></div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Study Notebook</strong>
+    <span>Built for curious students — not for scrolling past formulas.</span>
+  </footer>
+
+  <dialog id="iosInstall">
+    <button class="dialog-close" type="button" aria-label="Close">×</button>
+    <h3>Install Study Notebook</h3>
+    <p>On iPhone/iPad: open this page in Safari, tap <strong>Share</strong>, choose <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>.</p>
+  </dialog>
+
+<script>
+const physicsUnits = [
+ {n:1,title:"Motion & Forces",why:"First understand why objects move, then use those laws to predict motion and energy.", concepts:[
+  ["newtons-laws-of-motion","Newton's Laws","forces","Force changes motion.","Concepts/newtons-laws-of-motion.html"],
+  ["projectile-motion","Projectile Motion","projectile","Split motion into horizontal + vertical.","Concepts/projectile-motion.html"],
+  ["work-energy-principle","Work & Energy","energy","See force through energy transfer.","Concepts/work-energy-principle.html"],
+  ["conservation-of-energy","Conservation of Energy","conservation","Track energy as it changes form.","Concepts/conservation-of-energy.html"],
+  ["conservation-of-momentum","Momentum","collision","Predict what survives a collision.","Concepts/conservation-of-momentum.html"]
+ ]},
+ {n:2,title:"Rotation & Oscillation",why:"Move from straight-line motion to repeating and rotational systems.", concepts:[
+  ["rotational-dynamics","Rotational Dynamics","rotation","Torque makes objects rotate.","Concepts/rotational-dynamics.html"],
+  ["simple-oscillations","Harmonic Motion","spring","Restoring forces create rhythm.","Concepts/simple-oscillations.html"],
+  ["simple-pendulum","Simple Pendulum","pendulum","Gravity creates periodic motion.","Concepts/simple-pendulum.html"]
+ ]},
+ {n:3,title:"Waves & Optics",why:"Once oscillation makes sense, waves become motion that travels.", concepts:[
+  ["wave-equation","Wave Equation","wave","Connect speed, frequency and wavelength.","Concepts/wave-equation.html"],
+  ["wave-interference","Interference","interference","Two waves can strengthen or cancel.","Concepts/wave-interference.html"],
+  ["double-slit-experiment","Double Slit","slit","See interference become a pattern.","Concepts/double-slit-experiment.html"],
+  ["diffraction","Diffraction","diffraction","Watch waves bend through an opening.","Concepts/diffraction.html"],
+  ["polarization-of-waves","Polarization","polarization","Control the direction of oscillation.","Concepts/polarization-of-waves.html"]
+ ]},
+ {n:4,title:"Fields & Electromagnetism",why:"Move from contact forces to invisible interactions across space.", concepts:[
+  ["electric-fields","Electric Fields","electric","Charges shape the space around them.","Concepts/electric-fields.html"],
+  ["magnetic-fields","Magnetic Fields","magnetic","Moving charge meets a sideways force.","Concepts/magnetic-fields.html"]
+ ]},
+ {n:5,title:"Gravity & Space",why:"Scale force and motion up to planets, orbits and spacetime.", concepts:[
+  ["orbital-mechanics","Orbital Mechanics","orbit","Gravity continuously bends motion.","Concepts/orbital-mechanics.html"],
+  ["gravitational-waves","Gravitational Waves","gravitywave","Mass can ripple spacetime.","Concepts/gravitational-waves.html"]
+ ]},
+ {n:6,title:"Advanced Mechanics",why:"Revisit motion using deeper mathematical ideas and limits of predictability.", concepts:[
+  ["lagrangian-hamiltonian-mechanics","Lagrangian Mechanics","lagrangian","Describe motion through energy.","Concepts/lagrangian-hamiltonian-mechanics.html"],
+  ["principle-of-least-action","Least Action","least","Compare many possible paths.","Concepts/principle-of-least-action.html"],
+  ["noethers-theorem","Noether's Theorem","noether","Symmetry reveals conservation.","Concepts/noethers-theorem.html"],
+  ["chaos-and-nonlinear-dynamics","Chaos","chaos","Tiny differences grow dramatically.","Concepts/chaos-and-nonlinear-dynamics.html"]
+ ]},
+ {n:7,title:"Modern Physics",why:"Challenge everyday intuition about space, time and measurement.", concepts:[
+  ["special-relativity","Special Relativity","relativity","Follow light to rethink space and time.","Concepts/special-relativity.html"]
+ ]}
+];
+
+const chemistryUnits = [
+ {n:1,title:"Matter & Measurement",why:"Start by learning how chemists count, measure and describe matter.",concepts:[
+  ["matter","Matter & Measurement","matter","Classify what you can observe and measure.","Chemistry/module.html?id=matter"],
+  ["mole","Mole Concept","mole","Turn mass into particles you can count.","Chemistry/mole-concept.html"],
+  ["stoichiometry","Stoichiometry","stoich","Connect reactants to products quantitatively.","Chemistry/module.html?id=stoichiometry"]]},
+ {n:2,title:"Atomic World",why:"Look beneath matter to the particles and patterns that shape chemical behavior.",concepts:[
+  ["atomic","Atomic Structure","atom","Build atoms from protons, neutrons and electrons.","Chemistry/module.html?id=atomic"],
+  ["configuration","Electronic Configuration","electron","Watch electrons fill energy levels.","Chemistry/module.html?id=configuration"],
+  ["periodic","Periodic Trends","periodic","Move across the table and see properties change.","Chemistry/module.html?id=periodic"]]},
+ {n:3,title:"Chemical Bonding",why:"See why atoms join and how their electrons decide the type of bond.",concepts:[
+  ["ionic","Ionic Bonding","ionic","Transfer an electron and create attraction.","Chemistry/chemical-bonding.html"],
+  ["covalent","Covalent Bonding","covalent","Share electrons to build molecules.","Chemistry/module.html?id=covalent"],
+  ["geometry","Molecular Geometry","geometry","Change electron pairs and watch shape respond.","Chemistry/module.html?id=geometry"]]},
+ {n:4,title:"States, Energy & Gases",why:"Connect particle motion to pressure, temperature and energy.",concepts:[
+  ["states","States of Matter","states","Heat particles and watch order become motion.","Chemistry/module.html?id=states"],
+  ["gaslaws","Gas Laws","gas","Compress a gas and watch pressure respond.","Chemistry/module.html?id=gaslaws"],
+  ["thermo","Thermochemistry","thermo","Track energy entering and leaving reactions.","Chemistry/module.html?id=thermo"]]},
+ {n:5,title:"Reactions & Equilibrium",why:"Move from what reacts to how fast it reacts and where the balance settles.",concepts:[
+  ["reaction","Chemical Reactions","reaction","Rearrange particles into new substances.","Chemistry/module.html?id=reaction"],
+  ["rates","Reaction Rates","rates","Change collisions and change reaction speed.","Chemistry/module.html?id=rates"],
+  ["equilibrium","Equilibrium","equilibrium","Watch forward and reverse reactions balance.","Chemistry/module.html?id=equilibrium"],
+  ["acidbase","Acids & Bases","acidbase","Move protons and watch pH change.","Chemistry/module.html?id=acidbase"]]},
+ {n:6,title:"Electrochemistry & Organic",why:"Use electron transfer to make electricity, then explore carbon's molecular language.",concepts:[
+  ["electrochem","Electrochemistry","battery","Turn a redox reaction into electrical flow.","Chemistry/module.html?id=electrochem"],
+  ["organic","Organic Chemistry","organic","Build and transform carbon frameworks.","Chemistry/module.html?id=organic"]]}
+];
+
+const biologyUnits = [
+ {n:1,title:"Foundations of Life",why:"Begin with the structures and molecules shared by living systems.",concepts:[
+  ["life","Characteristics of Life","life","Recognize the patterns that define living systems.","Biology/module.html?id=life"],
+  ["biomolecules","Biomolecules","biomolecule","Build life's major molecular tools.","Biology/module.html?id=biomolecules"],
+  ["cell","Cell Structure","cell","Enter a cell and connect organelles to jobs.","Biology/module.html?id=cell"]]},
+ {n:2,title:"Cell Processes",why:"See how cells exchange matter and convert energy to stay alive.",concepts:[
+  ["membrane","Cell Membrane","membrane","Control what crosses the cell boundary.","Biology/module.html?id=membrane"],
+  ["diffusion","Diffusion","diffusion","Watch particles spread down a gradient.","Biology/module.html?id=diffusion"],
+  ["osmosis","Osmosis","osmosis","Move water across a selective membrane.","Biology/osmosis.html"],
+  ["respiration","Cellular Respiration","respiration","Follow glucose energy into ATP.","Biology/module.html?id=respiration"]]},
+ {n:3,title:"Cell Reproduction",why:"Watch one cell copy information and become two.",concepts:[
+  ["cycle","Cell Cycle","cycle","Move through growth, copying and division.","Biology/module.html?id=cycle"],
+  ["mitosis","Mitosis","mitosis","Separate duplicated chromosomes into two cells.","Biology/module.html?id=mitosis"],
+  ["meiosis","Meiosis","meiosis","Make genetically varied reproductive cells.","Biology/module.html?id=meiosis"]]},
+ {n:4,title:"Genetics",why:"Connect DNA to inheritance, variation and protein production.",concepts:[
+  ["mendel","Mendelian Genetics","punnett","Predict offspring from parental alleles.","Biology/module.html?id=mendel"],
+  ["dna","DNA Structure","dna","Unzip the molecule that stores information.","Biology/module.html?id=dna"],
+  ["replication","DNA Replication","replication","Copy complementary strands step by step.","Biology/module.html?id=replication"],
+  ["protein","Protein Synthesis","protein","Translate genetic information into protein.","Biology/module.html?id=protein"]]},
+ {n:5,title:"Human Systems",why:"Trace how specialized organs cooperate to keep internal conditions stable.",concepts:[
+  ["circulation","Circulation","heart","Follow one blood cell through the heart.","Biology/module.html?id=circulation"],
+  ["respiratory","Respiration System","lungs","Exchange gases across a thin membrane.","Biology/module.html?id=respiratory"],
+  ["nervous","Nervous System","neuron","Trigger an impulse and follow the signal.","Biology/module.html?id=nervous"],
+  ["digestion","Digestion","digestion","Break food into absorbable molecules.","Biology/module.html?id=digestion"]]},
+ {n:6,title:"Plants, Evolution & Ecology",why:"Scale from organism processes to populations and ecosystems.",concepts:[
+  ["photosynthesis","Photosynthesis","photosynthesis","Change light or CO₂ and find the limiting factor.","Biology/module.html?id=photosynthesis"],
+  ["planttransport","Plant Transport","xylem","Move water from root to leaf.","Biology/module.html?id=planttransport"],
+  ["evolution","Evolution","evolution","Watch selection change a population over generations.","Biology/module.html?id=evolution"],
+  ["ecology","Ecology","foodweb","Change one population and see the web respond.","Biology/module.html?id=ecology"]]}
+];
+
+function visual(type){
+ const common='viewBox="0 0 260 112" aria-hidden="true"';
+ const v={
+ forces:`<svg ${common}><rect x="48" y="58" width="42" height="28" rx="5"/><rect class="move-block" x="145" y="58" width="42" height="28" rx="5"/><path class="pulse-arrow" d="M94 72h45m0 0-10-7m10 7-10 7"/><text x="92" y="34">F</text><path d="M25 88H225"/></svg>`,
+ projectile:`<svg ${common}><path class="ghost" d="M20 90 Q115 8 235 82"/><circle class="mini-projectile" r="7"/><path d="M20 92H240"/><text x="108" y="25">v₀ ↗</text></svg>`,
+ energy:`<svg ${common}><path d="M20 92L115 38L225 92"/><rect class="hill-block" x="35" y="73" width="22" height="16" rx="3"/><text x="18" y="25">KE</text><text x="202" y="25">PE</text></svg>`,
+ conservation:`<svg ${common}><circle class="fall-ball" cx="68" cy="28" r="8"/><path d="M68 18V92M28 92H110"/><g class="energy-bars"><rect x="145" y="35" width="22" height="55"/><rect x="180" y="35" width="22" height="55"/></g><text x="143" y="105">PE</text><text x="178" y="105">KE</text></svg>`,
+ collision:`<svg ${common}><circle class="collide-a" cx="45" cy="58" r="14"/><circle class="collide-b" cx="215" cy="58" r="22"/><path d="M18 88H242"/><text x="104" y="28">p before = p after</text></svg>`,
+ rotation:`<svg ${common}><circle cx="130" cy="58" r="36"/><path class="spin-spoke" d="M130 58L160 40"/><circle cx="130" cy="58" r="5"/><path d="M65 58h35m0 0-9-7m9 7-9 7"/><text x="55" y="30">τ</text></svg>`,
+ spring:`<svg ${common}><path d="M18 55h28 l8-18 16 36 16-36 16 36 16-18h18"/><rect class="spring-mass" x="136" y="38" width="34" height="34" rx="5"/><path d="M18 90H235"/><path class="eq-line" d="M153 20v72"/></svg>`,
+ pendulum:`<svg ${common}><path d="M72 20H188"/><g class="pendulum-arm"><path d="M130 20v58"/><circle cx="130" cy="82" r="12"/></g><path class="ghost" d="M85 78Q130 105 175 78"/></svg>`,
+ wave:`<svg ${common}><path class="travel-wave" d="M0 58 C20 20 40 20 60 58 S100 96 120 58 S160 20 180 58 S220 96 260 58"/><text x="96" y="24">v = fλ</text></svg>`,
+ interference:`<svg ${common}><path class="wave-a" d="M0 43Q20 15 40 43T80 43T120 43"/><path class="wave-b" d="M140 72Q160 100 180 72T220 72T260 72"/><path class="sum-wave" d="M65 58Q95 22 125 58T185 58"/><text x="102" y="104">superposition</text></svg>`,
+ slit:`<svg ${common}><circle class="photon" r="5"/><path d="M100 10v35m0 22v35"/><path d="M155 10v92"/><g class="screen-dots"><circle cx="155" cy="25" r="3"/><circle cx="155" cy="45" r="6"/><circle cx="155" cy="58" r="9"/><circle cx="155" cy="72" r="6"/><circle cx="155" cy="92" r="3"/></g><text x="178" y="62">pattern</text></svg>`,
+ diffraction:`<svg ${common}><g class="incoming"><path d="M15 30h70M15 50h70M15 70h70M15 90h70"/></g><path d="M105 10v35m0 20v37"/><g class="rings"><path d="M108 55q35-35 70 0"/><path d="M108 55q55-55 110 0"/><path d="M108 55q70-70 140 0"/></g></svg>`,
+ polarization:`<svg ${common}><path class="travel-wave" d="M5 58Q25 20 45 58T85 58T125 58"/><rect x="130" y="18" width="12" height="80" rx="4"/><path class="polar-wave" d="M150 58Q170 38 190 58T230 58"/><text x="155" y="25">filtered</text></svg>`,
+ electric:`<svg ${common}><circle cx="68" cy="58" r="18"/><text x="62" y="64">+</text><circle cx="195" cy="58" r="18"/><text x="190" y="64">−</text><circle class="test-charge" cx="125" cy="25" r="6"/><path class="field-path" d="M86 58Q130 10 177 58M86 58Q130 105 177 58"/></svg>`,
+ magnetic:`<svg ${common}><g class="magnet"><rect x="30" y="38" width="35" height="40"/><rect x="65" y="38" width="35" height="40"/></g><path class="mag-field" d="M100 45Q155 5 215 45M100 70Q155 110 215 70"/><circle class="charged-particle" r="6"/><text x="40" y="63">N</text><text x="78" y="63">S</text></svg>`,
+ orbit:`<svg ${common}><ellipse class="orbit-line" cx="130" cy="58" rx="88" ry="38"/><circle cx="130" cy="58" r="15"/><circle class="planet" r="8"/><text x="112" y="63">star</text></svg>`,
+ gravitywave:`<svg ${common}><circle class="binary a" cx="105" cy="58" r="10"/><circle class="binary b" cx="155" cy="58" r="10"/><g class="gw-rings"><ellipse cx="130" cy="58" rx="35" ry="18"/><ellipse cx="130" cy="58" rx="55" ry="30"/><ellipse cx="130" cy="58" rx="78" ry="43"/></g></svg>`,
+ lagrangian:`<svg ${common}><path class="ghost" d="M20 88Q80 18 130 65T240 35"/><circle class="path-dot" r="6"/><text x="18" y="25">L = T − V</text></svg>`,
+ least:`<svg ${common}><circle cx="28" cy="58" r="5"/><circle cx="232" cy="58" r="5"/><path class="ghost" d="M28 58Q100 5 232 58M28 58Q110 110 232 58"/><path class="best-path" d="M28 58Q130 42 232 58"/><text x="92" y="103">least action</text></svg>`,
+ noether:`<svg ${common}><circle cx="130" cy="58" r="8"/><g class="symmetry"><circle cx="130" cy="58" r="35"/><path d="M130 18v80M90 58h80"/></g><text x="78" y="20">symmetry → conserved</text></svg>`,
+ chaos:`<svg ${common}><g class="chaos-one"><path d="M95 18l-20 38 30 32"/><circle cx="75" cy="56" r="6"/><circle cx="105" cy="88" r="7"/></g><g class="chaos-two"><path d="M165 18l20 38-30 32"/><circle cx="185" cy="56" r="6"/><circle cx="155" cy="88" r="7"/></g><text x="87" y="106">tiny change → big difference</text></svg>`,
+ relativity:`<svg ${common}><rect class="light-clock" x="85" y="18" width="90" height="76" rx="8"/><circle class="light-pulse" cx="130" cy="28" r="6"/><path d="M92 28h76M92 84h76"/><path class="motion-arrow" d="M185 56h45m0 0-10-7m10 7-10 7"/></svg>`,
+ matter:`<svg ${common}><circle class="matter-solid" cx="55" cy="56" r="7"/><circle class="matter-solid" cx="75" cy="56" r="7"/><circle class="matter-solid" cx="95" cy="56" r="7"/><g class="matter-gas"><circle cx="160" cy="32" r="5"/><circle cx="205" cy="48" r="5"/><circle cx="178" cy="84" r="5"/><circle cx="225" cy="82" r="5"/></g><path d="M120 20v75"/><text x="22" y="102">solid</text><text x="180" y="102">gas</text></svg>`,
+ mole:`<svg ${common}><circle class="mole-particle p1" cx="45" cy="55" r="6"/><circle class="mole-particle p2" cx="65" cy="42" r="6"/><circle class="mole-particle p3" cx="76" cy="67" r="6"/><path class="reaction-arrow" d="M100 55h55m0 0-10-7m10 7-10 7"/><text x="165" y="48">1 mol</text><text x="160" y="70">6.022×10²³</text></svg>`,
+ stoich:`<svg ${common}><g class="stoich-left"><circle cx="42" cy="55" r="9"/><circle cx="65" cy="55" r="9"/><circle cx="88" cy="55" r="9"/></g><path class="reaction-arrow" d="M110 55h35"/><g class="stoich-right"><circle cx="175" cy="55" r="12"/><circle cx="205" cy="55" r="12"/></g><text x="40" y="92">3 reactants → 2 products</text></svg>`,
+ atom:`<svg ${common}><circle cx="130" cy="56" r="10" class="nucleus-dot"/><ellipse class="electron-orbit" cx="130" cy="56" rx="72" ry="24"/><ellipse class="electron-orbit" cx="130" cy="56" rx="72" ry="24" transform="rotate(60 130 56)"/><circle class="orbit-electron" r="5"/></svg>`,
+ electron:`<svg ${common}><path d="M35 92h190M55 72h150M78 52h110M105 32h60"/><circle class="electron-fill e1" cx="70" cy="68" r="5"/><circle class="electron-fill e2" cx="95" cy="48" r="5"/><circle class="electron-fill e3" cx="120" cy="28" r="5"/><text x="170" y="103">energy ↑</text></svg>`,
+ periodic:`<svg ${common}><g class="periodic-grid"><rect x="35" y="30" width="30" height="25"/><rect x="70" y="30" width="30" height="25"/><rect x="105" y="30" width="30" height="25"/><rect x="140" y="30" width="30" height="25"/><rect x="175" y="30" width="30" height="25"/></g><path class="trend-arrow" d="M45 78h155m0 0-12-8m12 8-12 8"/><text x="55" y="100">electronegativity ↑</text></svg>`,
+ ionic:`<svg ${common}><circle cx="60" cy="58" r="22"/><circle cx="200" cy="58" r="22"/><circle class="transfer-electron" r="5"/><path class="reaction-arrow" d="M92 58h76"/><text x="48" y="63">Na</text><text x="190" y="63">Cl</text><text x="103" y="28">e⁻ transfer</text></svg>`,
+ covalent:`<svg ${common}><circle class="bond-atom a" cx="92" cy="58" r="25"/><circle class="bond-atom b" cx="168" cy="58" r="25"/><circle class="shared-electron s1" cx="126" cy="51" r="5"/><circle class="shared-electron s2" cx="134" cy="65" r="5"/><text x="98" y="101">shared pair</text></svg>`,
+ geometry:`<svg ${common}><circle cx="130" cy="58" r="10"/><g class="geometry-arms"><path d="M130 58L75 35M130 58l55-23M130 58v50"/></g><circle cx="75" cy="35" r="9"/><circle cx="185" cy="35" r="9"/><circle cx="130" cy="102" r="9"/></svg>`,
+ states:`<svg ${common}><rect x="28" y="25" width="204" height="66" rx="8"/><g class="heated-particles"><circle cx="55" cy="70" r="6"/><circle cx="85" cy="68" r="6"/><circle cx="115" cy="70" r="6"/><circle cx="145" cy="68" r="6"/><circle cx="175" cy="70" r="6"/><circle cx="205" cy="68" r="6"/></g><text x="91" y="18">temperature ↑</text></svg>`,
+ gas:`<svg ${common}><rect x="40" y="20" width="180" height="72" rx="5"/><path class="piston" d="M45 35h170"/><g class="gas-particles"><circle cx="75" cy="65" r="5"/><circle cx="112" cy="72" r="5"/><circle cx="155" cy="60" r="5"/><circle cx="195" cy="76" r="5"/></g><text x="88" y="108">V ↓  →  P ↑</text></svg>`,
+ thermo:`<svg ${common}><circle cx="70" cy="58" r="25"/><path class="heat-arrow" d="M110 58h70m0 0-10-7m10 7-10 7"/><rect x="195" y="38" width="28" height="40" rx="4"/><text x="50" y="63">rxn</text><text x="116" y="40">heat</text></svg>`,
+ reaction:`<svg ${common}><g class="react-particles"><circle cx="50" cy="55" r="8"/><circle cx="75" cy="55" r="8"/><circle cx="100" cy="55" r="8"/></g><path class="reaction-arrow" d="M120 55h35"/><g class="product-particles"><circle cx="185" cy="48" r="10"/><circle cx="203" cy="65" r="10"/></g></svg>`,
+ rates:`<svg ${common}><circle class="rate-particle r1" cx="45" cy="55" r="7"/><circle class="rate-particle r2" cx="215" cy="55" r="7"/><circle class="rate-particle r3" cx="130" cy="25" r="7"/><text x="87" y="102">more collisions → faster</text></svg>`,
+ equilibrium:`<svg ${common}><g class="eq-a"><circle cx="55" cy="50" r="8"/><circle cx="78" cy="70" r="8"/></g><path d="M105 46h50m0 0-9-6m9 6-9 6M155 68h-50m0 0 9-6m-9 6 9 6"/><g class="eq-b"><circle cx="190" cy="50" r="10"/><circle cx="212" cy="70" r="10"/></g><text x="93" y="102">rate₁ = rate₂</text></svg>`,
+ acidbase:`<svg ${common}><rect x="35" y="70" width="190" height="12" rx="6"/><circle class="ph-dot" cx="130" cy="76" r="9"/><text x="35" y="60">acid</text><text x="195" y="60">base</text><text x="112" y="30">pH</text></svg>`,
+ battery:`<svg ${common}><rect x="72" y="35" width="38" height="45"/><rect x="150" y="35" width="38" height="45"/><path d="M110 46h40M110 70h40"/><circle class="wire-electron" r="5"/><path class="wire-path" d="M92 35Q130 5 168 35"/><text x="91" y="98">electron flow</text></svg>`,
+ organic:`<svg ${common}><g class="carbon-chain"><circle cx="45" cy="58" r="8"/><circle cx="85" cy="58" r="8"/><circle cx="125" cy="58" r="8"/><circle cx="165" cy="58" r="8"/><circle cx="205" cy="58" r="8"/><path d="M53 58h24M93 58h24M133 58h24M173 58h24"/></g><path class="branch" d="M125 50V25"/><circle cx="125" cy="20" r="7"/></svg>`,
+ life:`<svg ${common}><circle class="pulse-life" cx="50" cy="58" r="14"/><path class="life-line" d="M75 58h30l8-20 16 40 15-20h35"/><path d="M190 58h35"/><text x="38" y="100">respond • grow • reproduce</text></svg>`,
+ biomolecule:`<svg ${common}><circle cx="55" cy="58" r="8"/><circle cx="85" cy="45" r="8"/><circle cx="115" cy="58" r="8"/><circle cx="145" cy="45" r="8"/><circle cx="175" cy="58" r="8"/><path d="M63 55l14-7m16 0 14 7m16 0 14-7m16 0 14 7"/><text x="82" y="98">structure → function</text></svg>`,
+ cell:`<svg ${common}><ellipse class="cell-body" cx="130" cy="58" rx="82" ry="42"/><circle class="cell-nucleus" cx="110" cy="58" r="18"/><path class="organelle" d="M150 38q25 12 0 24q-25 12 0 24"/><circle class="cell-zoom" r="8"/></svg>`,
+ membrane:`<svg ${common}><g class="membrane-layer"><circle cx="65" cy="38" r="6"/><circle cx="90" cy="38" r="6"/><circle cx="115" cy="38" r="6"/><circle cx="140" cy="38" r="6"/><circle cx="165" cy="38" r="6"/><circle cx="190" cy="38" r="6"/><circle cx="65" cy="75" r="6"/><circle cx="90" cy="75" r="6"/><circle cx="115" cy="75" r="6"/><circle cx="140" cy="75" r="6"/><circle cx="165" cy="75" r="6"/><circle cx="190" cy="75" r="6"/></g><circle class="membrane-particle" r="5"/><text x="93" y="104">selective barrier</text></svg>`,
+ diffusion:`<svg ${common}><path d="M130 18v78"/><g class="dense-dots"><circle cx="45" cy="42" r="5"/><circle cx="65" cy="54" r="5"/><circle cx="85" cy="68" r="5"/><circle cx="105" cy="45" r="5"/></g><circle class="diffuse-dot" r="5"/><text x="53" y="105">high</text><text x="183" y="105">low</text></svg>`,
+ osmosis:`<svg ${common}><path d="M130 18v78"/><g class="solute-left"><circle cx="65" cy="48" r="6"/><circle cx="90" cy="72" r="6"/></g><g class="solute-right"><circle cx="175" cy="38" r="6"/><circle cx="200" cy="52" r="6"/><circle cx="175" cy="72" r="6"/><circle cx="205" cy="82" r="6"/></g><circle class="water-drop" r="5"/><text x="73" y="105">water →</text></svg>`,
+ respiration:`<svg ${common}><circle cx="55" cy="55" r="12"/><path class="resp-arrow" d="M75 55h70"/><g class="atp-stack"><rect x="165" y="32" width="35" height="15"/><rect x="175" y="50" width="35" height="15"/><rect x="185" y="68" width="35" height="15"/></g><text x="36" y="95">glucose</text><text x="176" y="98">ATP</text></svg>`,
+ cycle:`<svg ${common}><circle cx="130" cy="58" r="38"/><path class="cycle-arrow" d="M130 20A38 38 0 0 1 166 55"/><text x="120" y="40">G₁</text><text x="147" y="65">S</text><text x="116" y="87">M</text></svg>`,
+ mitosis:`<svg ${common}><ellipse class="mitosis-cell" cx="130" cy="58" rx="55" ry="38"/><g class="chromosomes"><path d="M112 42l14 28m0-28-14 28M140 42l14 28m0-28-14 28"/></g><path class="division-line" d="M130 24v68"/></svg>`,
+ meiosis:`<svg ${common}><circle class="meiosis-parent" cx="60" cy="55" r="20"/><path class="reaction-arrow" d="M88 55h34"/><g class="gametes"><circle cx="155" cy="35" r="14"/><circle cx="195" cy="35" r="14"/><circle cx="155" cy="78" r="14"/><circle cx="195" cy="78" r="14"/></g><text x="140" y="105">4 unique cells</text></svg>`,
+ punnett:`<svg ${common}><path d="M95 20v80M165 20v80M55 50h150"/><text x="112" y="43">A</text><text x="178" y="43">a</text><text x="72" y="76">A</text><text x="72" y="96">a</text><g class="punnett-fill"><circle cx="130" cy="68" r="5"/><circle cx="183" cy="68" r="5"/><circle cx="130" cy="90" r="5"/><circle cx="183" cy="90" r="5"/></g></svg>`,
+ dna:`<svg ${common}><path class="dna-a" d="M70 20C150 40 110 78 190 96"/><path class="dna-b" d="M190 20C110 40 150 78 70 96"/><g class="dna-rungs-mini"><path d="M92 28h76M80 45h100M80 70h100M92 88h76"/></g></svg>`,
+ replication:`<svg ${common}><path class="rep-left" d="M80 18C140 38 100 78 160 98"/><path class="rep-right" d="M180 18C120 38 160 78 100 98"/><g class="new-bases"><circle cx="82" cy="45" r="4"/><circle cx="178" cy="45" r="4"/><circle cx="100" cy="72" r="4"/><circle cx="160" cy="72" r="4"/></g><text x="88" y="108">unzip → pair → copy</text></svg>`,
+ protein:`<svg ${common}><path class="mrna" d="M25 40h90"/><rect x="115" y="25" width="45" height="35" rx="15"/><path class="protein-chain" d="M160 43q15-18 30 0t30 0"/><text x="30" y="82">mRNA</text><text x="115" y="82">ribosome</text><text x="177" y="82">protein</text></svg>`,
+ heart:`<svg ${common}><path class="heart-shape" d="M130 93C110 72 75 55 82 32C88 12 116 18 130 38C144 18 172 12 178 32C185 55 150 72 130 93Z"/><circle class="blood-cell" r="5"/><path class="blood-path" d="M45 55Q90 20 130 58T215 58"/><text x="86" y="108">follow the flow</text></svg>`,
+ lungs:`<svg ${common}><path d="M130 18v35M130 53L95 78M130 53l35 25"/><path class="lung-left" d="M95 42q-35 15-28 55q20 10 43-10V50Z"/><path class="lung-right" d="M165 42q35 15 28 55q-20 10-43-10V50Z"/><circle class="oxygen-dot" r="5"/></svg>`,
+ neuron:`<svg ${common}><circle cx="55" cy="58" r="18"/><path d="M73 58h110"/><g class="dendrites"><path d="M42 45L25 30M42 58L20 58M42 70L25 88"/></g><circle class="nerve-pulse" r="6"/><path d="M183 58l30-18M183 58l30 0M183 58l30 18"/></svg>`,
+ digestion:`<svg ${common}><path class="digest-path" d="M85 20q55 5 25 35q-25 25 20 35q35 8 50-12"/><circle class="food-dot" r="6"/><text x="82" y="108">break down → absorb</text></svg>`,
+ photosynthesis:`<svg ${common}><circle class="sun" cx="50" cy="28" r="12"/><path class="sun-ray" d="M65 35l45 25"/><path class="leaf" d="M115 82q45-65 100-35q-18 60-100 35Z"/><path d="M135 78l60-27"/><text x="32" y="104">light + CO₂ → sugar</text></svg>`,
+ xylem:`<svg ${common}><path d="M130 96V25M105 96V40M155 96V40"/><g class="leaves"><path d="M130 38q-35-25-45 0q25 22 45 0M130 50q35-25 45 0q-25 22-45 0"/></g><circle class="water-up" r="5"/><text x="83" y="110">water ↑ through xylem</text></svg>`,
+ evolution:`<svg ${common}><g class="population"><circle cx="45" cy="65" r="7"/><circle cx="70" cy="50" r="7"/><circle cx="95" cy="72" r="7"/><circle cx="125" cy="45" r="7"/><circle cx="155" cy="68" r="7"/><circle cx="185" cy="48" r="7"/><circle cx="210" cy="72" r="7"/></g><path class="selection-arrow" d="M45 95h165"/><text x="75" y="108">generations →</text></svg>`,
+ foodweb:`<svg ${common}><circle cx="45" cy="60" r="10"/><circle cx="105" cy="32" r="10"/><circle cx="105" cy="82" r="10"/><circle cx="175" cy="58" r="10"/><circle class="web-node" cx="220" cy="35" r="10"/><path d="M55 58l40-22M55 63l40 16M115 36l50 18M115 78l50-16M185 55l25-14"/></svg>`
+ };
+ return v[type]||v.wave;
+}
+function renderPath(){
+ const host=document.getElementById('pathContainer');
+ host.innerHTML=physicsUnits.map((level,li)=>`
+ <section class="level ${li>0?'collapsed':''}">
+   <button class="level-head" type="button" aria-expanded="${li===0}">
+     <span class="level-index">${String(level.n).padStart(2,'0')}</span>
+     <span><small>UNIT ${level.n}</small><strong>${level.title}</strong><em>${level.why}</em></span>
+     <b class="chev">⌄</b>
+   </button>
+   <div class="concept-trail">
+    ${level.concepts.map((c,i)=>`
+      <a class="concept-card" href="${c[4]}">
+       <div class="mini-visual">${visual(c[2])}</div>
+       <div class="concept-copy"><span>${String(i+1).padStart(2,'0')}</span><h3>${c[1]}</h3><p>${c[3]}</p></div>
+       <div class="concept-action">Explore <b>→</b></div>
+      </a>`).join('')}
+   </div>
+ </section>`).join('');
+ document.querySelectorAll('.level-head').forEach(btn=>btn.addEventListener('click',()=>{
+   const level=btn.closest('.level'); const open=level.classList.toggle('collapsed');
+   btn.setAttribute('aria-expanded',String(!open));
+ }));
+}
+renderPath();
+
+function renderSubjectPath(containerId, units, subjectClass){
+ const host=document.getElementById(containerId);
+ host.innerHTML=units.map((unit,ui)=>`
+ <section class="level subject-unit ${ui>0?'collapsed':''}">
+  <button class="level-head" type="button" aria-expanded="${ui===0}">
+   <span class="level-index">${String(unit.n).padStart(2,'0')}</span>
+   <span><small>UNIT ${unit.n}</small><strong>${unit.title}</strong><em>${unit.why}</em></span><b class="chev">⌄</b>
+  </button>
+  <div class="concept-trail">
+   ${unit.concepts.map((c,i)=>`<a class="concept-card ${subjectClass}" href="${c[4]}">
+    <div class="mini-visual">${visual(c[2])}</div>
+    <div class="concept-copy"><span>${String(i+1).padStart(2,'0')}</span><h3>${c[1]}</h3><p>${c[3]}</p></div>
+    <div class="concept-action">Explore <b>→</b></div></a>`).join('')}
+  </div>
+ </section>`).join('');
+ host.querySelectorAll('.level-head').forEach(btn=>btn.addEventListener('click',()=>{const unit=btn.closest('.level');const closed=unit.classList.toggle('collapsed');btn.setAttribute('aria-expanded',String(!closed));}));
+}
+renderSubjectPath('chemistryContainer', chemistryUnits, 'chem-card');
+renderSubjectPath('biologyContainer', biologyUnits, 'bio-card');
+
+
+const savedTheme=localStorage.getItem('study-theme')||'light';
+document.documentElement.dataset.theme=savedTheme;
+document.getElementById('themeBtn').addEventListener('click',()=>{
+ const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+ document.documentElement.dataset.theme=next; localStorage.setItem('study-theme',next);
+});
+
+let deferredPrompt=null;
+const installBtn=document.getElementById('installBtn');
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+const standalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+if(standalone) installBtn.hidden=true;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false;});
+installBtn.addEventListener('click',async()=>{
+ if(isIOS){document.getElementById('iosInstall').showModal();return;}
+ if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;}
+ else alert('Install becomes available when the site is served over HTTPS or localhost in a supported browser.');
+});
+window.addEventListener('appinstalled',()=>installBtn.hidden=true);
+document.querySelector('.dialog-close').addEventListener('click',()=>document.getElementById('iosInstall').close());
+if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));
+</script>
+</body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conservation of Energy • Physics Notebook</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/article.css">
+    <style>
+        /* AI Links */
+        .ai-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .ai-label {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-right: 0.2rem;
+            font-weight: 500;
+        }
+
+        .ai-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--line-subtle);
+            color: var(--text-muted);
+            min-width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0 8px;
+        }
+
+        .ai-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Mobile specific adjustments to ensure controls are stacked above canvas */
+        @media screen and (max-width: 900px) {
+            .split-layout {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .content-col {
+                order: 1;
+                /* Content and controls on top */
+            }
+
+            .visual-col {
+                order: 2;
+                /* Canvas on bottom */
+                min-height: 400px;
+            }
+
+            .sim-controls {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                /* Add space below controls before the canvas */
+            }
+        }
+    </style>
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Theme Init -->
+    <script>
+        const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.body && document.body.setAttribute('data-theme', savedTheme);
+    </script>
+
+    <!-- Libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <nav class="sticky">
+        <div class="nav-bg"></div>
+        <a href="../index.html" class="logo">
+            <i data-lucide="arrow-left" width="16"></i>
+            Library
+        </a>
+        <button id="themeBtn">
+            <i data-lucide="moon" width="16"></i> Theme
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="text-reveal-wrapper">
+            <h1 class="hero-title">Conservation<br>of Energy</h1>
+            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+                Energy cannot be created or destroyed, only transformed from one form to another. The total energy in an
+                isolated system remains constant.
+            </p>
+        </div>
+    </section>
+
+    <!-- CHAPTER 1: THE PRINCIPLE -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent);">01. The Principle</h3>
+                <h2>Energy Transformation</h2>
+                <p>
+                    A simple pendulum is a classic example of energy transformation. As the pendulum swings downwards,
+                    it loses gravitational potential energy ($PE$) and gains kinetic energy ($KE$). As it swings
+                    upwards, the reverse process occurs.
+                </p>
+                <div class="math-block">
+                    $$E_{total} = KE + PE = \text{constant}$$
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World System</span>
+                    <h4 style="margin-bottom:0.5rem;">Friction and Heat</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        In reality, complete isolation is impossible. Air resistance and friction at the pivot slowly
+                        transform the pendulum's mechanical energy into thermal energy (heat), dampening the swing over
+                        time. The energy isn't lost, just transformed into a less useful form.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('energy_pendulum', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('energy_pendulum', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('energy_pendulum', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('energy_pendulum', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('energy_pendulum', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+
+                <div class="sim-controls">
+                    <div style="margin-bottom: 1rem;">
+                        <button id="btn-release1"
+                            style="width: 100%; padding:12px; background:var(--accent); color:white; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Release
+                            Pendulum</button>
+                    </div>
+                    <div class="slider-group">
+                        <label>Initial Angle (<span id="val-angle">45</span>°)</label>
+                        <input type="range" id="input-angle" min="10" max="80" step="1" value="45">
+                    </div>
+                    <div class="slider-group">
+                        <label>Damping/Friction (<span id="val-damping">0.0</span>)</label>
+                        <input type="range" id="input-damping" min="0" max="0.05" step="0.005" value="0.0">
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-pendulum" style="background: rgba(0,0,0,0.02);"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 2: KINETIC & POTENTIAL -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent-secondary);">02. Gravitational Potential to Kinetic
+                </h3>
+                <h2>The Rollercoaster Drop</h2>
+                <p>
+                    Gravitational potential energy depends on an object's mass and height. As it falls, this energy is
+                    converted linearly into kinetic energy. If it drops without friction, all $PE$ turns into $KE$.
+                </p>
+                <div class="math-block">
+                    $$PE = mgh \quad \rightarrow \quad KE = \frac{1}{2}mv^2$$
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('energy_rollercoaster', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('energy_rollercoaster', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('energy_rollercoaster', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('energy_rollercoaster', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('energy_rollercoaster', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+
+                <div class="sim-controls">
+                    <div style="margin-bottom: 1rem;">
+                        <button id="btn-drop2"
+                            style="width: 100%; padding:12px; background:var(--accent-secondary); color:white; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Drop
+                            Cart</button>
+                    </div>
+                    <div class="slider-group">
+                        <label>Drop Height <span id="val-height">100</span> m</label>
+                        <input type="range" id="input-height" min="20" max="150" step="5" value="100">
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-rollercoaster" style="background: rgba(0,0,0,0.02);"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 3: ELASTIC POTENTIAL -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--text-main);">03. Elastic Potential Energy</h3>
+                <h2>Springs and Oscillation</h2>
+                <p>
+                    Energy can also be stored in the deformation of elastic materials, like springs. The energy stored
+                    is proportional to the square of the displacement $x$ from equilibrium.
+                </p>
+                <div class="math-block">
+                    $$PE_{elastic} = \frac{1}{2}kx^2$$
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('energy_spring', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('energy_spring', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('energy_spring', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('energy_spring', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('energy_spring', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+
+                <div class="sim-controls">
+                    <div style="margin-bottom: 1rem;">
+                        <button id="btn-pull3"
+                            style="width: 100%; padding:12px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; font-weight:600; cursor:pointer;">Pull
+                            & Release Spring</button>
+                    </div>
+                    <div class="slider-group">
+                        <label>Spring Constant $(k)$ <span id="val-k">20</span> N/m</label>
+                        <input type="range" id="input-k" min="5" max="50" step="5" value="20">
+                    </div>
+                    <div class="slider-group">
+                        <label>Amplitude $(x)$ <span id="val-x">50</span> cm</label>
+                        <input type="range" id="input-x" min="10" max="100" step="10" value="50">
+                    </div>
+                    <div class="slider-group">
+                        <label>Damping/Friction <span id="val-spring-damping">0.02</span></label>
+                        <input type="range" id="input-spring-damping" min="0" max="0.1" step="0.01" value="0.02">
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-spring" style="background: rgba(0,0,0,0.02);"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="references">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3>Academic References</h3>
+            <ul>
+                <li><strong>Joule, J. P.</strong> (1845). <em>On the Mechanical Equivalent of Heat</em>.</li>
+                <li><strong>Feynman, R. P.</strong> (1963). <em>The Feynman Lectures on Physics, Vol. 1</em>
+                    (Conservation of Energy).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script>
+        function openAI(topic, model) {
+            let prompt = "";
+            switch (topic) {
+                case 'energy_pendulum': prompt = "Explain the conservation of energy using a simple pendulum as an example. How do kinetic and potential energy transform into one another?"; break;
+                case 'energy_rollercoaster': prompt = "Explain the relationship between gravitational potential energy and kinetic energy in the context of a rollercoaster dropping from a height."; break;
+                case 'energy_spring': prompt = "Explain elastic potential energy using Hooke's Law and a spring-mass system. How is energy conserved when a spring oscillates?"; break;
+            }
+            launchAIPrompt(model, prompt);
+        }
+
+        const APP = {
+            visuals: [],
+            observer: null,
+            init() {
+                this.setupObserver();
+                this.initVisuals();
+                window.addEventListener('theme-changed', () => this.visuals.forEach(v => v.updateColors()));
+            },
+            setupObserver() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const visual = this.visuals.find(v => v.canvas === entry.target);
+                        if (visual) visual.isVisible = entry.isIntersecting;
+                    });
+                }, { threshold: 0.1 });
+            },
+            initVisuals() {
+                this.addVisual(new PendulumSim('canvas-pendulum'));
+                this.addVisual(new RollercoasterSim('canvas-rollercoaster'));
+                this.addVisual(new SpringSim('canvas-spring'));
+            },
+            addVisual(visual) {
+                this.visuals.push(visual);
+                this.observer.observe(visual.canvas);
+            }
+        };
+
+        class BaseSim {
+            constructor(id) {
+                this.canvas = document.getElementById(id);
+                this.ctx = this.canvas.getContext('2d');
+                this.isVisible = false;
+                this.updateColors();
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                setTimeout(() => { this.resize(); this.loop(); }, 50);
+            }
+            updateColors() {
+                this.color = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
+                this.accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+                this.accentSecondary = getComputedStyle(document.body).getPropertyValue('--accent-secondary').trim();
+                this.bgColor = getComputedStyle(document.body).getPropertyValue('--bg-color').trim();
+            }
+            resize() {
+                const rect = this.canvas.parentElement.getBoundingClientRect();
+                // Ensure layout correctly fits parent without overflowing
+                this.canvas.style.width = '100%';
+                this.canvas.style.height = '100%';
+                this.scale = window.devicePixelRatio || 2;
+                this.canvas.width = rect.width * this.scale;
+                this.canvas.height = rect.height * this.scale;
+                this.w = rect.width;
+                this.h = rect.height;
+            }
+            loop() {
+                if (this.isVisible) this.draw();
+                requestAnimationFrame(() => this.loop());
+            }
+            draw() { }
+            // Helper to draw energy bars that scale with device resolution
+            drawEnergyBar(x, y, label, labelColor, fillLevel, fillColor, maxH = 100) {
+                const w = 30 * this.scale;
+                const h = maxH * this.scale;
+                const filledH = (fillLevel * maxH) * this.scale;
+                const px = x * this.scale;
+                const py = y * this.scale;
+
+                // Track outline
+                this.ctx.strokeStyle = this.color;
+                this.ctx.globalAlpha = 0.3;
+                this.ctx.strokeRect(px, py - h, w, h);
+                this.ctx.globalAlpha = 1.0;
+
+                // Track fill
+                this.ctx.fillStyle = fillColor || labelColor;
+                this.ctx.fillRect(px, py - filledH, w, filledH);
+
+                // Label
+                this.ctx.fillStyle = labelColor;
+                const fontSize = 14 * this.scale;
+                this.ctx.font = `500 ${fontSize}px sans-serif`;
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText(label, px + w / 2, py + (20 * this.scale));
+            }
+        }
+
+        // ==========================
+        // 1. PENDULUM SIM
+        // ==========================
+        class PendulumSim extends BaseSim {
+            constructor(id) {
+                super(id);
+                this.angle = 45 * Math.PI / 180;
+                this.velocity = 0;
+                this.length = 150;
+                this.gravity = 0.5;
+                this.damping = 0;
+                this.running = false;
+
+                this.initialAngle = this.angle;
+
+                const inputAngle = document.getElementById('input-angle');
+                const inputDamping = document.getElementById('input-damping');
+                const btnRelease = document.getElementById('btn-release1');
+
+                inputAngle.addEventListener('input', (e) => {
+                    if (this.running) return;
+                    document.getElementById('val-angle').innerText = e.target.value;
+                    this.angle = parseFloat(e.target.value) * Math.PI / 180;
+                    this.initialAngle = this.angle;
+                    this.velocity = 0;
+                });
+
+                inputDamping.addEventListener('input', (e) => {
+                    document.getElementById('val-damping').innerText = e.target.value;
+                    this.damping = parseFloat(e.target.value);
+                });
+
+                btnRelease.addEventListener('click', () => {
+                    if (!this.running) {
+                        this.running = true;
+                        btnRelease.innerText = "Stop / Reset";
+                    } else {
+                        this.running = false;
+                        this.angle = this.initialAngle;
+                        this.velocity = 0;
+                        btnRelease.innerText = "Release Pendulum";
+                    }
+                });
+            }
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                this.length = Math.min(this.w * 0.35, this.h * 0.45);
+
+                if (this.running) {
+                    let acceleration = (-1 * this.gravity / this.length) * Math.sin(this.angle);
+                    this.velocity += acceleration;
+                    this.velocity *= (1 - this.damping); // Apply damping/friction
+                    this.angle += this.velocity;
+                }
+
+                // Pivot point
+                const px = this.canvas.width / 2;
+                const py = 50 * this.scale;
+
+                // Bob pos
+                const scaledL = this.length * this.scale;
+                const bx = px + scaledL * Math.sin(this.angle);
+                const by = py + scaledL * Math.cos(this.angle);
+
+                // Draw string
+                this.ctx.beginPath();
+                this.ctx.moveTo(px, py);
+                this.ctx.lineTo(bx, by);
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 2 * this.scale;
+                this.ctx.stroke();
+
+                // Draw bob
+                this.ctx.beginPath();
+                this.ctx.arc(bx, by, 12 * this.scale, 0, 2 * Math.PI);
+                this.ctx.fillStyle = this.accent;
+                this.ctx.fill();
+
+                // Calculate energies loosely based on max height.
+                const hMax = this.length * (1 - Math.cos(this.initialAngle));
+                const hCur = this.length * (1 - Math.cos(this.angle));
+
+                let pePercent = hCur / hMax;
+                let kePercent = (this.velocity * this.velocity * this.length * 10) / hMax;
+                // clamp due to loose physics estimation for visualization
+                if (pePercent > 1) pePercent = 1; if (pePercent < 0) pePercent = 0;
+                if (kePercent > 1) kePercent = 1; if (kePercent < 0) kePercent = 0;
+
+                // Account for energy lost to damping visually shrinking total energy pool
+                const currentMaxEnergy = this.running && this.damping > 0 ? (Math.abs(this.angle) / this.initialAngle) : 1;
+
+                if (this.w < 500) {
+                    // Draw energy bars horizontally at the bottom center to prevent overlap
+                    this.drawEnergyBar(this.w / 2 - 60, this.h - 30, "PE", this.accent, pePercent * currentMaxEnergy, null, 50);
+                    this.drawEnergyBar(this.w / 2 - 15, this.h - 30, "KE", "#3498db", kePercent * currentMaxEnergy, null, 50);
+                    this.drawEnergyBar(this.w / 2 + 30, this.h - 30, "Total", this.color, currentMaxEnergy, "rgba(100,100,100,0.5)", 50);
+                } else {
+                    this.drawEnergyBar(this.w - 180, this.h - 50, "PE", this.accent, pePercent * currentMaxEnergy);
+                    this.drawEnergyBar(this.w - 120, this.h - 50, "KE", "#3498db", kePercent * currentMaxEnergy);
+                    this.drawEnergyBar(this.w - 60, this.h - 50, "Total", this.color, currentMaxEnergy, "rgba(100,100,100,0.5)");
+                }
+            }
+        }
+
+        // ==========================
+        // 2. ROLLERCOASTER SIM (Physics Based)
+        // ==========================
+        class RollercoasterSim extends BaseSim {
+            constructor(id) {
+                super(id);
+                this.dropHeight = 100;
+                this.gravity = 9.8;
+
+                // Track geometry based on 0 to 1 domain.
+                this.trackPoints = [
+                    { x: 0.1, y: 1.0 },   // Top start
+                    { x: 0.3, y: 1.0 },   // Initial flat
+                    { x: 0.6, y: 0.05 },  // Bottom of drop
+                    { x: 0.9, y: 0.05 },  // End of flat
+                    { x: 1.0, y: 0.05 }
+                ];
+
+                this.cartSpeed = 0; // m/s
+                this.cartPos = 0.1; // parameter t in tracking points
+
+                this.running = false;
+
+                document.getElementById('input-height').addEventListener('input', e => {
+                    this.dropHeight = parseFloat(e.target.value);
+                    document.getElementById('val-height').innerText = this.dropHeight;
+                    this.resetCart();
+                });
+
+                document.getElementById('btn-drop2').addEventListener('click', () => {
+                    if (this.running) this.resetCart();
+                    else {
+                        this.running = true;
+                        document.getElementById('btn-drop2').innerText = "Reset Cart";
+                    }
+                });
+                this.resetCart();
+            }
+
+            resetCart() {
+                this.running = false;
+                this.cartSpeed = 0;
+                this.cartPos = 0.05; // Start x param
+                document.getElementById('btn-drop2').innerText = "Drop Cart";
+            }
+
+            // Helper to interpolate cubic curved track
+            getTrackY(xParam) {
+                if (xParam <= 0.1) return 1.0;
+                if (xParam >= 0.7) return 0.05;
+
+                // Smoothstep between 0.1 and 0.7
+                // t goes from 0 to 1
+                let t = (xParam - 0.1) / 0.6;
+                let smooth = t * t * (3 - 2 * t);
+                return 1.0 - (smooth * 0.95);
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Pixel coordinates mapping
+                const baseY = this.h - 50;
+                // Height multiplier to convert 0-1 drop to pixels responsive to height
+                const maxTrackHeight = this.h * 0.55;
+                const hScaling = maxTrackHeight * (this.dropHeight / 150);
+                const topY = baseY - hScaling;
+
+                // Draw Track
+                this.ctx.beginPath();
+                for (let px = 0; px <= this.w; px += 2) {
+                    let rx = px / this.w;
+                    let ry = this.getTrackY(rx);
+                    // Map ry (0: baseY, 1: topY) to pixels
+                    let pixelY = baseY - (ry * hScaling);
+
+                    if (px === 0) this.ctx.moveTo(px * this.scale, pixelY * this.scale);
+                    else this.ctx.lineTo(px * this.scale, pixelY * this.scale);
+                }
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 3 * this.scale;
+                this.ctx.stroke();
+
+                // Physics Simulation Step
+                const dt = 0.016 * 3.0; // Approx 60fps dt, scaled 1.25x for speed
+
+                // Get tangent slope at current position for acceleration
+                const deltaX = 0.001;
+                const currentYTrack = this.getTrackY(this.cartPos);
+                const peekYTrack = this.getTrackY(this.cartPos + deltaX);
+                // dy is in track units. Need it relative to actual meters.
+                const dy = peekYTrack - currentYTrack; // negative means going down
+                const slopeAngle = Math.atan2(-dy * this.dropHeight, deltaX * this.w);
+
+                // Physical gravity acceleration along the slope
+                const acceleration = this.gravity * Math.sin(slopeAngle);
+
+                if (this.running) {
+                    if (this.cartSpeed === 0 && this.cartPos <= 0.1) this.cartSpeed = 1.0; // push
+                    this.cartSpeed += acceleration * dt;
+                    // Move position along track based on speed
+                    // Normalize speed (m/s) to track domain width slightly
+                    this.cartPos += (this.cartSpeed * dt) / (this.w / 2);
+
+                    if (this.cartPos > 0.9) {
+                        this.cartSpeed *= 0.95; // Add friction at the end to stop
+                    }
+                    if (this.cartPos > 1.2) this.resetCart();
+                }
+
+                // Render Cart
+                let cy = this.getTrackY(this.cartPos);
+                let cxPixel = this.cartPos * this.w;
+                let cyPixel = baseY - (cy * hScaling);
+
+                this.ctx.fillStyle = this.accentSecondary;
+                this.ctx.beginPath();
+                this.ctx.arc(cxPixel * this.scale, cyPixel * this.scale, 8 * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                // Energy Calculation Display
+                // Max height represents total potential energy initially
+                let currentHeightMeters = cy * this.dropHeight;
+                let pe = this.gravity * currentHeightMeters; // per kg mass
+                let maxPe = this.gravity * this.dropHeight;
+                let ke = 0.5 * this.cartSpeed * this.cartSpeed; // per kg mass
+
+                // Cap ke based on max energy to handle discrete step drift
+                let tot = pe + ke;
+                if (tot > maxPe) {
+                    ke = maxPe - pe;
+                    if (ke < 0) ke = 0;
+                }
+
+                const fontSize = Math.max(10 * this.scale, Math.min(14 * this.scale, this.canvas.width * 0.045));
+                this.ctx.font = `600 ${fontSize}px sans-serif`;
+                this.ctx.fillStyle = this.color;
+                this.ctx.textAlign = 'right';
+                this.ctx.fillText(`Speed: ${Math.abs(this.cartSpeed).toFixed(1)} m/s`, this.w * this.scale - 15 * this.scale, 30 * this.scale);
+
+                // Energy Bar Visualization (PE & KE)
+                if (this.w < 500) {
+                    this.drawEnergyBar(this.w - 100, 70, "PE", this.accentSecondary, pe / maxPe, null, 40);
+                    this.drawEnergyBar(this.w - 50, 70, "KE", "#3498db", ke / maxPe, null, 40);
+                } else {
+                    this.drawEnergyBar(this.w - 120, 140, "PE", this.accentSecondary, pe / maxPe, null, 60);
+                    this.drawEnergyBar(this.w - 60, 140, "KE", "#3498db", ke / maxPe, null, 60);
+                }
+            }
+        }
+
+        // ==========================
+        // 3. SPRING SIM (Physics Based)
+        // ==========================
+        class SpringSim extends BaseSim {
+            constructor(id) {
+                super(id);
+                this.k = 20;
+                this.amp = 50;
+                this.mass = 5;
+                this.damping = 0.02;
+
+                this.pos = 0;
+                this.vel = 0;
+                this.running = false;
+
+                this.thermalEnergy = 0;
+
+                document.getElementById('input-k').addEventListener('input', e => {
+                    this.k = parseFloat(e.target.value);
+                    document.getElementById('val-k').innerText = this.k;
+                });
+
+                document.getElementById('input-x').addEventListener('input', e => {
+                    this.amp = parseFloat(e.target.value);
+                    document.getElementById('val-x').innerText = this.amp;
+                    if (!this.running) this.pos = this.amp;
+                });
+
+                document.getElementById('input-spring-damping').addEventListener('input', e => {
+                    this.damping = parseFloat(e.target.value);
+                    document.getElementById('val-spring-damping').innerText = this.damping;
+                });
+
+                document.getElementById('btn-pull3').addEventListener('click', () => {
+                    this.running = !this.running;
+                    if (!this.running) {
+                        this.vel = 0;
+                        this.pos = this.amp; // Reset to pulled position
+                        this.thermalEnergy = 0;
+                        document.getElementById('btn-pull3').innerText = "Release Spring";
+                    } else {
+                        document.getElementById('btn-pull3').innerText = "Stop / Reset";
+                        this.thermalEnergy = 0; // Reset thermal on new run
+                    }
+                });
+
+                this.pos = this.amp; // initial resting but pulled position
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                const dt = 0.16; // Time step
+
+                if (this.running) {
+                    // Hooke's Law: F = -kx
+                    // F_damping = -c * v
+                    const springForce = -this.k * this.pos;
+                    const dampingForce = -this.damping * this.vel * 100; // Scaled for visual effect
+
+                    const accel = (springForce + dampingForce) / this.mass;
+
+                    this.vel += accel * dt;
+                    this.pos += this.vel * dt;
+
+                    // Accumulate thermal energy from work done by friction: W = F_d * d
+                    // Abstractly representing energy lost to heat
+                    this.thermalEnergy += Math.abs(dampingForce * (this.vel * dt));
+                }
+
+                const px = (this.w / 2) * this.scale;
+                // Shift spring visual vertically upwards on mobile to avoid overlapping with bottom bars
+                const py = (this.w < 500 ? this.h * 0.4 : this.h / 2) * this.scale;
+
+                // Scale displacement dynamically to keep block on screen
+                const maxDisplacementPx = this.w * 0.28;
+                const dispScale = maxDisplacementPx / 100; // max amplitude is 100
+                const blockX = px + (this.pos * dispScale * this.scale);
+
+                // Wall - start closer to edge on mobile to save space
+                const wallX = (this.w < 500 ? 25 : 50) * this.scale;
+                const wallWidth = (this.w < 500 ? 12 : 20) * this.scale;
+                this.ctx.fillStyle = this.color;
+                this.ctx.fillRect(wallX, py - 40 * this.scale, wallWidth, 80 * this.scale);
+
+                // Spring
+                const springStart = wallX + wallWidth;
+                this.ctx.beginPath();
+                this.ctx.moveTo(springStart, py);
+                const coils = 12;
+                const springLen = blockX - springStart;
+                for (let i = 1; i <= coils; i++) {
+                    const cx = springStart + (springLen / coils) * i - (springLen / (coils * 2));
+                    const cy = py + (i % 2 === 0 ? 15 : -15) * this.scale;
+                    this.ctx.lineTo(cx, cy);
+                    this.ctx.lineTo(cx + (springLen / (coils * 2)), py);
+                }
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 2 * this.scale;
+                this.ctx.stroke();
+
+                // Block - scale down size on mobile
+                const blockWidth = (this.w < 500 ? 40 : 60) * this.scale;
+                this.ctx.fillStyle = this.accent;
+                this.ctx.fillRect(blockX, py - blockWidth / 2, blockWidth, blockWidth);
+
+                // Energy Calculations (Actual physics equations)
+                const maxEnergy = 0.5 * this.k * (this.amp * this.amp);
+                const currentPE = 0.5 * this.k * (this.pos * this.pos);
+                // KE = 1/2 m v^2. Scaling factors adjust for visual coordinates vs physical meters
+                let currentKE = 0.5 * this.mass * (this.vel * this.vel) * 20;
+
+                // Normalizing for visual bars
+                let pePercent = currentPE / maxEnergy;
+                let kePercent = currentKE / maxEnergy;
+                let thPercent = this.thermalEnergy / maxEnergy;
+
+                // Clamp for dirty physics rounding
+                if (pePercent > 1) pePercent = 1; if (pePercent < 0) pePercent = 0;
+                if (kePercent > 1) kePercent = 1; if (kePercent < 0) kePercent = 0;
+                if (thPercent > 1) thPercent = 1;
+
+                // Energy Bar Visualization
+                if (this.w < 500) {
+                    this.drawEnergyBar(this.w / 2 - 60, this.h - 30, "PE", this.accent, pePercent, null, 40);
+                    this.drawEnergyBar(this.w / 2 - 15, this.h - 30, "KE", "#3498db", kePercent, null, 40);
+                    this.drawEnergyBar(this.w / 2 + 30, this.h - 30, "Heat", "#e74c3c", thPercent, null, 40);
+                } else {
+                    this.drawEnergyBar(this.w - 180, this.h - 50, "PE", this.accent, pePercent);
+                    this.drawEnergyBar(this.w - 120, this.h - 50, "KE", "#3498db", kePercent);
+                    this.drawEnergyBar(this.w - 60, this.h - 50, "Heat", "#e74c3c", thPercent);
+                }
+            }
+        }
+
+        window.onload = () => APP.init();
+    </script>
+</body>
+
+</html>

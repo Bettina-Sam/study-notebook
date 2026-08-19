@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbital Mechanics • Physics Notebook</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/article.css">
+    <style>
+        /* AI Links */
+        .ai-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .ai-label {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-right: 0.2rem;
+            font-weight: 500;
+        }
+
+        .ai-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--line-subtle);
+            color: var(--text-muted);
+            min-width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0 8px;
+        }
+
+        .ai-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--line-subtle);
+            transition: 0.3s;
+            border-radius: 26px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        .toggle-switch input:checked+.toggle-slider {
+            background-color: var(--accent);
+        }
+
+        .toggle-switch input:checked+.toggle-slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Theme Init -->
+    <script>
+        const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.body && document.body.setAttribute('data-theme', savedTheme);
+    </script>
+
+    <!-- Libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <nav class="sticky">
+        <div class="nav-bg"></div>
+        <a href="../index.html" class="logo">
+            <i data-lucide="arrow-left" width="16"></i>
+            Library
+        </a>
+        <button id="themeBtn">
+            <i data-lucide="moon" width="16"></i> Theme
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="text-reveal-wrapper">
+            <h1 class="hero-title">Orbital<br>Mechanics</h1>
+            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+                Exploring the celestial dance governed by Kepler's Laws and Newton's Universal Gravitation.
+            </p>
+        </div>
+    </section>
+
+    <!-- CHAPTER 1: KEPLER'S LAWS -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent);">01. The Motion</h3>
+                <h2>Kepler's Laws</h2>
+                <p>
+                    Johannes Kepler discovered that planets move in <strong>elliptical orbits</strong> with the Sun at
+                    one
+                    focus. This observation fundamentally changed our understanding of the solar system.
+                </p>
+                <div class="math-block">
+                    $$r = \frac{p}{1 + e \cos \theta}$$
+                </div>
+                <p>
+                    His second law states that a line segment joining a planet and the Sun sweeps out equal areas during
+                    equal intervals of time. This means planets move faster when they are closer to the Sun (perihelion)
+                    and slower when they are farther away (aphelion).
+                </p>
+                <!-- SIM CONTROLS: KEPLER -->
+                <div class="sim-controls">
+                    <div class="slider-group">
+                        <label>Eccentricity ($e$) <span id="val-eccentricity">0.6</span></label>
+                        <input type="range" id="input-eccentricity" min="0.0" max="0.8" step="0.05" value="0.6">
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+                        <label style="font-weight: 500;">Show Sweep Area</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggle-sweep">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World Analogy</span>
+                    <h4 style="margin-bottom:0.5rem;">The Ice Skater</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        Think of a figure skater spinning. As they pull their arms in (reducing distance/radius), they
+                        spin faster to conserve angular momentum. Similarly, as a planet gets closer to the Sun, it
+                        speeds up.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('kepler', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('kepler', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('kepler', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('kepler', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('kepler', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-kepler"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CHAPTER 2: GRAVITY -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent-secondary);">02. The Force</h3>
+                <h2>Universal Gravitation</h2>
+                <p>
+                    Isaac Newton unified the motion of planets with the falling of an apple. He proposed that every
+                    particle
+                    attracts every other particle with a force directly proportional to the product of their masses and
+                    inversely proportional to the square of the distance between them.
+                </p>
+                <div class="math-block">
+                    $$F = G \frac{m_1 m_2}{r^2}$$
+                </div>
+                <p>
+                    Where $G$ is the gravitational constant. This inverse-square law enables the stable, elliptical
+                    orbits
+                    we observe in the cosmos.
+                </p>
+                <!-- SIM CONTROLS: GRAVITY -->
+                <div class="sim-controls">
+                    <div class="slider-group">
+                        <label>Mass 1 ($m_1$) <span id="val-m1">40</span></label>
+                        <input type="range" id="input-m1" min="10" max="80" step="5" value="40">
+                    </div>
+                    <div class="slider-group">
+                        <label>Mass 2 ($m_2$) <span id="val-m2">20</span></label>
+                        <input type="range" id="input-m2" min="5" max="40" step="5" value="20">
+                    </div>
+                    <div class="slider-group">
+                        <label>Distance ($r$) <span id="val-r">150</span></label>
+                        <input type="range" id="input-r" min="80" max="250" step="10" value="150">
+                    </div>
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World Analogy</span>
+                    <h4 style="margin-bottom:0.5rem;">The Tetherball</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        Gravity acts like the rope in tetherball, constantly pulling the ball toward the pole (center).
+                        Without this pull, the ball would fly off in a straight line.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('gravity', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('gravity', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('gravity', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('gravity', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('gravity', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-gravity"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CHAPTER 3: ORBIT SIMULATION -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--text-muted);">03. Simulation</h3>
+                <h2>Orbits in Action</h2>
+                <p>
+                    Adjust the initial velocity and mass to see how they affect the orbit. Too slow, and the planet
+                    crashes
+                    into the star. Too fast, and it escapes into deep space (hyperbolic trajectory).
+                </p>
+                <div class="sim-controls">
+                    <div class="slider-group">
+                        <label>Initial Velocity ($v$) <span id="val-v">3.0</span></label>
+                        <input type="range" id="input-v" min="1.0" max="6.0" step="0.1" value="3.0">
+                    </div>
+                    <div class="slider-group">
+                        <label>Mass of Planet ($m$) <span id="val-m">1.0</span></label>
+                        <input type="range" id="input-m" min="0.5" max="5.0" step="0.5" value="1.0">
+                    </div>
+                    <div
+                        style="margin-top:0.5rem; text-align:right; display:flex; gap:0.5rem; justify-content:flex-end;">
+                        <button id="btn-clear-trail"
+                            style="padding:8px 16px; background:var(--bg-color); color:var(--text-main); border:1px solid var(--line-subtle); border-radius:4px; cursor:pointer;">Clear
+                            Trail</button>
+                        <button id="btn-reset"
+                            style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Reset
+                            System</button>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-orbit"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="references">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3>Academic References</h3>
+            <ul>
+                <li><strong>Thornton, S. T., & Marion, J. B.</strong> (2003). <em>Classical Dynamics of Particles and
+                        Systems</em>.</li>
+                <li><strong>Murray, C. D., & Dermott, S. F.</strong> <em>Solar System Dynamics</em>, Chapter 2.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script>
+        function openAI(topic, model) {
+            let prompt = "";
+            switch (topic) {
+                case 'kepler':
+                    prompt = "Explain Kepler's laws of planetary motion in simple terms.";
+                    break;
+                case 'gravity':
+                    prompt = "Explain Newton's law of universal gravitation and how it governs planetary orbits.";
+                    break;
+            }
+            launchAIPrompt(model, prompt);
+        }
+
+        const APP = {
+            visuals: [],
+            observer: null,
+
+            init() {
+                this.setupObserver();
+                this.initVisuals();
+
+                window.addEventListener('theme-changed', (e) => {
+                    this.visuals.forEach(v => v.updateColors());
+                });
+            },
+
+            setupObserver() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const visual = this.visuals.find(v => v.canvas === entry.target);
+                        if (visual) visual.isVisible = entry.isIntersecting;
+                    });
+                }, { threshold: 0.1 });
+            },
+
+            initVisuals() {
+                this.addVisual(new KeplerVisual('canvas-kepler'));
+                this.addVisual(new GravityVisual('canvas-gravity'));
+                this.addVisual(new OrbitSimulation('canvas-orbit'));
+            },
+
+            addVisual(visual) {
+                this.visuals.push(visual);
+                this.observer.observe(visual.canvas);
+            }
+        };
+
+        class BaseVisual {
+            constructor(id) {
+                this.canvas = document.getElementById(id);
+                this.ctx = this.canvas.getContext('2d');
+                this.isVisible = false;
+                this.updateColors();
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.loop();
+            }
+            updateColors() {
+                this.color = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
+                this.bg = getComputedStyle(document.body).getPropertyValue('--bg-color').trim();
+                this.accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+                this.secondary = getComputedStyle(document.body).getPropertyValue('--accent-secondary').trim();
+            }
+            resize() {
+                const rect = this.canvas.parentElement.getBoundingClientRect();
+                this.canvas.width = rect.width * 2;
+                this.canvas.height = rect.height * 2;
+                this.scale = 2;
+                this.cx = this.canvas.width / 2;
+                this.cy = this.canvas.height / 2;
+            }
+            loop() {
+                if (this.isVisible) this.draw();
+                requestAnimationFrame(() => this.loop());
+            }
+            draw() { }
+        }
+
+        class KeplerVisual extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.time = 0;
+                this.e = 0.6;
+                this.showSweep = false;
+
+                const eInput = document.getElementById('input-eccentricity');
+                const sweepToggle = document.getElementById('toggle-sweep');
+
+                if (eInput) eInput.addEventListener('input', (e) => {
+                    this.e = parseFloat(e.target.value);
+                    document.getElementById('val-eccentricity').textContent = this.e;
+                });
+                if (sweepToggle) sweepToggle.addEventListener('change', (e) => {
+                    this.showSweep = e.target.checked;
+                });
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.time += 0.015;
+
+                const a = Math.min(150 * this.scale, this.canvas.width * 0.4);
+                const e = this.e;
+                const b = a * Math.sqrt(1 - e * e);
+                const c = a * e;
+
+                const sunX = this.cx + c;
+                const sunY = this.cy;
+
+                // Orbit path
+                this.ctx.strokeStyle = 'rgba(128,128,128,0.2)';
+                this.ctx.lineWidth = 1 * this.scale;
+                this.ctx.beginPath();
+                this.ctx.ellipse(this.cx, this.cy, a, b, 0, 0, Math.PI * 2);
+                this.ctx.stroke();
+
+                // Empty Focus
+                this.ctx.fillStyle = this.color;
+                this.ctx.globalAlpha = 0.3;
+                this.ctx.beginPath();
+                this.ctx.arc(this.cx - c, this.cy, 3 * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+                this.ctx.globalAlpha = 1.0;
+
+                // Solve Kepler's Equation: M = E - e*sin(E) using Newton-Raphson
+                const M = this.time % (Math.PI * 2);
+                let E = M;
+                for (let i = 0; i < 5; i++) {
+                    E = E - (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E));
+                }
+
+                // True anomaly (nu) & Radius (r)
+                const nu = 2 * Math.atan(Math.sqrt((1 + e) / (1 - e)) * Math.tan(E / 2));
+                const r = a * (1 - e * e) / (1 + e * Math.cos(nu));
+
+                const planetX = sunX + r * Math.cos(nu);
+                const planetY = sunY + r * Math.sin(nu);
+
+                // Sweep Area
+                if (this.showSweep) {
+                    this.ctx.fillStyle = this.secondary;
+                    this.ctx.globalAlpha = 0.2;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(sunX, sunY);
+
+                    const sweepM = 0.5;
+                    for (let step = 0; step <= 20; step++) {
+                        let tempM = M - sweepM * (step / 20);
+                        let tempE = tempM;
+                        for (let i = 0; i < 5; i++) tempE = tempE - (tempE - e * Math.sin(tempE) - tempM) / (1 - e * Math.cos(tempE));
+                        let tempNu = 2 * Math.atan(Math.sqrt((1 + e) / (1 - e)) * Math.tan(tempE / 2));
+                        let tempR = a * (1 - e * e) / (1 + e * Math.cos(tempNu));
+                        this.ctx.lineTo(sunX + tempR * Math.cos(tempNu), sunY + tempR * Math.sin(tempNu));
+                    }
+                    this.ctx.closePath();
+                    this.ctx.fill();
+                    this.ctx.globalAlpha = 1.0;
+                }
+
+                // Velocity Vector
+                const ndt = 40;
+                const dEdt = 1 / (1 - e * Math.cos(E));
+                const vx = -a * Math.sin(E) * dEdt;
+                const vy = b * Math.cos(E) * dEdt;
+
+                this.ctx.strokeStyle = this.accent;
+                this.ctx.lineWidth = 2 * this.scale;
+                if (typeof drawArrow === "function") {
+                    drawArrow(this.ctx, planetX, planetY, planetX + vx * ndt * this.scale / a, planetY + vy * ndt * this.scale / a, 6 * this.scale);
+                }
+
+                // Sun
+                this.ctx.fillStyle = this.accent;
+                this.ctx.beginPath();
+                this.ctx.arc(sunX, sunY, 15 * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                // Planet
+                this.ctx.fillStyle = this.color;
+                this.ctx.beginPath();
+                this.ctx.arc(planetX, planetY, 8 * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+            }
+        }
+
+        class GravityVisual extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.dist = 150;
+                this.m1 = 40;
+                this.m2 = 20;
+                this.cacheCanvas = document.createElement('canvas');
+                this.cacheCanvas.width = 0;
+
+                const m1Input = document.getElementById('input-m1');
+                const m2Input = document.getElementById('input-m2');
+                const rInput = document.getElementById('input-r');
+
+                if (m1Input) m1Input.addEventListener('input', (e) => {
+                    this.m1 = parseInt(e.target.value);
+                    document.getElementById('val-m1').textContent = this.m1;
+                    this.updateCache = true;
+                });
+                if (m2Input) m2Input.addEventListener('input', (e) => {
+                    this.m2 = parseInt(e.target.value);
+                    document.getElementById('val-m2').textContent = this.m2;
+                    this.updateCache = true;
+                });
+                if (rInput) rInput.addEventListener('input', (e) => {
+                    this.dist = parseInt(e.target.value);
+                    document.getElementById('val-r').textContent = this.dist;
+                    this.updateCache = true;
+                });
+                this.updateCache = true;
+            }
+
+            resize() {
+                super.resize();
+                if (this.cacheCanvas) {
+                    this.cacheCanvas.width = this.canvas.width;
+                    this.cacheCanvas.height = this.canvas.height;
+                    this.updateCache = true;
+                }
+            }
+
+            draw() {
+                const dist = this.dist;
+                
+                // Determine responsive distance scaling for visual display
+                const maxAllowedDist = 250;
+                const targetMaxPx = (this.canvas.width / this.scale) * 0.7;
+                const distScale = Math.min(1, targetMaxPx / maxAllowedDist);
+                const drawDist = dist * distScale;
+
+                const p1x = this.cx - drawDist * this.scale / 2;
+                const p2x = this.cx + drawDist * this.scale / 2;
+
+                if (this.updateCache && this.cacheCanvas.width > 0) {
+                    const ctx = this.cacheCanvas.getContext('2d');
+                    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                    const resolution = 6 * this.scale;
+                    ctx.fillStyle = this.secondary;
+
+                    for (let x = 0; x < this.canvas.width; x += resolution) {
+                        for (let y = 0; y < this.canvas.height; y += resolution) {
+                            const dx1 = x - p1x;
+                            const dy1 = y - this.cy;
+                            const r1 = Math.sqrt(dx1 * dx1 + dy1 * dy1) || 1;
+
+                            const dx2 = x - p2x;
+                            const dy2 = y - this.cy;
+                            const r2 = Math.sqrt(dx2 * dx2 + dy2 * dy2) || 1;
+
+                            const potential = (this.m1 / r1) + (this.m2 / r2);
+                            const intensity = Math.min(potential * 3, 1.0);
+
+                            if (intensity > 0.05) {
+                                ctx.globalAlpha = intensity * 0.4;
+                                ctx.fillRect(x, y, resolution, resolution);
+                            }
+                        }
+                    }
+                    ctx.globalAlpha = 1.0;
+                    this.updateCache = false;
+                }
+
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                if (this.cacheCanvas.width > 0) {
+                    this.ctx.drawImage(this.cacheCanvas, 0, 0);
+                }
+
+                const G_vis = 5000;
+                const force = G_vis * (this.m1 * this.m2) / (dist * dist);
+                const vecLen = Math.min(force * this.scale * distScale, 120 * this.scale);
+
+                this.ctx.fillStyle = this.accent;
+                this.ctx.beginPath();
+                this.ctx.arc(p1x, this.cy, Math.sqrt(this.m1) * 3 * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                this.ctx.fillStyle = this.color;
+                this.ctx.beginPath();
+                this.ctx.arc(p2x, this.cy, Math.sqrt(this.m2) * 3 * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                this.ctx.strokeStyle = this.secondary;
+                this.ctx.lineWidth = 3 * this.scale;
+                if (typeof drawArrow === "function") {
+                    drawArrow(this.ctx, p1x, this.cy, p1x + vecLen, this.cy, 10 * this.scale);
+                    drawArrow(this.ctx, p2x, this.cy, p2x - vecLen, this.cy, 10 * this.scale);
+                }
+
+                this.ctx.fillStyle = this.color;
+                this.ctx.font = `${14 * this.scale}px Inter`;
+                this.ctx.textAlign = "center";
+                this.ctx.fillText(`r = ${Math.round(dist)}`, this.cx, this.cy - (Math.sqrt(this.m1) * 3 * this.scale) - 10 * this.scale);
+                this.ctx.fillStyle = this.secondary;
+                this.ctx.fillText(`F ∝ ${Math.round(force)}`, this.cx, this.cy + 30 * this.scale);
+            }
+        }
+
+        function drawArrow(ctx, x1, y1, x2, y2, headLen = 10) {
+            const angle = Math.atan2(y2 - y1, x2 - x1);
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(x2, y2);
+            ctx.lineTo(x2 - headLen * Math.cos(angle - Math.PI / 6), y2 - headLen * Math.sin(angle - Math.PI / 6));
+            ctx.lineTo(x2 - headLen * Math.cos(angle + Math.PI / 6), y2 - headLen * Math.sin(angle + Math.PI / 6));
+            ctx.closePath();
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.fill();
+        }
+
+        class OrbitSimulation extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.G = 300;
+                this.reset();
+
+                const vInput = document.getElementById('input-v');
+                const mInput = document.getElementById('input-m');
+                const btnReset = document.getElementById('btn-reset');
+                const btnClear = document.getElementById('btn-clear-trail');
+
+                if (vInput) vInput.addEventListener('input', (e) => {
+                    document.getElementById('val-v').innerText = parseFloat(e.target.value).toFixed(1);
+                    this.reset();
+                });
+                if (mInput) mInput.addEventListener('input', (e) => {
+                    document.getElementById('val-m').innerText = parseFloat(e.target.value).toFixed(1);
+                    this.reset();
+                });
+                if (btnReset) btnReset.addEventListener('click', () => this.reset());
+                if (btnClear) btnClear.addEventListener('click', () => { this.path = []; });
+            }
+
+            reset() {
+                const vx_input = parseFloat(document.getElementById('input-v')?.value || 3.0);
+                const m_input = parseFloat(document.getElementById('input-m')?.value || 1.0);
+
+                this.planet = {
+                    x: 0,
+                    y: -150,
+                    vx: vx_input * 2,
+                    vy: 0,
+                    mass: m_input
+                };
+                this.sun = {
+                    x: 0,
+                    y: 0,
+                    mass: 50
+                };
+                this.path = [];
+
+                const rSq = Math.max(1, (this.sun.x - this.planet.x) ** 2 + (this.sun.y - this.planet.y) ** 2);
+                const r = Math.sqrt(rSq);
+                const F = (this.G * this.sun.mass) / rSq;
+                this.planet.ax = F * (this.sun.x - this.planet.x) / r;
+                this.planet.ay = F * (this.sun.y - this.planet.y) / r;
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                const dt = 0.05;
+                const steps = 10;
+
+                for (let i = 0; i < steps; i++) {
+                    const p = this.planet;
+
+                    p.x += p.vx * dt + 0.5 * p.ax * dt * dt;
+                    p.y += p.vy * dt + 0.5 * p.ay * dt * dt;
+
+                    const dx = this.sun.x - p.x;
+                    const dy = this.sun.y - p.y;
+                    const distSq = Math.max(1, dx * dx + dy * dy);
+                    const dist = Math.sqrt(distSq);
+
+                    if (dist < 15) {
+                        p.vx *= 0.8;
+                        p.vy *= 0.8;
+                        continue;
+                    }
+
+                    const F = (this.G * this.sun.mass) / distSq;
+                    const new_ax = F * (dx / dist);
+                    const new_ay = F * (dy / dist);
+
+                    p.vx += 0.5 * (p.ax + new_ax) * dt;
+                    p.vy += 0.5 * (p.ay + new_ay) * dt;
+
+                    p.ax = new_ax;
+                    p.ay = new_ay;
+                }
+
+                if (this.path.length === 0 || Math.hypot(this.path[this.path.length - 1].x - this.planet.x, this.path[this.path.length - 1].y - this.planet.y) > 3) {
+                    this.path.push({ x: this.planet.x, y: this.planet.y });
+                    if (this.path.length > 700) this.path.shift();
+                }
+
+                // Compute orbit drawing scale dynamically based on screen size
+                const maxOrbitRadius = 250;
+                const targetMaxPx = Math.min(this.cx, this.cy) * 0.75;
+                const drawScale = Math.min(this.scale, targetMaxPx / (maxOrbitRadius / this.scale));
+
+                const sunScreenX = this.cx + this.sun.x * drawScale;
+                const sunScreenY = this.cy + this.sun.y * drawScale;
+                const pScreenX = this.cx + this.planet.x * drawScale;
+                const pScreenY = this.cy + this.planet.y * drawScale;
+
+                this.ctx.strokeStyle = this.color;
+                this.ctx.globalAlpha = 0.3;
+                this.ctx.lineWidth = 1 * this.scale;
+                this.ctx.beginPath();
+                this.path.forEach((p, i) => {
+                    const px = this.cx + p.x * drawScale;
+                    const py = this.cy + p.y * drawScale;
+                    if (i === 0) this.ctx.moveTo(px, py); else this.ctx.lineTo(px, py);
+                });
+                this.ctx.stroke();
+                this.ctx.globalAlpha = 1.0;
+
+                const vScale = 3 * drawScale;
+                this.ctx.strokeStyle = this.accent;
+                this.ctx.lineWidth = 2 * this.scale;
+                if (typeof drawArrow === "function") {
+                    drawArrow(this.ctx, pScreenX, pScreenY, pScreenX + this.planet.vx * vScale, pScreenY + this.planet.vy * vScale, 6 * this.scale);
+                }
+
+                this.ctx.fillStyle = this.accent;
+                this.ctx.beginPath();
+                this.ctx.arc(sunScreenX, sunScreenY, 20 * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+                this.ctx.shadowBlur = 20;
+                this.ctx.shadowColor = this.accent;
+                this.ctx.fill();
+                this.ctx.shadowBlur = 0;
+
+                this.ctx.fillStyle = this.secondary;
+                this.ctx.beginPath();
+                this.ctx.arc(pScreenX, pScreenY, (5 + this.planet.mass) * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+            }
+        }
+
+        window.onload = () => APP.init();
+
+    </script>
+</body>
+
+</html>

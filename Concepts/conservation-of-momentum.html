@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conservation of Momentum • Physics Notebook</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/article.css">
+    <style>
+        /* AI Links */
+        .ai-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .ai-label {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-right: 0.2rem;
+            font-weight: 500;
+        }
+
+        .ai-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--line-subtle);
+            color: var(--text-muted);
+            min-width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0 8px;
+        }
+
+        .ai-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Mobile specific adjustments to ensure controls are stacked above canvas */
+        @media screen and (max-width: 900px) {
+            .split-layout {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .content-col {
+                order: 1;
+                /* Content and controls on top */
+            }
+
+            .visual-col {
+                order: 2;
+                /* Canvas on bottom */
+                min-height: 400px;
+            }
+
+            .sim-controls {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                /* Add space below controls before the canvas */
+            }
+        }
+    </style>
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Theme Init -->
+    <script>
+        const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.body && document.body.setAttribute('data-theme', savedTheme);
+    </script>
+
+    <!-- Libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <nav class="sticky">
+        <div class="nav-bg"></div>
+        <a href="../index.html" class="logo">
+            <i data-lucide="arrow-left" width="16"></i>
+            Library
+        </a>
+        <button id="themeBtn">
+            <i data-lucide="moon" width="16"></i> Theme
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="text-reveal-wrapper">
+            <h1 class="hero-title">Conservation of<br>Momentum</h1>
+            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+                In a closed system with no external forces, the total momentum remains absolutely constant,
+                no matter how the internal parts interact or collide.
+            </p>
+        </div>
+    </section>
+
+    <!-- CHAPTER 1: ELASTIC COLLISIONS -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent);">01. Linear Momentum</h3>
+                <h2>Elastic Collisions</h2>
+                <p>
+                    Momentum ($\vec{p}$) is the product of an object's mass and velocity. In a perfectly elastic
+                    collision,
+                    objects bounce off each other without losing any kinetic energy. Both total momentum and total
+                    kinetic energy are conserved.
+                </p>
+                <div class="math-block">
+                    $$\vec{p} = m\vec{v} \quad \rightarrow \quad \sum \vec{p}_{initial} = \sum \vec{p}_{final}$$
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World System</span>
+                    <h4 style="margin-bottom:0.5rem;">Newton's Cradle</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        A classic desk toy where lifting and releasing one ball causes exactly one ball on the opposite
+                        end to swing outward.
+                        The momentum transfers instantly through the rigid steel spheres, perfectly preserving both $m$
+                        and $v$.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('elastic_momentum', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('elastic_momentum', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('elastic_momentum', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('elastic_momentum', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('elastic_momentum', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+
+                <div class="sim-controls">
+                    <div style="margin-bottom: 0.5rem;">
+                        <button id="btn-col1"
+                            style="width: 100%; padding:12px; background:var(--accent); color:white; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Start
+                            Simulation</button>
+                    </div>
+
+                    <h5 style="margin-bottom: 0; color:var(--text-main);">Cart A (Left)</h5>
+                    <div class="slider-group">
+                        <label>Mass <span id="val-m1">1</span> kg</label>
+                        <input type="range" id="input-m1" min="0.5" max="3" step="0.5" value="1">
+                    </div>
+                    <div class="slider-group">
+                        <label>Velocity <span id="val-v1">2</span> m/s</label>
+                        <input type="range" id="input-v1" min="0" max="5" step="0.5" value="2">
+                    </div>
+
+                    <h5 style="margin-bottom: 0; color:var(--text-main); margin-top: 1rem;">Cart B (Right)</h5>
+                    <div class="slider-group">
+                        <label>Mass <span id="val-m2">1</span> kg</label>
+                        <input type="range" id="input-m2" min="0.5" max="3" step="0.5" value="1">
+                    </div>
+                    <div class="slider-group">
+                        <label>Velocity <span id="val-v2">-1</span> m/s</label>
+                        <input type="range" id="input-v2" min="-5" max="0" step="0.5" value="-1">
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-elastic" style="background: rgba(0,0,0,0.02);"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CHAPTER 2: INELASTIC COLLISIONS & EXPLOSIONS -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent);">02. Internal Forces</h3>
+                <h2>Explosions & Inelasticity</h2>
+                <p>
+                    Momentum is always conserved in a closed system, even if the kinetic energy is not.
+                    In an explosion (or objects pushing apart), a single object at rest ($p=0$) splits into pieces whose
+                    combined
+                    momentums must rigidly cancel each other out to remain zero.
+                </p>
+                <div class="math-block">
+                    $$\vec{p}_{initial} = 0 \quad \rightarrow \quad m_1\vec{v}_1 + m_2\vec{v}_2 = 0 \quad \text{thus}
+                    \quad \vec{v}_1 = -\frac{m_2}{m_1}\vec{v}_2$$
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World System</span>
+                    <h4 style="margin-bottom:0.5rem;">Recoil of a Cannon</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        When a cannon fires a cannonball forward, the heavy cannon physically recoils backward.
+                        Because the initial momentum was zero, the forward momentum of the light but incredibly fast
+                        cannonball
+                        is exactly equal and opposite to the backward momentum of the massive, slower cannon.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('explosion_momentum', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('explosion_momentum', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('explosion_momentum', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('explosion_momentum', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('explosion_momentum', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+
+                <div class="sim-controls">
+                    <div style="margin-bottom: 0.5rem;">
+                        <button id="btn-col2"
+                            style="width: 100%; padding:12px; background:var(--accent); color:white; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Explode!</button>
+                    </div>
+
+                    <h5 style="margin-bottom: 0; color:var(--text-main);">Explosive Force</h5>
+                    <div class="slider-group">
+                        <label>Energy <span id="val-E">20</span> J</label>
+                        <input type="range" id="input-E" min="5" max="50" step="5" value="20">
+                    </div>
+
+                    <h5 style="margin-bottom: 0; color:var(--text-main); margin-top: 1rem;">Fragment Masses</h5>
+                    <div class="slider-group">
+                        <label>Left Fragment ($m_1$) <span id="val-m1-e">1</span> kg</label>
+                        <input type="range" id="input-m1-e" min="0.5" max="5" step="0.5" value="1">
+                    </div>
+                    <div class="slider-group">
+                        <label>Right Fragment ($m_2$) <span id="val-m2-e">3</span> kg</label>
+                        <input type="range" id="input-m2-e" min="0.5" max="5" step="0.5" value="3">
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-explosion" style="background: rgba(0,0,0,0.02);"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CHAPTER 3: ANGULAR MOMENTUM -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent);">03. Rotational Dynamics</h3>
+                <h2>Angular Momentum</h2>
+                <p>
+                    Angular momentum ($L$) is the rotational equivalent of linear momentum. It depends on an object's
+                    moment of inertia ($I$)
+                    and its angular velocity ($\omega$). Just like linear momentum, in the absence of external twisting
+                    forces (torques), it remains constant.
+                </p>
+                <div class="math-block">
+                    $$L = I\omega \quad \rightarrow \quad I = mr^2 \quad \rightarrow \quad L_{initial} = L_{final}$$
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World System</span>
+                    <h4 style="margin-bottom:0.5rem;">The Figure Skater</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        When a figure skater spins with their arms fully extended, they have a large moment of inertia
+                        ($I$).
+                        When they suddenly pull their arms and legs in tightly, their radius decreases dramatically.
+                        Because $L$ must
+                        stay constant, their angular velocity ($\omega$) spikes, making them blur into a super-fast
+                        spin.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('angular_momentum', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('angular_momentum', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('angular_momentum', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('angular_momentum', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('angular_momentum', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+
+                <div class="sim-controls">
+                    <div class="slider-group">
+                        <label>String/Beam Radius ($r$) <span id="val-r">100</span> px</label>
+                        <input type="range" id="input-r" min="30" max="150" step="5" value="100">
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-angular" style="background: rgba(0,0,0,0.02);"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="references">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3>Academic References</h3>
+            <ul>
+                <li><strong>Newton, I.</strong> (1687). <em>Philosophiæ Naturalis Principia Mathematica</em> (Laws of
+                    Motion underlying momentum).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script>
+        function openAI(topic, model) {
+            let prompt = "";
+            switch (topic) {
+                case 'elastic_momentum': prompt = "Explain the conservation of momentum and kinetic energy in perfectly elastic 1D collisions."; break;
+                case 'explosion_momentum': prompt = "Explain the conservation of momentum in an explosion or perfectly inelastic situation."; break;
+                case 'angular_momentum': prompt = "Explain the conservation of angular momentum particularly relating to moment of inertia and angular velocity."; break;
+            }
+            launchAIPrompt(model, prompt);
+        }
+
+        const APP = {
+            visuals: [],
+            observer: null,
+            init() {
+                this.setupObserver();
+                this.initVisuals();
+                window.addEventListener('theme-changed', () => this.visuals.forEach(v => v.updateColors()));
+            },
+            setupObserver() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const visual = this.visuals.find(v => v.canvas === entry.target);
+                        if (visual) visual.isVisible = entry.isIntersecting;
+                    });
+                }, { threshold: 0.1 });
+            },
+            initVisuals() {
+                this.addVisual(new ElasticSim('canvas-elastic'));
+                this.addVisual(new InelasticSim('canvas-explosion'));
+                this.addVisual(new AngularSim('canvas-angular'));
+            },
+            addVisual(visual) {
+                this.visuals.push(visual);
+                this.observer.observe(visual.canvas);
+            }
+        };
+
+        class BaseSim {
+            constructor(id) {
+                this.canvas = document.getElementById(id);
+                this.ctx = this.canvas.getContext('2d');
+                this.isVisible = false;
+                this.updateColors();
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                setTimeout(() => { this.resize(); this.loop(); }, 50);
+            }
+            updateColors() {
+                this.color = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
+                this.accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+                this.accentSecondary = getComputedStyle(document.body).getPropertyValue('--accent-secondary').trim();
+                this.bgColor = getComputedStyle(document.body).getPropertyValue('--bg-color').trim();
+            }
+            resize() {
+                const rect = this.canvas.parentElement.getBoundingClientRect();
+                this.canvas.style.width = '100%';
+                this.canvas.style.height = '100%';
+                this.scale = window.devicePixelRatio || 2;
+                this.canvas.width = rect.width * this.scale;
+                this.canvas.height = rect.height * this.scale;
+                this.w = rect.width;
+                this.h = rect.height;
+            }
+            loop() {
+                if (this.isVisible) this.draw();
+                requestAnimationFrame(() => this.loop());
+            }
+            draw() { }
+            drawEnergyBar(x, y, label, labelColor, fillLevel, fillColor, maxH = 100) {
+                const w = 30 * this.scale;
+                const h = maxH * this.scale;
+                const filledH = (fillLevel * maxH) * this.scale;
+                const px = x * this.scale;
+                const py = y * this.scale;
+
+                this.ctx.strokeStyle = this.color;
+                this.ctx.globalAlpha = 0.3;
+                this.ctx.strokeRect(px, py - h, w, h);
+                this.ctx.globalAlpha = 1.0;
+
+                this.ctx.fillStyle = fillColor || labelColor;
+                this.ctx.fillRect(px, py - filledH, w, filledH);
+
+                this.ctx.fillStyle = labelColor;
+                const fontSize = 14 * this.scale;
+                this.ctx.font = `500 ${fontSize}px sans-serif`;
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText(label, px + w / 2, py + (20 * this.scale));
+            }
+        }
+
+        // ==========================
+        // 1. ELASTIC COLLISIONS SIM
+        // ==========================
+        class ElasticSim extends BaseSim {
+            constructor(id) {
+                super(id);
+                this.running = false;
+
+                // Initial State
+                this.initM1 = 1;
+                this.initV1 = 2; // m/s
+                this.initM2 = 1;
+                this.initV2 = -1; // m/s
+
+                // Setup simulation logic
+                this.resetSim();
+
+                // UI bindings
+                const bindSlider = (idSuffix, propName, textPrefix) => {
+                    document.getElementById(`input-${idSuffix}`).addEventListener('input', e => {
+                        this[propName] = parseFloat(e.target.value);
+                        document.getElementById(`val-${idSuffix}`).innerText = this[propName];
+                        if (!this.running) this.resetSim();
+                    });
+                }
+
+                bindSlider('m1', 'initM1');
+                bindSlider('v1', 'initV1');
+                bindSlider('m2', 'initM2');
+                bindSlider('v2', 'initV2');
+
+                const btn = document.getElementById('btn-col1');
+                btn.addEventListener('click', () => {
+                    if (this.running) {
+                        this.running = false;
+                        this.resetSim();
+                        btn.innerText = "Start Simulation";
+                    } else {
+                        this.running = true;
+                        btn.innerText = "Stop / Reset";
+                    }
+                });
+            }
+
+            resetSim() {
+                this.m1 = this.initM1;
+                this.v1 = this.initV1;
+                this.x1 = 20; // visual start pos
+
+                this.m2 = this.initM2;
+                this.v2 = this.initV2;
+                // Place m2 based on relative distance to collide in middle
+                this.x2 = this.w - 50;
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Simulation Step
+                const speedScale = 2.0; // Visual scale for m/s
+                const r1 = 15 + (this.m1 * 5);
+                const r2 = 15 + (this.m2 * 5);
+                const rightLimit = this.w < 500 ? this.w - 80 : this.w - r2;
+
+                if (this.running) {
+                    this.x1 += this.v1 * speedScale;
+                    this.x2 += this.v2 * speedScale;
+
+                    // Check collision
+                    if (Math.abs(this.x1 - this.x2) <= (r1 + r2) && (this.v1 > 0 || this.v2 < 0)) {
+                        // Math for 1D Elastic Collision
+                        const v1f = (this.v1 * (this.m1 - this.m2) + (2 * this.m2 * this.v2)) / (this.m1 + this.m2);
+                        const v2f = (this.v2 * (this.m2 - this.m1) + (2 * this.m1 * this.v1)) / (this.m1 + this.m2);
+                        this.v1 = v1f;
+                        this.v2 = v2f;
+
+                        // Push apart slightly to prevent clipping lock
+                        this.x1 -= 1;
+                        this.x2 += 1;
+                    }
+
+                    // Bounce off walls (optional, helps keep things in bounds)
+                    if (this.x1 < r1) { this.x1 = r1; this.v1 = Math.abs(this.v1); }
+                    if (this.x2 > rightLimit) { this.x2 = rightLimit; this.v2 = -Math.abs(this.v2); }
+                    if (this.x1 > rightLimit - r1 - r2) { this.x1 = rightLimit - r1 - r2; this.v1 = -Math.abs(this.v1); }
+                    if (this.x2 < r2) { this.x2 = r2; this.v2 = Math.abs(this.v2); }
+                }
+
+                // Render
+                const py = (this.h / 2) * this.scale;
+
+                // Track line
+                this.ctx.beginPath();
+                this.ctx.moveTo(0, py + 30 * this.scale);
+                this.ctx.lineTo(this.w * this.scale, py + 30 * this.scale);
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 2 * this.scale;
+                this.ctx.globalAlpha = 0.2;
+                this.ctx.stroke();
+                this.ctx.globalAlpha = 1.0;
+
+                // Draw objects
+                const drawObj = (x, m, v, colorCode) => {
+                    const r = (15 + (m * 5)) * this.scale;
+                    const px = x * this.scale;
+
+                    this.ctx.fillStyle = colorCode;
+                    this.ctx.beginPath();
+                    this.ctx.arc(px, py - r + 30 * this.scale, r, 0, Math.PI * 2);
+                    this.ctx.fill();
+
+                    // Draw Momentum Vector Arrow (p = mv)
+                    const p = m * v;
+                    if (Math.abs(p) > 0.1) {
+                        const arrowLen = p * 15 * this.scale;
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(px, py - r * 2.5 + 30 * this.scale);
+                        this.ctx.lineTo(px + arrowLen, py - r * 2.5 + 30 * this.scale);
+
+                        // Arrow head
+                        const dir = p > 0 ? -1 : 1;
+                        this.ctx.lineTo(px + arrowLen + (dir * 5 * this.scale), py - r * 2.5 + 25 * this.scale);
+                        this.ctx.moveTo(px + arrowLen, py - r * 2.5 + 30 * this.scale);
+                        this.ctx.lineTo(px + arrowLen + (dir * 5 * this.scale), py - r * 2.5 + 35 * this.scale);
+
+                        this.ctx.strokeStyle = this.color;
+                        this.ctx.lineWidth = 2 * this.scale;
+                        this.ctx.stroke();
+
+                        // Label
+                        this.ctx.fillStyle = this.color;
+                        this.ctx.textAlign = 'center';
+                        const textY = py - r * 2.5 + 15 * this.scale;
+                        this.ctx.font = `500 ${12 * this.scale}px sans-serif`;
+                        this.ctx.fillText(`p = ${Math.abs(p).toFixed(1)}`, px + (arrowLen / 2), textY);
+                    }
+                };
+
+                drawObj(this.x1, this.m1, this.v1, this.accent);
+                drawObj(this.x2, this.m2, this.v2, this.accentSecondary);
+
+                // Total Momentum Bar
+                const p1_initial = this.initM1 * this.initV1;
+                const p2_initial = this.initM2 * this.initV2;
+
+                const p1_current = this.m1 * this.v1;
+                const p2_current = this.m2 * this.v2;
+                const currentTotal = Math.abs(p1_current + p2_current);
+
+                const maxTheoretical = Math.max(Math.abs(p1_initial) + Math.abs(p2_initial), 1) * 1.5;
+
+                // Responsive bar positioning
+                const barX = this.w < 500 ? this.w - 50 : this.w - 120;
+                this.drawEnergyBar(barX, 100, "|P| Total", this.color, currentTotal / maxTheoretical, null, 60);
+
+                // Math breakdown text
+                this.ctx.textAlign = 'left';
+                const fontSize = this.getResponsiveFontSize();
+                this.ctx.font = `400 ${fontSize}px sans-serif`;
+                this.ctx.fillStyle = this.color;
+                const text = this.w < 500 
+                    ? `P_tot = ${(p1_current + p2_current).toFixed(1)}`
+                    : `Sum of P = ${p1_current.toFixed(1)} + ${p2_current.toFixed(1)} = ${(p1_current + p2_current).toFixed(1)} kg m/s`;
+                this.ctx.fillText(text, 15 * this.scale, 40 * this.scale);
+            }
+
+            getResponsiveFontSize() {
+                return this.w < 500 ? 10 * this.scale : 14 * this.scale;
+            }
+        }
+
+        // ==========================
+        // 2. INELASTIC EXPLOSION SIM
+        // ==========================
+        class InelasticSim extends BaseSim {
+            constructor(id) {
+                super(id);
+                this.running = false;
+
+                this.energy = 20; // Explosion force scale
+                this.m1 = 1;
+                this.m2 = 3;
+
+                this.resetSim();
+
+                document.getElementById('input-E').addEventListener('input', e => {
+                    this.energy = parseFloat(e.target.value);
+                    document.getElementById('val-E').innerText = this.energy;
+                });
+
+                document.getElementById('input-m1-e').addEventListener('input', e => {
+                    this.m1 = parseFloat(e.target.value);
+                    document.getElementById('val-m1-e').innerText = this.m1;
+                });
+
+                document.getElementById('input-m2-e').addEventListener('input', e => {
+                    this.m2 = parseFloat(e.target.value);
+                    document.getElementById('val-m2-e').innerText = this.m2;
+                });
+
+                const btn = document.getElementById('btn-col2');
+                btn.addEventListener('click', () => {
+                    if (this.running) {
+                        this.running = false;
+                        this.resetSim();
+                        btn.innerText = "Explode!";
+                    } else {
+                        const v2Magnitude = Math.sqrt((2 * this.energy) / (this.m2 * (1 + (this.m2 / this.m1))));
+
+                        this.v2 = v2Magnitude;
+                        this.v1 = -(this.m2 / this.m1) * this.v2;
+
+                        this.running = true;
+                        btn.innerText = "Reset";
+                    }
+                });
+            }
+
+            resetSim() {
+                this.x1 = this.w / 2;
+                this.x2 = this.w / 2;
+                this.v1 = 0;
+                this.v2 = 0;
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                const r1 = (15 + (this.m1 * 5));
+                const r2 = (15 + (this.m2 * 5));
+
+                if (this.running) {
+                    const speedScale = 2.0;
+                    this.x1 += this.v1 * speedScale;
+                    this.x2 += this.v2 * speedScale;
+
+                    // Keep pieces from flying out of the view bounds
+                    if (this.x1 < r1) { this.x1 = r1; this.v1 = 0; }
+                    if (this.x2 > this.w - r2) { this.x2 = this.w - r2; this.v2 = 0; }
+
+                    // friction
+                    this.v1 *= 0.98;
+                    this.v2 *= 0.98;
+                } else {
+                    this.x1 = this.w / 2;
+                    this.x2 = this.w / 2;
+                }
+
+                const py = (this.h / 2) * this.scale;
+
+                // Track line
+                this.ctx.beginPath();
+                this.ctx.moveTo(0, py + 30 * this.scale);
+                this.ctx.lineTo(this.w * this.scale, py + 30 * this.scale);
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 2 * this.scale;
+                this.ctx.globalAlpha = 0.2;
+                this.ctx.stroke();
+                this.ctx.globalAlpha = 1.0;
+
+                const drawObj = (x, m, v, colorCode, offsetMultiplier) => {
+                    const r = (15 + (m * 5)) * this.scale;
+                    let px = (x + (!this.running ? offsetMultiplier * r / this.scale : 0)) * this.scale;
+
+                    this.ctx.fillStyle = colorCode;
+                    this.ctx.fillRect(px - r, py - (r * 1.5) + 30 * this.scale, r * 2, r * 1.5);
+
+                    // Draw Momentum Vector Arrow
+                    const p = m * v;
+                    if (Math.abs(p) > 0.1) {
+                        const arrowLen = p * 10 * this.scale;
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(px, py - r * 2.5 + 30 * this.scale);
+                        this.ctx.lineTo(px + arrowLen, py - r * 2.5 + 30 * this.scale);
+
+                        const dir = p > 0 ? -1 : 1;
+                        this.ctx.lineTo(px + arrowLen + (dir * 5 * this.scale), py - r * 2.5 + 25 * this.scale);
+                        this.ctx.moveTo(px + arrowLen, py - r * 2.5 + 30 * this.scale);
+                        this.ctx.lineTo(px + arrowLen + (dir * 5 * this.scale), py - r * 2.5 + 35 * this.scale);
+
+                        this.ctx.strokeStyle = this.color;
+                        this.ctx.lineWidth = 2 * this.scale;
+                        this.ctx.stroke();
+
+                        this.ctx.fillStyle = this.color;
+                        this.ctx.textAlign = 'center';
+                        const textY = py - r * 2.5 + 15 * this.scale;
+                        this.ctx.font = `500 ${12 * this.scale}px sans-serif`;
+                        this.ctx.fillText(`p = ${Math.abs(p).toFixed(1)}`, px + (arrowLen / 2), textY);
+                    }
+                };
+
+                if (this.x2 > this.x1 || !this.running) {
+                    drawObj(this.x1, this.m1, this.v1, this.accent, -1);
+                    drawObj(this.x2, this.m2, this.v2, this.accentSecondary, 1);
+                }
+
+                // Vectors
+                const p1 = this.m1 * this.v1;
+                const p2 = this.m2 * this.v2;
+                const sum = p1 + p2;
+
+                this.ctx.textAlign = 'left';
+                const fontSize = this.w < 500 ? 10 * this.scale : 14 * this.scale;
+                this.ctx.font = `400 ${fontSize}px sans-serif`;
+                this.ctx.fillStyle = this.color;
+                
+                const text = this.w < 500 
+                    ? `P_tot = ${sum.toFixed(1)}`
+                    : `P_total = ${p1.toFixed(1)} + ${p2.toFixed(1)} = ${sum.toFixed(1)} kg m/s`;
+                this.ctx.fillText(text, 15 * this.scale, 40 * this.scale);
+
+                if (Math.abs(sum) < 0.1) {
+                    this.ctx.fillText(`(Momentum Cancelled)`, 15 * this.scale, 60 * this.scale);
+                }
+            }
+        }
+
+        // ==========================
+        // 3. ANGULAR MOMENTUM SIM
+        // ==========================
+        class AngularSim extends BaseSim {
+            constructor(id) {
+                super(id);
+
+                this.massPerNode = 2; // Fixed mass
+                this.targetRadius = 100;
+                this.currentRadius = 100;
+
+                this.angle = 0;
+
+                // Constant Angular Momentum L
+                this.L = 50000;
+
+                document.getElementById('input-r').addEventListener('input', e => {
+                    this.targetRadius = parseFloat(e.target.value);
+                    document.getElementById('val-r').innerText = this.targetRadius;
+                });
+            }
+
+            draw() {
+                // Smooth radius lerp for feeling of pulling in
+                const dr = (this.targetRadius - this.currentRadius) * 0.1;
+                this.currentRadius += dr;
+
+                // Physics logic
+                const I = 2 * this.massPerNode * (this.currentRadius * this.currentRadius);
+                const omega = this.L / I; // Rotation speed
+                this.angle += omega * 0.05; // Step rotation
+
+                // Setup Draw
+                this.ctx.fillStyle = this.bgColor || '#ffffff';
+                this.ctx.globalAlpha = 0.3;
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                this.ctx.globalAlpha = 1.0;
+
+                const px = (this.w / 2) * this.scale;
+                const py = (this.h / 2) * this.scale;
+
+                // Constrain the visual radius dynamically to prevent masses from going off screen
+                const maxAllowedR = Math.min(150, (this.w / 2) - 30);
+                const visualRadius = this.currentRadius * (maxAllowedR / 150) * this.scale;
+
+                // Center pivot
+                this.ctx.fillStyle = this.color;
+                this.ctx.beginPath();
+                this.ctx.arc(px, py, 6 * this.scale, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                // Draw string/bar
+                const x1 = px + Math.cos(this.angle) * visualRadius;
+                const y1 = py + Math.sin(this.angle) * visualRadius;
+                const x2 = px + Math.cos(this.angle + Math.PI) * visualRadius;
+                const y2 = py + Math.sin(this.angle + Math.PI) * visualRadius;
+
+                this.ctx.strokeStyle = this.color;
+                this.ctx.globalAlpha = 0.5;
+                this.ctx.lineWidth = 3 * this.scale;
+                this.ctx.beginPath();
+                this.ctx.moveTo(x1, y1);
+                this.ctx.lineTo(x2, y2);
+                this.ctx.stroke();
+                this.ctx.globalAlpha = 1.0;
+
+                // Draw masses
+                const massR = 20 * this.scale;
+                this.ctx.fillStyle = this.accent;
+                this.ctx.beginPath(); this.ctx.arc(x1, y1, massR, 0, Math.PI * 2); this.ctx.fill();
+                this.ctx.fillStyle = this.accentSecondary;
+                this.ctx.beginPath(); this.ctx.arc(x2, y2, massR, 0, Math.PI * 2); this.ctx.fill();
+
+                // Overlay text stats
+                this.ctx.textAlign = 'left';
+                const fontSize = this.w < 500 ? 9 * this.scale : 13 * this.scale;
+                this.ctx.font = `600 ${fontSize}px sans-serif`;
+                this.ctx.fillStyle = this.color;
+                this.ctx.fillText(`Angular velocity (w) : ${omega.toFixed(2)} rad/s`, 15 * this.scale, 30 * this.scale);
+                this.ctx.font = `400 ${fontSize}px sans-serif`;
+                this.ctx.fillText(`Moment of Inertia (I): ${I.toFixed(0)}`, 15 * this.scale, 50 * this.scale);
+                this.ctx.fillText(`Angular Momentum (L) = I * w = ${this.L}`, 15 * this.scale, 70 * this.scale);
+            }
+        }
+
+        window.onload = () => APP.init();
+    </script>
+</body>
+
+</html>
