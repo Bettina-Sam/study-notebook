@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravitational Waves • Study Notebook</title>
+  <link rel="icon" href="../../../../assets/icons/favicon.svg">
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../../css/common.css">
+    <link rel="stylesheet" href="../../../../css/article.css">
+    <style>
+        /* AI Links */
+        .ai-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .ai-label {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-right: 0.2rem;
+            font-weight: 500;
+        }
+
+        .ai-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--line-subtle);
+            color: var(--text-muted);
+            min-width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0 8px;
+        }
+
+        .ai-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Slider Controls */
+        .controls {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-color);
+            border: 1px solid var(--line-subtle);
+            border-radius: 8px;
+        }
+
+        .control-group {
+            margin-bottom: 1rem;
+        }
+
+        .control-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .control-value {
+            background: var(--accent);
+            color: var(--bg-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--line-subtle);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s ease;
+        }
+
+        .slider::-moz-range-thumb:hover {
+            transform: scale(1.2);
+        }
+    </style>
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Theme Init -->
+    <script>
+        const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.body && document.body.setAttribute('data-theme', savedTheme);
+    </script>
+
+    <!-- Libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <nav class="sticky">
+        <div class="nav-bg"></div>
+        <a href="../../../../index.html" class="logo">
+            <i data-lucide="arrow-left" width="16"></i>
+            Physics Journey
+        </a>
+        <button id="themeBtn">
+            <i data-lucide="moon" width="16"></i> Mode
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="text-reveal-wrapper">
+            <h1 class="hero-title">Gravitational<br>Waves</h1>
+            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+                Ripples in spacetime that propagate at the speed of light, carrying information about cosmic events
+                across the universe.
+            </p>
+        </div>
+    </section>
+
+    <!-- CHAPTER 1: SPACETIME RIPPLES -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent);">01. The Ripples</h3>
+                <h2>Spacetime Distortions</h2>
+                <p>
+                    Gravitational waves are ripples in the fabric of spacetime itself, predicted by Einstein's General
+                    Relativity. When massive objects accelerate, they create disturbances that propagate outward at the
+                    speed of light, stretching and compressing space as they travel.
+                </p>
+                <div class="math-block">
+                    $$h_{\mu\nu} \propto \frac{1}{r} \frac{d^2Q}{dt^2}$$
+                </div>
+                <p>
+                    The amplitude of gravitational waves decreases with distance (1/r), while the strain is proportional
+                    to the second time derivative of the quadrupole moment of the source. This means only the most
+                    violent cosmic events produce detectable signals.
+                </p>
+
+                <!-- SLIDER CONTROLS -->
+                <div class="controls">
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Wave Frequency</span>
+                            <span class="control-value" id="ripple-freq-value">1.0 Hz</span>
+                        </div>
+                        <input type="range" class="slider" id="ripple-freq" min="0.2" max="3.0" step="0.1" value="1.0">
+                    </div>
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Wave Amplitude</span>
+                            <span class="control-value" id="ripple-amp-value">1.0</span>
+                        </div>
+                        <input type="range" class="slider" id="ripple-amp" min="0.2" max="2.0" step="0.1" value="1.0">
+                    </div>
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World Analogy</span>
+                    <h4 style="margin-bottom:0.5rem;">Pond Ripples</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        Imagine dropping a stone in a calm pond. The ripples spread outward, causing the water surface
+                        to rise and fall. Gravitational waves work similarly—but instead of water, they ripple through
+                        spacetime itself, stretching and compressing the universe as they pass.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('spacetime', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('spacetime', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('spacetime', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('spacetime', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('spacetime', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-spacetime"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CHAPTER 2: BINARY MERGERS -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent-secondary);">02. The Source</h3>
+                <h2>Binary Black Hole Mergers</h2>
+                <p>
+                    The most powerful gravitational wave sources are binary systems of black holes or neutron stars
+                    spiraling toward each other. As they orbit, they lose energy through gravitational radiation,
+                    causing their orbits to decay and eventually merge in a catastrophic event.
+                </p>
+                <div class="math-block">
+                    $$P = \frac{32}{5}\frac{G^4}{c^5}\frac{m_1^2 m_2^2 (m_1 + m_2)}{a^5}$$
+                </div>
+                <p>
+                    This equation describes the power radiated in gravitational waves by a binary system. The closer the
+                    objects get (smaller separation a), the more intensely they radiate, leading to an inspiral that
+                    accelerates until merger. LIGO has detected dozens of such events, confirming Einstein's
+                    predictions.
+                </p>
+
+                <!-- SLIDER CONTROLS -->
+                <div class="controls">
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Black Hole Mass</span>
+                            <span class="control-value" id="merger-mass-value">30 M☉</span>
+                        </div>
+                        <input type="range" class="slider" id="merger-mass" min="10" max="50" step="1" value="30">
+                    </div>
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Initial Separation</span>
+                            <span class="control-value" id="merger-sep-value">120 km</span>
+                        </div>
+                        <input type="range" class="slider" id="merger-sep" min="60" max="180" step="5" value="120">
+                    </div>
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World Analogy</span>
+                    <h4 style="margin-bottom:0.5rem;">Spinning Ice Skaters</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        Like ice skaters pulling in their arms to spin faster, binary black holes spiral inward as they
+                        lose energy. The gravitational waves they emit are like the energy the skaters lose to
+                        friction—each wave carries away a bit of orbital energy, causing the black holes to spiral
+                        closer together.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('mergers', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('mergers', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('mergers', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('mergers', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('mergers', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-mergers"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CHAPTER 3: DETECTION -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent);">03. The Discovery</h3>
+                <h2>LIGO and Interferometry</h2>
+                <p>
+                    The Laser Interferometer Gravitational-Wave Observatory (LIGO) made history in 2015 by detecting
+                    gravitational waves for the first time. Using 4-kilometer arms with laser beams, LIGO measures
+                    changes in length smaller than a proton's diameter as waves pass through.
+                </p>
+                <div class="math-block">
+                    $$\Delta L = \frac{4L}{\lambda} \cdot h$$
+                </div>
+                <p>
+                    This equation shows how a gravitational wave with strain h causes a path length difference ΔL in an
+                    interferometer with arm length L and laser wavelength λ. The longer the arms and the shorter the
+                    wavelength, the more sensitive the detector becomes.
+                </p>
+
+                <!-- SLIDER CONTROLS -->
+                <div class="controls">
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Signal Frequency</span>
+                            <span class="control-value" id="detection-freq-value">100 Hz</span>
+                        </div>
+                        <input type="range" class="slider" id="detection-freq" min="50" max="200" step="5" value="100">
+                    </div>
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Signal Amplitude</span>
+                            <span class="control-value" id="detection-amp-value">1.0</span>
+                        </div>
+                        <input type="range" class="slider" id="detection-amp" min="0.2" max="2.0" step="0.1"
+                            value="1.0">
+                    </div>
+                </div>
+
+                <!-- ETU CARD -->
+                <div class="etu-card">
+                    <span class="etu-tag">Real World Analogy</span>
+                    <h4 style="margin-bottom:0.5rem;">Measuring with Light</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        Imagine measuring the distance to the Moon with a laser. If the Moon moved by a single hair's
+                        width, you'd never notice. But LIGO does something even harder—it detects changes smaller than a
+                        proton by comparing laser beams traveling in perpendicular directions, looking for tiny timing
+                        differences.
+                    </p>
+                </div>
+
+                <!-- AI LINKS -->
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('detection', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('detection', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('detection', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('detection', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('detection', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-detection"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="references">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3 style="color: var(--accent);">Academic References</h3>
+            <ul>
+                <li><strong>Abbott, B. P., et al. (LIGO Scientific Collaboration and Virgo Collaboration)</strong>
+                    (2016). <em>Observation of Gravitational Waves from a Binary Black Hole Merger</em>. Physical Review
+                    Letters, 116(6), 061102.</li>
+                <li><strong>Schutz, B. F.</strong> (2009). <em>A First Course in General Relativity</em> (2nd ed.).
+                    Cambridge University Press.</li>
+                <li><strong>Misner, C. W., Thorne, K. S., & Wheeler, J. A.</strong> (1973). <em>Gravitation</em>. W. H.
+                    Freeman.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../../../../js/common.js"></script>
+    <script>
+        // ------------------------------------------------------------------
+        // OPEN AI LINKS
+        // ------------------------------------------------------------------
+        function openAI(topic, model) {
+            let prompt = "";
+            switch (topic) {
+                case 'spacetime':
+                    prompt = "Explain gravitational waves as ripples in spacetime: Einstein's prediction, how they stretch and compress space, quadrupole moment, and why they're so hard to detect.";
+                    break;
+                case 'mergers':
+                    prompt = "Explain binary black hole mergers: how they generate gravitational waves, inspiral-merger-ringdown process, chirp signals, and what LIGO has discovered.";
+                    break;
+                case 'detection':
+                    prompt = "Explain how LIGO detects gravitational waves: laser interferometry, 4km arms, detecting changes smaller than a proton, 2015 discovery, and multi-messenger astronomy.";
+                    break;
+            }
+            launchAIPrompt(model, prompt, {
+                geminiAppUrl: 'https://gemini.google.com/',
+                showClipboardAlert: false
+            });
+        }
+
+        // ------------------------------------------------------------------
+        // APP CONTROLLER
+        // ------------------------------------------------------------------
+        const APP = {
+            visuals: [],
+            observer: null,
+
+            init() {
+                this.setupObserver();
+                this.initVisuals();
+                this.initSliders();
+
+                window.addEventListener('theme-changed', (e) => {
+                    this.visuals.forEach(v => v.updateColors());
+                });
+            },
+
+            setupObserver() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const visual = this.visuals.find(v => v.canvas === entry.target);
+                        if (visual) visual.isVisible = entry.isIntersecting;
+                    });
+                }, { threshold: 0.1 });
+            },
+
+            initVisuals() {
+                this.addVisual(new SpacetimeVisual('canvas-spacetime'));
+                this.addVisual(new MergersVisual('canvas-mergers'));
+                this.addVisual(new DetectionVisual('canvas-detection'));
+            },
+
+            addVisual(visual) {
+                this.visuals.push(visual);
+                this.observer.observe(visual.canvas);
+            },
+
+            initSliders() {
+                // Spacetime Ripples sliders
+                document.getElementById('ripple-freq').addEventListener('input', (e) => {
+                    const value = parseFloat(e.target.value);
+                    document.getElementById('ripple-freq-value').textContent = value.toFixed(1) + ' Hz';
+                    const spacetime = this.visuals.find(v => v.canvas.id === 'canvas-spacetime');
+                    if (spacetime) spacetime.setFrequency(value);
+                });
+
+                document.getElementById('ripple-amp').addEventListener('input', (e) => {
+                    const value = parseFloat(e.target.value);
+                    document.getElementById('ripple-amp-value').textContent = value.toFixed(1);
+                    const spacetime = this.visuals.find(v => v.canvas.id === 'canvas-spacetime');
+                    if (spacetime) spacetime.setAmplitude(value);
+                });
+
+                // Mergers sliders
+                document.getElementById('merger-mass').addEventListener('input', (e) => {
+                    const value = parseFloat(e.target.value);
+                    document.getElementById('merger-mass-value').textContent = value.toFixed(0) + ' M☉';
+                    const mergers = this.visuals.find(v => v.canvas.id === 'canvas-mergers');
+                    if (mergers) mergers.setMass(value);
+                });
+
+                document.getElementById('merger-sep').addEventListener('input', (e) => {
+                    const value = parseFloat(e.target.value);
+                    document.getElementById('merger-sep-value').textContent = value.toFixed(0) + ' km';
+                    const mergers = this.visuals.find(v => v.canvas.id === 'canvas-mergers');
+                    if (mergers) mergers.setSeparation(value);
+                });
+
+                // Detection sliders
+                document.getElementById('detection-freq').addEventListener('input', (e) => {
+                    const value = parseFloat(e.target.value);
+                    document.getElementById('detection-freq-value').textContent = value.toFixed(0) + ' Hz';
+                    const detection = this.visuals.find(v => v.canvas.id === 'canvas-detection');
+                    if (detection) detection.setFrequency(value);
+                });
+
+                document.getElementById('detection-amp').addEventListener('input', (e) => {
+                    const value = parseFloat(e.target.value);
+                    document.getElementById('detection-amp-value').textContent = value.toFixed(1);
+                    const detection = this.visuals.find(v => v.canvas.id === 'canvas-detection');
+                    if (detection) detection.setAmplitude(value);
+                });
+            }
+        };
+
+        window.onload = () => APP.init();
+
+        // ------------------------------------------------------------------
+        // BASE VISUAL CLASS
+        // ------------------------------------------------------------------
+        class BaseVisual {
+            constructor(id) {
+                this.canvas = document.getElementById(id);
+                this.ctx = this.canvas.getContext('2d');
+                this.isVisible = false;
+                this.updateColors();
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.loop();
+            }
+
+            updateColors() {
+                this.color = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
+                this.bg = getComputedStyle(document.body).getPropertyValue('--bg-color').trim();
+                this.accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+                this.secondary = getComputedStyle(document.body).getPropertyValue('--accent-secondary').trim();
+            }
+
+            resize() {
+                const rect = this.canvas.parentElement.getBoundingClientRect();
+                this.canvas.width = rect.width * 2;
+                this.canvas.height = rect.height * 2;
+                this.scale = 2;
+                this.cx = this.canvas.width / 2;
+                this.cy = this.canvas.height / 2;
+            }
+
+            loop() {
+                if (this.isVisible) this.draw();
+                requestAnimationFrame(() => this.loop());
+            }
+
+            draw() { }
+        }
+
+        // ------------------------------------------------------------------
+        // SPACETIME RIPPLES VISUALIZATION
+        // ------------------------------------------------------------------
+        class SpacetimeVisual extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.time = 0;
+                this.frequency = 1.0;
+                this.amplitude = 1.0;
+            }
+
+            setFrequency(value) {
+                this.frequency = value;
+            }
+
+            setAmplitude(value) {
+                this.amplitude = value;
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.time += 0.05 * this.frequency;
+
+                this.ctx.strokeStyle = this.accent;
+                this.ctx.lineWidth = 1;
+
+                const spacing = 30;
+                const centerX = this.canvas.width / 2;
+                const centerY = this.canvas.height / 2;
+
+                this.ctx.beginPath();
+
+                const drawDistortedLine = (x0, y0, x1, y1) => {
+                    const steps = Math.floor(Math.max(this.canvas.width, this.canvas.height) / 10);
+                    for (let i = 0; i <= steps; i++) {
+                        const px = x0 + (x1 - x0) * (i / steps) - centerX;
+                        const py = y0 + (y1 - y0) * (i / steps) - centerY;
+                        const r = Math.sqrt(px * px + py * py) + 0.1;
+
+                        const k = 0.05;
+                        const phase = k * r - this.time;
+                        const envelope = Math.min(1, 100 / r) * (r > 10 ? 1 : r / 10);
+                        const h = this.amplitude * 0.4 * envelope * Math.sin(phase);
+
+                        const dx = px * (1 + h);
+                        const dy = py * (1 - h);
+
+                        const finalX = centerX + dx;
+                        const finalY = centerY + dy;
+
+                        if (i === 0) {
+                            this.ctx.moveTo(finalX, finalY);
+                        } else {
+                            this.ctx.lineTo(finalX, finalY);
+                        }
+                    }
+                };
+
+                for (let y = (centerY % spacing) - spacing; y <= this.canvas.height + spacing; y += spacing) {
+                    drawDistortedLine(0, y, this.canvas.width, y);
+                }
+                for (let x = (centerX % spacing) - spacing; x <= this.canvas.width + spacing; x += spacing) {
+                    drawDistortedLine(x, 0, x, this.canvas.height);
+                }
+
+                this.ctx.stroke();
+
+                const pulse = Math.sin(this.time * 2) * 5 * this.amplitude;
+                this.ctx.fillStyle = this.accent;
+                this.ctx.beginPath();
+                this.ctx.arc(centerX, centerY, 12 + pulse, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                this.ctx.font = `bold ${16 * this.scale}px Inter`;
+                this.ctx.fillStyle = this.color;
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText('Quadrupole plus-polarization (h+)', centerX, this.canvas.height - 20 * this.scale);
+            }
+        }
+
+        // ------------------------------------------------------------------
+        // BINARY MERGERS VISUALIZATION
+        // ------------------------------------------------------------------
+        class MergersVisual extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.angle = 0;
+                this.separation = 120;
+                this.mass = 30;
+                this.merged = false;
+            }
+
+            setMass(value) {
+                this.mass = value;
+            }
+
+            setSeparation(value) {
+                this.separation = value;
+                this.r = value;
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                if (typeof this.phase === 'undefined') {
+                    this.phase = 0;
+                    this.r = this.separation;
+                    this.flashTime = 0;
+                }
+
+                const M = this.mass / 30;
+                const w = Math.sqrt(1500 * M / Math.pow(this.r, 3));
+                const dr = 0.03 * M * Math.pow(w, 2);
+
+                this.phase += w;
+                this.r -= dr;
+
+                if (this.r < 15) {
+                    this.r = parseFloat(document.getElementById('merger-sep').value);
+                    this.phase = 0;
+                    this.flashTime = 20;
+                }
+
+                this.ctx.strokeStyle = this.secondary;
+                this.ctx.lineWidth = 2;
+                const waveSpirals = 2;
+                for (let arm = 0; arm < waveSpirals; arm++) {
+                    this.ctx.beginPath();
+                    for (let d = 20; d < Math.max(this.canvas.width, this.canvas.height); d += 5) {
+                        const r_wave = d;
+                        const k = 0.05 * Math.pow(this.separation / this.r, 0.5);
+                        const theta = this.phase - k * r_wave + (arm * Math.PI);
+
+                        const alpha = Math.max(0, 1 - (r_wave / 300));
+                        this.ctx.globalAlpha = alpha * 0.5 * (M);
+
+                        const px = this.cx + Math.cos(theta) * r_wave;
+                        const py = this.cy + Math.sin(theta) * r_wave;
+
+                        if (d === 20) this.ctx.moveTo(px, py);
+                        else this.ctx.lineTo(px, py);
+                    }
+                    this.ctx.stroke();
+                }
+
+                this.ctx.globalAlpha = 1;
+
+                if (this.flashTime > 0) {
+                    this.ctx.fillStyle = '#ffffff';
+                    this.ctx.globalAlpha = this.flashTime / 20;
+                    this.ctx.beginPath();
+                    this.ctx.arc(this.cx, this.cy, 50 + (20 - this.flashTime) * 3, 0, Math.PI * 2);
+                    this.ctx.fill();
+                    this.flashTime--;
+                    this.ctx.globalAlpha = 1;
+                }
+
+                // Black holes
+                const bhRadius = 15 + (this.mass - 30) * 0.3;
+
+                const r_orb = this.r / 2;
+                const x1 = this.cx + Math.cos(this.phase) * r_orb;
+                const y1 = this.cy + Math.sin(this.phase) * r_orb;
+                const x2 = this.cx - Math.cos(this.phase) * r_orb;
+                const y2 = this.cy - Math.sin(this.phase) * r_orb;
+
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 1;
+                this.ctx.globalAlpha = 0.2;
+                this.ctx.beginPath();
+                this.ctx.arc(this.cx, this.cy, r_orb, 0, Math.PI * 2);
+                this.ctx.stroke();
+                this.ctx.globalAlpha = 1;
+
+                this.ctx.fillStyle = this.accent;
+                this.ctx.beginPath();
+                this.ctx.arc(x1, y1, bhRadius, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                this.ctx.fillStyle = this.secondary;
+                this.ctx.beginPath();
+                this.ctx.arc(x2, y2, bhRadius, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                this.ctx.font = `bold ${14 * this.scale}px Inter`;
+                this.ctx.fillStyle = this.color;
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText(`Orbiting frequency: ${(w).toFixed(2)} rad/s`, this.cx, this.canvas.height - 20 * this.scale);
+            }
+        }
+
+        // ------------------------------------------------------------------
+        // DETECTION VISUALIZATION
+        // ------------------------------------------------------------------
+        class DetectionVisual extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.time = 0;
+                this.waveData = [];
+                this.frequency = 100;
+                this.amplitude = 1.0;
+            }
+
+            setFrequency(value) {
+                this.frequency = value;
+            }
+
+            setAmplitude(value) {
+                this.amplitude = value;
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.time += 0.05;
+
+                const t_remain = Math.max(0.1, 10 - (this.time % 10));
+                const baseFreq = (this.frequency / 100) * Math.pow(10 / t_remain, 3 / 8) * 0.5;
+                const strainAmp = this.amplitude * Math.pow(10 / t_remain, 1 / 4) * 0.5;
+
+                const signal = Math.sin(this.time * baseFreq * 10) * strainAmp;
+
+                this.waveData.push(signal);
+                if (this.waveData.length > 250) {
+                    this.waveData.shift();
+                }
+
+                const nominalArmLength = Math.min(this.canvas.width, this.canvas.height) * 0.35;
+                const armWidth = 15;
+                const L1 = nominalArmLength * (1 + signal * 0.1);
+                const L2 = nominalArmLength * (1 - signal * 0.1);
+
+                this.ctx.fillStyle = this.color;
+                this.ctx.globalAlpha = 0.2;
+
+                this.ctx.fillRect(this.cx - L1, this.cy - armWidth / 2, L1, armWidth);
+                this.ctx.fillRect(this.cx - armWidth / 2, this.cy, armWidth, L2);
+
+                this.ctx.strokeStyle = '#ff3333';
+                this.ctx.lineWidth = 2;
+                this.ctx.globalAlpha = 0.8;
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.cx, this.cy);
+                this.ctx.lineTo(this.cx - L1, this.cy);
+                this.ctx.stroke();
+
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.cx, this.cy);
+                this.ctx.lineTo(this.cx, this.cy + L2);
+                this.ctx.stroke();
+
+                const intensity = Math.abs(signal) / (this.amplitude * 2);
+                this.ctx.fillStyle = `rgba(255, 50, 50, ${0.2 + intensity})`;
+                this.ctx.beginPath();
+                this.ctx.arc(this.cx, this.cy, 18, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 2;
+                this.ctx.beginPath();
+                this.ctx.arc(this.cx, this.cy, 18, 0, Math.PI * 2);
+                this.ctx.stroke();
+
+                const graphX = 40;
+                const graphY = this.canvas.height - 120;
+                const graphWidth = this.canvas.width - 80;
+                const graphHeight = 80;
+
+                this.ctx.globalAlpha = 0.1;
+                this.ctx.fillStyle = this.color;
+                this.ctx.fillRect(graphX, graphY, graphWidth, graphHeight);
+                this.ctx.globalAlpha = 1;
+
+                this.ctx.strokeStyle = this.accent;
+                this.ctx.lineWidth = 2;
+                this.ctx.beginPath();
+
+                for (let i = 0; i < this.waveData.length; i++) {
+                    const x = graphX + (i / this.waveData.length) * graphWidth;
+                    const y = graphY + graphHeight / 2 - (this.waveData[i] * 15);
+
+                    if (Math.abs(y - (graphY + graphHeight / 2)) > graphHeight / 2) continue;
+
+                    if (i === 0) {
+                        this.ctx.moveTo(x, y);
+                    } else {
+                        this.ctx.lineTo(x, y);
+                    }
+                }
+                this.ctx.stroke();
+
+                this.ctx.font = `${12 * this.scale}px JetBrains Mono`;
+                this.ctx.fillStyle = this.color;
+                this.ctx.textAlign = 'left';
+                this.ctx.fillText('Strain h(t)', graphX + 10, graphY + 20 * this.scale);
+
+                this.ctx.font = `bold ${14 * this.scale}px Inter`;
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText('Differential Arm Length Change: ∆L = h • L', this.cx, graphY - 15 * this.scale);
+            }
+        }
+    </script>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+</body>
+
+</html>

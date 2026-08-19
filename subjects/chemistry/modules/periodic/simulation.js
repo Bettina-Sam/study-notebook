@@ -1,0 +1,1 @@
+window.MODULE_CONFIG={s:'Chemistry',u:'Unit 02 — Atomic World',t:'Periodic Trends',q:'Why do properties change across the periodic table?',intro:'Move across a simplified period and group to visualize atomic radius and electronegativity trends.',a:['Across period',1,8,4,''],b:['Down group',1,5,2,''],mode:'periodic',pred:['Radius shrinks across','Radius grows across','No trend']};

@@ -15,7 +15,7 @@
 <body>
   <header class="topbar">
     <a class="brand" href="index.html" aria-label="Study Notebook home">
-      <span class="brand-mark">∴</span>
+      <img class="brand-logo-img" src="assets/icons/logo-mark.svg" alt="">
       <span><strong>Study Notebook</strong><small>Explore • Calculate • Understand</small></span>
     </a>
     <nav class="top-actions" aria-label="Primary navigation">
@@ -148,10 +148,7 @@
     </section>
   </main>
 
-  <footer>
-    <strong>Study Notebook</strong>
-    <span>Built for curious students — not for scrolling past formulas.</span>
-  </footer>
+  <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
 
   <dialog id="iosInstall">
     <button class="dialog-close" type="button" aria-label="Close">×</button>
@@ -162,99 +159,99 @@
 <script>
 const physicsUnits = [
  {n:1,title:"Motion & Forces",why:"First understand why objects move, then use those laws to predict motion and energy.", concepts:[
-  ["newtons-laws-of-motion","Newton's Laws","forces","Force changes motion.","Concepts/newtons-laws-of-motion.html"],
-  ["projectile-motion","Projectile Motion","projectile","Split motion into horizontal + vertical.","Concepts/projectile-motion.html"],
-  ["work-energy-principle","Work & Energy","energy","See force through energy transfer.","Concepts/work-energy-principle.html"],
-  ["conservation-of-energy","Conservation of Energy","conservation","Track energy as it changes form.","Concepts/conservation-of-energy.html"],
-  ["conservation-of-momentum","Momentum","collision","Predict what survives a collision.","Concepts/conservation-of-momentum.html"]
+  ["newtons-laws-of-motion","Newton's Laws","forces","Force changes motion.","subjects/physics/modules/newtons-laws-of-motion/"],
+  ["projectile-motion","Projectile Motion","projectile","Split motion into horizontal + vertical.","subjects/physics/modules/projectile-motion/"],
+  ["work-energy-principle","Work & Energy","energy","See force through energy transfer.","subjects/physics/modules/work-energy-principle/"],
+  ["conservation-of-energy","Conservation of Energy","conservation","Track energy as it changes form.","subjects/physics/modules/conservation-of-energy/"],
+  ["conservation-of-momentum","Momentum","collision","Predict what survives a collision.","subjects/physics/modules/conservation-of-momentum/"]
  ]},
  {n:2,title:"Rotation & Oscillation",why:"Move from straight-line motion to repeating and rotational systems.", concepts:[
-  ["rotational-dynamics","Rotational Dynamics","rotation","Torque makes objects rotate.","Concepts/rotational-dynamics.html"],
-  ["simple-oscillations","Harmonic Motion","spring","Restoring forces create rhythm.","Concepts/simple-oscillations.html"],
-  ["simple-pendulum","Simple Pendulum","pendulum","Gravity creates periodic motion.","Concepts/simple-pendulum.html"]
+  ["rotational-dynamics","Rotational Dynamics","rotation","Torque makes objects rotate.","subjects/physics/modules/rotational-dynamics/"],
+  ["simple-oscillations","Harmonic Motion","spring","Restoring forces create rhythm.","subjects/physics/modules/simple-oscillations/"],
+  ["simple-pendulum","Simple Pendulum","pendulum","Gravity creates periodic motion.","subjects/physics/modules/simple-pendulum/"]
  ]},
  {n:3,title:"Waves & Optics",why:"Once oscillation makes sense, waves become motion that travels.", concepts:[
-  ["wave-equation","Wave Equation","wave","Connect speed, frequency and wavelength.","Concepts/wave-equation.html"],
-  ["wave-interference","Interference","interference","Two waves can strengthen or cancel.","Concepts/wave-interference.html"],
-  ["double-slit-experiment","Double Slit","slit","See interference become a pattern.","Concepts/double-slit-experiment.html"],
-  ["diffraction","Diffraction","diffraction","Watch waves bend through an opening.","Concepts/diffraction.html"],
-  ["polarization-of-waves","Polarization","polarization","Control the direction of oscillation.","Concepts/polarization-of-waves.html"]
+  ["wave-equation","Wave Equation","wave","Connect speed, frequency and wavelength.","subjects/physics/modules/wave-equation/"],
+  ["wave-interference","Interference","interference","Two waves can strengthen or cancel.","subjects/physics/modules/wave-interference/"],
+  ["double-slit-experiment","Double Slit","slit","See interference become a pattern.","subjects/physics/modules/double-slit-experiment/"],
+  ["diffraction","Diffraction","diffraction","Watch waves bend through an opening.","subjects/physics/modules/diffraction/"],
+  ["polarization-of-waves","Polarization","polarization","Control the direction of oscillation.","subjects/physics/modules/polarization-of-waves/"]
  ]},
  {n:4,title:"Fields & Electromagnetism",why:"Move from contact forces to invisible interactions across space.", concepts:[
-  ["electric-fields","Electric Fields","electric","Charges shape the space around them.","Concepts/electric-fields.html"],
-  ["magnetic-fields","Magnetic Fields","magnetic","Moving charge meets a sideways force.","Concepts/magnetic-fields.html"]
+  ["electric-fields","Electric Fields","electric","Charges shape the space around them.","subjects/physics/modules/electric-fields/"],
+  ["magnetic-fields","Magnetic Fields","magnetic","Moving charge meets a sideways force.","subjects/physics/modules/magnetic-fields/"]
  ]},
  {n:5,title:"Gravity & Space",why:"Scale force and motion up to planets, orbits and spacetime.", concepts:[
-  ["orbital-mechanics","Orbital Mechanics","orbit","Gravity continuously bends motion.","Concepts/orbital-mechanics.html"],
-  ["gravitational-waves","Gravitational Waves","gravitywave","Mass can ripple spacetime.","Concepts/gravitational-waves.html"]
+  ["orbital-mechanics","Orbital Mechanics","orbit","Gravity continuously bends motion.","subjects/physics/modules/orbital-mechanics/"],
+  ["gravitational-waves","Gravitational Waves","gravitywave","Mass can ripple spacetime.","subjects/physics/modules/gravitational-waves/"]
  ]},
  {n:6,title:"Advanced Mechanics",why:"Revisit motion using deeper mathematical ideas and limits of predictability.", concepts:[
-  ["lagrangian-hamiltonian-mechanics","Lagrangian Mechanics","lagrangian","Describe motion through energy.","Concepts/lagrangian-hamiltonian-mechanics.html"],
-  ["principle-of-least-action","Least Action","least","Compare many possible paths.","Concepts/principle-of-least-action.html"],
-  ["noethers-theorem","Noether's Theorem","noether","Symmetry reveals conservation.","Concepts/noethers-theorem.html"],
-  ["chaos-and-nonlinear-dynamics","Chaos","chaos","Tiny differences grow dramatically.","Concepts/chaos-and-nonlinear-dynamics.html"]
+  ["lagrangian-hamiltonian-mechanics","Lagrangian Mechanics","lagrangian","Describe motion through energy.","subjects/physics/modules/lagrangian-hamiltonian-mechanics/"],
+  ["principle-of-least-action","Least Action","least","Compare many possible paths.","subjects/physics/modules/principle-of-least-action/"],
+  ["noethers-theorem","Noether's Theorem","noether","Symmetry reveals conservation.","subjects/physics/modules/noethers-theorem/"],
+  ["chaos-and-nonlinear-dynamics","Chaos","chaos","Tiny differences grow dramatically.","subjects/physics/modules/chaos-and-nonlinear-dynamics/"]
  ]},
  {n:7,title:"Modern Physics",why:"Challenge everyday intuition about space, time and measurement.", concepts:[
-  ["special-relativity","Special Relativity","relativity","Follow light to rethink space and time.","Concepts/special-relativity.html"]
+  ["special-relativity","Special Relativity","relativity","Follow light to rethink space and time.","subjects/physics/modules/special-relativity/"]
  ]}
 ];
 
 const chemistryUnits = [
  {n:1,title:"Matter & Measurement",why:"Start by learning how chemists count, measure and describe matter.",concepts:[
-  ["matter","Matter & Measurement","matter","Classify what you can observe and measure.","Chemistry/module.html?id=matter"],
-  ["mole","Mole Concept","mole","Turn mass into particles you can count.","Chemistry/mole-concept.html"],
-  ["stoichiometry","Stoichiometry","stoich","Connect reactants to products quantitatively.","Chemistry/module.html?id=stoichiometry"]]},
+  ["matter","Matter & Measurement","matter","Classify what you can observe and measure.","subjects/chemistry/modules/matter/"],
+  ["mole","Mole Concept","mole","Turn mass into particles you can count.","subjects/chemistry/modules/mole/"],
+  ["stoichiometry","Stoichiometry","stoich","Connect reactants to products quantitatively.","subjects/chemistry/modules/stoichiometry/"]]},
  {n:2,title:"Atomic World",why:"Look beneath matter to the particles and patterns that shape chemical behavior.",concepts:[
-  ["atomic","Atomic Structure","atom","Build atoms from protons, neutrons and electrons.","Chemistry/module.html?id=atomic"],
-  ["configuration","Electronic Configuration","electron","Watch electrons fill energy levels.","Chemistry/module.html?id=configuration"],
-  ["periodic","Periodic Trends","periodic","Move across the table and see properties change.","Chemistry/module.html?id=periodic"]]},
+  ["atomic","Atomic Structure","atom","Build atoms from protons, neutrons and electrons.","subjects/chemistry/modules/atomic/"],
+  ["configuration","Electronic Configuration","electron","Watch electrons fill energy levels.","subjects/chemistry/modules/configuration/"],
+  ["periodic","Periodic Trends","periodic","Move across the table and see properties change.","subjects/chemistry/modules/periodic/"]]},
  {n:3,title:"Chemical Bonding",why:"See why atoms join and how their electrons decide the type of bond.",concepts:[
-  ["ionic","Ionic Bonding","ionic","Transfer an electron and create attraction.","Chemistry/chemical-bonding.html"],
-  ["covalent","Covalent Bonding","covalent","Share electrons to build molecules.","Chemistry/module.html?id=covalent"],
-  ["geometry","Molecular Geometry","geometry","Change electron pairs and watch shape respond.","Chemistry/module.html?id=geometry"]]},
+  ["ionic","Ionic Bonding","ionic","Transfer an electron and create attraction.","subjects/chemistry/modules/ionic/"],
+  ["covalent","Covalent Bonding","covalent","Share electrons to build molecules.","subjects/chemistry/modules/covalent/"],
+  ["geometry","Molecular Geometry","geometry","Change electron pairs and watch shape respond.","subjects/chemistry/modules/geometry/"]]},
  {n:4,title:"States, Energy & Gases",why:"Connect particle motion to pressure, temperature and energy.",concepts:[
-  ["states","States of Matter","states","Heat particles and watch order become motion.","Chemistry/module.html?id=states"],
-  ["gaslaws","Gas Laws","gas","Compress a gas and watch pressure respond.","Chemistry/module.html?id=gaslaws"],
-  ["thermo","Thermochemistry","thermo","Track energy entering and leaving reactions.","Chemistry/module.html?id=thermo"]]},
+  ["states","States of Matter","states","Heat particles and watch order become motion.","subjects/chemistry/modules/states/"],
+  ["gaslaws","Gas Laws","gas","Compress a gas and watch pressure respond.","subjects/chemistry/modules/gaslaws/"],
+  ["thermo","Thermochemistry","thermo","Track energy entering and leaving reactions.","subjects/chemistry/modules/thermo/"]]},
  {n:5,title:"Reactions & Equilibrium",why:"Move from what reacts to how fast it reacts and where the balance settles.",concepts:[
-  ["reaction","Chemical Reactions","reaction","Rearrange particles into new substances.","Chemistry/module.html?id=reaction"],
-  ["rates","Reaction Rates","rates","Change collisions and change reaction speed.","Chemistry/module.html?id=rates"],
-  ["equilibrium","Equilibrium","equilibrium","Watch forward and reverse reactions balance.","Chemistry/module.html?id=equilibrium"],
-  ["acidbase","Acids & Bases","acidbase","Move protons and watch pH change.","Chemistry/module.html?id=acidbase"]]},
+  ["reaction","Chemical Reactions","reaction","Rearrange particles into new substances.","subjects/chemistry/modules/reaction/"],
+  ["rates","Reaction Rates","rates","Change collisions and change reaction speed.","subjects/chemistry/modules/rates/"],
+  ["equilibrium","Equilibrium","equilibrium","Watch forward and reverse reactions balance.","subjects/chemistry/modules/equilibrium/"],
+  ["acidbase","Acids & Bases","acidbase","Move protons and watch pH change.","subjects/chemistry/modules/acidbase/"]]},
  {n:6,title:"Electrochemistry & Organic",why:"Use electron transfer to make electricity, then explore carbon's molecular language.",concepts:[
-  ["electrochem","Electrochemistry","battery","Turn a redox reaction into electrical flow.","Chemistry/module.html?id=electrochem"],
-  ["organic","Organic Chemistry","organic","Build and transform carbon frameworks.","Chemistry/module.html?id=organic"]]}
+  ["electrochem","Electrochemistry","battery","Turn a redox reaction into electrical flow.","subjects/chemistry/modules/electrochem/"],
+  ["organic","Organic Chemistry","organic","Build and transform carbon frameworks.","subjects/chemistry/modules/organic/"]]}
 ];
 
 const biologyUnits = [
  {n:1,title:"Foundations of Life",why:"Begin with the structures and molecules shared by living systems.",concepts:[
-  ["life","Characteristics of Life","life","Recognize the patterns that define living systems.","Biology/module.html?id=life"],
-  ["biomolecules","Biomolecules","biomolecule","Build life's major molecular tools.","Biology/module.html?id=biomolecules"],
-  ["cell","Cell Structure","cell","Enter a cell and connect organelles to jobs.","Biology/module.html?id=cell"]]},
+  ["life","Characteristics of Life","life","Recognize the patterns that define living systems.","subjects/biology/modules/life/"],
+  ["biomolecules","Biomolecules","biomolecule","Build life's major molecular tools.","subjects/biology/modules/biomolecules/"],
+  ["cell","Cell Structure","cell","Enter a cell and connect organelles to jobs.","subjects/biology/modules/cell/"]]},
  {n:2,title:"Cell Processes",why:"See how cells exchange matter and convert energy to stay alive.",concepts:[
-  ["membrane","Cell Membrane","membrane","Control what crosses the cell boundary.","Biology/module.html?id=membrane"],
-  ["diffusion","Diffusion","diffusion","Watch particles spread down a gradient.","Biology/module.html?id=diffusion"],
-  ["osmosis","Osmosis","osmosis","Move water across a selective membrane.","Biology/osmosis.html"],
-  ["respiration","Cellular Respiration","respiration","Follow glucose energy into ATP.","Biology/module.html?id=respiration"]]},
+  ["membrane","Cell Membrane","membrane","Control what crosses the cell boundary.","subjects/biology/modules/membrane/"],
+  ["diffusion","Diffusion","diffusion","Watch particles spread down a gradient.","subjects/biology/modules/diffusion/"],
+  ["osmosis","Osmosis","osmosis","Move water across a selective membrane.","subjects/biology/modules/osmosis/"],
+  ["respiration","Cellular Respiration","respiration","Follow glucose energy into ATP.","subjects/biology/modules/respiration/"]]},
  {n:3,title:"Cell Reproduction",why:"Watch one cell copy information and become two.",concepts:[
-  ["cycle","Cell Cycle","cycle","Move through growth, copying and division.","Biology/module.html?id=cycle"],
-  ["mitosis","Mitosis","mitosis","Separate duplicated chromosomes into two cells.","Biology/module.html?id=mitosis"],
-  ["meiosis","Meiosis","meiosis","Make genetically varied reproductive cells.","Biology/module.html?id=meiosis"]]},
+  ["cycle","Cell Cycle","cycle","Move through growth, copying and division.","subjects/biology/modules/cycle/"],
+  ["mitosis","Mitosis","mitosis","Separate duplicated chromosomes into two cells.","subjects/biology/modules/mitosis/"],
+  ["meiosis","Meiosis","meiosis","Make genetically varied reproductive cells.","subjects/biology/modules/meiosis/"]]},
  {n:4,title:"Genetics",why:"Connect DNA to inheritance, variation and protein production.",concepts:[
-  ["mendel","Mendelian Genetics","punnett","Predict offspring from parental alleles.","Biology/module.html?id=mendel"],
-  ["dna","DNA Structure","dna","Unzip the molecule that stores information.","Biology/module.html?id=dna"],
-  ["replication","DNA Replication","replication","Copy complementary strands step by step.","Biology/module.html?id=replication"],
-  ["protein","Protein Synthesis","protein","Translate genetic information into protein.","Biology/module.html?id=protein"]]},
+  ["mendel","Mendelian Genetics","punnett","Predict offspring from parental alleles.","subjects/biology/modules/mendel/"],
+  ["dna","DNA Structure","dna","Unzip the molecule that stores information.","subjects/biology/modules/dna/"],
+  ["replication","DNA Replication","replication","Copy complementary strands step by step.","subjects/biology/modules/replication/"],
+  ["protein","Protein Synthesis","protein","Translate genetic information into protein.","subjects/biology/modules/protein/"]]},
  {n:5,title:"Human Systems",why:"Trace how specialized organs cooperate to keep internal conditions stable.",concepts:[
-  ["circulation","Circulation","heart","Follow one blood cell through the heart.","Biology/module.html?id=circulation"],
-  ["respiratory","Respiration System","lungs","Exchange gases across a thin membrane.","Biology/module.html?id=respiratory"],
-  ["nervous","Nervous System","neuron","Trigger an impulse and follow the signal.","Biology/module.html?id=nervous"],
-  ["digestion","Digestion","digestion","Break food into absorbable molecules.","Biology/module.html?id=digestion"]]},
+  ["circulation","Circulation","heart","Follow one blood cell through the heart.","subjects/biology/modules/circulation/"],
+  ["respiratory","Respiration System","lungs","Exchange gases across a thin membrane.","subjects/biology/modules/respiratory/"],
+  ["nervous","Nervous System","neuron","Trigger an impulse and follow the signal.","subjects/biology/modules/nervous/"],
+  ["digestion","Digestion","digestion","Break food into absorbable molecules.","subjects/biology/modules/digestion/"]]},
  {n:6,title:"Plants, Evolution & Ecology",why:"Scale from organism processes to populations and ecosystems.",concepts:[
-  ["photosynthesis","Photosynthesis","photosynthesis","Change light or CO₂ and find the limiting factor.","Biology/module.html?id=photosynthesis"],
-  ["planttransport","Plant Transport","xylem","Move water from root to leaf.","Biology/module.html?id=planttransport"],
-  ["evolution","Evolution","evolution","Watch selection change a population over generations.","Biology/module.html?id=evolution"],
-  ["ecology","Ecology","foodweb","Change one population and see the web respond.","Biology/module.html?id=ecology"]]}
+  ["photosynthesis","Photosynthesis","photosynthesis","Change light or CO₂ and find the limiting factor.","subjects/biology/modules/photosynthesis/"],
+  ["planttransport","Plant Transport","xylem","Move water from root to leaf.","subjects/biology/modules/planttransport/"],
+  ["evolution","Evolution","evolution","Watch selection change a population over generations.","subjects/biology/modules/evolution/"],
+  ["ecology","Ecology","foodweb","Change one population and see the web respond.","subjects/biology/modules/ecology/"]]}
 ];
 
 function visual(type){

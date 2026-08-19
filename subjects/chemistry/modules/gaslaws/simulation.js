@@ -1,0 +1,1 @@
+window.MODULE_CONFIG={s:'Chemistry',u:'Unit 04 — States, Energy & Gases',t:'Gas Laws',q:'What happens to pressure when you squeeze a gas?',intro:'Move the virtual piston and change temperature while particle collisions update in real time.',a:['Volume',25,100,70,'%'],b:['Temperature',200,600,300,' K'],mode:'gas',pred:['Pressure rises','Pressure falls','Pressure stays same']};

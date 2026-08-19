@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Slit Experiment • Study Notebook</title>
+  <link rel="icon" href="../../../../assets/icons/favicon.svg">
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../../css/common.css">
+    <link rel="stylesheet" href="../../../../css/article.css">
+    <style>
+        /* AI Links */
+        .ai-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .ai-label {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-right: 0.2rem;
+            font-weight: 500;
+        }
+
+        .ai-btn {
+            background: var(--bg-color);
+            border: 1px solid var(--line-subtle);
+            color: var(--text-muted);
+            min-width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0 8px;
+        }
+
+        .ai-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--line-subtle);
+            transition: 0.3s;
+            border-radius: 26px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        .toggle-switch input:checked+.toggle-slider {
+            background-color: var(--accent);
+        }
+
+        .toggle-switch input:checked+.toggle-slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Theme Init -->
+    <script>
+        const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.body && document.body.setAttribute('data-theme', savedTheme);
+    </script>
+
+    <!-- Libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <nav class="sticky">
+        <div class="nav-bg"></div>
+        <a href="../../../../index.html" class="logo">
+            <i data-lucide="arrow-left" width="16"></i>
+            Physics Journey
+        </a>
+        <button id="themeBtn">
+            <i data-lucide="moon" width="16"></i> Theme
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="text-reveal-wrapper">
+            <h1 class="hero-title">The Double Slit<br>Experiment</h1>
+            <p style="margin-top: 2rem; font-size: 1.4rem; max-width: 40ch;">
+                The experiment that revealed the wave-particle duality at the heart of quantum mechanics.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 1: Classical Wave Behavior -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent);">01. Classical Waves</h3>
+                <h2>Interference Patterns</h2>
+                <p>
+                    When waves pass through two slits, they create an <strong>interference pattern</strong>.
+                    Regions where crests meet crests produce bright fringes (constructive interference),
+                    while crests meeting troughs create dark fringes (destructive interference).
+                </p>
+                <div class="math-block">
+                    $$d \sin\theta = m\lambda \quad \text{(constructive, } m = 0, \pm1, \pm2, \ldots\text{)}$$
+                </div>
+                <p>
+                    Here, $d$ is the slit separation, $\theta$ is the angle to the fringe,
+                    $\lambda$ is the wavelength, and $m$ is the order number.
+                </p>
+
+                <div class="etu-card">
+                    <span class="etu-tag">Real World Analogy</span>
+                    <h4 style="margin-bottom:0.5rem;">Ripples on a Pond</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        Drop two pebbles in a calm pond. The circular ripples overlap, creating regions
+                        where the water is calm (destructive) and regions where waves are amplified (constructive).
+                    </p>
+                </div>
+
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('classical', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('classical', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('classical', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('classical', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('classical', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+                <div class="sim-controls">
+                    <div class="slider-group">
+                        <label>Wavelength ($\lambda$) <span id="val-wavelength">1.0</span></label>
+                        <input type="range" id="input-wavelength" min="0.5" max="2.0" step="0.1" value="1.0">
+                    </div>
+                    <div class="slider-group">
+                        <label>Slit Separation ($d$) <span id="val-slit-sep">1.0</span></label>
+                        <input type="range" id="input-slit-sep" min="0.5" max="2.0" step="0.1" value="1.0">
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-classical"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: Quantum Behavior -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--accent-secondary);">02. The Quantum Twist</h3>
+                <h2>Photons & Electrons</h2>
+                <p>
+                    When we send <strong>individual photons or electrons</strong> through the double slit one at a time,
+                    each particle creates a single dot on the detector. But over time, these dots accumulate into
+                    the same interference pattern—as if each particle "interferes with itself."
+                </p>
+                <p>
+                    This challenges our classical intuition: How can a single particle go through both slits
+                    simultaneously?
+                </p>
+                <div class="math-block">
+                    $$|\Psi\rangle = \frac{1}{\sqrt{2}}\left(|\text{slit}_1\rangle + |\text{slit}_2\rangle\right)$$
+                </div>
+
+                <div class="etu-card">
+                    <span class="etu-tag">Deep Concept</span>
+                    <h4 style="margin-bottom:0.5rem;">Superposition</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        Until measured, the particle exists in a superposition—simultaneously taking both paths.
+                        The act of measurement collapses this superposition to a definite state.
+                    </p>
+                </div>
+
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('quantum', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('quantum', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('quantum', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('quantum', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('quantum', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+                <div class="sim-controls">
+                    <div class="slider-group">
+                        <label>Emission Rate <span id="val-emission">6</span> frames</label>
+                        <input type="range" id="input-emission" min="3" max="30" step="1" value="6">
+                    </div>
+                    <div style="margin-top:0.5rem; text-align:right;">
+                        <button id="btn-clear-quantum"
+                            style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Clear
+                            Pattern</button>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-quantum"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: Observer Effect -->
+    <section>
+        <div class="split-layout">
+            <div class="content-col">
+                <h3 class="section-label" style="color: var(--text-muted);">03. Measurement</h3>
+                <h2>The Observer Effect</h2>
+                <p>
+                    If we try to determine <strong>which slit</strong> the particle goes through by placing a detector,
+                    the interference pattern disappears! The particle suddenly behaves like a classical particle,
+                    creating two separate bands instead of an interference pattern.
+                </p>
+                <p>
+                    This demonstrates that <strong>observation fundamentally alters</strong> the quantum system.
+                    Measurement collapses the wave function, forcing the particle to "choose" a definite path.
+                </p>
+
+                <div class="etu-card">
+                    <span class="etu-tag">Philosophical Implication</span>
+                    <h4 style="margin-bottom:0.5rem;">Reality and Observation</h4>
+                    <p style="font-size: 0.95rem; margin-bottom:0;">
+                        The experiment suggests that at the quantum level, reality is not independent of observation.
+                        The act of measurement plays an active role in determining the outcome.
+                    </p>
+                </div>
+
+                <div class="ai-links">
+                    <span class="ai-label">Ask AI:</span>
+                    <button onclick="openAI('observer', 'claude')" class="ai-btn" title="Ask Claude"></button>
+                    <button onclick="openAI('observer', 'gemini')" class="ai-btn" title="Ask Gemini"></button>
+                    <button onclick="openAI('observer', 'chatgpt')" class="ai-btn" title="Ask ChatGPT"></button>
+                    <button onclick="openAI('observer', 'grok')" class="ai-btn" title="Ask Grok"></button>
+                    <button onclick="openAI('observer', 'perplexity')" class="ai-btn" title="Ask Perplexity"></button>
+                </div>
+                <div class="sim-controls">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <label style="font-weight: 500;">Observe Which Slit?</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggle-observe">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span id="observe-status" style="color: var(--accent); font-weight: 500;">OFF</span>
+                    </div>
+                    <div style="margin-top:0.5rem; text-align:right;">
+                        <button id="btn-clear-observer"
+                            style="padding:8px 16px; background:var(--text-main); color:var(--bg-color); border:none; border-radius:4px; cursor:pointer;">Clear
+                            Pattern</button>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-col">
+                <canvas id="canvas-observer"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="references">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3>Academic References</h3>
+            <ul>
+                <li><strong>Feynman, R. P.</strong> <em>The Feynman Lectures on Physics</em>, Vol. III, Chapter 1.</li>
+                <li><strong>Griffiths, D. J.</strong> (2016). <em>Introduction to Quantum Mechanics</em>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="../../../../js/common.js"></script>
+    <script>
+        function openAI(topic, model) {
+            let prompt = "";
+            switch (topic) {
+                case 'classical':
+                    prompt = "Explain how wave interference works in the double slit experiment when using classical waves like light or water.";
+                    break;
+                case 'quantum':
+                    prompt = "Explain how individual photons or electrons create an interference pattern in the double slit experiment and what this tells us about quantum superposition.";
+                    break;
+                case 'observer':
+                    prompt = "What is the observer effect in the double slit experiment? How does measurement change the outcome?";
+                    break;
+            }
+            launchAIPrompt(model, prompt);
+        }
+
+        const APP = {
+            visuals: [],
+            observer: null,
+
+            init() {
+                this.setupObserver();
+                this.initVisuals();
+
+                window.addEventListener('theme-changed', (e) => {
+                    this.visuals.forEach(v => v.updateColors());
+                });
+            },
+
+            setupObserver() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const visual = this.visuals.find(v => v.canvas === entry.target);
+                        if (visual) visual.isVisible = entry.isIntersecting;
+                    });
+                }, { threshold: 0.1 });
+            },
+
+            initVisuals() {
+                this.addVisual(new ClassicalVisual('canvas-classical'));
+                this.addVisual(new QuantumVisual('canvas-quantum'));
+                this.addVisual(new ObserverVisual('canvas-observer'));
+            },
+
+            addVisual(visual) {
+                this.visuals.push(visual);
+                this.observer.observe(visual.canvas);
+            }
+        };
+
+        class BaseVisual {
+            constructor(id) {
+                this.canvas = document.getElementById(id);
+                this.ctx = this.canvas.getContext('2d');
+                this.isVisible = false;
+                this.detectionBins = [];
+                this.recentDetections = [];
+                this.binHeight = 6;
+                this.updateColors();
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.loop();
+            }
+            updateColors() {
+                this.color = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
+                this.bg = getComputedStyle(document.body).getPropertyValue('--bg-color').trim();
+                this.accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+                this.secondary = getComputedStyle(document.body).getPropertyValue('--accent-secondary').trim();
+            }
+            resize() {
+                const rect = this.canvas.parentElement.getBoundingClientRect();
+                this.canvas.width = rect.width * 2;
+                this.canvas.height = rect.height * 2;
+                this.scale = 2;
+                this.cx = this.canvas.width / 2;
+                this.cy = this.canvas.height / 2;
+                this.binHeight = 3 * this.scale;
+                this.ensureDetectionBins();
+            }
+            loop() {
+                if (this.isVisible) this.draw();
+                requestAnimationFrame(() => this.loop());
+            }
+            getGeometry(overrides = {}) {
+                const w = this.canvas.width;
+                const h = this.canvas.height;
+                return {
+                    sourceX: w * 0.1,
+                    slitX: w * 0.45,
+                    screenX: w * 0.75,
+                    screenWidth: 16 * this.scale,
+                    histogramWidth: Math.min(60 * this.scale, w * 0.15),
+                    slitY: this.cy,
+                    slitGap: Math.min(80 * this.scale, h * 0.25),
+                    slitHalfHeight: Math.min(18 * this.scale, h * 0.05),
+                    detectorTop: 18 * this.scale,
+                    detectorBottom: h - 18 * this.scale,
+                    ...overrides
+                };
+            }
+            drawApparatus(geometry, options = {}) {
+                const {
+                    detectorAlpha = 0.08,
+                    showSource = true,
+                    showObserverSensors = false
+                } = options;
+                const {
+                    sourceX,
+                    slitX,
+                    screenX,
+                    screenWidth,
+                    slitY,
+                    slitGap,
+                    slitHalfHeight,
+                    detectorTop,
+                    detectorBottom
+                } = geometry;
+
+                if (showSource) {
+                    this.ctx.fillStyle = this.secondary;
+                    this.ctx.globalAlpha = 0.16;
+                    this.ctx.beginPath();
+                    this.ctx.arc(sourceX, slitY, 8 * this.scale, 0, Math.PI * 2);
+                    this.ctx.fill();
+                    this.ctx.globalAlpha = 1;
+                }
+
+                if (showObserverSensors) {
+                    this.ctx.fillStyle = this.secondary;
+                    this.ctx.globalAlpha = 0.18;
+                    [-1, 1].forEach((direction) => {
+                        const sensorY = slitY + direction * slitGap / 2 - 10 * this.scale;
+                        this.ctx.fillRect(slitX - 18 * this.scale, sensorY, 10 * this.scale, 20 * this.scale);
+                    });
+                    this.ctx.globalAlpha = 1;
+                }
+
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 3 * this.scale;
+                this.ctx.beginPath();
+                this.ctx.moveTo(slitX, 0);
+                this.ctx.lineTo(slitX, slitY - slitGap / 2 - slitHalfHeight);
+                this.ctx.moveTo(slitX, slitY - slitGap / 2 + slitHalfHeight);
+                this.ctx.lineTo(slitX, slitY + slitGap / 2 - slitHalfHeight);
+                this.ctx.moveTo(slitX, slitY + slitGap / 2 + slitHalfHeight);
+                this.ctx.lineTo(slitX, this.canvas.height);
+                this.ctx.stroke();
+
+                this.ctx.fillStyle = this.color;
+                this.ctx.globalAlpha = detectorAlpha;
+                this.ctx.fillRect(screenX, detectorTop, screenWidth, detectorBottom - detectorTop);
+                this.ctx.globalAlpha = 1;
+                this.ctx.strokeStyle = this.color;
+                this.ctx.lineWidth = 2 * this.scale;
+                this.ctx.strokeRect(screenX, detectorTop, screenWidth, detectorBottom - detectorTop);
+            }
+            getInterferenceIntensity(y, geometry, options = {}) {
+                const wavelength = options.wavelength ?? 1;
+                const slitGap = options.slitGap ?? geometry.slitGap;
+                const distance = Math.max(geometry.screenX - geometry.slitX, 1);
+                const wavelengthPx = 22 * this.scale * wavelength;
+                const slitWidth = 14 * this.scale;
+                const yOffset = y - geometry.slitY;
+                const alpha = Math.PI * slitGap * yOffset / (wavelengthPx * distance);
+                const beta = Math.PI * slitWidth * yOffset / (wavelengthPx * distance);
+                const envelope = Math.abs(beta) < 1e-6 ? 1 : Math.pow(Math.sin(beta) / beta, 2);
+                const fringe = 0.5 + 0.5 * Math.cos(2 * alpha);
+                return Math.max(0, Math.min(1, Math.pow(envelope, 0.75) * (0.08 + fringe * 0.92)));
+            }
+            getObservedIntensity(y, geometry, options = {}) {
+                const slitGap = options.slitGap ?? geometry.slitGap;
+                const yOffset = y - geometry.slitY;
+                const sigma = slitGap * 0.22 + 10 * this.scale;
+                const upperBand = Math.exp(-((yOffset + slitGap / 2) ** 2) / (2 * sigma * sigma));
+                const lowerBand = Math.exp(-((yOffset - slitGap / 2) ** 2) / (2 * sigma * sigma));
+                const envelope = Math.exp(-Math.pow(yOffset / (this.canvas.height * 0.34), 2));
+                return Math.max(0, Math.min(1, 0.85 * (upperBand + lowerBand) * envelope));
+            }
+            drawScreenGuide(geometry, color, intensityFn, options = {}) {
+                const step = options.step ?? 3 * this.scale;
+                const minAlpha = options.minAlpha ?? 0.04;
+                const maxAlpha = options.maxAlpha ?? 0.5;
+                const histogramAlpha = options.histogramAlpha ?? 0.18;
+                const histogramWidth = options.histogramWidth ?? geometry.histogramWidth;
+                const barX = geometry.screenX + geometry.screenWidth + 4 * this.scale;
+
+                this.ctx.fillStyle = color;
+                for (let y = geometry.detectorTop; y < geometry.detectorBottom; y += step) {
+                    const intensity = Math.max(0, Math.min(1, intensityFn(y + step / 2)));
+                    if (intensity < 0.01) continue;
+
+                    this.ctx.globalAlpha = minAlpha + intensity * (maxAlpha - minAlpha);
+                    this.ctx.fillRect(geometry.screenX, y, geometry.screenWidth, step);
+
+                    this.ctx.globalAlpha = intensity * histogramAlpha;
+                    this.ctx.fillRect(barX, y, histogramWidth * intensity, step);
+                }
+                this.ctx.globalAlpha = 1;
+            }
+            ensureDetectionBins() {
+                const totalBins = Math.max(1, Math.ceil(this.canvas.height / this.binHeight));
+                if (this.detectionBins.length === totalBins) return;
+
+                const nextBins = new Array(totalBins).fill(0);
+                const limit = Math.min(totalBins, this.detectionBins.length);
+                for (let i = 0; i < limit; i++) {
+                    nextBins[i] = this.detectionBins[i];
+                }
+                this.detectionBins = nextBins;
+            }
+            clearDetectionPattern() {
+                this.detectionBins = [];
+                this.recentDetections = [];
+                this.ensureDetectionBins();
+            }
+            recordDetection(y) {
+                this.ensureDetectionBins();
+                const index = Math.max(0, Math.min(this.detectionBins.length - 1, Math.floor(y / this.binHeight)));
+                this.detectionBins[index] += 1;
+                this.recentDetections.push({
+                    y,
+                    xOffset: Math.random() * (10 * this.scale),
+                    life: 1
+                });
+                if (this.recentDetections.length > 240) {
+                    this.recentDetections.shift();
+                }
+            }
+            drawDetectionPattern(geometry, color) {
+                this.ensureDetectionBins();
+                let maxCount = 1;
+                for (const count of this.detectionBins) {
+                    if (count > maxCount) maxCount = count;
+                }
+
+                const barX = geometry.screenX + geometry.screenWidth + 4 * this.scale;
+                this.ctx.fillStyle = color;
+                for (let index = 0; index < this.detectionBins.length; index++) {
+                    const count = this.detectionBins[index];
+                    if (!count) continue;
+
+                    const y = index * this.binHeight;
+                    const intensity = count / maxCount;
+                    this.ctx.globalAlpha = 0.08 + intensity * 0.32;
+                    this.ctx.fillRect(geometry.screenX, y, geometry.screenWidth, this.binHeight - 1);
+                    this.ctx.globalAlpha = 0.12 + intensity * 0.55;
+                    this.ctx.fillRect(barX, y, geometry.histogramWidth * intensity, this.binHeight - 1);
+                }
+
+                this.recentDetections = this.recentDetections.filter((detection) => detection.life > 0.04);
+                this.recentDetections.forEach((detection) => {
+                    detection.life -= 0.025;
+                    this.ctx.globalAlpha = detection.life * 0.9;
+                    this.ctx.beginPath();
+                    this.ctx.arc(
+                        geometry.screenX + 2 * this.scale + detection.xOffset,
+                        detection.y,
+                        2.2 * this.scale,
+                        0,
+                        Math.PI * 2
+                    );
+                    this.ctx.fill();
+                });
+                this.ctx.globalAlpha = 1;
+            }
+            sampleDetectionY(geometry, intensityFn) {
+                let bestY = geometry.slitY;
+                let bestScore = -1;
+
+                for (let i = 0; i < 18; i++) {
+                    const y = geometry.detectorTop + Math.random() * (geometry.detectorBottom - geometry.detectorTop);
+                    const score = intensityFn(y);
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestY = y;
+                    }
+                    if (Math.random() < score) return y;
+                }
+
+                return bestY;
+            }
+            draw() { }
+        }
+
+        class ClassicalVisual extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.time = 0;
+                this.wavelength = 1.0;
+                this.slitSeparation = 1.0;
+
+                // Setup controls
+                const wavelengthInput = document.getElementById('input-wavelength');
+                const slitSepInput = document.getElementById('input-slit-sep');
+
+                wavelengthInput.addEventListener('input', (e) => {
+                    this.wavelength = parseFloat(e.target.value);
+                    document.getElementById('val-wavelength').textContent = e.target.value;
+                });
+
+                slitSepInput.addEventListener('input', (e) => {
+                    this.slitSeparation = parseFloat(e.target.value);
+                    document.getElementById('val-slit-sep').textContent = e.target.value;
+                });
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.time += 0.03;
+                const slitGap = 80 * this.scale * this.slitSeparation;
+                const geometry = this.getGeometry({ slitGap });
+                const slitPositions = [
+                    geometry.slitY - slitGap / 2,
+                    geometry.slitY + slitGap / 2
+                ];
+                const intensityFn = (y) => this.getInterferenceIntensity(y, geometry, {
+                    wavelength: this.wavelength,
+                    slitGap
+                });
+
+                this.drawApparatus(geometry);
+
+                const waveSpacing = 26 * this.scale * this.wavelength;
+                const phaseOffset = (this.time * 18 * this.scale) % waveSpacing;
+                const maxRadius = geometry.screenX - geometry.slitX + 40 * this.scale;
+
+                this.ctx.strokeStyle = this.accent;
+                this.ctx.lineWidth = 1.5 * this.scale;
+                slitPositions.forEach((slitPosition) => {
+                    for (let radius = 10 * this.scale + phaseOffset; radius < maxRadius; radius += waveSpacing) {
+                        this.ctx.globalAlpha = Math.max(0.03, 0.2 - radius / (maxRadius * 1.2));
+                        this.ctx.beginPath();
+                        this.ctx.arc(geometry.slitX, slitPosition, radius, -Math.PI / 2.6, Math.PI / 2.6);
+                        this.ctx.stroke();
+                    }
+                });
+                this.ctx.globalAlpha = 1;
+
+                this.drawScreenGuide(geometry, this.accent, intensityFn, {
+                    minAlpha: 0.06,
+                    maxAlpha: 0.82,
+                    histogramAlpha: 0.22
+                });
+            }
+        }
+
+        class QuantumVisual extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.particles = [];
+                this.particleTimer = 0;
+
+                // Setup controls
+                const emissionInput = document.getElementById('input-emission');
+                const clearBtn = document.getElementById('btn-clear-quantum');
+                this.emissionRate = parseInt(emissionInput.value, 10);
+
+                emissionInput.addEventListener('input', (e) => {
+                    this.emissionRate = parseInt(e.target.value);
+                    document.getElementById('val-emission').textContent = e.target.value;
+                });
+
+                clearBtn.addEventListener('click', () => {
+                    this.particles = [];
+                    this.clearDetectionPattern();
+                });
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                const geometry = this.getGeometry();
+                const intensityFn = (y) => this.getInterferenceIntensity(y, geometry);
+
+                this.drawApparatus(geometry);
+                this.drawScreenGuide(geometry, this.secondary, intensityFn, {
+                    minAlpha: 0.015,
+                    maxAlpha: 0.14,
+                    histogramAlpha: 0.08
+                });
+
+                this.particleTimer += 1;
+                if (this.particleTimer >= this.emissionRate) {
+                    this.particles.push({
+                        x: geometry.sourceX,
+                        y: geometry.slitY,
+                        slitY: geometry.slitY,
+                        targetY: this.sampleDetectionY(geometry, intensityFn),
+                        vx: 6 * this.scale
+                    });
+                    this.particleTimer = 0;
+                }
+
+                this.particles = this.particles.filter(p => {
+                    p.x += p.vx;
+
+                    if (p.x < geometry.slitX) {
+                        const progress = Math.max(0, Math.min(1, (p.x - geometry.sourceX) / (geometry.slitX - geometry.sourceX)));
+                        p.y = geometry.slitY + (p.slitY - geometry.slitY) * progress;
+                    } else {
+                        const progress = Math.max(0, Math.min(1, (p.x - geometry.slitX) / (geometry.screenX - geometry.slitX)));
+                        const eased = 1 - Math.pow(1 - progress, 2);
+                        p.y = p.slitY + (p.targetY - p.slitY) * eased;
+                    }
+
+                    if (p.x >= geometry.screenX) {
+                        this.recordDetection(p.targetY);
+                        return false;
+                    }
+
+                    this.ctx.fillStyle = this.accent;
+                    this.ctx.globalAlpha = 0.9;
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, 3 * this.scale, 0, Math.PI * 2);
+                    this.ctx.fill();
+                    return true;
+                });
+                this.ctx.globalAlpha = 1;
+                this.drawDetectionPattern(geometry, this.secondary);
+            }
+        }
+
+        class ObserverVisual extends BaseVisual {
+            constructor(id) {
+                super(id);
+                this.particles = [];
+                this.particleTimer = 0;
+                this.observing = false;
+
+                // Setup controls
+                const observeToggle = document.getElementById('toggle-observe');
+                const observeStatus = document.getElementById('observe-status');
+                const clearBtn = document.getElementById('btn-clear-observer');
+
+                observeToggle.addEventListener('change', (e) => {
+                    this.observing = e.target.checked;
+                    observeStatus.textContent = this.observing ? 'ON' : 'OFF';
+                    observeStatus.style.color = this.observing ? 'var(--accent-secondary)' : 'var(--accent)';
+                    this.particles = [];
+                    this.clearDetectionPattern();
+                });
+
+                clearBtn.addEventListener('click', () => {
+                    this.particles = [];
+                    this.clearDetectionPattern();
+                });
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                const geometry = this.getGeometry();
+                const intensityFn = this.observing
+                    ? (y) => this.getObservedIntensity(y, geometry)
+                    : (y) => this.getInterferenceIntensity(y, geometry);
+                const patternColor = this.observing ? this.color : this.secondary;
+
+                this.drawApparatus(geometry, {
+                    showObserverSensors: this.observing,
+                    detectorAlpha: this.observing ? 0.1 : 0.08
+                });
+                this.drawScreenGuide(geometry, patternColor, intensityFn, {
+                    minAlpha: this.observing ? 0.03 : 0.015,
+                    maxAlpha: this.observing ? 0.28 : 0.12,
+                    histogramAlpha: this.observing ? 0.14 : 0.08
+                });
+
+                this.particleTimer += 1;
+                if (this.particleTimer >= 4) {
+                    const slitDirection = this.observing ? (Math.random() > 0.5 ? -1 : 1) : 0;
+                    const slitY = geometry.slitY + slitDirection * geometry.slitGap / 2;
+                    const slitBandFn = (y) => {
+                        const sigma = geometry.slitGap * 0.18 + 10 * this.scale;
+                        return Math.exp(-((y - slitY) ** 2) / (2 * sigma * sigma));
+                    };
+
+                    this.particles.push({
+                        x: geometry.sourceX,
+                        y: geometry.slitY,
+                        slitY: this.observing ? slitY : geometry.slitY,
+                        targetY: this.observing
+                            ? this.sampleDetectionY(geometry, slitBandFn)
+                            : this.sampleDetectionY(geometry, intensityFn),
+                        vx: 6 * this.scale
+                    });
+                    this.particleTimer = 0;
+                }
+
+                this.particles = this.particles.filter(p => {
+                    p.x += p.vx;
+
+                    if (p.x < geometry.slitX) {
+                        const progress = Math.max(0, Math.min(1, (p.x - geometry.sourceX) / (geometry.slitX - geometry.sourceX)));
+                        p.y = geometry.slitY + (p.slitY - geometry.slitY) * progress;
+                    } else {
+                        const progress = Math.max(0, Math.min(1, (p.x - geometry.slitX) / (geometry.screenX - geometry.slitX)));
+                        const eased = 1 - Math.pow(1 - progress, 2);
+                        p.y = p.slitY + (p.targetY - p.slitY) * eased;
+                    }
+
+                    if (p.x >= geometry.screenX) {
+                        this.recordDetection(p.targetY);
+                        return false;
+                    }
+
+                    this.ctx.fillStyle = this.observing ? this.color : this.accent;
+                    this.ctx.globalAlpha = 0.9;
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, 3 * this.scale, 0, Math.PI * 2);
+                    this.ctx.fill();
+                    return true;
+                });
+                this.ctx.globalAlpha = 1;
+                this.drawDetectionPattern(geometry, patternColor);
+            }
+        }
+
+        window.onload = () => APP.init();
+    </script>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="Interactive Nervous System lesson in Study Notebook.">
+  <title>Nervous System — Study Notebook</title>
+  <link rel="icon" href="../../../../assets/icons/favicon.svg">
+  <link rel="manifest" href="../../../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../../../css/common.css">
+  <link rel="stylesheet" href="../../../../css/home.css">
+  <link rel="stylesheet" href="../../../../css/module-lab.css">
+</head>
+<body class="module-page">
+<header class="topbar">
+  <a class="brand" href="../../../../index.html" aria-label="Study Notebook home">
+    <img class="brand-logo-img" src="../../../../assets/icons/logo-mark.svg" alt="">
+    <span><strong>Study Notebook</strong><small>Interactive Science</small></span>
+  </a>
+  <a id="back" class="text-btn" href="../../../../index.html#biology-path">← Back to Biology</a>
+</header>
+<main class="module-shell">
+  <div id="crumb" class="module-back"></div>
+  <section class="module-hero">
+    <div><span id="subjectChip" class="module-chip"></span><h1 id="title"></h1><p id="intro"></p></div>
+    <aside class="module-panel"><h2>Predict first</h2><p id="question"></p><div id="predictions" class="prediction-row"></div><p id="predictionFeedback"></p></aside>
+  </section>
+  <section class="module-panel">
+    <h2>Interactive lab</h2>
+    <p>Change one variable at a time. The visual model responds immediately.</p>
+    <div class="lab-layout">
+      <div class="controls">
+        <div class="control"><label><span id="aLabel"></span><strong id="aVal"></strong></label><input id="a" type="range"></div>
+        <div class="control"><label><span id="bLabel"></span><strong id="bVal"></strong></label><input id="b" type="range"></div>
+        <div class="sim-actions"><button id="toggle" class="sim-btn primary" type="button">Pause</button><button id="reset" class="sim-btn" type="button">Reset</button></div>
+        <div class="metrics"><div class="metric-box"><small>Variable 1</small><strong id="m1"></strong></div><div class="metric-box"><small>Variable 2</small><strong id="m2"></strong></div><div class="metric-box"><small>Simulation</small><strong id="m3"></strong></div></div>
+      </div>
+      <div class="canvas-wrap"><canvas id="sim" aria-label="Interactive Nervous System simulation"></canvas></div>
+    </div>
+    <div class="observe" aria-live="polite"><strong>What changed?</strong><span id="observation"></span></div>
+  </section>
+  <nav class="module-footer-nav"><a href="../../../../index.html#biology-path">← Biology journey</a><a href="../../../../index.html">All sciences →</a></nav>
+</main>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Concept &amp; development by Bettina Sam</span></footer>
+<script>window.STUDY_ROOT='../../../../';</script>
+<script src="simulation.js"></script>
+<script src="../../../../js/module-engine.js"></script>
+</body></html>
