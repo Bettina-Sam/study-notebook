@@ -1,0 +1,1 @@
+window.MODULE_CONFIG={s:'Chemistry',u:'Unit 02 — Atomic World',t:'Atomic Structure',q:'What changes when you change protons, neutrons or electrons?',intro:'Build an atom and see its nucleus, electron cloud, charge and identity change together.',a:['Protons',1,12,6,''],b:['Electrons',0,12,6,''],mode:'atom',pred:['Charge changes','Element changes','Nothing changes']};

@@ -1,0 +1,1 @@
+window.MODULE_CONFIG={s:'Biology',u:'Unit 04 — Genetics',t:'DNA Structure',q:'How can a molecule store information?',intro:'Twist and unzip a simplified DNA model to see paired bases and complementary structure.',a:['Unzip amount',0,100,20,'%'],b:['Twist',0,100,60,'%'],mode:'dna',pred:['Bases pair specifically','Any base pairs','Strands are unrelated']};

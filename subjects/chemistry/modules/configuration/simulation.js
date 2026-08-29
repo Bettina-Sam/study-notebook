@@ -1,0 +1,1 @@
+window.MODULE_CONFIG={s:'Chemistry',u:'Unit 02 — Atomic World',t:'Electronic Configuration',q:'Where do electrons go as atomic number increases?',intro:'Add electrons and watch them occupy shells from lower to higher energy.',a:['Electrons',1,20,10,''],b:['Excitation',0,100,0,'%'],mode:'electron',pred:['Inner shells first','Outer shells first','Randomly']};

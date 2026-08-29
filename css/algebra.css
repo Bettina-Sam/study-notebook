@@ -1,0 +1,307 @@
+/* ------------------------------------------------------------------
+   MATHEMATICS / ALGEBRA — shared component styles
+   Additive stylesheet. Reuses tokens defined in css/common.css
+   (--accent, --accent-secondary, --card-bg, --border-color,
+   --line-subtle, --text-main, --text-muted, --font-serif, --font-sans,
+   --font-mono). Does not redefine or override them.
+   ------------------------------------------------------------------ */
+
+:root{
+  --math-accent: #6C4FD6;
+  --math-accent-2: #E08A2C;
+  --tile-a: rgba(108,79,214,0.16);
+  --tile-b: rgba(224,138,44,0.18);
+  --tile-ab: rgba(108,79,214,0.08);
+}
+[data-theme="dark"]{
+  --math-accent: #A48CFF;
+  --math-accent-2: #F0A84E;
+  --tile-a: rgba(164,140,255,0.20);
+  --tile-b: rgba(240,168,78,0.22);
+  --tile-ab: rgba(164,140,255,0.10);
+}
+
+/* ------------------------------------------------------------------
+   BUTTONS
+   ------------------------------------------------------------------ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:12px 16px; border-radius:8px; font-weight:600; font-size:0.9rem;
+  font-family:var(--font-sans); cursor:pointer; border:none;
+  transition:transform .15s var(--ease-out), opacity .15s;
+  min-height:44px;
+}
+.btn:active{ transform:scale(0.97); }
+.btn-primary{ background:var(--math-accent); color:#fff; }
+.btn-primary:hover{ opacity:0.9; }
+.btn-secondary{ background:var(--line-subtle); color:var(--text-main); }
+.btn-secondary:hover{ background:var(--border-subtle); }
+.btn-ghost{ background:transparent; color:var(--math-accent); border:1px solid var(--border-color); }
+.btn:disabled{ opacity:0.45; cursor:not-allowed; }
+.btn-row{ display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:1rem; }
+.btn-row .btn{ flex:1; min-width:120px; }
+
+/* ------------------------------------------------------------------
+   FORMULA / RULE CARD
+   ------------------------------------------------------------------ */
+.formula-card{
+  background:var(--card-bg); border:1px solid var(--border-color);
+  border-radius:10px; padding:1.5rem; margin:1.5rem 0; position:relative;
+}
+.formula-card .etu-tag{ background:var(--math-accent); }
+.formula-rule{
+  font-family:var(--font-mono); font-size:1.15rem; text-align:center;
+  padding:1rem; margin:0.75rem 0; background:var(--line-subtle);
+  border-radius:6px; overflow-x:auto;
+}
+.var-list{ margin:0.75rem 0 0; font-size:0.92rem; }
+.var-list .var-row{ display:flex; gap:0.6rem; padding:0.3rem 0; border-top:1px solid var(--line-subtle); }
+.var-list .var-row:first-child{ border-top:none; }
+.var-key{ font-family:var(--font-mono); color:var(--math-accent); min-width:2.2rem; font-weight:600; }
+.var-desc{ color:var(--text-muted); }
+.formula-example{ margin-top:0.9rem; padding-top:0.9rem; border-top:1px dashed var(--line-subtle); font-size:0.9rem; color:var(--text-muted); }
+
+/* ------------------------------------------------------------------
+   BADGES / LABELS
+   ------------------------------------------------------------------ */
+.badge{
+  display:inline-block; font-size:0.7rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.06em; padding:3px 10px; border-radius:99px; background:var(--tag-bg);
+  color:var(--text-muted); border:1px solid var(--border-subtle);
+}
+.badge-lvl1{ color:#3e8f5c; border-color:#3e8f5c; }
+.badge-lvl2{ color:var(--math-accent-2); border-color:var(--math-accent-2); }
+.badge-lvl3{ color:var(--math-accent); border-color:var(--math-accent); }
+.badge-soon{ color:var(--text-muted); }
+
+/* ------------------------------------------------------------------
+   SLIDERS / VALUE READOUTS  (extends .slider-group from article.css)
+   ------------------------------------------------------------------ */
+.value-readout{
+  font-family:var(--font-mono); font-weight:700; color:var(--math-accent);
+  background:var(--line-subtle); padding:2px 8px; border-radius:5px;
+}
+.mini-input{
+  width:64px; padding:6px 8px; border-radius:6px; border:1px solid var(--border-color);
+  background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.95rem;
+  text-align:center;
+}
+.inline-controls{ display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; margin:0.75rem 0; }
+
+/* ------------------------------------------------------------------
+   POLYNOMIAL ANATOMY
+   ------------------------------------------------------------------ */
+.poly-display{
+  font-family:var(--font-mono); font-size:1.7rem; text-align:center; padding:1.5rem 0.5rem;
+  user-select:none; letter-spacing:0.02em;
+}
+.poly-part{
+  cursor:pointer; padding:0 2px; border-radius:4px; transition:background .15s, color .15s;
+}
+.poly-part:hover, .poly-part.active{ background:var(--math-accent); color:#fff; }
+.anatomy-key{ margin-top:1rem; min-height:2.4rem; text-align:center; font-size:0.95rem; color:var(--text-muted); }
+.anatomy-key b{ color:var(--math-accent); }
+.anatomy-legend{ display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:0.75rem; font-size:0.78rem; }
+.anatomy-legend span{ display:flex; align-items:center; gap:6px; color:var(--text-muted); }
+.anatomy-legend i{ width:10px; height:10px; border-radius:3px; display:inline-block; background:var(--math-accent); }
+
+/* ------------------------------------------------------------------
+   ALGEBRA TILES
+   ------------------------------------------------------------------ */
+.tiles-stage{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; padding:1rem; }
+.tiles-stage svg{ width:100%; height:100%; max-width:420px; }
+.tile-a2{ fill: var(--math-accent); opacity:0.85; }
+.tile-b2{ fill: var(--math-accent-2); opacity:0.85; }
+.tile-ab{ fill: var(--math-accent); opacity:0.35; }
+.tile-label{ font-family:var(--font-mono); font-size:13px; fill:var(--text-main); }
+.tile-label-lt{ fill:#fff; }
+.identity-expansion{
+  font-family:var(--font-mono); font-size:1.05rem; text-align:center; margin-top:1rem;
+  min-height:1.6rem; transition:opacity .3s;
+}
+.identity-tabs{ display:flex; gap:0.5rem; margin-bottom:1rem; flex-wrap:wrap; }
+.identity-tab{
+  padding:8px 14px; border-radius:99px; border:1px solid var(--border-color); background:transparent;
+  color:var(--text-main); font-family:var(--font-mono); cursor:pointer; font-size:0.85rem;
+}
+.identity-tab.active{ background:var(--math-accent); color:#fff; border-color:var(--math-accent); }
+
+/* ------------------------------------------------------------------
+   STEP FLOW (progressive reveal)
+   ------------------------------------------------------------------ */
+.step-flow{ margin:1rem 0; }
+.step-item{
+  display:flex; gap:0.8rem; padding:0.7rem 0; opacity:0; transform:translateY(6px);
+  transition:opacity .4s var(--ease-out), transform .4s var(--ease-out);
+  border-top:1px solid var(--line-subtle);
+}
+.step-item:first-child{ border-top:none; }
+.step-item.step-in{ opacity:1; transform:translateY(0); }
+.step-num{
+  flex:0 0 auto; width:26px; height:26px; border-radius:50%; background:var(--line-subtle);
+  color:var(--math-accent); display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-size:0.8rem; font-weight:700;
+}
+.step-body{ font-size:0.92rem; color:var(--text-main); }
+.step-body .step-math{ font-family:var(--font-mono); margin-top:2px; color:var(--text-muted); }
+
+/* ------------------------------------------------------------------
+   WORKED EXAMPLE / EXERCISE CARDS
+   ------------------------------------------------------------------ */
+.worked-example, .exercise-card{
+  background:var(--card-bg); border:1px solid var(--border-color); border-radius:10px;
+  padding:1.5rem; margin:1.5rem 0;
+}
+.exercise-card{ border-left:3px solid var(--math-accent-2); }
+.we-label, .ex-label{
+  font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:700;
+  color:var(--math-accent);
+}
+.ex-label{ color:var(--math-accent-2); }
+.we-question, .ex-question{ font-size:1.05rem; margin:0.5rem 0 0.9rem; font-family:var(--font-mono); }
+.we-concept{ font-size:0.85rem; color:var(--text-muted); margin-bottom:0.9rem; }
+.exercise-tools{ display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.9rem; }
+.exercise-panel{
+  display:none; margin-top:0.9rem; padding:0.9rem 1rem; background:var(--line-subtle);
+  border-radius:8px; font-size:0.9rem;
+}
+.exercise-panel.open{ display:block; }
+.exercise-panel.answer-panel{ border-left:3px solid #3e8f5c; }
+.try-again-row{ margin-top:1rem; }
+
+/* ------------------------------------------------------------------
+   GRAPH / COORDINATE PLANE
+   ------------------------------------------------------------------ */
+.graph-wrap{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:0.5rem; }
+.graph-wrap svg{ width:100%; height:100%; max-height:100%; }
+.grid-line{ stroke:var(--line-subtle); stroke-width:1; }
+.axis-line{ stroke:var(--text-muted); stroke-width:1.5; }
+.axis-label{ font-family:var(--font-mono); font-size:11px; fill:var(--text-muted); }
+.plot-point{ fill:var(--math-accent); }
+.plot-point-check{ fill:var(--math-accent-2); }
+.plot-line{ stroke:var(--math-accent); stroke-width:2; fill:none; }
+.plot-line-2{ stroke:var(--math-accent-2); stroke-width:2; fill:none; }
+.solution-point{ fill:#3e8f5c; stroke:#fff; stroke-width:1.5; }
+.table-values{ width:100%; border-collapse:collapse; margin:0.75rem 0; font-family:var(--font-mono); font-size:0.85rem; }
+.table-values th, .table-values td{ border:1px solid var(--border-subtle); padding:6px 10px; text-align:center; }
+.table-values th{ background:var(--line-subtle); }
+.check-row{ display:flex; align-items:center; gap:0.6rem; margin-top:0.8rem; font-family:var(--font-mono); flex-wrap:wrap; }
+.check-result{ font-weight:700; }
+.check-yes{ color:#3e8f5c; }
+.check-no{ color:var(--accent-secondary); }
+
+/* ------------------------------------------------------------------
+   LONG DIVISION BOARD
+   ------------------------------------------------------------------ */
+.division-board{
+  font-family:var(--font-mono); font-size:1rem; padding:1rem; overflow-x:auto;
+}
+.division-board svg{ width:100%; height:auto; min-width:340px; }
+.division-row-label{ fill:var(--text-muted); font-size:12px; }
+.division-highlight{ fill: var(--tile-a); }
+.division-controls{ display:flex; gap:0.6rem; margin-top:1rem; flex-wrap:wrap; }
+.division-status{ margin-top:0.8rem; font-size:0.85rem; color:var(--text-muted); min-height:1.2rem; }
+
+/* ------------------------------------------------------------------
+   CHAPTER / TOPIC GRID (Algebra hub + Mathematics chapter pages)
+   ------------------------------------------------------------------ */
+.topic-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:1.1rem; width:100%; max-width:1400px; margin:0 auto;
+}
+/* Fixed 3-column layout for chapters with a small, evenly-divisible module count
+   (avoids an orphaned card wrapping alone onto its own row). */
+.topic-grid.three-col{ grid-template-columns:repeat(3, 1fr); }
+@media(max-width:980px){ .topic-grid.three-col{ grid-template-columns:repeat(2, 1fr); } }
+@media(max-width:560px){ .topic-grid.three-col{ grid-template-columns:1fr; } }
+.topic-card{
+  display:flex; flex-direction:column; border:1px solid var(--border-color); border-radius:14px;
+  background:var(--card-bg); text-align:left; transition:.25s var(--ease-out);
+  min-height:190px; overflow:hidden;
+}
+.topic-card:hover{ transform:translateY(-4px); border-color:var(--math-accent); }
+.topic-card > .topic-body{ padding:1.1rem 1.4rem 1.4rem; display:flex; flex-direction:column; flex:1; }
+.topic-num{ font-family:var(--font-mono); font-size:0.78rem; color:var(--math-accent); }
+.topic-card h3{ font-size:1.4rem; margin:0.4rem 0 0.5rem; }
+.topic-card p{ font-size:0.88rem; color:var(--text-muted); margin:0; max-width:none; }
+.topic-action{ margin-top:auto; padding-top:1rem; font-size:0.78rem; font-weight:700; color:var(--math-accent); }
+
+/* ------------------------------------------------------------------
+   TOPIC MINI-VISUALS (animated SVG preview on chapter hub cards)
+   ------------------------------------------------------------------ */
+.topic-visual{ height:104px; background:var(--tile-ab); border-bottom:1px solid var(--border-color); }
+.topic-visual svg{ width:100%; height:100%; display:block; overflow:visible; }
+.topic-visual path,.topic-visual rect,.topic-visual circle,.topic-visual ellipse,.topic-visual line{
+  fill:none; stroke:var(--text-main); stroke-width:1.6;
+}
+.topic-visual text{ fill:var(--text-muted); font:10px var(--font-mono); }
+.topic-visual .tv-fill{ fill:var(--math-accent)!important; stroke:none!important; }
+.topic-visual .tv-fill-2{ fill:var(--math-accent-2)!important; stroke:none!important; }
+.topic-visual .tv-stroke-2{ stroke:var(--math-accent-2)!important; }
+.topic-visual .tv-accent{ stroke:var(--math-accent)!important; }
+.topic-visual .tv-ghost{ stroke:var(--text-muted); stroke-dasharray:4 5; }
+
+.tv-pulse{ animation:tvPulse 2.4s ease-in-out infinite; transform-origin:center; }
+.tv-float{ animation:tvFloat 2.6s ease-in-out infinite; }
+.tv-nudge{ animation:tvNudge 2.2s ease-in-out infinite; }
+.tv-spin{ animation:tvSpin 6s linear infinite; }
+.tv-dash{ stroke-dasharray:8 5; animation:tvDash 2s linear infinite; }
+.tv-grow{ animation:tvGrow 2.6s ease-in-out infinite; transform-origin:bottom; }
+.tv-grow2{ animation:tvGrow 2.6s .2s ease-in-out infinite; transform-origin:bottom; }
+.tv-grow3{ animation:tvGrow 2.6s .4s ease-in-out infinite; transform-origin:bottom; }
+.tv-swap{ animation:tvSwap 2.8s ease-in-out infinite; }
+.tv-flicker{ animation:tvFlicker 2.4s ease-in-out infinite; }
+
+@keyframes tvPulse{ 50%{ transform:scale(1.14); } }
+@keyframes tvFloat{ 50%{ transform:translateY(-6px); } }
+@keyframes tvNudge{ 50%{ transform:translateX(8px); } }
+@keyframes tvSpin{ to{ transform:rotate(360deg); } }
+@keyframes tvDash{ to{ stroke-dashoffset:-26; } }
+@keyframes tvGrow{ 0%,100%{ transform:scaleY(1); } 50%{ transform:scaleY(.55); } }
+@keyframes tvSwap{ 0%,100%{ opacity:1; transform:translateX(0); } 50%{ opacity:.3; transform:translateX(10px); } }
+@keyframes tvFlicker{ 50%{ opacity:.3; } }
+
+.chapter-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:1.1rem; width:100%; max-width:1400px; margin:0 auto;
+}
+.chapter-card{
+  display:flex; flex-direction:column; border:1px solid var(--border-color); border-radius:14px;
+  background:var(--card-bg); padding:1.3rem; min-height:170px; transition:.25s var(--ease-out);
+}
+.chapter-card:hover{ transform:translateY(-4px); border-color:var(--math-accent); }
+.chapter-card.ready{ border-color:var(--border-color); }
+.chapter-num{ font-family:var(--font-mono); font-size:0.78rem; color:var(--text-muted); }
+.chapter-card h3{ font-size:1.3rem; margin:0.4rem 0 0.5rem; }
+.chapter-card p{ font-size:0.85rem; color:var(--text-muted); margin:0; }
+.chapter-status{ margin-top:auto; padding-top:0.9rem; font-size:0.75rem; font-weight:700; }
+.chapter-status.status-ready{ color:var(--math-accent); }
+.chapter-status.status-soon{ color:var(--text-muted); }
+
+/* ------------------------------------------------------------------
+   COMING SOON (placeholder chapter pages)
+   ------------------------------------------------------------------ */
+.coming-soon-hero{ text-align:center; padding-top:22vh; }
+.coming-soon-icon{
+  width:84px; height:84px; margin:0 auto 1.6rem; border-radius:20px; background:var(--line-subtle);
+  display:flex; align-items:center; justify-content:center; color:var(--math-accent);
+  animation:soonFloat 3.4s ease-in-out infinite;
+}
+.coming-soon-icon svg{ width:36px; height:36px; }
+@keyframes soonFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-8px); } }
+.coming-soon-num{ font-family:var(--font-mono); color:var(--text-muted); font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase; }
+.coming-soon-tag{
+  display:inline-block; margin-top:1.2rem; padding:6px 16px; border-radius:99px;
+  background:var(--line-subtle); color:var(--math-accent); font-size:0.8rem; font-weight:700;
+}
+.back-link{ display:inline-flex; align-items:center; gap:6px; color:var(--math-accent); font-size:0.9rem; font-weight:600; margin-top:2rem; }
+
+/* ------------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------------ */
+@media (max-width:768px){
+  .formula-rule{ font-size:1rem; }
+  .poly-display{ font-size:1.3rem; }
+  .btn-row .btn{ min-width:100%; }
+  .coming-soon-hero{ padding-top:16vh; }
+}

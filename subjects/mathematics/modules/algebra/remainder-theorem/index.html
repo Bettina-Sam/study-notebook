@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.3 Remainder Theorem • Algebra • Study Notebook</title>
+<meta name="description" content="Divide by (x − a) without doing the division — the remainder is just P(a). Includes the Factor Theorem."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Algebra
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">3.3 Remainder Theorem</span>
+<h1 class="hero-title">Find a remainder<br/>without dividing</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    If $P(x)$ is divided by $(x - a)$, the remainder is always just $P(a)$ — one substitution, no long
+    division needed.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: THE THEOREM -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. The Remainder Theorem</h3>
+<h2>Change the divisor, watch the remainder</h2>
+<p>
+    Take $P(x) = x^2 + 3x + 2$. Slide $a$ to change the divisor $(x - a)$ — the remainder updates instantly,
+    because it's always just $P(a)$.
+</p>
+<div class="formula-card">
+<span class="etu-tag">Rule</span>
+<div class="formula-rule">If $P(x) \div (x-a)$, remainder $= P(a)$</div>
+</div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Divisor: $(x - a)$, with $a =$ (<span id="val-a" class="value-readout">2</span>)</label>
+<input id="input-a" max="5" min="-5" step="1" type="range" value="2"/>
+</div>
+</div>
+<div class="step-flow" id="rtSteps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$P(x) = x^2 + 3x + 2$, divisor $(x - a)$.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body" id="rtStep2"></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body" id="rtStep3"></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body" id="rtStep4"></div></div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('remainder', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="rtGraphWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: FACTOR THEOREM -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Factor Theorem</h3>
+<h2>When the remainder is zero</h2>
+<p>
+    If $P(a) = 0$, then $(x - a)$ divides $P(x)$ exactly — it's a <b>factor</b>, with nothing left over.
+    Try each candidate below on $P(x) = x^3 - 5x^2 - 2x + 24$.
+</p>
+<div class="inline-controls" id="factorChips"></div>
+<div class="etu-card" id="factorResult">
+<span class="etu-tag">Result</span>
+<p style="font-size:0.95rem; margin-bottom:0;" id="factorResultText">Pick a value of $a$ above.</p>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="factorGraphWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Is $(x + 2)$ a factor of $x^3 - 5x^2 - 2x + 24$?</div>
+<div class="we-concept">Concept used: Factor Theorem — a factor of the form $(x - a)$ needs $a = -2$ here, and $P(-2)$ must equal 0.</div>
+<div class="step-flow" id="we3-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$(x + 2) = (x - (-2))$, so test $a = -2$.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Substitute into $P(x)$.<div class="step-math">$P(-2) = (-2)^3 - 5(-2)^2 - 2(-2) + 24$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Simplify term by term.<div class="step-math">$-8 - 20 + 4 + 24$</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">$P(-2) = 0$ → $(x+2)$ IS a factor</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we3-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Is $(x - 3)$ a factor of $x^2 - 7x + 12$?</div>
+<div class="inline-controls">
+<span>P(3) equals:</span>
+<input class="mini-input" id="exAnswer" type="number"/>
+<button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-ghost" data-reveal="exHint2">Hint 2</button>
+<button class="btn btn-secondary" data-reveal="exSteps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">$(x - 3)$ matches the form $(x - a)$ with $a = 3$.</div>
+<div class="exercise-panel" id="exHint2">Substitute $x = 3$ into $x^2 - 7x + 12$ and simplify.</div>
+<div class="exercise-panel" id="exSteps">
+<div class="step-flow" id="exSteps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">$P(3) = 3^2 - 7(3) + 12$</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">$= 9 - 21 + 12$</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: $P(3) = 0$, so $(x-3)$ IS a factor.</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../polynomials/">← 3.2 Polynomials</a>
+<a class="back-link" href="../algebraic-identities/">Next: Algebraic Identities →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'remainder') prompt = "Explain the Remainder Theorem for polynomials for a Class 9 student, with a worked example.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Remainder theorem demo: P(x)=x^2+3x+2 ---------- */
+function P1(x) { return x * x + 3 * x + 2; }
+function drawRTGraph(a) {
+    const wrap = document.getElementById('rtGraphWrap');
+    const w = 400, h = 400;
+    const minX = -6, maxX = 6, minY = -3, maxY = 40;
+    const px = v => 40 + (v - minX) / (maxX - minX) * (w - 60);
+    const py = v => (h - 40) - (v - minY) / (maxY - minY) * (h - 70);
+    let curve = '';
+    for (let xi = minX; xi <= maxX; xi += 0.25) curve += `${px(xi)},${py(Math.min(P1(xi), maxY))} `;
+    const val = P1(a);
+    wrap.innerHTML = `<svg viewBox="0 0 ${w} ${h}">
+        <line class="axis-line" x1="${px(minX)}" y1="${py(0)}" x2="${px(maxX)}" y2="${py(0)}"/>
+        <line class="axis-line" x1="${px(0)}" y1="${py(minY)}" x2="${px(0)}" y2="${py(maxY)}"/>
+        <polyline class="plot-line" points="${curve}"/>
+        <line x1="${px(a)}" y1="${py(0)}" x2="${px(a)}" y2="${py(val)}" stroke="var(--math-accent-2)" stroke-dasharray="4 4"/>
+        <circle class="plot-point-check" cx="${px(a)}" cy="${py(Math.min(val,maxY))}" r="7"/>
+        <text class="axis-label" x="${px(a)}" y="${py(0) + 20}" text-anchor="middle">a=${a}</text>
+        <text class="axis-label" x="${px(a)+10}" y="${py(Math.min(val,maxY)) - 10}" font-weight="700" fill="var(--math-accent-2)">P(${a})=${val}</text>
+    </svg>`;
+}
+AlgLib.slider('input-a', 'val-a', a => {
+    const val = P1(a);
+    document.getElementById('rtStep2').innerHTML = `By the theorem, remainder $= P(${a})$.<div class="step-math">$(${a})^2 + 3(${a}) + 2$</div>`;
+    document.getElementById('rtStep3').innerHTML = `Simplify.<div class="step-math">$${a*a} + ${3*a} + 2$</div>`;
+    document.getElementById('rtStep4').innerHTML = `<b>Remainder</b><div class="step-math">$= ${val}$${val === 0 ? ' — so (x − ' + a + ') is a factor!' : ''}</div>`;
+    AlgLib.typeset(document.getElementById('rtSteps'));
+    AlgLib.revealSteps('rtSteps', 0);
+    drawRTGraph(a);
+});
+
+/* ---------- Factor theorem chip tester: P(x)=x^3-5x^2-2x+24 ---------- */
+function P2(x) { return x*x*x - 5*x*x - 2*x + 24; }
+const candidates = [-4,-3,-2,-1,1,2,3,4];
+document.getElementById('factorChips').innerHTML = candidates.map(a =>
+    `<button class="identity-tab" data-a="${a}">a = ${a}</button>`).join('');
+function drawFactorGraph(a) {
+    const wrap = document.getElementById('factorGraphWrap');
+    const w = 400, h = 400;
+    const minX = -5, maxX = 5, minY = -60, maxY = 60;
+    const px = v => 40 + (v - minX) / (maxX - minX) * (w - 60);
+    const py = v => (h - 40) - (v - minY) / (maxY - minY) * (h - 70);
+    let curve = '';
+    for (let xi = minX; xi <= maxX; xi += 0.15) curve += `${px(xi)},${py(Math.max(minY,Math.min(P2(xi), maxY)))} `;
+    let marker = '';
+    if (a !== undefined) {
+        const val = P2(a);
+        const clamped = Math.max(minY, Math.min(val, maxY));
+        marker = `<line x1="${px(a)}" y1="${py(0)}" x2="${px(a)}" y2="${py(clamped)}" stroke="var(--math-accent-2)" stroke-dasharray="4 4"/>
+        <circle cx="${px(a)}" cy="${py(clamped)}" r="7" fill="${val===0?'#3e8f5c':'var(--math-accent-2)'}"/>`;
+    }
+    wrap.innerHTML = `<svg viewBox="0 0 ${w} ${h}">
+        <line class="axis-line" x1="${px(minX)}" y1="${py(0)}" x2="${px(maxX)}" y2="${py(0)}"/>
+        <line class="axis-line" x1="${px(0)}" y1="${py(minY)}" x2="${px(0)}" y2="${py(maxY)}"/>
+        <polyline class="plot-line" points="${curve}"/>
+        ${marker}
+    </svg>`;
+}
+document.querySelectorAll('#factorChips .identity-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('#factorChips .identity-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const a = parseFloat(btn.dataset.a);
+        const val = P2(a);
+        const isFactor = val === 0;
+        document.getElementById('factorResultText').innerHTML =
+            `$P(${a}) = ${val}$ ${isFactor ? `— <b style="color:#3e8f5c;">zero!</b> so $(x ${a>=0?'-':'+'} ${Math.abs(a)})$ IS a factor.` : `— not zero, so $(x ${a>=0?'-':'+'} ${Math.abs(a)})$ is <b>not</b> a factor.`}`;
+        AlgLib.typeset(document.getElementById('factorResult'));
+        drawFactorGraph(a);
+    });
+});
+drawFactorGraph();
+
+/* ---------- init ---------- */
+drawRTGraph(2);
+document.getElementById('rtStep2').innerHTML = `By the theorem, remainder $= P(2)$.<div class="step-math">$(2)^2 + 3(2) + 2$</div>`;
+document.getElementById('rtStep3').innerHTML = `Simplify.<div class="step-math">$4 + 6 + 2$</div>`;
+document.getElementById('rtStep4').innerHTML = `<b>Remainder</b><div class="step-math">$= 12$</div>`;
+AlgLib.revealSteps('rtSteps', 0);
+
+document.getElementById('we3-play').addEventListener('click', () => AlgLib.revealSteps('we3-steps'));
+AlgLib.revealSteps('we3-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 0, document.getElementById('exResult'));
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

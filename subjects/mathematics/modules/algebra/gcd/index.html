@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.7 Greatest Common Divisor • Algebra • Study Notebook</title>
+<meta name="description" content="Factorise two expressions and pull out everything they share — the GCD (HCF) of monomials and polynomials."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Algebra
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">3.7 Greatest Common Divisor</span>
+<h1 class="hero-title">Pull out what<br/>they share</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    The GCD (also called the HCF) of two expressions is the biggest expression that divides both — same
+    idea as the GCD of two whole numbers, just with variables joining in.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: MONOMIAL GCD -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. GCD of Two Monomials</h3>
+<h2>Adjust each monomial</h2>
+<p>Take the GCD of the coefficients, and the <b>lowest</b> power of every variable that appears in both.</p>
+<div class="sim-controls">
+<div class="slider-group"><label>Coefficient of A (<span id="val-cA" class="value-readout">16</span>)</label><input id="input-cA" max="60" min="4" step="1" type="range" value="16"/></div>
+<div class="slider-group"><label>A's power of x (<span id="val-xA" class="value-readout">3</span>)</label><input id="input-xA" max="5" min="0" step="1" type="range" value="3"/></div>
+<div class="slider-group"><label>A's power of y (<span id="val-yA" class="value-readout">2</span>)</label><input id="input-yA" max="5" min="0" step="1" type="range" value="2"/></div>
+<div class="slider-group"><label>Coefficient of B (<span id="val-cB" class="value-readout">24</span>)</label><input id="input-cB" max="60" min="4" step="1" type="range" value="24"/></div>
+<div class="slider-group"><label>B's power of x (<span id="val-xB" class="value-readout">1</span>)</label><input id="input-xB" max="5" min="0" step="1" type="range" value="1"/></div>
+<div class="slider-group"><label>B's power of y (<span id="val-yB" class="value-readout">3</span>)</label><input id="input-yB" max="5" min="0" step="1" type="range" value="3"/></div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('gcd', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div style="padding:1.5rem; display:flex; flex-direction:column; justify-content:center; height:100%; gap:1rem;">
+<div class="formula-card" style="margin:0; text-align:center;">
+<span class="etu-tag">A</span>
+<div class="formula-rule" id="monoA">16x³y²</div>
+</div>
+<div class="formula-card" style="margin:0; text-align:center;">
+<span class="etu-tag">B</span>
+<div class="formula-rule" id="monoB">24xy³</div>
+</div>
+<div class="formula-card" style="margin:0; text-align:center; border-color:var(--math-accent);">
+<span class="etu-tag" style="background:var(--math-accent);">GCD</span>
+<div class="formula-rule" id="monoGCD" style="color:var(--math-accent); font-weight:700;">8xy²</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: POLYNOMIAL GCD -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. GCD of Two Polynomials</h3>
+<h2>Factorise, then compare</h2>
+<p>Click to factorise each expression, then spot what they share.</p>
+<div class="btn-row">
+<button class="btn btn-secondary" id="pgFactorA">Factorise $2x^2 - 18$</button>
+<button class="btn btn-secondary" id="pgFactorB">Factorise $x^2 - 2x - 3$</button>
+</div>
+<div class="etu-card" id="pgResult">
+<span class="etu-tag">Result</span>
+<p style="font-size:0.95rem; margin-bottom:0;">Factorise both expressions above to reveal the shared factor.</p>
+</div>
+</div>
+<div class="visual-col">
+<div style="padding:1.5rem; display:flex; flex-direction:column; justify-content:center; height:100%; gap:0.9rem;" id="pgVisual">
+<div class="formula-card" style="margin:0;"><span class="etu-tag">2x² − 18</span><div id="pgA" style="text-align:center; padding-top:0.5rem; font-family:var(--font-mono);">?</div></div>
+<div class="formula-card" style="margin:0;"><span class="etu-tag">x² − 2x − 3</span><div id="pgB" style="text-align:center; padding-top:0.5rem; font-family:var(--font-mono);">?</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Find the GCD of $14xy^2$ and $42xy$.</div>
+<div class="we-concept">Concept used: GCD of coefficients, times the lowest power of each shared variable.</div>
+<div class="step-flow" id="we7-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Coefficients: GCD(14, 42) = 14 (14 divides 42 exactly).</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Variable $x$: appears as $x^1$ in both → take $x^1$.</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Variable $y$: appears as $y^2$ and $y^1$ → take the lower power, $y^1$.</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">GCD $= 14xy$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we7-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Find the GCD of $9a^2b^2c^3$ and $15a^3b^2c$.</div>
+<div class="inline-controls">
+<span>Your answer:</span> <input class="mini-input" id="exAnswer" placeholder="e.g. 3a²b²c" style="width:120px;"/>
+<button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-ghost" data-reveal="exHint2">Hint 2</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">GCD(9, 15) = 3.</div>
+<div class="exercise-panel" id="exHint2">For each variable, take the smaller exponent: $a$: min(2,3), $b$: min(2,2), $c$: min(3,1).</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: $3a^2b^2c$</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../division-of-polynomials/">← 3.6 Division of Polynomials</a>
+<a class="back-link" href="../linear-equations/">Next: Linear Equations in Two Variables →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'gcd') prompt = "Explain how to find the GCD (HCF) of two algebraic monomials for a Class 9 student, with an example.";
+    launchAIPrompt(model, prompt);
+}
+
+function numGCD(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a; }
+function fmtMono(c, x, y) {
+    let s = String(c);
+    if (x > 0) s += x === 1 ? 'x' : `x<sup>${x}</sup>`;
+    if (y > 0) s += y === 1 ? 'y' : `y<sup>${y}</sup>`;
+    return s;
+}
+function updateMonoGCD() {
+    const cA = parseInt(document.getElementById('input-cA').value);
+    const xA = parseInt(document.getElementById('input-xA').value);
+    const yA = parseInt(document.getElementById('input-yA').value);
+    const cB = parseInt(document.getElementById('input-cB').value);
+    const xB = parseInt(document.getElementById('input-xB').value);
+    const yB = parseInt(document.getElementById('input-yB').value);
+    ['cA','xA','yA','cB','xB','yB'].forEach(k => document.getElementById('val-' + k).textContent =
+        ({cA,xA,yA,cB,xB,yB})[k]);
+    document.getElementById('monoA').innerHTML = fmtMono(cA, xA, yA);
+    document.getElementById('monoB').innerHTML = fmtMono(cB, xB, yB);
+    const g = numGCD(cA, cB);
+    const gx = Math.min(xA, xB), gy = Math.min(yA, yB);
+    document.getElementById('monoGCD').innerHTML = fmtMono(g, gx, gy);
+}
+['input-cA','input-xA','input-yA','input-cB','input-xB','input-yB'].forEach(id =>
+    document.getElementById(id).addEventListener('input', updateMonoGCD));
+updateMonoGCD();
+
+/* ---------- Polynomial GCD demo ---------- */
+let pgADone = false, pgBDone = false;
+function pgCheckDone() {
+    if (pgADone && pgBDone) {
+        document.getElementById('pgResult').innerHTML = `<span class="etu-tag" style="position:static; display:inline-block; margin-bottom:0.5rem;">Result</span>
+        <p style="font-size:0.95rem; margin-bottom:0;">Both share the factor <b style="color:var(--math-accent);">(x − 3)</b>. So $\\text{GCD}(2x^2-18,\\ x^2-2x-3) = (x-3)$.</p>`;
+        AlgLib.typeset(document.getElementById('pgResult'));
+    }
+}
+document.getElementById('pgFactorA').addEventListener('click', () => {
+    document.getElementById('pgA').innerHTML = '2(x + 3)(<b style="color:var(--math-accent);">x − 3</b>)';
+    pgADone = true; pgCheckDone();
+});
+document.getElementById('pgFactorB').addEventListener('click', () => {
+    document.getElementById('pgB').innerHTML = '(x + 1)(<b style="color:var(--math-accent);">x − 3</b>)';
+    pgBDone = true; pgCheckDone();
+});
+
+document.getElementById('we7-play').addEventListener('click', () => AlgLib.revealSteps('we7-steps'));
+AlgLib.revealSteps('we7-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const norm = s => s.toLowerCase().replace(/\s+/g, '').replace(/[²2]/g, '2').replace(/\^/g, '');
+    const val = norm(document.getElementById('exAnswer').value || '');
+    const ok = val === '3a2b2c';
+    const resultEl = document.getElementById('exResult');
+    resultEl.textContent = ok ? 'Correct!' : 'Not quite — check the exponents.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

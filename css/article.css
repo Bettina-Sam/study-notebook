@@ -1,0 +1,253 @@
+/* ------------------------------------------------------------------
+   ARTICLE / CONCEPT PAGE STYLES
+   ------------------------------------------------------------------ */
+
+h1.hero-title {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h3.section-label {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 65ch;
+}
+
+/* Math Block Styling */
+.math-block {
+    font-family: var(--font-mono);
+    background: var(--line-subtle);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin: 2rem 0;
+    border-left: 3px solid var(--accent);
+    overflow-x: auto;
+}
+
+/* ETU Card (Easy To Understand) */
+.etu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.etu-tag {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    text-transform: uppercase;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--line-subtle);
+    margin: 6rem 0;
+}
+
+/* Layout */
+section {
+    padding: 6rem 5vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero {
+    display: block;
+    padding-top: 30vh;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    section {
+        padding: 4rem 5vw;
+        min-height: auto;
+    }
+
+    h1.hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero {
+        padding-top: 20vh;
+        min-height: 60vh;
+    }
+
+    .math-block {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1600px;
+    align-items: flex-start;
+}
+
+.content-col {
+    position: relative;
+    z-index: 2;
+}
+
+.visual-col {
+    position: sticky;
+    top: 10vh;
+    height: 80vh;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Controls for Simulation */
+.sim-controls {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--line-subtle);
+    border-radius: 8px;
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slider-group label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type=range] {
+    width: 100%;
+    cursor: pointer;
+    accent-color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .visual-col {
+        height: 50vh;
+        position: relative;
+        top: 0;
+        margin-bottom: 2rem;
+        width: 100%;
+        margin-left: 0;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+}
+
+/* ------------------------------------------------------------------
+   AI BRAND COLORS IN LIGHT THEME
+   ------------------------------------------------------------------ */
+body:not([data-theme="dark"]) .ai-claude {
+    color: hsl(14.8, 63.1%, 59.6%) !important;
+}
+body:not([data-theme="dark"]) .ai-chatgpt {
+    color: #10a37f !important;
+}
+body:not([data-theme="dark"]) .ai-grok {
+    color: #121212 !important;
+}
+body:not([data-theme="dark"]) .ai-perplexity {
+    color: #19a1a1 !important;
+}
+/* Study Notebook shared identity */
+.brand-logo-img{width:38px;height:38px;display:block;border-radius:10px;flex:0 0 auto}.site-credit{padding:30px clamp(18px,5vw,72px);border-top:1px solid var(--line,var(--line-subtle,#d9ddd8));display:flex;gap:12px 24px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:12px;color:var(--muted,var(--text-muted,#66727e));background:var(--bg,var(--bg-color,transparent))}.site-credit strong{color:var(--ink,var(--text-color,inherit))}@media(max-width:600px){.brand-logo-img{width:34px;height:34px}.site-credit{align-items:flex-start;flex-direction:column;gap:6px;padding:24px 18px}}
+
+
+/* V7 — simulation viewport tuning */
+.split-layout{
+  grid-template-columns:minmax(320px,.95fr) minmax(420px,1.05fr);
+  gap:clamp(1.25rem,2.5vw,2.5rem);
+  align-items:start;
+}
+.visual-col{
+  top:88px;
+  height:clamp(380px,58vh,590px);
+  min-height:380px;
+}
+.sim-controls{
+  gap:1rem;
+  margin-top:1.25rem;
+  padding:1rem 1.1rem;
+}
+.slider-group{gap:.35rem}
+.slider-group label{font-size:.76rem}
+@media (min-width:1025px) and (max-height:780px){
+  .visual-col{height:460px;top:82px}
+}
+@media (max-width:1024px){
+  .split-layout{grid-template-columns:1fr;gap:1.25rem}
+  .visual-col{
+    position:relative;
+    top:0;
+    order:2;
+    height:clamp(300px,48vw,480px);
+    min-height:300px;
+    margin-bottom:1rem;
+  }
+  .content-col{order:1}
+}
+@media (max-width:600px){
+  section{padding:3rem 4vw}
+  .visual-col{
+    height:300px;
+    min-height:300px;
+    border-radius:10px;
+  }
+  .sim-controls{
+    padding:.9rem;
+    gap:.85rem;
+  }
+  .sim-controls button{min-height:44px}
+  input[type=range]{min-height:32px}
+}

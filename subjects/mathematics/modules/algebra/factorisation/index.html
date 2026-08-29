@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.5 Factorisation • Algebra • Study Notebook</title>
+<meta name="description" content="Run identities and grouping in reverse — find two numbers, split the middle term, and factorise step by step."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Algebra
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">3.5 Factorisation</span>
+<h1 class="hero-title">Split the middle<br/>term on purpose</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    Factorising is identities and grouping run backwards. For $x^2 + bx + c$, the trick is finding two
+    numbers that multiply to $c$ and add to $b$.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: FIND TWO NUMBERS -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Find the Pair</h3>
+<h2 id="ftHeading">Factorise $x^2 + 5x + 6$</h2>
+<p>Find two numbers whose <b>product</b> is 6 and whose <b>sum</b> is 5.</p>
+<div class="inline-controls">
+<span>First number:</span> <input class="mini-input" id="ftNum1" type="number"/>
+<span>Second number:</span> <input class="mini-input" id="ftNum2" type="number"/>
+<button class="btn btn-primary" id="ftCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+</div>
+<div class="check-result" id="ftResult" style="margin-top:0.5rem; display:block;"></div>
+<div class="btn-row"><button class="btn btn-secondary" id="ftNext">Try another trinomial</button></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('factorising', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div style="padding:1.5rem; overflow-y:auto; height:100%;">
+<div class="step-flow" id="ftSteps"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: COMMON FACTOR -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Common Factor First</h3>
+<h2>Spot what every term shares</h2>
+<p>Before anything else, check whether every term shares a common factor — pulling it out first makes
+everything simpler. Click each term below.</p>
+<div class="etu-card">
+<span class="etu-tag">Rule</span>
+<p style="font-size:0.95rem; margin-bottom:0;">Take the GCD of the coefficients, and the lowest power of any variable common to every term.</p>
+</div>
+</div>
+<div class="visual-col">
+<div style="padding:1.5rem; display:flex; flex-direction:column; height:100%;">
+<div class="poly-display" id="cfDisplay" style="font-size:1.6rem;"></div>
+<div class="anatomy-key" id="cfKey">Click a highlighted term.</div>
+<div class="identity-expansion" id="cfResult"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Factorise $x^2 + 10x + 24$.</div>
+<div class="we-concept">Concept used: find two numbers that multiply to 24 and add to 10.</div>
+<div class="step-flow" id="we5-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Need two numbers: product 24, sum 10 → <b>4 and 6</b>.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Split the middle term.<div class="step-math">$x^2 + 4x + 6x + 24$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Group and factor each pair.<div class="step-math">$x(x + 4) + 6(x + 4)$</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">$(x + 4)(x + 6)$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we5-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Factorise $p^2 - 6p - 16$.</div>
+<div class="inline-controls">
+<span>Two numbers: product −16, sum −6 →</span>
+<input class="mini-input" id="exN1" type="number" placeholder="?"/>
+<input class="mini-input" id="exN2" type="number" placeholder="?"/>
+<button class="btn btn-primary" id="exCheckPair" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exPairResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-ghost" data-reveal="exHint2">Hint 2</button>
+<button class="btn btn-secondary" data-reveal="exSteps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">One number should be negative and larger in size than the other, since the product is negative.</div>
+<div class="exercise-panel" id="exHint2">Try factor pairs of 16: 1×16, 2×8, 4×4 — which pair, with one negative, adds to −6?</div>
+<div class="exercise-panel" id="exSteps">
+<div class="step-flow" id="exSteps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">Numbers: $2$ and $-8$ (product $-16$, sum $-6$)</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">$p^2 + 2p - 8p - 16$</div></div>
+<div class="step-item step-in"><span class="step-num">3</span><div class="step-body">$p(p+2) - 8(p+2)$</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: $(p+2)(p-8)$</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../algebraic-identities/">← 3.4 Algebraic Identities</a>
+<a class="back-link" href="../division-of-polynomials/">Next: Division of Polynomials →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'factorising') prompt = "Explain how to factorise a quadratic trinomial like x^2+5x+6 by splitting the middle term, for a Class 9 student.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Find two numbers widget ---------- */
+const ftTrinomials = [
+  { b: 5, c: 6, label: 'x^2 + 5x + 6' },
+  { b: 7, c: 12, label: 'x^2 + 7x + 12' },
+  { b: -3, c: -10, label: 'x^2 - 3x - 10' }
+];
+let ftIndex = 0;
+function ftRenderHeading() {
+    const t = ftTrinomials[ftIndex];
+    const cStr = t.c >= 0 ? `+ ${t.c}` : `- ${Math.abs(t.c)}`;
+    const bStr = t.b >= 0 ? `+ ${t.b}x` : `- ${Math.abs(t.b)}x`;
+    document.getElementById('ftHeading').innerHTML = `Factorise $x^2 ${bStr} ${cStr}$`;
+    document.getElementById('ftResult').textContent = '';
+    document.getElementById('ftNum1').value = '';
+    document.getElementById('ftNum2').value = '';
+    document.getElementById('ftSteps').innerHTML = '';
+    AlgLib.typeset(document.getElementById('ftHeading'));
+    // update the descriptive paragraph product/sum text
+    const p = document.querySelector('#ftHeading').parentElement.querySelector('p');
+    p.innerHTML = `Find two numbers whose <b>product</b> is ${t.c} and whose <b>sum</b> is ${t.b}.`;
+}
+document.getElementById('ftCheck').addEventListener('click', () => {
+    const t = ftTrinomials[ftIndex];
+    const n1 = parseInt(document.getElementById('ftNum1').value);
+    const n2 = parseInt(document.getElementById('ftNum2').value);
+    const resultEl = document.getElementById('ftResult');
+    if (isNaN(n1) || isNaN(n2)) { resultEl.textContent = 'Enter both numbers first.'; resultEl.className = 'check-result'; return; }
+    if (n1 * n2 === t.c && n1 + n2 === t.b) {
+        resultEl.textContent = 'Correct! Watch the factorisation unfold below.';
+        resultEl.className = 'check-result check-yes';
+        const n1s = n1 >= 0 ? `+ ${n1}x` : `- ${Math.abs(n1)}x`;
+        const n2s = n2 >= 0 ? `+ ${n2}x` : `- ${Math.abs(n2)}x`;
+        const f1 = n1 >= 0 ? `+ ${n1}` : `- ${Math.abs(n1)}`;
+        const f2 = n2 >= 0 ? `+ ${n2}` : `- ${Math.abs(n2)}`;
+        document.getElementById('ftSteps').innerHTML = `
+        <div class="step-item"><span class="step-num">1</span><div class="step-body">Split the middle term using ${n1} and ${n2}.<div class="step-math">$x^2 ${n1s} ${n2s} ${t.c>=0?'+ '+t.c:'- '+Math.abs(t.c)}$</div></div></div>
+        <div class="step-item"><span class="step-num">2</span><div class="step-body">Group in pairs.<div class="step-math">$(x^2 ${n1s}) (${n2s.replace('x','')} ${t.c>=0?'+ '+t.c:'- '+Math.abs(t.c)})$</div></div></div>
+        <div class="step-item"><span class="step-num">3</span><div class="step-body">Factor each group.<div class="step-math">$x(x ${f1}) ${n2>=0?'+':'-'} ${Math.abs(n2)}(x ${f1})$</div></div></div>
+        <div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">$(x ${f1})(x ${f2})$</div></div></div>`;
+        AlgLib.revealSteps('ftSteps');
+    } else {
+        resultEl.textContent = 'Not quite — check the product and the sum again.';
+        resultEl.className = 'check-result check-no';
+    }
+});
+document.getElementById('ftNext').addEventListener('click', () => {
+    ftIndex = (ftIndex + 1) % ftTrinomials.length;
+    ftRenderHeading();
+});
+ftRenderHeading();
+
+/* ---------- Common factor highlight: 6x^2y + 9xy^2 ---------- */
+const cfParts = [
+  { text: '6x²y', factor: '3xy', rest: '2x' },
+  { text: ' + ', plain: true },
+  { text: '9xy²', factor: '3xy', rest: '3y' }
+];
+const cfDisplay = document.getElementById('cfDisplay');
+const found = new Set();
+cfParts.forEach(p => {
+    if (p.plain) { cfDisplay.appendChild(document.createTextNode(p.text)); return; }
+    const span = document.createElement('span');
+    span.textContent = p.text;
+    span.className = 'poly-part';
+    span.addEventListener('click', () => {
+        span.classList.add('active');
+        document.getElementById('cfKey').innerHTML = `<b>${p.text}</b> = ${p.factor} × ${p.rest}`;
+        found.add(p.text);
+        if (found.size === 2) {
+            document.getElementById('cfResult').innerHTML = `Both terms share <b>3xy</b>. Pulling it out: $6x^2y + 9xy^2 = 3xy(2x + 3y)$`;
+            AlgLib.typeset(document.getElementById('cfResult'));
+        }
+    });
+    cfDisplay.appendChild(span);
+});
+
+document.getElementById('we5-play').addEventListener('click', () => AlgLib.revealSteps('we5-steps'));
+AlgLib.revealSteps('we5-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheckPair').addEventListener('click', () => {
+    const n1 = parseInt(document.getElementById('exN1').value);
+    const n2 = parseInt(document.getElementById('exN2').value);
+    const resultEl = document.getElementById('exPairResult');
+    if (isNaN(n1) || isNaN(n2)) { resultEl.textContent = 'Enter both.'; resultEl.className = 'check-result'; return; }
+    const ok = n1 * n2 === -16 && n1 + n2 === -6;
+    resultEl.textContent = ok ? 'Correct!' : 'Try again.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

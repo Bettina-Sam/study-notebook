@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Algebra • Class 9 Mathematics • Study Notebook</title>
+<meta name="description" content="Class 9 Algebra: polynomials, the remainder theorem, algebraic identities, factorisation, division of polynomials, GCD and linear equations in two variables — built visually."/>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html#mathematics-path">
+<i data-lucide="arrow-left" width="16"></i>
+    Class 9 Mathematics
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Chapter 3</span>
+<h1 class="hero-title">Algebra</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    A polynomial is just a number written in a more flexible language. Once you can add, subtract,
+    multiply and divide them — and read what makes them zero — a huge amount of Class 9 mathematics
+    opens up. Eight modules, building in order from a single letter standing in for a number, up to a
+    full pair of equations you can solve two different ways.
+</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Each module leans on the one before it — introduce a variable, then a whole polynomial, then
+what happens when you divide one, then the shortcuts (identities, factorisation, GCD) that make
+those divisions fast, finishing with two-variable equations, which use everything above.</p>
+</div>
+<div class="topic-grid" id="topicGrid"></div>
+</section>
+
+<div class="divider"></div>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../js/common.js"></script>
+<script>
+const topics = [
+  ["01","introduction/","Introduction","Letters standing in for numbers — meet variables, constants and expressions.","introduction"],
+  ["02","polynomials/","Polynomials","Terms, coefficients, degree and the anatomy of a polynomial — plus evaluating P(x).","polynomials"],
+  ["03","remainder-theorem/","Remainder Theorem","Divide by (x − a) without doing the division: the remainder is just P(a).","remainder"],
+  ["04","algebraic-identities/","Algebraic Identities","(a+b)², (a−b)² and (a+b)(a−b) as areas you can see, not just formulas.","identities"],
+  ["05","factorisation/","Factorisation","Run identities and grouping in reverse to split an expression into factors.","factorisation"],
+  ["06","division-of-polynomials/","Division of Polynomials","Long division for polynomials, one highlighted step at a time.","longdiv"],
+  ["07","gcd/","Greatest Common Divisor","Factorise two expressions and pull out everything they share.","gcd"],
+  ["08","linear-equations/","Linear Equations in Two Variables","Plot x + y = 5, read off solutions, and solve pairs of equations.","linear"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   introduction:`<svg ${common}><circle class="tv-fill tv-pulse" cx="66" cy="52" r="22"/><text x="60" y="58" style="font:15px var(--font-mono);fill:#fff">x</text><path class="tv-accent tv-nudge" d="M104 52h44m0 0-9-7m9 7-9 7"/><text x="168" y="42">2, −7, 5…</text><text x="168" y="64">any number</text></svg>`,
+   polynomials:`<svg ${common}><rect class="tv-fill tv-grow" x="45" y="24" width="26" height="52"/><rect class="tv-fill-2 tv-grow2" x="85" y="40" width="26" height="36"/><rect class="tv-ghost tv-grow3" x="125" y="56" width="26" height="20"/><text x="47" y="90">x³</text><text x="89" y="90">x²</text><text x="129" y="90">x</text><text x="175" y="52">degree ↓</text></svg>`,
+   remainder:`<svg ${common}><path class="tv-accent" d="M30 30h70v46h-70Z"/><text x="40" y="58" style="font:12px var(--font-mono)">P(x) ÷ (x−a)</text><path class="tv-nudge" d="M108 53h34m0 0-8-6m8 6-8 6"/><circle class="tv-fill tv-pulse" cx="172" cy="53" r="16"/><text x="164" y="58" style="font:12px var(--font-mono);fill:#fff">r</text></svg>`,
+   identities:`<svg ${common}><rect class="tv-fill" x="40" y="22" width="46" height="46"/><rect class="tv-fill-2" x="90" y="48" width="30" height="20"/><rect class="tv-ghost" x="40" y="72" width="46" height="0" style="display:none"/><text x="42" y="16">a²</text><text x="94" y="42">ab</text><path class="tv-accent tv-nudge" d="M135 52h30m0 0-8-6m8 6-8 6"/><text x="172" y="56" style="font:12px var(--font-mono)">(a+b)²</text></svg>`,
+   factorisation:`<svg ${common}><rect class="tv-fill tv-pulse" x="30" y="30" width="46" height="46"/><path class="tv-accent tv-nudge" d="M84 53h30m0 0-8-6m8 6-8 6"/><rect class="tv-fill-2" x="128" y="34" width="30" height="38"/><rect class="tv-fill-2" x="165" y="34" width="30" height="38"/><text x="128" y="86">factor · factor</text></svg>`,
+   longdiv:`<svg ${common}><path class="tv-accent" d="M40 30h150M62 30v46"/><text x="70" y="24" style="font:12px var(--font-mono)">quotient</text><rect class="tv-fill tv-flicker" x="70" y="46" width="42" height="18"/><text x="130" y="58" style="font:11px var(--font-mono)">bring down</text></svg>`,
+   gcd:`<svg ${common}><circle class="tv-accent" cx="98" cy="52" r="34"/><circle class="tv-stroke-2" cx="150" cy="52" r="34"/><ellipse class="tv-fill tv-pulse" cx="124" cy="52" rx="14" ry="30"/><text x="80" y="94">shared factors</text></svg>`,
+   linear:`<svg ${common}><path d="M20 90h220M40 15v80"/><line class="tv-accent tv-dash" x1="30" y1="80" x2="180" y2="20"/><line class="tv-stroke-2 tv-dash" x1="35" y1="20" x2="200" y2="85"/><circle class="tv-fill tv-pulse" cx="112" cy="50" r="7"/><text x="122" y="46">(x, y)</text></svg>`
+  };
+  return v[key]||v.introduction;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[1]}">
+    <div class="topic-visual">${topicVisual(t[4])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · 3.${parseInt(t[0])}</span>
+      <h3>${t[2]}</h3>
+      <p>${t[3]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

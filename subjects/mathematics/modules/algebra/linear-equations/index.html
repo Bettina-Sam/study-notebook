@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.8 Linear Equations in Two Variables • Algebra • Study Notebook</title>
+<meta name="description" content="Plot x + y = 5, read off solutions from the line, and solve a pair of simultaneous equations graphically."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Algebra
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">3.8 Linear Equations in Two Variables</span>
+<h1 class="hero-title">Every solution<br/>lives on the line</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    An equation like $x + y = 5$ has infinitely many solutions — and every single one of them is a point
+    on one straight line.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: PLOT THE LINE -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Plot $x + y = 5$</h3>
+<h2>Change $x$, watch $y$ follow</h2>
+<p>Since $y = 5 - x$, every value of $x$ gives exactly one $y$. Plot enough points and they line up perfectly.</p>
+<div class="sim-controls">
+<div class="slider-group">
+<label>$x =$ (<span id="val-lx" class="value-readout">0</span>)</label>
+<input id="input-lx" max="6" min="-2" step="1" type="range" value="0"/>
+</div>
+</div>
+<table class="table-values" id="valueTable">
+<thead><tr><th>x</th><th>y = 5 − x</th></tr></thead>
+<tbody id="valueTableBody"></tbody>
+</table>
+<button class="btn btn-secondary" id="clearTable" style="margin-top:0.5rem;">Clear points</button>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('linear', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="graph1Wrap"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: CHECK A POINT -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Does a Point Satisfy the Equation?</h3>
+<h2>Test any point</h2>
+<p>A point $(p, q)$ is a solution of $x+y=5$ only if $p + q = 5$. Try $(2, 3)$ — or pick your own.</p>
+<div class="inline-controls">
+<span>Point: (</span><input class="mini-input" id="checkX" type="number" value="2"/><span>,</span><input class="mini-input" id="checkY" type="number" value="3"/><span>)</span>
+<button class="btn btn-primary" id="checkPointBtn" style="min-height:38px; padding:8px 14px;">Check</button>
+</div>
+<div class="check-row" id="checkRow"></div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="graph2Wrap"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3: SIMULTANEOUS EQUATIONS -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">03. A Pair of Equations</h3>
+<h2>Where two lines cross</h2>
+<p>$x + y = 5$ and $2x - y = 4$ are two different lines. The single point where they cross satisfies
+<em>both</em> equations at once — that's the solution to the pair.</p>
+<div class="formula-card">
+<span class="etu-tag">Solving this pair</span>
+<div class="step-flow" id="simulSteps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Plot $x+y=5$: passes through $(0,5)$ and $(5,0)$.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Plot $2x-y=4$: passes through $(0,-4)$ and $(2,0)$.</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Read off where the lines cross.<div class="step-math">$(3, 2)$</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Solution</b><div class="step-math">$x = 3,\ y = 2$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="simul-play">Play steps</button></div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="graph3Wrap"></div>
+</div>
+</div>
+</section>
+
+<!-- CONSISTENCY NOTE -->
+<section style="padding-top:0;">
+<div style="width:100%; max-width:900px;">
+<div class="formula-card">
+<span class="etu-tag">Good to know</span>
+<h4 style="margin-bottom:0.6rem;">How many solutions does a pair have?</h4>
+<div class="var-list">
+<div class="var-row"><span class="var-key">≠</span><span class="var-desc">$\dfrac{a_1}{a_2} \neq \dfrac{b_1}{b_2}$ — lines cross once → exactly one (unique) solution</span></div>
+<div class="var-row"><span class="var-key">=</span><span class="var-desc">$\dfrac{a_1}{a_2} = \dfrac{b_1}{b_2} = \dfrac{c_1}{c_2}$ — same line → infinitely many solutions</span></div>
+<div class="var-row"><span class="var-key">∥</span><span class="var-desc">$\dfrac{a_1}{a_2} = \dfrac{b_1}{b_2} \neq \dfrac{c_1}{c_2}$ — parallel lines → no solution</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Is $(5, -1)$ a solution of $x - 2y = 7$ and $2x + 3y = 7$?</div>
+<div class="we-concept">Concept used: substitute the point into both equations and check each result matches.</div>
+<div class="step-flow" id="we8-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Check equation 1.<div class="step-math">$x - 2y = 5 - 2(-1) = 5 + 2 = 7$ ✓</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Check equation 2.<div class="step-math">$2x + 3y = 2(5) + 3(-1) = 10 - 3 = 7$ ✓</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Final answer</b><div class="step-math">Both check out — $(5,-1)$ IS a solution of the pair.</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we8-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Is $(3, 3)$ a solution of $2x - 5y - 2 = 0$ and $x + y - 6 = 0$?</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-secondary" data-reveal="exSteps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">Substitute $x=3, y=3$ into each equation and see if it equals 0.</div>
+<div class="exercise-panel" id="exSteps">
+<div class="step-flow" id="exSteps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">$2(3) - 5(3) - 2 = 6 - 15 - 2 = -11 \neq 0$</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: No — the first equation already fails ($-11 \neq 0$), so $(3,3)$ is not a solution of the pair.</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../gcd/">← 3.7 Greatest Common Divisor</a>
+<a class="back-link" href="../">Algebra complete — back to overview →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'linear') prompt = "Explain linear equations in two variables and why their solutions form a straight line, for a Class 9 student.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- generic grapher ---------- */
+function drawGraph(containerId, { lines = [], points = [], xRange = [-4, 8], yRange = [-6, 8] } = {}) {
+    const w = 420, h = 420;
+    const [minX, maxX] = xRange, [minY, maxY] = yRange;
+    const px = v => 40 + (v - minX) / (maxX - minX) * (w - 60);
+    const py = v => (h - 40) - (v - minY) / (maxY - minY) * (h - 70);
+
+    let grid = '';
+    for (let i = Math.ceil(minX); i <= maxX; i++) grid += `<line class="grid-line" x1="${px(i)}" y1="${py(minY)}" x2="${px(i)}" y2="${py(maxY)}"/>`;
+    for (let j = Math.ceil(minY); j <= maxY; j++) grid += `<line class="grid-line" x1="${px(minX)}" y1="${py(j)}" x2="${px(maxX)}" y2="${py(j)}"/>`;
+
+    let lineSvg = '';
+    lines.forEach(l => {
+        const x1 = minX, x2 = maxX;
+        const y1 = l.m * x1 + l.c, y2 = l.m * x2 + l.c;
+        lineSvg += `<line class="${l.cls || 'plot-line'}" x1="${px(x1)}" y1="${py(y1)}" x2="${px(x2)}" y2="${py(y2)}"/>`;
+        lineSvg += `<text class="axis-label" x="${px(x2) - 10}" y="${py(y2) - 8}" text-anchor="end" fill="${l.color || 'var(--math-accent)'}" font-weight="700">${l.label || ''}</text>`;
+    });
+
+    let ptSvg = '';
+    points.forEach(p => {
+        ptSvg += `<circle class="${p.cls || 'plot-point'}" cx="${px(p.x)}" cy="${py(p.y)}" r="${p.r || 6}"/>`;
+        if (p.label) ptSvg += `<text class="axis-label" x="${px(p.x)}" y="${py(p.y) - 12}" text-anchor="middle" font-weight="700">${p.label}</text>`;
+    });
+
+    document.getElementById(containerId).innerHTML = `<svg viewBox="0 0 ${w} ${h}">
+        ${grid}
+        <line class="axis-line" x1="${px(minX)}" y1="${py(0)}" x2="${px(maxX)}" y2="${py(0)}"/>
+        <line class="axis-line" x1="${px(0)}" y1="${py(minY)}" x2="${px(0)}" y2="${py(maxY)}"/>
+        <text class="axis-label" x="${px(maxX)-4}" y="${py(0)-6}">x</text>
+        <text class="axis-label" x="${px(0)+8}" y="${py(maxY)+10}">y</text>
+        ${lineSvg}${ptSvg}
+    </svg>`;
+}
+
+/* ---------- Section 1: x + y = 5 ---------- */
+let plottedPoints = [];
+function updateGraph1(x) {
+    const y = 5 - x;
+    if (!plottedPoints.find(p => p.x === x)) {
+        plottedPoints.push({ x, y });
+        if (plottedPoints.length > 7) plottedPoints.shift();
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${x}</td><td>${y}</td>`;
+        document.getElementById('valueTableBody').appendChild(row);
+        while (document.getElementById('valueTableBody').children.length > 7) {
+            document.getElementById('valueTableBody').removeChild(document.getElementById('valueTableBody').firstChild);
+        }
+    }
+    drawGraph('graph1Wrap', {
+        lines: [{ m: -1, c: 5, label: 'x+y=5' }],
+        points: [...plottedPoints.map(p => ({ x: p.x, y: p.y, cls: 'plot-point' })), { x, y, cls: 'plot-point-check', r: 8, label: `(${x},${y})` }]
+    });
+}
+AlgLib.slider('input-lx', 'val-lx', updateGraph1);
+document.getElementById('clearTable').addEventListener('click', () => {
+    plottedPoints = [];
+    document.getElementById('valueTableBody').innerHTML = '';
+    updateGraph1(parseFloat(document.getElementById('input-lx').value));
+});
+
+/* ---------- Section 2: check a point ---------- */
+function updateGraph2(px_, py_, checked) {
+    drawGraph('graph2Wrap', {
+        lines: [{ m: -1, c: 5, label: 'x+y=5' }],
+        points: [{ x: px_, y: py_, cls: checked ? (px_ + py_ === 5 ? 'solution-point' : 'plot-point-check') : 'plot-point-check', r: 8, label: `(${px_},${py_})` }]
+    });
+}
+document.getElementById('checkPointBtn').addEventListener('click', () => {
+    const px_ = parseFloat(document.getElementById('checkX').value);
+    const py_ = parseFloat(document.getElementById('checkY').value);
+    const sum = px_ + py_;
+    const ok = sum === 5;
+    document.getElementById('checkRow').innerHTML = `<span>${px_} + ${py_} = ${sum}</span> <span class="check-result ${ok ? 'check-yes' : 'check-no'}">${ok ? '✓ satisfies x+y=5' : '✗ does not satisfy x+y=5'}</span>`;
+    updateGraph2(px_, py_, true);
+});
+updateGraph2(2, 3, false);
+
+/* ---------- Section 3: simultaneous ---------- */
+function drawGraph3() {
+    drawGraph('graph3Wrap', {
+        lines: [{ m: -1, c: 5, label: 'x+y=5', color: 'var(--math-accent)' }, { m: 2, c: -4, label: '2x-y=4', color: 'var(--math-accent-2)', cls: 'plot-line-2' }],
+        points: [{ x: 3, y: 2, cls: 'solution-point', r: 8, label: '(3,2)' }]
+    });
+}
+document.getElementById('simul-play').addEventListener('click', () => { AlgLib.revealSteps('simulSteps'); drawGraph3(); });
+AlgLib.revealSteps('simulSteps', 0);
+drawGraph3();
+
+updateGraph1(0);
+
+document.getElementById('we8-play').addEventListener('click', () => AlgLib.revealSteps('we8-steps'));
+AlgLib.revealSteps('we8-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

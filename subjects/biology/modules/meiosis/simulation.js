@@ -1,0 +1,1 @@
+window.MODULE_CONFIG={s:'Biology',u:'Unit 03 — Cell Reproduction',t:'Meiosis',q:'How does meiosis create variation?',intro:'Advance through two divisions and change crossing-over to see four genetically varied cells emerge.',a:['Division progress',0,100,0,'%'],b:['Crossing over',0,100,45,'%'],mode:'meiosis',pred:['Four varied cells','Two identical cells','One cell']};

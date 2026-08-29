@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.1 Introduction • Algebra • Study Notebook</title>
+<meta name="description" content="How a letter can stand in for a changing number — variables, constants and algebraic expressions, explored interactively."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Algebra
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">3.1 Introduction</span>
+<h1 class="hero-title">A letter that<br/>stands for a number</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 42ch;">
+    You already know 2 + 3 = 5. Algebra asks: what if the number isn't fixed yet? A variable is just a
+    placeholder for a number we haven't chosen — or one that keeps changing.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: WHAT IS A VARIABLE -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Variables</h3>
+<h2>Watch a value change</h2>
+<p>
+    A <b>variable</b> (usually a letter like $x$, $y$ or $a$) represents a number that can change. A
+    <b>constant</b> is a fixed number that never changes, like 3 or −7. Combine them with $+, -, \times, \div$
+    and you get an <b>algebraic expression</b>.
+</p>
+<div class="formula-card">
+<span class="etu-tag">Try it</span>
+<h4 style="margin-bottom:0.5rem;">Drag the slider — watch $x + 3$ update</h4>
+<div class="inline-controls">
+<span>$x =$</span>
+<span class="value-readout" id="val-x1">0</span>
+</div>
+<input id="input-x1" max="10" min="-10" step="1" type="range" value="0" style="width:100%;"/>
+</div>
+<div class="etu-card">
+<span class="etu-tag">Key idea</span>
+<h4 style="margin-bottom:0.5rem;">The expression is a rule, not a number</h4>
+<p style="font-size: 0.95rem; margin-bottom:0;">
+    $x + 3$ isn't one number — it's a rule: "take whatever $x$ is, and add 3". Every time $x$ changes,
+    the rule gives a new answer. That's the whole idea of algebra.
+</p>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('variables', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="numberlineWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: EXPRESSION BUILDER -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Constants &amp; Coefficients</h3>
+<h2>Build your own expression</h2>
+<p>
+    Any part of a term multiplied by the variable is its <b>coefficient</b>. The number on its own, with
+    no variable attached, is the <b>constant</b>. Set both below and see the expression $mx + c$ update live.
+</p>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Coefficient $m$ (<span id="val-m" class="value-readout">2</span>)</label>
+<input id="input-m" max="8" min="-8" step="1" type="range" value="2"/>
+</div>
+<div class="slider-group">
+<label>Constant $c$ (<span id="val-c" class="value-readout">1</span>)</label>
+<input id="input-c" max="10" min="-10" step="1" type="range" value="1"/>
+</div>
+<div class="slider-group">
+<label>Evaluate at $x =$ (<span id="val-ex" class="value-readout">4</span>)</label>
+<input id="input-ex" max="10" min="-10" step="1" type="range" value="4"/>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="exprDisplay" class="formula-rule">2x + 1</div>
+<div id="exprValue" style="font-size:1.05rem; color:var(--text-muted);">When x = 4, value = 9</div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="barWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Find the value of $2x + 7$ when $x = 3$.</div>
+<div class="we-concept">Concept used: substitution — replace $x$ with its value, then simplify.</div>
+<div class="step-flow" id="we1-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Start with the expression.<div class="step-math">$2x + 7$</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Substitute $x = 3$.<div class="step-math">$2(3) + 7$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Multiply first.<div class="step-math">$6 + 7$</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">$= 13$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we1-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Find the value of $5x - 4$ when $x = 2$.</div>
+<div class="inline-controls">
+<span>Your answer:</span>
+<input class="mini-input" id="exAnswer" type="number"/>
+<button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-ghost" data-reveal="exHint2">Hint 2</button>
+<button class="btn btn-secondary" data-reveal="exSteps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">Substitution means replacing $x$ with the number you're given — nothing else changes.</div>
+<div class="exercise-panel" id="exHint2">Multiply before you subtract: work out $5 \times 2$ first.</div>
+<div class="exercise-panel" id="exSteps">
+<div class="step-flow" id="exSteps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">$5x - 4$</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">Substitute $x = 2$: $5(2) - 4$</div></div>
+<div class="step-item step-in"><span class="step-num">3</span><div class="step-body">$10 - 4$</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: $10 - 4 = 6$</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../">← Algebra overview</a>
+<a class="back-link" href="../polynomials/">Next: Polynomials →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    switch (topic) {
+        case 'variables': prompt = "Explain what a variable and a constant are in algebra, for a Class 9 student, with simple examples."; break;
+    }
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Number line: x and x+3 ---------- */
+function drawNumberLine(x) {
+    const wrap = document.getElementById('numberlineWrap');
+    const w = 420, h = 420;
+    const minX = -10, maxX = 13;
+    const scale = (w - 60) / (maxX - minX);
+    const toPx = v => 30 + (v - minX) * scale;
+    const y = h / 2;
+
+    let ticks = '';
+    for (let i = minX; i <= maxX; i++) {
+        const px = toPx(i);
+        ticks += `<line class="grid-line" x1="${px}" y1="${y - 6}" x2="${px}" y2="${y + 6}"/>`;
+        if (i % 2 === 0) ticks += `<text class="axis-label" x="${px}" y="${y + 24}" text-anchor="middle">${i}</text>`;
+    }
+
+    const xPx = toPx(x);
+    const x3Px = toPx(x + 3);
+
+    wrap.innerHTML = `<svg viewBox="0 0 ${w} ${h}">
+        <line class="axis-line" x1="30" y1="${y}" x2="${w - 30}" y2="${y}"/>
+        ${ticks}
+        <circle class="plot-point" cx="${xPx}" cy="${y}" r="8"/>
+        <text class="axis-label" x="${xPx}" y="${y - 18}" text-anchor="middle" font-size="13" font-weight="700" fill="var(--math-accent)">x</text>
+        <circle class="plot-point-check" cx="${x3Px}" cy="${y}" r="8"/>
+        <text class="axis-label" x="${x3Px}" y="${y - 18}" text-anchor="middle" font-size="13" font-weight="700" fill="var(--math-accent-2)">x+3</text>
+        <line x1="${xPx}" y1="${y + 34}" x2="${x3Px}" y2="${y + 34}" stroke="var(--math-accent-2)" stroke-width="2" marker-end="url(#arrow1)"/>
+        <text class="axis-label" x="${(xPx + x3Px) / 2}" y="${y + 52}" text-anchor="middle">+3</text>
+        <defs><marker id="arrow1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="var(--math-accent-2)"/></marker></defs>
+    </svg>`;
+}
+AlgLib.slider('input-x1', 'val-x1', v => drawNumberLine(v));
+
+/* ---------- Expression builder mx + c ---------- */
+function updateExpr() {
+    const m = parseFloat(document.getElementById('input-m').value);
+    const c = parseFloat(document.getElementById('input-c').value);
+    const x = parseFloat(document.getElementById('input-ex').value);
+    document.getElementById('val-m').textContent = m;
+    document.getElementById('val-c').textContent = c;
+    document.getElementById('val-ex').textContent = x;
+
+    const mStr = m === 1 ? 'x' : (m === -1 ? '-x' : `${m}x`);
+    const cStr = c >= 0 ? `+ ${c}` : `- ${Math.abs(c)}`;
+    document.getElementById('exprDisplay').textContent = `${mStr} ${cStr}`;
+    const value = m * x + c;
+    document.getElementById('exprValue').textContent = `When x = ${x}, value = ${value}`;
+
+    const wrap = document.getElementById('barWrap');
+    const maxAbs = Math.max(Math.abs(value), 20);
+    const h = 260, w = 380, baseline = h / 2;
+    const scale = (baseline - 30) / maxAbs;
+    const barH = Math.abs(value) * scale;
+    const barY = value >= 0 ? baseline - barH : baseline;
+    const barColor = value >= 0 ? 'var(--math-accent)' : 'var(--accent-secondary)';
+    wrap.innerHTML = `<svg viewBox="0 0 ${w} ${h}">
+        <line class="axis-line" x1="20" y1="${baseline}" x2="${w - 20}" y2="${baseline}"/>
+        <rect x="${w / 2 - 35}" y="${barY}" width="70" height="${barH}" rx="6" fill="${barColor}" opacity="0.85"/>
+        <text class="axis-label" x="${w / 2}" y="${value >= 0 ? barY - 12 : barY + barH + 24}" text-anchor="middle" font-size="18" font-weight="700" fill="var(--text-main)">${value}</text>
+        <text class="axis-label" x="${w / 2}" y="${baseline + 24}" text-anchor="middle">mx + c</text>
+    </svg>`;
+}
+['input-m', 'input-c', 'input-ex'].forEach(id => document.getElementById(id).addEventListener('input', updateExpr));
+updateExpr();
+drawNumberLine(0);
+AlgLib.typeset();
+
+/* ---------- Worked example play ---------- */
+document.getElementById('we1-play').addEventListener('click', () => AlgLib.revealSteps('we1-steps'));
+AlgLib.revealSteps('we1-steps', 0);
+
+/* ---------- Exercise ---------- */
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 6, document.getElementById('exResult'));
+});
+
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Geometry • Class 9 Mathematics • Study Notebook</title>
+<meta name="description" content="Class 9 Geometry: types of angles, quadrilaterals, parts of a circle, chord properties, cyclic quadrilaterals and practical constructions — built visually."/>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html#mathematics-path">
+<i data-lucide="arrow-left" width="16"></i>
+    Class 9 Mathematics
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Chapter 4</span>
+<h1 class="hero-title">Geometry</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    You already know angles and shapes by eye — geometry just makes that precise. Start from angle facts
+    you can already guess, build up through quadrilaterals and circles, and finish with the
+    compass-and-straightedge constructions that use everything above.
+</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Each module leans on the one before it — angle facts first, then the quadrilaterals
+built from them, then circles, the chords inside them, quadrilaterals inscribed in them, finishing with
+the constructions (centroid, orthocentre, circumcentre, incentre) that put every idea above to use.</p>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+
+<div class="divider"></div>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../js/common.js"></script>
+<script>
+const topics = [
+  ["01","4.1–4.2","types-of-angles/","Types of Angles","Acute to reflex, complementary, linear pairs, transversals and the triangle angle-sum rule.","angles"],
+  ["02","4.3","quadrilaterals/","Quadrilaterals","Parallelograms, rhombuses, trapeziums and kites — sorted by what their sides, angles and diagonals do.","quad"],
+  ["03","4.4","parts-of-a-circle/","Parts of a Circle","Centre, radius, chord, arc, segment and sector — the vocabulary every circle theorem depends on.","circleparts"],
+  ["04","4.5","chords-of-a-circle/","Properties of Chords","Equal chords, perpendicular bisectors and the angle a chord subtends at the centre.","chords"],
+  ["05","4.6","cyclic-quadrilaterals/","Cyclic Quadrilaterals","Four points on one circle — why opposite angles always add to 180°.","cyclic"],
+  ["06","4.7","practical-geometry/","Practical Geometry","Construct the centroid, orthocentre, circumcentre and incentre of a triangle.","construct"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   angles:`<svg ${common}><path d="M40 82h180"/><path class="tv-accent tv-spin" style="transform-origin:40px 82px" d="M40 82L150 25"/><path class="tv-ghost" d="M60 82A22 22 0 0 0 76 66"/><text x="180" y="40">0°→360°</text><text x="180" y="60">acute·right·obtuse</text></svg>`,
+   quad:`<svg ${common}><rect class="tv-accent tv-pulse" x="35" y="28" width="60" height="48"/><path class="tv-stroke-2 tv-float" d="M140 30h60l-20 46h-60Z"/><text x="35" y="92">square</text><text x="150" y="92">rhombus</text></svg>`,
+   circleparts:`<svg ${common}><circle class="tv-accent" cx="130" cy="52" r="38"/><path class="tv-stroke-2 tv-nudge" d="M130 52L168 52"/><circle class="tv-fill" cx="130" cy="52" r="4"/><text x="140" y="46">radius</text><path class="tv-ghost" d="M96 30h30" style="display:none"/><text x="55" y="20">chord</text><path class="tv-fill-2" style="stroke:none" d="M95 30 100 78 96 30Z"/><line class="tv-stroke-2" x1="95" y1="30" x2="100" y2="78"/></svg>`,
+   chords:`<svg ${common}><circle class="tv-accent" cx="130" cy="52" r="40"/><line class="tv-stroke-2 tv-flicker" x1="96" y1="24" x2="96" y2="80"/><line class="tv-fill-2" style="stroke:var(--math-accent-2)" x1="164" y1="24" x2="164" y2="80"/><path class="tv-dash tv-accent" d="M130 12v80"/><text x="55" y="98">equal chords</text></svg>`,
+   cyclic:`<svg ${common}><circle class="tv-accent" cx="130" cy="52" r="40"/><path class="tv-stroke-2" d="M96 26 168 30 160 82 100 76Z"/><circle class="tv-fill tv-pulse" cx="96" cy="26" r="4"/><circle class="tv-fill tv-pulse" cx="160" cy="82" r="4"/><text x="60" y="98">∠A + ∠C = 180°</text></svg>`,
+   construct:`<svg ${common}><path class="tv-accent" d="M50 82 150 82 90 20Z"/><path class="tv-stroke-2 tv-dash" d="M50 82 120 51M150 82 70 51M90 20 100 82"/><circle class="tv-fill tv-pulse" cx="97" cy="61" r="5"/><text x="150" y="30">centroid</text></svg>`
+  };
+  return v[key]||v.angles;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[2]}">
+    <div class="topic-visual">${topicVisual(t[5])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · ${t[1]}</span>
+      <h3>${t[3]}</h3>
+      <p>${t[4]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

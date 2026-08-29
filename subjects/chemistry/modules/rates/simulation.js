@@ -1,0 +1,1 @@
+window.MODULE_CONFIG={s:'Chemistry',u:'Unit 05 — Reactions & Equilibrium',t:'Reaction Rates',q:'Why do some reactions happen faster?',intro:'Change temperature and concentration to alter collision frequency and reaction speed.',a:['Temperature',10,100,45,'%'],b:['Concentration',10,100,50,'%'],mode:'rates',pred:['Rate increases','Rate decreases','No change']};

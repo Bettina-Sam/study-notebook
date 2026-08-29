@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.6 Division of Polynomials • Algebra • Study Notebook</title>
+<meta name="description" content="Long division for polynomials, one highlighted step at a time — Next Step and Reset controls."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.div-grid{ display:grid; row-gap:6px; column-gap:4px; align-items:center; font-family:var(--font-mono); }
+.div-cell{ padding:4px 6px; white-space:nowrap; opacity:0; transform:translateY(-4px); transition:opacity .35s, transform .35s; }
+.div-cell.in{ opacity:1; transform:translateY(0); }
+.div-cell.sub-line{ border-bottom:1.5px solid var(--text-main); padding-bottom:6px; }
+.div-cell.dividend{ font-weight:700; }
+.div-cell.new-term{ color:var(--math-accent-2); font-weight:700; }
+.div-cell.cancelled{ color:var(--text-muted); text-decoration:line-through; opacity:0.35 !important; }
+</style>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Algebra
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">3.6 Division of Polynomials</span>
+<h1 class="hero-title">Long division,<br/>one step at a time</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    Dividend = (Divisor × Quotient) + Remainder — the same rule you already know from 13 ÷ 5 = 2 remainder 3,
+    now applied to polynomials.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: LONG DIVISION BOARD -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. The Division Board</h3>
+<h2>$(5x^2 - 7x + 2) \div (x - 1)$</h2>
+<p>Press <b>Next Step</b> to reveal the leading term, multiply the divisor by it, and subtract — one step at a time.</p>
+<div class="formula-card">
+<span class="etu-tag">Rule</span>
+<div class="formula-rule">Dividend = (Divisor × Quotient) + Remainder</div>
+</div>
+<div class="division-controls">
+<button class="btn btn-primary" id="divNext">Next Step</button>
+<button class="btn btn-secondary" id="divReset">Reset</button>
+</div>
+<div class="division-status" id="divStatus">Press Next Step to begin.</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('division', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="division-board" id="divBoard1"></div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE (auto play, simpler case) -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Divide $x^2 - 5x + 6$ by $(x - 2)$.</div>
+<div class="we-concept">Concept used: the same long-division board, one step at a time.</div>
+<div class="division-board" id="divBoard2" style="margin-top:0.5rem;"></div>
+<div class="btn-row"><button class="btn btn-primary" id="we6-play">Play all steps</button><button class="btn btn-secondary" id="we6-reset">Reset</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Divide $x^2 + 5x + 6$ by $(x + 2)$. What are the quotient and remainder?</div>
+<div class="inline-controls">
+<span>Quotient:</span> <input class="mini-input" id="exQ" placeholder="e.g. x+3" style="width:90px;"/>
+<span>Remainder:</span> <input class="mini-input" id="exR" style="width:60px;"/>
+<button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-secondary" data-reveal="exBoard">Show on Board</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">You just factorised $x^2+5x+6$ as $(x+2)(x+3)$ in the previous module — that tells you the quotient directly.</div>
+<div class="exercise-panel" id="exBoard">
+<div class="division-board" id="divBoard3"></div>
+<div class="btn-row"><button class="btn btn-primary" id="ex-play">Play steps</button></div>
+</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: quotient $x + 3$, remainder $0$.</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../factorisation/">← 3.5 Factorisation</a>
+<a class="back-link" href="../gcd/">Next: Greatest Common Divisor →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'division') prompt = "Explain how to do polynomial long division for a Class 9 student, with a worked example.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ================= Long division engine (divisor: x - r) ================= */
+function buildDivisionSteps(coeffs, r) {
+    // coeffs: [c_n, c_{n-1}, ..., c_0] descending degree
+    const n = coeffs.length - 1;
+    const current = coeffs.slice();
+    const steps = [];
+    for (let j = 0; j < n; j++) {
+        const q = current[j];
+        const carry = q * r;
+        const newVal = current[j + 1] + carry;
+        steps.push({ col: j, deg: n - j, nextCol: j + 1, nextDeg: n - j - 1, q, carry, newVal, before: current[j + 1] });
+        current[j + 1] = newVal;
+        current[j] = 0;
+    }
+    return { n, steps, remainder: current[n], quotient: steps.map(s => s.q) };
+}
+
+function fmtTerm(coeff, deg, isFirst) {
+    if (coeff === 0 && deg !== 0) return '';
+    const sign = coeff < 0 ? '\u2212' : (isFirst ? '' : '+');
+    const abs = Math.abs(coeff);
+    const coefStr = (abs === 1 && deg !== 0) ? '' : String(abs);
+    const varStr = deg === 0 ? '' : (deg === 1 ? 'x' : `x<sup>${deg}</sup>`);
+    return `${sign} ${coefStr}${varStr}`.trim();
+}
+
+function divisorLabel(r) {
+    if (r === 0) return 'x';
+    return r > 0 ? `x \u2212 ${r}` : `x + ${Math.abs(r)}`;
+}
+
+/* Render the board up to `revealed` steps (0..n). Returns the DOM container. */
+function renderBoard(containerId, coeffs, r, revealed) {
+    const { n, steps, remainder, quotient } = buildDivisionSteps(coeffs, r);
+    const el = document.getElementById(containerId);
+    const cols = n + 1;
+    let cells = [];
+    let row = 1;
+
+    // Dividend row
+    coeffs.forEach((c, j) => {
+        cells.push({ row, col: j, text: fmtTerm(c, n - j, j === 0), cls: 'dividend' });
+    });
+    row++;
+
+    for (let j = 0; j < revealed; j++) {
+        const s = steps[j];
+        // multiply row: q at col j (cancels), carry-term at col j+1
+        cells.push({ row, col: j, text: fmtTerm(s.q, s.deg, true) + ' <span style="opacity:.5">(cancels)</span>', cls: 'cancelled sub-line' });
+        cells.push({ row, col: j + 1, text: fmtTerm(-s.carry, s.nextDeg, true), cls: 'sub-line' });
+        row++;
+        // result row: new value at col j+1, pass-through original values further right
+        cells.push({ row, col: j + 1, text: fmtTerm(s.newVal, s.nextDeg, true), cls: 'new-term' });
+        for (let k = j + 2; k < cols; k++) {
+            cells.push({ row, col: k, text: fmtTerm(coeffs[k], n - k, false), cls: 'dividend' });
+        }
+        row++;
+    }
+
+    el.innerHTML = `<div class="div-grid" style="grid-template-columns:repeat(${cols}, minmax(56px,1fr));">
+        ${cells.map(c => `<div class="div-cell ${c.cls}" style="grid-row:${c.row}; grid-column:${c.col + 1};">${c.text}</div>`).join('')}
+    </div>`;
+    requestAnimationFrame(() => el.querySelectorAll('.div-cell').forEach((c, i) => setTimeout(() => c.classList.add('in'), i * 4)));
+
+    return { n, steps, remainder, quotient, totalSteps: n };
+}
+
+function quotientStr(quotient, n) {
+    return quotient.map((c, j) => fmtTerm(c, n - j - 1, j === 0)).join(' ').trim() || '0';
+}
+
+/* ---------- Board 1: (5x^2 - 7x + 2) / (x - 1), manual Next/Reset ---------- */
+const board1Coeffs = [5, -7, 2];
+const board1R = 1;
+let board1Revealed = 0;
+function updateBoard1() {
+    const info = renderBoard('divBoard1', board1Coeffs, board1R, board1Revealed);
+    const status = document.getElementById('divStatus');
+    if (board1Revealed === 0) {
+        status.textContent = 'Press Next Step to begin.';
+    } else if (board1Revealed < info.totalSteps) {
+        status.textContent = `Step ${board1Revealed} of ${info.totalSteps} done — quotient so far: ${quotientStr(info.quotient, info.n)}`;
+    } else {
+        status.innerHTML = `Done! Quotient = <b>${quotientStr(info.quotient, info.n)}</b>, Remainder = <b>${info.remainder}</b>`;
+    }
+    document.getElementById('divNext').disabled = board1Revealed >= info.totalSteps;
+}
+document.getElementById('divNext').addEventListener('click', () => { board1Revealed++; updateBoard1(); });
+document.getElementById('divReset').addEventListener('click', () => { board1Revealed = 0; updateBoard1(); });
+updateBoard1();
+
+/* ---------- Board 2: worked example x^3 - 4x^2 + 6x / x, auto-play ---------- */
+const board2Coeffs = [1, -5, 6];
+const board2R = 2;
+let board2Revealed = 0;
+let board2Timer = null;
+function updateBoard2() { renderBoard('divBoard2', board2Coeffs, board2R, board2Revealed); }
+document.getElementById('we6-play').addEventListener('click', () => {
+    clearInterval(board2Timer);
+    board2Revealed = 0; updateBoard2();
+    const total = board2Coeffs.length - 1;
+    board2Timer = setInterval(() => {
+        board2Revealed++;
+        updateBoard2();
+        if (board2Revealed >= total) clearInterval(board2Timer);
+    }, 950);
+});
+document.getElementById('we6-reset').addEventListener('click', () => { clearInterval(board2Timer); board2Revealed = 0; updateBoard2(); });
+updateBoard2();
+
+/* ---------- Board 3: exercise x^2 + 5x + 6 / (x + 2) ---------- */
+const board3Coeffs = [1, 5, 6];
+const board3R = -2;
+let board3Revealed = 0;
+function updateBoard3() { renderBoard('divBoard3', board3Coeffs, board3R, board3Revealed); }
+document.getElementById('ex-play').addEventListener('click', () => {
+    board3Revealed = Math.min(board3Revealed + 1, board3Coeffs.length - 1);
+    updateBoard3();
+});
+updateBoard3();
+
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const q = (document.getElementById('exQ').value || '').replace(/\s+/g, '').toLowerCase();
+    const r = parseFloat(document.getElementById('exR').value);
+    const resultEl = document.getElementById('exResult');
+    const ok = (q === 'x+3') && r === 0;
+    resultEl.textContent = ok ? 'Correct!' : 'Not quite — check the board above.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

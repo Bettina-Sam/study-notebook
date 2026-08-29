@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>4.2 Types of Angles • Geometry • Study Notebook</title>
+<meta name="description" content="Acute to reflex angles, complementary and supplementary pairs, linear pairs, vertically opposite angles, transversals and the triangle angle-sum property — explored interactively."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Geometry
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">4.2 Types of Angles</span>
+<h1 class="hero-title">Every angle fact<br/>you'll ever need</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    A handful of simple angle facts — about pairs of angles, crossing lines and triangles — quietly power
+    almost every geometry theorem later in this chapter. Drag each slider and watch the rule hold.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: TYPES OF ANGLES -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Classify by Measure</h3>
+<h2>Rotate the ray</h2>
+<p>
+    An angle is formed by two rays sharing an end point. As the measure $\theta$ grows from
+    $0°$ to $360°$, the same pair of rays passes through every named type of angle.
+</p>
+<div class="sim-controls">
+<div class="slider-group">
+<label>$\theta =$ (<span id="val-theta1" class="value-readout">60</span>°)</label>
+<input id="input-theta1" max="355" min="0" step="5" type="range" value="60"/>
+</div>
+</div>
+<div class="formula-card">
+<div class="var-list">
+<div class="var-row"><span class="var-key">0–90°</span><span class="var-desc">Acute angle</span></div>
+<div class="var-row"><span class="var-key">90°</span><span class="var-desc">Right angle</span></div>
+<div class="var-row"><span class="var-key">90–180°</span><span class="var-desc">Obtuse angle</span></div>
+<div class="var-row"><span class="var-key">180°</span><span class="var-desc">Straight angle</span></div>
+<div class="var-row"><span class="var-key">180–360°</span><span class="var-desc">Reflex angle</span></div>
+</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('types', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="wrapTheta1"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: COMPLEMENTARY & SUPPLEMENTARY -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Complementary &amp; Supplementary</h3>
+<h2>Two angles that add to something fixed</h2>
+<p>
+    Two angles are <b>complementary</b> if they add to $90°$, and <b>supplementary</b> if they add to
+    $180°$. Neither angle needs to touch the other — it's purely about the sum.
+</p>
+<div class="sim-controls">
+<div class="slider-group">
+<label>$A =$ (<span id="val-A2" class="value-readout">40</span>°)</label>
+<input id="input-A2" max="175" min="5" step="5" type="range" value="40"/>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="compValue" class="formula-rule" style="font-size:1rem;">Complement = 50°</div>
+<div id="suppValue" class="formula-rule" style="font-size:1rem;">Supplement = 140°</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('compsupp', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="wrapCompSupp"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3: LINEAR PAIR & VERTICALLY OPPOSITE -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">03. Linear Pair &amp; Vertically Opposite</h3>
+<h2>Two lines crossing at a point</h2>
+<p>
+    When a ray stands on a straight line, the two adjacent angles it makes form a
+    <b>linear pair</b> — they always sum to $180°$. When two full lines cross, the angles opposite
+    each other are called <b>vertically opposite angles</b>, and they are always equal.
+</p>
+<div class="sim-controls">
+<div class="slider-group">
+<label>$\theta =$ (<span id="val-theta3" class="value-readout">50</span>°)</label>
+<input id="input-theta3" max="175" min="5" step="5" type="range" value="50"/>
+</div>
+</div>
+<div class="step-flow" id="linearSteps">
+<div class="step-item step-in"><span class="step-num">•</span><div class="step-body" id="lin1">∠AOC = ∠BOD = 50° (vertically opposite)</div></div>
+<div class="step-item step-in"><span class="step-num">•</span><div class="step-body" id="lin2">∠COB = ∠DOA = 130° (vertically opposite)</div></div>
+<div class="step-item step-in"><span class="step-num">•</span><div class="step-body" id="lin3">∠AOC + ∠COB = 180° (linear pair)</div></div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="wrapLinear"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 4: TRANSVERSAL -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">04. A Transversal Across Parallel Lines</h3>
+<h2>Eight angles, two values</h2>
+<p>
+    A transversal cutting two parallel lines creates eight angles — but only two distinct
+    measures. Tilt the transversal, then tap a relationship to see which angles match.
+</p>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Tilt (<span id="val-tilt4" class="value-readout">25</span>°)</label>
+<input id="input-tilt4" max="55" min="-55" step="5" type="range" value="25"/>
+</div>
+</div>
+<div class="identity-tabs" id="transTabs">
+<button class="identity-tab active" data-rel="corresponding">Corresponding</button>
+<button class="identity-tab" data-rel="altint">Alternate Interior</button>
+<button class="identity-tab" data-rel="altext">Alternate Exterior</button>
+<button class="identity-tab" data-rel="coint">Co-interior</button>
+</div>
+<div class="identity-expansion" id="transNote" style="min-height:2.4rem;">∠2 = ∠6 (also ∠1&amp;∠5, ∠3&amp;∠7, ∠4&amp;∠8)</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('transversal', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="wrapTrans"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 5: TRIANGLE ANGLE SUM -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">05. Triangle Angle Sum</h3>
+<h2>The angles of any triangle add to 180°</h2>
+<p>
+    Set two angles of a triangle — the third is never free, it's forced to make the total $180°$.
+    Stretch a side outward and the <b>exterior angle</b> formed equals the sum of the two
+    <em>remote</em> interior angles.
+</p>
+<div class="sim-controls">
+<div class="slider-group">
+<label>$A =$ (<span id="val-triA" class="value-readout">60</span>°)</label>
+<input id="input-triA" max="130" min="20" step="5" type="range" value="60"/>
+</div>
+<div class="slider-group">
+<label>$B =$ (<span id="val-triB" class="value-readout">70</span>°)</label>
+<input id="input-triB" max="130" min="20" step="5" type="range" value="70"/>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="triSum" class="formula-rule">A + B + C = 60° + 70° + 50° = 180°</div>
+<div id="triExt" style="font-size:0.92rem; color:var(--text-muted);">Exterior angle at B = 130° = A + C (60° + 70°)</div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="wrapTriangle"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 6: CONGRUENCE RULES -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">06. Congruent Triangles</h3>
+<h2 style="margin-bottom:1.2rem;">Five ways to prove two triangles match</h2>
+<div class="identity-tabs" id="congTabs">
+<button class="identity-tab active" data-rule="SSS">SSS</button>
+<button class="identity-tab" data-rule="SAS">SAS</button>
+<button class="identity-tab" data-rule="ASA">ASA</button>
+<button class="identity-tab" data-rule="AAS">AAS</button>
+<button class="identity-tab" data-rule="RHS">RHS</button>
+</div>
+<div class="split-layout" style="margin-top:1rem;">
+<div class="content-col">
+<div class="formula-card">
+<span class="etu-tag" id="congTitle">Side-Side-Side</span>
+<div class="var-list" id="congList"></div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="wrapCong"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">The angles of a triangle are in the ratio $1 : 2 : 3$. Find the measure of each angle.</div>
+<div class="we-concept">Concept used: the triangle angle-sum property, $A + B + C = 180°$.</div>
+<div class="step-flow" id="we-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Let the angles be $x, 2x, 3x$.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Their sum is $180°$.<div class="step-math">$x + 2x + 3x = 180°$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Simplify and solve for $x$.<div class="step-math">$6x = 180° \Rightarrow x = 30°$</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">Angles are $30°, 60°, 90°$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Two parallel lines $l$ and $m$ are cut by a transversal. The transversal makes a $65°$ angle with $l$. Find the co-interior angle $x$ it makes with $m$.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-ghost" data-reveal="exHint2">Hint 2</button>
+<button class="btn btn-secondary" data-reveal="exSteps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">Co-interior (allied) angles lie between the parallel lines, on the same side of the transversal.</div>
+<div class="exercise-panel" id="exHint2">Co-interior angles are supplementary — they add to $180°$, not equal to each other.</div>
+<div class="exercise-panel" id="exSteps">
+<div class="step-flow" id="exSteps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">Co-interior angles sum to $180°$.<div class="step-math">$65° + x = 180°$</div></div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">Solve for $x$.<div class="step-math">$x = 115°$</div></div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: $x = 115°$.</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../">← Geometry</a>
+<a class="back-link" href="../quadrilaterals/">Next: Quadrilaterals →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'types') prompt = "Explain the types of angles (acute, right, obtuse, straight, reflex) for a Class 9 student.";
+    if (topic === 'compsupp') prompt = "Explain complementary and supplementary angles with simple examples.";
+    if (topic === 'transversal') prompt = "Explain corresponding, alternate interior, alternate exterior and co-interior angles formed by a transversal cutting two parallel lines.";
+    launchAIPrompt(model, prompt);
+}
+const D2R = Math.PI / 180;
+function pt(cx, cy, r, angleDeg) { const a = angleDeg * D2R; return { x: cx + r * Math.cos(a), y: cy - r * Math.sin(a) }; }
+function arcPath(cx, cy, r, startDeg, endDeg) {
+    const s = pt(cx, cy, r, startDeg), e = pt(cx, cy, r, endDeg);
+    const large = (endDeg - startDeg) > 180 ? 1 : 0;
+    return `M ${s.x} ${s.y} A ${r} ${r} 0 ${large} 0 ${e.x} ${e.y}`;
+}
+
+/* ---------- SECTION 1: Types of angles ---------- */
+function classifyAngle(t) {
+    if (t === 0 || t === 360) return 'Zero angle';
+    if (t < 90) return 'Acute angle';
+    if (t === 90) return 'Right angle';
+    if (t < 180) return 'Obtuse angle';
+    if (t === 180) return 'Straight angle';
+    return 'Reflex angle';
+}
+function drawTheta1(theta) {
+    const cx = 55, cy = 150, r = 110;
+    const end = pt(cx, cy, r, theta);
+    const labelPt = pt(cx, cy, 46, theta / 2 || 0);
+    document.getElementById('wrapTheta1').innerHTML = `<svg viewBox="0 0 260 190">
+        <line class="axis-line" x1="${cx}" y1="${cy}" x2="${cx + r}" y2="${cy}"/>
+        <line x1="${cx}" y1="${cy}" x2="${end.x}" y2="${end.y}" stroke="var(--math-accent-2)" stroke-width="2.5"/>
+        <path d="${arcPath(cx, cy, 34, 0, Math.max(theta, 1))}" fill="none" stroke="var(--math-accent)" stroke-width="2"/>
+        <circle cx="${cx}" cy="${cy}" r="3.5" fill="var(--text-main)"/>
+        <text class="axis-label" x="${labelPt.x}" y="${labelPt.y}" text-anchor="middle" fill="var(--math-accent)" font-weight="700">${theta}°</text>
+        <text class="axis-label" x="20" y="20" font-size="14" font-weight="700">${classifyAngle(theta)}</text>
+        <text class="axis-label" x="${cx - 6}" y="${cy + 16}">O</text>
+    </svg>`;
+}
+AlgLib.slider('input-theta1', 'val-theta1', drawTheta1);
+
+/* ---------- SECTION 2: Complementary & Supplementary ---------- */
+function drawCompSupp(A) {
+    const comp = 90 - A, hasComp = comp > 0;
+    const supp = 180 - A;
+    document.getElementById('compValue').textContent = hasComp ? `Complement = ${comp}°` : `No complement (A > 90°)`;
+    document.getElementById('suppValue').textContent = `Supplement = ${supp}°`;
+
+    const cx1 = 60, cy1 = 90, r = 55;
+    const mid1 = pt(cx1, cy1, r, A);
+    const compBlock = hasComp ? `
+        <line x1="${cx1}" y1="${cy1}" x2="${cx1 + r}" y2="${cy1}" stroke="var(--text-main)"/>
+        <line x1="${cx1}" y1="${cy1}" x2="${cx1}" y2="${cy1 - r}" stroke="var(--text-main)"/>
+        <line x1="${cx1}" y1="${cy1}" x2="${mid1.x}" y2="${mid1.y}" stroke="var(--math-accent-2)" stroke-width="2.5"/>
+        <path d="${arcPath(cx1, cy1, 24, 0, A)}" stroke="var(--math-accent)" fill="none" stroke-width="2"/>
+        <path d="${arcPath(cx1, cy1, 24, A, 90)}" stroke="var(--math-accent-2)" fill="none" stroke-width="2"/>
+        <text class="axis-label" x="${cx1 + 30}" y="${cy1 - 10}" fill="var(--math-accent)">A=${A}°</text>
+        <text class="axis-label" x="${cx1 - 45}" y="${cy1 - 40}" fill="var(--math-accent-2)">${comp}°</text>` :
+        `<text class="axis-label" x="20" y="${cy1}">No complement (A &gt; 90°)</text>`;
+
+    const cx2 = 60, cy2 = 195, r2 = 55;
+    const mid2 = pt(cx2, cy2, r2, A);
+    document.getElementById('wrapCompSupp').innerHTML = `<svg viewBox="0 0 260 240">
+        <text class="axis-label" x="10" y="20" font-weight="700">Complementary (sum 90°)</text>
+        ${compBlock}
+        <text class="axis-label" x="10" y="130" font-weight="700">Supplementary (sum 180°)</text>
+        <line x1="${cx2 - r2}" y1="${cy2}" x2="${cx2 + r2}" y2="${cy2}" stroke="var(--text-main)"/>
+        <line x1="${cx2}" y1="${cy2}" x2="${mid2.x}" y2="${mid2.y}" stroke="var(--math-accent-2)" stroke-width="2.5"/>
+        <path d="${arcPath(cx2, cy2, 24, 0, A)}" stroke="var(--math-accent)" fill="none" stroke-width="2"/>
+        <path d="${arcPath(cx2, cy2, 24, A, 180)}" stroke="var(--math-accent-2)" fill="none" stroke-width="2"/>
+        <text class="axis-label" x="${cx2 + 26}" y="${cy2 - 10}" fill="var(--math-accent)">${A}°</text>
+        <text class="axis-label" x="${cx2 - 45}" y="${cy2 - 24}" fill="var(--math-accent-2)">${supp}°</text>
+    </svg>`;
+}
+AlgLib.slider('input-A2', 'val-A2', drawCompSupp);
+
+/* ---------- SECTION 3: Linear pair & vertically opposite ---------- */
+function drawLinear(theta) {
+    const cx = 130, cy = 100, r = 90;
+    const A = pt(cx, cy, r, 0), B = pt(cx, cy, r, 180);
+    const C = pt(cx, cy, r, theta), Dp = pt(cx, cy, r, theta + 180);
+    const other = 180 - theta;
+    document.getElementById('lin1').textContent = `∠AOC = ∠BOD = ${theta}° (vertically opposite)`;
+    document.getElementById('lin2').textContent = `∠COB = ∠DOA = ${other}° (vertically opposite)`;
+    document.getElementById('lin3').textContent = `∠AOC + ∠COB = ${theta}° + ${other}° = 180° (linear pair)`;
+    const l1 = pt(cx, cy, 42, theta / 2), l2 = pt(cx, cy, 42, (theta + 180) / 2);
+    document.getElementById('wrapLinear').innerHTML = `<svg viewBox="0 0 260 200">
+        <line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="var(--text-main)" stroke-width="1.6"/>
+        <line x1="${C.x}" y1="${C.y}" x2="${Dp.x}" y2="${Dp.y}" stroke="var(--math-accent-2)" stroke-width="1.8"/>
+        <path d="${arcPath(cx, cy, 26, 0, theta)}" stroke="var(--math-accent)" fill="none" stroke-width="2"/>
+        <path d="${arcPath(cx, cy, 26, 180, theta + 180)}" stroke="var(--math-accent)" fill="none" stroke-width="2"/>
+        <circle cx="${cx}" cy="${cy}" r="3.5" fill="var(--text-main)"/>
+        <text class="axis-label" x="${l1.x}" y="${l1.y}" fill="var(--math-accent)" font-weight="700">${theta}°</text>
+        <text class="axis-label" x="${l2.x}" y="${l2.y}" fill="var(--math-accent)" font-weight="700">${theta}°</text>
+        <text class="axis-label" x="${A.x + 6}" y="${A.y - 6}">A</text>
+        <text class="axis-label" x="${B.x - 16}" y="${B.y - 6}">B</text>
+        <text class="axis-label" x="${C.x - 4}" y="${C.y - 8}">C</text>
+        <text class="axis-label" x="${Dp.x - 4}" y="${Dp.y + 16}">D</text>
+        <text class="axis-label" x="${cx + 4}" y="${cy + 18}">O</text>
+    </svg>`;
+}
+AlgLib.slider('input-theta3', 'val-theta3', drawLinear);
+
+/* ---------- SECTION 4: Transversal ---------- */
+const relInfo = {
+    corresponding: { pair: [2, 6], note: (v) => `∠2 = ∠6 = ${v}° (also ∠1&∠5, ∠3&∠7, ∠4&∠8)` },
+    altint:        { pair: [4, 6], note: (v) => `∠4 = ∠6 = ${v}° (also ∠3 & ∠5)` },
+    altext:        { pair: [2, 8], note: (v) => `∠2 = ∠8 = ${v}° (also ∠1 & ∠7)` },
+    coint:         { pair: [4, 5], note: (v) => `∠4 + ∠5 = ${v[0]}° + ${v[1]}° = 180° (also ∠3 & ∠6)` }
+};
+let currentRel = 'corresponding';
+function angleValue(n, alpha) { return (n % 2 === 1) ? (180 - alpha) : alpha; }
+function drawTrans(tiltDeg) {
+    const alpha = 90 - tiltDeg;
+    const Xc = 160, Ytop = 55, Ybot = 165;
+    const dx = Math.sin(tiltDeg * D2R), dy = -Math.cos(tiltDeg * D2R);
+    const Yc = (Ytop + Ybot) / 2;
+    const tTop = (Ytop - Yc) / dy, tBot = (Ybot - Yc) / dy;
+    const P1 = { x: Xc + tTop * dx, y: Ytop }, P2 = { x: Xc + tBot * dx, y: Ybot };
+    const ext = 40;
+    const T1 = { x: P1.x - dx * ext, y: P1.y - dy * ext }, T2 = { x: P2.x + dx * ext, y: P2.y + dy * ext };
+
+    const wedgesAt = (cx, cy, base) => ([
+        { n: base + 1, s: alpha, e: 180 },       // TL
+        { n: base + 0, s: 0, e: alpha },         // TR  (label n = base for 2/6 handled via offset below)
+    ]);
+    // Explicit wedge -> label map (TL,TR,BL,BR) per intersection
+    function wedgeSet(labelTL, labelTR, labelBL, labelBR) {
+        return [
+            { s: alpha, e: 180, label: labelTL },
+            { s: 0, e: alpha, label: labelTR },
+            { s: 180, e: 180 + alpha, label: labelBL },
+            { s: 180 + alpha, e: 360, label: labelBR }
+        ];
+    }
+    const topWedges = wedgeSet(1, 2, 4, 3);
+    const botWedges = wedgeSet(5, 6, 8, 7);
+
+    function wedgeMarkup(cx, cy, wedges) {
+        return wedges.map(w => {
+            const isHi = relInfo[currentRel].pair.includes(w.label);
+            const mid = (w.s + w.e) / 2;
+            const lp = pt(cx, cy, 40, mid);
+            const val = angleValue(w.label, alpha);
+            return `<path d="${arcPath(cx, cy, 22, w.s, w.e)}" fill="none" stroke="${isHi ? 'var(--math-accent-2)' : 'var(--border-color)'}" stroke-width="${isHi ? 3 : 1.6}"/>
+                <text class="axis-label" x="${lp.x}" y="${lp.y}" text-anchor="middle" font-size="11" fill="${isHi ? 'var(--math-accent-2)' : 'var(--text-muted)'}" font-weight="${isHi ? 700 : 400}">∠${w.label}${isHi ? ` (${val}°)` : ''}</text>`;
+        }).join('');
+    }
+
+    const info = relInfo[currentRel];
+    const vals = info.pair.map(n => angleValue(n, alpha));
+    document.getElementById('transNote').textContent = currentRel === 'coint' ? info.note(vals) : info.note(vals[0]);
+
+    document.getElementById('wrapTrans').innerHTML = `<svg viewBox="0 0 320 220">
+        <line x1="20" y1="${Ytop}" x2="300" y2="${Ytop}" stroke="var(--text-main)" stroke-width="1.6"/>
+        <line x1="20" y1="${Ybot}" x2="300" y2="${Ybot}" stroke="var(--text-main)" stroke-width="1.6"/>
+        <text class="axis-label" x="26" y="${Ytop - 8}">l</text>
+        <text class="axis-label" x="26" y="${Ybot - 8}">m</text>
+        <line x1="${T1.x}" y1="${T1.y}" x2="${T2.x}" y2="${T2.y}" stroke="var(--math-accent)" stroke-width="1.8"/>
+        ${wedgeMarkup(P1.x, P1.y, topWedges)}
+        ${wedgeMarkup(P2.x, P2.y, botWedges)}
+    </svg>`;
+}
+AlgLib.slider('input-tilt4', 'val-tilt4', drawTrans);
+document.querySelectorAll('#transTabs .identity-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('#transTabs .identity-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentRel = btn.dataset.rel;
+        drawTrans(parseFloat(document.getElementById('input-tilt4').value));
+    });
+});
+
+/* ---------- SECTION 5: Triangle angle sum ---------- */
+function clampTriangleRanges(changed) {
+    const aInput = document.getElementById('input-triA'), bInput = document.getElementById('input-triB');
+    const a = parseFloat(aInput.value), b = parseFloat(bInput.value);
+    if (changed === 'A' && a + b > 155) { bInput.value = 155 - a; }
+    if (changed === 'B' && a + b > 155) { aInput.value = 155 - b; }
+}
+function drawTriangle() {
+    const A = parseFloat(document.getElementById('input-triA').value);
+    const B = parseFloat(document.getElementById('input-triB').value);
+    const C = 180 - A - B;
+    document.getElementById('val-triA').textContent = A;
+    document.getElementById('val-triB').textContent = B;
+    document.getElementById('triSum').textContent = `A + B + C = ${A}° + ${B}° + ${C}° = 180°`;
+    const extB = 180 - B;
+    document.getElementById('triExt').textContent = `Exterior angle at B = ${extB}° = A + C (${A}° + ${C}°)`;
+
+    const L = 170, X = { x: 45, y: 175 }, Y = { x: 45 + L, y: 175 };
+    const t = L * Math.sin(B * D2R) / Math.sin((A + B) * D2R);
+    const Zmath = { x: t * Math.cos(A * D2R), y: t * Math.sin(A * D2R) };
+    const Z = { x: X.x + Zmath.x, y: X.y - Zmath.y };
+    const extPt = { x: Y.x + 45, y: Y.y };
+    const arcA = arcPath(X.x, X.y, 24, 0, A);
+    const angYtoZ = Math.atan2(-(Z.y - Y.y), Z.x - Y.x) / D2R;
+    const arcB = arcPath(Y.x, Y.y, 24, angYtoZ < 0 ? angYtoZ + 360 : angYtoZ, 180);
+    const arcExt = arcPath(Y.x, Y.y, 24, 180, 180 + extB);
+    const pad = 40;
+    const minX = Math.min(X.x, Y.x, Z.x) - pad, maxX = Math.max(X.x, Y.x, Z.x, extPt.x) + pad;
+    const minY = Math.min(X.y, Y.y, Z.y) - pad, maxY = Math.max(X.y, Y.y, Z.y) + pad;
+    document.getElementById('wrapTriangle').innerHTML = `<svg viewBox="${minX} ${minY} ${maxX - minX} ${maxY - minY}">
+        <path d="M${X.x},${X.y} L${Z.x},${Z.y} L${Y.x},${Y.y} Z" fill="none" stroke="var(--text-main)" stroke-width="1.8"/>
+        <line x1="${Y.x}" y1="${Y.y}" x2="${extPt.x}" y2="${extPt.y}" stroke="var(--math-accent-2)" stroke-dasharray="4 4" stroke-width="1.6"/>
+        <path d="${arcA}" fill="none" stroke="var(--math-accent)" stroke-width="2"/>
+        <path d="${arcB}" fill="none" stroke="var(--math-accent)" stroke-width="2"/>
+        <path d="${arcExt}" fill="none" stroke="var(--math-accent-2)" stroke-width="2"/>
+        <text class="axis-label" x="${X.x - 10}" y="${X.y + 18}">A</text>
+        <text class="axis-label" x="${Z.x}" y="${Z.y - 10}" text-anchor="middle">C</text>
+        <text class="axis-label" x="${Y.x + 4}" y="${Y.y + 18}">B</text>
+        <text class="axis-label" x="${X.x + 30}" y="${X.y - 10}" fill="var(--math-accent)">${A}°</text>
+        <text class="axis-label" x="${Y.x - 34}" y="${Y.y - 10}" fill="var(--math-accent)">${B}°</text>
+        <text class="axis-label" x="${Y.x + 30}" y="${Y.y - 12}" fill="var(--math-accent-2)">${extB}°</text>
+    </svg>`;
+}
+document.getElementById('input-triA').addEventListener('input', () => { clampTriangleRanges('A'); drawTriangle(); });
+document.getElementById('input-triB').addEventListener('input', () => { clampTriangleRanges('B'); drawTriangle(); });
+
+/* ---------- SECTION 6: Congruence rules ---------- */
+const congData = {
+    SSS: { title: 'Side-Side-Side', rows: [['AB', 'PQ'], ['BC', 'QR'], ['AC', 'PR']], mark: 'sss' },
+    SAS: { title: 'Side-Angle-Side', rows: [['AB', 'XY'], ['∠BAC', '∠YXZ'], ['AC', 'XZ']], mark: 'sas' },
+    ASA: { title: 'Angle-Side-Angle', rows: [['∠A', '∠P'], ['AB', 'PQ'], ['∠B', '∠Q']], mark: 'asa' },
+    AAS: { title: 'Angle-Angle-Side', rows: [['∠A', '∠M'], ['∠B', '∠N'], ['BC', 'NO']], mark: 'aas' },
+    RHS: { title: 'Right angle-Hypotenuse-Side', rows: [['∠C = ∠R', '90° (Right angle)'], ['AB', 'PQ (Hypotenuse)'], ['AC', 'PR (Side)']], mark: 'rhs' }
+};
+function drawCongTriangles() {
+    document.getElementById('wrapCong').innerHTML = `<svg viewBox="0 0 260 140">
+        <path d="M20,120 L70,30 L120,120 Z" fill="none" stroke="var(--math-accent)" stroke-width="1.8"/>
+        <text class="axis-label" x="10" y="132">A</text><text class="axis-label" x="70" y="20">C</text><text class="axis-label" x="122" y="132">B</text>
+        <path d="M150,120 L200,30 L250,120 Z" fill="none" stroke="var(--math-accent-2)" stroke-width="1.8"/>
+        <text class="axis-label" x="140" y="132">P</text><text class="axis-label" x="200" y="20">R</text><text class="axis-label" x="252" y="132">Q</text>
+    </svg>`;
+}
+function showCongRule(rule) {
+    const d = congData[rule];
+    document.getElementById('congTitle').textContent = d.title + ' (' + rule + ')';
+    document.getElementById('congList').innerHTML = d.rows.map(r => `<div class="var-row"><span class="var-key">${r[0]}</span><span class="var-desc">= ${r[1]}</span></div>`).join('') +
+        `<div class="var-row" style="border-top:2px solid var(--math-accent); margin-top:0.4rem; padding-top:0.6rem;"><span class="var-desc"><b>⇒ △ABC ≅ △${rule === 'SSS' ? 'PQR' : rule === 'SAS' ? 'XYZ' : rule === 'ASA' || rule === 'RHS' ? 'PQR' : 'MNO'}</b></span></div>`;
+}
+document.querySelectorAll('#congTabs .identity-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('#congTabs .identity-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        showCongRule(btn.dataset.rule);
+    });
+});
+
+/* ---------- Worked example / exercise ---------- */
+document.getElementById('we-play').addEventListener('click', () => AlgLib.revealSteps('we-steps'));
+AlgLib.revealSteps('we-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+
+/* ---------- Init ---------- */
+drawTheta1(60);
+drawCompSupp(40);
+drawLinear(50);
+drawTrans(25);
+drawTriangle();
+drawCongTriangles();
+showCongRule('SSS');
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

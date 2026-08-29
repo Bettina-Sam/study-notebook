@@ -1,0 +1,1 @@
+window.MODULE_CONFIG={s:'Chemistry',u:'Unit 03 — Chemical Bonding',t:'Molecular Geometry',q:'How do electron regions decide molecular shape?',intro:'Change bonding and lone-pair regions and watch the geometry reorganize to reduce repulsion.',a:['Bond regions',2,6,4,''],b:['Lone pairs',0,2,0,''],mode:'geometry',pred:['Spread apart','Cluster together','Stay linear']};

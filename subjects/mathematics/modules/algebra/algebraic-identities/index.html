@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.4 Algebraic Identities • Algebra • Study Notebook</title>
+<meta name="description" content="(a+b)², (a-b)² and (a+b)(a-b) as areas you can see and adjust with sliders, not just formulas to memorise."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Algebra
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">3.4 Algebraic Identities</span>
+<h1 class="hero-title">Formulas you can<br/>see as areas</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    An identity is true for <em>every</em> value of the letters. Instead of memorising them, watch why
+    they're true — as the area of a square or rectangle.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: TILES -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Area Tiles</h3>
+<h2>Drag $a$ and $b$</h2>
+<div class="identity-tabs" id="idTabs">
+<button class="identity-tab active" data-mode="sum2">(a+b)²</button>
+<button class="identity-tab" data-mode="diff2">(a−b)²</button>
+<button class="identity-tab" data-mode="diffsq">(a+b)(a−b)</button>
+</div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>$a =$ (<span id="val-a" class="value-readout">5</span>)</label>
+<input id="input-a" max="8" min="3" step="1" type="range" value="5"/>
+</div>
+<div class="slider-group">
+<label>$b =$ (<span id="val-b" class="value-readout">3</span>)</label>
+<input id="input-b" max="7" min="1" step="1" type="range" value="3"/>
+</div>
+</div>
+<div class="identity-expansion" id="idExpansion"></div>
+<div class="formula-card" id="idFormulaCard">
+<span class="etu-tag">Identity</span>
+<div class="formula-rule" id="idFormulaText">$(a+b)^2 = a^2 + 2ab + b^2$</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('identities', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="tiles-stage" id="tilesStage"></div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Expand $(2x + 3)^2$ using the identity.</div>
+<div class="we-concept">Concept used: $(a+b)^2 = a^2 + 2ab + b^2$, with $a = 2x$ and $b = 3$.</div>
+<div class="step-flow" id="we4-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Match to the identity: $a = 2x$, $b = 3$.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Write $a^2 + 2ab + b^2$.<div class="step-math">$(2x)^2 + 2(2x)(3) + (3)^2$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Simplify each piece.<div class="step-math">$4x^2 + 12x + 9$</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">$(2x+3)^2 = 4x^2 + 12x + 9$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we4-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Expand $(x - 4)^2$ using the identity for $(a-b)^2$.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-ghost" data-reveal="exHint2">Hint 2</button>
+<button class="btn btn-secondary" data-reveal="exViz">Show on Tiles</button>
+<button class="btn btn-secondary" data-reveal="exSteps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">This matches $(a-b)^2 = a^2 - 2ab + b^2$ with $a = x$, $b = 4$.</div>
+<div class="exercise-panel" id="exHint2">$2ab$ here is $2 \times x \times 4 = 8x$.</div>
+<div class="exercise-panel" id="exViz">Switch the tab above to (a−b)² and set a = 5, b = 4 to see the same pattern with numbers.</div>
+<div class="exercise-panel" id="exSteps">
+<div class="step-flow" id="exSteps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">$x^2 - 2(x)(4) + 4^2$</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">$x^2 - 8x + 16$</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: $(x-4)^2 = x^2 - 8x + 16$</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../remainder-theorem/">← 3.3 Remainder Theorem</a>
+<a class="back-link" href="../factorisation/">Next: Factorisation →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'identities') prompt = "Explain the algebraic identities (a+b)^2, (a-b)^2 and (a+b)(a-b) for a Class 9 student, using an area/geometric explanation.";
+    launchAIPrompt(model, prompt);
+}
+
+let mode = 'sum2';
+const formulas = {
+    sum2: '$(a+b)^2 = a^2 + 2ab + b^2$',
+    diff2: '$(a-b)^2 = a^2 - 2ab + b^2$',
+    diffsq: '$(a+b)(a-b) = a^2 - b^2$'
+};
+
+function renderTiles() {
+    const a = parseInt(document.getElementById('input-a').value);
+    let b = parseInt(document.getElementById('input-b').value);
+    if (b >= a) { b = a - 1; document.getElementById('input-b').value = b; }
+    document.getElementById('val-a').textContent = a;
+    document.getElementById('val-b').textContent = b;
+    document.getElementById('idFormulaText').innerHTML = formulas[mode];
+
+    const stage = document.getElementById('tilesStage');
+    const size = 260;
+    const unit = size / (a + b);
+    const aPx = a * unit, bPx = b * unit;
+    const ox = 20, oy = 20;
+
+    let svg = '';
+    if (mode === 'sum2') {
+        svg = `
+        <rect class="tile-a2" x="${ox}" y="${oy}" width="${aPx}" height="${aPx}"/>
+        <rect class="tile-ab" x="${ox+aPx}" y="${oy}" width="${bPx}" height="${aPx}"/>
+        <rect class="tile-ab" x="${ox}" y="${oy+aPx}" width="${aPx}" height="${bPx}"/>
+        <rect class="tile-b2" x="${ox+aPx}" y="${oy+aPx}" width="${bPx}" height="${bPx}"/>
+        <text class="tile-label tile-label-lt" x="${ox+aPx/2}" y="${oy+aPx/2}" text-anchor="middle">a²</text>
+        <text class="tile-label" x="${ox+aPx+bPx/2}" y="${oy+aPx/2}" text-anchor="middle">ab</text>
+        <text class="tile-label" x="${ox+aPx/2}" y="${oy+aPx+bPx/2}" text-anchor="middle">ab</text>
+        <text class="tile-label tile-label-lt" x="${ox+aPx+bPx/2}" y="${oy+aPx+bPx/2}" text-anchor="middle">b²</text>
+        <rect x="${ox}" y="${oy}" width="${aPx+bPx}" height="${aPx+bPx}" fill="none" stroke="var(--text-main)" stroke-width="1.5"/>
+        <text class="axis-label" x="${ox+aPx/2}" y="${oy+aPx+bPx+18}" text-anchor="middle">a</text>
+        <text class="axis-label" x="${ox+aPx+bPx/2}" y="${oy+aPx+bPx+18}" text-anchor="middle">b</text>
+        <text class="axis-label" x="${ox-12}" y="${oy+aPx/2}" text-anchor="middle">a</text>
+        <text class="axis-label" x="${ox-12}" y="${oy+aPx+bPx/2}" text-anchor="middle">b</text>`;
+        document.getElementById('idExpansion').innerHTML = `$(a+b)^2 = a^2 + 2ab + b^2 = ${a}^2 + 2(${a})(${b}) + ${b}^2 = ${a*a+2*a*b+b*b}$`;
+    } else if (mode === 'diff2') {
+        const abPx = aPx - bPx;
+        svg = `
+        <rect class="tile-a2" x="${ox}" y="${oy}" width="${abPx}" height="${abPx}"/>
+        <rect class="tile-ab" x="${ox+abPx}" y="${oy}" width="${bPx}" height="${abPx}"/>
+        <rect class="tile-ab" x="${ox}" y="${oy+abPx}" width="${abPx}" height="${bPx}"/>
+        <rect class="tile-b2" x="${ox+abPx}" y="${oy+abPx}" width="${bPx}" height="${bPx}"/>
+        <text class="tile-label tile-label-lt" x="${ox+abPx/2}" y="${oy+abPx/2}" text-anchor="middle">(a−b)²</text>
+        <text class="tile-label" x="${ox+abPx+bPx/2}" y="${oy+abPx/2}" text-anchor="middle" font-size="11">b(a−b)</text>
+        <text class="tile-label" x="${ox+abPx/2}" y="${oy+abPx+bPx/2}" text-anchor="middle" font-size="11">b(a−b)</text>
+        <text class="tile-label tile-label-lt" x="${ox+abPx+bPx/2}" y="${oy+abPx+bPx/2}" text-anchor="middle">b²</text>
+        <rect x="${ox}" y="${oy}" width="${aPx}" height="${aPx}" fill="none" stroke="var(--text-main)" stroke-width="1.5"/>
+        <text class="axis-label" x="${ox+aPx/2}" y="${oy+aPx+18}" text-anchor="middle">a</text>
+        <text class="axis-label" x="${ox-12}" y="${oy+aPx/2}" text-anchor="middle">a</text>`;
+        document.getElementById('idExpansion').innerHTML = `The big square (side $a$) has area $a^2$. Removing the two b-strips and adding back the double-counted corner leaves the top-left square: $(a-b)^2 = a^2 - 2ab + b^2 = ${a*a - 2*a*b + b*b}$`;
+    } else {
+        const abPx = aPx - bPx;
+        svg = `
+        <rect class="tile-a2" x="${ox}" y="${oy}" width="${aPx}" height="${aPx}"/>
+        <rect x="${ox+abPx}" y="${oy}" width="${bPx}" height="${bPx}" fill="var(--bg-color)" stroke="var(--math-accent-2)" stroke-width="2"/>
+        <text class="tile-label tile-label-lt" x="${ox+aPx/2}" y="${oy+aPx*0.7}" text-anchor="middle" font-size="13">area = a² − b²</text>
+        <rect x="${ox}" y="${oy}" width="${aPx}" height="${aPx}" fill="none" stroke="var(--text-main)" stroke-width="1.5"/>
+        <text class="axis-label" x="${ox+aPx/2}" y="${oy+aPx+18}" text-anchor="middle">a</text>
+        <text class="axis-label" x="${ox-12}" y="${oy+aPx/2}" text-anchor="middle">a</text>
+        `;
+        // Rearranged rectangle (a+b) by (a-b), drawn beside the square-minus-square
+        const rw = (a+b) * unit, rh = (a-b) * unit;
+        svg += `
+        <g transform="translate(${ox+aPx+50},${oy + (aPx-rh)/2})">
+        <rect class="tile-ab" x="0" y="0" width="${rw}" height="${rh}"/>
+        <rect x="0" y="0" width="${rw}" height="${rh}" fill="none" stroke="var(--text-main)" stroke-width="1.5"/>
+        <text class="tile-label" x="${rw/2}" y="${rh/2}" text-anchor="middle" font-size="12">area = ${(a+b)*(a-b)}</text>
+        <text class="axis-label" x="${rw/2}" y="${rh+18}" text-anchor="middle">a+b</text>
+        <text class="axis-label" x="${-14}" y="${rh/2}" text-anchor="middle">a−b</text>
+        </g>
+        <text class="axis-label" x="${ox+aPx+25}" y="${oy+aPx/2+5}" text-anchor="middle" font-size="20">=</text>`;
+        document.getElementById('idExpansion').innerHTML = `Square minus square: $${a}^2 - ${b}^2 = ${a*a-b*b}$. &nbsp; Rectangle: $(${a}+${b})(${a}-${b}) = ${(a+b)*(a-b)}$ — same area, rearranged.`;
+    }
+    const viewW = mode === 'diffsq' ? 480 : 300;
+    stage.innerHTML = `<svg viewBox="0 0 ${viewW} 300">${svg}</svg>`;
+    AlgLib.typeset();
+}
+
+document.querySelectorAll('#idTabs .identity-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('#idTabs .identity-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        mode = tab.dataset.mode;
+        renderTiles();
+    });
+});
+document.getElementById('input-a').addEventListener('input', renderTiles);
+document.getElementById('input-b').addEventListener('input', renderTiles);
+renderTiles();
+
+document.getElementById('we4-play').addEventListener('click', () => AlgLib.revealSteps('we4-steps'));
+AlgLib.revealSteps('we4-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>
