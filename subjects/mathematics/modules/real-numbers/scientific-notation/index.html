@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.8 Scientific Notation • Real Numbers • Study Notebook</title>
+<meta name="description" content="Writing very large and very small numbers in scientific notation, converting back to decimal form, arithmetic with powers of ten, and the planetary-distance activity."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Real Numbers
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">2.8 Scientific Notation</span>
+<h1 class="hero-title">Numbers too big<br/>(or too small) to write out</h1>
+<p style="margin-top:1.6rem; font-size:1.25rem; max-width:56ch;">
+    The Sun's diameter is 13,92,000 km and the Earth's is 12,740 km. Comparing those two long strings of
+    digits is a headache. Written as $1.392 \times 10^{6}$ km and $1.274 \times 10^{4}$ km instead, the
+    comparison is instant — the Sun is about $10^{2}$, i.e. 108, times wider than the Earth. That compact
+    form, $N = a \times 10^{n}$ with $1 \le a < 10$, is <b>scientific notation</b>.
+</p>
+</div>
+</section>
+<section class="rn-play-banner"><div><b>THIS PAGE IS INTERACTIVE</b><span>Predict first → drag / change / click → watch what changes → explain what you noticed.</span></div><div class="rn-play-pills"><span>DRAG</span><span>CHANGE</span><span>TRY</span><span>WATCH</span></div></section>
+
+<!-- Sun vs Earth visual -->
+<section style="padding-top:0;">
+<div style="width:100%; max-width:900px;">
+<div class="worked-example" style="margin:0;">
+<span class="we-label">Why bother?</span>
+<div style="display:flex; flex-direction:column; gap:0.8rem; margin-top:0.6rem;">
+<div style="display:flex; align-items:center; gap:0.8rem;">
+<span style="width:120px; font-weight:700; font-size:0.85rem;">Sun</span>
+<div style="flex:1; height:22px; border-radius:6px; background:var(--math-accent); width:100%;"></div>
+<span style="font-family:var(--font-mono); font-size:0.85rem; white-space:nowrap;">$1.392 \times 10^{6}$ km</span>
+</div>
+<div style="display:flex; align-items:center; gap:0.8rem;">
+<span style="width:120px; font-weight:700; font-size:0.85rem;">Earth</span>
+<div style="flex:1; display:flex;"><div style="height:22px; border-radius:6px; background:var(--math-accent-2); width:0.93%; min-width:6px;"></div></div>
+<span style="font-family:var(--font-mono); font-size:0.85rem; white-space:nowrap;">$1.274 \times 10^{4}$ km</span>
+</div>
+</div>
+<p style="margin-top:0.8rem;">$\dfrac{1.392\times10^{6}}{1.274\times10^{4}} \approx 1.09 \times 10^{2} \approx 108$ — about <b>108 Earths</b> could line up across the face of the Sun. Scientific notation makes numbers that are too large or too small to write conveniently in decimal form easy to record, compare, and calculate with.</p>
+</div>
+</div>
+</section>
+
+<!-- 2.8.1 -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color:var(--math-accent);">2.8.1 Writing a Decimal Number in Scientific Notation</h3>
+<div class="formula-card">
+<div class="formula-rule">(i) Move the decimal point so there is only one non-zero digit to its left.</div>
+<div class="formula-rule">(ii) Count the digits between the old and new decimal point — that is 'n', the power of 10.</div>
+<div class="formula-rule">(iii) Decimal shifted left → n is positive. Decimal shifted right → n is negative.</div>
+</div>
+<p style="max-width:70ch;">Expressing a number $N$ in the form $N = a \times 10^{n}$ where $1 \le a < 10$ and $n$ is an integer is called <b>Scientific Notation</b>.</p>
+
+<div class="worked-example">
+<span class="we-label">Example 2.28</span>
+<div class="we-question">Express in scientific notation: (i) 9768854 &nbsp; (ii) 0.04567891 &nbsp; (iii) 72006865.48</div>
+<div class="step-flow" id="ex228-steps">
+<div class="step-item"><span class="step-num">i</span><div class="step-body">9768854 → decimal point moves 6 places left<div class="step-math">= $9.768854 \times 10^{6}$</div></div></div>
+<div class="step-item"><span class="step-num">ii</span><div class="step-body">0.04567891 → decimal point moves 2 places right, so $n=-2$<div class="step-math">= $4.567891 \times 10^{-2}$</div></div></div>
+<div class="step-item"><span class="step-num">iii</span><div class="step-body">72006865.48 → decimal point moves 7 places left<div class="step-math">= $7.200686548 \times 10^{7}$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex228-play">Play steps</button></div>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Try it yourself — the converter</span>
+<div class="we-question">Type any decimal number and see it converted, step by step, using the same rule.</div>
+<div class="btn-row" style="margin-top:0.6rem;">
+<input type="text" id="sciConvIn" placeholder="e.g. 356200 or 0.000512" style="flex:1; min-width:220px; padding:0.6rem 0.9rem; border-radius:10px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color); font-family:var(--font-mono);"/>
+<button class="btn btn-secondary" id="sciConvGo">Convert</button>
+</div>
+<div class="venn-result" id="sciConvOut">Enter a number above and press Convert.</div>
+</div>
+</div>
+</section>
+
+<!-- 2.8.2 -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color:var(--math-accent-2);">2.8.2 Converting Scientific Notation to Decimal Form</h3>
+<div class="formula-card">
+<div class="formula-rule">(i) Write the decimal number's leading digit(s).</div>
+<div class="formula-rule">(ii) Move the decimal point by |n| places — right if n is positive, left if n is negative. Add zeros as needed.</div>
+<div class="formula-rule">(iii) Rewrite the number in decimal form.</div>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.29</span>
+<div class="we-question">Write in decimal form: (i) $6.34 \times 10^{4}$ &nbsp; (ii) $2.00367 \times 10^{-5}$</div>
+<div class="step-flow" id="ex229-steps">
+<div class="step-item"><span class="step-num">i</span><div class="step-body">$6.34 \times 10^{4}$ → move decimal 4 places right (pad with a zero)<div class="step-math">= 63400</div></div></div>
+<div class="step-item"><span class="step-num">ii</span><div class="step-body">$2.00367 \times 10^{-5}$ → move decimal 5 places left (pad with zeros)<div class="step-math">= 0.0000200367</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex229-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- 2.8.3 -->
+<section>
+<div style="width:100%; max-width:1050px;">
+<h3 class="section-label" style="color:var(--math-accent);">2.8.3 Arithmetic of Numbers in Scientific Notation</h3>
+<p style="max-width:75ch;">(i) When the powers of 10 are the same, addition/subtraction is easy — just combine the coefficients. (ii) Products and quotients are found using the laws of exponents.</p>
+
+<div class="worked-example">
+<span class="we-label">Example 2.30</span>
+<div class="we-question">The mass of the Earth is $5.97 \times 10^{24}$ kg and the mass of the Moon is $0.073 \times 10^{24}$ kg. What is their total mass?</div>
+<div class="step-flow" id="ex230-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Total mass $= 5.97\times10^{24} + 0.073\times10^{24}$ kg</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$= (5.97 + 0.073) \times 10^{24}$ kg</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$= 6.043 \times 10^{24}$ kg</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex230-play">Play steps</button></div>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.31</span>
+<div class="we-question">Write in scientific notation: (i) $(50000000)^4$ &nbsp; (ii) $(0.00000005)^3$ &nbsp; (iii) $(300000)^3 \times (2000)^4$ &nbsp; (iv) $(4000000)^3 \div (0.00002)^4$</div>
+<div class="step-flow" id="ex231-steps">
+<div class="step-item"><span class="step-num">i</span><div class="step-body">$(50000000)^4 = (5.0\times10^{7})^4 = (5.0)^4\times10^{28} = 625\times10^{28}$<div class="step-math">= $6.25 \times 10^{30}$</div></div></div>
+<div class="step-item"><span class="step-num">ii</span><div class="step-body">$(0.00000005)^3 = (5.0\times10^{-8})^3 = (5.0)^3\times10^{-24} = 125\times10^{-24}$<div class="step-math">= $1.25 \times 10^{-22}$</div></div></div>
+<div class="step-item"><span class="step-num">iii</span><div class="step-body">$(300000)^3 \times (2000)^4 = (3.0\times10^{5})^3 \times (2.0\times10^{3})^4 = 27\times10^{15} \times 16\times10^{12}$<div class="step-math">= $4.32 \times 10^{29}$</div></div></div>
+<div class="step-item"><span class="step-num">iv</span><div class="step-body">$(4000000)^3 \div (0.00002)^4 = \dfrac{(4.0\times10^{6})^3}{(2.0\times10^{-5})^4} = \dfrac{64\times10^{18}}{16\times10^{-20}}$<div class="step-math">= $4.0 \times 10^{38}$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex231-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- Thinking Corner -->
+<section>
+<div style="width:100%; max-width:900px;">
+<div class="thinking-corner">
+<span class="tc-label">Thinking Corner</span>
+<div class="tc-body" style="margin-bottom:1rem;">
+    Don't just read this one — try it. Fill in a coefficient (between 1 and 10) and an exponent for each of two
+    numbers in scientific notation, and check whether your pair actually works before looking at any answer.
+</div>
+
+<div style="display:grid; grid-template-columns:1fr; gap:1.6rem;">
+<div class="round-card">
+<p style="margin:0 0 0.5rem; font-weight:700;">1. Two numbers in scientific notation whose <u>product</u> is $2.83 \times 10^{4}$.</p>
+<div class="btn-row" style="flex-wrap:wrap; align-items:center; gap:0.5rem;">
+<input type="number" id="tcMulC1" placeholder="a₁" step="0.001" style="width:80px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);"/>
+<span>× 10^</span>
+<input type="number" id="tcMulE1" placeholder="n₁" style="width:60px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);"/>
+<span style="font-weight:700;">×</span>
+<input type="number" id="tcMulC2" placeholder="a₂" step="0.001" style="width:80px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);"/>
+<span>× 10^</span>
+<input type="number" id="tcMulE2" placeholder="n₂" style="width:60px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);"/>
+<button class="btn btn-secondary" id="tcMulCheck">Check product</button>
+</div>
+<div class="check-result" id="tcMulResult"></div>
+<div class="exercise-tools" style="margin-top:0.5rem;"><button class="btn btn-ghost" data-reveal="tcMulAnswer">Show one valid pair</button></div>
+<div class="exercise-panel answer-panel" id="tcMulAnswer">One valid pair: $1.0 \times 10^{4}$ and $2.83 \times 10^{0}$ (i.e. just 2.83) — their product is $2.83\times10^{4}$. Infinitely many other pairs also work, e.g. $2.83\times10^{2}$ and $1.0\times10^{2}$.</div>
+</div>
+
+<div class="round-card">
+<p style="margin:0 0 0.5rem; font-weight:700;">2. Two numbers in scientific notation whose <u>quotient</u> is $2.83 \times 10^{4}$.</p>
+<div class="btn-row" style="flex-wrap:wrap; align-items:center; gap:0.5rem;">
+<input type="number" id="tcDivC1" placeholder="a₁" step="0.001" style="width:80px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);"/>
+<span>× 10^</span>
+<input type="number" id="tcDivE1" placeholder="n₁" style="width:60px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);"/>
+<span style="font-weight:700;">÷</span>
+<input type="number" id="tcDivC2" placeholder="a₂" step="0.001" style="width:80px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);"/>
+<span>× 10^</span>
+<input type="number" id="tcDivE2" placeholder="n₂" style="width:60px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);"/>
+<button class="btn btn-secondary" id="tcDivCheck">Check quotient</button>
+</div>
+<div class="check-result" id="tcDivResult"></div>
+<div class="exercise-tools" style="margin-top:0.5rem;"><button class="btn btn-ghost" data-reveal="tcDivAnswer">Show one valid pair</button></div>
+<div class="exercise-panel answer-panel" id="tcDivAnswer">One valid pair: $5.66 \times 10^{5} \div 2.0 \times 10^{1} = 2.83\times10^{4}$. Infinitely many other pairs also work.</div>
+</div>
+</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('thinking-corner','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- Activity 3 -->
+<section>
+<div style="width:100%; max-width:1150px;">
+<h3 class="section-label" style="color:var(--math-accent-2);">Activity 3</h3>
+<h2 style="margin-bottom:0.6rem;">Mean distance of the planets from the Sun</h2>
+<p style="max-width:80ch;">Complete the table below — for each planet, one column is given and the other is missing. Fill in the
+missing form and check it. <!-- VERIFY: the source PDF's Activity 3 table cells were reordered by extraction; the given/blank split per planet below is reconstructed to match standard published mean-distance values (NASA planetary fact sheet), which agree with the scientific-notation values that survived extraction intact. --></p>
+
+<div class="table-scroll" style="overflow-x:auto;">
+<table class="activity-table" id="planetTable" style="width:100%; border-collapse:collapse; margin:1rem 0;">
+<thead>
+<tr style="text-align:left; border-bottom:2px solid var(--border-color);">
+<th style="padding:0.6rem;">Planet</th>
+<th style="padding:0.6rem;">Decimal form (km)</th>
+<th style="padding:0.6rem;">Scientific notation (km)</th>
+</tr>
+</thead>
+<tbody id="planetTableBody"></tbody>
+</table>
+</div>
+<div class="btn-row"><button class="btn btn-secondary" id="planetCheckAll">Check all answers</button></div>
+<div class="check-result" id="planetTableResult"></div>
+
+<h3 class="section-label" style="margin-top:2rem; color:var(--math-accent);">Now arrange them by distance from the Sun</h3>
+<p style="max-width:80ch;">Drag each planet token into the slot for its position — starting with the planet <b>closest</b> to the Sun on the left.</p>
+<div id="planetOrderStage" style="position:relative;"></div>
+<div class="check-result" id="planetOrderResult"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('activity3','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- Points to Remember -->
+<section>
+<div style="width:100%; max-width:1150px;">
+<h3 class="section-label" style="color:var(--math-accent);">Points to Remember</h3>
+<h2 style="margin-bottom:1rem;">Chapter 2 at a glance</h2>
+<div class="topic-grid three-col" id="ptrGrid"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('points-to-remember','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../rationalisation/">← 2.7 Rationalisation</a>
+<a class="back-link cn-home" href="../">Real Numbers Home</a>
+<a class="back-link" href="../exercises/">Chapter Exercises →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/token-physics.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Explain Class 9 Scientific Notation (writing decimal numbers as a × 10^n, converting back, and arithmetic with powers of ten) with an example.";
+    if (topic === 'thinking-corner') prompt = "For Class 9 Scientific Notation, help me think through: how can I split a number like 2.83 × 10^4 into a product of two numbers in scientific notation, and separately into a quotient of two numbers in scientific notation? Give me a hint, not the direct answer first.";
+    else if (topic === 'activity3') prompt = "Help me understand how to convert the mean distance of a planet from the Sun (given either in plain decimal km or in scientific notation) between the two forms, for the Class 9 Real Numbers 'Activity 3' planetary distance table.";
+    else if (topic === 'points-to-remember') prompt = "Give me a quick revision summary of Class 9 Chapter 2 Real Numbers: terminating/non-terminating decimals, rational vs irrational numbers, surds and the laws of radicals, rationalisation, and scientific notation.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Example step-reveal wiring ---------- */
+['ex228','ex229','ex230','ex231'].forEach(id => {
+    document.getElementById(id + '-play').addEventListener('click', () => AlgLib.revealSteps(id + '-steps'));
+    AlgLib.revealSteps(id + '-steps', 0);
+});
+
+/* ---------- 2.8.1 try-it-yourself converter ---------- */
+document.getElementById('sciConvGo').addEventListener('click', () => {
+    const raw = document.getElementById('sciConvIn').value.trim();
+    const out = document.getElementById('sciConvOut');
+    const val = parseFloat(raw);
+    if (!raw || isNaN(val) || val === 0) {
+        out.textContent = 'Enter a non-zero decimal number, e.g. 356200 or 0.000512.';
+        out.className = 'venn-result';
+        return;
+    }
+    const exp = Math.floor(Math.log10(Math.abs(val)));
+    let coeff = val / Math.pow(10, exp);
+    let n = exp;
+    // guard rounding edge cases (e.g. 9.9999999 -> 10)
+    if (Math.abs(coeff) >= 10) { coeff /= 10; n += 1; }
+    if (Math.abs(coeff) < 1) { coeff *= 10; n -= 1; }
+    const dir = n >= 0 ? 'left' : 'right';
+    out.innerHTML = `Decimal point moves <b>${Math.abs(n)}</b> place(s) to the <b>${dir}</b>, so
+        $${val} = ${(Math.round(coeff*1e10)/1e10)} \\times 10^{${n}}$`;
+    out.className = 'venn-result';
+    AlgLib.typeset(out);
+});
+
+/* ---------- Thinking Corner checkers (open-ended, numeric verify) ---------- */
+function sciCheck(c1,e1,c2,e2,target,resultEl,mode){
+    if ([c1,e1,c2,e2].some(v => v === '' || isNaN(v))) {
+        resultEl.textContent = 'Fill in all four boxes first.';
+        resultEl.className = 'check-result';
+        return;
+    }
+    const v1 = c1 * Math.pow(10, e1), v2 = c2 * Math.pow(10, e2);
+    const result = mode === 'mul' ? v1 * v2 : v1 / v2;
+    const ok = Math.abs(result - target) / target < 0.01;
+    resultEl.textContent = ok
+        ? `Correct — ${mode === 'mul' ? 'that product' : 'that quotient'} works out to about ${target.toLocaleString()}.`
+        : `Not quite — that ${mode === 'mul' ? 'product' : 'quotient'} comes to ${result.toLocaleString(undefined,{maximumSignificantDigits:4})}, not ${target.toLocaleString()}. Adjust and try again.`;
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+}
+document.getElementById('tcMulCheck').addEventListener('click', () => {
+    sciCheck(
+        parseFloat(document.getElementById('tcMulC1').value), parseFloat(document.getElementById('tcMulE1').value),
+        parseFloat(document.getElementById('tcMulC2').value), parseFloat(document.getElementById('tcMulE2').value),
+        28300, document.getElementById('tcMulResult'), 'mul'
+    );
+});
+document.getElementById('tcDivCheck').addEventListener('click', () => {
+    sciCheck(
+        parseFloat(document.getElementById('tcDivC1').value), parseFloat(document.getElementById('tcDivE1').value),
+        parseFloat(document.getElementById('tcDivC2').value), parseFloat(document.getElementById('tcDivE2').value),
+        28300, document.getElementById('tcDivResult'), 'div'
+    );
+});
+document.querySelectorAll('[data-reveal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.dataset.reveal);
+        if (panel) { panel.classList.toggle('open'); if (panel.classList.contains('open')) AlgLib.typeset(panel); }
+    });
+});
+
+/* ---------- Activity 3: planet table ---------- */
+const planets = [
+    { name: 'Mercury', decimal: 57900000,   sci: [5.79, 7],  given: 'decimal', order: 1 },
+    { name: 'Venus',   decimal: 108000000,  sci: [1.08, 8],  given: 'decimal', order: 2 },
+    { name: 'Earth',   decimal: 150000000,  sci: [1.5, 8],   given: 'sci',     order: 3 },
+    { name: 'Mars',    decimal: 228000000,  sci: [2.28, 8],  given: 'sci',     order: 4 },
+    { name: 'Jupiter', decimal: 778000000,  sci: [7.78, 8],  given: 'sci',     order: 5 },
+    { name: 'Saturn',  decimal: 1430000000, sci: [1.43, 9],  given: 'sci',     order: 6 },
+    { name: 'Uranus',  decimal: 2870000000, sci: [2.87, 9],  given: 'decimal', order: 7 },
+    { name: 'Neptune', decimal: 4500000000, sci: [4.5, 9],   given: 'decimal', order: 8 }
+];
+
+const tbody = document.getElementById('planetTableBody');
+tbody.innerHTML = planets.map((p,i) => `
+  <tr style="border-bottom:1px solid var(--line-subtle);">
+    <td style="padding:0.6rem; font-weight:700;">${p.name}</td>
+    <td style="padding:0.6rem;">${p.given === 'decimal'
+        ? p.decimal.toLocaleString()
+        : `<input type="text" class="planet-input" id="pd${i}" placeholder="decimal km" style="width:150px; padding:0.4rem 0.6rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color); font-family:var(--font-mono);"/>`}</td>
+    <td style="padding:0.6rem;">${p.given === 'sci'
+        ? `$${p.sci[0]} \\times 10^{${p.sci[1]}}$`
+        : `<input type="text" class="planet-input" id="ps${i}" placeholder="a × 10^n, e.g. 5.79 x 10^7" style="width:190px; padding:0.4rem 0.6rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color); font-family:var(--font-mono);"/>`}</td>
+  </tr>`).join('');
+AlgLib.typeset(document.getElementById('planetTableBody'));
+
+function parseSci(str) {
+    const m = String(str).replace(/\s+/g,'').match(/^([\d.]+)[x×*]10\^?(-?\d+)$/i);
+    if (!m) return null;
+    return [parseFloat(m[1]), parseInt(m[2], 10)];
+}
+document.getElementById('planetCheckAll').addEventListener('click', () => {
+    let correct = 0, total = 0;
+    planets.forEach((p,i) => {
+        if (p.given === 'decimal') {
+            total++;
+            const inp = document.getElementById(`ps${i}`);
+            const parsed = parseSci(inp.value);
+            const ok = parsed && Math.abs(parsed[0]-p.sci[0]) < 0.05 && parsed[1] === p.sci[1];
+            inp.classList.toggle('input-correct', !!ok);
+            inp.classList.toggle('input-wrong', !ok);
+            if (ok) correct++;
+        } else {
+            total++;
+            const inp = document.getElementById(`pd${i}`);
+            const val = parseFloat(String(inp.value).replace(/,/g,''));
+            const ok = Math.abs(val - p.decimal) / p.decimal < 0.02;
+            inp.classList.toggle('input-correct', !!ok);
+            inp.classList.toggle('input-wrong', !ok);
+            if (ok) correct++;
+        }
+    });
+    const out = document.getElementById('planetTableResult');
+    out.textContent = `${correct} / ${total} correct.` + (correct === total ? ' All filled in — well done!' : ' Keep adjusting the highlighted cells.');
+    out.className = 'check-result ' + (correct === total ? 'check-yes' : 'check-no');
+});
+
+/* ---------- Activity 3: drag-to-order (TokenPhysics) ---------- */
+const orderStage = document.getElementById('planetOrderStage');
+const stage = TokenPhysics.createStage(orderStage, { height: 360 });
+const nSlots = planets.length;
+const slotEls = [];
+for (let i = 0; i < nSlots; i++) {
+    const el = document.createElement('div');
+    el.className = 'phys-zone';
+    el.innerHTML = `<span class="phys-zone-label">${i === 0 ? 'Closest' : (i === nSlots-1 ? 'Farthest' : i+1)}</span>`;
+    orderStage.appendChild(el);
+    slotEls.push(el);
+}
+function layoutSlots() {
+    const w = orderStage.clientWidth || 800;
+    const gap = 8;
+    const sw = (w - gap * (nSlots + 1)) / nSlots;
+    slotEls.forEach((el, i) => {
+        el.style.cssText = `left:${gap + i*(sw+gap)}px; top:12px; width:${sw}px; height:120px;`;
+    });
+}
+layoutSlots();
+window.addEventListener('resize', layoutSlots);
+
+function slotHitTest(el) {
+    return (x, y) => {
+        const c = orderStage.getBoundingClientRect();
+        const r = el.getBoundingClientRect();
+        const rx = r.left - c.left, ry = r.top - c.top;
+        return x >= rx && x <= rx + r.width && y >= ry && y <= ry + r.height;
+    };
+}
+const slotFilled = new Array(nSlots).fill(false);
+const zones = slotEls.map((el, i) => stage.addZone({ test: slotHitTest(el), el, idx: i }));
+
+const shuffled = [...planets].sort(() => Math.random() - 0.5);
+const w0 = orderStage.clientWidth || 800;
+const tokens = shuffled.map((p, i) => {
+    const x = 30 + (i % 4) * ((w0-60)/4) + Math.random()*20;
+    const y = 190 + Math.floor(i/4) * 60 + Math.random()*10;
+    const t = stage.addToken(p.name, p.name, { x, y, cls: 'phys-token-chip' });
+    t.planet = p;
+    return t;
+});
+
+let placedCount = 0;
+stage.onDrop((token, zone) => {
+    const resultEl = document.getElementById('planetOrderResult');
+    if (!zone) { stage.release(token); return; }
+    if (slotFilled[zone.idx]) {
+        token.el.classList.add('phys-wrong');
+        setTimeout(() => token.el.classList.remove('phys-wrong'), 450);
+        stage.release(token);
+        return;
+    }
+    const ok = (token.planet.order - 1) === zone.idx;
+    if (ok) {
+        token.el.classList.add('phys-correct');
+        slotFilled[zone.idx] = true;
+        const r = zone.el.getBoundingClientRect(), c = orderStage.getBoundingClientRect();
+        stage.lockAt(token, (r.left-c.left)+r.width/2, (r.top-c.top)+50);
+        placedCount++;
+        resultEl.textContent = `${placedCount} / ${nSlots} placed correctly.`;
+        resultEl.className = 'check-result check-yes';
+        if (placedCount === nSlots) {
+            resultEl.textContent = `All ${nSlots} planets placed correctly, closest to farthest from the Sun!`;
+        }
+    } else {
+        token.el.classList.remove('phys-correct');
+        token.el.classList.add('phys-wrong');
+        setTimeout(() => token.el.classList.remove('phys-wrong'), 450);
+        stage.release(token);
+        resultEl.textContent = `Not that slot for ${token.planet.name} — try comparing its distance with its neighbours.`;
+        resultEl.className = 'check-result check-no';
+    }
+});
+
+/* ---------- Points to Remember: concept-map cards ---------- */
+const ptr = [
+  ["Terminating decimals", "If p/q (q≠0) can be written as p / (2ᵐ × 5ⁿ), its decimal expansion terminates."],
+  ["Non-terminating recurring", "Otherwise, the decimal expansion of a rational number is non-terminating but recurring (a block of digits repeats forever)."],
+  ["Rational numbers", "Every rational number's decimal expansion is either terminating or non-terminating recurring — never anything else."],
+  ["Irrational numbers", "A non-terminating, non-recurring decimal. It can never be written as p/q with p, q both integers, q≠0."],
+  ["Real numbers", "The union of all rational numbers and all irrational numbers. Every real number is either rational or irrational — never both, never neither."],
+  ["Surds", "If a is a positive rational number, n a positive integer, and ⁿ√a is irrational, then ⁿ√a is called a surd."],
+  ["Laws of radicals", "(ⁿ√a)ⁿ = a = ⁿ√(aⁿ); ⁿ√a·ⁿ√b = ⁿ√(ab); ᵐ√(ⁿ√a) = ᵐⁿ√a = ⁿ√(ᵐ√a); ⁿ√a / ⁿ√b = ⁿ√(a/b)."],
+  ["Rationalisation", "Multiplying a surd by another surd to produce a rational number — used to clear surds from a denominator."],
+  ["Scientific notation", "N = a × 10ⁿ where 1 ≤ a < 10 and n is an integer — a compact way to write very large or very small numbers."]
+];
+document.getElementById('ptrGrid').innerHTML = ptr.map(([t,d]) => `
+  <div class="topic-card" style="cursor:default;">
+    <div class="topic-body">
+      <h3>${t}</h3>
+      <p>${d}</p>
+    </div>
+  </div>`).join('');
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

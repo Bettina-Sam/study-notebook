@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>3.6 Division of Polynomials • Algebra • Study Notebook</title>
-<meta name="description" content="Long division for polynomials, one highlighted step at a time — Next Step and Reset controls."/>
+<meta content="Long division for polynomials, one highlighted step at a time — Next Step and Reset controls." name="description"/>
 <link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../../css/article.css" rel="stylesheet"/>
@@ -12,7 +13,7 @@
 <script>
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
-<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -40,7 +41,6 @@
 <i data-lucide="moon" width="16"></i> Theme
 </button>
 </nav>
-
 <section class="hero">
 <div class="text-reveal-wrapper">
 <span class="coming-soon-num">3.6 Division of Polynomials</span>
@@ -51,7 +51,6 @@
 </p>
 </div>
 </section>
-
 <!-- SECTION 1: LONG DIVISION BOARD -->
 <section>
 <div class="split-layout">
@@ -63,6 +62,7 @@
 <span class="etu-tag">Rule</span>
 <div class="formula-rule">Dividend = (Divisor × Quotient) + Remainder</div>
 </div>
+<div class="interaction-cue"><strong>Step</strong><span class="cue-copy">Press <b>Next Step</b> once, predict the next operation, then press again. Use Reset whenever you want to replay the full division.</span></div>
 <div class="division-controls">
 <button class="btn btn-primary" id="divNext">Next Step</button>
 <button class="btn btn-secondary" id="divReset">Reset</button>
@@ -78,7 +78,6 @@
 </div>
 </div>
 </section>
-
 <!-- WORKED EXAMPLE (auto play, simpler case) -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -92,7 +91,6 @@
 </div>
 </div>
 </section>
-
 <!-- EXERCISE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -120,17 +118,14 @@
 </div>
 </div>
 </section>
-
-<div class="divider"></div>
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 108–114</span><h2>Division algorithm for polynomials</h2><p>The number identity 13=(5×2)+3 motivates the polynomial rule:</p><div class="tb-callout"><b>p(x)=g(x)q(x)+r(x)</b>, where r(x)=0 or degree r &lt; degree g.</div><p>p is the dividend, g the divisor, q the quotient and r the remainder. If r=0, the divisor is a factor.</p><div class="tb-example"><div class="head">Textbook Example 3.32–3.34</div><div class="body"><b>Divide polynomials and identify quotient and remainder.</b><div style="margin-top:.65rem">The textbook moves from division by x to full polynomial long division, including missing terms such as 0x so powers stay aligned.</div></div></div><h2>3.6.2 Synthetic Division</h2><p>Synthetic division is a shortcut that works with coefficients instead of rewriting variables at every step. The textbook’s method: arrange standard form, insert zeros for missing terms, find the zero of the divisor, then multiply-and-add down the rows.</p><div class="tb-example"><div class="head">Textbook Example 3.35–3.37</div><div class="body"><b>Synthetic division, including a divisor 3x+1 and comparison of quotient coefficients.</b><div style="margin-top:.65rem">The examples show the complete coefficient-table process and then reconstruct p(x)=d(x)q(x)+r.</div></div></div><h2>3.6.3 Factorisation using Synthetic Division</h2><p>Once one linear factor of a cubic is identified, synthetic division produces a quadratic factor. Useful tests: (x−1) is a factor when the sum of coefficients is 0; (x+1) is a factor when the sum of even-power coefficients (including constant) equals the sum of odd-power coefficients.</p><div class="tb-example"><div class="head">Textbook Example 3.38–3.40</div><div class="body"><b>Identify x−1 or x+1 quickly, then factorise cubics into linear factors.</b><div style="margin-top:.65rem">When ±1 does not work, the textbook demonstrates trial of other integer candidates and synthetic division once a zero is found.</div></div></div><p>   </p></div></section><div class="divider"></div>
 <section style="min-height:auto; padding-top:0;">
 <div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
 <a class="back-link" href="../factorisation/">← 3.5 Factorisation</a>
 <a class="back-link" href="../gcd/">Next: Greatest Common Divisor →</a>
 </div>
 </section>
-
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
-
 <script src="../../../../../js/common.js"></script>
 <script src="../../../../../js/algebra-lib.js"></script>
 <script>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>6.1-6.2 Hygiene & Body Care • Health and Hygiene • Study Notebook</title>
+<meta name="description" content="Daily habits that keep the body clean and healthy — personal hygiene, dental care, eye care and hair care."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Health and Hygiene
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 6 · Health and Hygiene</span>
+<span class="coming-soon-num">6.1–6.2 Hygiene & Body Care</span>
+<h1 class="hero-title">Health is the<br/>best wealth</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Hygiene is the set of habits that prevent disease and maintain good health — through cleanliness, safe water, and proper waste disposal. Good body care starts with the basics.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Build a Daily Hygiene Checklist</h3>
+<h2>Tick off your habits</h2>
+<p>Personal hygiene protects you and everyone around you. Check off which habits you already follow.</p>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Tick the habits you follow and see your hygiene score.</span></div>
+<div id="habitList" style="display:flex;flex-direction:column;gap:0.5rem;"></div>
+<div class="formula-card" style="text-align:center;margin-top:1rem;">
+<div id="habitScore">Score: 0 / 5</div>
+</div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="habitWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Care of the Body</h3>
+<h2>Dental, eye and hair care</h2>
+<div class="sim-controls">
+<div class="slider-group"><label>Body part</label>
+<select id="care-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="teeth">Teeth (dental care)</option><option value="eyes">Eyes</option><option value="hair">Hair</option>
+</select></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="careOut">Brushing twice a day prevents tartar and plaque; flossing removes food particles between teeth.</div>
+</div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">A diet lacking Vitamin C is linked to which dental problem?</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" style="width:200px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 75–82</span><h2>Hygiene and body care essentials</h2><div class="tb-grid"><div class="tb-card"><h3>Health</h3><p>A state of complete physical, mental and social well-being — not merely the absence of disease.</p></div><div class="tb-card"><h3>Personal hygiene</h3><p>Regular bathing, brushing, hand-washing, and clean clothes.</p></div><div class="tb-card"><h3>Community hygiene</h3><p>Clean surroundings, covered drains, proper waste segregation and disposal.</p></div><div class="tb-card"><h3>Eye care</h3><p>80% of what we perceive comes through sight — protect eyes from strain and infection.</p></div><div class="tb-card"><h3>Hair care</h3><p>Regular washing removes excess oil, sweat and dead skin cells that build up on the scalp.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../">← Health and Hygiene</a>
+<a class="back-link" href="../diseases/">Next: Diseases →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const habits = ["Brush teeth at least twice a day","Take a daily shower","Wash hands before eating","Wear clean clothes / uniform","Keep food covered"];
+const habitHost = document.getElementById('habitList');
+habitHost.innerHTML = habits.map((h,i)=>`<label style="display:flex;align-items:center;gap:8px;font-size:0.95rem;"><input type="checkbox" data-habit="${i}" style="width:18px;height:18px;"/> ${h}</label>`).join('');
+function updateHabits(){
+  const checked = habitHost.querySelectorAll('input:checked').length;
+  document.getElementById('habitScore').textContent = `Score: ${checked} / ${habits.length}`;
+  let svg='';
+  for(let i=0;i<habits.length;i++){
+    svg += `<circle cx="${40+i*45}" cy="70" r="16" fill="${i<checked?'var(--math-accent)':'var(--border-color)'}" opacity="0.85"/>`;
+  }
+  document.getElementById('habitWrap').innerHTML = `<svg viewBox="0 0 260 140">${svg}<text x="20" y="120" font-size="11" fill="var(--text-muted)">${checked===5?'Great hygiene routine!':'Keep building the habit.'}</text></svg>`;
+}
+habitHost.querySelectorAll('input').forEach(inp=>inp.addEventListener('change', updateHabits));
+updateHabits();
+
+const care = {
+  teeth:'Brushing twice a day prevents tartar and plaque; flossing removes food particles between teeth. Vitamin C deficiency can cause bleeding gums.',
+  eyes:'Avoid rubbing eyes, limit screen time, wash with clean water, and eat vitamin-A rich foods like carrots to protect night vision.',
+  hair:'Regular washing and scalp massage remove dead skin cells, excess oil and dust — the follicles produce oil that keeps hair smooth.'
+};
+document.getElementById('care-select').addEventListener('change', ()=>{
+  document.getElementById('careOut').textContent = care[document.getElementById('care-select').value];
+});
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('bleed');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct — bleeding gums' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

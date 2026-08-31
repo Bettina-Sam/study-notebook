@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Force and Motion • Class 7 Science • Study Notebook</title>
+<meta name="description" content="Class 7 Science Unit 2: distance, displacement, speed, velocity, acceleration, motion graphs, centre of gravity and stability."/>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../css/math-chapter-visuals.css" rel="stylesheet"/>
+<link href="../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script>window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html#science7-path">
+<i data-lucide="arrow-left" width="16"></i>
+    Class 7 Science
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Unit 2</span>
+<h1 class="hero-title">Force and Motion</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    Why does the straight-line path get you there fastest? Why does a merry-go-round rider feel motion even
+    at "constant speed"? This unit builds distance, speed and acceleration from everyday journeys, then uses
+    them to explain why some things topple and others don't.
+</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Start with distance and displacement — the two are easy to confuse. Use them to
+build speed and velocity, then acceleration. See all three come alive in motion graphs, then shift gears to
+centre of gravity and the stability it explains.</p>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+
+<section class="audit-align-card audit-home-alignment" style="max-width:1180px;margin:0 auto 1.5rem"><div class="audit-kicker">Verified against the 2025 Term-1 textbook</div><h2>Learning Objectives</h2><ul><li>Define distance and displacement, and differentiate between them.</li><li>Define speed, velocity and acceleration, and differentiate speed and velocity.</li><li>Draw and explain distance-time and velocity-time graphs.</li><li>Measure and calculate the speed of moving objects.</li><li>Know the day-to-day uses of centre of gravity and stability.</li></ul></section><div class="divider"></div>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../js/common.js"></script>
+<script>
+const topics = [
+  ["01","2.1","distance-and-displacement/","Distance & Displacement","Path length travelled vs. the straight-line shift from start to finish.","dist"],
+  ["02","2.2","speed-and-velocity/","Speed & Velocity","Distance over time vs. displacement over time — and why they can differ.","speedvel"],
+  ["03","2.3","acceleration/","Acceleration","The rate of change of velocity — speeding up, slowing down.","accel"],
+  ["04","2.4–2.5","motion-graphs/","Motion Graphs","Distance-time and speed-time graphs, and what their slopes mean.","graphs"],
+  ["05","2.6–2.7","centre-of-gravity-and-stability/","Centre of Gravity & Stability","The point weight acts through, and why wide low bases resist toppling.","cg"],
+  ["06","Practice","exercises/","Unit Exercises","MCQs, fill-in-the-blanks and numerical problems with instant checking.","cg"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   dist:`<svg ${common}><path class="tv-accent" d="M30 85 L100 30 L170 85"/><path class="tv-stroke-2 tv-dash" d="M30 85 L170 85"/><circle class="tv-fill tv-pulse" cx="30" cy="85" r="5"/><circle class="tv-fill tv-pulse" cx="170" cy="85" r="5"/><text x="180" y="60">displacement</text></svg>`,
+   speedvel:`<svg ${common}><path class="tv-accent tv-nudge" d="M30 50h90m0 0-10-7m10 7-10 7"/><path class="tv-stroke-2 tv-float" d="M150 70h60m0 0-10-7m10 7-10 7"/><text x="30" y="30">speed</text><text x="150" y="95">velocity</text></svg>`,
+   accel:`<svg ${common}><circle class="tv-accent tv-pulse" cx="60" cy="55" r="10"/><circle class="tv-fill tv-float" cx="190" cy="55" r="18"/><path class="tv-stroke-2" d="M90 55h70"/><text x="70" y="90">u → v</text></svg>`,
+   graphs:`<svg ${common}><path class="tv-accent" d="M30 90 Q120 90 200 25"/><path class="tv-stroke-2 tv-dash" d="M30 20h180M30 20v70" opacity="0.4"/><text x="30" y="15">distance</text></svg>`,
+   cg:`<svg ${common}><path class="tv-accent tv-float" d="M90 85 L170 85 L130 25 Z"/><circle class="tv-fill" cx="130" cy="65" r="5"/><line class="tv-stroke-2 tv-dash" x1="130" y1="65" x2="130" y2="95"/></svg>`
+  };
+  return v[key]||v.dist;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[2]}">
+    <div class="topic-visual">${topicVisual(t[5])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · ${t[1]}</span>
+      <h3>${t[3]}</h3>
+      <p>${t[4]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

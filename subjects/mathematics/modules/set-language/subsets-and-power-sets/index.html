@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.4 Subsets &amp; Power Sets • Set Language • Study Notebook</title>
+<meta name="description" content="Subsets, proper subsets, disjoint and overlapping sets, and the power set of a set."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Set Language
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">1.4 Subsets &amp; Power Sets</span>
+<h1 class="hero-title">Sets living<br/>inside other sets</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    Once you can compare two sets, a whole new question opens up: is one of them completely contained
+    in the other? And if so, how many ways can that happen?
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: SUBSET CHECKER -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">1.4.8 Subsets — $\subseteq$</h3>
+<h2>Is every element of A also in B?</h2>
+<p>
+    $A$ is a <b>subset</b> of $B$ (written $A \subseteq B$) if every element of $A$ is also an element
+    of $B$. Drag each token into $B$ below — a genuine element of $A$ will settle into place; anything
+    that doesn't belong will bounce back out.
+</p>
+<div class="var-list">
+<div class="var-row"><span class="var-key">A</span><span class="var-desc" style="font-family:var(--font-mono);">{10, 20, 30, 50}</span></div>
+<div class="var-row"><span class="var-key">B</span><span class="var-desc" style="font-family:var(--font-mono);">{10, 20, 30, 40}</span></div>
+<div class="var-row"><span class="var-key">Note</span><span class="var-desc">50 has been added to A here as a decoy (it isn't really a member) purely so the drag has something worth rejecting. The empty set is a subset of every set, and every set is a subset of itself.</span></div>
+</div>
+<div id="subResult" class="formula-rule" style="text-align:center; font-size:1.15rem; margin-top:0.9rem;">Drag every token from A into B…</div>
+<div id="subExplain" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.4rem;"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('subset', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div id="subStage" style="width:100%;"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: PROPER SUBSET -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">1.4.9 Proper Subsets — $\subset$</h3>
+<h2 style="margin-bottom:1rem;">Contained, but not equal</h2>
+<p>$A$ is a <b>proper subset</b> of $B$ ($A \subset B$) when $A \subseteq B$ <em>and</em> $A \ne B$ — B
+must have at least one extra element A doesn't have. Using the checker above: since $A=\{10,20,30\}$
+is missing 40 from $B$, $A \subset B$ as well as $A \subseteq B$. But if $A$ and $B$ were exactly equal,
+$A \subseteq B$ would still be true, while $A \subset B$ would not.</p>
+</div>
+</section>
+
+<!-- SECTION 3: DISJOINT / OVERLAPPING -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent);">1.4.10 Disjoint vs. Overlapping Sets</h3>
+<h2 style="margin-bottom:1rem;">Do they share anything?</h2>
+<p style="max-width:70ch;">Two sets are <b>disjoint</b> if $A \cap B = \varnothing$ — no shared elements at all. If they share
+at least one element, they're <b>overlapping</b>.</p>
+<div id="disGrid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin-top:1.3rem;"></div>
+</div>
+</section>
+
+<!-- SECTION 4: POWER SET EXPLORER -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">1.4.11 Power Set Explorer</h3>
+<h2>All subsets of A, at once</h2>
+<p>
+    The <b>power set</b> $P(A)$ is the set of <em>all</em> subsets of $A$ — including $\varnothing$ and
+    $A$ itself. If $n(A) = m$, then $n[P(A)] = 2^m$, and the number of proper subsets is $2^m - 1$.
+    Toggle elements on or off to assemble a candidate subset, then watch it fly into $P(A)$.
+</p>
+<div class="inline-controls">
+<span style="font-family:var(--font-mono);">A = {</span><input id="powA" class="mini-input" style="width:140px;" type="text" value="2, 3"/><span style="font-family:var(--font-mono);">}</span>
+<button class="btn btn-primary" id="powGo">Build P(A)</button>
+</div>
+<div id="powFormula" class="formula-rule" style="text-align:center;">n(A) = 2, so n[P(A)] = 2² = 4</div>
+<div id="powToggles" class="tile-choice" style="margin:0.9rem 0;"></div>
+<div class="formula-card" style="text-align:center; margin:0.6rem 0;">
+<div id="powCurrent" class="formula-rule">Current selection: ∅</div>
+</div>
+<div class="btn-row">
+<button class="btn btn-primary" id="powAdd">Add to P(A)</button>
+</div>
+<div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.6rem;" id="powProgress">0 / 4 subsets collected</div>
+<div id="powComplete" class="check-result check-yes" style="margin-top:0.6rem; display:none;">All subsets collected! That count matches $2^n$, exactly as the Power Set formula predicts.</div>
+</div>
+<div class="visual-col">
+<div id="powStage" style="width:100%;"></div>
+</div>
+</div>
+</section>
+
+<!-- ACTIVITY 3 -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color: var(--math-accent);">Activity 3</h3>
+<h2 style="margin-bottom:1rem;">Build every subset of a fruit basket</h2>
+<p style="max-width:70ch;">Let $F = \{\text{Apple, Banana, Mango, Grape}\}$. Fling fruits into the <b>My subset</b> zone (drag one back
+out to remove it), then tap <b>Add this subset</b> to record it — each choice really is a valid subset of $F$
+by definition (any selection of F's elements, including none of them or all of them, counts). Try to find all
+of them.</p>
+<div id="act3Stage" style="width:100%; max-width:640px; margin:1rem 0;"></div>
+<div class="formula-card" style="text-align:center; margin:0.9rem 0;">
+<div id="act3Current" class="formula-rule">Current selection: ∅ — a valid subset (the empty set)</div>
+</div>
+<div class="btn-row">
+<button class="btn btn-primary" id="act3Add">Add this subset</button>
+<button class="btn btn-ghost" id="act3Reset">Reset found list</button>
+</div>
+<div style="margin-top:1rem;">
+<div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;" id="act3Progress">0 / 16 subsets found</div>
+<div id="act3Found" style="display:flex; flex-wrap:wrap; gap:0.5rem;"></div>
+</div>
+<div id="act3Complete" class="check-result check-yes" style="margin-top:0.9rem; display:none;">All 16 subsets found! That matches $2^4 = 16$, exactly as the Power Set formula predicts.</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example 1.7 (textbook)</span>
+<div class="we-question">Write all the subsets of $A = \{a, b\}$.</div>
+<div class="step-flow" id="we-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Start with the subset that has no elements.<div class="step-math">∅</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">List the subsets with exactly one element.<div class="step-math">{a}, {b}</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">List the subset with all elements.<div class="step-math">{a, b}</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b> — 4 subsets in total ($2^2$).<div class="step-math">∅, {a}, {b}, {a, b}</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISES -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+
+<div class="exercise-card" id="ex1">
+<span class="ex-label">Exercise 1.2 · Q8(i)</span>
+<div class="ex-question">Write down the power set of $A = \{a, b\}$.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex1Hint">List every subset from the worked example above, then wrap them all inside one outer pair of braces.</div>
+<div class="exercise-panel answer-panel" id="ex1Answer">Answer: $P(A) = \{\varnothing, \{a\}, \{b\}, \{a,b\}\}$</div>
+</div>
+
+<div class="exercise-card" id="ex2">
+<span class="ex-label">Exercise 1.2 · Q10(i)</span>
+<div class="ex-question">If $n(A) = 4$, find $n[P(A)]$.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex2Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex2Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex2Hint">Use $n[P(A)] = 2^{n(A)}$.</div>
+<div class="exercise-panel answer-panel" id="ex2Answer">Answer: $n[P(A)] = 2^4 = 16$</div>
+</div>
+
+<div class="exercise-card" id="ex3">
+<span class="ex-label">Exercise 1.2 · Q5(i)</span>
+<div class="ex-question">Are $A = \{f, i, a, s\}$ and $B = \{a, n, f, h, s\}$ disjoint or overlapping?</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex3Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex3Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex3Hint">Look for any letters common to both lists.</div>
+<div class="exercise-panel answer-panel" id="ex3Answer">Answer: Overlapping — both sets share $f$, $a$ and $s$, so $A \cap B = \{a, f, s\} \ne \varnothing$.</div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../types-of-sets/">← 1.4 Types of Sets</a>
+<a class="back-link cn-home" href="../">Set Language Home</a>
+<a class="back-link" href="../set-operations/">Next: Set Operations →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/token-physics.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Explain subsets, proper subsets, disjoint/overlapping sets and power sets for a Class 9 student, with examples.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Section 1: subset drag-physics builder ---------- */
+function parseSet(id) {
+    return document.getElementById(id).value.split(',').map(s => s.trim()).filter(Boolean);
+}
+(function initSubsetStage() {
+    const subBElems = [10, 20, 30, 40];
+    const subAElems = [10, 20, 30];   // A's real elements — every one is in B
+    const subDecoy = 50;               // added decoy, not in B (see note in the UI)
+    const subATokens = [...subAElems, subDecoy];
+
+    const container = document.getElementById('subStage');
+    const stage = TokenPhysics.createStage(container, { height: 340 });
+    const w = container.clientWidth || 600;
+    const zoneW = Math.min(260, w * 0.44), zoneH = 300;
+    const zoneX = w - zoneW - 20, zoneY = 20;
+
+    const zoneEl = document.createElement('div');
+    zoneEl.className = 'phys-zone';
+    zoneEl.style.left = zoneX + 'px'; zoneEl.style.top = zoneY + 'px';
+    zoneEl.style.width = zoneW + 'px'; zoneEl.style.height = zoneH + 'px';
+    zoneEl.innerHTML = '<div class="phys-zone-label">B = {10, 20, 30, 40}</div>';
+    container.appendChild(zoneEl);
+    const zoneB = stage.addZone({ test: stage.rectZone({ x: zoneX, y: zoneY, w: zoneW, h: zoneH }), el: zoneEl });
+
+    // fixed reference chips showing B's own elements (plain, non-interactive)
+    subBElems.forEach((val, i) => {
+        const chip = document.createElement('div');
+        chip.textContent = val;
+        chip.style.cssText = 'position:absolute; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--card-bg); border:2px solid var(--border-color); color:var(--text-muted); font-family:var(--font-mono); font-size:0.76rem; font-weight:600; opacity:0.55; pointer-events:none;';
+        const cx = zoneX + 45 + (i % 2) * 95;
+        const cy = zoneY + 55 + Math.floor(i / 2) * 70;
+        chip.style.left = (cx - 16) + 'px'; chip.style.top = (cy - 16) + 'px';
+        container.appendChild(chip);
+    });
+
+    const landingSlots = [
+        { x: zoneX + 45, y: zoneY + 220 },
+        { x: zoneX + 140, y: zoneY + 220 },
+        { x: zoneX + 90, y: zoneY + 260 }
+    ];
+    const placed = new Set();
+    let solved = false;
+
+    subATokens.forEach((val, i) => {
+        stage.addToken('subA-' + val, String(val), {
+            x: 30 + (i % 2) * 70,
+            y: 30 + Math.floor(i / 2) * 90
+        });
+    });
+
+    function setStatus(text, ok) {
+        const el = document.getElementById('subResult');
+        el.textContent = text;
+        el.style.color = ok === true ? 'var(--math-accent)' : (ok === false ? 'var(--math-accent-2)' : '');
+    }
+
+    stage.onDrop((token, zone) => {
+        const val = Number(token.label);
+        if (zone !== zoneB) return; // dropped outside B — leave it where it drifted
+        if (subAElems.includes(val)) {
+            token.el.classList.remove('phys-wrong');
+            token.el.classList.add('phys-correct');
+            placed.add(val);
+            const slot = landingSlots[[...placed].indexOf(val)] || landingSlots[landingSlots.length - 1];
+            stage.snapTo(token, slot.x, slot.y);
+            document.getElementById('subExplain').textContent = `${val} is a member of B, so it belongs. (${placed.size}/${subAElems.length} placed)`;
+            if (placed.size >= subAElems.length && !solved) {
+                solved = true;
+                setStatus('A ⊆ B — confirmed!', true);
+                document.getElementById('subExplain').textContent = 'Every element of A (10, 20, 30) landed inside B. Since A has fewer elements than B, A is also a proper subset: A ⊂ B.';
+            }
+        } else {
+            token.el.classList.remove('phys-correct');
+            token.el.classList.add('phys-wrong');
+            setStatus(`${val} is not in B`, false);
+            document.getElementById('subExplain').textContent = `${val} was added as a decoy — it isn't a real element of A/B, so it doesn't belong inside B.`;
+            stage.release(token);
+            const backX = 30 + Math.random() * 60, backY = 30 + Math.random() * (300 - 60);
+            setTimeout(() => { token.el.classList.remove('phys-wrong'); }, 500);
+            stage.snapTo(token, backX, backY);
+            setTimeout(() => { if (!token.dragging) stage.release(token); }, 700);
+        }
+    });
+})();
+
+/* ---------- Section 3: disjoint vs overlapping ---------- */
+const disPairs = [
+  { a: '{20, 22, 23, 24}', b: '{25, 30, 40, 45}', answer: 'Disjoint', why: 'No element is shared between the two lists.' },
+  { a: '{1, 2, 6}', b: '{2, 3, 4}', answer: 'Overlapping', why: 'Both contain 2, so they overlap.' },
+  { a: 'Factors of 24', b: 'Multiples of 3 under 30', answer: 'Overlapping', why: '3, 6, 12, 24 all appear in both lists.' }
+];
+const disTypes = ['Disjoint', 'Overlapping'];
+document.getElementById('disGrid').innerHTML = disPairs.map((p, i) => `
+  <div class="worked-example" style="margin:0;">
+    <div style="font-family:var(--font-mono); font-size:0.92rem; margin-bottom:0.8rem;">A = ${p.a}<br/>B = ${p.b}</div>
+    <div class="mcq-options" id="dgOpts${i}">
+      ${disTypes.map(t => `<button class="mcq-option" data-t="${t}">${t}</button>`).join('')}
+    </div>
+    <div class="mcq-feedback" id="dgFb${i}"></div>
+  </div>`).join('');
+disPairs.forEach((p, i) => {
+    document.querySelectorAll(`#dgOpts${i} .mcq-option`).forEach(btn => {
+        btn.addEventListener('click', () => {
+            const opts = document.querySelectorAll(`#dgOpts${i} .mcq-option`);
+            opts.forEach(o => o.disabled = true);
+            const fb = document.getElementById(`dgFb${i}`);
+            const ok = btn.dataset.t === p.answer;
+            btn.classList.add(ok ? 'mcq-correct' : 'mcq-wrong');
+            if (!ok) opts.forEach(o => { if (o.dataset.t === p.answer) o.classList.add('mcq-correct'); });
+            fb.textContent = p.why; fb.className = 'mcq-feedback ' + (ok ? 'ok' : 'no');
+        });
+    });
+});
+
+/* ---------- Section 4: power set explorer — physical assembly ---------- */
+let powStage = null, powItems = [], powTotal = 0, powCols = 1, powSlotSize = 34, powGap = 8;
+let powToggleState = new Set(), powFoundKeys = new Set();
+
+function powSlotPos(i) {
+    const col = i % powCols, row = Math.floor(i / powCols);
+    return { x: 26 + col * (powSlotSize + powGap), y: 42 + row * (powSlotSize + powGap) };
+}
+function powKey() { return powItems.filter(it => powToggleState.has(it)).join(','); }
+function powRenderCurrent() {
+    const list = powItems.filter(it => powToggleState.has(it));
+    document.getElementById('powCurrent').textContent = list.length ? `Current selection: { ${list.join(', ')} }` : 'Current selection: ∅';
+}
+function powProgressUpdate() {
+    document.getElementById('powProgress').textContent = `${powFoundKeys.size} / ${powTotal} subsets collected`;
+    document.getElementById('powComplete').style.display = powFoundKeys.size >= powTotal ? 'block' : 'none';
+}
+function buildPowerSet() {
+    powItems = parseSet('powA').slice(0, 6); // cap for sanity
+    const n = powItems.length;
+    powTotal = 1 << n;
+    powToggleState = new Set();
+    powFoundKeys = new Set();
+    document.getElementById('powFormula').innerHTML = `n(A) = ${n}, so n[P(A)] = 2<sup>${n}</sup> = ${powTotal} &nbsp; (proper subsets: ${powTotal - 1})`;
+
+    const togglesEl = document.getElementById('powToggles');
+    togglesEl.innerHTML = powItems.map(it => `<button data-value="${it}">${it}</button>`).join('');
+    togglesEl.querySelectorAll('[data-value]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const v = btn.dataset.value;
+            if (powToggleState.has(v)) powToggleState.delete(v); else powToggleState.add(v);
+            btn.classList.toggle('tile-correct', powToggleState.has(v));
+            powRenderCurrent();
+        });
+    });
+    powRenderCurrent();
+
+    if (powStage) powStage.destroy();
+    const stageContainer = document.getElementById('powStage');
+    powCols = Math.max(1, Math.ceil(Math.sqrt(powTotal)));
+    const rows = Math.ceil(powTotal / powCols);
+    const stageHeight = Math.max(160, 60 + rows * (powSlotSize + powGap));
+    powStage = TokenPhysics.createStage(stageContainer, { height: stageHeight });
+    const zoneEl = document.createElement('div');
+    zoneEl.className = 'phys-zone';
+    zoneEl.style.cssText = 'left:6px; top:6px; right:6px; bottom:6px;';
+    zoneEl.innerHTML = '<div class="phys-zone-label">P(A)</div>';
+    stageContainer.appendChild(zoneEl);
+    powStage.addZone({ test: powStage.rectZone({ x: 0, y: 0, w: 99999, h: 99999 }), el: zoneEl });
+
+    powProgressUpdate();
+}
+document.getElementById('powGo').addEventListener('click', buildPowerSet);
+document.getElementById('powAdd').addEventListener('click', () => {
+    const key = powKey();
+    const stageContainer = document.getElementById('powStage');
+    if (powFoundKeys.has(key)) {
+        document.getElementById('powCurrent').style.color = 'var(--math-accent-2)';
+        setTimeout(() => { document.getElementById('powCurrent').style.color = ''; }, 500);
+        return;
+    }
+    powFoundKeys.add(key);
+    const label = key ? `{${key}}` : '∅';
+    const originBtn = document.getElementById('powAdd');
+    const originRect = originBtn.getBoundingClientRect();
+    const containerRect = stageContainer.getBoundingClientRect();
+    const startX = originRect.left + originRect.width / 2 - containerRect.left;
+    const startY = originRect.top + originRect.height / 2 - containerRect.top;
+    const idx = powFoundKeys.size - 1;
+    const pos = powSlotPos(idx);
+    const tok = powStage.addToken('pow' + idx, label, { x: startX, y: startY, cls: 'phys-correct' });
+    tok.el.style.fontSize = label.length > 4 ? '0.52rem' : '0.78rem';
+    tok.el.style.whiteSpace = 'nowrap';
+    powStage.snapTo(tok, pos.x + powSlotSize / 2, pos.y + powSlotSize / 2);
+    powProgressUpdate();
+});
+buildPowerSet();
+
+/* ---------- Activity 3: build every subset of a fruit basket (drag-physics) ---------- */
+const act3Items = ['Apple', 'Banana', 'Mango', 'Grape'];
+const act3Total = 1 << act3Items.length;
+let act3InZone = new Set();
+const act3FoundKeys = new Set();
+let act3Stage = null, act3Zone = null;
+
+function act3RenderCurrent() {
+    const list = act3Items.filter(f => act3InZone.has(f));
+    document.getElementById('act3Current').textContent = list.length
+        ? `Current selection: { ${list.join(', ')} } — a valid subset of F`
+        : 'Current selection: ∅ — a valid subset (the empty set)';
+}
+function act3Key(set) { return act3Items.filter(f => set.has(f)).join(','); }
+function act3RefreshFound() {
+    document.getElementById('act3Progress').textContent = `${act3FoundKeys.size} / ${act3Total} subsets found`;
+    document.getElementById('act3Found').innerHTML = [...act3FoundKeys].map(k => `<span class="badge badge-lvl1">{ ${k.split(',').filter(Boolean).join(', ') || '∅'} }</span>`).join('');
+    document.getElementById('act3Complete').style.display = act3FoundKeys.size >= act3Total ? 'block' : 'none';
+}
+function act3InitStage() {
+    if (act3Stage) act3Stage.destroy();
+    act3InZone = new Set();
+    const container = document.getElementById('act3Stage');
+    act3Stage = TokenPhysics.createStage(container, { height: 260 });
+    const w = container.clientWidth || 600;
+    const zoneW = Math.min(260, w * 0.42), zoneH = 200;
+    const zoneX = w - zoneW - 20, zoneY = 20;
+
+    const zoneEl = document.createElement('div');
+    zoneEl.className = 'phys-zone';
+    zoneEl.style.left = zoneX + 'px'; zoneEl.style.top = zoneY + 'px';
+    zoneEl.style.width = zoneW + 'px'; zoneEl.style.height = zoneH + 'px';
+    zoneEl.innerHTML = '<div class="phys-zone-label">My subset</div>';
+    container.appendChild(zoneEl);
+    act3Zone = act3Stage.addZone({ test: act3Stage.rectZone({ x: zoneX, y: zoneY, w: zoneW, h: zoneH }), el: zoneEl });
+
+    act3Items.forEach((f, i) => {
+        act3Stage.addToken('act3-' + f, f.slice(0, 3), {
+            x: 30 + (i % 2) * 70,
+            y: 30 + Math.floor(i / 2) * 90
+        });
+    });
+
+    act3Stage.onDrop((token, zone) => {
+        const fruit = act3Items.find(f => 'act3-' + f === token.id);
+        if (zone === act3Zone) {
+            act3InZone.add(fruit);
+            token.el.classList.add('phys-correct');
+            const idx = [...act3InZone].indexOf(fruit);
+            act3Stage.snapTo(token, zoneX + 45 + (idx % 2) * 90, zoneY + 55 + Math.floor(idx / 2) * 80);
+        } else {
+            act3InZone.delete(fruit);
+            token.el.classList.remove('phys-correct');
+        }
+        act3RenderCurrent();
+    });
+    act3RenderCurrent();
+}
+document.getElementById('act3Add').addEventListener('click', () => {
+    act3FoundKeys.add(act3Key(act3InZone));
+    act3RefreshFound();
+});
+document.getElementById('act3Reset').addEventListener('click', () => {
+    act3FoundKeys.clear();
+    act3RefreshFound();
+    act3InitStage();
+});
+act3InitStage();
+act3RefreshFound();
+
+/* ---------- Worked example / exercises ---------- */
+document.getElementById('we-play').addEventListener('click', () => AlgLib.revealSteps('we-steps'));
+AlgLib.revealSteps('we-steps', 0);
+['ex1', 'ex2', 'ex3'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

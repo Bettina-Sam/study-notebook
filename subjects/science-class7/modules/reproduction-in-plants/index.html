@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reproduction and Modification in Plants • Class 7 Science • Study Notebook</title>
+<meta name="description" content="Class 7 Science Unit 5: sexual and asexual reproduction in plants, and the modification of roots, stems and leaves."/>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../css/math-chapter-visuals.css" rel="stylesheet"/>
+<link href="../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html#science7-path">
+<i data-lucide="arrow-left" width="16"></i>
+    Class 7 Science
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Unit 5</span>
+<h1 class="hero-title">Reproduction and Modification in Plants</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    A flower isn't just decoration — it's a plant's reproductive machinery. This unit follows a flower into
+    a fruit, explores the plants that skip flowers entirely, and reveals how ordinary roots, stems and leaves
+    quietly transform for entirely different jobs.
+</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Start with the flower's parts and how pollination leads to fertilization and a
+fruit. Contrast that with asexual reproduction, which skips seeds entirely. Finish with the surprising ways
+roots, stems and leaves get reshaped for storage, support, or catching insects.</p>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+
+<section class="audit-align-card audit-home-alignment" style="max-width:1180px;margin:0 auto 1.5rem"><div class="audit-kicker">Verified against the 2025 Term-1 textbook</div><h2>Learning Objectives</h2><ul><li>Understand how a flower becomes a fruit with seed through pollination and fertilization.</li><li>Acquire knowledge about pollination and pollinators.</li><li>Differentiate self pollination and cross pollination in plants.</li><li>Know about the modification of root, stem and leaves.</li><li>Understand how these modifications are useful to animals and humans.</li></ul></section><div class="divider"></div>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../js/common.js"></script>
+<script>
+const topics = [
+  ["01","5.1–5.2","sexual-reproduction/","Sexual Reproduction","Flower parts, pollination and fertilization — how a flower becomes a fruit.","flower"],
+  ["02","5.3","asexual-reproduction/","Asexual Reproduction","New plants without seeds — vegetative propagation, budding, fragmentation, spores.","asexual"],
+  ["03","5.4","modifications-of-plant-parts/","Modifications of Plant Parts","Roots, stems and leaves reshaped for storage, support or defence.","modify"],
+  ["04","Practice","exercises/","Unit Exercises","MCQs and fill-in-the-blanks with instant checking.","modify"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   flower:`<svg ${common}><ellipse class="tv-accent" cx="130" cy="55" rx="55" ry="25"/><circle class="tv-fill tv-pulse" cx="100" cy="55" r="10"/><circle class="tv-fill tv-pulse" cx="160" cy="55" r="10"/><path class="tv-stroke-2" d="M130 80v20"/></svg>`,
+   asexual:`<svg ${common}><circle class="tv-accent" cx="80" cy="55" r="22"/><circle class="tv-fill tv-pulse" cx="140" cy="40" r="12"/><text x="170" y="60">no seed</text></svg>`,
+   modify:`<svg ${common}><path class="tv-stroke-2" d="M130 20v40"/><ellipse class="tv-accent tv-pulse" cx="130" cy="80" rx="20" ry="35"/><text x="170" y="60">root → storage</text></svg>`
+  };
+  return v[key]||v.flower;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[2]}">
+    <div class="topic-visual">${topicVisual(t[5])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · ${t[1]}</span>
+      <h3>${t[3]}</h3>
+      <p>${t[4]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

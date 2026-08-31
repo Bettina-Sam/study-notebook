@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 1.6 • Set Language • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 1.6 — cardinality word problems for two and three sets."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 1.6</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Cardinality Word Problems</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">13 questions, straight from the textbook — fill in the Venn regions yourself.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1100px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-1-1/">1.1</a>
+<a class="ex-set-pill" href="../exercise-1-2/">1.2</a>
+<a class="ex-set-pill" href="../exercise-1-3/">1.3</a>
+<a class="ex-set-pill" href="../exercise-1-4/">1.4</a>
+<a class="ex-set-pill" href="../exercise-1-5/">1.5</a>
+<span class="ex-set-pill current">1.6</span>
+<a class="ex-set-pill" href="../exercise-1-7/">1.7</a>
+</div>
+
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span></span>
+<div class="ex-question">
+(i) If $n(A)=25$, $n(B)=40$, $n(A\cup B)=50$ and $n(A')=25$, find $n(A\cap B)$ and $n(U)$.<br/>
+(ii) If $n(A)=300$, $n(A\cup B)=500$, $n(A\cap B)=50$ and $n(B')=350$, find $n(B)$ and $n(U)$.
+</div>
+<div class="check-row">
+<span>(i) $n(A\cap B)=$</span><input class="mini-input" id="q1i-inter" type="number"/>
+<span>$n(U)=$</span><input class="mini-input" id="q1i-u" type="number"/>
+<button class="btn btn-primary" id="q1iCheck">Check</button><span class="check-result" id="q1iResult"></span>
+</div>
+<div class="check-row">
+<span>(ii) $n(B)=$</span><input class="mini-input" id="q1ii-b" type="number"/>
+<span>$n(U)=$</span><input class="mini-input" id="q1ii-u" type="number"/>
+<button class="btn btn-primary" id="q1iiCheck">Check</button><span class="check-result" id="q1iiResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q1Hint">$n(U)=n(A)+n(A')$. And rearrange $n(A\cup B)=n(A)+n(B)-n(A\cap B)$ for the unknown.</div>
+<div class="exercise-panel answer-panel" id="q1Answer">
+(i) $n(U)=25+25=50$. &nbsp; $n(A\cap B)=25+40-50=15$.<br/>
+(ii) $n(B)=500-300+50=250$. &nbsp; $n(U)=n(B)+n(B')=250+350=600$.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q2" style="display:grid; grid-template-columns:1.1fr 1fr; gap:1.5rem; align-items:start;">
+<div>
+<span class="ex-label"><span class="ex-q-num">Q2</span>$U=\{x:x\in N,x\le10\}$, $A=\{2,3,4,8,10\}$, $B=\{1,2,5,8,10\}$. Verify $n(A\cup B)=n(A)+n(B)-n(A\cap B)$.</span>
+<div class="check-row">
+<span>$n(A\cup B)=$</span><input class="mini-input" id="q2u" type="number" style="width:60px;"/>
+<span>$n(A\cap B)=$</span><input class="mini-input" id="q2i" type="number" style="width:60px;"/>
+<button class="btn btn-primary" id="q2Check">Check</button><span class="check-result" id="q2Result"></span>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q2Answer">
+$A\cup B=\{1,2,3,4,5,8,10\}$, $n=7$. $n(A)=5$, $n(B)=5$. $A\cap B=\{2,8,10\}$, $n=3$.<br/>
+Check: $5+5-3=7$ ✓ verified.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q2','claude')" title="Ask Claude"></button></div>
+</div>
+<div>
+<div class="venn-controls" id="q2Controls">
+<button class="venn-op-btn" data-op="union">A∪B</button>
+<button class="venn-op-btn" data-op="intersection">A∩B</button>
+</div>
+<div class="venn-stage" id="q2Venn"></div>
+<div class="venn-result" id="q2VennResult"></div>
+</div>
+</div>
+
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>Verify the three-set cardinality formula for:</span>
+<div class="ex-question">
+(i) $A=\{a,c,e,f,h\}$, $B=\{c,d,e,f\}$, $C=\{a,b,c,f\}$<br/>
+(ii) $A=\{1,3,5\}$, $B=\{2,3,5,6\}$, $C=\{1,5,6,7\}$
+</div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+<div>
+<div style="text-align:center; font-weight:700;">(i)</div>
+<div class="venn-controls" id="q3iControls">
+<button class="venn-op-btn" data-op="union">A∪B∪C</button>
+<button class="venn-op-btn" data-op="intersection">A∩B∩C</button>
+</div>
+<div class="venn-stage" id="q3iVenn"></div>
+<div class="venn-result" id="q3iResult"></div>
+<div class="check-row">
+<span>$n(A\cup B\cup C)=$</span><input class="mini-input" id="q3iU" type="number" style="width:50px;"/>
+<span>$n(A\cap B\cap C)=$</span><input class="mini-input" id="q3iI" type="number" style="width:50px;"/>
+<button class="btn btn-primary" id="q3iCheck">Check</button><span class="check-result" id="q3iCheckResult"></span>
+</div>
+</div>
+<div>
+<div style="text-align:center; font-weight:700;">(ii)</div>
+<div class="venn-controls" id="q3iiControls">
+<button class="venn-op-btn" data-op="union">A∪B∪C</button>
+<button class="venn-op-btn" data-op="intersection">A∩B∩C</button>
+</div>
+<div class="venn-stage" id="q3iiVenn"></div>
+<div class="venn-result" id="q3iiResult"></div>
+<div class="check-row">
+<span>$n(A\cup B\cup C)=$</span><input class="mini-input" id="q3iiU" type="number" style="width:50px;"/>
+<span>$n(A\cap B\cap C)=$</span><input class="mini-input" id="q3iiI" type="number" style="width:50px;"/>
+<button class="btn btn-primary" id="q3iiCheck">Check</button><span class="check-result" id="q3iiCheckResult"></span>
+</div>
+</div>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q3Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q3Answer">
+(i) $n(A)=5,n(B)=4,n(C)=4$; pairwise $=3,2,3$; triple $=2$; $A\cup B\cup C=\{a,b,c,d,e,f,h\}$, $n=7$.
+Check: $5+4+4-3-2-3+2=7$ ✓<br/>
+(ii) $n(A)=3,n(B)=4,n(C)=4$; pairwise $=2,2,2$; triple $=1$; $A\cup B\cup C=\{1,2,3,5,6,7\}$, $n=6$.
+Check: $3+4+4-2-2-2+1=6$ ✓
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q4" style="display:grid; grid-template-columns:1.1fr 1fr; gap:1.5rem; align-items:start;">
+<div>
+<span class="ex-label"><span class="ex-q-num">Q4</span>25 students take music, 30 take drama, 8 take both, everyone takes at least one. Find:</span>
+<div class="ex-question">(i) only music (ii) only drama (iii) total students</div>
+<div class="check-row" style="flex-direction:column; align-items:flex-start; gap:0.5rem;">
+<div><span>Only music (A−B) = </span><input class="mini-input" id="q4-onlyA" type="number" style="width:70px;"/></div>
+<div><span>Only drama (B−A) = </span><input class="mini-input" id="q4-onlyB" type="number" style="width:70px;"/></div>
+<div><span>Both (A∩B) = </span><input class="mini-input" id="q4-both" type="number" style="width:70px;"/></div>
+<button class="btn btn-primary" id="q4Check">Check regions</button><span class="check-result" id="q4Result"></span>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q4Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q4Answer">(i) $25-8=17$ &nbsp; (ii) $30-8=22$ &nbsp; (iii) $17+22+8=47$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q4','claude')" title="Ask Claude"></button></div>
+</div>
+<div>
+<div class="venn-stage" id="q4Venn"></div>
+<div class="venn-result" id="q4Total" style="text-align:center; font-weight:700;"></div>
+</div>
+</div>
+
+<div class="exercise-card" id="q5" style="display:grid; grid-template-columns:1.1fr 1fr; gap:1.5rem; align-items:start;">
+<div>
+<span class="ex-label"><span class="ex-q-num">Q5</span>45 people like tea or coffee or both; 35 like tea, 20 like coffee. Find:</span>
+<div class="ex-question">(i) both (ii) do not like tea (iii) do not like coffee</div>
+<div class="check-row" style="flex-direction:column; align-items:flex-start; gap:0.5rem;">
+<div><span>Only tea (A−B) = </span><input class="mini-input" id="q5-onlyA" type="number" style="width:70px;"/></div>
+<div><span>Only coffee (B−A) = </span><input class="mini-input" id="q5-onlyB" type="number" style="width:70px;"/></div>
+<div><span>Both (A∩B) = </span><input class="mini-input" id="q5-both" type="number" style="width:70px;"/></div>
+<button class="btn btn-primary" id="q5Check">Check regions</button><span class="check-result" id="q5Result"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q5Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q5Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q5Hint">Not-tea people are exactly the "only coffee" region; not-coffee people are exactly the "only tea" region.</div>
+<div class="exercise-panel answer-panel" id="q5Answer">(i) $35+20-45=10$ &nbsp; (ii) $20-10=10$ &nbsp; (iii) $35-10=25$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q5','claude')" title="Ask Claude"></button></div>
+</div>
+<div>
+<div class="venn-stage" id="q5Venn"></div>
+<div class="venn-result" id="q5Total" style="text-align:center; font-weight:700;"></div>
+</div>
+</div>
+
+<div class="exercise-card" id="q6">
+<span class="ex-label"><span class="ex-q-num">Q6</span>50% passed Mathematics, 70% passed Science, 10% failed both. 300 students passed both subjects. Find the total number who appeared.</span>
+<div class="check-row">
+<span>% passed both =</span><input class="mini-input" id="q6-pct" type="number" style="width:60px;"/>
+<span>Total students =</span><input class="mini-input" id="q6-total" type="number" style="width:80px;"/>
+<button class="btn btn-primary" id="q6Check">Check</button><span class="check-result" id="q6Result"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q6Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q6Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q6Hint">"10% failed both" means 90% passed at least one subject — that's $n(M\cup S)$ as a percentage.</div>
+<div class="exercise-panel answer-panel" id="q6Answer">
+$n(M\cup S)=90\%$. Using $50+70-x=90$, the percentage who passed both is $x=30\%$.
+Since 300 students $=30\%$ of the total, the total is $300 \div 0.30 = 1000$ students.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q6','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q7">
+<span class="ex-label"><span class="ex-q-num">Q7</span>$n(A-B)=32+x$, $n(B-A)=5x$, $n(A\cap B)=x$, and $n(A)=n(B)$. Find $x$.</span>
+<div class="check-row">
+<span>$x=$</span><input class="mini-input" id="q7-x" type="number" style="width:60px;"/>
+<button class="btn btn-primary" id="q7Check">Check</button><span class="check-result" id="q7Result"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q7Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q7Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q7Hint">$n(A) = n(A-B)+n(A\cap B)$, and similarly for $n(B)$. Set the two expressions equal.</div>
+<div class="exercise-panel answer-panel" id="q7Answer">
+$n(A)=32+x+x=32+2x$. $n(B)=5x+x=6x$. Setting equal: $32+2x=6x \Rightarrow x=8$.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q7','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q8">
+<span class="ex-label"><span class="ex-q-num">Q8</span>Out of 500 car owners investigated, 400 owned car A, 200 owned car B, 50 owned both. Is this data correct?</span>
+<div class="check-row">
+<span>$n(A\cup B)=$</span><input class="mini-input" id="q8-union" type="number" style="width:70px;"/>
+<span>Correct data? (yes/no)</span><input class="mini-input" id="q8-verdict" style="width:70px;"/>
+<button class="btn btn-primary" id="q8Check">Check</button><span class="check-result" id="q8Result"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q8Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q8Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q8Hint">Compute $n(A\cup B)$ and compare it with the 500 people actually investigated.</div>
+<div class="exercise-panel answer-panel" id="q8Answer">
+$n(A\cup B)=400+200-50=550$. But only 500 people were investigated — you can't have 550 car owners
+among 500 people. <b>The data is not correct.</b>
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q8','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q9">
+<span class="ex-label"><span class="ex-q-num">Q9</span>275 families buy Tamil newspapers, 150 English, 45 Hindi; 125 Tamil &amp; English, 17 English &amp; Hindi, 5 Tamil &amp; Hindi, 3 all three. Every family buys at least one. Find:</span>
+<div class="ex-question">(i) only one newspaper (ii) at least two newspapers (iii) total families</div>
+<div style="display:grid; grid-template-columns:1.1fr 1fr; gap:1.5rem; align-items:start;">
+<div>
+<div class="ex-note" style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.4rem;">Fill the regions in order — all three first, then each pair-only, then each single-only. Click/focus an input to see that region highlighted.</div>
+<div class="check-row" style="flex-direction:column; align-items:flex-start; gap:0.4rem;">
+<div><span>All three (Tamil∩English∩Hindi) = </span><input class="mini-input" id="q9-abc" type="number" style="width:60px;"/></div>
+<div><span>Tamil &amp; English only = </span><input class="mini-input" id="q9-ab" type="number" style="width:60px;"/></div>
+<div><span>English &amp; Hindi only = </span><input class="mini-input" id="q9-bc" type="number" style="width:60px;"/></div>
+<div><span>Tamil &amp; Hindi only = </span><input class="mini-input" id="q9-ac" type="number" style="width:60px;"/></div>
+<div><span>Only Tamil = </span><input class="mini-input" id="q9-a" type="number" style="width:60px;"/></div>
+<div><span>Only English = </span><input class="mini-input" id="q9-b" type="number" style="width:60px;"/></div>
+<div><span>Only Hindi = </span><input class="mini-input" id="q9-c" type="number" style="width:60px;"/></div>
+<button class="btn btn-primary" id="q9Check">Check all regions</button>
+</div>
+<div class="check-result" id="q9Result"></div>
+</div>
+<div>
+<div class="venn-stage" id="q9Venn"></div>
+</div>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-secondary" data-reveal="q9Steps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="q9Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q9Steps">
+<div class="step-flow" id="q9Steps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">Only Tamil = 275 − (125+5−3) = 148. Only English = 150 − (125+17−3) = 11. Only Hindi = 45 − (17+5−3) = 26.</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">Exactly two: (Tamil&English only) 122, (English&Hindi only) 14, (Tamil&Hindi only) 2 → sum 138.</div></div>
+<div class="step-item step-in"><span class="step-num">3</span><div class="step-body">Total = (148+11+26) + 138 + 3 = 326</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="q9Answer">(i) $148+11+26=185$ &nbsp; (ii) $138+3=141$ &nbsp; (iii) $326$ families</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q9','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q10">
+<span class="ex-label"><span class="ex-q-num">Q10</span>1000 farmers: 600 grew paddy, 350 ragi, 280 corn; 120 paddy&amp;ragi, 100 ragi&amp;corn, 80 paddy&amp;corn. Every farmer grew at least one. Find the number who grew all three.</span>
+<div style="display:grid; grid-template-columns:1.1fr 1fr; gap:1.5rem; align-items:start;">
+<div>
+<div class="check-row">
+<span>All three (Paddy∩Ragi∩Corn) =</span><input class="mini-input" id="q10-abc" type="number" style="width:70px;"/>
+<button class="btn btn-primary" id="q10Check">Check</button><span class="check-result" id="q10Result"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q10Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q10Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q10Hint">Plug everything into $n(A\cup B\cup C)=1000$ and solve for the one unknown, $n(A\cap B\cap C)$.</div>
+<div class="exercise-panel answer-panel" id="q10Answer">
+$1000=600+350+280-120-100-80+x \Rightarrow 1000=730+x \Rightarrow x=270$ farmers grew all three.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q10','claude')" title="Ask Claude"></button></div>
+</div>
+<div>
+<div class="venn-stage" id="q10Venn"></div>
+<div class="ex-note" style="font-size:0.75rem; color:var(--text-muted); text-align:center;">Only the all-three region is asked for here — the individual pair-only splits aren't uniquely recoverable from the numbers given, so the diagram just marks the region you're solving for.</div>
+</div>
+</div>
+</div>
+
+<div class="exercise-card stub-question" id="q11">
+<span class="ex-label"><span class="ex-q-num">Q11</span>In a diagram with $n(U)=125$, $y$ is twice $x$, and $z$ is 10 more than $x$, find $x$, $y$, $z$.</span>
+<div class="ex-question">This question depends on a specific labelled figure printed in the textbook (which region is $x$, $y$, $z$) that isn't reproduced here.</div>
+<div class="stub-note">The original figure labelling which regions $x$, $y$, $z$ refer to is not available here — without it the equation can't be set up uniquely. Get the figure from your printed textbook, then use the method in the hint below.</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q11Hint">Hint</button></div>
+<div class="exercise-panel" id="q11Hint">Once you know which regions x, y, z label (from your textbook figure), write one equation summing all regions to 125, substitute $y=2x$ and $z=x+10$, and solve for $x$.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q11','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q12">
+<span class="ex-label"><span class="ex-q-num">Q12</span>35 students each play at least one of chess, carrom, table tennis. 22 chess, 21 carrom, 15 table tennis, 10 chess&amp;TT, 8 carrom&amp;TT, 6 all three. Find:</span>
+<div class="ex-question">(i) chess and carrom, but not table tennis (ii) only chess (iii) only carrom</div>
+<div style="display:grid; grid-template-columns:1.1fr 1fr; gap:1.5rem; align-items:start;">
+<div>
+<div class="ex-note" style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.4rem;">Fill all-three first, then each pair-only, then each single-only.</div>
+<div class="check-row" style="flex-direction:column; align-items:flex-start; gap:0.4rem;">
+<div><span>All three (Chess∩Carrom∩TT) = </span><input class="mini-input" id="q12-abc" type="number" style="width:60px;"/></div>
+<div><span>Chess &amp; Carrom only = </span><input class="mini-input" id="q12-ab" type="number" style="width:60px;"/></div>
+<div><span>Carrom &amp; TT only = </span><input class="mini-input" id="q12-bc" type="number" style="width:60px;"/></div>
+<div><span>Chess &amp; TT only = </span><input class="mini-input" id="q12-ac" type="number" style="width:60px;"/></div>
+<div><span>Only Chess = </span><input class="mini-input" id="q12-a" type="number" style="width:60px;"/></div>
+<div><span>Only Carrom = </span><input class="mini-input" id="q12-b" type="number" style="width:60px;"/></div>
+<div><span>Only TT = </span><input class="mini-input" id="q12-c" type="number" style="width:60px;"/></div>
+<button class="btn btn-primary" id="q12Check">Check all regions</button>
+</div>
+<div class="check-result" id="q12Result"></div>
+</div>
+<div>
+<div class="venn-stage" id="q12Venn"></div>
+</div>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-secondary" data-reveal="q12Steps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="q12Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q12Steps">
+<div class="step-flow" id="q12Steps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">First find n(Chess∩Carrom) from the total-35 formula: 35 = 22+21+15 − n(C∩Ca) − 8 − 10 + 6 → n(C∩Ca) = 11</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">(i) 11 − 6 (all three) = 5</div></div>
+<div class="step-item step-in"><span class="step-num">3</span><div class="step-body">(ii) Only chess = 22 − (11+10−6) = 7. &nbsp; (iii) Only carrom = 21 − (11+8−6) = 8</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="q12Answer">(i) 5 students &nbsp; (ii) 7 students &nbsp; (iii) 8 students</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q12','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q13">
+<span class="ex-label"><span class="ex-q-num">Q13</span>50 students each come by bus, bicycle, or on foot: 25 bus, 20 bicycle, 30 foot, 10 by all three. How many use exactly two modes of transport?</span>
+<div style="display:grid; grid-template-columns:1.1fr 1fr; gap:1.5rem; align-items:start;">
+<div>
+<div class="check-row">
+<span>Sum of all pairwise overlaps =</span><input class="mini-input" id="q13-pairwise" type="number" style="width:60px;"/>
+<button class="btn btn-primary" id="q13Check1">Check</button><span class="check-result" id="q13Result1"></span>
+</div>
+<div class="check-row">
+<span>Exactly two modes =</span><input class="mini-input" id="q13-exactly2" type="number" style="width:60px;"/>
+<button class="btn btn-primary" id="q13Check2">Check</button><span class="check-result" id="q13Result2"></span>
+</div>
+<div class="ex-note" style="font-size:0.8rem; color:var(--text-muted); margin-top:0.4rem;">Only the totals for each pair (and all three) are given, not the individual bus&amp;bicycle / bicycle&amp;foot / bus&amp;foot counts — so those three splits aren't uniquely determined and are left un-diagrammed. The diagram on the right marks the "all three" region, which is given (10).</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q13Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q13Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q13Hint">First find the sum of all three pairwise overlaps using the union formula. Then remember: (sum of pairwise overlaps) = (exactly two) + 3×(all three), since the all-three group gets counted in every pairwise overlap.</div>
+<div class="exercise-panel answer-panel" id="q13Answer">
+$50=25+20+30-(\text{pairwise sum})+10 \Rightarrow \text{pairwise sum}=35$.<br/>
+Exactly two $= 35 - 3(10) = 5$ students.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-6-q13','claude')" title="Ask Claude"></button></div>
+</div>
+<div>
+<div class="venn-stage" id="q13Venn"></div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-1-5/">← Exercise 1.5</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-1-7/">Next: Exercise 1.7 (MCQ) →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/venn-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    const base = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.6 Question ";
+    const tail = ". Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    const qs = {
+        'ex1-6-q1': "1: (i) n(A)=25, n(B)=40, n(A∪B)=50, n(A')=25 — find n(A∩B) and n(U). (ii) n(A)=300, n(A∪B)=500, n(A∩B)=50, n(B')=350 — find n(B) and n(U).",
+        'ex1-6-q2': "2: U={x:x∈N,x≤10}, A={2,3,4,8,10}, B={1,2,5,8,10}. Verify n(A∪B)=n(A)+n(B)-n(A∩B).",
+        'ex1-6-q3': "3: Verify the three-set cardinality formula n(A∪B∪C)=n(A)+n(B)+n(C)-n(A∩B)-n(B∩C)-n(A∩C)+n(A∩B∩C) for (i) A={a,c,e,f,h}, B={c,d,e,f}, C={a,b,c,f} and (ii) A={1,3,5}, B={2,3,5,6}, C={1,5,6,7}.",
+        'ex1-6-q4': "4: 25 students take music, 30 take drama, 8 take both, everyone takes at least one. Find only music, only drama, and total students.",
+        'ex1-6-q5': "5: 45 people like tea or coffee or both; 35 like tea, 20 like coffee. Find both, do-not-like-tea, do-not-like-coffee.",
+        'ex1-6-q6': "6: 50% passed Mathematics, 70% passed Science, 10% failed both. 300 students passed both subjects. Find the total number who appeared.",
+        'ex1-6-q7': "7: n(A-B)=32+x, n(B-A)=5x, n(A∩B)=x, and n(A)=n(B). Find x.",
+        'ex1-6-q8': "8: Out of 500 car owners investigated, 400 owned car A, 200 owned car B, 50 owned both. Is this data correct?",
+        'ex1-6-q9': "9: 275 families buy Tamil newspapers, 150 English, 45 Hindi; 125 Tamil & English, 17 English & Hindi, 5 Tamil & Hindi, 3 all three. Every family buys at least one. Find only-one-newspaper, at-least-two, and total families.",
+        'ex1-6-q10': "10: 1000 farmers: 600 grew paddy, 350 ragi, 280 corn; 120 paddy&ragi, 100 ragi&corn, 80 paddy&corn. Every farmer grew at least one. Find the number who grew all three.",
+        'ex1-6-q11': "11: In a Venn diagram with n(U)=125, region y is twice region x, and region z is 10 more than x. Find x, y, z. (I don't have the exact figure labelling which region is which — help me understand the general method.)",
+        'ex1-6-q12': "12: 35 students each play at least one of chess, carrom, table tennis. 22 chess, 21 carrom, 15 table tennis, 10 chess&TT, 8 carrom&TT, 6 all three. Find chess-and-carrom-not-TT, only chess, only carrom.",
+        'ex1-6-q13': "13: 50 students each come by bus, bicycle, or on foot: 25 bus, 20 bicycle, 30 foot, 10 by all three. How many use exactly two modes of transport?"
+    };
+    if (qs[topic]) prompt = base + qs[topic] + tail;
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Q1: algebraic cardinality ---------- */
+document.getElementById('q1iCheck').addEventListener('click', () => {
+    const ok1 = AlgLib.checkNumeric(document.getElementById('q1i-inter'), 15, document.getElementById('q1iResult'));
+    const ok2 = Math.abs(parseFloat(document.getElementById('q1i-u').value) - 50) < 0.001;
+    const resultEl = document.getElementById('q1iResult');
+    const ok = ok1 && ok2;
+    resultEl.textContent = ok ? 'Correct!' : 'Not quite — check both values.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+document.getElementById('q1iiCheck').addEventListener('click', () => {
+    const ok1 = Math.abs(parseFloat(document.getElementById('q1ii-b').value) - 250) < 0.001;
+    const ok2 = Math.abs(parseFloat(document.getElementById('q1ii-u').value) - 600) < 0.001;
+    const resultEl = document.getElementById('q1iiResult');
+    const ok = ok1 && ok2;
+    resultEl.textContent = ok ? 'Correct!' : 'Not quite — check both values.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+/* ---------- Q2: two-set verify with live diagram ---------- */
+const q2D = VennLib.twoSet(document.getElementById('q2Venn'), {
+    a: ['2','3','4','8','10'], b: ['1','2','5','8','10'], universe: ['1','2','3','4','5','6','7','8','9','10'], labelA: 'A', labelB: 'B'
+});
+VennLib.wireControls(document.getElementById('q2Controls'), q2D, document.getElementById('q2VennResult'));
+document.getElementById('q2Check').addEventListener('click', () => {
+    const ok1 = Math.abs(parseFloat(document.getElementById('q2u').value) - 7) < 0.001;
+    const ok2 = Math.abs(parseFloat(document.getElementById('q2i').value) - 3) < 0.001;
+    const resultEl = document.getElementById('q2Result');
+    const ok = ok1 && ok2;
+    resultEl.textContent = ok ? 'Correct — n(A∪B) = n(A)+n(B)-n(A∩B) checks out!' : 'Not quite — recount A∪B and A∩B.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+/* ---------- Q3: two three-set formula checks ---------- */
+const q3iD = VennLib.threeSet(document.getElementById('q3iVenn'), { a: ['a','c','e','f','h'], b: ['c','d','e','f'], c: ['a','b','c','f'], labelA: 'A', labelB: 'B', labelC: 'C' });
+VennLib.wireControls(document.getElementById('q3iControls'), q3iD, document.getElementById('q3iResult'));
+document.getElementById('q3iCheck').addEventListener('click', () => {
+    const ok1 = Math.abs(parseFloat(document.getElementById('q3iU').value) - 7) < 0.001;
+    const ok2 = Math.abs(parseFloat(document.getElementById('q3iI').value) - 2) < 0.001;
+    const resultEl = document.getElementById('q3iCheckResult');
+    const ok = ok1 && ok2;
+    resultEl.textContent = ok ? 'Correct!' : 'Not quite — try again.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+const q3iiD = VennLib.threeSet(document.getElementById('q3iiVenn'), { a: ['1','3','5'], b: ['2','3','5','6'], c: ['1','5','6','7'], labelA: 'A', labelB: 'B', labelC: 'C' });
+VennLib.wireControls(document.getElementById('q3iiControls'), q3iiD, document.getElementById('q3iiResult'));
+document.getElementById('q3iiCheck').addEventListener('click', () => {
+    const ok1 = Math.abs(parseFloat(document.getElementById('q3iiU').value) - 6) < 0.001;
+    const ok2 = Math.abs(parseFloat(document.getElementById('q3iiI').value) - 1) < 0.001;
+    const resultEl = document.getElementById('q3iiCheckResult');
+    const ok = ok1 && ok2;
+    resultEl.textContent = ok ? 'Correct!' : 'Not quite — try again.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+/* ---------- Q4: music/drama two-set cardinality fill ---------- */
+const q4D = VennLib.twoSet(document.getElementById('q4Venn'), { a: [], b: [], labelA: 'Music', labelB: 'Drama' });
+['q4-onlyA','q4-onlyB','q4-both'].forEach((id, i) => {
+    const op = ['a-b','b-a','intersection'][i];
+    document.getElementById(id).addEventListener('focus', () => q4D.highlight(op));
+});
+const q4Fill = ExLib.cardinalityFill({ 'a-b': 'q4-onlyA', 'b-a': 'q4-onlyB', intersection: 'q4-both' }, { 'a-b': 17, 'b-a': 22, intersection: 8 }, document.getElementById('q4Result'));
+document.getElementById('q4Check').addEventListener('click', () => {
+    const ok = q4Fill.check();
+    if (ok) document.getElementById('q4Total').textContent = 'Total students = 17 + 22 + 8 = 47';
+});
+
+/* ---------- Q5: tea/coffee two-set cardinality fill ---------- */
+const q5D = VennLib.twoSet(document.getElementById('q5Venn'), { a: [], b: [], labelA: 'Tea', labelB: 'Coffee' });
+['q5-onlyA','q5-onlyB','q5-both'].forEach((id, i) => {
+    const op = ['a-b','b-a','intersection'][i];
+    document.getElementById(id).addEventListener('focus', () => q5D.highlight(op));
+});
+const q5Fill = ExLib.cardinalityFill({ 'a-b': 'q5-onlyA', 'b-a': 'q5-onlyB', intersection: 'q5-both' }, { 'a-b': 25, 'b-a': 10, intersection: 10 }, document.getElementById('q5Result'));
+document.getElementById('q5Check').addEventListener('click', () => {
+    const ok = q5Fill.check();
+    if (ok) document.getElementById('q5Total').textContent = 'Total = 25 + 10 + 10 = 45';
+});
+
+/* ---------- Q6: percent-based cardinality ---------- */
+document.getElementById('q6Check').addEventListener('click', () => {
+    const ok1 = Math.abs(parseFloat(document.getElementById('q6-pct').value) - 30) < 0.001;
+    const ok2 = Math.abs(parseFloat(document.getElementById('q6-total').value) - 1000) < 0.001;
+    const resultEl = document.getElementById('q6Result');
+    const ok = ok1 && ok2;
+    resultEl.textContent = ok ? 'Correct!' : 'Not quite — try again.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+/* ---------- Q7: algebra ---------- */
+document.getElementById('q7Check').addEventListener('click', () => AlgLib.checkNumeric(document.getElementById('q7-x'), 8, document.getElementById('q7Result')));
+
+/* ---------- Q8: consistency check ---------- */
+document.getElementById('q8Check').addEventListener('click', () => {
+    const ok1 = Math.abs(parseFloat(document.getElementById('q8-union').value) - 550) < 0.001;
+    const v = document.getElementById('q8-verdict').value.trim().toLowerCase();
+    const ok2 = v === 'no' || v === 'not correct' || v === 'incorrect';
+    const resultEl = document.getElementById('q8Result');
+    const ok = ok1 && ok2;
+    resultEl.textContent = ok ? 'Correct — 550 > 500, so the data is inconsistent!' : 'Not quite — compute n(A∪B) first, then compare it with 500.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+/* ---------- Q9: Tamil/English/Hindi three-set fill ---------- */
+const q9D = VennLib.threeSet(document.getElementById('q9Venn'), { a: [], b: [], c: [], labelA: 'Tamil', labelB: 'English', labelC: 'Hindi' });
+const q9Keys = { abc: 'q9-abc', 'ab-only': 'q9-ab', 'bc-only': 'q9-bc', 'ac-only': 'q9-ac', 'a-only': 'q9-a', 'b-only': 'q9-b', 'c-only': 'q9-c' };
+Object.entries(q9Keys).forEach(([op, id]) => document.getElementById(id).addEventListener('focus', () => q9D.highlight(op)));
+const q9Fill = ExLib.cardinalityFill(q9Keys, { abc: 3, 'ab-only': 122, 'bc-only': 14, 'ac-only': 2, 'a-only': 148, 'b-only': 11, 'c-only': 26 }, document.getElementById('q9Result'));
+document.getElementById('q9Check').addEventListener('click', () => q9Fill.check());
+
+/* ---------- Q10: farmers — single region asked for ---------- */
+const q10D = VennLib.threeSet(document.getElementById('q10Venn'), { a: [], b: [], c: [], labelA: 'Paddy', labelB: 'Ragi', labelC: 'Corn' });
+document.getElementById('q10-abc').addEventListener('focus', () => q10D.highlight('abc'));
+document.getElementById('q10Check').addEventListener('click', () => AlgLib.checkNumeric(document.getElementById('q10-abc'), 270, document.getElementById('q10Result')));
+
+/* ---------- Q12: chess/carrom/table-tennis three-set fill ---------- */
+const q12D = VennLib.threeSet(document.getElementById('q12Venn'), { a: [], b: [], c: [], labelA: 'Chess', labelB: 'Carrom', labelC: 'TT' });
+const q12Keys = { abc: 'q12-abc', 'ab-only': 'q12-ab', 'bc-only': 'q12-bc', 'ac-only': 'q12-ac', 'a-only': 'q12-a', 'b-only': 'q12-b', 'c-only': 'q12-c' };
+Object.entries(q12Keys).forEach(([op, id]) => document.getElementById(id).addEventListener('focus', () => q12D.highlight(op)));
+const q12Fill = ExLib.cardinalityFill(q12Keys, { abc: 6, 'ab-only': 5, 'bc-only': 2, 'ac-only': 4, 'a-only': 7, 'b-only': 8, 'c-only': 3 }, document.getElementById('q12Result'));
+document.getElementById('q12Check').addEventListener('click', () => q12Fill.check());
+
+/* ---------- Q13: bus/bicycle/walking — totals only (individual overlaps not determined) ---------- */
+const q13D = VennLib.threeSet(document.getElementById('q13Venn'), { a: [], b: [], c: [], labelA: 'Bus', labelB: 'Bicycle', labelC: 'Foot' });
+q13D.highlight('abc');
+document.getElementById('q13Check1').addEventListener('click', () => AlgLib.checkNumeric(document.getElementById('q13-pairwise'), 35, document.getElementById('q13Result1')));
+document.getElementById('q13Check2').addEventListener('click', () => AlgLib.checkNumeric(document.getElementById('q13-exactly2'), 5, document.getElementById('q13Result2')));
+
+['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11','q12','q13'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

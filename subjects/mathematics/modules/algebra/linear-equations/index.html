@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>3.8 Linear Equations in Two Variables • Algebra • Study Notebook</title>
-<meta name="description" content="Plot x + y = 5, read off solutions from the line, and solve a pair of simultaneous equations graphically."/>
+<meta content="Plot x + y = 5, read off solutions from the line, and solve a pair of simultaneous equations graphically." name="description"/>
 <link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../../css/article.css" rel="stylesheet"/>
@@ -12,7 +13,7 @@
 <script>
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
-<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -31,7 +32,6 @@
 <i data-lucide="moon" width="16"></i> Theme
 </button>
 </nav>
-
 <section class="hero">
 <div class="text-reveal-wrapper">
 <span class="coming-soon-num">3.8 Linear Equations in Two Variables</span>
@@ -42,7 +42,6 @@
 </p>
 </div>
 </section>
-
 <!-- SECTION 1: PLOT THE LINE -->
 <section>
 <div class="split-layout">
@@ -51,8 +50,9 @@
 <h2>Change $x$, watch $y$ follow</h2>
 <p>Since $y = 5 - x$, every value of $x$ gives exactly one $y$. Plot enough points and they line up perfectly.</p>
 <div class="sim-controls">
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Move the x-value slider and watch the matching point appear on the line. Collect several points to see why every point on the line is a solution.</span></div>
 <div class="slider-group">
-<label>$x =$ (<span id="val-lx" class="value-readout">0</span>)</label>
+<label>$x =$ (<span class="value-readout" id="val-lx">0</span>)</label>
 <input id="input-lx" max="6" min="-2" step="1" type="range" value="0"/>
 </div>
 </div>
@@ -71,7 +71,6 @@
 </div>
 </div>
 </section>
-
 <!-- SECTION 2: CHECK A POINT -->
 <section>
 <div class="split-layout">
@@ -90,7 +89,6 @@
 </div>
 </div>
 </section>
-
 <!-- SECTION 3: SIMULTANEOUS EQUATIONS -->
 <section>
 <div class="split-layout">
@@ -115,7 +113,6 @@
 </div>
 </div>
 </section>
-
 <!-- CONSISTENCY NOTE -->
 <section style="padding-top:0;">
 <div style="width:100%; max-width:900px;">
@@ -130,7 +127,6 @@
 </div>
 </div>
 </section>
-
 <!-- WORKED EXAMPLE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -148,7 +144,6 @@
 </div>
 </div>
 </section>
-
 <!-- EXERCISE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -171,17 +166,14 @@
 </div>
 </div>
 </section>
-
-<div class="divider"></div>
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 116–137</span><div class="subnav"><a href="#linear">Linear equation</a><a href="#graph">Graphing</a><a href="#sim">Simultaneous equations</a><a href="#graphical">Graphical method</a><a href="#substitution">Substitution</a><a href="#elimination">Elimination</a><a href="#cross">Cross multiplication</a><a href="#consistency">Consistency</a></div><h2 id="linear">Linear equation in two variables</h2><p>A linear equation in two variables has the form <b>ax+by+c=0</b>, where a,b,c are real numbers and a,b are not both zero. Each variable is first degree and the variables are not multiplied together.</p><h2 id="graph">Graphing a linear equation</h2><p>Rewrite 2x+y=4 as y=4−2x, choose convenient x-values, calculate y-values, plot the ordered pairs, and join them. The textbook shows that all such points lie on one straight line and every point on the line is a solution.</p><div class="tb-example"><div class="head">Textbook Example 3.42</div><div class="body"><b>Draw graphs such as y=3x−1 and y=(2/3)x+3.</b><div style="margin-top:.65rem">The textbook chooses convenient x-values (especially multiples of a denominator), creates a value table, plots the points, and joins them.</div></div></div><h2 id="sim">3.8.1 Simultaneous Linear Equations</h2><p>A single linear equation has infinitely many ordered-pair solutions. A second equation can restrict the situation to a common solution. The textbook uses an eraser-and-pencil shopping situation to show why two equations are needed.</p><div class="tb-example"><div class="head">Textbook Example 3.43</div><div class="body"><b>Check whether (5,−1) satisfies x−2y=7 and 2x+3y=7.</b><div style="margin-top:.65rem">Substitute the ordered pair into both equations. A simultaneous solution must satisfy both at the same time.</div></div></div><div class="tb-callout progress"><span class="tb-label">Progress Check</span>Examine graphically whether (3,3) solves 2x−5y−2=0 and x+y−6=0.</div><h2 id="graphical">3.8.2 Graphical Method</h2><p>Draw both lines on the same coordinate plane. Their point of intersection, if any, is the solution.</p><div class="tb-example"><div class="head">Textbook Example 3.44–3.47</div><div class="body"><b>Unique, no, and infinitely many graphical solutions; a rectangle word problem.</b><div style="margin-top:.65rem">Intersecting lines give one solution; parallel distinct lines give no solution; coinciding lines give infinitely many solutions. The rectangle example converts two statements into equations and verifies the intersection.</div></div></div><p></p><h2 id="substitution">Solving by Substitution</h2><ol class="checklist"><li>Express one variable in terms of the other.</li><li>Substitute into the second equation and solve.</li><li>Back-substitute to get the remaining variable.</li></ol><div class="tb-example"><div class="head">Textbook Example 3.48–3.49</div><div class="body"><b>Solve a pair by substitution and solve a reversed-digits word problem.</b><div style="margin-top:.65rem">The textbook shows equation formation, substitution, and final verification—not just the numeric answer.</div></div></div><p></p><h2 id="elimination">Solving by Elimination</h2><ol class="checklist"><li>Multiply one or both equations so one variable has equal numerical coefficients.</li><li>Add or subtract to eliminate that variable.</li><li>Solve the resulting one-variable equation.</li><li>Substitute back.</li></ol><div class="tb-example"><div class="head">Textbook Example 3.50–3.51</div><div class="body"><b>Eliminate directly, then transform a nonlinear-looking pair using 1/x and 1/y.</b><div style="margin-top:.65rem">The second example shows a clever substitution before elimination, reinforcing that method choice depends on equation structure.</div></div></div><p></p><h2 id="cross">Cross Multiplication Method</h2><p>For a₁x+b₁y+c₁=0 and a₂x+b₂y+c₂=0, the textbook derives the coefficient formula and gives a visual cross pattern to remember it. Always first rewrite both equations in standard form.</p><div class="tb-example"><div class="head">Textbook Example 3.52–3.53</div><div class="body"><b>Solve pairs by cross multiplication and verify.</b><div style="margin-top:.65rem">The examples emphasize correct signs for c₁,c₂ and clarify that the fraction-style notation used in the method does not justify division by zero.</div></div></div><p></p><h2 id="consistency">3.8.3 Consistency and Inconsistency</h2><table class="tb-table"><tr><th>Condition</th><th>Graph</th><th>Solutions</th></tr><tr><td>a₁/a₂ ≠ b₁/b₂</td><td>Intersecting</td><td>Unique — consistent</td></tr><tr><td>a₁/a₂ = b₁/b₂ = c₁/c₂</td><td>Coinciding</td><td>Infinitely many — consistent</td></tr><tr><td>a₁/a₂ = b₁/b₂ ≠ c₁/c₂</td><td>Parallel</td><td>No solution — inconsistent</td></tr></table><div class="tb-callout activity"><span class="tb-label">Activities 3 &amp; 4</span>The textbook asks students to choose k so systems have unique/no/infinite solutions, then invent another linear equation producing each relationship. The interaction belongs here because the ratios determine the geometry.</div><div class="tb-example"><div class="head">Textbook Example 3.54–3.57</div><div class="body"><b>Classify systems and determine parameter k for unique, infinite or no solution.</b><div style="margin-top:.65rem">Compare coefficient ratios before trying to solve the pair. This is a structural test of the system.</div></div></div><p>   </p><div class="tb-callout note"><span class="tb-label">Points to Remember</span>The chapter closes by revisiting polynomial form and degree, zeroes and roots, Remainder/Factor Theorems, solutions, linear equations, straight-line graphs and simultaneous equations.</div></div></section><div class="divider"></div>
 <section style="min-height:auto; padding-top:0;">
 <div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
 <a class="back-link" href="../gcd/">← 3.7 Greatest Common Divisor</a>
-<a class="back-link" href="../">Algebra complete — back to overview →</a>
+<a class="back-link" href="../exercises/">Next: Chapter Exercises →</a>
 </div>
 </section>
-
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
-
 <script src="../../../../../js/common.js"></script>
 <script src="../../../../../js/algebra-lib.js"></script>
 <script>

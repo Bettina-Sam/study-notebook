@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>6.3 Diseases • Health and Hygiene • Study Notebook</title>
+<meta name="description" content="Communicable diseases spread from person to person; non-communicable diseases don't — sorted by cause and symptom."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Health and Hygiene
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 6 · Health and Hygiene</span>
+<span class="coming-soon-num">6.3 Diseases</span>
+<h1 class="hero-title">Some diseases spread.<br/>Some don't.</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Communicable diseases spread from person to person through air, water, food or vectors. Non-communicable diseases are never caused by germs, and cannot be passed on.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Look Up a Disease</h3>
+<h2>Cause, symptoms, prevention</h2>
+<div class="sim-controls">
+<div class="slider-group"><label>Disease</label>
+<select id="disease-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="tb">Tuberculosis (bacteria)</option><option value="cholera">Cholera (bacteria)</option>
+<option value="typhoid">Typhoid (bacteria)</option><option value="hepatitis">Hepatitis (virus)</option>
+<option value="chickenpox">Chickenpox (virus)</option><option value="rabies">Rabies (virus)</option>
+</select></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="diseaseOut"></div>
+</div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="diseaseWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Communicable or Not?</h3>
+<h2>Sort each condition</h2>
+<div class="classify-row" id="classifyChips"></div>
+<div class="classify-bins">
+<div class="classify-bin" id="binComm"><h5>Communicable</h5><div class="bin-items"></div></div>
+<div class="classify-bin" id="binNonComm"><h5>Non-Communicable</h5><div class="bin-items"></div></div>
+</div>
+<p id="classifyScore" style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-muted);"></p>
+</div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 82–86</span><h2>Communicable vs non-communicable</h2><div class="tb-grid"><div class="tb-card"><h3>Communicable</h3><p>Spread from person to person through air, water, food, or vectors — e.g. TB, cholera, typhoid, hepatitis, chickenpox, rabies.</p></div><div class="tb-card"><h3>Non-communicable</h3><p>Not caused by germs, cannot spread — e.g. asthma, allergies, anaemia, malnutrition.</p></div><div class="tb-card"><h3>Vaccines</h3><p>A biological preparation giving active acquired immunity — e.g. BCG, Polio, MMR, given in early childhood.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../hygiene-and-body-care/">← Hygiene & Body Care</a>
+<a class="back-link" href="../health-problems-and-first-aid/">Next: Health Problems & First Aid →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const diseases = {
+  tb:{cause:'Mycobacterium tuberculae (bacteria)', spread:'Air, spitting, prolonged contact', symptoms:'Fever, weight loss, chronic cough, difficulty breathing', prevent:'BCG vaccination, regular medication (DOT)'},
+  cholera:{cause:'Vibrio cholerae (bacteria)', spread:'Contaminated food or water', symptoms:'Vomiting, severe diarrhoea, leg cramps', prevent:'Boiled water, hand washing, vaccination'},
+  typhoid:{cause:'Salmonella typhi (bacteria)', spread:'Contaminated food and water', symptoms:'Headache, rashes, high fever up to 104°F', prevent:'Boiled water, sewage disposal, vaccination'},
+  hepatitis:{cause:'Hepatitis virus A/B/C/D/E', spread:'Contaminated water, shared needles, blood transfusion', symptoms:'Loss of appetite, vomiting, yellow eyes and urine', prevent:'Boiled water, clean hands, safe needles'},
+  chickenpox:{cause:'Varicella zoster virus', spread:'Air and contact with infected person', symptoms:'Rashes on whole body, fever, headache, tiredness', prevent:'Chickenpox vaccine'},
+  rabies:{cause:'Rabies virus', spread:'Bite of an infected animal', symptoms:'Hydrophobia, fever, behavioural changes', prevent:'Vaccination soon after a bite, before symptoms appear'}
+};
+function updateDisease(){
+  const key = document.getElementById('disease-select').value;
+  const d = diseases[key];
+  document.getElementById('diseaseOut').innerHTML = `<b>Cause:</b> ${d.cause}<br><b>Spreads via:</b> ${d.spread}<br><b>Symptoms:</b> ${d.symptoms}<br><b>Prevention:</b> ${d.prevent}`;
+  document.getElementById('diseaseWrap').innerHTML = `<svg viewBox="0 0 260 140">
+    <circle cx="130" cy="70" r="45" fill="var(--math-accent)" opacity="0.2"/>
+    <circle cx="130" cy="70" r="8" fill="var(--math-accent-2)"/>
+    <circle cx="105" cy="55" r="5" fill="var(--math-accent)"/><circle cx="155" cy="55" r="5" fill="var(--math-accent)"/>
+    <circle cx="105" cy="90" r="5" fill="var(--math-accent)"/><circle cx="155" cy="90" r="5" fill="var(--math-accent)"/>
+  </svg>`;
+}
+document.getElementById('disease-select').addEventListener('change', updateDisease);
+updateDisease();
+
+const classifyItems = [
+  ['Tuberculosis','comm'],['Asthma','noncomm'],['Cholera','comm'],['Anaemia','noncomm'],['Chickenpox','comm'],['Stomach ulcer','noncomm']
+];
+let cScore=0, cTotal=0;
+const chipsHost = document.getElementById('classifyChips');
+chipsHost.innerHTML = classifyItems.map((c,i)=>`<button class="classify-chip" data-answer="${c[1]}" data-idx="${i}">${c[0]}</button>`).join('');
+chipsHost.querySelectorAll('.classify-chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    if(chip.dataset.placed) return;
+    const guess = confirm(`Is "${chip.textContent}" COMMUNICABLE (spreads person to person)?\nOK = Communicable, Cancel = Non-communicable`) ? 'comm':'noncomm';
+    const correct = guess === chip.dataset.answer;
+    chip.classList.add(correct?'correct':'wrong');
+    chip.dataset.placed = '1';
+    cTotal++; if(correct) cScore++;
+    const bin = document.querySelector(guess==='comm' ? '#binComm .bin-items' : '#binNonComm .bin-items');
+    const tag = document.createElement('div');
+    tag.textContent = chip.textContent + (correct? ' ✓' : ' ✗');
+    tag.style.fontSize = '0.85rem'; tag.style.padding='4px 0';
+    bin.appendChild(tag);
+    document.getElementById('classifyScore').textContent = `Score: ${cScore} / ${cTotal}`;
+  });
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

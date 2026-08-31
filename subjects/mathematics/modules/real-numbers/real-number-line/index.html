@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.4 The Real Number Line • Real Numbers • Study Notebook</title>
+<meta name="description" content="Real numbers as the union of rationals and irrationals, and locating any real number precisely on the number line using successive magnification."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.rn-mag-row{ display:flex; gap:0.6rem; flex-wrap:wrap; margin:0.6rem 0; }
+.rn-mag-stage > div{ margin-bottom:0.5rem; }
+.rn-mini{ font-size:0.82rem; color:var(--text-muted); margin-top:0.4rem; }
+.rn-place-row{ display:flex; gap:0.5rem; flex-wrap:wrap; margin:0.7rem 0; }
+</style>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Real Numbers
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">2.4 The Real Number Line</span>
+<h1 class="hero-title">Every point, one<br/>real number</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 52ch;">
+    Put every rational number and every irrational number together and you get the <b>real
+    numbers</b> $\mathbb{R}$ — and now every single point on an infinitely long line corresponds to
+    exactly one real number.
+</p>
+</div>
+</section>
+<section class="rn-play-banner"><div><b>THIS PAGE IS INTERACTIVE</b><span>Predict first → drag / change / click → watch what changes → explain what you noticed.</span></div><div class="rn-play-pills"><span>DRAG</span><span>CHANGE</span><span>TRY</span><span>WATCH</span></div></section>
+
+<!-- 2.4 REAL NUMBERS -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color: var(--math-accent);">2.4 Real Numbers</h3>
+<h2>Rational + Irrational = Real</h2>
+<p style="max-width:74ch;">
+    The real numbers consist of all the rational numbers and all the irrational numbers. Any real
+    number can be determined by a (possibly infinite) decimal representation.
+</p>
+<div class="formula-card" style="text-align:center;">
+<div class="formula-rule">
+Real Numbers<br/>
+<span style="display:inline-block; margin-top:0.5rem;">
+Rational Numbers &nbsp;&nbsp;|&nbsp;&nbsp; Irrational Numbers
+</span><br/>
+<span style="font-size:0.85rem; color:var(--text-muted);">Terminating, or Non-terminating &amp; Recurring &nbsp;&nbsp;|&nbsp;&nbsp; Non-terminating &amp; non-recurring</span>
+</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('real', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- 2.4.1 SUCCESSIVE MAGNIFICATION -->
+<section>
+<div style="width:100%; max-width:1150px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.4.1 The Real Number Line — Successive Magnification</h3>
+<h2>Zoom in, one decimal place at a time</h2>
+<p style="max-width:74ch;">
+    To place a decimal like $4.863$ precisely, don't try to eyeball the whole gap between $4$ and
+    $5$ at once. Zoom in step by step: first find which tenth it's in, then which hundredth inside
+    that tenth, then which thousandth inside that hundredth.
+</p>
+
+<div class="worked-example">
+<span class="we-label">Example 2.14 (textbook)</span>
+<div class="we-question">Represent $4.863$ on the number line.</div>
+<div class="rn-mag-row">
+<button class="btn btn-primary" id="magStepBtn">Zoom in →</button>
+<button class="btn btn-ghost" id="magResetBtn">Restart</button>
+</div>
+<div class="rn-mag-stage" id="magStage"></div>
+<p class="rn-mini" id="magCaption">Click "Zoom in" to divide 4–5 into tenths and find where 4.863 lives.</p>
+</div>
+
+<div class="worked-example" style="margin-top:1.4rem;">
+<span class="we-label">Example 2.15 (textbook)</span>
+<div class="we-question">Represent $3.\overline{45}$ on the number line, correct to 4 decimal places.</div>
+<div class="we-concept">$3.\overline{45} = 3.454545\ldots \approx 3.4545$ (rounded to 4 places). Same successive-magnification method: 3 → 4 → 3.4 → 3.5 → 3.45 → 3.46 → 3.454 → 3.455 → 3.4545.</div>
+<div class="rn-mag-row">
+<button class="btn btn-secondary" id="mag2Btn">Show the zoom sequence</button>
+</div>
+<div class="rn-mag-stage" id="mag2Stage"></div>
+</div>
+</div>
+</section>
+
+<!-- INTERACTIVE: PLOT SEVERAL NUMBERS -->
+<section>
+<div style="width:100%; max-width:1150px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try it: Place real numbers exactly</h3>
+<h2>Drag each point to its number</h2>
+<p style="max-width:74ch;">
+    Below is a number line zoomed to show tenths between 1 and 2. Six real numbers are listed —
+    some rational, some irrational, including $\sqrt2 = 1.4142\ldots$, located here using the
+    successive-magnification idea instead of a compass. Drag each draggable marker to the target
+    value; you'll get live feedback on how close you are.
+</p>
+<div class="rn-place-row" id="placeTargets"></div>
+<div id="placeLine" style="margin-top:0.6rem;"></div>
+<div class="check-result" id="placeResult"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('sqrt2mag', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE PRACTICE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise 2.4 style</span>
+<div class="ex-question">Represent $6.4$, correct to 3 decimal places, on the number line. First, write $6.4$ as a decimal correct to 3 places.</div>
+<div class="check-row" style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+<input class="ex-input" type="text" id="tryInput" placeholder="e.g. 6.444" style="padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono);"/>
+<button class="btn btn-primary" id="tryBtn">Check</button>
+</div>
+<div class="check-result" id="tryResult"></div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="tryHint">Hint</button>
+<button class="btn btn-secondary" data-reveal="tryAnswer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="tryHint">$6.\overline4 = 6.4444\ldots$ — round the 4th digit onward.</div>
+<div class="exercise-panel answer-panel" id="tryAnswer">$6.\overline4 \approx 6.444$ (correct to 3 decimal places), which lies between 6.443 and 6.445 in the third zoom level.</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../rational-and-irrational/">← Rational &amp; Irrational Numbers</a>
+<a class="back-link cn-home" href="../">Real Numbers Home</a>
+<a class="back-link" href="../radicals-and-surds/">Next: Radicals &amp; Surds →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../js/token-physics.js"></script>
+<script src="../../../../../js/number-line-lib.js"></script>
+<script src="../../../../../js/decimal-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'real') prompt = "Explain what the real number line is and how it combines rational and irrational numbers, for a Class 9 student.";
+    else if (topic === 'sqrt2mag') prompt = "Explain how to locate √2 on the number line by successive magnification (zooming into tenths, hundredths, etc.) instead of a compass construction, for a Class 9 student.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Example 2.14: successive magnification for 4.863 ---------- */
+const magLevels = [
+  { min: -3, max: 7, marks: [4,5], value: null, caption: 'Start on the whole-number line. 4.863 lies between 4 and 5.' },
+  { min: 4, max: 5, marks: [4.8, 4.9], value: 4.8, caption: 'Divide 4–5 into tenths. 4.863 lies between 4.8 and 4.9 — mark 4.8, the 8th tenth.' },
+  { min: 4.8, max: 4.9, marks: [4.86, 4.87], value: 4.86, caption: 'Divide 4.8–4.9 into hundredths. 4.863 lies between 4.86 and 4.87.' },
+  { min: 4.86, max: 4.87, marks: [4.863], value: 4.863, caption: 'Divide 4.86–4.87 into thousandths. 4.863 is the 3rd mark after 4.860 — found it!' }
+];
+let magIdx = 0;
+function renderMagLevel(idx) {
+  const lvl = magLevels[idx];
+  const container = document.createElement('div');
+  document.getElementById('magStage').appendChild(container);
+  const nl = NumberLineLib.create(container, { min: lvl.min, max: lvl.max, height: 90 });
+  lvl.marks.forEach((m,i) => nl.addPoint('m'+idx+'-'+i, m, { fixed: true, cls: 'numline-fixed', label: m }));
+  if (lvl.value !== null) nl.addPoint('v'+idx, 4.863, { fixed: true, cls: 'numline-highlight', label: '4.863' });
+  document.getElementById('magCaption').textContent = lvl.caption;
+}
+document.getElementById('magStepBtn').addEventListener('click', () => {
+  if (magIdx >= magLevels.length) return;
+  renderMagLevel(magIdx);
+  magIdx++;
+  if (magIdx >= magLevels.length) document.getElementById('magStepBtn').textContent = 'Done!';
+});
+document.getElementById('magResetBtn').addEventListener('click', () => {
+  document.getElementById('magStage').innerHTML = '';
+  magIdx = 0;
+  document.getElementById('magStepBtn').textContent = 'Zoom in →';
+  document.getElementById('magCaption').textContent = 'Click "Zoom in" to divide 4–5 into tenths and find where 4.863 lives.';
+});
+
+/* ---------- Example 2.15: 3.4545 zoom sequence (shown all at once) ---------- */
+document.getElementById('mag2Btn').addEventListener('click', () => {
+  const seq = [
+    { min: -4, max: 6, marks: [3,4], v: null },
+    { min: 3, max: 4, marks: [3.4, 3.5], v: 3.4545 },
+    { min: 3.4, max: 3.5, marks: [3.45, 3.46], v: 3.4545 },
+    { min: 3.45, max: 3.46, marks: [3.454, 3.455], v: 3.4545 }
+  ];
+  const host = document.getElementById('mag2Stage');
+  host.innerHTML = '';
+  seq.forEach((lvl, idx) => {
+    const container = document.createElement('div');
+    host.appendChild(container);
+    const nl = NumberLineLib.create(container, { min: lvl.min, max: lvl.max, height: 90 });
+    lvl.marks.forEach((m,i) => nl.addPoint('e2-'+idx+'-'+i, m, { fixed: true, cls: 'numline-fixed', label: m }));
+    if (lvl.v !== null && idx === seq.length - 1) nl.addPoint('e2v', lvl.v, { fixed: true, cls: 'numline-highlight', label: '3.4545' });
+  });
+});
+
+/* ---------- Interactive: drag points to targets ---------- */
+const placeItems = [
+  { id: 'p1', label: '1.5', value: 1.5 },
+  { id: 'p2', label: '4/3', value: 4/3 },
+  { id: 'p3', label: '√2', value: Math.SQRT2 },
+  { id: 'p4', label: '1.8', value: 1.8 },
+  { id: 'p5', label: '11/8', value: 11/8 },
+  { id: 'p6', label: '√3 − 0.5', value: Math.sqrt(3) - 0.5 }
+];
+document.getElementById('placeTargets').innerHTML = placeItems.map(it => `<span class="set-chip">${it.label}</span>`).join('');
+const placeNL = NumberLineLib.create(document.getElementById('placeLine'), { min: 1, max: 2, height: 140 });
+const placeState = {};
+placeItems.forEach((it, i) => {
+  const startX = 1 + Math.random() * 0.9;
+  placeNL.addPoint('drag' + it.id, startX, {
+    cls: 'numline-drag',
+    label: it.label,
+    onChange(v) {
+      placeState[it.id] = v;
+      checkPlacement();
+    }
+  });
+  placeState[it.id] = startX;
+});
+function checkPlacement() {
+  const r = document.getElementById('placeResult');
+  let correct = 0;
+  placeItems.forEach(it => { if (Math.abs(placeState[it.id] - it.value) < 0.03) correct++; });
+  if (correct === placeItems.length) {
+    r.textContent = `All ${placeItems.length} placed correctly! Notice √2 ≈ 1.4142 and √3 − 0.5 ≈ 1.232 both landed among the rationals with no visible gap between them.`;
+    r.className = 'check-result check-yes';
+  } else {
+    r.textContent = `${correct}/${placeItems.length} placed within tolerance. Keep dragging — use the tick marks to judge tenths.`;
+    r.className = 'check-result ' + (correct > 0 ? 'check-yes' : '');
+  }
+}
+checkPlacement();
+
+/* ---------- Try Yourself ---------- */
+document.getElementById('tryBtn').addEventListener('click', () => {
+  AlgLib.checkNumeric(document.getElementById('tryInput'), 6.444, document.getElementById('tryResult'), 0.0005);
+});
+AlgLib.wireExercise(document.getElementById('exCard'));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

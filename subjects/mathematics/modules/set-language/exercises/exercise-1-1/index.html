@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 1.1 • Set Language • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 1.1 — well-defined sets, membership, and the three forms of a set, now interactive."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.ex-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:220px; }
+.check-row{ display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-top:0.7rem; }
+.set-chip-row{ display:flex; gap:0.4rem; flex-wrap:wrap; margin:0.5rem 0; font-family:var(--font-mono); }
+.set-chip{ padding:4px 10px; border-radius:6px; background:var(--card-bg); border:1px solid var(--border-color); font-size:0.85rem; }
+.stmt-row{ margin:0.9rem 0 0; padding-top:0.8rem; border-top:1px dashed var(--border-color); }
+.stmt-row:first-of-type{ border-top:none; padding-top:0; }
+.blank-row{ display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; margin:0.5rem 0; font-size:0.95rem; }
+.small-tile{ max-width:260px; }
+.phys-token-chip{ width:58px; height:58px; border-radius:14px; font-size:0.66rem; line-height:1.08; padding:4px; white-space:normal; text-align:center; }
+</style>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 1.1</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Sets &amp; Notation</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">6 questions, straight from the textbook — now with hands-on tools for each one.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+<div class="ex-set-nav">
+<span class="ex-set-pill current">1.1</span>
+<a class="ex-set-pill" href="../exercise-1-2/">1.2</a>
+<a class="ex-set-pill" href="../exercise-1-3/">1.3</a>
+<a class="ex-set-pill" href="../exercise-1-4/">1.4</a>
+<a class="ex-set-pill" href="../exercise-1-5/">1.5</a>
+<a class="ex-set-pill" href="../exercise-1-6/">1.6</a>
+<a class="ex-set-pill" href="../exercise-1-7/">1.7</a>
+</div>
+
+<!-- Q1: well-defined or not -> drag classify -->
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span>Which of the following are sets?</span>
+<div class="ex-question">
+(i) The collection of prime numbers up to 100.<br/>
+(ii) The collection of rich people in India.<br/>
+(iii) The collection of all rivers in India.<br/>
+(iv) The collection of good Hockey players.
+</div>
+<p style="margin:0.7rem 0 0.3rem; font-size:0.88rem; color:var(--text-muted);">Grab each numbered token below and fling it into the zone where it belongs.</p>
+<div id="q1Stage"></div>
+<div class="check-result" id="q1DragResult"></div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q1Answer">
+(i) Yes — a set: for any number you can check for certain whether it's prime. (ii) No — "rich" is not well-defined, people would disagree. (iii) Yes — a set: a river is either officially in India or not. (iv) No — "good" is subjective.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q2: roster form from words -> letter dedupe workspace -->
+<div class="exercise-card" id="q2">
+<span class="ex-label"><span class="ex-q-num">Q2</span>List the set of letters of the following words in Roster form.</span>
+<div class="ex-question">(i) INDIA &nbsp; (ii) PARALLELOGRAM &nbsp; (iii) MISSISSIPPI &nbsp; (iv) CZECHOSLOVAKIA</div>
+<div id="q2WordPicker" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin:0.9rem 0;">
+<button class="btn btn-secondary" data-word="INDIA">(i) INDIA</button>
+<button class="btn btn-secondary" data-word="PARALLELOGRAM">(ii) PARALLELOGRAM</button>
+<button class="btn btn-secondary" data-word="MISSISSIPPI">(iii) MISSISSIPPI</button>
+<button class="btn btn-secondary" data-word="CZECHOSLOVAKIA">(iv) CZECHOSLOVAKIA</button>
+</div>
+<p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.3rem;">Word: <b id="q2WordLabel">INDIA</b> — click each letter once. A letter you've already collected will just shake, because a set lists an element only once.</p>
+<div class="drag-pool" id="q2Letters"></div>
+<div style="margin:0.6rem 0;">Your set so far: <span id="q2Set" class="set-chip"></span></div>
+<div class="check-row">
+<input class="ex-input" type="text" id="q2Input" placeholder="Type the roster form, e.g. {I, N, D, A}"/>
+<button class="btn btn-primary" id="q2CheckBtn">Check</button>
+</div>
+<div class="check-result" id="q2Result"></div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q2Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q2Hint">Write every letter, then keep only the distinct ones — repeated letters count once in a set.</div>
+<div class="exercise-panel answer-panel" id="q2Answer">
+(i) {I, N, D, A} &nbsp; (ii) {P, A, R, L, E, O, G, M} &nbsp; (iii) {M, I, S, P} &nbsp; (iv) {C, Z, E, H, O, S, L, V, A, K, I}
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q3: membership T/F + fill blanks -> tile choice -->
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>Consider $A=\{0,3,5,8\}$, $B=\{2,4,6,10\}$, $C=\{12,14,18,20\}$.</span>
+<div class="ex-question">
+(a) True or False: (i) $18 \in C$ (ii) $6 \notin A$ (iii) $14 \notin C$ (iv) $10 \in B$ (v) $5 \in B$ (vi) $0 \in B$<br/>
+(b) Fill in the blanks: (i) $3 \in$ ____ (ii) $14 \in$ ____ (iii) $18$ ____ $B$ (iv) $4$ ____ $B$
+</div>
+<div class="set-chip-row">
+<span class="set-chip">A = { 0, 3, 5, 8 }</span>
+<span class="set-chip">B = { 2, 4, 6, 10 }</span>
+<span class="set-chip">C = { 12, 14, 18, 20 }</span>
+</div>
+
+<div class="stmt-row"><b>(a)(i)</b> $18 \in C$ — True or False?
+<div class="tile-choice small-tile" id="q3tf1"><button data-value="true">True</button><button data-value="false">False</button></div>
+</div>
+<div class="stmt-row"><b>(a)(ii)</b> $6 \notin A$ — True or False?
+<div class="tile-choice small-tile" id="q3tf2"><button data-value="true">True</button><button data-value="false">False</button></div>
+</div>
+<div class="stmt-row"><b>(a)(iii)</b> $14 \notin C$ — True or False?
+<div class="tile-choice small-tile" id="q3tf3"><button data-value="true">True</button><button data-value="false">False</button></div>
+</div>
+<div class="stmt-row"><b>(a)(iv)</b> $10 \in B$ — True or False?
+<div class="tile-choice small-tile" id="q3tf4"><button data-value="true">True</button><button data-value="false">False</button></div>
+</div>
+<div class="stmt-row"><b>(a)(v)</b> $5 \in B$ — True or False?
+<div class="tile-choice small-tile" id="q3tf5"><button data-value="true">True</button><button data-value="false">False</button></div>
+</div>
+<div class="stmt-row"><b>(a)(vi)</b> $0 \in B$ — True or False?
+<div class="tile-choice small-tile" id="q3tf6"><button data-value="true">True</button><button data-value="false">False</button></div>
+</div>
+
+<div class="stmt-row"><b>(b)(i)</b> $3 \in$ ____ &nbsp; (which set?)
+<div class="tile-choice small-tile" id="q3fb1"><button data-value="A">A</button><button data-value="B">B</button><button data-value="C">C</button></div>
+</div>
+<div class="stmt-row"><b>(b)(ii)</b> $14 \in$ ____ &nbsp; (which set?)
+<div class="tile-choice small-tile" id="q3fb2"><button data-value="A">A</button><button data-value="B">B</button><button data-value="C">C</button></div>
+</div>
+<div class="stmt-row"><b>(b)(iii)</b> $18$ ____ $B$ &nbsp; (pick the right symbol)
+<div class="tile-choice small-tile" id="q3fb3"><button data-value="in">∈ (belongs to)</button><button data-value="notin">∉ (does not belong to)</button></div>
+</div>
+<div class="stmt-row"><b>(b)(iv)</b> $4$ ____ $B$ &nbsp; (pick the right symbol)
+<div class="tile-choice small-tile" id="q3fb4"><button data-value="in">∈ (belongs to)</button><button data-value="notin">∉ (does not belong to)</button></div>
+</div>
+
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q3Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q3Answer">
+(a) (i) True (ii) True (iii) False — 14 ∈ C (iv) True (v) False — 5 ∉ B (vi) False — 0 ∉ B<br/>
+(b) (i) $3 \in A$ &nbsp; (ii) $14 \in C$ &nbsp; (iii) $18 \notin B$ &nbsp; (iv) $4 \in B$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q4: roster form conversion -->
+<div class="exercise-card" id="q4">
+<span class="ex-label"><span class="ex-q-num">Q4</span>Represent the following sets in Roster form.</span>
+<div class="ex-question">
+(i) $A$ = the set of all even natural numbers less than 20.<br/>
+(ii) $B = \{y : y = \frac{1}{2n}, n \in N, n \le 5\}$<br/>
+(iii) $C = \{x : x \text{ is a perfect cube}, 27 < x < 216\}$<br/>
+(iv) $D = \{x : x \in Z, -5 < x \le 2\}$
+</div>
+<div class="stmt-row"><b>(i)</b> Type $A$ in roster form:
+<div class="check-row"><input class="ex-input" type="text" id="q4i" placeholder="e.g. {2, 4, 6, ...}"/><button class="btn btn-primary" data-check="q4i">Check</button></div>
+<div class="check-result" id="q4iResult"></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> Type $B$ in roster form:
+<div class="check-row"><input class="ex-input" type="text" id="q4ii" placeholder="e.g. {1/2, 1/4, ...}"/><button class="btn btn-primary" data-check="q4ii">Check</button></div>
+<div class="check-result" id="q4iiResult"></div>
+</div>
+<div class="stmt-row"><b>(iii)</b> Type $C$ in roster form:
+<div class="check-row"><input class="ex-input" type="text" id="q4iii" placeholder="e.g. {64, 125}"/><button class="btn btn-primary" data-check="q4iii">Check</button></div>
+<div class="check-result" id="q4iiiResult"></div>
+</div>
+<div class="stmt-row"><b>(iv)</b> Type $D$ in roster form:
+<div class="check-row"><input class="ex-input" type="text" id="q4iv" placeholder="e.g. {-4, -3, ...}"/><button class="btn btn-primary" data-check="q4iv">Check</button></div>
+<div class="check-result" id="q4ivResult"></div>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q4Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q4Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q4Hint">For (ii), plug in n = 1, 2, 3, 4, 5 one at a time. For (iii), the perfect cubes near this range are 27 = 3³, 64 = 4³, 125 = 5³, 216 = 6³.</div>
+<div class="exercise-panel answer-panel" id="q4Answer">
+(i) $A=\{2,4,6,8,10,12,14,16,18\}$<br/>
+(ii) $B=\{\frac{1}{2},\frac{1}{4},\frac{1}{6},\frac{1}{8},\frac{1}{10}\}$<br/>
+(iii) $C=\{64, 125\}$ (27 and 216 are excluded — strict inequality)<br/>
+(iv) $D=\{-4,-3,-2,-1,0,1,2\}$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q4','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q5: set-builder conversion -->
+<div class="exercise-card" id="q5">
+<span class="ex-label"><span class="ex-q-num">Q5</span>Represent the following sets in Set-Builder form.</span>
+<div class="ex-question">
+(i) $B$ = the set of all Cricket players in India who scored double centuries in One Day Internationals.<br/>
+(ii) $C = \{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, ...\}$<br/>
+(iii) $D$ = the set of all Tamil months in a year.<br/>
+(iv) $E$ = the set of odd Whole numbers less than 9.
+</div>
+<div class="stmt-row"><b>(i)</b> Type $B$ in set-builder form:
+<div class="check-row"><input class="ex-input" type="text" id="q5i" style="min-width:320px;" placeholder="x : x is ..."/><button class="btn btn-primary" data-check="q5i">Check</button></div>
+<div class="check-result" id="q5iResult"></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> Type $C$ in set-builder form:
+<div class="check-row"><input class="ex-input" type="text" id="q5ii" style="min-width:320px;" placeholder="x : x = ..., n in N"/><button class="btn btn-primary" data-check="q5ii">Check</button></div>
+<div class="check-result" id="q5iiResult"></div>
+</div>
+<div class="stmt-row"><b>(iii)</b> Type $D$ in set-builder form:
+<div class="check-row"><input class="ex-input" type="text" id="q5iii" style="min-width:320px;" placeholder="x : x is ..."/><button class="btn btn-primary" data-check="q5iii">Check</button></div>
+<div class="check-result" id="q5iiiResult"></div>
+</div>
+<div class="stmt-row"><b>(iv)</b> Type $E$ in set-builder form:
+<div class="check-row"><input class="ex-input" type="text" id="q5iv" style="min-width:320px;" placeholder="x : x is ..."/><button class="btn btn-primary" data-check="q5iv">Check</button></div>
+<div class="check-result" id="q5ivResult"></div>
+</div>
+<p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.4rem;">Exact wording varies — the checker accepts a couple of common phrasings; compare with Show Answer if yours is marked wrong but means the same thing.</p>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q5Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q5Answer">
+(i) $B = \{x : x \text{ is an Indian cricketer who scored a double century in an ODI}\}$<br/>
+(ii) $C = \{x : x = \frac{n}{n+1}, n \in N\}$<br/>
+(iii) $D = \{x : x \text{ is a Tamil month}\}$<br/>
+(iv) $E = \{x : x \text{ is an odd whole number}, x < 9\}$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q5','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q6: descriptive form conversion -->
+<div class="exercise-card" id="q6">
+<span class="ex-label"><span class="ex-q-num">Q6</span>Represent the following sets in Descriptive form.</span>
+<div class="ex-question">(i) $P = \{\text{January, June, July}\}$ &nbsp; (ii) $Q = \{7,11,13,17,19,23,29\}$ &nbsp;
+(iii) $R = \{x : x \in N, x < 5\}$ &nbsp; (iv) $S = \{x : x \text{ is a consonant in English alphabet}\}$</div>
+<div class="stmt-row"><b>(i)</b> Describe $P$ in words:
+<div class="check-row"><input class="ex-input" type="text" id="q6i" style="min-width:320px;" placeholder="The set of ..."/><button class="btn btn-primary" data-check="q6i">Check</button></div>
+<div class="check-result" id="q6iResult"></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> Describe $Q$ in words:
+<div class="check-row"><input class="ex-input" type="text" id="q6ii" style="min-width:320px;" placeholder="The set of ..."/><button class="btn btn-primary" data-check="q6ii">Check</button></div>
+<div class="check-result" id="q6iiResult"></div>
+</div>
+<div class="stmt-row"><b>(iii)</b> Describe $R$ in words:
+<div class="check-row"><input class="ex-input" type="text" id="q6iii" style="min-width:320px;" placeholder="The set of ..."/><button class="btn btn-primary" data-check="q6iii">Check</button></div>
+<div class="check-result" id="q6iiiResult"></div>
+</div>
+<div class="stmt-row"><b>(iv)</b> Describe $S$ in words:
+<div class="check-row"><input class="ex-input" type="text" id="q6iv" style="min-width:320px;" placeholder="The set of ..."/><button class="btn btn-primary" data-check="q6iv">Check</button></div>
+<div class="check-result" id="q6ivResult"></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q6Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q6Answer">
+(i) The set of three named months (January, June, July).<br/>
+(ii) The set of odd prime numbers between 5 and 30.<br/>
+(iii) The set of all natural numbers less than 5.<br/>
+(iv) The set of all consonants in the English alphabet.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q6','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-1-2/">Next: Exercise 1.2 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../../js/token-physics.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'q1') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.1 Question 1: Which of the following are sets? (i) The collection of prime numbers up to 100. (ii) The collection of rich people in India. (iii) The collection of all rivers in India. (iv) The collection of good Hockey players. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q2') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.1 Question 2: List the set of letters of the following words in Roster form: (i) INDIA (ii) PARALLELOGRAM (iii) MISSISSIPPI (iv) CZECHOSLOVAKIA. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q3') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.1 Question 3: Consider A={0,3,5,8}, B={2,4,6,10}, C={12,14,18,20}. (a) State True or False for several membership statements. (b) Fill in the blanks using set names or the symbols ∈ / ∉. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q4') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.1 Question 4: Represent the following sets in Roster form: (i) A = the set of all even natural numbers less than 20. (ii) B = {y : y = 1/(2n), n ∈ N, n ≤ 5}. (iii) C = {x : x is a perfect cube, 27 < x < 216}. (iv) D = {x : x ∈ Z, -5 < x ≤ 2}. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q5') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.1 Question 5: Represent the following sets in Set-Builder form: (i) B = the set of all Cricket players in India who scored double centuries in One Day Internationals. (ii) C = {1/2, 2/3, 3/4, ...}. (iii) D = the set of all Tamil months in a year. (iv) E = the set of odd Whole numbers less than 9. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q6') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.1 Question 6: Represent the following sets in Descriptive form: (i) P = {January, June, July}. (ii) Q = {7,11,13,17,19,23,29}. (iii) R = {x : x ∈ N, x < 5}. (iv) S = {x : x is a consonant in English alphabet}. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Q1: well-defined / not -> physics sorter ---------- */
+const q1Items = [
+    { id: 'i', label: '(i)', full: 'Prime numbers up to 100', correct: 'set' },
+    { id: 'ii', label: '(ii)', full: 'Rich people in India', correct: 'notset' },
+    { id: 'iii', label: '(iii)', full: 'All rivers in India', correct: 'set' },
+    { id: 'iv', label: '(iv)', full: 'Good Hockey players', correct: 'notset' }
+];
+ExLib.physicsSorter(document.getElementById('q1Stage'), q1Items, ['IT IS A SET', 'NOT A SET'], {
+    height: 300,
+    onPlace(item, ok, placed, total) {
+        const r = document.getElementById('q1DragResult');
+        r.textContent = ok ? `${placed}/${total} correctly placed.` : `Not quite — think about whether "${item.full}" is well-defined, then fling it into the other zone.`;
+        r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+    },
+    onComplete() {
+        const r = document.getElementById('q1DragResult');
+        r.textContent = 'All four sorted correctly! See the reasoning in Show Answer below.';
+        r.className = 'check-result check-yes';
+    }
+});
+
+/* ---------- Q2: word -> letter dedupe workspace ---------- */
+const q2Words = {
+    INDIA: ['I', 'N', 'D', 'I', 'A'],
+    PARALLELOGRAM: ['P', 'A', 'R', 'A', 'L', 'L', 'E', 'L', 'O', 'G', 'R', 'A', 'M'],
+    MISSISSIPPI: ['M', 'I', 'S', 'S', 'I', 'S', 'S', 'I', 'P', 'P', 'I'],
+    CZECHOSLOVAKIA: ['C', 'Z', 'E', 'C', 'H', 'O', 'S', 'L', 'O', 'V', 'A', 'K', 'I', 'A']
+};
+const q2Expected = {
+    INDIA: ['I', 'N', 'D', 'A'],
+    PARALLELOGRAM: ['P', 'A', 'R', 'L', 'E', 'O', 'G', 'M'],
+    MISSISSIPPI: ['M', 'I', 'S', 'P'],
+    CZECHOSLOVAKIA: ['C', 'Z', 'E', 'H', 'O', 'S', 'L', 'V', 'A', 'K', 'I']
+};
+let q2Current = 'INDIA';
+let q2Collected = new Set();
+
+function q2SetRender() {
+    const arr = [...q2Collected];
+    document.getElementById('q2Set').textContent = arr.length ? `{ ${arr.join(', ')} }` : 'click letters above →';
+}
+function q2Render() {
+    q2Collected = new Set();
+    document.getElementById('q2WordLabel').textContent = q2Current;
+    const letters = q2Words[q2Current];
+    const host = document.getElementById('q2Letters');
+    host.innerHTML = letters.map((ch, i) => `<button type="button" class="drag-chip" style="cursor:pointer;" data-letter="${ch}" data-i="${i}">${ch}</button>`).join('');
+    q2SetRender();
+    document.getElementById('q2Input').value = '';
+    const res = document.getElementById('q2Result');
+    res.textContent = '';
+    res.className = 'check-result';
+    host.querySelectorAll('[data-letter]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const ch = btn.dataset.letter;
+            if (q2Collected.has(ch)) {
+                btn.classList.add('chip-shake');
+                setTimeout(() => btn.classList.remove('chip-shake'), 420);
+                return;
+            }
+            q2Collected.add(ch);
+            btn.classList.add('chip-correct', 'placed');
+            q2SetRender();
+        });
+    });
+}
+document.querySelectorAll('#q2WordPicker button').forEach(b => {
+    b.addEventListener('click', () => {
+        document.querySelectorAll('#q2WordPicker button').forEach(x => x.classList.remove('btn-primary'));
+        b.classList.add('btn-primary');
+        q2Current = b.dataset.word;
+        q2Render();
+    });
+});
+document.querySelector('#q2WordPicker button').classList.add('btn-primary');
+q2Render();
+document.getElementById('q2CheckBtn').addEventListener('click', () => {
+    ExLib.checkSetAnswer(document.getElementById('q2Input'), q2Expected[q2Current], document.getElementById('q2Result'));
+});
+
+/* ---------- Q3: membership tiles ---------- */
+ExLib.tileChoice(document.getElementById('q3tf1'), 'true');
+ExLib.tileChoice(document.getElementById('q3tf2'), 'true');
+ExLib.tileChoice(document.getElementById('q3tf3'), 'false');
+ExLib.tileChoice(document.getElementById('q3tf4'), 'true');
+ExLib.tileChoice(document.getElementById('q3tf5'), 'false');
+ExLib.tileChoice(document.getElementById('q3tf6'), 'false');
+ExLib.tileChoice(document.getElementById('q3fb1'), 'A');
+ExLib.tileChoice(document.getElementById('q3fb2'), 'C');
+ExLib.tileChoice(document.getElementById('q3fb3'), 'notin');
+ExLib.tileChoice(document.getElementById('q3fb4'), 'in');
+
+/* ---------- Q4: roster conversion checks ---------- */
+const q4Expected = {
+    q4i: ['2', '4', '6', '8', '10', '12', '14', '16', '18'],
+    q4ii: ['1/2', '1/4', '1/6', '1/8', '1/10'],
+    q4iii: ['64', '125'],
+    q4iv: ['-4', '-3', '-2', '-1', '0', '1', '2']
+};
+document.querySelectorAll('[data-check]').forEach(btn => {
+    const id = btn.dataset.check;
+    if (!q4Expected[id]) return;
+    btn.addEventListener('click', () => {
+        ExLib.checkSetAnswer(document.getElementById(id), q4Expected[id], document.getElementById(id + 'Result'));
+    });
+});
+
+/* ---------- Q5: set-builder text checks ---------- */
+const q5Variants = {
+    q5i: ['x is an indian cricketer who scored a double century in an odi', 'x is an indian cricketer who scored a double century in one day internationals', 'b = x : x is an indian cricketer who scored a double century in an odi'],
+    q5ii: ['x = n/(n+1), n in n', 'x = n / (n + 1), n in n', 'c = x : x = n/(n+1), n in n'],
+    q5iii: ['x is a tamil month', 'd = x : x is a tamil month'],
+    q5iv: ['x is an odd whole number, x < 9', 'x is an odd whole number less than 9', 'e = x : x is an odd whole number, x < 9']
+};
+document.querySelectorAll('[data-check]').forEach(btn => {
+    const id = btn.dataset.check;
+    if (!q5Variants[id]) return;
+    btn.addEventListener('click', () => {
+        ExLib.checkTextAnswer(document.getElementById(id), q5Variants[id], document.getElementById(id + 'Result'));
+    });
+});
+
+/* ---------- Q6: descriptive form text checks ---------- */
+const q6Variants = {
+    q6i: ['the set of three named months january, june, july', 'set of months january, june and july', 'the set of months january, june, july'],
+    q6ii: ['the set of odd prime numbers between 5 and 30', 'odd prime numbers between 5 and 30'],
+    q6iii: ['the set of all natural numbers less than 5', 'set of natural numbers less than 5'],
+    q6iv: ['the set of all consonants in the english alphabet', 'set of consonants in the english alphabet']
+};
+document.querySelectorAll('[data-check]').forEach(btn => {
+    const id = btn.dataset.check;
+    if (!q6Variants[id]) return;
+    btn.addEventListener('click', () => {
+        ExLib.checkTextAnswer(document.getElementById(id), q6Variants[id], document.getElementById(id + 'Result'));
+    });
+});
+
+['q1', 'q2', 'q3', 'q4', 'q5', 'q6'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

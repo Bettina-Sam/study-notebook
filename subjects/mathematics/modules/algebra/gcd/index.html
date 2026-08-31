@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>3.7 Greatest Common Divisor • Algebra • Study Notebook</title>
-<meta name="description" content="Factorise two expressions and pull out everything they share — the GCD (HCF) of monomials and polynomials."/>
+<meta content="Factorise two expressions and pull out everything they share — the GCD (HCF) of monomials and polynomials." name="description"/>
 <link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../../css/article.css" rel="stylesheet"/>
@@ -12,7 +13,7 @@
 <script>
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
-<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -31,7 +32,6 @@
 <i data-lucide="moon" width="16"></i> Theme
 </button>
 </nav>
-
 <section class="hero">
 <div class="text-reveal-wrapper">
 <span class="coming-soon-num">3.7 Greatest Common Divisor</span>
@@ -42,7 +42,6 @@
 </p>
 </div>
 </section>
-
 <!-- SECTION 1: MONOMIAL GCD -->
 <section>
 <div class="split-layout">
@@ -51,12 +50,13 @@
 <h2>Adjust each monomial</h2>
 <p>Take the GCD of the coefficients, and the <b>lowest</b> power of every variable that appears in both.</p>
 <div class="sim-controls">
-<div class="slider-group"><label>Coefficient of A (<span id="val-cA" class="value-readout">16</span>)</label><input id="input-cA" max="60" min="4" step="1" type="range" value="16"/></div>
-<div class="slider-group"><label>A's power of x (<span id="val-xA" class="value-readout">3</span>)</label><input id="input-xA" max="5" min="0" step="1" type="range" value="3"/></div>
-<div class="slider-group"><label>A's power of y (<span id="val-yA" class="value-readout">2</span>)</label><input id="input-yA" max="5" min="0" step="1" type="range" value="2"/></div>
-<div class="slider-group"><label>Coefficient of B (<span id="val-cB" class="value-readout">24</span>)</label><input id="input-cB" max="60" min="4" step="1" type="range" value="24"/></div>
-<div class="slider-group"><label>B's power of x (<span id="val-xB" class="value-readout">1</span>)</label><input id="input-xB" max="5" min="0" step="1" type="range" value="1"/></div>
-<div class="slider-group"><label>B's power of y (<span id="val-yB" class="value-readout">3</span>)</label><input id="input-yB" max="5" min="0" step="1" type="range" value="3"/></div>
+<div class="interaction-cue"><strong>Change</strong><span class="cue-copy">Move the coefficient and exponent sliders for A and B. Watch the GCD keep only the factors shared by both expressions.</span></div>
+<div class="slider-group"><label>Coefficient of A (<span class="value-readout" id="val-cA">16</span>)</label><input id="input-cA" max="60" min="4" step="1" type="range" value="16"/></div>
+<div class="slider-group"><label>A's power of x (<span class="value-readout" id="val-xA">3</span>)</label><input id="input-xA" max="5" min="0" step="1" type="range" value="3"/></div>
+<div class="slider-group"><label>A's power of y (<span class="value-readout" id="val-yA">2</span>)</label><input id="input-yA" max="5" min="0" step="1" type="range" value="2"/></div>
+<div class="slider-group"><label>Coefficient of B (<span class="value-readout" id="val-cB">24</span>)</label><input id="input-cB" max="60" min="4" step="1" type="range" value="24"/></div>
+<div class="slider-group"><label>B's power of x (<span class="value-readout" id="val-xB">1</span>)</label><input id="input-xB" max="5" min="0" step="1" type="range" value="1"/></div>
+<div class="slider-group"><label>B's power of y (<span class="value-readout" id="val-yB">3</span>)</label><input id="input-yB" max="5" min="0" step="1" type="range" value="3"/></div>
 </div>
 <div class="ai-links">
 <span class="ai-label">Ask AI:</span>
@@ -81,7 +81,6 @@
 </div>
 </div>
 </section>
-
 <!-- SECTION 2: POLYNOMIAL GCD -->
 <section>
 <div class="split-layout">
@@ -99,14 +98,13 @@
 </div>
 </div>
 <div class="visual-col">
-<div style="padding:1.5rem; display:flex; flex-direction:column; justify-content:center; height:100%; gap:0.9rem;" id="pgVisual">
+<div id="pgVisual" style="padding:1.5rem; display:flex; flex-direction:column; justify-content:center; height:100%; gap:0.9rem;">
 <div class="formula-card" style="margin:0;"><span class="etu-tag">2x² − 18</span><div id="pgA" style="text-align:center; padding-top:0.5rem; font-family:var(--font-mono);">?</div></div>
 <div class="formula-card" style="margin:0;"><span class="etu-tag">x² − 2x − 3</span><div id="pgB" style="text-align:center; padding-top:0.5rem; font-family:var(--font-mono);">?</div></div>
 </div>
 </div>
 </div>
 </section>
-
 <!-- WORKED EXAMPLE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -125,7 +123,6 @@
 </div>
 </div>
 </section>
-
 <!-- EXERCISE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -149,17 +146,14 @@
 </div>
 </div>
 </section>
-
-<div class="divider"></div>
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 114–116</span><h2>Greatest Common Divisor (GCD)</h2><p>The GCD (also HCF) of two or more polynomials is the common factor of the <b>highest possible degree</b>. The idea parallels GCD of integers.</p><p>The textbook example compares 14xy² and 42xy: the numerical GCD is 14 and the common variable part is xy, so the GCD is <b>14xy</b>.</p><h3>Factorisation method</h3><ol class="checklist"><li>Resolve each expression completely into factors.</li><li>Take factors common to every expression, using the highest power common to all.</li><li>Find the GCD of numerical coefficients separately and prefix it.</li></ol><div class="tb-example"><div class="head">Textbook Example 3.41</div><div class="body"><b>Find GCDs of monomials and factorised polynomials.</b><div style="margin-top:.65rem">The examples include numerical coefficients, algebraic factors, and the case where no common factor exists except 1.</div></div></div><p></p></div></section><div class="divider"></div>
 <section style="min-height:auto; padding-top:0;">
 <div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
 <a class="back-link" href="../division-of-polynomials/">← 3.6 Division of Polynomials</a>
 <a class="back-link" href="../linear-equations/">Next: Linear Equations in Two Variables →</a>
 </div>
 </section>
-
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
-
 <script src="../../../../../js/common.js"></script>
 <script src="../../../../../js/algebra-lib.js"></script>
 <script>

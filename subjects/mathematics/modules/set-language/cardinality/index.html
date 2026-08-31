@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.8 Cardinality Applications • Set Language • Study Notebook</title>
+<meta name="description" content="n(A∪B) = n(A)+n(B)−n(A∩B) and the three-set version, used to solve real counting word problems."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Set Language
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">1.8 Cardinality Applications</span>
+<h1 class="hero-title">Counting people<br/>without double-counting</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    If you just add n(A) and n(B), anyone in both groups gets counted twice. Subtracting the overlap
+    once fixes it — and that one idea solves a whole family of word problems.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: TWO-SET CALCULATOR -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">1.8.1 Two-Set Cardinality Calculator</h3>
+<h2>n(A∪B) = n(A) + n(B) − n(A∩B)</h2>
+<p>Drag the sliders — n(A∩B) can never exceed the smaller of n(A) and n(B).</p>
+<div class="slider-group">
+<label>n(A) <span id="val-nA">10</span></label>
+<input id="input-nA" max="20" min="1" step="1" type="range" value="10"/>
+</div>
+<div class="slider-group">
+<label>n(B) <span id="val-nB">7</span></label>
+<input id="input-nB" max="20" min="1" step="1" type="range" value="7"/>
+</div>
+<div class="slider-group">
+<label>n(A∩B) <span id="val-nAB">3</span></label>
+<input id="input-nAB" max="7" min="0" step="1" type="range" value="3"/>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="cardFormula" class="formula-rule">n(A∪B) = 10 + 7 − 3 = 14</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('two-set', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div id="cardVenn" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 1b: RELATED FORMULA CARDS -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">1.8.2 Related Counting Formulas</h3>
+<h2 style="margin-bottom:1rem;">Three more formulas that fall out of the same idea</h2>
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
+<div class="formula-card" style="margin:0;">
+<div class="formula-rule" style="font-size:1rem;">n(A−B) = n(A) − n(A∩B)</div>
+<div class="inline-controls" style="justify-content:center;">
+<label style="font-family:var(--font-mono); font-size:0.85rem;">n(A) <input id="fc1-a" class="mini-input" type="number" min="0" value="12" style="width:56px;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.85rem;">n(A∩B) <input id="fc1-ab" class="mini-input" type="number" min="0" value="5" style="width:56px;"/></label>
+</div>
+<div id="fc1-out" class="value-readout" style="display:block; text-align:center; margin-top:0.6rem;">n(A−B) = 7</div>
+</div>
+<div class="formula-card" style="margin:0;">
+<div class="formula-rule" style="font-size:1rem;">n(B−A) = n(B) − n(A∩B)</div>
+<div class="inline-controls" style="justify-content:center;">
+<label style="font-family:var(--font-mono); font-size:0.85rem;">n(B) <input id="fc2-b" class="mini-input" type="number" min="0" value="9" style="width:56px;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.85rem;">n(A∩B) <input id="fc2-ab" class="mini-input" type="number" min="0" value="5" style="width:56px;"/></label>
+</div>
+<div id="fc2-out" class="value-readout" style="display:block; text-align:center; margin-top:0.6rem;">n(B−A) = 4</div>
+</div>
+<div class="formula-card" style="margin:0;">
+<div class="formula-rule" style="font-size:1rem;">n(A′) = n(U) − n(A)</div>
+<div class="inline-controls" style="justify-content:center;">
+<label style="font-family:var(--font-mono); font-size:0.85rem;">n(U) <input id="fc3-u" class="mini-input" type="number" min="0" value="25" style="width:56px;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.85rem;">n(A) <input id="fc3-a" class="mini-input" type="number" min="0" value="12" style="width:56px;"/></label>
+</div>
+<div id="fc3-out" class="value-readout" style="display:block; text-align:center; margin-top:0.6rem;">n(A′) = 13</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: THREE-SET FORMULA -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">1.8.3 Three Sets at Once</h3>
+<h2 style="margin-bottom:1rem;">n(A∪B∪C) = n(A)+n(B)+n(C)−n(A∩B)−n(B∩C)−n(A∩C)+n(A∩B∩C)</h2>
+<p style="max-width:70ch;">Every pairwise overlap gets subtracted once (it was added twice), and the triple overlap —
+subtracted three times in that step — gets added back once. Set the count in each of the 7 regions below
+and watch the diagram and the formula update together.</p>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:start; margin-top:1.2rem;">
+<div>
+<div class="venn-stage" id="threeSetVenn"></div>
+<div class="drop-bins" style="grid-template-columns:repeat(3,1fr);">
+<label style="font-family:var(--font-mono); font-size:0.8rem;">A only <input id="rc-a" class="mini-input" type="number" min="0" max="9" value="3" style="width:100%;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.8rem;">B only <input id="rc-b" class="mini-input" type="number" min="0" max="9" value="4" style="width:100%;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.8rem;">C only <input id="rc-c" class="mini-input" type="number" min="0" max="9" value="2" style="width:100%;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.8rem;">A∩B only <input id="rc-ab" class="mini-input" type="number" min="0" max="9" value="2" style="width:100%;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.8rem;">B∩C only <input id="rc-bc" class="mini-input" type="number" min="0" max="9" value="1" style="width:100%;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.8rem;">A∩C only <input id="rc-ac" class="mini-input" type="number" min="0" max="9" value="1" style="width:100%;"/></label>
+<label style="font-family:var(--font-mono); font-size:0.8rem;">A∩B∩C <input id="rc-abc" class="mini-input" type="number" min="0" max="9" value="1" style="width:100%;"/></label>
+</div>
+<div class="formula-card" id="threeSetFormula" style="text-align:center; font-size:0.95rem; line-height:2;"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('three-set', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="worked-example" style="margin:0;">
+<span class="we-label">Example 1.32 (textbook)</span>
+<div class="we-question">240 play Cricket, 180 Football, 164 Hockey. 42 play Cricket &amp; Football, 38 Football &amp; Hockey,
+40 Cricket &amp; Hockey, 16 play all three. Every student plays at least one. Find the total, and how
+many play only one game.</div>
+<div class="step-flow" id="we-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Only-one-game counts (from the diagram): 174 + 116 + 102 = 392</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Add the two-game-only regions: 26 + 22 + 24 = 72</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Add the all-three region: 16</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Total in college</b> = 392 + 72 + 16 = 480. &nbsp; <b>Only one game</b> = 392.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we-play">Play steps</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISES -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+
+<div class="exercise-card" id="ex1">
+<span class="ex-label">Exercise 1.6 · Q4</span>
+<div class="ex-question">All students take music or drama or both. 25 take music, 30 take drama, 8 take both. Find
+(i) only music (ii) only drama (iii) total students.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex1Steps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="ex1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex1Hint">Only music = n(Music) − n(both). Only drama = n(Drama) − n(both). Total = only music + only drama + both.</div>
+<div class="exercise-panel" id="ex1Steps">
+<div class="step-flow" id="ex1Steps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">Only music = 25 − 8 = 17</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">Only drama = 30 − 8 = 22</div></div>
+<div class="step-item step-in"><span class="step-num">3</span><div class="step-body">Total = 17 + 22 + 8 = 47</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="ex1Answer">Answer: (i) 17 &nbsp; (ii) 22 &nbsp; (iii) 47 students in total.</div>
+</div>
+
+<div class="exercise-card" id="ex2">
+<span class="ex-label">Exercise 1.6 · Q5</span>
+<div class="ex-question">45 people like tea or coffee or both. 35 like tea, 20 like coffee. Find (i) both (ii) not tea (iii) not coffee.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex2Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex2Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex2Hint">n(T∪C) = n(T) + n(C) − n(T∩C). Solve for the overlap first.</div>
+<div class="exercise-panel answer-panel" id="ex2Answer">
+Both = 35 + 20 − 45 = 10. &nbsp; Not tea = only coffee = 20 − 10 = 10. &nbsp; Not coffee = only tea = 35 − 10 = 25.
+</div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../de-morgans-laws/">← 1.7 De Morgan's Laws</a>
+<a class="back-link cn-home" href="../">Set Language Home</a>
+<a class="back-link" href="../exercises/">Next: Chapter Exercises →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/venn-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Explain n(A∪B) = n(A)+n(B)−n(A∩B) for a Class 9 student with a real-world counting example.";
+    if (topic === 'three-set') prompt = "Explain the three-set cardinality formula n(A∪B∪C) = n(A)+n(B)+n(C)−n(A∩B)−n(B∩C)−n(A∩C)+n(A∩B∩C) for a Class 9 student, with a worked example.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Related formula cards: n(A-B), n(B-A), n(A') ---------- */
+function wireFormulaCard(ids, compute, outEl, outFn) {
+    function update() {
+        const vals = ids.map(id => parseInt(document.getElementById(id).value, 10) || 0);
+        document.getElementById(outEl).textContent = outFn(...vals, compute(...vals));
+    }
+    ids.forEach(id => document.getElementById(id).addEventListener('input', update));
+    update();
+}
+wireFormulaCard(['fc1-a', 'fc1-ab'], (a, ab) => a - ab, 'fc1-out', (a, ab, r) => `n(A−B) = ${a} − ${ab} = ${r}`);
+wireFormulaCard(['fc2-b', 'fc2-ab'], (b, ab) => b - ab, 'fc2-out', (b, ab, r) => `n(B−A) = ${b} − ${ab} = ${r}`);
+wireFormulaCard(['fc3-u', 'fc3-a'], (u, a) => u - a, 'fc3-out', (u, a, r) => `n(A′) = ${u} − ${a} = ${r}`);
+
+/* ---------- Section 1: 2-set cardinality calculator (hand-drawn, count-based) ---------- */
+function drawCardVenn(nA, nB, nAB) {
+    const onlyA = nA - nAB, onlyB = nB - nAB;
+    document.getElementById('cardVenn').innerHTML = `
+      <svg viewBox="0 0 300 200" style="width:100%; max-width:340px;">
+        <circle cx="120" cy="100" r="80" fill="var(--tile-a)" stroke="var(--math-accent)" stroke-width="2"/>
+        <circle cx="190" cy="100" r="80" fill="var(--tile-b)" stroke="var(--math-accent-2)" stroke-width="2"/>
+        <text x="70" y="50" font-family="var(--font-serif)" font-weight="700" fill="var(--math-accent)">A</text>
+        <text x="230" y="50" font-family="var(--font-serif)" font-weight="700" fill="var(--math-accent-2)">B</text>
+        <text x="85" y="105" text-anchor="middle" font-family="var(--font-mono)" font-size="20" fill="var(--text-main)">${onlyA}</text>
+        <text x="155" y="105" text-anchor="middle" font-family="var(--font-mono)" font-size="20" font-weight="700" fill="var(--text-main)">${nAB}</text>
+        <text x="225" y="105" text-anchor="middle" font-family="var(--font-mono)" font-size="20" fill="var(--text-main)">${onlyB}</text>
+      </svg>`;
+}
+function updateCardCalc() {
+    const nA = parseInt(document.getElementById('input-nA').value);
+    const nB = parseInt(document.getElementById('input-nB').value);
+    const nABmax = Math.min(nA, nB);
+    const inputAB = document.getElementById('input-nAB');
+    inputAB.max = nABmax;
+    const nAB = Math.min(parseInt(inputAB.value), nABmax);
+    inputAB.value = nAB;
+    document.getElementById('val-nA').textContent = nA;
+    document.getElementById('val-nB').textContent = nB;
+    document.getElementById('val-nAB').textContent = nAB;
+    document.getElementById('cardFormula').textContent = `n(A∪B) = ${nA} + ${nB} − ${nAB} = ${nA + nB - nAB}`;
+    drawCardVenn(nA, nB, nAB);
+}
+['input-nA', 'input-nB', 'input-nAB'].forEach(id => document.getElementById(id).addEventListener('input', updateCardCalc));
+updateCardCalc();
+
+/* ---------- Section 2: live interactive 3-set cardinality builder ---------- */
+function buildRegionArrays(counts) {
+    const mk = (n, tag) => Array.from({ length: n }, (_, i) => `${tag}${i + 1}`);
+    const onlyA = mk(counts.a, 'a'), onlyB = mk(counts.b, 'b'), onlyC = mk(counts.c, 'c');
+    const ab = mk(counts.ab, 'ab'), bc = mk(counts.bc, 'bc'), ac = mk(counts.ac, 'ac'), abc = mk(counts.abc, 'abc');
+    return {
+        a: [...onlyA, ...ab, ...ac, ...abc],
+        b: [...onlyB, ...ab, ...bc, ...abc],
+        c: [...onlyC, ...bc, ...ac, ...abc]
+    };
+}
+function updateThreeSet() {
+    const counts = {
+        a: +document.getElementById('rc-a').value || 0,
+        b: +document.getElementById('rc-b').value || 0,
+        c: +document.getElementById('rc-c').value || 0,
+        ab: +document.getElementById('rc-ab').value || 0,
+        bc: +document.getElementById('rc-bc').value || 0,
+        ac: +document.getElementById('rc-ac').value || 0,
+        abc: +document.getElementById('rc-abc').value || 0
+    };
+    const arrays = buildRegionArrays(counts);
+    VennLib.threeSet(document.getElementById('threeSetVenn'), Object.assign({ labelA: 'A', labelB: 'B', labelC: 'C' }, arrays));
+
+    const nA = counts.a + counts.ab + counts.ac + counts.abc;
+    const nB = counts.b + counts.ab + counts.bc + counts.abc;
+    const nC = counts.c + counts.ac + counts.bc + counts.abc;
+    const nAB = counts.ab + counts.abc, nBC = counts.bc + counts.abc, nAC = counts.ac + counts.abc;
+    const nABC = counts.abc;
+    const total = nA + nB + nC - nAB - nBC - nAC + nABC;
+    document.getElementById('threeSetFormula').innerHTML = `
+      n(A∪B∪C) =
+      <span style="color:var(--math-accent); font-weight:700;">${nA}</span> +
+      <span style="color:var(--math-accent-2); font-weight:700;">${nB}</span> +
+      <span style="color:#c0392b; font-weight:700;">${nC}</span> −
+      <span style="color:var(--math-accent);">${nAB}</span> −
+      <span style="color:var(--math-accent-2);">${nBC}</span> −
+      <span style="color:#c0392b;">${nAC}</span> +
+      <span style="font-weight:700;">${nABC}</span>
+      = <span class="value-readout">${total}</span>`;
+}
+['rc-a', 'rc-b', 'rc-c', 'rc-ab', 'rc-bc', 'rc-ac', 'rc-abc'].forEach(id => document.getElementById(id).addEventListener('input', updateThreeSet));
+updateThreeSet();
+
+/* ---------- Worked example / exercises ---------- */
+document.getElementById('we-play').addEventListener('click', () => AlgLib.revealSteps('we-steps'));
+AlgLib.revealSteps('we-steps', 0);
+['ex1', 'ex2'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

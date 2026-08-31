@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.1–1.2 What Is a Set? • Set Language • Study Notebook</title>
+<meta name="description" content="Well-defined collections, the elements/members of a set, and membership notation (∈, ∉)."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.phys-token-chip{ width:58px; height:58px; border-radius:14px; font-size:0.66rem; line-height:1.08; padding:4px; white-space:normal; text-align:center; }
+.wd-legend{ display:flex; flex-direction:column; gap:0.5rem; margin-top:1rem; }
+.wd-legend .var-row{ transition:opacity .2s; }
+</style>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Set Language
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">1.1–1.2 What Is a Set?</span>
+<h1 class="hero-title">A set is just a<br/>well-defined collection</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    "Well-defined" is the whole trick: given any object, you must be able to say for certain whether
+    it belongs to the collection or not — no arguing about it. The objects inside are called its
+    <b>elements</b> or <b>members</b>.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: IS IT A SET? -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent);">Activity 1</h3>
+<h2 style="margin-bottom:0.8rem;">Sort each collection: Set, or Not a Set?</h2>
+<p style="max-width:70ch; margin-bottom:1rem;">A collection only counts as a set if, given any object, there's no argument about whether it
+belongs — well-defined, not ambiguous. Grab each numbered token below and fling it into the zone
+where you think it belongs. Compare these six from the textbook.</p>
+<div class="wd-legend" id="wellDefinedLegend"></div>
+<div id="wellDefinedStage" style="margin-top:1rem;"></div>
+<div class="check-result" id="wellDefinedResult"></div>
+</div>
+</section>
+
+<!-- SECTION 2: MEMBERSHIP -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Belongs To — ∈ and ∉</h3>
+<h2>Test membership in $A$</h2>
+<p>
+    If $x$ is an element of a set $A$, we write $x \in A$ (read "$x$ belongs to $A$"). If it isn't,
+    we write $x \notin A$. Let $A = \{2, 3, 5, 7\}$ — the prime numbers less than 10.
+</p>
+<div class="formula-card" style="text-align:center;">
+<div id="memberStatement" class="formula-rule">Tap a number below</div>
+</div>
+<div class="var-list">
+<div class="var-row"><span class="var-key">Note</span><span class="var-desc">A set is unaffected by repeating an element, or by the order elements are listed —
+{1,2,3} and {3,1,2,2} are the same set.</span></div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('membership', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div style="padding:1rem; display:flex; flex-direction:column; height:100%; gap:0.6rem;">
+<div style="font-family:var(--font-mono); font-size:0.95rem; text-align:center; flex:0 0 auto;">Drag each number in or out of the circle</div>
+<div id="memberStage" style="flex:1; min-height:0;"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example 1.1 (textbook)</span>
+<div class="we-question">Consider $A = \{\text{Ashwin, Murali Vijay, Vijay Shankar, Badrinath}\}$. Fill in the blank with $\in$ or $\notin$ for: Ganguly ___ A.</div>
+<div class="we-concept">Concept used: Ganguly is not one of the four named elements, so he does not belong to this set.</div>
+<div class="step-flow" id="we-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">List the elements of A.<div class="step-math">Ashwin, Murali Vijay, Vijay Shankar, Badrinath</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Check whether "Ganguly" appears in that list.<div class="step-math">It does not.</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Final answer</b><div class="step-math">Ganguly $\notin$ A</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise 1.1 · Q3(a)</span>
+<div class="ex-question">Let $A = \{0, 3, 5, 8\}$. State whether each is True or False: (i) $5 \in A$ &nbsp; (ii) $6 \in A$</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint</button>
+<button class="btn btn-secondary" data-reveal="exSteps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">Just check whether each number literally appears inside the braces of A.</div>
+<div class="exercise-panel" id="exSteps">
+<div class="step-flow" id="exSteps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">A = {0, 3, 5, 8}. Does 5 appear in this list? Yes.</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">Does 6 appear in this list? No.</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: $5 \in A$ is <b>True</b>. &nbsp; $6 \in A$ is <b>False</b> (so $6 \notin A$).</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link cn-home" href="../">Set Language Home</a>
+<a class="back-link" href="../representation-of-sets/">Next: Representation of Sets →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../js/token-physics.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'membership') prompt = "Explain set membership notation (belongs to / does not belong to) for a Class 9 student.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Section 1: well-defined collections (physics sorter) ---------- */
+const wdItems = [
+  { id: 'wd1', label: 'Primes', full: 'The collection of all prime numbers up to 100', correct: 'set', reason: "For any number, you can always check for certain whether it's prime." },
+  { id: 'wd2', label: 'Rivers', full: 'The collection of all rivers in India', correct: 'set', reason: "A river is either officially in India or it isn't — no ambiguity." },
+  { id: 'wd3', label: 'Rich', full: 'The collection of rich people in India', correct: 'notset', reason: '"Rich" has no fixed cutoff — two people could disagree on who counts.' },
+  { id: 'wd4', label: 'Hockey', full: 'The collection of good Hockey players', correct: 'notset', reason: '"Good" is a matter of opinion, not a fact you can check.' },
+  { id: 'wd5', label: 'Vowels', full: 'The collection of all vowels in the English alphabet', correct: 'set', reason: 'There are exactly five: a, e, i, o, u — fixed and checkable.' },
+  { id: 'wd6', label: 'Flowers', full: 'The collection of beautiful flowers in a garden', correct: 'notset', reason: '"Beautiful" varies from person to person.' }
+];
+document.getElementById('wellDefinedLegend').innerHTML = wdItems.map(item => `
+  <div class="var-row" id="wdrow-${item.id}"><span class="var-key">${item.label}</span><span class="var-desc" id="wdreason-${item.id}">${item.full} — drag its token below to sort it.</span></div>
+`).join('');
+ExLib.physicsSorter(document.getElementById('wellDefinedStage'), wdItems, ['IT IS A SET', 'NOT A SET'], {
+    height: 340,
+    onPlace(item, ok, placed, total) {
+        const r = document.getElementById('wellDefinedResult');
+        if (ok) {
+            const desc = document.getElementById('wdreason-' + item.id);
+            desc.innerHTML = `<b style="color:${item.correct === 'set' ? 'var(--math-accent)' : 'var(--math-accent-2)'};">${item.correct === 'set' ? 'It IS a set.' : 'NOT a set.'}</b> ${item.reason}`;
+            r.textContent = `${placed}/${total} sorted correctly.`;
+            r.className = 'check-result check-yes';
+        } else {
+            r.textContent = `Not quite — think about whether "${item.full.replace(/^The collection of /, '')}" is well-defined, then fling it again.`;
+            r.className = 'check-result check-no';
+        }
+    },
+    onComplete() {
+        const r = document.getElementById('wellDefinedResult');
+        r.textContent = 'All six sorted correctly!';
+        r.className = 'check-result check-yes';
+    }
+});
+
+/* ---------- Section 2: membership (physics stage) ---------- */
+const setA = [2, 3, 5, 7];
+const memberStageEl = document.getElementById('memberStage');
+const mStage = TokenPhysics.createStage(memberStageEl, { height: memberStageEl.clientHeight || 260 });
+const zoneAEl = document.createElement('div');
+zoneAEl.className = 'phys-zone';
+zoneAEl.style.cssText = 'left:20px; top:20px; width:170px; height:170px; border-radius:50%; display:flex; align-items:center; justify-content:center;';
+zoneAEl.innerHTML = '<span class="phys-zone-label">A</span><span style="font-family:var(--font-mono); font-size:0.85rem; text-align:center;">{2, 3, 5, 7}</span>';
+memberStageEl.appendChild(zoneAEl);
+const zoneA = mStage.addZone({
+    test: (x, y) => {
+        const c = memberStageEl.getBoundingClientRect();
+        const r = zoneAEl.getBoundingClientRect();
+        const cx = r.left - c.left + r.width / 2, cy = r.top - c.top + r.height / 2, rad = r.width / 2;
+        return (x - cx) ** 2 + (y - cy) ** 2 <= rad * rad;
+    },
+    el: zoneAEl
+});
+const mSlots = {};
+for (let n = 0; n <= 10; n++) {
+    const w = memberStageEl.clientWidth || 380;
+    const h = memberStageEl.clientHeight || 260;
+    const x = 230 + Math.random() * Math.max(40, w - 260);
+    const y = 24 + Math.random() * Math.max(40, h - 48);
+    mStage.addToken('n' + n, String(n), { x, y });
+}
+mStage.onDrop((token, zone) => {
+    const n = parseInt(token.label, 10);
+    const belongs = setA.includes(n);
+    const droppedInside = zone === zoneA;
+    const stmt = document.getElementById('memberStatement');
+    stmt.innerHTML = belongs ? `${n} &isin; A` : `${n} &notin; A`;
+    stmt.style.color = belongs ? 'var(--math-accent)' : 'var(--math-accent-2)';
+    if (droppedInside === belongs) {
+        token.el.classList.remove('phys-wrong');
+        token.el.classList.add('phys-correct');
+        if (belongs) {
+            const inCount = mSlots.in = (mSlots.in || 0) + 1;
+            mStage.snapTo(token, 60 + (inCount % 2) * 60, 55 + Math.floor(inCount / 2) * 45);
+        } else {
+            const outCount = mSlots.out = (mSlots.out || 0) + 1;
+            const col = outCount % 5, row = Math.floor(outCount / 5);
+            mStage.snapTo(token, 240 + col * 34, 30 + row * 34);
+        }
+    } else {
+        token.el.classList.remove('phys-correct');
+        token.el.classList.add('phys-wrong');
+        setTimeout(() => token.el.classList.remove('phys-wrong'), 450);
+        mStage.release(token);
+    }
+});
+
+/* ---------- Worked example / exercise ---------- */
+document.getElementById('we-play').addEventListener('click', () => AlgLib.revealSteps('we-steps'));
+AlgLib.revealSteps('we-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

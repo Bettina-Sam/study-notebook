@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>3.4 Algebraic Identities • Algebra • Study Notebook</title>
-<meta name="description" content="(a+b)², (a-b)² and (a+b)(a-b) as areas you can see and adjust with sliders, not just formulas to memorise."/>
+<meta content="(a+b)², (a-b)² and (a+b)(a-b) as areas you can see and adjust with sliders, not just formulas to memorise." name="description"/>
 <link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../../css/article.css" rel="stylesheet"/>
@@ -12,7 +13,7 @@
 <script>
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
-<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -31,7 +32,6 @@
 <i data-lucide="moon" width="16"></i> Theme
 </button>
 </nav>
-
 <section class="hero">
 <div class="text-reveal-wrapper">
 <span class="coming-soon-num">3.4 Algebraic Identities</span>
@@ -42,13 +42,13 @@
 </p>
 </div>
 </section>
-
 <!-- SECTION 1: TILES -->
 <section>
 <div class="split-layout">
 <div class="content-col">
 <h3 class="section-label" style="color: var(--math-accent);">01. Area Tiles</h3>
 <h2>Drag $a$ and $b$</h2>
+<div class="interaction-cue"><strong>Play</strong><span class="cue-copy">Choose an identity, then move the <b>a</b> and <b>b</b> sliders. Watch the tiles resize and connect the changing area to the algebraic expansion.</span></div>
 <div class="identity-tabs" id="idTabs">
 <button class="identity-tab active" data-mode="sum2">(a+b)²</button>
 <button class="identity-tab" data-mode="diff2">(a−b)²</button>
@@ -56,11 +56,11 @@
 </div>
 <div class="sim-controls">
 <div class="slider-group">
-<label>$a =$ (<span id="val-a" class="value-readout">5</span>)</label>
+<label>$a =$ (<span class="value-readout" id="val-a">5</span>)</label>
 <input id="input-a" max="8" min="3" step="1" type="range" value="5"/>
 </div>
 <div class="slider-group">
-<label>$b =$ (<span id="val-b" class="value-readout">3</span>)</label>
+<label>$b =$ (<span class="value-readout" id="val-b">3</span>)</label>
 <input id="input-b" max="7" min="1" step="1" type="range" value="3"/>
 </div>
 </div>
@@ -79,7 +79,6 @@
 </div>
 </div>
 </section>
-
 <!-- WORKED EXAMPLE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -98,7 +97,6 @@
 </div>
 </div>
 </section>
-
 <!-- EXERCISE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -126,17 +124,14 @@
 </div>
 </div>
 </section>
-
-<div class="divider"></div>
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 97–102</span><h2>Identity = true for every allowed value</h2><div class="formula-strip"><span class="formula-pill">(a+b)²=a²+2ab+b²</span><span class="formula-pill">(a−b)²=a²−2ab+b²</span><span class="formula-pill">(a+b)(a−b)=a²−b²</span><span class="formula-pill">(x+a)(x+b)=x²+(a+b)x+ab</span></div><div class="tb-example"><div class="head">Textbook Example 3.16</div><div class="body"><b>Expand expressions using familiar identities.</b><div style="margin-top:.65rem">The examples show how to identify the role of a and b before substitution, rather than multiplying blindly.</div></div></div><h2>3.4.1 Expansion of a Trinomial</h2><p><b>(a+b+c)² = a²+b²+c²+2ab+2bc+2ca.</b> The textbook derives this by treating (a+b) as one term and c as the other, then verifies sign variants in a Progress Check.</p><div class="tb-example"><div class="head">Textbook Example 3.17–3.19</div><div class="body"><b>Expand signed trinomials and find a square’s area.</b><div style="margin-top:.65rem">The worked problems explicitly substitute the three terms into the trinomial identity and carefully preserve their signs.</div></div></div><h2>3.4.2 Product of Three Binomials</h2><p>(x+a)(x+b)(x+c)=x³+(a+b+c)x²+(ab+bc+ca)x+abc.</p><h2>3.4.3 Cubic Identities</h2><div class="formula-strip"><span class="formula-pill">(x+y)³=x³+3x²y+3xy²+y³</span><span class="formula-pill">(x−y)³=x³−3x²y+3xy²−y³</span><span class="formula-pill">x³+y³+z³−3xyz=(x+y+z)(x²+y²+z²−xy−yz−zx)</span></div><div class="tb-callout note"><span class="tb-label">Textbook Note</span>If x+y+z=0, then x³+y³+z³=3xyz.</div><div class="tb-example"><div class="head">Textbook Example 3.20–3.23</div><div class="body"><b>Expand products of three binomials and evaluate cube expressions.</b><div style="margin-top:.65rem">The final example recognizes 10−15+5=0, so the special identity gives the value immediately.</div></div></div><p></p></div></section><div class="divider"></div>
 <section style="min-height:auto; padding-top:0;">
 <div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
 <a class="back-link" href="../remainder-theorem/">← 3.3 Remainder Theorem</a>
 <a class="back-link" href="../factorisation/">Next: Factorisation →</a>
 </div>
 </section>
-
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
-
 <script src="../../../../../js/common.js"></script>
 <script src="../../../../../js/algebra-lib.js"></script>
 <script>

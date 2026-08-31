@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 1.5 • Set Language • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 1.5 — distributive property and both De Morgan's laws."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 1.5</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Distributive &amp; De Morgan's</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">11 questions, straight from the textbook — with live Venn comparators.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1100px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-1-1/">1.1</a>
+<a class="ex-set-pill" href="../exercise-1-2/">1.2</a>
+<a class="ex-set-pill" href="../exercise-1-3/">1.3</a>
+<a class="ex-set-pill" href="../exercise-1-4/">1.4</a>
+<span class="ex-set-pill current">1.5</span>
+<a class="ex-set-pill" href="../exercise-1-6/">1.6</a>
+<a class="ex-set-pill" href="../exercise-1-7/">1.7</a>
+</div>
+
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span>Using $A=\{1,2,3,4,5\}$, $B=\{3,4,5,6,7\}$, $C=\{5,6,7,8,9\}$, $U=\{1,...,9\}$, find:</span>
+<div class="ex-question">(i) $A-B$ (ii) $B-C$ (iii) $A\cup B$ (iv) $A\cap B$ (v) $(B\cap C)'$ (vi) $A-(B\cup C)$ (vii) $A-(B\cap C)$</div>
+<div class="ex-note" style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">(The textbook gives these sets via a diagram — this is an equivalent example set to work through the same idea.)</div>
+<div class="venn-controls" id="q1Controls">
+<button class="venn-op-btn" data-key="ab">A−B</button>
+<button class="venn-op-btn" data-key="bc">B−C</button>
+<button class="venn-op-btn" data-key="aub">A∪B</button>
+<button class="venn-op-btn" data-key="anb">A∩B</button>
+<button class="venn-op-btn" data-key="notbc">(B∩C)′</button>
+<button class="venn-op-btn" data-key="aminusbuc">A−(B∪C)</button>
+<button class="venn-op-btn" data-key="aminusbnc">A−(B∩C)</button>
+</div>
+<div class="venn-stage" id="q1Venn"></div>
+<div class="venn-result" id="q1Result"></div>
+<div class="check-row">
+<span>(vi) A−(B∪C) =</span><input class="mini-input" id="q1a6" style="width:80px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q1c6">Check</button><span class="check-result" id="q1r6"></span>
+</div>
+<div class="check-row">
+<span>(vii) A−(B∩C) =</span><input class="mini-input" id="q1a7" style="width:140px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q1c7">Check</button><span class="check-result" id="q1r7"></span>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q1Answer">
+(i) $\{1,2\}$ (ii) $\{3,4\}$ (iii) $\{1,2,3,4,5,6,7\}$ (iv) $\{3,4,5\}$ (v) $B\cap C=\{5,6,7\}$, so $(B\cap C)'=\{1,2,3,4,8,9\}$<br/>
+(vi) $B\cup C=\{3,...,9\}$, so $A-(B\cup C)=\{1,2\}$ (vii) $A-(B\cap C)=\{1,2,3,4\}$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q2">
+<span class="ex-label"><span class="ex-q-num">Q2</span>$K=\{a,b,d,e,f\}$, $L=\{b,c,d,g\}$, $M=\{a,b,c,d,h\}$. Verify the distributive laws.</span>
+<div class="ex-question">(i) $K\cap(L\cup M)$ &nbsp; (ii) $K\cup(L\cap M)$ &nbsp; (iii) $(K\cap L)\cup(K\cap M)$ &nbsp; (iv) $(K\cup L)\cap(K\cup M)$</div>
+<div class="venn-controls" id="q2LawPicker">
+<button class="venn-op-btn active" data-law="inter">Law: K∩(L∪M) = (K∩L)∪(K∩M)</button>
+<button class="venn-op-btn" data-law="union">Law: K∪(L∩M) = (K∪L)∩(K∪M)</button>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="q2Play">▶ Play law steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q2LabelL">K ∩ (L ∪ M)</div><div class="venn-stage" id="q2VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q2LabelR">(K ∩ L) ∪ (K ∩ M)</div><div class="venn-stage" id="q2VennR"></div></div>
+</div>
+<div class="venn-result" id="q2Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Result of the law currently selected =</span>
+<input class="mini-input" id="q2Ans" style="width:150px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q2c1">Check</button><span class="check-result" id="q2r1"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q2Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q2Hint">You should find (i) = (iii), and (ii) = (iv) — that's exactly what "distributive" means.</div>
+<div class="exercise-panel answer-panel" id="q2Answer">
+$L\cup M=\{a,b,c,d,g,h\}$, $L\cap M=\{b,c,d\}$.<br/>
+(i) $K\cap(L\cup M)=\{a,b,d\}$ &nbsp; (ii) $K\cup(L\cap M)=\{a,b,c,d,e,f\}$<br/>
+(iii) $K\cap L=\{b,d\}$, $K\cap M=\{a,b,d\}$, union $=\{a,b,d\}$ — matches (i) ✓<br/>
+(iv) $K\cup L=\{a,b,c,d,e,f,g\}$, $K\cup M=\{a,b,c,d,e,f,h\}$, intersection $=\{a,b,c,d,e,f\}$ — matches (ii) ✓
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>$A=\{x:x\in Z,-2<x\le4\}$, $B=\{x:x\in W,x\le5\}$, $C=\{-4,-1,0,2,3,4\}$. Verify $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$.</span>
+<div class="btn-row"><button class="btn btn-primary" id="q3Play">▶ Play law steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q3LabelL">A ∩ (B ∪ C)</div><div class="venn-stage" id="q3VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q3LabelR">(A ∩ B) ∪ (A ∩ C)</div><div class="venn-stage" id="q3VennR"></div></div>
+</div>
+<div class="venn-result" id="q3Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Final set (both sides) =</span>
+<input class="mini-input" id="q3Ans" style="width:180px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q3c1">Check</button><span class="check-result" id="q3r1"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-secondary" data-reveal="q3Steps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="q3Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q3Steps">
+<div class="step-flow" id="q3Steps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">A = {−1,0,1,2,3,4}, B = {0,1,2,3,4,5}</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">B∪C = {−4,−1,0,1,2,3,4,5}, so A∩(B∪C) = {−1,0,1,2,3,4}</div></div>
+<div class="step-item step-in"><span class="step-num">3</span><div class="step-body">A∩B = {0,1,2,3,4}, A∩C = {−1,0,2,3,4}, union = {−1,0,1,2,3,4}</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="q3Answer">Both sides equal $\{-1,0,1,2,3,4\}$ — verified.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card stub-question" id="q4">
+<span class="ex-label"><span class="ex-q-num">Q4</span>Verify $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$ using Venn diagrams.</span>
+<div class="ex-question">A general (no specific numbers) drawing exercise.</div>
+<div class="stub-note">The textbook figure for this question isn't reproduced here — no specific sets are given, so the demo below uses an illustrative example ($A=\{1,2,3,4\}$, $B=\{3,4,5,6\}$, $C=\{4,6,7,8\}$) to show the same law in action.</div>
+<div class="btn-row"><button class="btn btn-primary" id="q4Play">▶ Play law steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q4LabelL">A ∩ (B ∪ C)</div><div class="venn-stage" id="q4VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q4LabelR">(A ∩ B) ∪ (A ∩ C)</div><div class="venn-stage" id="q4VennR"></div></div>
+</div>
+<div class="venn-result" id="q4Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q4Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q4Answer">Press Play above and watch both sides shade to the same region — that visual match, for any $A,B,C$ you choose, is what "Verify using Venn diagrams" is asking for. See the Properties of Set Operations module's Distributive Property section for a fully worked step-by-step version too.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q4','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q5">
+<span class="ex-label"><span class="ex-q-num">Q5</span>$A=\{b,c,e,g,h\}$, $B=\{a,c,d,g,i\}$, $C=\{a,d,e,g,h\}$. Show $A-(B\cup C)=(A-B)\cap(A-C)$.</span>
+<div class="btn-row"><button class="btn btn-primary" id="q5Play">▶ Play law steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q5LabelL">A − (B ∪ C)</div><div class="venn-stage" id="q5VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q5LabelR">(A − B) ∩ (A − C)</div><div class="venn-stage" id="q5VennR"></div></div>
+</div>
+<div class="venn-result" id="q5Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Final set (both sides) =</span>
+<input class="mini-input" id="q5Ans" style="width:90px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q5c1">Check</button><span class="check-result" id="q5r1"></span>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q5Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q5Answer">
+$B\cup C=\{a,c,d,e,g,h,i\}$, so $A-(B\cup C)=\{b\}$.<br/>
+$A-B=\{b,e,h\}$, $A-C=\{b,c\}$, intersection $=\{b\}$ — both sides equal $\{b\}$, verified.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q5','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q6">
+<span class="ex-label"><span class="ex-q-num">Q6</span>$A=\{x:x=6n,n\in W,n<6\}$, $B=\{x:x=2n,n\in N,2<n\le9\}$, $C=\{x:x=3n,n\in N,4\le n<10\}$. Show $A-(B\cup C)=(A-B)\cap(A-C)$.</span>
+<div class="btn-row"><button class="btn btn-primary" id="q6Play">▶ Play law steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q6LabelL">A − (B ∪ C)</div><div class="venn-stage" id="q6VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q6LabelR">(A − B) ∩ (A − C)</div><div class="venn-stage" id="q6VennR"></div></div>
+</div>
+<div class="venn-result" id="q6Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Final set (both sides) =</span>
+<input class="mini-input" id="q6Ans" style="width:100px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q6c1">Check</button><span class="check-result" id="q6r1"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q6Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q6Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q6Hint">A = {0,6,12,18,24,30}. B = {6,8,10,12,14,16,18}. C = {12,15,18,21,24,27}.</div>
+<div class="exercise-panel answer-panel" id="q6Answer">
+$B\cup C=\{6,8,10,12,14,15,16,18,21,24,27\}$, so $A-(B\cup C)=\{0,30\}$.<br/>
+$A-B=\{0,24,30\}$, $A-C=\{0,6,30\}$, intersection $=\{0,30\}$ — both sides equal $\{0,30\}$, verified.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q6','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q7">
+<span class="ex-label"><span class="ex-q-num">Q7</span>$A=\{-2,0,1,3,5\}$, $B=\{-1,0,2,5,6\}$, $C=\{-1,2,5,6,7\}$. Show $A-(B\cup C)=(A-B)\cap(A-C)$.</span>
+<div class="btn-row"><button class="btn btn-primary" id="q7Play">▶ Play law steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q7LabelL">A − (B ∪ C)</div><div class="venn-stage" id="q7VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q7LabelR">(A − B) ∩ (A − C)</div><div class="venn-stage" id="q7VennR"></div></div>
+</div>
+<div class="venn-result" id="q7Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Final set (both sides) =</span>
+<input class="mini-input" id="q7Ans" style="width:120px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q7c1">Check</button><span class="check-result" id="q7r1"></span>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q7Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q7Answer">
+$B\cup C=\{-1,0,2,5,6,7\}$, so $A-(B\cup C)=\{-2,1,3\}$.<br/>
+$A-B=\{-2,1,3\}$, $A-C=\{-2,0,1,3\}$, intersection $=\{-2,1,3\}$ — both sides equal $\{-2,1,3\}$, verified.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q7','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card stub-question" id="q8">
+<span class="ex-label"><span class="ex-q-num">Q8</span>Verify $A-(B\cup C)=(A-B)\cap(A-C)$ for three fraction/index-defined sets $A$, $B$, $C$ (as printed in the textbook).</span>
+<div class="ex-question">A couple of exponents in this particular question didn't scan cleanly from the source textbook page. Work it exactly like Q5–Q7 above: compute $B\cup C$, subtract from $A$, then separately compute $A-B$ and $A-C$ and intersect — the two results should match.</div>
+<div class="stub-note">The exact set definitions for this question could not be read cleanly from the source textbook page — grab your printed copy for the precise numbers. The demo below uses a placeholder example so you can rehearse the method while you find the real one.</div>
+<div class="btn-row"><button class="btn btn-primary" id="q8Play">▶ Play law steps (placeholder example)</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q8LabelL">A − (B ∪ C)</div><div class="venn-stage" id="q8VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q8LabelR">(A − B) ∩ (A − C)</div><div class="venn-stage" id="q8VennR"></div></div>
+</div>
+<div class="venn-result" id="q8Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q8Hint">Hint</button></div>
+<div class="exercise-panel" id="q8Hint">Grab your printed textbook copy of this question for the exact set definitions, then reuse the method from Q5–Q7 above.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q8','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card stub-question" id="q9">
+<span class="ex-label"><span class="ex-q-num">Q9</span>Verify $A-(B\cup C)=(A-B)\cap(A-C)$ using Venn diagrams.</span>
+<div class="stub-note">No specific sets are printed for this question (it's a general "draw it and check" exercise, and the original figure isn't reproduced here) — the demo below uses an illustrative example to walk through the same law.</div>
+<div class="btn-row"><button class="btn btn-primary" id="q9Play">▶ Play law steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q9LabelL">A − (B ∪ C)</div><div class="venn-stage" id="q9VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q9LabelR">(A − B) ∩ (A − C)</div><div class="venn-stage" id="q9VennR"></div></div>
+</div>
+<div class="venn-result" id="q9Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q9Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q9Answer">Press Play and watch both sides land on the same shaded region. See the De Morgan's Laws module — it walks through exactly this identity with a fully worked numeric example (Example 1.24).</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q9','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q10">
+<span class="ex-label"><span class="ex-q-num">Q10</span>$U=\{4,7,8,10,11,12,15,16\}$, $A=\{7,8,11,12\}$, $B=\{4,8,12,15\}$. Verify De Morgan's Laws for complementation.</span>
+<div class="venn-controls" id="q10Controls">
+<button class="venn-op-btn" data-op="not-union">(A∪B)′ = A′∩B′</button>
+<button class="venn-op-btn" data-op="not-inter">(A∩B)′ = A′∪B′</button>
+</div>
+<div class="venn-stage" id="q10Venn"></div>
+<div class="venn-result" id="q10Result"></div>
+<div class="check-row">
+<span>(A∪B)′ =</span><input class="mini-input" id="q10a1" style="width:90px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q10c1">Check</button><span class="check-result" id="q10r1"></span>
+</div>
+<div class="check-row">
+<span>(A∩B)′ =</span><input class="mini-input" id="q10a2" style="width:170px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q10c2">Check</button><span class="check-result" id="q10r2"></span>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q10Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q10Answer">
+$A\cup B=\{4,7,8,11,12,15\}$, so $(A\cup B)'=\{10,16\}$. $A'=\{4,10,15,16\}$, $B'=\{7,10,11,16\}$, so $A'\cap B'=\{10,16\}$ ✓<br/>
+$A\cap B=\{8,12\}$, so $(A\cap B)'=\{4,7,10,11,15,16\}$. $A'\cup B'=\{4,7,10,11,15,16\}$ ✓ Both laws verified.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q10','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card stub-question" id="q11">
+<span class="ex-label"><span class="ex-q-num">Q11</span>Verify $(A\cup B)'=A'\cap B'$ using Venn diagrams.</span>
+<div class="stub-note">No specific sets are printed for this question (a general "draw it" exercise) and the original figure isn't reproduced here — the interactive diagram below uses an illustrative universal set so you can click through the identity yourself.</div>
+<div class="venn-controls" id="q11Controls">
+<button class="venn-op-btn" data-op="not-union">(A∪B)′ [= A′∩B′]</button>
+<button class="venn-op-btn" data-op="not-inter">(A∩B)′ [= A′∪B′]</button>
+</div>
+<div class="venn-stage" id="q11Venn"></div>
+<div class="venn-result" id="q11Result"></div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q11Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q11Answer">Both buttons above shade using the exact same rule internally — that a single shaded picture answers both "(A∪B)′" and "A′∩B′" at once is the law itself. Open the De Morgan's Laws module for the fully worked write-up.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-5-q11','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-1-4/">← Exercise 1.4</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-1-6/">Next: Exercise 1.6 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/venn-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    const base = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.5 Question ";
+    const tail = ". Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    const qs = {
+        'ex1-5-q1': "1: A={1,2,3,4,5}, B={3,4,5,6,7}, C={5,6,7,8,9}, U={1,...,9}. Find (i) A-B (ii) B-C (iii) A∪B (iv) A∩B (v) (B∩C)' (vi) A-(B∪C) (vii) A-(B∩C)",
+        'ex1-5-q2': "2: K={a,b,d,e,f}, L={b,c,d,g}, M={a,b,c,d,h}. Verify the distributive laws K∩(L∪M)=(K∩L)∪(K∩M) and K∪(L∩M)=(K∪L)∩(K∪M)",
+        'ex1-5-q3': "3: A={x:x∈Z,-2<x≤4}, B={x:x∈W,x≤5}, C={-4,-1,0,2,3,4}. Verify A∩(B∪C)=(A∩B)∪(A∩C)",
+        'ex1-5-q4': "4: Verify A∩(B∪C)=(A∩B)∪(A∩C) using Venn diagrams (general, no specific sets given)",
+        'ex1-5-q5': "5: A={b,c,e,g,h}, B={a,c,d,g,i}, C={a,d,e,g,h}. Show A-(B∪C)=(A-B)∩(A-C)",
+        'ex1-5-q6': "6: A={x:x=6n,n∈W,n<6}, B={x:x=2n,n∈N,2<n≤9}, C={x:x=3n,n∈N,4≤n<10}. Show A-(B∪C)=(A-B)∩(A-C)",
+        'ex1-5-q7': "7: A={-2,0,1,3,5}, B={-1,0,2,5,6}, C={-1,2,5,6,7}. Show A-(B∪C)=(A-B)∩(A-C)",
+        'ex1-5-q8': "8: Verify A-(B∪C)=(A-B)∩(A-C) for three sets defined with fractions/indices (exact numbers not available from my source — help me understand the method with a placeholder example)",
+        'ex1-5-q9': "9: Verify A-(B∪C)=(A-B)∩(A-C) using Venn diagrams (general, no specific sets given)",
+        'ex1-5-q10': "10: U={4,7,8,10,11,12,15,16}, A={7,8,11,12}, B={4,8,12,15}. Verify De Morgan's Laws for complementation: (A∪B)'=A'∩B' and (A∩B)'=A'∪B'",
+        'ex1-5-q11': "11: Verify (A∪B)'=A'∩B' using Venn diagrams (general, no specific sets given)"
+    };
+    if (qs[topic]) prompt = base + qs[topic] + tail;
+    launchAIPrompt(model, prompt);
+}
+
+/* Generic wiring for a threeSet diagram driven by custom predicate buttons (data-key) */
+function wireCustom3(controlsId, diagram, resultId, opsMap) {
+    document.querySelectorAll('#' + controlsId + ' [data-key]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('#' + controlsId + ' [data-key]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const spec = opsMap[btn.dataset.key];
+            diagram.highlight(spec.fn);
+            const r = diagram.result(spec.fn, spec.label);
+            document.getElementById(resultId).innerHTML = `<b>${r.label}</b> = ${r.text} <span class="venn-count">n = ${r.n}</span>`;
+        });
+    });
+}
+
+/* Generic staged two-side law demo, reused for every distributive / De Morgan set-difference question */
+function runLawDemo(left, right, cfg, leftLabelEl, rightLabelEl, matchEl) {
+    const delay = 900;
+    cfg.leftSteps.forEach((s, i) => setTimeout(() => {
+        left.highlight(s.fn);
+        document.getElementById(leftLabelEl).textContent = s.label;
+    }, i * delay));
+    cfg.rightSteps.forEach((s, i) => setTimeout(() => {
+        right.highlight(s.fn);
+        document.getElementById(rightLabelEl).textContent = s.label;
+    }, i * delay));
+    const steps = Math.max(cfg.leftSteps.length, cfg.rightSteps.length);
+    setTimeout(() => {
+        const lr = left.result(cfg.finalFn, cfg.leftFinalLabel);
+        const rr = right.result(cfg.finalFn, cfg.rightFinalLabel);
+        const match = ExLib.sameSet(lr.set, rr.set);
+        document.getElementById(matchEl).innerHTML = match
+            ? `<span class="check-yes">MATCH ✓ — both equal ${lr.text || '{ }'}</span>`
+            : '<span class="check-no">Not matching</span>';
+    }, steps * delay + 150);
+}
+
+/* ---------- Q1 ---------- */
+const q1D = VennLib.threeSet(document.getElementById('q1Venn'), {
+    a: ['1','2','3','4','5'], b: ['3','4','5','6','7'], c: ['5','6','7','8','9'],
+    universe: ['1','2','3','4','5','6','7','8','9'], labelA: 'A', labelB: 'B', labelC: 'C'
+});
+wireCustom3('q1Controls', q1D, 'q1Result', {
+    ab: { fn: (A,B,C) => A && !B, label: 'A−B' },
+    bc: { fn: (A,B,C) => B && !C, label: 'B−C' },
+    aub: { fn: (A,B,C) => A || B, label: 'A∪B' },
+    anb: { fn: (A,B,C) => A && B, label: 'A∩B' },
+    notbc: { fn: (A,B,C) => !(B && C), label: '(B∩C)′' },
+    aminusbuc: { fn: (A,B,C) => A && !(B || C), label: 'A−(B∪C)' },
+    aminusbnc: { fn: (A,B,C) => A && !(B && C), label: 'A−(B∩C)' }
+});
+document.getElementById('q1c6').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q1a6'), ['1','2'], document.getElementById('q1r6')));
+document.getElementById('q1c7').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q1a7'), ['1','2','3','4'], document.getElementById('q1r7')));
+
+/* ---------- Q2: distributive laws with a law-picker ---------- */
+const q2Data = { a: ['a','b','d','e','f'], b: ['b','c','d','g'], c: ['a','b','c','d','h'], labelA: 'K', labelB: 'L', labelC: 'M' };
+const q2Left = VennLib.threeSet(document.getElementById('q2VennL'), q2Data);
+const q2Right = VennLib.threeSet(document.getElementById('q2VennR'), q2Data);
+const q2Laws = {
+    inter: {
+        leftSteps: [{ label: 'L∪M', fn: (K,L,M) => L || M }, { label: 'K∩(L∪M)', fn: (K,L,M) => K && (L || M) }],
+        rightSteps: [{ label: 'K∩L', fn: (K,L,M) => K && L }, { label: '(K∩L)∪(K∩M)', fn: (K,L,M) => (K && L) || (K && M) }],
+        finalFn: (K,L,M) => K && (L || M), leftFinalLabel: 'K∩(L∪M)', rightFinalLabel: '(K∩L)∪(K∩M)',
+        labels: ['K ∩ (L ∪ M)', '(K ∩ L) ∪ (K ∩ M)'], answer: ['a','b','d']
+    },
+    union: {
+        leftSteps: [{ label: 'L∩M', fn: (K,L,M) => L && M }, { label: 'K∪(L∩M)', fn: (K,L,M) => K || (L && M) }],
+        rightSteps: [{ label: 'K∪L', fn: (K,L,M) => K || L }, { label: '(K∪L)∩(K∪M)', fn: (K,L,M) => (K || L) && (K || M) }],
+        finalFn: (K,L,M) => K || (L && M), leftFinalLabel: 'K∪(L∩M)', rightFinalLabel: '(K∪L)∩(K∪M)',
+        labels: ['K ∪ (L ∩ M)', '(K ∪ L) ∩ (K ∪ M)'], answer: ['a','b','c','d','e','f']
+    }
+};
+let q2Selected = 'inter';
+document.getElementById('q2LawPicker').querySelectorAll('[data-law]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('q2LawPicker').querySelectorAll('[data-law]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        q2Selected = btn.dataset.law;
+        document.getElementById('q2LabelL').textContent = q2Laws[q2Selected].labels[0];
+        document.getElementById('q2LabelR').textContent = q2Laws[q2Selected].labels[1];
+        document.getElementById('q2Match').textContent = '';
+        q2Left.clear(); q2Right.clear();
+    });
+});
+document.getElementById('q2Play').addEventListener('click', () => runLawDemo(q2Left, q2Right, q2Laws[q2Selected], 'q2LabelL', 'q2LabelR', 'q2Match'));
+document.getElementById('q2c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q2Ans'), q2Laws[q2Selected].answer, document.getElementById('q2r1')));
+
+/* ---------- Distributive/De-Morgan single-law demo builder (Q3,4,5,6,7,8,9) ---------- */
+function distributiveDemo(leftEl, rightEl, data) {
+    const left = VennLib.threeSet(document.getElementById(leftEl), data);
+    const right = VennLib.threeSet(document.getElementById(rightEl), data);
+    return { left, right };
+}
+function demorganDiffCfg(labelA, labelB, labelC) {
+    return {
+        leftSteps: [{ label: `${labelB}∪${labelC}`, fn: (A,B,C) => B || C }, { label: `${labelA}−(${labelB}∪${labelC})`, fn: (A,B,C) => A && !(B || C) }],
+        rightSteps: [{ label: `${labelA}−${labelB}`, fn: (A,B,C) => A && !B }, { label: `(${labelA}−${labelB})∩(${labelA}−${labelC})`, fn: (A,B,C) => A && !B && !C }],
+        finalFn: (A,B,C) => A && !B && !C, leftFinalLabel: `A−(B∪C)`, rightFinalLabel: `(A−B)∩(A−C)`
+    };
+}
+function distributiveCfg() {
+    return {
+        leftSteps: [{ label: 'B∪C', fn: (A,B,C) => B || C }, { label: 'A∩(B∪C)', fn: (A,B,C) => A && (B || C) }],
+        rightSteps: [{ label: 'A∩B', fn: (A,B,C) => A && B }, { label: '(A∩B)∪(A∩C)', fn: (A,B,C) => (A && B) || (A && C) }],
+        finalFn: (A,B,C) => A && (B || C), leftFinalLabel: 'A∩(B∪C)', rightFinalLabel: '(A∩B)∪(A∩C)'
+    };
+}
+
+/* Q3 */
+const q3D = distributiveDemo('q3VennL', 'q3VennR', { a: ['-1','0','1','2','3','4'], b: ['0','1','2','3','4','5'], c: ['-4','-1','0','2','3','4'], labelA: 'A', labelB: 'B', labelC: 'C' });
+document.getElementById('q3Play').addEventListener('click', () => runLawDemo(q3D.left, q3D.right, distributiveCfg(), 'q3LabelL', 'q3LabelR', 'q3Match'));
+document.getElementById('q3c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q3Ans'), ['-1','0','1','2','3','4'], document.getElementById('q3r1')));
+
+/* Q4 — stub (illustrative sets) */
+const q4D = distributiveDemo('q4VennL', 'q4VennR', { a: ['1','2','3','4'], b: ['3','4','5','6'], c: ['4','6','7','8'], labelA: 'A', labelB: 'B', labelC: 'C' });
+document.getElementById('q4Play').addEventListener('click', () => runLawDemo(q4D.left, q4D.right, distributiveCfg(), 'q4LabelL', 'q4LabelR', 'q4Match'));
+
+/* Q5 */
+const q5D = distributiveDemo('q5VennL', 'q5VennR', { a: ['b','c','e','g','h'], b: ['a','c','d','g','i'], c: ['a','d','e','g','h'], labelA: 'A', labelB: 'B', labelC: 'C' });
+document.getElementById('q5Play').addEventListener('click', () => runLawDemo(q5D.left, q5D.right, demorganDiffCfg('A','B','C'), 'q5LabelL', 'q5LabelR', 'q5Match'));
+document.getElementById('q5c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q5Ans'), ['b'], document.getElementById('q5r1')));
+
+/* Q6 */
+const q6D = distributiveDemo('q6VennL', 'q6VennR', { a: ['0','6','12','18','24','30'], b: ['6','8','10','12','14','16','18'], c: ['12','15','18','21','24','27'], labelA: 'A', labelB: 'B', labelC: 'C' });
+document.getElementById('q6Play').addEventListener('click', () => runLawDemo(q6D.left, q6D.right, demorganDiffCfg('A','B','C'), 'q6LabelL', 'q6LabelR', 'q6Match'));
+document.getElementById('q6c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q6Ans'), ['0','30'], document.getElementById('q6r1')));
+
+/* Q7 */
+const q7D = distributiveDemo('q7VennL', 'q7VennR', { a: ['-2','0','1','3','5'], b: ['-1','0','2','5','6'], c: ['-1','2','5','6','7'], labelA: 'A', labelB: 'B', labelC: 'C' });
+document.getElementById('q7Play').addEventListener('click', () => runLawDemo(q7D.left, q7D.right, demorganDiffCfg('A','B','C'), 'q7LabelL', 'q7LabelR', 'q7Match'));
+document.getElementById('q7c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q7Ans'), ['-2','1','3'], document.getElementById('q7r1')));
+
+/* Q8 — stub (placeholder example, exact textbook numbers unavailable) */
+const q8D = distributiveDemo('q8VennL', 'q8VennR', { a: ['1','2','3','4','5'], b: ['3','4','6'], c: ['4','5','7'], labelA: 'A', labelB: 'B', labelC: 'C' });
+document.getElementById('q8Play').addEventListener('click', () => runLawDemo(q8D.left, q8D.right, demorganDiffCfg('A','B','C'), 'q8LabelL', 'q8LabelR', 'q8Match'));
+
+/* Q9 — stub (generic, no sets given) */
+const q9D = distributiveDemo('q9VennL', 'q9VennR', { a: ['1','2','3','5','6'], b: ['2','3','4'], c: ['3','4','7'], labelA: 'A', labelB: 'B', labelC: 'C' });
+document.getElementById('q9Play').addEventListener('click', () => runLawDemo(q9D.left, q9D.right, demorganDiffCfg('A','B','C'), 'q9LabelL', 'q9LabelR', 'q9Match'));
+
+/* ---------- Q10: De Morgan complementation (two sets) ---------- */
+const q10D = VennLib.twoSet(document.getElementById('q10Venn'), {
+    a: ['7','8','11','12'], b: ['4','8','12','15'], universe: ['4','7','8','10','11','12','15','16'], labelA: 'A', labelB: 'B'
+});
+VennLib.wireControls(document.getElementById('q10Controls'), q10D, document.getElementById('q10Result'));
+document.getElementById('q10c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q10a1'), ['10','16'], document.getElementById('q10r1')));
+document.getElementById('q10c2').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q10a2'), ['4','7','10','11','15','16'], document.getElementById('q10r2')));
+
+/* ---------- Q11 — stub (generic universe) ---------- */
+const q11D = VennLib.twoSet(document.getElementById('q11Venn'), {
+    a: ['1','2','3','4'], b: ['3','4','5','6'], universe: ['1','2','3','4','5','6','7','8'], labelA: 'A', labelB: 'B'
+});
+VennLib.wireControls(document.getElementById('q11Controls'), q11D, document.getElementById('q11Result'));
+
+['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

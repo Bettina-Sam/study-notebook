@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Measurement • Class 7 Science • Study Notebook</title>
+<meta name="description" content="Class 7 Science Unit 1: fundamental and derived quantities, area, volume, density and measuring very large distances — explored visually."/>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../css/math-chapter-visuals.css" rel="stylesheet"/>
+<link href="../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html#science7-path">
+<i data-lucide="arrow-left" width="16"></i>
+    Class 7 Science
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Unit 1</span>
+<h1 class="hero-title">Measurement</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    Everything you measure — a plot of land, a bottle of water, a block of iron, even the distance to a star
+    — comes down to a handful of ideas: what kind of quantity it is, how its unit is built, and how to work
+    it out when the shape refuses to be simple. This unit builds all of that from scratch.
+</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Start by sorting physical quantities into fundamental and derived. Use that to build up
+area and then volume — for regular shapes with formulae, and irregular ones with a graph sheet or a measuring
+cylinder. Combine mass and volume into density, and finally zoom all the way out to the units astronomers use
+for distances too large for kilometres.</p>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+
+<section class="audit-align-card audit-home-alignment" style="max-width:1180px;margin:0 auto 1.5rem"><div class="audit-kicker">Verified against the 2025 Term-1 textbook</div><h2>Learning Objectives</h2><ul><li>Identify fundamental and derived physical quantities, and their units.</li><li>Obtain units for certain derived quantities.</li><li>Measure the area and volume of regular and irregular shaped objects.</li><li>Convert the volume of objects from cubic metre to litre and vice versa.</li><li>Calculate the density of solids and liquids.</li><li>Define astronomical unit and light year.</li></ul></section><div class="divider"></div>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../js/common.js"></script>
+<script>
+const topics = [
+  ["01","1.1","fundamental-and-derived-quantities/","Fundamental & Derived Quantities","The seven fundamental quantities, and how multiplying or dividing them builds every derived quantity.","fund"],
+  ["02","1.2","area/","Area","Regular shapes solved with a formula; irregular ones like a leaf, counted on a graph sheet.","area"],
+  ["03","1.3","volume/","Volume","Cubes, cuboids, spheres and cylinders — plus liquids, litres, and Archimedes' displacement method.","volume"],
+  ["04","1.4","density/","Density","Why a coin sinks and a log floats: mass packed into volume, and how it decides sinking or floating.","density"],
+  ["05","1.5","measuring-larger-distances/","Measuring Larger Distances","Kilometres run out in space — meet the astronomical unit and the light year.","space"],
+  ["06","Practice","exercises/","Unit Exercises","Textbook-style questions with worked steps and instant checking.","density"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   fund:`<svg ${common}><rect class="tv-accent tv-pulse" x="30" y="30" width="46" height="46" rx="6"/><text x="36" y="58">kg</text><path class="tv-stroke-2" d="M92 53h30m0 0-8-6m8 6-8 6"/><rect class="tv-accent" x="140" y="24" width="40" height="26" rx="4"/><rect class="tv-accent-2" x="140" y="58" width="40" height="26" rx="4"/><text x="195" y="42">m²</text><text x="195" y="76">m³</text></svg>`,
+   area:`<svg ${common}><rect class="tv-accent tv-pulse" x="35" y="28" width="72" height="52"/><g class="tv-ghost"><path d="M45 34h10M45 42h10M45 50h10M45 58h10M45 66h10M45 74h10"/></g><circle class="tv-stroke-2 tv-float" cx="185" cy="54" r="30"/><text x="150" y="98">l×b · πr²</text></svg>`,
+   volume:`<svg ${common}><path class="tv-accent" d="M35 40 75 20 115 40 115 80 75 100 35 80Z"/><path class="tv-accent" d="M35 40 75 60 115 40M75 60v40"/><circle class="tv-stroke-2 tv-nudge" cx="185" cy="55" r="30"/><path d="M185 25v60" class="tv-dash"/><text x="150" y="98">l×b×h</text></svg>`,
+   density:`<svg ${common}><rect x="30" y="20" width="200" height="70" rx="8" class="tv-ghost"/><circle class="tv-accent tv-float" cx="80" cy="72" r="14"/><rect class="tv-accent-2 tv-nudge" x="165" y="30" width="26" height="18" rx="3"/><text x="60" y="100">sink</text><text x="150" y="100">float</text></svg>`,
+   space:`<svg ${common}><circle class="tv-accent tv-pulse" cx="60" cy="55" r="16"/><ellipse class="tv-stroke-2" cx="150" cy="55" rx="80" ry="30" fill="none"/><circle class="tv-fill" cx="230" cy="55" r="5"/><text x="90" y="100">1 AU · 1 light-year</text></svg>`
+  };
+  return v[key]||v.fund;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[2]}">
+    <div class="topic-visual">${topicVisual(t[5])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · ${t[1]}</span>
+      <h3>${t[3]}</h3>
+      <p>${t[4]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

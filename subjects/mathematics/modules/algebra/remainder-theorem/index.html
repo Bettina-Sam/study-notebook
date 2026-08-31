@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>3.3 Remainder Theorem • Algebra • Study Notebook</title>
-<meta name="description" content="Divide by (x − a) without doing the division — the remainder is just P(a). Includes the Factor Theorem."/>
+<meta content="Divide by (x − a) without doing the division — the remainder is just P(a). Includes the Factor Theorem." name="description"/>
 <link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../../css/article.css" rel="stylesheet"/>
@@ -12,7 +13,7 @@
 <script>
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
-<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -31,7 +32,6 @@
 <i data-lucide="moon" width="16"></i> Theme
 </button>
 </nav>
-
 <section class="hero">
 <div class="text-reveal-wrapper">
 <span class="coming-soon-num">3.3 Remainder Theorem</span>
@@ -42,7 +42,6 @@
 </p>
 </div>
 </section>
-
 <!-- SECTION 1: THE THEOREM -->
 <section>
 <div class="split-layout">
@@ -58,8 +57,9 @@
 <div class="formula-rule">If $P(x) \div (x-a)$, remainder $= P(a)$</div>
 </div>
 <div class="sim-controls">
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Change <b>a</b>. Before moving the slider, predict P(a); then compare it with the remainder shown by the visual.</span></div>
 <div class="slider-group">
-<label>Divisor: $(x - a)$, with $a =$ (<span id="val-a" class="value-readout">2</span>)</label>
+<label>Divisor: $(x - a)$, with $a =$ (<span class="value-readout" id="val-a">2</span>)</label>
 <input id="input-a" max="5" min="-5" step="1" type="range" value="2"/>
 </div>
 </div>
@@ -79,7 +79,6 @@
 </div>
 </div>
 </section>
-
 <!-- SECTION 2: FACTOR THEOREM -->
 <section>
 <div class="split-layout">
@@ -93,7 +92,7 @@
 <div class="inline-controls" id="factorChips"></div>
 <div class="etu-card" id="factorResult">
 <span class="etu-tag">Result</span>
-<p style="font-size:0.95rem; margin-bottom:0;" id="factorResultText">Pick a value of $a$ above.</p>
+<p id="factorResultText" style="font-size:0.95rem; margin-bottom:0;">Pick a value of $a$ above.</p>
 </div>
 </div>
 <div class="visual-col">
@@ -101,7 +100,6 @@
 </div>
 </div>
 </section>
-
 <!-- WORKED EXAMPLE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -120,7 +118,6 @@
 </div>
 </div>
 </section>
-
 <!-- EXERCISE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -152,17 +149,14 @@
 </div>
 </div>
 </section>
-
-<div class="divider"></div>
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 92–97</span><h2>Remainder Theorem</h2><p>If a polynomial p(x) of degree at least one is divided by the linear polynomial (x−a), the remainder is <b>p(a)</b>. This gives the remainder without carrying out long division.</p><div class="formula-strip"><span class="formula-pill">divisor x−a → p(a)</span><span class="formula-pill">x+a → p(−a)</span><span class="formula-pill">ax−b → p(b/a)</span><span class="formula-pill">ax+b → p(−b/a)</span></div><div class="tb-example"><div class="head">Textbook Example 3.11–3.12</div><div class="body"><b>Find remainders and prove divisibility without actual division.</b><div style="margin-top:.65rem">The textbook repeatedly finds the zero of the divisor first, substitutes that value into the dividend, and interprets a zero remainder as exact divisibility.</div></div></div><h2>3.3.1 Factor Theorem</h2><p>The Remainder Theorem leads directly to the Factor Theorem: <b>p(a)=0 if and only if (x−a) is a factor of p(x)</b>. The textbook proves both directions using the division algorithm.</p><div class="tb-callout think"><span class="tb-label">Thinking Corner</span>Connect polynomial divisibility with integer divisibility: for integers a≠0 and b, a divides b when b=ax for some integer x.</div><div class="tb-callout progress"><span class="tb-label">Progress Check</span>Complete factor statements such as “(x+3) is a factor of p(x) if p(__)=0” by finding the zero of each proposed divisor.</div><div class="tb-example"><div class="head">Textbook Example 3.13–3.15</div><div class="body"><b>Verify factors and determine an unknown coefficient.</b><div style="margin-top:.65rem">These examples use the factor theorem in both directions, including divisors of the form 3x−2 and finding m when x−2 is a factor.</div></div></div><p></p></div></section><div class="divider"></div>
 <section style="min-height:auto; padding-top:0;">
 <div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
 <a class="back-link" href="../polynomials/">← 3.2 Polynomials</a>
 <a class="back-link" href="../algebraic-identities/">Next: Algebraic Identities →</a>
 </div>
 </section>
-
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
-
 <script src="../../../../../js/common.js"></script>
 <script src="../../../../../js/algebra-lib.js"></script>
 <script>

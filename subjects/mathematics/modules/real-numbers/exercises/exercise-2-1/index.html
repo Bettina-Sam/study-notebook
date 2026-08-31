@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 2.1 • Real Numbers • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 2.1 — locating rationals on the number line and finding rational numbers between two given ones, now interactive."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.ex-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:220px; }
+.check-row{ display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-top:0.7rem; }
+.tile-choice.small-tile{ max-width:320px; }
+</style>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 2.1</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Rational Numbers Between Rationals</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">3 questions from the textbook, with a live number line and instant checking.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+<div class="ex-set-nav">
+<span class="ex-set-pill current">2.1</span>
+<a class="ex-set-pill" href="../exercise-2-2/">2.2</a>
+<a class="ex-set-pill" href="../exercise-2-3/">2.3</a>
+<a class="ex-set-pill" href="../exercise-2-4/">2.4</a>
+</div>
+
+<!-- Q1: which arrow -> number line placement -->
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span>Which arrow best shows the position of $\dfrac{11}{3}$ on the number line?</span>
+<div class="ex-question">$\dfrac{11}{3} = 3.\overline3$. Drag the marker below to where you think $\dfrac{11}{3}$ sits between $-5$ and $5$.</div>
+<div id="q1Line" style="margin-top:0.8rem;"></div>
+<div class="check-result" id="q1Result"></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q1Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q1Hint">Divide $11$ by $3$: it's a bit more than $3$, since $3\times3=9$ and $3\times4=12$.</div>
+<div class="exercise-panel answer-panel" id="q1Answer">$\dfrac{11}{3}=3.\overline3 \approx 3.33$, which lies just to the right of $3$, closer to $3$ than to $4$.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q2: 3 rationals between -7/11 and 2/11 -->
+<div class="exercise-card" id="q2">
+<span class="ex-label"><span class="ex-q-num">Q2</span>Find any three rational numbers between $\dfrac{-7}{11}$ and $\dfrac{2}{11}$.</span>
+<div class="ex-question">Since both fractions already share denominator 11, the simplest approach is to list the integers strictly between $-7$ and $2$ over $11$.</div>
+<div id="q2Line" style="margin-top:0.6rem;"></div>
+<div class="check-row">
+<input class="ex-input" type="text" id="q2Input" placeholder="e.g. -6/11, -5/11, -4/11"/>
+<button class="btn btn-primary" id="q2CheckBtn">Check</button>
+</div>
+<div class="check-result" id="q2Result"></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q2Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q2Hint">Any three of $\frac{-6}{11},\frac{-5}{11},\frac{-4}{11},\frac{-3}{11},\frac{-2}{11},\frac{-1}{11},0,\frac{1}{11}$ will do.</div>
+<div class="exercise-panel answer-panel" id="q2Answer">For example, $\dfrac{-6}{11}, \dfrac{-5}{11}, \dfrac{-4}{11}$ (any three strictly between $\frac{-7}{11}$ and $\frac{2}{11}$ are correct).</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q3: 5 rationals between three pairs -->
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>Find any five rational numbers between (i) $\dfrac14$ and $\dfrac15$ &nbsp; (ii) $0.1$ and $0.11$ &nbsp; (iii) $-1$ and $-2$.</span>
+<div class="ex-question">Use the denseness-property trick (averaging), or common denominators, to generate as many as you like.</div>
+
+<div class="stmt-row" style="margin-top:0.8rem;"><b>(i)</b> Five rationals between $\frac14$ and $\frac15$:
+<div class="check-row"><input class="ex-input" type="text" id="q3i" placeholder="e.g. 21/100, 22/100, ..."/><button class="btn btn-primary" data-check="q3i">Check count</button></div>
+<div class="check-result" id="q3iResult"></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> Five rationals between $0.1$ and $0.11$:
+<div class="check-row"><input class="ex-input" type="text" id="q3ii" placeholder="e.g. 0.101, 0.102, ..."/><button class="btn btn-primary" data-check="q3ii">Check count</button></div>
+<div class="check-result" id="q3iiResult"></div>
+</div>
+<div class="stmt-row"><b>(iii)</b> Five rationals between $-1$ and $-2$:
+<div class="check-row"><input class="ex-input" type="text" id="q3iii" placeholder="e.g. -1.1, -1.2, ..."/><button class="btn btn-primary" data-check="q3iii">Check count</button></div>
+<div class="check-result" id="q3iiiResult"></div>
+</div>
+<p class="rn-mini" style="font-size:0.82rem; color:var(--text-muted); margin-top:0.4rem;">This checker only verifies you gave 5 distinct numbers correctly ordered in the gap (there are infinitely many valid answers) — compare with Show Answer for one sample set.</p>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q3Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q3Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q3Hint">$\frac14=0.25$ and $\frac15=0.2$ — pick five decimals strictly between $0.20$ and $0.25$. For (iii), remember $-2 < -1.9 < \dots < -1$.</div>
+<div class="exercise-panel answer-panel" id="q3Answer">
+(i) $0.21, 0.22, 0.23, 0.24$ and $\frac{9}{40}=0.225$ (any 5 between $0.2$ and $0.25$)<br/>
+(ii) $0.101, 0.102, 0.103, 0.104, 0.105$<br/>
+(iii) $-1.1, -1.2, -1.3, -1.4, -1.5$ (any 5 between $-2$ and $-1$)
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-2-2/">Next: Exercise 2.2 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../../js/token-physics.js"></script>
+<script src="../../../../../../js/number-line-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'q1') prompt = "I am solving Class 9 Mathematics, Chapter 2 Real Numbers, Exercise 2.1 Question 1: Which arrow best shows the position of 11/3 on the number line? Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q2') prompt = "I am solving Class 9 Mathematics, Chapter 2 Real Numbers, Exercise 2.1 Question 2: Find any three rational numbers between -7/11 and 2/11. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q3') prompt = "I am solving Class 9 Mathematics, Chapter 2 Real Numbers, Exercise 2.1 Question 3: Find any five rational numbers between (i) 1/4 and 1/5 (ii) 0.1 and 0.11 (iii) -1 and -2. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    launchAIPrompt(model, prompt);
+}
+
+/* Q1: number line drag placement */
+const q1NL = NumberLineLib.create(document.getElementById('q1Line'), { min: -5, max: 5, height: 120 });
+q1NL.addPoint('q1target', 1.2, {
+  cls: 'numline-drag',
+  label: '11/3?',
+  onChange(v) {
+    const r = document.getElementById('q1Result');
+    if (Math.abs(v - 11/3) < 0.15) {
+      r.textContent = 'Correct position! 11/3 ≈ 3.33.';
+      r.className = 'check-result check-yes';
+    } else {
+      r.textContent = `You're at ${v.toFixed(2)} — 11/3 ≈ 3.33, keep adjusting.`;
+      r.className = 'check-result check-no';
+    }
+  }
+});
+
+/* Q2: number line context + set-answer check */
+const q2NL = NumberLineLib.create(document.getElementById('q2Line'), { min: -1, max: 1, height: 90 });
+q2NL.addPoint('q2a', -7/11, { fixed: true, cls: 'numline-fixed', label: '-7/11' });
+q2NL.addPoint('q2b', 2/11, { fixed: true, cls: 'numline-fixed', label: '2/11' });
+q2NL.markInterval(-7/11, 2/11, 'numline-interval-highlight');
+document.getElementById('q2CheckBtn').addEventListener('click', () => {
+  const raw = document.getElementById('q2Input').value;
+  const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
+  const r = document.getElementById('q2Result');
+  if (parts.length < 3) { r.textContent = 'Enter at least three numbers, separated by commas.'; r.className = 'check-result check-no'; return; }
+  const vals = parts.map(p => { try { const [n,d] = p.split('/').map(Number); return d ? n/d : parseFloat(p); } catch(e) { return NaN; } });
+  const ok = vals.every(v => !isNaN(v) && v > -7/11 && v < 2/11);
+  r.textContent = ok ? 'Correct — all your numbers lie strictly between -7/11 and 2/11!' : 'Not quite — check each number lies strictly between -7/11 (≈ -0.636) and 2/11 (≈ 0.182).';
+  r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+/* Q3: count-based lenient checks */
+const q3Bounds = { q3i: [0.2, 0.25], q3ii: [0.1, 0.11], q3iii: [-2, -1] };
+document.querySelectorAll('[data-check]').forEach(btn => {
+  const id = btn.dataset.check;
+  btn.addEventListener('click', () => {
+    const raw = document.getElementById(id).value;
+    const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
+    const resultEl = document.getElementById(id + 'Result');
+    const [lo, hi] = q3Bounds[id];
+    if (parts.length < 5) { resultEl.textContent = 'Enter at least five numbers, separated by commas.'; resultEl.className = 'check-result check-no'; return; }
+    const vals = parts.map(parseFloat);
+    const uniq = new Set(vals.map(v => v.toFixed(6)));
+    const ok = vals.every(v => !isNaN(v) && v > Math.min(lo,hi) && v < Math.max(lo,hi)) && uniq.size >= 5;
+    resultEl.textContent = ok ? 'Correct — five distinct numbers, all in range!' : `Check each number lies strictly between ${lo} and ${hi}, and that they're distinct.`;
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+  });
+});
+
+/* Q2 word-set style check uses custom above; wire exercise panels */
+['q1','q2','q3'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+
+<script id="rn-second-hint-runtime">
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.exercise-card').forEach((card,idx)=>{const tools=card.querySelector('.exercise-tools');if(!tools||tools.querySelector('.rn-hint2-btn'))return;const panel=document.createElement('div');panel.className='exercise-panel rn-hint2-panel';panel.id=(card.id||('q'+idx))+'StrategyHint';panel.innerHTML='<b>Hint 2 · Strategy:</b> Use the interactive representation on this question to test one step at a time. Translate what you see back into the number rule or algebraic operation before opening the answer.';card.appendChild(panel);const b=document.createElement('button');b.className='btn btn-ghost rn-hint2-btn';b.textContent='Hint 2';b.onclick=()=>panel.classList.toggle('show');const answer=[...tools.querySelectorAll('button')].find(x=>/answer/i.test(x.textContent));tools.insertBefore(b,answer||null);});});
+</script>
+</body>
+</html>

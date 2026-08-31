@@ -8,7 +8,7 @@
 <link href="../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../css/article.css" rel="stylesheet"/>
-<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/><link href="../../../../css/math-chapter-visuals.css" rel="stylesheet"/>
 <script>
     const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -19,7 +19,7 @@
 </script>
 <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
-</head>
+<link href="../../../../css/math-audit-fixes.css" rel="stylesheet"/></head>
 <body>
 <nav class="sticky">
 <div class="nav-bg"></div>
@@ -54,18 +54,20 @@ the constructions (centroid, orthocentre, circumcentre, incentre) that put every
 <div class="topic-grid three-col" id="topicGrid"></div>
 </section>
 
-<div class="divider"></div>
+<section class="audit-align-card audit-home-alignment" style="max-width:1180px;margin:0 auto 1.5rem"><div class="audit-kicker">Verified against the 2025 textbook</div><h2>Learning Outcomes</h2><ul><li>To understand theorems on linear pairs and vertically opposite angles.</li><li>To understand the angle sum property of triangle.</li><li>To understand the properties of quadrilaterals and use them in problem solving.</li><li>To understand, interpret and apply theorems on the chords and the angles subtended by arcs of a circle.</li><li>To understand, interpret and apply theorems on cyclic quadrilaterals.</li><li>To construct and locate centroid, orthocentre, circumcentre and incentre of a triangle.</li></ul><h2 style="margin-top:1rem">ICT Corner — native Study Notebook rebuild</h2><p>Native rebuild target: parallelogram properties with rotate/page controls, plus circle-angle exploration where points/radius move and centre/circumference or same-segment angles are compared.</p></section><div class="divider"></div>
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 
 <script src="../../../../js/common.js"></script>
 <script>
 const topics = [
-  ["01","4.1–4.2","types-of-angles/","Types of Angles","Acute to reflex, complementary, linear pairs, transversals and the triangle angle-sum rule.","angles"],
-  ["02","4.3","quadrilaterals/","Quadrilaterals","Parallelograms, rhombuses, trapeziums and kites — sorted by what their sides, angles and diagonals do.","quad"],
-  ["03","4.4","parts-of-a-circle/","Parts of a Circle","Centre, radius, chord, arc, segment and sector — the vocabulary every circle theorem depends on.","circleparts"],
-  ["04","4.5","chords-of-a-circle/","Properties of Chords","Equal chords, perpendicular bisectors and the angle a chord subtends at the centre.","chords"],
-  ["05","4.6","cyclic-quadrilaterals/","Cyclic Quadrilaterals","Four points on one circle — why opposite angles always add to 180°.","cyclic"],
-  ["06","4.7","practical-geometry/","Practical Geometry","Construct the centroid, orthocentre, circumcentre and incentre of a triangle.","construct"]
+  ["01","4.1","introduction/","Introduction","Why geometry works: shapes, measurement, reasoning and the chapter roadmap.","angles"],
+  ["02","4.2","types-of-angles/","Types of Angles","Linear pairs, vertically opposite angles, transversals, triangle angle sum and congruence.","angles"],
+  ["03","4.3","quadrilaterals/","Quadrilaterals","Parallelograms, rhombuses, rectangles, trapezia and area relationships.","quad"],
+  ["04","4.4","parts-of-a-circle/","Parts of a Circle","Centre, radius, chord, arc, segment and sector — the vocabulary every circle theorem depends on.","circleparts"],
+  ["05","4.5","chords-of-a-circle/","Properties of Chords","Equal chords, perpendicular bisectors and angles subtended by arcs.","chords"],
+  ["06","4.6","cyclic-quadrilaterals/","Cyclic Quadrilaterals","Four points on one circle and the angle relations they create.","cyclic"],
+  ["07","4.7","practical-geometry/","Practical Geometry","Construct centroid, orthocentre, circumcentre and incentre.","construct"],
+  ["08","Practice","exercises/","Chapter Exercises","Exercises 4.1–4.7 with visual aids, answers and worked steps.","construct"]
 ];
 function topicVisual(key){
   const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
@@ -91,5 +93,5 @@ document.getElementById('topicGrid').innerHTML = topics.map(t => `
   </a>`).join('');
 window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
 </script>
-</body>
+<script src="../../../../js/math-audit-fixes.js"></script></body>
 </html>

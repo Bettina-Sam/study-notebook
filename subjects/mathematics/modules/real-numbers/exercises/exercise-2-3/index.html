@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 2.3 • Real Numbers • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 2.3 — locating irrational numbers on the number line and finding irrational/rational numbers between given values, now interactive."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.ex-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:260px; }
+.check-row{ display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-top:0.7rem; }
+</style>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 2.3</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Irrational Numbers</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">3 questions — placing surds on the number line and squeezing numbers into tiny gaps.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-2-1/">2.1</a>
+<a class="ex-set-pill" href="../exercise-2-2/">2.2</a>
+<span class="ex-set-pill current">2.3</span>
+<a class="ex-set-pill" href="../exercise-2-4/">2.4</a>
+</div>
+
+<!-- Q1: represent irrationals on number line -->
+<div class="exercise-card" id="q1">
+<!-- VERIFY: source PDF extraction lost the radical signs here; reconstructed as √3, √4.7, √6.5 by analogy with the immediately preceding Example 2.13 (representing √9.3 on the number line), which is the technique this exercise drills. -->
+<span class="ex-label"><span class="ex-q-num">Q1</span>Represent the following irrational numbers on the number line.</span>
+<div class="ex-question">(i) $\sqrt3$ &nbsp; (ii) $\sqrt{4.7}$ &nbsp; (iii) $\sqrt{6.5}$</div>
+<p style="font-size:0.85rem; color:var(--text-muted); margin:0.6rem 0;">Drag each marker to its approximate position — you don't need geometric construction here, just decide which whole numbers it falls between and refine from there.</p>
+<div class="rn-place-row" id="q1Targets" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.4rem;"></div>
+<div id="q1Line"></div>
+<div class="check-result" id="q1Result"></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q1Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q1Hint">$\sqrt3\approx1.732$ (between 1 and 2). $\sqrt{4.7}\approx2.168$ (between 2 and 3, since $2^2=4$ and $3^2=9$). $\sqrt{6.5}\approx2.550$ (between 2 and 3, since $2^2=4$ and $3^2=9$).</div>
+<div class="exercise-panel answer-panel" id="q1Answer">$\sqrt3\approx1.732$, &nbsp; $\sqrt{4.7}\approx2.168$, &nbsp; $\sqrt{6.5}\approx2.550$ — each constructed geometrically like Example 2.13's $\sqrt{9.3}$.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q2: irrational numbers between two given values -->
+<div class="exercise-card" id="q2">
+<span class="ex-label"><span class="ex-q-num">Q2</span>Find any two irrational numbers between</span>
+<!-- VERIFY: source PDF extraction badly garbled parts (ii) and (iii); (ii) reconstructed as 6/7 and 12/13, (iii) as √2 and √3, matching the surrounding topic (irrational numbers) and the surviving digits "6", "7", "12", "13", "2", "3". -->
+<div class="ex-question">
+(i) $0.3010011000111\ldots$ and $0.3020020002\ldots$<br/>
+(ii) $\dfrac67\approx0.857142\ldots$ and $\dfrac{12}{13}\approx0.923076\ldots$<br/>
+(iii) $\sqrt2\approx1.41421\ldots$ and $\sqrt3\approx1.73205\ldots$
+</div>
+<div class="stmt-row"><b>(i)</b> Type an irrational number strictly between the two:
+<div class="check-row"><input class="ex-input" type="text" id="q2i" placeholder="e.g. 0.3011011101111..."/><button class="btn btn-primary" data-check2="q2i">Check</button></div>
+<div class="check-result" id="q2iResult"></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> Type an irrational number strictly between the two:
+<div class="check-row"><input class="ex-input" type="text" id="q2ii" placeholder="e.g. 0.87010010001..."/><button class="btn btn-primary" data-check2="q2ii">Check</button></div>
+<div class="check-result" id="q2iiResult"></div>
+</div>
+<div class="stmt-row"><b>(iii)</b> Type an irrational number strictly between the two:
+<div class="check-row"><input class="ex-input" type="text" id="q2iii" placeholder="e.g. 1.5010010001..."/><button class="btn btn-primary" data-check2="q2iii">Check</button></div>
+<div class="check-result" id="q2iiiResult"></div>
+</div>
+<p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.4rem;">The checker only verifies your number's <i>value</i> lands in range (it can't verify true non-repetition from text) — make sure the digits you write never settle into a repeating block.</p>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q2Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q2Hint">Copy the leading digits both numbers share, then continue with a growing, non-repeating pattern (like more and more zeros between 1's).</div>
+<div class="exercise-panel answer-panel" id="q2Answer">
+(i) $0.3011011101111\ldots$ and $0.3012012201222\ldots$<br/>
+(ii) $0.87010010001\ldots$ and $0.87040040004\ldots$<br/>
+(iii) $1.501001000100001\ldots$ and $1.601001000100001\ldots$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q3: rational numbers between two irrationals -->
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>Find any two rational numbers between $2.2360679\ldots$ and $2.236505500\ldots$</span>
+<div class="ex-question">Both of these happen to be irrational (close to $\sqrt5$), but rational numbers can still be squeezed in between them.</div>
+<div class="check-row">
+<input class="ex-input" type="text" id="q3Input" placeholder="e.g. 2.2361, 2.2364"/>
+<button class="btn btn-primary" id="q3CheckBtn">Check</button>
+</div>
+<div class="check-result" id="q3Result"></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q3Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q3Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q3Hint">Any terminating decimal strictly between $2.2360679$ and $2.2365055$ is rational and works — e.g. something starting $2.2361$ or $2.2364$.</div>
+<div class="exercise-panel answer-panel" id="q3Answer">$2.2361$ and $2.2364$ (both terminating decimals, hence rational, and both fall in the gap).</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-2-2/">← Exercise 2.2</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-2-4/">Next: Exercise 2.4 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../../js/token-physics.js"></script>
+<script src="../../../../../../js/number-line-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'q1') prompt = "I am solving Class 9 Mathematics, Chapter 2 Real Numbers, Exercise 2.3 Question 1: Represent √3, √4.7 and √6.5 on the number line. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q2') prompt = "I am solving Class 9 Mathematics, Chapter 2 Real Numbers, Exercise 2.3 Question 2: Find any two irrational numbers between (i) 0.3010011000111... and 0.3020020002... (ii) 6/7 and 12/13 (iii) √2 and √3. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q3') prompt = "I am solving Class 9 Mathematics, Chapter 2 Real Numbers, Exercise 2.3 Question 3: Find any two rational numbers between 2.2360679... and 2.236505500... Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    launchAIPrompt(model, prompt);
+}
+
+/* Q1: drag markers to sqrt values */
+const q1Vals = { s3: Math.sqrt(3), s47: Math.sqrt(4.7), s65: Math.sqrt(6.5) };
+document.getElementById('q1Targets').innerHTML = `<span class="set-chip">√3</span><span class="set-chip">√4.7</span><span class="set-chip">√6.5</span>`;
+const q1NL = NumberLineLib.create(document.getElementById('q1Line'), { min: 0, max: 4, height: 130 });
+const q1State = {};
+Object.entries(q1Vals).forEach(([id, v], i) => {
+  const start = 0.5 + Math.random() * 3;
+  q1NL.addPoint('drag' + id, start, {
+    cls: 'numline-drag',
+    label: id === 's3' ? '√3' : id === 's47' ? '√4.7' : '√6.5',
+    onChange(val) { q1State[id] = val; checkQ1(); }
+  });
+  q1State[id] = start;
+});
+function checkQ1() {
+  const r = document.getElementById('q1Result');
+  let correct = 0;
+  Object.entries(q1Vals).forEach(([id, v]) => { if (Math.abs(q1State[id] - v) < 0.12) correct++; });
+  if (correct === 3) { r.textContent = 'All three placed correctly!'; r.className = 'check-result check-yes'; }
+  else { r.textContent = `${correct}/3 placed within tolerance.`; r.className = 'check-result ' + (correct > 0 ? 'check-yes' : ''); }
+}
+checkQ1();
+
+/* Q2: numeric-range checks */
+const q2Ranges = {
+  q2i: [0.3010011000111, 0.3020020002],
+  q2ii: [6/7, 12/13],
+  q2iii: [Math.sqrt(2), Math.sqrt(3)]
+};
+document.querySelectorAll('[data-check2]').forEach(btn => {
+  const id = btn.dataset.check2;
+  btn.addEventListener('click', () => {
+    const val = parseFloat(document.getElementById(id).value);
+    const resultEl = document.getElementById(id + 'Result');
+    const [lo, hi] = q2Ranges[id];
+    if (isNaN(val)) { resultEl.textContent = 'Enter a decimal value first.'; resultEl.className = 'check-result check-no'; return; }
+    const ok = val > Math.min(lo,hi) && val < Math.max(lo,hi);
+    resultEl.textContent = ok ? 'Value is in range — good, as long as its digits never settle into a repeating block!' : `Value must be strictly between ${Math.min(lo,hi).toFixed(6)} and ${Math.max(lo,hi).toFixed(6)}.`;
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+  });
+});
+
+/* Q3 */
+document.getElementById('q3CheckBtn').addEventListener('click', () => {
+  const raw = document.getElementById('q3Input').value;
+  const parts = raw.split(',').map(s => parseFloat(s.trim())).filter(v => !isNaN(v));
+  const r = document.getElementById('q3Result');
+  const lo = 2.2360679, hi = 2.236505500;
+  if (parts.length < 2) { r.textContent = 'Enter two numbers, separated by a comma.'; r.className = 'check-result check-no'; return; }
+  const ok = parts.every(v => v > lo && v < hi);
+  r.textContent = ok ? 'Correct — both lie in the gap!' : `Both numbers must be strictly between ${lo} and ${hi}.`;
+  r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+['q1','q2','q3'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+
+<script id="rn-second-hint-runtime">
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.exercise-card').forEach((card,idx)=>{const tools=card.querySelector('.exercise-tools');if(!tools||tools.querySelector('.rn-hint2-btn'))return;const panel=document.createElement('div');panel.className='exercise-panel rn-hint2-panel';panel.id=(card.id||('q'+idx))+'StrategyHint';panel.innerHTML='<b>Hint 2 · Strategy:</b> Use the interactive representation on this question to test one step at a time. Translate what you see back into the number rule or algebraic operation before opening the answer.';card.appendChild(panel);const b=document.createElement('button');b.className='btn btn-ghost rn-hint2-btn';b.textContent='Hint 2';b.onclick=()=>panel.classList.toggle('show');const answer=[...tools.querySelectorAll('button')].find(x=>/answer/i.test(x.textContent));tools.insertBefore(b,answer||null);});});
+</script>
+</body>
+</html>

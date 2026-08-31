@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>7.1 Files & Folders • Computer – Visual Communication • Study Notebook</title>
+<meta name="description" content="What a file is, what a folder is, and how to organize files into folders — with a hands-on drag-and-sort activity."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Computer – Visual Communication
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 7 · Computer – Visual Communication</span>
+<span class="coming-soon-num">7.1 Files & Folders</span>
+<h1 class="hero-title">A bookshelf for<br/>everything you save</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">The output of any application is called a file. A folder is a storage space that holds multiple files — like a shelf holding many books.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Sort Files Into Folders</h3>
+<h2>Where does each file belong?</h2>
+<p>Click each file, then decide which folder it belongs in based on its file type.</p>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Sort each file into the Pictures or Documents folder.</span></div>
+<div class="classify-row" id="classifyChips"></div>
+<div class="classify-bins">
+<div class="classify-bin" id="binPictures"><h5>Pictures Folder</h5><div class="bin-items"></div></div>
+<div class="classify-bin" id="binDocuments"><h5>Documents Folder</h5><div class="bin-items"></div></div>
+</div>
+<p id="classifyScore" style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-muted);"></p>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="fileWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">To create a new folder in Windows, you right-click, select 'New', and then which option?</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" style="width:160px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 90–91</span><h2>Files vs. folders</h2><div class="tb-grid"><div class="tb-card"><h3>File</h3><p>The output from any application — a picture, a document, a spreadsheet. Like an individual book on a shelf.</p></div><div class="tb-card"><h3>Folder</h3><p>A storage space holding multiple files — like the whole bookshelf.</p></div><div class="tb-card"><h3>Notepad</h3><p>Used to type and save notes as text files.</p></div><div class="tb-card"><h3>Paint</h3><p>Used to draw and edit pictures.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../">← Computer – Visual Communication</a>
+<a class="back-link" href="../visual-communication-tools/">Next: Visual Communication Tools →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const files = [
+  ['holiday.jpg','pic'],['notes.txt','doc'],['drawing.png','pic'],['essay.docx','doc'],['photo.png','pic'],['report.txt','doc']
+];
+let cScore=0, cTotal=0;
+const chipsHost = document.getElementById('classifyChips');
+chipsHost.innerHTML = files.map((c,i)=>`<button class="classify-chip" data-answer="${c[1]}" data-idx="${i}">${c[0]}</button>`).join('');
+chipsHost.querySelectorAll('.classify-chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    if(chip.dataset.placed) return;
+    const guess = confirm(`Does "${chip.textContent}" belong in PICTURES?\nOK = Pictures, Cancel = Documents`) ? 'pic':'doc';
+    const correct = guess === chip.dataset.answer;
+    chip.classList.add(correct?'correct':'wrong');
+    chip.dataset.placed = '1';
+    cTotal++; if(correct) cScore++;
+    const bin = document.querySelector(guess==='pic' ? '#binPictures .bin-items' : '#binDocuments .bin-items');
+    const tag = document.createElement('div');
+    tag.textContent = chip.textContent + (correct? ' ✓' : ' ✗');
+    tag.style.fontSize = '0.85rem'; tag.style.padding='4px 0';
+    bin.appendChild(tag);
+    document.getElementById('classifyScore').textContent = `Score: ${cScore} / ${cTotal}`;
+  });
+});
+document.getElementById('fileWrap').innerHTML = `<svg viewBox="0 0 260 160">
+  <path d="M40 40h60l15 15h65v75H40Z" fill="var(--math-accent)" opacity="0.25" stroke="var(--math-accent)" stroke-width="2"/>
+  <rect x="60" y="65" width="30" height="38" fill="var(--math-accent-2)" opacity="0.85"/>
+  <rect x="100" y="65" width="30" height="38" fill="var(--math-accent)" opacity="0.85"/>
+  <rect x="140" y="65" width="30" height="38" fill="var(--math-accent-2)" opacity="0.6"/>
+</svg>`;
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('folder');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct — Folder' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

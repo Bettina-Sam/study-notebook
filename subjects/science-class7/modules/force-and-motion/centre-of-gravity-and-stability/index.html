@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.6-2.7 Centre of Gravity & Stability • Force and Motion • Study Notebook</title>
+<meta name="description" content="The point where an object's weight seems to act, and why a wide, low base keeps things from toppling."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Force and Motion
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 2 · Force and Motion</span>
+<span class="coming-soon-num">2.6–2.7 Centre of Gravity & Stability</span>
+<h1 class="hero-title">Why some things<br/>tip over, and some don't</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">The centre of gravity (CG) is the single point through which an object's whole weight seems to act. Stability depends on where that point sits relative to the object's base.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Tilt It and See</h3>
+<h2>Will it topple?</h2>
+<p>An object won't topple as long as the vertical line down from its centre of gravity still falls inside its
+base. Pick a base width and tilt the object to test it.</p>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Change the base width, then tilt the object.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Base width (<span class="value-readout" id="val-base">70</span> px — wider = more stable)</label><input id="input-base" max="130" min="30" step="5" type="range" value="70"/></div>
+<div class="slider-group"><label>Tilt angle (<span class="value-readout" id="val-tilt">10</span>°)</label><input id="input-tilt" max="45" min="0" step="1" type="range" value="10"/></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="tiltOut">Stable — the CG's vertical line still falls inside the base.</div>
+</div>
+<div class="etu-card"><span class="etu-tag">Key idea</span><p style="font-size:0.95rem;margin-bottom:0;">Stability increases by: lowering the centre of gravity, widening the base, and using a heavy base. This is why racing cars are low and broad, and table lamps have heavy, wide bases.</p></div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="tiltWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">Which of these increases an object's stability? Type "lowering" or "raising" for what should happen to the centre of gravity.</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" style="width:160px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 23–24</span><h2>Three types of equilibrium</h2><div class="tb-grid"><div class="tb-card"><h3>Stable equilibrium</h3><p>Tilted through a big angle without toppling — CG rises when displaced, and returns.</p></div><div class="tb-card"><h3>Unstable equilibrium</h3><p>Topples with the slightest tilt — CG falls when displaced, and does not return.</p></div><div class="tb-card"><h3>Neutral equilibrium</h3><p>Rolls but never topples — CG stays at the same height wherever it's displaced to.</p></div><div class="tb-card"><h3>Real-world uses</h3><p>Bus luggage sits low, racing cars are built low and broad, table lamps have heavy wide bases.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../motion-graphs/">← Motion Graphs</a>
+<a class="back-link" href="../exercises/">Next: Unit Exercises →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+function updateTilt(){
+  const base = parseInt(document.getElementById('input-base').value);
+  const tilt = parseInt(document.getElementById('input-tilt').value);
+  document.getElementById('val-base').textContent = base;
+  document.getElementById('val-tilt').textContent = tilt;
+  const rad = tilt*Math.PI/180;
+  const cgHeight = 90;
+  const cgX = Math.sin(rad)*cgHeight;
+  const stable = Math.abs(cgX) < base/2;
+  document.getElementById('tiltOut').textContent = stable
+    ? "Stable — the CG's vertical line still falls inside the base."
+    : "Toppling! The CG's vertical line has moved outside the base.";
+  const ox=140, baseY=180;
+  document.getElementById('tiltWrap').innerHTML = `<svg viewBox="0 0 280 220">
+    <line x1="${ox-base/2}" y1="${baseY}" x2="${ox+base/2}" y2="${baseY}" stroke="var(--border-color)" stroke-width="4"/>
+    <g transform="rotate(${tilt} ${ox} ${baseY})">
+      <path d="M${ox-base/2} ${baseY} L${ox+base/2} ${baseY} L${ox} ${baseY-cgHeight} Z" fill="${stable?'var(--math-accent)':'#d64545'}" opacity="0.8"/>
+      <circle cx="${ox}" cy="${baseY-cgHeight*0.6}" r="5" fill="var(--math-accent-2)"/>
+    </g>
+    <line x1="${ox+cgX}" y1="${baseY-cgHeight*0.6+cgHeight*0.3}" x2="${ox+cgX}" y2="${baseY+15}" stroke="var(--math-accent-2)" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="${ox-base/2-5}" y="${baseY+18}" font-size="10" fill="var(--text-muted)" text-anchor="end">base</text>
+  </svg>`;
+}
+['input-base','input-tilt'].forEach(id=>document.getElementById(id).addEventListener('input', updateTilt));
+updateTilt();
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('low');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

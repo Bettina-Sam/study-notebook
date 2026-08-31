@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.3 Acceleration • Force and Motion • Study Notebook</title>
+<meta name="description" content="Acceleration is the rate of change of velocity — explored with a speeding-up or slowing-down car."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Force and Motion
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 2 · Force and Motion</span>
+<span class="coming-soon-num">2.3 Acceleration</span>
+<h1 class="hero-title">How fast velocity<br/>itself is changing</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Acceleration = (Final velocity − Initial velocity) / Time. Positive acceleration speeds you up; negative acceleration (deceleration) slows you down.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Speeding Up or Slowing Down</h3>
+<h2>Set the before-and-after velocity</h2>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Change the initial and final velocity and the time taken.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Initial velocity u (<span class="value-readout" id="val-u">0</span> m/s)</label><input id="input-u" max="30" min="0" step="1" type="range" value="0"/></div>
+<div class="slider-group"><label>Final velocity v (<span class="value-readout" id="val-v">12</span> m/s)</label><input id="input-v" max="30" min="0" step="1" type="range" value="12"/></div>
+<div class="slider-group"><label>Time taken (<span class="value-readout" id="val-t2">4</span> s)</label><input id="input-t2" max="10" min="1" step="1" type="range" value="4"/></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div class="formula-rule" id="accFormula">a = (12 − 0) / 4</div>
+<div id="accValue" style="font-size:1.1rem; color:var(--text-muted);">Acceleration = 3 m/s²  (speeding up)</div>
+</div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="accWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Worked Example</h3>
+<div class="worked-example"><span class="we-label">Example</span>
+<div class="we-question">A golf ball's velocity changes from 8 m/s to 2 m/s in 10 s. Find its deceleration.</div>
+<div class="we-concept">Concept used: acceleration = (v − u) / t; a negative result means deceleration.</div>
+<div class="step-flow" id="we1-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">a = (v − u) / t<div class="step-math">$= (2-8)/10$</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Simplify.<div class="step-math">$= -6/10$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Final answer</b><div class="step-math">$= -0.6 \text{ m/s}^2$ (deceleration)</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we1-play">Play steps</button></div>
+</div></div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">A car starts from rest and reaches a velocity of 20 m/s in 10 s. Find its acceleration in m/s².</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" type="number"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 18–20</span><h2>Types of acceleration</h2><div class="tb-grid"><div class="tb-card"><h3>Positive acceleration</h3><p>Velocity increases with time.</p></div><div class="tb-card"><h3>Negative acceleration</h3><p>Also called deceleration or retardation — velocity decreases with time.</p></div><div class="tb-card"><h3>Uniform acceleration</h3><p>The change in velocity is the same for every unit of time.</p></div><div class="tb-card"><h3>Non-uniform acceleration</h3><p>The change in velocity is different for every unit of time.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../speed-and-velocity/">← Speed & Velocity</a>
+<a class="back-link" href="../motion-graphs/">Next: Motion Graphs →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+function updateAcc(){
+  const u = parseFloat(document.getElementById('input-u').value);
+  const v = parseFloat(document.getElementById('input-v').value);
+  const t = parseFloat(document.getElementById('input-t2').value);
+  document.getElementById('val-u').textContent = u;
+  document.getElementById('val-v').textContent = v;
+  document.getElementById('val-t2').textContent = t;
+  const a = (v-u)/t;
+  document.getElementById('accFormula').textContent = `a = (${v} − ${u}) / ${t}`;
+  document.getElementById('accValue').textContent = `Acceleration = ${a.toFixed(2)} m/s²  (${a>0?'speeding up':a<0?'slowing down':'constant velocity'})`;
+  const w=260,h=140;
+  const r1 = 8+u*0.5, r2 = 8+v*0.5;
+  document.getElementById('accWrap').innerHTML = `<svg viewBox="0 0 ${w} ${h}">
+    <circle cx="60" cy="70" r="${r1}" fill="var(--math-accent-2)" opacity="0.85"/>
+    <text x="60" y="110" text-anchor="middle" font-size="11" fill="var(--text-muted)">u = ${u} m/s</text>
+    <path d="M110 70h40m0 0-10-7m10 7-10 7" stroke="var(--math-accent)" stroke-width="2"/>
+    <circle cx="200" cy="70" r="${r2}" fill="var(--math-accent)" opacity="0.85"/>
+    <text x="200" y="110" text-anchor="middle" font-size="11" fill="var(--text-muted)">v = ${v} m/s</text>
+  </svg>`;
+}
+['input-u','input-v','input-t2'].forEach(id=>document.getElementById(id).addEventListener('input', updateAcc));
+updateAcc();
+document.getElementById('we1-play').addEventListener('click', () => AlgLib.revealSteps('we1-steps'));
+AlgLib.revealSteps('we1-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 2, document.getElementById('exResult'));
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

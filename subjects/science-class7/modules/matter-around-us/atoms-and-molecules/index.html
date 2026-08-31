@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.1-3.2 Atoms & Molecules • Matter Around Us • Study Notebook</title>
+<meta name="description" content="The smallest particle of an element, and what happens when atoms combine into molecules — build your own molecule."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Matter Around Us
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 3 · Matter Around Us</span>
+<span class="coming-soon-num">3.1–3.2 Atoms & Molecules</span>
+<h1 class="hero-title">The tiny particles<br/>everything is built from</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">An atom is the smallest particle of an element that still shows that element's properties. When atoms bond together, they form a molecule.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Build a Molecule</h3>
+<h2>Combine atoms, classify the result</h2>
+<p>Pick how many atoms make up the molecule and see what it's called.</p>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Change the number of atoms in the molecule.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Atoms in the molecule (<span class="value-readout" id="val-n">2</span>)</label><input id="input-n" max="6" min="1" step="1" type="range" value="2"/></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="molOut">2 atoms → <b>diatomic molecule</b> (e.g. Oxygen O₂)</div>
+</div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="molWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Sort Them Yourself</h3>
+<h2>Element or compound molecule?</h2>
+<p>A molecule of an element has only one type of atom. A molecule of a compound has different types of atoms, in a fixed ratio.</p>
+<div class="classify-row" id="classifyChips"></div>
+<div class="classify-bins">
+<div class="classify-bin" id="binElement"><h5>Element</h5><div class="bin-items"></div></div>
+<div class="classify-bin" id="binCompound"><h5>Compound</h5><div class="bin-items"></div></div>
+</div>
+<p id="classifyScore" style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-muted);"></p>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">Ozone (O₃) is made up of 3 oxygen atoms chemically combined. What is this type of molecule called — monatomic, diatomic, or triatomic?</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" style="width:160px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 28–30</span><h2>Definitions and molecule types</h2><div class="tb-grid"><div class="tb-card"><h3>Atom</h3><p>The basic, smallest unit of matter that exhibits the properties of its element.</p></div><div class="tb-card"><h3>Molecule</h3><p>Two or more atoms chemically combined; exhibits the properties of matter and has individual existence.</p></div><div class="tb-card"><h3>Monatomic</h3><p>One atom only — e.g. inert gases.</p></div><div class="tb-card"><h3>Diatomic</h3><p>Two atoms — e.g. oxygen, nitrogen, hydrogen.</p></div><div class="tb-card"><h3>Triatomic</h3><p>Three atoms — e.g. ozone, carbon dioxide.</p></div><div class="tb-card"><h3>Polyatomic</h3><p>More than three atoms — e.g. phosphorus (P₄), sulphur (S₈).</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../">← Matter Around Us</a>
+<a class="back-link" href="../elements/">Next: Elements →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+function updateMol(){
+  const n = parseInt(document.getElementById('input-n').value);
+  document.getElementById('val-n').textContent = n;
+  const names = {1:'monatomic (e.g. inert gases like Helium)',2:'diatomic (e.g. Oxygen O₂, Nitrogen N₂)',3:'triatomic (e.g. Ozone O₃, Carbon dioxide CO₂)'};
+  const label = names[n] || 'polyatomic (e.g. Phosphorus P₄, Sulphur S₈)';
+  document.getElementById('molOut').innerHTML = `${n} atom${n>1?'s':''} → <b>${label.split(' (')[0]}</b> molecule ${label.includes('(')?'('+label.split('(')[1]:''}`;
+  let dots='';
+  const cx=140,cy=70,r=60;
+  for(let i=0;i<n;i++){
+    const ang = (i/n)*2*Math.PI - Math.PI/2;
+    const x = cx + (n>1? r*0.6*Math.cos(ang):0), y = cy + (n>1? r*0.6*Math.sin(ang):0);
+    dots += `<circle cx="${x}" cy="${y}" r="16" fill="var(--math-accent)" opacity="0.85"/>`;
+  }
+  document.getElementById('molWrap').innerHTML = `<svg viewBox="0 0 280 160">${dots}</svg>`;
+}
+document.getElementById('input-n').addEventListener('input', updateMol);
+updateMol();
+
+const classifyItems = [
+  ['O₂ (Oxygen gas)','element'],['H₂O (Water)','compound'],['N₂ (Nitrogen gas)','element'],
+  ['CO₂ (Carbon dioxide)','compound'],['Cl₂ (Chlorine gas)','element'],['NH₃ (Ammonia)','compound']
+];
+let cScore=0, cTotal=0;
+const chipsHost = document.getElementById('classifyChips');
+chipsHost.innerHTML = classifyItems.map((c,i)=>`<button class="classify-chip" data-answer="${c[1]}" data-idx="${i}">${c[0]}</button>`).join('');
+chipsHost.querySelectorAll('.classify-chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    if(chip.dataset.placed) return;
+    const guess = confirm(`Is "${chip.textContent}" a molecule of an ELEMENT (only one type of atom)?\nOK = Element, Cancel = Compound`) ? 'element':'compound';
+    const correct = guess === chip.dataset.answer;
+    chip.classList.add(correct?'correct':'wrong');
+    chip.dataset.placed = '1';
+    cTotal++; if(correct) cScore++;
+    const bin = document.querySelector(guess==='element' ? '#binElement .bin-items' : '#binCompound .bin-items');
+    const tag = document.createElement('div');
+    tag.textContent = chip.textContent + (correct? ' ✓' : ' ✗ (was ' + chip.dataset.answer + ')');
+    tag.style.fontSize = '0.85rem'; tag.style.padding='4px 0';
+    bin.appendChild(tag);
+    document.getElementById('classifyScore').textContent = `Score: ${cScore} / ${cTotal}`;
+  });
+});
+
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('tri');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct — triatomic' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

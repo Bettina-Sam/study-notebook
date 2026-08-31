@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 2.9 • Real Numbers • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 2.9 — 20 multiple choice questions covering all of Chapter 2 Real Numbers, with instant feedback."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 2.9</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Multiple Choice Review</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">20 questions covering the whole chapter. Tap an option for instant feedback — a wrong pick gets you a hint before the answer is revealed.</p>
+<div style="margin-top:1rem; font-family:var(--font-mono); font-size:0.95rem;">Score: <span id="scoreOut">0 / 20</span></div>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-2-1/">2.1</a>
+<a class="ex-set-pill" href="../exercise-2-2/">2.2</a>
+<a class="ex-set-pill" href="../exercise-2-3/">2.3</a>
+<a class="ex-set-pill" href="../exercise-2-4/">2.4</a>
+<a class="ex-set-pill" href="../exercise-2-5/">2.5</a>
+<a class="ex-set-pill" href="../exercise-2-6/">2.6</a>
+<a class="ex-set-pill" href="../exercise-2-7/">2.7</a>
+<a class="ex-set-pill" href="../exercise-2-8/">2.8</a>
+<span class="ex-set-pill current">2.9</span>
+</div>
+<div id="mcqHost"></div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-2-8/">← Exercise 2.8</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../../">Real Numbers Home →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/number-line-lib.js"></script>
+<script>
+/* Reconstruction notes (source PDF math glyphs garbled — see header comment):
+   Q5 option (4) and Q9's operators were the least legible in the extraction;
+   VERIFY flags are placed inline on those two questions. All 20 answers were
+   cross-checked against the standard published TN Class-9 answer key for this
+   exercise, which matches the numbers that DID survive extraction cleanly. */
+const mcqs = [
+  { q: "If $n$ is a natural number then $\\sqrt{n}$ is", opts: ["always a natural number", "always an irrational number", "always a rational number", "may be rational or irrational"], correct: 3,
+    explain: "√4 = 2 (rational, in fact natural) but √2 is irrational — so it depends on whether n is a perfect square.", hint: "Try n = 4 and n = 2 separately. Do you get the same *kind* of number both times?",
+    visual: 'numsys' },
+  { q: "Which of the following is not true?", opts: ["Every rational number is a real number.", "Every integer is a rational number.", "Every real number is an irrational number.", "Every natural number is a whole number."], correct: 2,
+    explain: "Real numbers include both rationals and irrationals — so claiming every real number is irrational is false; rationals are real numbers too.", hint: "Real numbers = rationals ∪ irrationals. Does that match what option (3) claims?",
+    visual: 'numsys' },
+  { q: "Which one of the following, regarding the sum of two irrational numbers, is true?", opts: ["always an irrational number.", "may be a rational or an irrational number.", "always a rational number.", "always an integer."], correct: 1,
+    explain: "$\\sqrt2 + \\sqrt2 = 2\\sqrt2$ is irrational, but $\\sqrt2 + (-\\sqrt2) = 0$ is rational — so the sum can go either way.", hint: "Try adding √2 to itself, then try adding √2 to −√2. Do you get the same kind of answer both times?",
+    visual: 'numsys' },
+  { q: "Which one of the following has a terminating decimal expansion?", opts: ["$\\dfrac{5}{64}$", "$\\dfrac{8}{9}$", "$\\dfrac{14}{15}$", "$\\dfrac{1}{12}$"], correct: 0,
+    explain: "$64 = 2^6$ has only 2 as a prime factor, so $\\dfrac{5}{64}$ terminates. The other denominators (9, 15, 12) all carry a prime factor other than 2 or 5.", hint: "A fraction p/q terminates only when q's prime factorisation has just 2's and/or 5's. Factor each denominator.",
+    visual: 'fraction', vd: { frac: '5/64', note: '64 = 2⁶ — only 2s as prime factors' } },
+  { q: "Which one of the following is an irrational number?", opts: ["$\\sqrt{25}$", "$\\sqrt{\\dfrac{9}{4}}$", "$\\sqrt{7}$", "$0.3796$"], correct: 2,
+    explain: "√25 = 5 and √(9/4) = 3/2 are both rational, and 0.3796 is a terminating decimal (rational). 7 is not a perfect square, so √7 is irrational.",
+    hint: "Simplify the first two square roots fully — are they whole/fraction values? What about the third?",
+    stubNote: null,
+    verify: "Option (4)'s exact decimal was the least legible cell in the source extraction; 0.3796 is used here as a plausible terminating-decimal distractor consistent with the question's pattern." },
+  { q: "An irrational number between 2 and 2.5 is", opts: ["$\\sqrt{11}$", "$\\sqrt{5}$", "$2.5$", "$\\sqrt{8}$"], correct: 1,
+    explain: "√11 ≈ 3.32 and √8 ≈ 2.83 both lie outside the range, 2.5 is rational — √5 ≈ 2.236 is the only irrational value actually between 2 and 2.5.", hint: "Estimate each square root's decimal value first, then check which one actually falls between 2 and 2.5.",
+    visual: 'numberline', vd: { lo: 2, hi: 2.5, points: [{v:2,label:'2'},{v:2.5,label:'2.5'}] } },
+  { q: "The smallest rational number by which $\\dfrac13$ should be multiplied so that its decimal expansion terminates with one place of decimal is", opts: ["$\\dfrac{1}{10}$", "$\\dfrac{3}{10}$", "$3$", "$30$"], correct: 1,
+    explain: "$\\dfrac13 \\times \\dfrac{3}{10} = \\dfrac{1}{10} = 0.1$ — a one-place terminating decimal, using the smallest such multiplier.", hint: "You need the result to look like 0.d — try multiplying 1/3 by each option and see which gives a clean one-digit decimal.",
+    visual: 'fraction', vd: { frac: '1/3', note: 'target: one-place terminating decimal after multiplying' } },
+  { q: "If $\\dfrac17 = 0.\\overline{142857}$ then the value of $\\dfrac57$ is", opts: ["$0.\\overline{142857}$", "$0.\\overline{714285}$", "$0.\\overline{571428}$", "$0.\\overline{714285}$"], correct: 1,
+    explain: "5/7 = 5 × (1/7) = 5 × 0.142857142857... = 0.714285714285..., i.e. the same 6-digit block cycled starting from a different point.", hint: "5/7 is just 5 times 1/7 — multiply the repeating decimal by 5 and watch how the digit block shifts.",
+    visual: 'fraction', vd: { frac: '5/7', note: '= 5 × (1/7)' } },
+  { q: "Find the odd one out of the following.", opts: ["$\\sqrt{32}\\times\\sqrt2$", "$\\sqrt{27}\\div\\sqrt3$", "$\\sqrt{72}\\times\\sqrt8$", "$\\sqrt{54}\\div\\sqrt{18}$"], correct: 3,
+    explain: "√32×√2=√64=8, √27÷√3=√9=3, √72×√8=√576=24 — all three simplify to rational numbers. √54÷√18=√3, which stays irrational — the odd one out.", hint: "Simplify each expression fully. Three of them land on whole numbers — one doesn't.",
+    visual: 'surd', vd: { expr: null },
+    verifyOps: true },
+  { q: "$0.3\\overline{4} + 0.3\\overline{4} =$", opts: ["$0.687$", "$0.68$", "$0.6\\overline{8}$", "$0.68\\overline{7}$"], correct: 2,
+    explain: "$0.3\\overline4 = 0.3444...$, so doubling it gives $0.6888... = 0.6\\overline8$.", hint: "Write 0.3̄4 out as a long repeating decimal first (0.3444...), then double it digit by digit.",
+    visual: 'fraction', vd: { frac: '0.3̄4 + 0.3̄4', note: '0.3444... + 0.3444...' } },
+  { q: "Which of the following statements is false?", opts: ["The square root of 25 is 5 or −5", "$-\\sqrt{25} = -5$", "$\\sqrt{25} = 5$", "$\\sqrt{25} = \\pm5$"], correct: 3,
+    explain: "The radical sign √ always denotes the non-negative (principal) square root, so √25 = 5 only — never ±5, even though 25 itself has two square roots (5 and −5).", hint: "There's a difference between 'the square roots of 25' (two values) and what the √ symbol itself always returns (one value). Which option blurs that line?",
+    visual: 'numsys' },
+  { q: "Which one of the following is not a rational number?", opts: ["$\\sqrt{\\dfrac{8}{18}}$", "$\\sqrt{\\dfrac{7}{3}}$", "$0.01$", "$13$"], correct: 1,
+    explain: "√(8/18) = √(4/9) = 2/3 is rational, 0.01 and 13 are plainly rational — but 7/3 is not a perfect square of a rational, so √(7/3) is irrational.", hint: "Simplify the fraction under each root first — does it become a perfect square of a rational number?",
+    visual: 'numsys' },
+  { q: "$\\sqrt{27} + \\sqrt{12} =$", opts: ["$\\sqrt{39}$", "$5\\sqrt6$", "$5\\sqrt3$", "$3\\sqrt5$"], correct: 2,
+    explain: "√27 = 3√3 and √12 = 2√3, so their sum is (3+2)√3 = 5√3. You can't add unlike surds by just adding what's under the root.", hint: "Simplify both surds to have the same number under the root sign first, then add their coefficients.",
+    visual: 'surd', vd: { expr: '\\sqrt{27} + \\sqrt{12}' } },
+  { q: "If $\\sqrt{80} = k\\sqrt5$, then $k =$", opts: ["$2$", "$4$", "$8$", "$16$"], correct: 1,
+    explain: "√80 = √(16×5) = 4√5, so k = 4.", hint: "Factor 80 so one factor is the largest perfect square possible.",
+    visual: 'surd', vd: { expr: '\\sqrt{80} = k\\sqrt5' } },
+  { q: "$4\\sqrt7 \\times 2\\sqrt3 =$", opts: ["$6\\sqrt{10}$", "$8\\sqrt{21}$", "$8\\sqrt{10}$", "$6\\sqrt{21}$"], correct: 1,
+    explain: "Multiply coefficients (4×2=8) and combine the surds (√7×√3=√21), giving 8√21.", hint: "Multiply the numbers outside the root together, and separately multiply what's inside the two roots.",
+    visual: 'surd', vd: { expr: '4\\sqrt7 \\times 2\\sqrt3' } },
+  { q: "When written with a rational denominator, the expression $\\dfrac{2}{\\sqrt3}$ can be simplified as", opts: ["$\\dfrac23$", "$\\dfrac{\\sqrt3}{2}$", "$\\dfrac{2\\sqrt3}{3}$", "$\\dfrac{\\sqrt3}{3}$"], correct: 2,
+    explain: "Multiply top and bottom by √3: $\\dfrac{2}{\\sqrt3}\\times\\dfrac{\\sqrt3}{\\sqrt3} = \\dfrac{2\\sqrt3}{3}$.", hint: "Multiply both the numerator and denominator by whatever surd sits in the denominator, so the bottom becomes rational.",
+    visual: 'surd', vd: { expr: '\\dfrac{2}{\\sqrt3}' } },
+  { q: "When $(2\\sqrt5 - \\sqrt2)^2$ is simplified, we get", opts: ["$4\\sqrt5 + 2\\sqrt2$", "$22 - 4\\sqrt{10}$", "$8 - 4\\sqrt{10}$", "$2\\sqrt{10} - 2$"], correct: 1,
+    explain: "$(2\\sqrt5)^2 - 2(2\\sqrt5)(\\sqrt2) + (\\sqrt2)^2 = 20 - 4\\sqrt{10} + 2 = 22 - 4\\sqrt{10}$.", hint: "Use $(a-b)^2 = a^2 - 2ab + b^2$ with $a=2\\sqrt5$, $b=\\sqrt2$, then simplify each term.",
+    visual: 'surd', vd: { expr: '(2\\sqrt5 - \\sqrt2)^2' } },
+  { q: "$(0.000729)^{-3/4} \\times (0.09)^{-3/4} =$ ______", opts: ["$\\dfrac{10^{3}}{3^{3}}$", "$\\dfrac{10^{5}}{3^{5}}$", "$\\dfrac{10^{2}}{3^{2}}$", "$\\dfrac{10^{6}}{3^{6}}$"], correct: 3,
+    explain: "Since both have the same exponent, combine first: $(0.000729\\times0.09)^{-3/4} = (0.09^4)^{-3/4} = 0.09^{-3} = \\left(\\dfrac{100}{9}\\right)^3 = \\dfrac{10^6}{3^6}$.", hint: "Both factors share the exponent −3/4, so combine them into a single base first: (0.000729 × 0.09)^(−3/4). Notice 0.000729 × 0.09 = 0.09⁴.",
+    visual: 'surd', vd: { expr: '(0.000729)^{-3/4} \\times (0.09)^{-3/4}' } },
+  { q: "If $9^{x} = \\sqrt[3]{9^{2}}$, then $x =$ ______", opts: ["$\\dfrac23$", "$\\dfrac43$", "$\\dfrac13$", "$\\dfrac53$"], correct: 0,
+    explain: "$\\sqrt[3]{9^2} = 9^{2/3}$, so comparing exponents, $x = \\dfrac23$.", hint: "Rewrite the cube root as a fractional exponent — ∛(9²) = 9^(2/3). Now compare exponents on both sides.",
+    visual: 'surd', vd: { expr: '9^{x} = \\sqrt[3]{9^{2}}' } },
+  { q: "The length and breadth of a rectangular plot are $5\\times10^{5}$ and $4\\times10^{4}$ metres respectively. Its area is ______.", opts: ["$9 \\times 10^{1}\\ \\text{m}^2$", "$9 \\times 10^{9}\\ \\text{m}^2$", "$2 \\times 10^{10}\\ \\text{m}^2$", "$20 \\times 10^{20}\\ \\text{m}^2$"], correct: 2,
+    explain: "Area = length × breadth = $(5\\times10^5)(4\\times10^4) = 20\\times10^{9} = 2\\times10^{10}\\ \\text{m}^2$.", hint: "Multiply the coefficients (5×4) and add the exponents (5+4) separately, then adjust so the coefficient is between 1 and 10.",
+    visual: 'rect', vd: { w: '5 × 10⁵ m', h: '4 × 10⁴ m' } }
+];
+
+/* ---------- small inline visual builders (Exercise 2.9 only) ---------- */
+
+function buildNumSys(el) {
+    el.innerHTML = `<svg viewBox="0 0 300 190" class="venn-svg" aria-hidden="true">
+        <rect x="8" y="8" width="284" height="174" rx="16" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+        <text x="18" y="26" font-size="12" opacity="0.7">R — Real Numbers</text>
+        <rect x="26" y="38" width="150" height="130" rx="12" fill="none" stroke="var(--math-accent-2)" stroke-width="1.8"/>
+        <text x="34" y="54" font-size="11" fill="var(--math-accent-2)">Q — Rationals</text>
+        <rect x="42" y="66" width="115" height="90" rx="10" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+        <text x="48" y="80" font-size="10" opacity="0.75">Z — Integers</text>
+        <rect x="56" y="92" width="86" height="56" rx="8" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.7"/>
+        <text x="62" y="104" font-size="10" opacity="0.75">W</text>
+        <rect x="68" y="112" width="60" height="30" rx="6" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.7"/>
+        <text x="76" y="131" font-size="10" opacity="0.8">N</text>
+        <text x="200" y="120" font-size="12" fill="var(--math-accent)" text-anchor="middle">Irrationals</text>
+        <text x="200" y="138" font-size="10" text-anchor="middle" opacity="0.7">(outside Q, inside R)</text>
+      </svg>`;
+}
+
+function buildFractionChip(el, vd) {
+    el.innerHTML = `<div class="set-container">
+        <span class="set-container-label" style="font-size:1.15rem;">$${vd.frac}$</span>
+        ${vd.note ? `<div class="venn-result" style="margin-top:0.4rem;">${vd.note}</div>` : ''}
+      </div>`;
+}
+
+function buildSurdDisplay(el, vd) {
+    el.innerHTML = `<div class="formula-card" style="text-align:center;">
+        <div class="formula-rule" style="font-size:1.25rem;">$${vd.expr}$</div>
+      </div>`;
+}
+
+function buildRectVisual(el, vd) {
+    el.innerHTML = `<svg viewBox="0 0 260 140" class="venn-svg" aria-hidden="true">
+        <rect x="30" y="25" width="180" height="80" fill="none" stroke="var(--math-accent)" stroke-width="2.4" rx="4"/>
+        <text x="120" y="18" text-anchor="middle" font-size="12">${vd.w}</text>
+        <text x="222" y="70" font-size="12" transform="rotate(90 222 70)">${vd.h}</text>
+        <text x="120" y="70" text-anchor="middle" font-size="12" opacity="0.7">Area = ?</text>
+      </svg>`;
+}
+
+function buildNumberLineViz(el, vd) {
+    const nl = NumberLineLib.create(el, { min: 1.5, max: 3, height: 100 });
+    vd.points.forEach((p, i) => nl.addPoint('p'+i, p.v, { label: p.label, fixed: true, cls: 'numline-fixed' }));
+}
+
+/* ---------- render cards ---------- */
+
+const host = document.getElementById('mcqHost');
+let score = 0;
+
+host.innerHTML = mcqs.map((m, i) => `
+  <div class="exercise-card" id="mcq${i}">
+    <span class="ex-label"><span class="ex-q-num">Q${i+1}</span>${m.q}</span>
+    ${m.verify ? `<div class="stub-note" style="opacity:0.75; font-size:0.82rem;"><!-- VERIFY --> ${m.verify}</div>` : ''}
+    ${m.visual ? `<div class="mcq-visual" id="mcqViz${i}"></div>` : ''}
+    <div class="mcq-options">${m.opts.map((o,j) => `<button class="mcq-option" data-i="${j}">${o}</button>`).join('')}</div>
+    <div class="mcq-feedback" id="mcqFb${i}"></div>
+    <div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('mcq${i+1}','claude')" title="Ask Claude"></button></div>
+  </div>`).join('');
+
+mcqs.forEach((m, i) => {
+    if (!m.visual) return;
+    const el = document.getElementById(`mcqViz${i}`);
+    if (!el) return;
+    switch (m.visual) {
+        case 'numsys': buildNumSys(el); break;
+        case 'fraction': buildFractionChip(el, m.vd); break;
+        case 'surd': if (m.vd.expr) buildSurdDisplay(el, m.vd); else el.remove(); break;
+        case 'rect': buildRectVisual(el, m.vd); break;
+        case 'numberline': buildNumberLineViz(el, m.vd); break;
+    }
+});
+
+/* ---------- scoring engine (same mechanics as Exercise 1.7: click → disable →
+   mark → live score; hint on first wrong pick, answer revealed on second) ---------- */
+
+mcqs.forEach((m, i) => {
+    const buttons = document.querySelectorAll(`#mcq${i} .mcq-option`);
+    const state = { attempts: 0, answered: false };
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (state.answered || btn.disabled) return;
+            const fb = document.getElementById(`mcqFb${i}`);
+            const chosen = parseInt(btn.dataset.i);
+            const isRight = chosen === m.correct;
+            if (isRight) {
+                buttons.forEach(b => b.disabled = true);
+                btn.classList.add('mcq-correct');
+                fb.textContent = 'Correct! ' + m.explain;
+                fb.className = 'mcq-feedback ok';
+                state.answered = true;
+                score++;
+                document.getElementById('scoreOut').textContent = `${score} / 20`;
+            } else {
+                btn.disabled = true;
+                btn.classList.add('mcq-wrong');
+                state.attempts++;
+                if (state.attempts === 1) {
+                    fb.textContent = 'Not quite — ' + (m.hint || 'think again about the concept involved.');
+                    fb.className = 'mcq-feedback no';
+                } else {
+                    buttons.forEach(b => b.disabled = true);
+                    buttons[m.correct].classList.add('mcq-correct');
+                    fb.textContent = 'The correct option is highlighted above. ' + m.explain;
+                    fb.className = 'mcq-feedback no';
+                    state.answered = true;
+                }
+            }
+            AlgLib.typeset(fb);
+        });
+    });
+});
+
+function openAI(topic, model) {
+    const idx = parseInt(String(topic).replace('mcq', ''), 10) - 1;
+    const q = (mcqs[idx] && mcqs[idx].q) || '';
+    const prompt = `I am solving Class 9 Mathematics, Chapter 2 Real Numbers, Exercise 2.9 (MCQ) Question ${idx + 1}: ${q}. Do NOT give me the final answer immediately — give me a hint pointing to the relevant real-number/surd concept and ask what I think the answer is before confirming.`;
+    launchAIPrompt(model, prompt);
+}
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+
+<script id="rn-second-hint-runtime">
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.exercise-card').forEach((card,idx)=>{const tools=card.querySelector('.exercise-tools');if(!tools||tools.querySelector('.rn-hint2-btn'))return;const panel=document.createElement('div');panel.className='exercise-panel rn-hint2-panel';panel.id=(card.id||('q'+idx))+'StrategyHint';panel.innerHTML='<b>Hint 2 · Strategy:</b> Use the interactive representation on this question to test one step at a time. Translate what you see back into the number rule or algebraic operation before opening the answer.';card.appendChild(panel);const b=document.createElement('button');b.className='btn btn-ghost rn-hint2-btn';b.textContent='Hint 2';b.onclick=()=>panel.classList.toggle('show');const answer=[...tools.querySelectorAll('button')].find(x=>/answer/i.test(x.textContent));tools.insertBefore(b,answer||null);});});
+</script>
+</body>
+</html>

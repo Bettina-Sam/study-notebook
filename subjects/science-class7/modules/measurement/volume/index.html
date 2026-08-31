@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.3 Volume • Measurement • Study Notebook</title>
+<meta name="description" content="Volume of cubes, cuboids, spheres and cylinders, volume of liquids in litres, and the displacement method for irregular solids — explored interactively."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Measurement
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 1 · Measurement</span>
+<span class="coming-soon-num">1.3 Volume</span>
+<h1 class="hero-title">The space a<br/>solid or liquid fills</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 42ch;">
+    Volume is the amount of space occupied by a three-dimensional object. Its SI unit is the cubic metre
+    (m³). Regular solids have formulae; liquids are measured directly; irregular solids need a trick.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: REGULAR SOLIDS -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Regular Solids</h3>
+<h2>Pick a solid, change its size</h2>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Switch shapes and drag the sliders to watch the volume update.</span></div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Solid</label>
+<select id="solid-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="cube">Cube (side)</option>
+<option value="cuboid">Cuboid (l × b × h)</option>
+<option value="sphere">Sphere (radius)</option>
+<option value="cylinder">Cylinder (radius × height)</option>
+</select>
+</div>
+<div class="slider-group" id="dim1-group">
+<label id="dim1-label">Side (<span class="value-readout" id="val-dim1">3</span> cm)</label>
+<input id="input-dim1" max="10" min="1" step="1" type="range" value="3"/>
+</div>
+<div class="slider-group" id="dim2-group" style="display:none;">
+<label id="dim2-label">Breadth</label>
+<input id="input-dim2" max="10" min="1" step="1" type="range" value="4"/>
+</div>
+<div class="slider-group" id="dim3-group" style="display:none;">
+<label id="dim3-label">Height</label>
+<input id="input-dim3" max="10" min="1" step="1" type="range" value="5"/>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div class="formula-rule" id="volFormula">side × side × side</div>
+<div id="volValue" style="font-size:1.1rem; color:var(--text-muted);">Volume = 27 cm³</div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="solidWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: LITRES -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Litres for Liquids</h3>
+<h2>1 litre = 1000 cc</h2>
+<p>
+    Liquids take the shape of their container, so we measure them with a graduated measuring cylinder.
+    1000 cc (cubic centimetre) is defined as one litre. Convert between them below.
+</p>
+<div class="formula-card" style="text-align:center;">
+<div class="inline-controls">
+<span>Volume in cc:</span>
+<input id="input-cc" max="5000" min="0" step="50" style="width:100%;" type="range" value="1500"/>
+<span class="value-readout" id="val-cc">1500</span>
+</div>
+<div id="litreOut" style="margin-top:0.6rem;font-size:1.1rem;">= 1.5 litre</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3: IRREGULAR SOLIDS — DISPLACEMENT -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">03. Irregular Solids</h3>
+<h2>Let the water tell you</h2>
+<p>
+    Drop a stone into a partly filled measuring cylinder. The water level rises exactly by the stone's
+    volume. Note the reading before ($V_1$) and after ($V_2$) — the volume of the stone is $V_2 - V_1$.
+</p>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Change the stone's volume and watch the water level rise in the cylinder.</span></div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Stone volume (<span class="value-readout" id="val-stone">15</span> cc)</label>
+<input id="input-stone" max="40" min="5" step="1" type="range" value="15"/>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="stoneReadout">V₁ = 50 cc, V₂ = 65 cc → Volume of stone = 15 cc</div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="cylinderWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example (Problem 1.3)</span>
+<div class="we-question">Find the volume of a cylinder whose radius is 3 m and height is 7 m. (Take π = 22/7)</div>
+<div class="we-concept">Concept used: Volume of cylinder = π × r² × h.</div>
+<div class="step-flow" id="we1-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Start with the formula.<div class="step-math">$V = \pi r^2 h$</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Substitute r = 3, h = 7, π = 22/7.<div class="step-math">$= \frac{22}{7} \times 3 \times 3 \times 7$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Simplify.<div class="step-math">$= 22 \times 9$</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">$= 198 \text{ m}^3$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we1-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">A cube has a side of 3 cm. Find its volume in cm³.</div>
+<div class="inline-controls">
+<span>Your answer:</span>
+<input class="mini-input" id="exAnswer" type="number"/>
+<button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">Volume of a cube = side × side × side.</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: 3 × 3 × 3 = 27 cm³.</div>
+</div>
+</div>
+</section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 4–6</span><h2>Table 1.4 — Volume of regularly shaped objects</h2><div class="tb-grid"><div class="tb-card"><h3>Cube</h3><p>side × side × side = a³ cu. unit</p></div><div class="tb-card"><h3>Cuboid</h3><p>l × b × h cu. unit</p></div><div class="tb-card"><h3>Sphere</h3><p>(4/3) × π × r³ cu. unit</p></div><div class="tb-card"><h3>Cylinder</h3><p>π × r² × h cu. unit</p></div></div><div class="tb-callout activity"><span class="tb-label">Activity 3</span>Pour water into a measuring cylinder (not full) and note V₁. Tie a stone to a thread, lower it in without touching the walls, and note the new level V₂. The volume of the stone is V₂ − V₁. Other liquid-volume units you'll meet: 1 gallon = 3785 ml, 1 ounce = 30 ml, 1 quart = 1 litre.</div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../area/">← Area</a>
+<a class="back-link" href="../density/">Next: Density →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+/* ---------- Section 1: solid volume ---------- */
+function updateSolid(){
+  const solid = document.getElementById('solid-select').value;
+  document.getElementById('dim2-group').style.display = (solid==='cuboid') ? '' : 'none';
+  document.getElementById('dim3-group').style.display = (solid==='cuboid'||solid==='cylinder') ? '' : 'none';
+  const labels = {
+    cube:['Side'], cuboid:['Length','Breadth','Height'],
+    sphere:['Radius'], cylinder:['Radius','','Height']
+  };
+  document.getElementById('dim1-label').innerHTML = `${labels[solid][0]} (<span class="value-readout" id="val-dim1">${document.getElementById('input-dim1').value}</span> cm)`;
+  if(solid==='cuboid') document.getElementById('dim2-label').innerHTML = `Breadth (<span class="value-readout" id="val-dim2">${document.getElementById('input-dim2').value}</span> cm)`;
+  if(solid==='cuboid'||solid==='cylinder') document.getElementById('dim3-label').innerHTML = `Height (<span class="value-readout" id="val-dim3">${document.getElementById('input-dim3').value}</span> cm)`;
+  renderSolid();
+}
+function renderSolid(){
+  const solid = document.getElementById('solid-select').value;
+  const d1 = parseFloat(document.getElementById('input-dim1').value);
+  const d2 = parseFloat(document.getElementById('input-dim2').value);
+  const d3 = parseFloat(document.getElementById('input-dim3').value);
+  document.getElementById('val-dim1').textContent = d1;
+  document.getElementById('val-dim2').textContent = d2;
+  document.getElementById('val-dim3').textContent = d3;
+  let formula='', vol=0;
+  if(solid==='cube'){ formula=`${d1} × ${d1} × ${d1}`; vol=d1**3; }
+  else if(solid==='cuboid'){ formula=`${d1} × ${d2} × ${d3}`; vol=d1*d2*d3; }
+  else if(solid==='sphere'){ formula=`(4/3) × (22/7) × ${d1}³`; vol=(4/3)*(22/7)*d1**3; }
+  else if(solid==='cylinder'){ formula=`(22/7) × ${d1}² × ${d3}`; vol=(22/7)*d1*d1*d3; }
+  document.getElementById('volFormula').textContent = formula;
+  document.getElementById('volValue').textContent = `Volume = ${vol.toFixed(1).replace(/\.0$/,'')} cm³`;
+
+  const wrap = document.getElementById('solidWrap');
+  const s = 8 + Math.min(d1,10)*3;
+  let svg='';
+  if(solid==='cube'||solid==='cuboid'){
+    const w = solid==='cube'? s : 8+d1*3, h = solid==='cube'? s : 8+d3*3, dep = solid==='cube'? s*0.5 : 8+d2*1.5;
+    svg = `<g transform="translate(140,150)">
+      <path d="M${-w/2} ${-h/2} L${-w/2+dep} ${-h/2-dep*0.5} L${w/2+dep} ${-h/2-dep*0.5} L${w/2} ${-h/2} Z" fill="var(--math-accent-2)" opacity="0.75"/>
+      <path d="M${w/2} ${-h/2} L${w/2+dep} ${-h/2-dep*0.5} L${w/2+dep} ${h/2-dep*0.5} L${w/2} ${h/2} Z" fill="var(--math-accent)" opacity="0.55"/>
+      <rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" fill="var(--math-accent)" opacity="0.85"/>
+    </g>`;
+  } else if(solid==='sphere'){
+    svg = `<circle cx="140" cy="150" r="${s}" fill="var(--math-accent)" opacity="0.85"/><ellipse cx="140" cy="150" rx="${s}" ry="${s*0.35}" fill="none" stroke="var(--card-bg)" stroke-width="1.5" opacity="0.6"/>`;
+  } else if(solid==='cylinder'){
+    const rw = 10+d1*4, h = 10+d3*4;
+    svg = `<g transform="translate(140,150)"><rect x="${-rw/2}" y="${-h/2}" width="${rw}" height="${h}" fill="var(--math-accent)" opacity="0.85"/><ellipse cx="0" cy="${-h/2}" rx="${rw/2}" ry="${rw/6}" fill="var(--math-accent-2)" opacity="0.9"/><ellipse cx="0" cy="${h/2}" rx="${rw/2}" ry="${rw/6}" fill="var(--math-accent)" opacity="0.6"/></g>`;
+  }
+  wrap.innerHTML = `<svg viewBox="0 0 280 280">${svg}</svg>`;
+}
+document.getElementById('solid-select').addEventListener('change', updateSolid);
+['input-dim1','input-dim2','input-dim3'].forEach(id=>document.getElementById(id).addEventListener('input', renderSolid));
+updateSolid();
+
+/* ---------- Section 2: litre converter ---------- */
+function updateLitre(){
+  const cc = document.getElementById('input-cc').value;
+  document.getElementById('val-cc').textContent = cc;
+  document.getElementById('litreOut').textContent = `= ${(cc/1000).toFixed(2).replace(/\.?0+$/,'')} litre`;
+}
+document.getElementById('input-cc').addEventListener('input', updateLitre);
+updateLitre();
+
+/* ---------- Section 3: displacement ---------- */
+function updateStone(){
+  const vol = parseInt(document.getElementById('input-stone').value);
+  document.getElementById('val-stone').textContent = vol;
+  const v1 = 50, v2 = v1+vol;
+  document.getElementById('stoneReadout').textContent = `V₁ = ${v1} cc, V₂ = ${v2} cc → Volume of stone = ${vol} cc`;
+  const wrap = document.getElementById('cylinderWrap');
+  const w=180,h=280,baseY=260,topY=30;
+  const level1Y = baseY - (v1/100)*(baseY-topY);
+  const level2Y = baseY - (v2/100)*(baseY-topY);
+  const stoneR = 8+vol*0.6;
+  wrap.innerHTML = `<svg viewBox="0 0 280 280">
+    <rect x="90" y="20" width="60" height="250" fill="none" stroke="var(--border-color)" stroke-width="2" rx="4"/>
+    <rect x="92" y="${level2Y}" width="56" height="${260-level2Y}" fill="var(--math-accent)" opacity="0.55"/>
+    <line x1="90" y1="${level1Y}" x2="150" y2="${level1Y}" stroke="var(--math-accent-2)" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="155" y="${level1Y+4}" font-size="11" fill="var(--text-muted)">V₁</text>
+    <line x1="90" y1="${level2Y}" x2="150" y2="${level2Y}" stroke="var(--math-accent)" stroke-width="2"/>
+    <text x="155" y="${level2Y+4}" font-size="11" fill="var(--text-main)" font-weight="700">V₂</text>
+    <circle cx="120" cy="${Math.min(level2Y+20,245)}" r="${stoneR}" fill="#8a6b4a"/>
+  </svg>`;
+}
+document.getElementById('input-stone').addEventListener('input', updateStone);
+updateStone();
+
+/* ---------- Worked example ---------- */
+document.getElementById('we1-play').addEventListener('click', () => AlgLib.revealSteps('we1-steps'));
+AlgLib.revealSteps('we1-steps', 0);
+
+/* ---------- Exercise ---------- */
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 27, document.getElementById('exResult'));
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

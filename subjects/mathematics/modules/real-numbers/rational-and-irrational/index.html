@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.1–2.3 Rational &amp; Irrational Numbers • Real Numbers • Study Notebook</title>
+<meta name="description" content="Rational numbers, the denseness property, decimal expansions and periods, converting decimals to fractions, and how to identify irrational numbers from their decimal expansion."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.rn-btn-row{ display:flex; gap:0.6rem; flex-wrap:wrap; margin:0.8rem 0; }
+.rn-inline-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:160px; }
+.rn-fact-row{ display:flex; gap:0.5rem; flex-wrap:wrap; margin:0.6rem 0; font-family:var(--font-mono); font-size:0.85rem; }
+.rn-fact-chip{ padding:5px 10px; border-radius:6px; background:var(--card-bg); border:1px solid var(--border-color); }
+.phys-token-chip{ width:64px; height:64px; border-radius:14px; font-size:0.62rem; line-height:1.05; padding:4px; white-space:normal; text-align:center; }
+.rn-mini{ font-size:0.82rem; color:var(--text-muted); margin-top:0.4rem; }
+</style>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Real Numbers
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">2.1–2.3 Rational &amp; Irrational Numbers</span>
+<h1 class="hero-title">Between any two<br/>numbers, another hides</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 52ch;">
+    You already know Natural numbers $N$, Whole numbers $W$ and Integers $Z$. A
+    <b>rational number</b> is a fraction $\frac{p}{q}$ of two integers, $q \ne 0$. But even after filling
+    the number line with every rational number you can imagine, gaps remain — filled only by
+    <b>irrational numbers</b> like $\sqrt2$.
+</p>
+</div>
+</section>
+<section class="rn-play-banner"><div><b>THIS PAGE IS INTERACTIVE</b><span>Predict first → drag / change / click → watch what changes → explain what you noticed.</span></div><div class="rn-play-pills"><span>DRAG</span><span>CHANGE</span><span>TRY</span><span>WATCH</span></div></section>
+
+<!-- 2.2 RATIONAL NUMBERS -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 id="rational-numbers" class="section-label" style="color: var(--math-accent);">2.2 Rational Numbers</h3>
+<h2 style="margin-bottom:0.8rem;">$N \subset W \subset Z \subset Q$</h2>
+<p style="max-width:74ch;">
+    Counting numbers $1,2,3,\dots$ are <b>Natural numbers</b> ($N$). Add zero and you get
+    <b>Whole numbers</b> ($W = \{0,1,2,3,\dots\}$). Add negatives and you get <b>Integers</b>
+    ($Z = \{\dots,-3,-2,-1,0,1,2,3,\dots\}$). A <b>rational number</b> is any number of the form
+    $\frac{a}{b}$ where $a,b \in Z$ and $b \ne 0$ — we call the set of all such numbers $Q$.
+    Since a fraction has many equivalent forms, $\frac13, \frac26, \frac{8}{24}$ all denote the
+    <i>same</i> rational number.
+</p>
+<div class="rn-fact-row">
+<span class="rn-fact-chip">$N = \{1,2,3,\dots\}$</span>
+<span class="rn-fact-chip">$W = \{0,1,2,3,\dots\}$</span>
+<span class="rn-fact-chip">$Z = \{\dots,-2,-1,0,1,2,\dots\}$</span>
+<span class="rn-fact-chip">$Q = \left\{\frac{a}{b} : a,b \in Z,\ b\ne0\right\}$</span>
+</div>
+<div id="rnBasicLine" style="margin-top:1rem;"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('rational', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- 2.2.1 DENSENESS PROPERTY -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.2.1 Denseness Property of Rational Numbers</h3>
+<h2>You can always squeeze in one more</h2>
+<p style="max-width:74ch;">
+    For any two rational numbers $a > b$, their average $\frac{a+b}{2}$ is also rational, and it lies
+    strictly between them: $a > \frac{a+b}{2} > b$. Since that average is itself a rational number,
+    you can repeat the trick on the new, narrower gap — forever. This is the <b>denseness
+    property</b>: between any two rational numbers there exist infinitely many rational numbers.
+</p>
+<div class="formula-card" style="text-align:center;">
+<div class="formula-rule">If $a=\frac{p}{q}$ and $b=\frac{r}{s}$, then $\dfrac{a+b}{2} = \dfrac{ps+qr}{2qs}$ is rational and lies between $a$ and $b$.</div>
+</div>
+
+<h3 style="margin-top:1.6rem;">Try it: keep finding a number in between</h3>
+<p class="rn-mini">Start with $\frac12$ and $\frac23$. Each click below finds the arithmetic mean of the two
+closest points and drops a new rational number exactly between them — proof that the gap never runs
+out of room.</p>
+<div id="denseLine" style="margin-top:0.6rem;"></div>
+<div class="rn-btn-row">
+<button class="btn btn-primary" id="denseInsertBtn">Insert another rational number</button>
+<button class="btn btn-ghost" id="denseResetBtn">Reset</button>
+</div>
+<p id="denseCount" class="rn-mini">2 rational numbers placed so far (the two endpoints).</p>
+
+<p style="max-width:74ch; margin-top:1rem;">Now drag the free point below to anywhere strictly between $\frac12$ and $\frac23$ — every position
+you can drop it on is another rational number in that gap.</p>
+<div id="denseDragLine" style="margin-top:0.4rem;"></div>
+<div class="check-result" id="denseDragResult"></div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE 2.1 -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example 2.1 (textbook)</span>
+<div class="we-question">Find any two rational numbers between $\frac12$ and $\frac23$.</div>
+<div class="we-concept">Concept used: the arithmetic-mean (midpoint) trick, applied twice.</div>
+<div class="step-flow" id="ex21-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Average $\frac12$ and $\frac23$: $\frac12\left(\frac12+\frac23\right)=\frac12\cdot\frac{3+4}{6}=\frac{7}{12}$.<div class="step-math">$\frac12 < \frac{7}{12} < \frac23$</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Average $\frac12$ and $\frac{7}{12}$: $\frac12\left(\frac12+\frac{7}{12}\right)=\frac12\cdot\frac{6+7}{12}=\frac{13}{24}$.<div class="step-math">$\frac12 < \frac{13}{24} < \frac{7}{12}$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Final answer</b><div class="step-math">$\frac{7}{12}$ and $\frac{13}{24}$ both lie between $\frac12$ and $\frac23$ (there are infinitely many more).</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex21-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- 2.3 IRRATIONAL NUMBERS -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 id="irrational-numbers" class="section-label" style="color: var(--math-accent);">2.3 Irrational Numbers</h3>
+<h2>Not every point on the line is a fraction</h2>
+<p style="max-width:74ch;">
+    Take an isosceles right triangle with both legs 1 unit. By Pythagoras, its hypotenuse is
+    $\sqrt{1^2+1^2}=\sqrt2$. The Greeks proved $\sqrt2$ can never be written as $\frac{a}{b}$ for
+    integers $a,b$ — it is <b>irrational</b>. An irrational number is one that cannot be expressed as
+    an ordinary ratio of two integers.
+</p>
+<div class="rn-fact-row">
+<span class="rn-fact-chip">$\sqrt2, \sqrt5, \sqrt7, 2\sqrt3$</span>
+<span class="rn-fact-chip">$\pi$ (circumference ÷ diameter)</span>
+<span class="rn-fact-chip">$e$ (Euler's number)</span>
+<span class="rn-fact-chip">golden ratio $\varphi$</span>
+</div>
+<h3 style="margin-top:1.4rem;">2.3.1 Irrational Numbers on the Number Line</h3>
+<p style="max-width:74ch;">Construct a square of side 1 unit. Its diagonal has length $\sqrt2$. Swing that diagonal down onto
+the number line with a compass centred at 0 — it marks $\sqrt2$ exactly to the right of 0, and
+$-\sqrt2$ to the left.</p>
+<div id="sqrt2Line" style="margin-top:0.6rem;"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('irrational', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- 2.3.2 DECIMAL REPRESENTATION -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.3.2 Decimal Representation of a Rational Number</h3>
+<h2>Long division either stops, or repeats</h2>
+<p style="max-width:74ch;">
+    Every rational number's decimal form comes from long division. Sometimes the remainder hits
+    zero and the division simply ends — a <b>terminating decimal</b>. Watch it happen:
+</p>
+<div class="rn-btn-row">
+<button class="btn btn-secondary" data-frac="7,8">7 / 8</button>
+<button class="btn btn-secondary" data-frac="21,25">21 / 25</button>
+<button class="btn btn-secondary" data-frac="87,32">87 / 32</button>
+</div>
+<div id="termTrace"></div>
+
+<p style="max-width:74ch; margin-top:1.4rem;">
+    But the remainder doesn't always hit zero. Sometimes it starts repeating itself instead, forcing
+    the same block of digits to repeat forever — a <b>non-terminating recurring decimal</b>.
+</p>
+<div class="worked-example">
+<span class="we-label">Example 2.2 (textbook)</span>
+<div class="we-question">Represent as decimal form: (i) $\dfrac{-4}{11}$ &nbsp; (ii) $\dfrac{11}{75}$</div>
+<div class="rn-btn-row">
+<button class="btn btn-secondary" data-frac="-4,11">−4 / 11</button>
+<button class="btn btn-secondary" data-frac="11,75">11 / 75</button>
+</div>
+<div id="recurTrace"></div>
+</div>
+<p class="rn-mini">A rational number's decimal expansion is either terminating, or non-terminating and recurring — and the converse is also true.</p>
+</div>
+</section>
+
+<!-- 2.3.3 PERIOD OF DECIMAL -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color: var(--math-accent);">2.3.3 Period of Decimal</h3>
+<h2>How many digits repeat?</h2>
+<p style="max-width:74ch;">
+    The number of digits in the repeating block is called the <b>length of the period</b> of the
+    decimal. For example $\frac{25}{7}=3.\overline{571428}$ has period length 6, and
+    $\frac{27}{110}=0.2\overline{45}$ has period length 2.
+</p>
+<div class="worked-example">
+<span class="we-label">Example 2.3 (textbook)</span>
+<div class="we-question">Express $\dfrac{1}{27}$ in recurring decimal form using the expansion of $\dfrac13$. Hence write $\dfrac{59}{27}$ in recurring decimal form.</div>
+<div class="rn-btn-row">
+<button class="btn btn-secondary" data-frac="1,3">1 / 3</button>
+<button class="btn btn-secondary" data-frac="1,27">1 / 27</button>
+<button class="btn btn-secondary" data-frac="59,27">59 / 27</button>
+</div>
+<div id="periodTrace"></div>
+<p class="rn-mini">$\frac13=0.\overline3$, so $\frac{1}{27}=\frac19\times\frac13=\frac19\times0.333\ldots=0.\overline{037}$. Then $\frac{59}{27}=2+\frac{5}{27}=2+\left(5\times\frac{1}{27}\right)=2.\overline{185}$.</p>
+</div>
+</div>
+</section>
+
+<!-- 2.3.4 TERMINATING DECIMAL -> RATIONAL -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.3.4 Conversion of Terminating Decimals into Rational Numbers</h3>
+<h2>Strip the decimal point, then simplify</h2>
+<p style="max-width:74ch;">
+    $2.945 = 2 + \frac{9}{10}+\frac{4}{100}+\frac{5}{1000} = 2+\frac{945}{1000}=\frac{2945}{1000}=\frac{589}{200}$.
+    In general, a terminating decimal with $n$ digits after the point equals (the digits, as a whole
+    number) over $10^n$, then reduced.
+</p>
+<div class="worked-example">
+<span class="we-label">Example 2.4 (textbook)</span>
+<div class="we-question">Convert to $\frac{p}{q}$ form: (i) $0.35$ &nbsp; (ii) $2.176$ &nbsp; (iii) $-0.0028$</div>
+<div class="rn-btn-row">
+<input class="rn-inline-input" type="text" id="convInput" placeholder="e.g. 0.35 or 2.176"/>
+<button class="btn btn-primary" id="convBtn">Convert</button>
+</div>
+<div id="convOut" class="check-result"></div>
+<p class="rn-mini">Try the three textbook values above, then any terminating decimal you like.</p>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="convAnswer">Show Answer (textbook values)</button></div>
+<div class="exercise-panel answer-panel" id="convAnswer">(i) $0.35=\frac{35}{100}=\frac{7}{20}$ &nbsp; (ii) $2.176=\frac{2176}{1000}=\frac{272}{125}$ &nbsp; (iii) $-0.0028=\frac{-28}{10000}=\frac{-7}{2500}$</div>
+</div>
+</div>
+</section>
+
+<!-- 2.3.5 NON-TERMINATING RECURRING -> RATIONAL -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent);">2.3.5 Conversion of Non-terminating Recurring Decimals into Rational Numbers</h3>
+<h2>Multiply, subtract, and the repeating tail cancels</h2>
+<p style="max-width:74ch;">
+    Let $x = 2.\overline4 = 2.4444\ldots$. Multiplying by 10 shifts the decimal point but leaves the
+    same infinite tail of 4's: $10x = 24.4444\ldots$. Subtracting, $9x = 22.4444\ldots - 2.4444\ldots
+    \Rightarrow 9x = 22 \Rightarrow x = \frac{22}{9}$.
+</p>
+<div class="worked-example">
+<span class="we-label">Example 2.5 (textbook)</span>
+<div class="we-question">Convert to $\frac{p}{q}$ form: (i) $0.\overline3$ &nbsp; (ii) $2.\overline{124}$ &nbsp; (iii) $0.4\overline5$ &nbsp; (iv) $0.5\overline{68}$</div>
+<div class="rn-btn-row">
+<button class="btn btn-secondary" data-ex5="i">(i) 0.3̄</button>
+<button class="btn btn-secondary" data-ex5="ii">(ii) 2.124̄</button>
+<button class="btn btn-secondary" data-ex5="iii">(iii) 0.45̄</button>
+<button class="btn btn-secondary" data-ex5="iv">(iv) 0.568̄</button>
+</div>
+<div class="step-flow" id="ex5-steps"></div>
+</div>
+
+<div class="worked-example" style="margin-top:1.4rem;">
+<span class="we-label">Example 2.6 (textbook)</span>
+<div class="we-question">Without actual division, classify as terminating or non-terminating recurring: (i) $\frac{13}{64}$ (ii) $\frac{-71}{125}$ (iii) $\frac{43}{375}$ (iv) $\frac{31}{400}$</div>
+<div class="we-concept">Rule: if $\frac{p}{q}$ can be written with denominator of the form $2^m5^n$ only, it terminates. Otherwise it is non-terminating recurring.</div>
+<div class="step-flow" id="ex6-steps">
+<div class="step-item"><span class="step-num">i</span><div class="step-body">$64 = 2^6$ → only 2's. <div class="step-math">$\frac{13}{64}$ terminates.</div></div></div>
+<div class="step-item"><span class="step-num">ii</span><div class="step-body">$125 = 5^3$ → only 5's. <div class="step-math">$\frac{-71}{125}$ terminates.</div></div></div>
+<div class="step-item"><span class="step-num">iii</span><div class="step-body">$375 = 3 \times 5^3$ → has a factor of 3. <div class="step-math">$\frac{43}{375}$ is non-terminating recurring.</div></div></div>
+<div class="step-item"><span class="step-num">iv</span><div class="step-body">$400 = 2^4 \times 5^2$ → only 2's and 5's. <div class="step-math">$\frac{31}{400}$ terminates.</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex6-play">Play steps</button></div>
+</div>
+
+<div class="worked-example" style="margin-top:1.4rem;">
+<span class="we-label">Example 2.7 (textbook)</span>
+<div class="we-question">Verify that $1 = 0.\overline9$.</div>
+<div class="step-flow" id="ex7-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Let $x=0.\overline9=0.9999\ldots$<div class="step-math">Multiply by 10: $10x=9.9999\ldots$</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Subtract the first equation from the second.<div class="step-math">$9x = 9 \Rightarrow x=1$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Conclusion</b><div class="step-math">$0.\overline9 = 1$ — every terminating decimal can also be written with an endless tail of 9's.</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex7-play">Play steps</button></div>
+</div>
+
+<div class="exercise-card" id="ex57try" style="margin-top:1.4rem;">
+<span class="ex-label">Try Yourself</span>
+<div class="ex-question">Convert $0.\overline{27}$ to $\frac{p}{q}$ form (period length 2 — same method as $2.\overline{124}$).</div>
+<div class="check-row" style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+<input class="rn-inline-input" type="text" id="try57Input" placeholder="e.g. 3/11"/>
+<button class="btn btn-primary" id="try57Btn">Check</button>
+</div>
+<div class="check-result" id="try57Result"></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="try57Hint">Hint</button><button class="btn btn-secondary" data-reveal="try57Answer">Show Answer</button></div>
+<div class="exercise-panel" id="try57Hint">Let $x=0.\overline{27}$. Since the period is 2, multiply by 100 and subtract $x$.</div>
+<div class="exercise-panel answer-panel" id="try57Answer">$100x - x = 27 \Rightarrow 99x=27 \Rightarrow x=\frac{27}{99}=\frac{3}{11}$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('recur27','claude')" title="Ask Claude"></button></div>
+</div>
+</div>
+</section>
+
+<!-- 2.3.6 IDENTIFY IRRATIONAL FROM DECIMAL -->
+<section>
+<div style="width:100%; max-width:1150px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.3.6 Decimal Representation to Identify Irrational Numbers</h3>
+<h2>Neither terminating, nor recurring</h2>
+<p style="max-width:74ch;">
+    $\pi = 3.14159265358979\ldots$ never terminates and never repeats — no finite block of digits
+    ever recurs. A number with a non-terminating, non-recurring decimal expansion is
+    <b>irrational</b>. The square root of every positive non-perfect-square integer is irrational:
+    $\sqrt2,\sqrt3,\sqrt5,\sqrt6,\sqrt7,\ldots$
+</p>
+
+<div class="worked-example">
+<span class="we-label">Example 2.8 (textbook)</span>
+<div class="we-question">Find the decimal expansion of $\sqrt3$.</div>
+<div class="we-concept">By long division of $3\div1$ after appending pairs of zeros (the square-root algorithm), $\sqrt3 = 1.7320508\ldots$ — non-terminating and non-recurring, so $\sqrt3$ is irrational.</div>
+</div>
+
+<h3 style="margin-top:1.6rem;">Sort each number: Rational, or Irrational?</h3>
+<p class="rn-mini">Example 2.9 (textbook). Inspect each number's decimal expansion, then fling its token into the
+correct zone.</p>
+<div class="wd-legend" id="rnClassifyLegend" style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.6rem;"></div>
+<div id="rnClassifyStage" style="margin-top:1rem;"></div>
+<div class="check-result" id="rnClassifyResult"></div>
+
+<div class="worked-example" style="margin-top:1.6rem;">
+<span class="we-label">Example 2.10 (textbook)</span>
+<div class="we-question">Find any 3 irrational numbers between $0.12$ and $0.13$.</div>
+<div class="we-concept">Concept used: build non-terminating, non-recurring decimals that start $0.12\ldots$ by inserting a deliberately growing, never-repeating pattern.</div>
+<div class="step-flow" id="ex10-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Start each candidate with the digits $0.12$, so it's guaranteed to sit between $0.12$ and $0.13$.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Append a pattern of growing zero-blocks and 1's that never repeats, e.g. $0.12010010001\ldots$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Final answer</b><div class="step-math">$0.12010010001\ldots,\ \ 0.12040040004\ldots,\ \ 0.12070070007\ldots$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex10-play">Play steps</button></div>
+</div>
+
+<div class="worked-example" style="margin-top:1.4rem;">
+<span class="we-label">Example 2.11 (textbook)</span>
+<div class="we-question">Give any two rational numbers lying between $0.5151151115\ldots$ and $0.5353353335\ldots$</div>
+<div class="we-concept">Concept used: a terminating decimal placed strictly between the two given values is automatically rational.</div>
+<div class="step-flow" id="ex11-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Compare digit by digit: both numbers start $0.5\ldots$, then differ at the third digit (1 vs 3).</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body"><b>Final answer</b><div class="step-math">$0.5152$ and $0.5352$ — both terminating, hence rational, and both fall strictly in the gap.</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex11-play">Play steps</button></div>
+</div>
+
+<div class="worked-example" style="margin-top:1.4rem;">
+<span class="we-label">Example 2.12 (textbook)</span>
+<div class="we-question">If $a=2+\sqrt3,\ b=2-\sqrt3$; is $x=a+b$ rational or irrational? Is $y=a-b$ rational or irrational?</div>
+<div class="step-flow" id="ex12-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$x=a+b=(2+\sqrt3)+(2-\sqrt3)=4$<div class="step-math">the $\sqrt3$ terms cancel — $x=4$ is rational.</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$y=a-b=(2+\sqrt3)-(2-\sqrt3)=2\sqrt3$<div class="step-math">an irrational number times a nonzero rational is irrational — $y$ is irrational.</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Lesson</b><div class="step-math">The sum, difference, product or quotient of two irrational numbers can be rational <i>or</i> irrational — it depends on the numbers.</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex12-play">Play steps</button></div>
+</div>
+
+<div class="worked-example" style="margin-top:1.4rem;">
+<span class="we-label">Example 2.13 (textbook)</span>
+<div class="we-question">Represent $\sqrt{9.3}$ on a number line.</div>
+<div class="we-concept">Construction: mark $A$, then $B$ with $AB=9.3$ units, then $C$ with $BC=1$ unit. Bisect $AC$ at $O$ and draw a semicircle of radius $OA$. Erect a perpendicular to $AB$ at $B$ meeting the semicircle at $D$; then $BD=\sqrt{9.3}$. Swing an arc of radius $BD$ centred at $B$ down onto the line to mark the point.</div>
+</div>
+
+<div class="ai-links" style="margin-top:1rem;">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('classify', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link cn-home" href="../">Real Numbers Home</a>
+<a class="back-link" href="../real-number-line/">Next: The Real Number Line →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../js/token-physics.js"></script>
+<script src="../../../../../js/number-line-lib.js"></script>
+<script src="../../../../../js/decimal-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'chapter') prompt = "Give a Class 9 student a friendly overview of rational and irrational numbers.";
+    else if (topic === 'rational') prompt = "Explain Natural numbers, Whole numbers, Integers and Rational numbers (N, W, Z, Q) for a Class 9 student, with the number-line picture.";
+    else if (topic === 'irrational') prompt = "Explain why √2 is irrational and how it's constructed on the number line using a square's diagonal, for a Class 9 student.";
+    else if (topic === 'recur27') prompt = "I'm converting the recurring decimal 0.27 repeating (0.272727...) into p/q form for Class 9 Real Numbers. Give me a hint first, not the full answer.";
+    else if (topic === 'classify') prompt = "Explain how to tell whether a number is rational or irrational just by looking at its decimal expansion, for a Class 9 student, with several worked examples.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- 2.2 basic number line (N/W/Z/Q illustration) ---------- */
+const basicNL = NumberLineLib.create(document.getElementById('rnBasicLine'), { min: -4, max: 4, height: 100 });
+[-4,-3,-2,-1,0,1,2,3,4].forEach(v => basicNL.addPoint('int'+v, v, { fixed: true, cls: 'numline-fixed', label: v }));
+basicNL.addPoint('half', 0.5, { fixed: true, cls: 'numline-highlight', label: '1/2' });
+
+/* ---------- 2.2.1 Denseness: iterative midpoint insertion ---------- */
+const denseNL = NumberLineLib.create(document.getElementById('denseLine'), { min: 0.4, max: 0.75, height: 110 });
+denseNL.markInterval(0.5, 2/3, 'numline-interval-highlight');
+let densePts = [
+  { v: 0.5, label: '1/2' },
+  { v: 2/3, label: '2/3' }
+];
+densePts.forEach((p,i) => denseNL.addPoint('dp'+i, p.v, { fixed: true, cls: 'numline-fixed', label: p.label }));
+let denseInsertCount = 0;
+function toFrac(x) {
+  // display as a short decimal fraction label
+  return x.toFixed(4);
+}
+document.getElementById('denseInsertBtn').addEventListener('click', () => {
+  densePts.sort((a,b) => a.v - b.v);
+  let bestGap = -1, bestIdx = 0;
+  for (let i = 0; i < densePts.length - 1; i++) {
+    const gap = densePts[i+1].v - densePts[i].v;
+    if (gap > bestGap) { bestGap = gap; bestIdx = i; }
+  }
+  const mid = (densePts[bestIdx].v + densePts[bestIdx+1].v) / 2;
+  denseInsertCount++;
+  const label = toFrac(mid);
+  densePts.splice(bestIdx+1, 0, { v: mid, label });
+  denseNL.addPoint('dpx'+denseInsertCount, mid, { fixed: true, cls: 'numline-highlight', label });
+  document.getElementById('denseCount').textContent = `${densePts.length} rational numbers placed so far — and the widest remaining gap (${bestGap.toFixed(4)} wide) can still fit another average right in its middle.`;
+});
+document.getElementById('denseResetBtn').addEventListener('click', () => {
+  denseInsertCount = 0;
+  densePts = [{ v: 0.5, label: '1/2' }, { v: 2/3, label: '2/3' }];
+  const denseNL2 = NumberLineLib.create(document.getElementById('denseLine'), { min: 0.4, max: 0.75, height: 110 });
+  denseNL2.markInterval(0.5, 2/3, 'numline-interval-highlight');
+  densePts.forEach((p,i) => denseNL2.addPoint('dp'+i, p.v, { fixed: true, cls: 'numline-fixed', label: p.label }));
+  document.getElementById('denseCount').textContent = '2 rational numbers placed so far (the two endpoints).';
+});
+
+/* ---------- Denseness: draggable point ---------- */
+const dragNL = NumberLineLib.create(document.getElementById('denseDragLine'), { min: 0.4, max: 0.75, height: 110 });
+dragNL.markInterval(0.5, 2/3, 'numline-interval-highlight');
+dragNL.addPoint('da', 0.5, { fixed: true, cls: 'numline-fixed', label: '1/2' });
+dragNL.addPoint('db', 2/3, { fixed: true, cls: 'numline-fixed', label: '2/3' });
+dragNL.addPoint('dfree', 0.55, {
+  cls: 'numline-drag',
+  label: 'drag me',
+  onChange(v) {
+    const r = document.getElementById('denseDragResult');
+    if (v > 0.5 && v < 2/3) {
+      r.textContent = `${v.toFixed(4)} lies strictly between 1/2 and 2/3 — another rational number found!`;
+      r.className = 'check-result check-yes';
+    } else {
+      r.textContent = `${v.toFixed(4)} is outside the gap — drag it back between the two marked points.`;
+      r.className = 'check-result check-no';
+    }
+  }
+});
+
+/* ---------- 2.3.1 sqrt2 line ---------- */
+const sqrtNL = NumberLineLib.create(document.getElementById('sqrt2Line'), { min: -4, max: 4, height: 110 });
+[-4,-3,-2,-1,0,1,2,3,4].forEach(v => sqrtNL.addPoint('s'+v, v, { fixed: true, cls: 'numline-fixed', label: v }));
+sqrtNL.addPoint('sqrt2', Math.SQRT2, { fixed: true, cls: 'numline-highlight', label: '√2' });
+sqrtNL.addPoint('negsqrt2', -Math.SQRT2, { fixed: true, cls: 'numline-highlight', label: '−√2' });
+
+/* ---------- 2.3.2 decimal traces ---------- */
+document.querySelectorAll('[data-frac]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const [p, q] = btn.dataset.frac.split(',').map(Number);
+    const parent = btn.closest('section');
+    let target = parent.querySelector('#termTrace') || parent.querySelector('#recurTrace') || parent.querySelector('#periodTrace');
+    DecimalLib.animate(target, p, q);
+  });
+});
+
+/* ---------- 2.3.5 Example 2.5 steps ---------- */
+const ex5Data = {
+  i: {
+    q: '$x = 0.\\overline3 = 0.3333\\ldots$',
+    steps: [
+      'Period length is 1, so multiply by $10$: $10x = 3.3333\\ldots$',
+      'Subtract: $10x - x = 3.3333\\ldots - 0.3333\\ldots \\Rightarrow 9x = 3$',
+      '$x = \\dfrac13$'
+    ]
+  },
+  ii: {
+    q: '$x = 2.\\overline{124} = 2.124124124\\ldots$',
+    steps: [
+      'Period length is 3, so multiply by $1000$: $1000x = 2124.124124\\ldots$',
+      'Subtract: $1000x - x = 2124.124\\ldots - 2.124\\ldots \\Rightarrow 999x = 2122$',
+      '$x = \\dfrac{2122}{999}$'
+    ]
+  },
+  iii: {
+    q: '$x = 0.4\\overline5 = 0.45555\\ldots$',
+    steps: [
+      'The repeating digit starts after 1 non-repeating digit — multiply by $10$: $10x = 4.5555\\ldots$',
+      'Now the period is 1 — multiply again by $10$: $100x = 45.5555\\ldots$',
+      'Subtract: $100x - 10x = 45.555\\ldots - 4.555\\ldots \\Rightarrow 90x = 41 \\Rightarrow x = \\dfrac{41}{90}$'
+    ]
+  },
+  iv: {
+    q: '$x = 0.5\\overline{68} = 0.568686868\\ldots$',
+    steps: [
+      'One non-repeating digit — multiply by $10$: $10x = 5.68686868\\ldots$',
+      'Period is 2 — multiply again by $100$: $1000x = 568.686868\\ldots$',
+      'Subtract: $1000x - 10x = 568.68\\ldots - 5.68\\ldots \\Rightarrow 990x = 563 \\Rightarrow x = \\dfrac{563}{990}$'
+    ]
+  }
+};
+document.querySelectorAll('[data-ex5]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const d = ex5Data[btn.dataset.ex5];
+    const host = document.getElementById('ex5-steps');
+    host.innerHTML = `<div class="step-item"><span class="step-num">•</span><div class="step-body">Let ${d.q}</div></div>` +
+      d.steps.map((s,i) => `<div class="step-item"><span class="step-num">${i+1}</span><div class="step-body">${s}</div></div>`).join('');
+    AlgLib.revealSteps('ex5-steps');
+  });
+});
+
+/* ---------- worked-example play buttons ---------- */
+[['ex21-play','ex21-steps'],['ex6-play','ex6-steps'],['ex7-play','ex7-steps'],['ex10-play','ex10-steps'],['ex11-play','ex11-steps'],['ex12-play','ex12-steps']].forEach(([btn,steps]) => {
+  document.getElementById(btn).addEventListener('click', () => AlgLib.revealSteps(steps));
+  AlgLib.revealSteps(steps, 0);
+});
+
+/* ---------- Try Yourself: 0.27 repeating ---------- */
+document.getElementById('try57Btn').addEventListener('click', () => {
+  ExLib.checkTextAnswer(document.getElementById('try57Input'), ['3/11', '27/99'], document.getElementById('try57Result'));
+});
+AlgLib.wireExercise(document.getElementById('ex57try'));
+
+/* ---------- 2.3.4 terminating decimal converter ---------- */
+function gcd(a,b){ a=Math.abs(a); b=Math.abs(b); while(b){ [a,b]=[b,a%b]; } return a || 1; }
+document.getElementById('convBtn').addEventListener('click', () => {
+  const raw = document.getElementById('convInput').value.trim();
+  const out = document.getElementById('convOut');
+  const m = raw.match(/^(-?)(\d+)\.(\d+)$/);
+  if (!m) { out.textContent = 'Enter a terminating decimal, e.g. 0.35'; out.className = 'check-result check-no'; return; }
+  const [, sign, whole, frac] = m;
+  const n = frac.length;
+  let numerator = parseInt(whole + frac, 10);
+  let denominator = Math.pow(10, n);
+  const g = gcd(numerator, denominator);
+  numerator /= g; denominator /= g;
+  out.innerHTML = `$${raw} = \\dfrac{${sign}${parseInt(whole+frac,10)}}{${Math.pow(10,n)}} = \\dfrac{${sign}${numerator}}{${denominator}}$`;
+  out.className = 'check-result check-yes';
+  AlgLib.typeset(out);
+});
+
+/* ---------- 2.3.6 classify rational/irrational (physics sorter) ---------- */
+const classifyItems = [
+  { id: 'c1', label: '√10', full: '√10', decimalHint: '3.16227766... (10 is not a perfect square)', correct: 'irr' },
+  { id: 'c2', label: '√49', full: '√49', decimalHint: '√49 = 7 = 7/1 (49 is a perfect square)', correct: 'rat' },
+  { id: 'c3', label: '0.025', full: '0.025', decimalHint: 'terminating decimal', correct: 'rat' },
+  { id: 'c4', label: '0.7̄6', full: "0.76̄ = 0.7666...", decimalHint: 'non-terminating but recurring', correct: 'rat' },
+  { id: 'c5', label: '2.5055...', full: '2.505500555...', decimalHint: 'non-terminating and non-recurring', correct: 'irr' },
+  { id: 'c6', label: '√2 / 2', full: '√2 / 2', decimalHint: '= 1/√2, and 2 is not a perfect square', correct: 'irr' }
+];
+document.getElementById('rnClassifyLegend').innerHTML = classifyItems.map(item => `
+  <div class="var-row" id="crow-${item.id}"><span class="var-key">${item.label}</span><span class="var-desc" id="creason-${item.id}">${item.decimalHint} — drag its token below to sort it.</span></div>
+`).join('');
+ExLib.physicsSorter(document.getElementById('rnClassifyStage'), classifyItems, ['RATIONAL', 'IRRATIONAL'], {
+  height: 340,
+  zoneKeys: ['rat', 'irr'],
+  onPlace(item, ok, placed, total) {
+    const r = document.getElementById('rnClassifyResult');
+    if (ok) {
+      const desc = document.getElementById('creason-' + item.id);
+      desc.innerHTML = `<b style="color:${item.correct === 'rat' ? 'var(--math-accent)' : 'var(--math-accent-2)'};">${item.correct === 'rat' ? 'Rational.' : 'Irrational.'}</b> ${item.decimalHint}`;
+      r.textContent = `${placed}/${total} sorted correctly.`;
+      r.className = 'check-result check-yes';
+    } else {
+      r.textContent = `Not quite — look at "${item.full}"'s decimal expansion again, then fling it into the other zone.`;
+      r.className = 'check-result check-no';
+    }
+  },
+  onComplete() {
+    const r = document.getElementById('rnClassifyResult');
+    r.textContent = 'All six sorted correctly!';
+    r.className = 'check-result check-yes';
+  }
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

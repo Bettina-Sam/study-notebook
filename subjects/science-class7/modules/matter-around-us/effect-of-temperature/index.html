@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.7 Effect of Temperature on Solid, Liquid and Gas • Matter Around Us • Study Notebook</title>
+<meta name="description" content="How heating and cooling change the arrangement of particles, and move matter between solid, liquid and gas."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Matter Around Us
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 3 · Matter Around Us</span>
+<span class="coming-soon-num">3.7 Effect of Temperature on States</span>
+<h1 class="hero-title">Heat doesn't grow<br/>the particles —<br/>it spreads them out</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Heating makes particles vibrate more and move further apart, so matter expands. The particles' size never changes — only the space between them.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Heat It Up</h3>
+<h2>Watch particles react to temperature</h2>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Increase the temperature and watch the particles spread out and change state.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Temperature (<span class="value-readout" id="val-temp">20</span> °C)</label><input id="input-temp" max="120" min="-20" step="5" type="range" value="20"/></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="stateOut">Solid — particles packed closely, vibrating in place.</div>
+</div>
+<div class="etu-card"><span class="etu-tag">Key idea</span><p style="font-size:0.95rem;margin-bottom:0;">During heating, the mass of matter stays exactly the same — only the volume changes, because the distance between particles increases while the particles themselves stay the same size.</p></div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="stateWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">A hot-air balloon rises because the air inside it is heated. Does the density of that air increase or decrease?</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" style="width:160px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 35–36</span><h2>What heating actually does</h2><div class="tb-grid"><div class="tb-card"><h3>Solid → Liquid</h3><p>Melting — particles gain enough energy to overcome the forces holding them in a fixed pattern.</p></div><div class="tb-card"><h3>Liquid → Gas</h3><p>Boiling — particles break free from each other completely and move randomly.</p></div><div class="tb-card"><h3>Mass is conserved</h3><p>The number and size of particles never changes during heating — only the volume, because of expansion.</p></div><div class="tb-card"><h3>Real example</h3><p>An iron lock's particles get slightly further apart in the sun's heat — that's why the latch sticks on hot days.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../atomicity/">← Atomicity</a>
+<a class="back-link" href="../exercises/">Next: Unit Exercises →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+function updateState(){
+  const t = parseInt(document.getElementById('input-temp').value);
+  document.getElementById('val-temp').textContent = t;
+  let state, desc, spread;
+  if(t < 0){ state='Solid'; desc='particles packed closely, vibrating in place.'; spread=8; }
+  else if(t < 100){ state='Liquid'; desc='particles loosely packed, sliding past each other.'; spread=20; }
+  else { state='Gas'; desc='particles far apart, moving randomly and fast.'; spread=45; }
+  document.getElementById('stateOut').textContent = `${state} — ${desc}`;
+  let svg='';
+  const cols=5, rows=4;
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const baseX = 40+c*40, baseY = 30+r*25;
+      const jitterX = state==='Gas' ? (Math.random()-0.5)*spread : state==='Liquid' ? (Math.random()-0.5)*spread*0.5 : (Math.random()-0.5)*3;
+      const jitterY = state==='Gas' ? (Math.random()-0.5)*spread : state==='Liquid' ? (Math.random()-0.5)*spread*0.5 : (Math.random()-0.5)*3;
+      svg += `<circle cx="${baseX+jitterX}" cy="${baseY+jitterY}" r="7" fill="var(--math-accent)" opacity="0.8"/>`;
+    }
+  }
+  document.getElementById('stateWrap').innerHTML = `<svg viewBox="0 0 260 140">${svg}</svg>`;
+}
+document.getElementById('input-temp').addEventListener('input', updateState);
+updateState();
+setInterval(()=>{ if(document.getElementById('input-temp').value > -20) updateState(); }, 900);
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('decrease');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct — density decreases' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

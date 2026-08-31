@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.7 De Morgan's Laws • Set Language • Study Notebook</title>
+<meta name="description" content="De Morgan's laws for set difference and for complementation, verified with an interactive Venn diagram."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Set Language
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">1.7 De Morgan's Laws</span>
+<h1 class="hero-title">Break apart a<br/>complement, carefully</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    Augustus De Morgan — born in Madurai, Tamil Nadu — worked out exactly how "not" distributes over
+    "and" and "or" for sets. These two laws are used constantly in later mathematics and logic.
+</p>
+</div>
+</section>
+
+<!-- LAW 1: COMPLEMENTATION (interactive) -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">1.7.2 De Morgan's Laws for Complementation</h3>
+<h2>$(A \cup B)' = A' \cap B'$</h2>
+<p>
+    "Not (A or B)" means the same thing as "not A, and not B". Compare the two shaded regions below —
+    $U=\{a,b,c,d,e,g,i,o,u\}$, $A=\{a,e,i,o,u\}$, $B=\{b,c,e,o\}$.
+</p>
+<div class="venn-controls" id="dm1Controls">
+<button class="venn-op-btn" data-op="not-union">(A ∪ B)′</button>
+<button class="venn-op-btn" data-op="not-inter">(A ∩ B)′ &nbsp;<span style="opacity:.6;">[= A′∪B′]</span></button>
+</div>
+<div class="venn-result" id="dm1Result">Tap (A∪B)′ first, then compare with (A∩B)′.</div>
+<div class="formula-card">
+<div class="formula-rule">(A ∪ B)′ = A′ ∩ B′</div>
+<div class="formula-rule">(A ∩ B)′ = A′ ∪ B′</div>
+</div>
+<div class="thinking-corner">
+<span class="tc-label">Thinking Corner</span>
+<div class="tc-body">Before you tap either button above — just by looking at the two circles, which region do you <em>expect</em> $(A \cup B)'$ to cover? Is it the same shape as $(A \cap B)'$? Tap both operations and see if your guess was right.</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('demorgan-complement', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="venn-stage" id="dm1Venn"></div>
+</div>
+</div>
+</section>
+
+<!-- LAW 2: SET DIFFERENCE -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">1.7.1 De Morgan's Laws for Set Difference</h3>
+<h2 style="margin-bottom:1rem;">$A - (B \cup C) = (A-B) \cap (A-C)$</h2>
+<p style="max-width:70ch;">These relate union, intersection and difference across three sets, so we need a three-circle diagram.
+Let $U=\{1,...,10\}$, $A=\{1,2,3,4,5,6,7\}$, $B=\{2,4,6,8\}$, $C=\{1,3,5,7,9\}$. Shade each side of a law
+and compare.</p>
+<div class="identity-tabs" id="dm2LawTabs">
+<button class="identity-tab active" data-law="union">A−(B∪C) = (A−B)∩(A−C)</button>
+<button class="identity-tab" data-law="inter">A−(B∩C) = (A−B)∪(A−C)</button>
+</div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:0.6rem;">
+<div class="worked-example" style="margin:0;">
+<div class="venn-controls"><button class="venn-op-btn" id="dm2LeftBtn">Shade LHS</button></div>
+<div class="venn-stage" id="dm2LeftVenn"></div>
+<div class="venn-result" id="dm2LeftResult">Tap to shade the left-hand side.</div>
+</div>
+<div class="worked-example" style="margin:0;">
+<div class="venn-controls"><button class="venn-op-btn" id="dm2RightBtn">Shade RHS</button></div>
+<div class="venn-stage" id="dm2RightVenn"></div>
+<div class="venn-result" id="dm2RightResult">Tap to shade the right-hand side.</div>
+</div>
+</div>
+<div class="venn-result" id="dm2Match" style="text-align:center; font-weight:700; min-height:1.8rem;"></div>
+<div class="thinking-corner">
+<span class="tc-label">Thinking Corner</span>
+<div class="tc-body">Pick your own three small sets $A$, $B$, $C$ on paper. Work out $A-(B\cup C)$ and $(A-B)\cap(A-C)$
+by hand first — <em>then</em> use the tabs above to check your sets on the diagram. Did grouping the
+subtraction differently ever change the answer?</div>
+</div>
+<div class="formula-card">
+<div class="formula-rule">A − (B ∪ C) = (A−B) ∩ (A−C)</div>
+<div class="formula-rule">A − (B ∩ C) = (A−B) ∪ (A−C)</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('demorgan-difference', 'claude')" title="Ask Claude"></button>
+</div>
+<div class="worked-example">
+<span class="we-label">Example 1.24 (textbook)</span>
+<div class="we-question">$P=\{1,...,9\}$, $Q=\{1,3,5,7,9\}$, $R=\{2,3,5,7,11,13\}$. Verify $P-(Q \cup R) = (P-Q) \cap (P-R)$.</div>
+<div class="step-flow" id="we-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$Q \cup R = \{1,2,3,5,7,9,11,13\}$, so $P - (Q \cup R)$<div class="step-math">= {4, 6, 8}</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$P - Q = \{2,4,6,8\}$ and $P - R = \{1,4,6,8,9\}$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$(P-Q) \cap (P-R)$<div class="step-math">= {4, 6, 8}</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Both sides equal {4, 6, 8}</b> — verified.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISES -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+
+<div class="exercise-card" id="ex1">
+<span class="ex-label">Exercise 1.5 · Q10</span>
+<div class="ex-question">$U=\{4,7,8,10,11,12,15,16\}$, $A=\{7,8,11,12\}$, $B=\{4,8,12,15\}$. Verify De Morgan's Laws for complementation.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex1Hint">Compute A∪B, then its complement. Separately compute A′ and B′, then intersect them. Compare.</div>
+<div class="exercise-panel answer-panel" id="ex1Answer">
+$A \cup B = \{4,7,8,11,12,15\}$, so $(A \cup B)' = \{10,16\}$.<br/>
+$A' = \{4,10,15,16\}$, $B' = \{7,10,11,16\}$, so $A' \cap B' = \{10,16\}$. ✓ Equal — law verified.<br/><br/>
+$A \cap B = \{8,12\}$, so $(A \cap B)' = \{4,7,10,11,15,16\}$.<br/>
+$A' \cup B' = \{4,7,10,11,15,16\}$. ✓ Equal — law verified.
+</div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../properties-of-operations/">← 1.6 Properties of Set Operations</a>
+<a class="back-link cn-home" href="../">Set Language Home</a>
+<a class="back-link" href="../cardinality/">Next: Cardinality Applications →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/venn-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Explain De Morgan's laws for sets — complementation and set difference versions — with examples for a Class 9 student.";
+    if (topic === 'demorgan-complement') prompt = "Explain De Morgan's laws for complementation of sets, (A∪B)'=A'∩B' and (A∩B)'=A'∪B', for a Class 9 student, with a worked example.";
+    else if (topic === 'demorgan-difference') prompt = "Explain De Morgan's laws for set difference across three sets, A-(B∪C)=(A-B)∩(A-C) and A-(B∩C)=(A-B)∪(A-C), for a Class 9 student, with a worked example.";
+    launchAIPrompt(model, prompt);
+}
+
+const dm1Diagram = VennLib.twoSet(document.getElementById('dm1Venn'), {
+    a: ['a', 'e', 'i', 'o', 'u'], b: ['b', 'c', 'e', 'o'],
+    universe: ['a', 'b', 'c', 'd', 'e', 'g', 'i', 'o', 'u'], labelA: 'A', labelB: 'B'
+});
+VennLib.wireControls(document.getElementById('dm1Controls'), dm1Diagram, document.getElementById('dm1Result'));
+
+/* ---------- Set-difference De Morgan twin diagrams ---------- */
+const dm2Sets = { a: [1, 2, 3, 4, 5, 6, 7], b: [2, 4, 6, 8], c: [1, 3, 5, 7, 9], universe: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] };
+const dm2Left = VennLib.threeSet(document.getElementById('dm2LeftVenn'), Object.assign({ labelA: 'A', labelB: 'B', labelC: 'C' }, dm2Sets));
+const dm2Right = VennLib.threeSet(document.getElementById('dm2RightVenn'), Object.assign({ labelA: 'A', labelB: 'B', labelC: 'C' }, dm2Sets));
+let dm2Law = 'union';
+const dm2Preds = {
+    union: { l: (A, B, C) => A && !(B || C), lLbl: 'A − (B ∪ C)', r: (A, B, C) => (A && !B) && (A && !C), rLbl: '(A − B) ∩ (A − C)' },
+    inter: { l: (A, B, C) => A && !(B && C), lLbl: 'A − (B ∩ C)', r: (A, B, C) => (A && !B) || (A && !C), rLbl: '(A − B) ∪ (A − C)' }
+};
+function dm2Shade(side) {
+    const p = dm2Preds[dm2Law];
+    const diagram = side === 'L' ? dm2Left : dm2Right;
+    const resultEl = document.getElementById(side === 'L' ? 'dm2LeftResult' : 'dm2RightResult');
+    const fn = side === 'L' ? p.l : p.r, label = side === 'L' ? p.lLbl : p.rLbl;
+    diagram.highlight(fn);
+    const r = diagram.result(fn, label);
+    resultEl.innerHTML = `<b>${r.label}</b> = ${r.text}`;
+    resultEl.dataset.done = '1';
+    const otherEl = document.getElementById(side === 'L' ? 'dm2RightResult' : 'dm2LeftResult');
+    if (otherEl.dataset.done === '1') dm2UpdateMatch();
+}
+function dm2UpdateMatch() {
+    const p = dm2Preds[dm2Law];
+    const rL = dm2Left.result(p.l, p.lLbl), rR = dm2Right.result(p.r, p.rLbl);
+    const el = document.getElementById('dm2Match');
+    el.textContent = rL.text === rR.text ? `MATCH ✓ — both sides equal ${rL.text}` : 'Not matching — check your sets.';
+    el.style.color = rL.text === rR.text ? '#3e8f5c' : 'var(--math-accent-2)';
+}
+document.getElementById('dm2LeftBtn').addEventListener('click', () => dm2Shade('L'));
+document.getElementById('dm2RightBtn').addEventListener('click', () => dm2Shade('R'));
+document.getElementById('dm2LawTabs').querySelectorAll('.identity-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('dm2LawTabs').querySelectorAll('.identity-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        dm2Law = btn.dataset.law;
+        dm2Left.clear(); dm2Right.clear();
+        document.getElementById('dm2LeftResult').textContent = 'Tap to shade the left-hand side.';
+        document.getElementById('dm2LeftResult').dataset.done = '0';
+        document.getElementById('dm2RightResult').textContent = 'Tap to shade the right-hand side.';
+        document.getElementById('dm2RightResult').dataset.done = '0';
+        document.getElementById('dm2Match').textContent = '';
+    });
+});
+
+document.getElementById('we-play').addEventListener('click', () => AlgLib.revealSteps('we-steps'));
+AlgLib.revealSteps('we-steps', 0);
+AlgLib.wireExercise(document.getElementById('ex1'));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

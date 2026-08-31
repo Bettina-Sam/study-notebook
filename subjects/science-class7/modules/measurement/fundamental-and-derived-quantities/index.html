@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.1 Fundamental & Derived Quantities • Measurement • Study Notebook</title>
+<meta name="description" content="The seven fundamental physical quantities and how combining them builds every derived quantity — explored interactively."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Measurement
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 1 · Measurement</span>
+<span class="coming-soon-num">1.1 Fundamental & Derived Quantities</span>
+<h1 class="hero-title">Every quantity is<br/>built from seven</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 42ch;">
+    Mass, length, temperature — some quantities stand completely on their own. Everything else you'll ever
+    measure, from the area of your notebook to the speed of a bus, is just those few combined.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: PHYSICAL QUANTITY = VALUE + UNIT -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Physical Quantities</h3>
+<h2>A value needs a unit</h2>
+<p>
+    A <b>physical quantity</b> is anything you can measure — mass, distance, temperature, volume. To express
+    it, you need two things: a <b>value</b> and a <b>unit</b>. "I walk 2 kilometres every day" — here 2 is
+    the value and kilometre is the unit. Without the unit, "2" means nothing.
+</p>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Change the value and the unit below and watch the sentence update.</span></div>
+<div class="formula-card">
+<span class="etu-tag">Try it</span>
+<h4 style="margin-bottom:0.5rem;">Build a physical quantity</h4>
+<div class="inline-controls">
+<span>Value:</span>
+<input id="input-val" max="20" min="1" step="1" style="width:100%;" type="range" value="2"/>
+<span class="value-readout" id="val-val">2</span>
+</div>
+<div class="inline-controls" style="margin-top:0.6rem;">
+<span>Unit:</span>
+<select id="input-unit" style="padding:6px 10px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="kilometre">kilometre (distance)</option>
+<option value="kilogram">kilogram (mass)</option>
+<option value="second">second (time)</option>
+<option value="Kelvin">Kelvin (temperature)</option>
+</select>
+</div>
+<div id="quantitySentence" style="margin-top:0.8rem;font-size:1.05rem;">You walk <b>2 kilometre</b> every day.</div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="qtyWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: FUNDAMENTAL QUANTITIES -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">02. Fundamental Quantities</h3>
+<h2>The seven that stand alone</h2>
+<p>
+    A <b>fundamental quantity</b> cannot be expressed in terms of any other quantity. There are exactly seven
+    in the SI system. Their units are called <b>fundamental units</b>.
+</p>
+<div class="topic-grid three-col" id="fundGrid" style="margin-top:1rem;"></div>
+</div>
+</section>
+
+<!-- SECTION 3: DERIVED QUANTITIES -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">03. Derived Quantities</h3>
+<h2>Combine two, get a new one</h2>
+<p>
+    A <b>derived quantity</b> is built by multiplying or dividing fundamental quantities. Their units — the
+    <b>derived units</b> — are built the same way. Pick two fundamental quantities and an operation below to
+    see what you get.
+</p>
+<div class="interaction-cue"><strong>Combine</strong><span class="cue-copy">Choose the two ingredients and the operation, then read off the derived quantity and its unit.</span></div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>First quantity</label>
+<select id="qty-a" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="length">Length (m)</option>
+<option value="current">Electric current (A)</option>
+<option value="mass">Mass (kg)</option>
+</select>
+</div>
+<div class="slider-group">
+<label>Operation</label>
+<select id="qty-op" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="times">× (multiply)</option>
+<option value="div">÷ (divide)</option>
+</select>
+</div>
+<div class="slider-group">
+<label>Second quantity</label>
+<select id="qty-b" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="length">Length (m)</option>
+<option value="time">Time (s)</option>
+<option value="volume">Volume (m³)</option>
+</select>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div class="formula-rule" id="derivedOut">Length × Length = Area — unit m²</div>
+</div>
+<div class="etu-card">
+<span class="etu-tag">Key idea</span>
+<p style="font-size: 0.95rem; margin-bottom:0;">Density = Mass ÷ Volume, unit kg/m³. Speed = Distance ÷ Time,
+unit m/s. Electric charge = Electric current × Time, unit C (coulomb). Every derived unit is built exactly
+this way — never invented from nothing.</p>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="derivedWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- SORTING ACTIVITY -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">04. Sort Them Yourself</h3>
+<h2>Fundamental or derived?</h2>
+<p>Click each quantity, then place it in the correct bin.</p>
+<div class="classify-row" id="classifyChips"></div>
+<div class="classify-bins">
+<div class="classify-bin" id="binFundamental"><h5>Fundamental</h5><div class="bin-items"></div></div>
+<div class="classify-bin" id="binDerived"><h5>Derived</h5><div class="bin-items"></div></div>
+</div>
+<p id="classifyScore" style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-muted);"></p>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Speed is defined as distance travelled per unit time. If distance is measured in
+metres and time in seconds, what is the unit of speed, and is speed a fundamental or derived quantity?</div>
+<div class="we-concept">Concept used: a quantity built by dividing two fundamental quantities is derived.</div>
+<div class="step-flow" id="we1-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Speed = Distance ÷ Time.<div class="step-math">Distance (m) ÷ Time (s)</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Both distance and time are fundamental quantities, so speed is built from them.</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Its unit is metre per second.<div class="step-math">ms⁻¹</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-body">Speed is a <b>derived quantity</b>; its unit is <b>ms⁻¹</b>.</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we1-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Electric charge = Electric current × Time. If current is measured in Ampere (A)
+and time in seconds (s), how many letters are in the correct unit symbol for charge (a single capital letter)?</div>
+<div class="inline-controls">
+<span>Your answer:</span>
+<input class="mini-input" id="exAnswer" type="number"/>
+<button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">Ampere × second gives a quantity of electric charge — its SI unit is named after a French physicist, and written as a single capital letter.</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: the unit is <b>C</b> (coulomb) — 1 letter.</div>
+</div>
+</div>
+</section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 1–2</span><h2>Table 1.1 — Fundamental quantities and units</h2><div class="tb-grid"><div class="tb-card"><h3>Length</h3><p>metre (m)</p></div><div class="tb-card"><h3>Mass</h3><p>kilogram (kg)</p></div><div class="tb-card"><h3>Time</h3><p>second (s)</p></div><div class="tb-card"><h3>Temperature</h3><p>Kelvin (K)</p></div><div class="tb-card"><h3>Electric current</h3><p>Ampere (A)</p></div><div class="tb-card"><h3>Amount of substance</h3><p>mole (mol)</p></div><div class="tb-card"><h3>Luminous intensity</h3><p>candela (cd)</p></div></div><h2 style="margin-top:1rem">Table 1.2 — Derived quantities and units</h2><div class="tb-grid"><div class="tb-card"><h3>Area</h3><p>Length × Breadth, unit m²</p></div><div class="tb-card"><h3>Volume</h3><p>Length × Breadth × Height, unit m³</p></div><div class="tb-card"><h3>Speed</h3><p>Distance ÷ Time, unit ms⁻¹</p></div><div class="tb-card"><h3>Electric Charge</h3><p>Electric current × Time, unit C</p></div><div class="tb-card"><h3>Density</h3><p>Mass ÷ Volume, unit kg m⁻³</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../">← Measurement overview</a>
+<a class="back-link" href="../area/">Next: Area →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+/* ---------- Section 1: physical quantity sentence ---------- */
+const qtyMeta = {
+  kilometre:{noun:'walk', suffix:'every day', example:v=>`You walk <b>${v} kilometre</b> every day.`},
+  kilogram:{noun:'lift', suffix:'of rice', example:v=>`You lift <b>${v} kilogram</b> of rice.`},
+  second:{noun:'wait', suffix:'for the bus', example:v=>`You wait <b>${v} second</b> for the bus.`},
+  Kelvin:{noun:'measure', suffix:'above absolute zero', example:v=>`The temperature is <b>${(273+v*10)} Kelvin</b>.`}
+};
+function updateQty(){
+  const v = document.getElementById('input-val').value;
+  document.getElementById('val-val').textContent = v;
+  const unit = document.getElementById('input-unit').value;
+  document.getElementById('quantitySentence').innerHTML = qtyMeta[unit].example(v);
+  const wrap = document.getElementById('qtyWrap');
+  const w=380,h=260;
+  wrap.innerHTML = `<svg viewBox="0 0 ${w} ${h}">
+    <rect x="40" y="90" width="${Math.min(v*15,300)}" height="60" rx="8" fill="var(--math-accent)" opacity="0.85"/>
+    <text x="40" y="80" fill="var(--text-main)" font-size="16" font-weight="700">${v} ${unit}</text>
+    <text x="40" y="180" fill="var(--text-muted)" font-size="13">value (${v}) + unit (${unit})</text>
+  </svg>`;
+}
+document.getElementById('input-val').addEventListener('input', updateQty);
+document.getElementById('input-unit').addEventListener('change', updateQty);
+updateQty();
+
+/* ---------- Section 2: fundamental quantities grid ---------- */
+const fundamentals = [
+  ["Length","metre (m)"],["Mass","kilogram (kg)"],["Time","second (s)"],
+  ["Temperature","Kelvin (K)"],["Electric current","Ampere (A)"],
+  ["Amount of substance","mole (mol)"],["Luminous intensity","candela (cd)"]
+];
+document.getElementById('fundGrid').innerHTML = fundamentals.map((f,i)=>`
+  <div class="topic-card" style="cursor:default;">
+    <div class="topic-body">
+      <span class="topic-num">${String(i+1).padStart(2,'0')}</span>
+      <h3 style="font-size:1.1rem;">${f[0]}</h3>
+      <p>${f[1]}</p>
+    </div>
+  </div>`).join('');
+
+/* ---------- Section 3: derived unit builder ---------- */
+const qLabel = {length:'Length (m)',time:'Time (s)',mass:'Mass (kg)',current:'Electric current (A)',volume:'Volume (m³)'};
+function combine(){
+  const a = document.getElementById('qty-a').value;
+  const op = document.getElementById('qty-op').value;
+  const b = document.getElementById('qty-b').value;
+  const table = {
+    'length-times-length':['Area','m²'], 'length-div-time':['Speed','ms⁻¹'],
+    'length-times-time':['—','m·s (not a named quantity)'],
+    'mass-div-volume':['Density','kg m⁻³'], 'mass-times-length':['—','kg·m (not a named quantity)'],
+    'mass-div-time':['—','kg s⁻¹ (rate of mass)'],
+    'current-times-time':['Electric Charge','C'], 'current-div-time':['—','A s⁻¹ (not a named quantity)'],
+    'current-times-length':['—','A·m (not a named quantity)']
+  };
+  const key = `${a}-${op}-${b}`;
+  const result = table[key] || ['—', 'a valid combination, but not on this page\'s table'];
+  const opSym = op==='times' ? '×' : '÷';
+  document.getElementById('derivedOut').innerHTML = `${qLabel[a].split(' (')[0]} ${opSym} ${qLabel[b].split(' (')[0]} = ${result[0]} — unit ${result[1]}`;
+  const wrap = document.getElementById('derivedWrap');
+  wrap.innerHTML = `<svg viewBox="0 0 300 200">
+    <rect x="20" y="70" width="90" height="60" rx="8" fill="var(--math-accent)" opacity="0.85"/>
+    <text x="30" y="105" fill="#fff" font-size="12" font-weight="700">${qLabel[a].split(' (')[0]}</text>
+    <text x="120" y="105" font-size="20" fill="var(--text-main)">${opSym}</text>
+    <rect x="150" y="70" width="90" height="60" rx="8" fill="var(--math-accent-2)" opacity="0.85"/>
+    <text x="160" y="105" fill="#fff" font-size="12" font-weight="700">${qLabel[b].split(' (')[0]}</text>
+    <text x="60" y="165" font-size="14" fill="var(--text-main)" font-weight="700">= ${result[0]} (${result[1]})</text>
+  </svg>`;
+}
+['qty-a','qty-op','qty-b'].forEach(id=>document.getElementById(id).addEventListener('change', combine));
+combine();
+
+/* ---------- Sorting activity ---------- */
+const classifyItems = [
+  ['Length','fundamental'],['Area','derived'],['Mass','fundamental'],['Speed','derived'],
+  ['Time','fundamental'],['Density','derived'],['Volume','derived'],['Electric current','fundamental']
+];
+let classifyScore = 0, classifyTotal = 0;
+const chipsHost = document.getElementById('classifyChips');
+chipsHost.innerHTML = classifyItems.map((c,i)=>`<button class="classify-chip" data-answer="${c[1]}" data-idx="${i}">${c[0]}</button>`).join('');
+chipsHost.querySelectorAll('.classify-chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    if(chip.dataset.placed) return;
+    const guess = confirm(`Is "${chip.textContent}" a FUNDAMENTAL quantity?\nOK = Fundamental, Cancel = Derived`) ? 'fundamental':'derived';
+    const correct = guess === chip.dataset.answer;
+    chip.classList.add(correct?'correct':'wrong');
+    chip.dataset.placed = '1';
+    classifyTotal++; if(correct) classifyScore++;
+    const bin = document.querySelector(guess==='fundamental' ? '#binFundamental .bin-items' : '#binDerived .bin-items');
+    const tag = document.createElement('div');
+    tag.textContent = chip.textContent + (correct? ' ✓' : ' ✗ (was ' + chip.dataset.answer + ')');
+    tag.style.fontSize = '0.85rem'; tag.style.padding='4px 0';
+    bin.appendChild(tag);
+    document.getElementById('classifyScore').textContent = `Score: ${classifyScore} / ${classifyTotal}`;
+  });
+});
+
+/* ---------- Worked example ---------- */
+document.getElementById('we1-play').addEventListener('click', () => AlgLib.revealSteps('we1-steps'));
+AlgLib.revealSteps('we1-steps', 0);
+
+/* ---------- Exercise ---------- */
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 1, document.getElementById('exResult'));
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

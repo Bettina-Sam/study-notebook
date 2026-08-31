@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.4-3.5 Compounds & Chemical Formulae • Matter Around Us • Study Notebook</title>
+<meta name="description" content="Two or more elements combined in fixed proportion, and how a chemical formula tells you exactly which atoms and how many."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Matter Around Us
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 3 · Matter Around Us</span>
+<span class="coming-soon-num">3.4–3.5 Compounds & Chemical Formulae</span>
+<h1 class="hero-title">Read a chemical<br/>formula like a sentence</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">A compound is a pure substance formed when atoms of two or more elements combine in a fixed proportion. Its chemical formula tells you which elements, and how many atoms of each.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Decode a Formula</h3>
+<h2>What does H₂O actually say?</h2>
+<p>The subscript after each element's symbol tells you how many atoms of it are in one molecule. No subscript means just 1.</p>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Pick a formula and see it broken down.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Chemical formula</label>
+<select id="formula-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="H2O">H₂O — Water</option>
+<option value="NaCl">NaCl — Salt</option>
+<option value="NH3">NH₃ — Ammonia</option>
+<option value="CO2">CO₂ — Carbon dioxide</option>
+<option value="CH4">CH₄ — Methane</option>
+<option value="H2SO4">H₂SO₄ — Sulphuric acid</option>
+</select></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="formulaOut">Water: 2 Hydrogen atoms + 1 Oxygen atom</div>
+</div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="formulaWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Worked Example</h3>
+<div class="worked-example"><span class="we-label">Example</span>
+<div class="we-question">Water and its elements hydrogen and oxygen have very different properties. Why?</div>
+<div class="we-concept">Concept used: compounds have properties entirely different from their constituent elements.</div>
+<div class="step-flow" id="we1-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">At room temperature, hydrogen and oxygen both exist as gases.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Water, their compound, exists as a liquid at room temperature.</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Key point</b> — oxygen supports fire, but water is used to put fire out. Chemically combining elements creates something with entirely new properties.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we1-play">Play steps</button></div>
+</div></div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">Glucose has the formula C₆H₁₂O₆. How many different types of elements does it contain?</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" type="number"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 33–35</span><h2>Elements vs compounds</h2><div class="tb-grid"><div class="tb-card"><h3>Element</h3><p>The simplest substance — atoms are its fundamental particles.</p></div><div class="tb-card"><h3>Compound</h3><p>Two or more elements chemically combined in fixed proportion — molecules are its fundamental particles.</p></div><div class="tb-card"><h3>Separating a compound</h3><p>Only chemical methods can split a compound into its elements — not physical ones like filtration.</p></div><div class="tb-card"><h3>Chemical formula</h3><p>A symbolic representation of one molecule — tells you the elements present and the number of atoms of each.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../elements/">← Elements</a>
+<a class="back-link" href="../atomicity/">Next: Atomicity →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const formulas = {
+  H2O:{name:'Water', parts:[['H','Hydrogen',2],['O','Oxygen',1]]},
+  NaCl:{name:'Salt', parts:[['Na','Sodium',1],['Cl','Chlorine',1]]},
+  NH3:{name:'Ammonia', parts:[['N','Nitrogen',1],['H','Hydrogen',3]]},
+  CO2:{name:'Carbon dioxide', parts:[['C','Carbon',1],['O','Oxygen',2]]},
+  CH4:{name:'Methane', parts:[['C','Carbon',1],['H','Hydrogen',4]]},
+  H2SO4:{name:'Sulphuric acid', parts:[['H','Hydrogen',2],['S','Sulphur',1],['O','Oxygen',4]]}
+};
+function updateFormula(){
+  const key = document.getElementById('formula-select').value;
+  const f = formulas[key];
+  const desc = f.parts.map(p=>`${p[2]} ${p[1]} atom${p[2]>1?'s':''}`).join(' + ');
+  document.getElementById('formulaOut').textContent = `${f.name}: ${desc}`;
+  const colors=['var(--math-accent)','var(--math-accent-2)','#9c6bd6'];
+  let svg='';
+  let x=40;
+  f.parts.forEach((p,pi)=>{
+    for(let i=0;i<p[2];i++){
+      svg += `<circle cx="${x}" cy="80" r="16" fill="${colors[pi%3]}" opacity="0.85"/><text x="${x}" y="85" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">${p[0]}</text>`;
+      x += 38;
+    }
+    x += 12;
+  });
+  document.getElementById('formulaWrap').innerHTML = `<svg viewBox="0 0 280 160">${svg}</svg>`;
+}
+document.getElementById('formula-select').addEventListener('change', updateFormula);
+updateFormula();
+document.getElementById('we1-play').addEventListener('click', () => AlgLib.revealSteps('we1-steps'));
+AlgLib.revealSteps('we1-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 3, document.getElementById('exResult'));
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

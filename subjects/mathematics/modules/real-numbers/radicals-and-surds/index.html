@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.5–2.6 Radicals &amp; Surds • Real Numbers • Study Notebook</title>
+<meta name="description" content="Radical notation, fractional indices, surds, order of a surd, laws of radicals and the four basic operations on surds — with interactive drag, drop and reveal tools."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.rad-table{ width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.92rem; }
+.rad-table th, .rad-table td{ border:1px solid var(--border-color); padding:0.5rem 0.7rem; text-align:center; }
+.rad-table th{ background:var(--line-subtle); }
+.def-box{ background:var(--card-bg); border:1px solid var(--border-color); border-left:3px solid var(--math-accent); border-radius:10px; padding:1rem 1.2rem; margin:0.9rem 0; }
+.def-box b{ color:var(--math-accent); }
+.verify-note{ font-size:0.78rem; color:var(--text-muted); font-style:italic; margin-top:0.4rem; }
+.sq-visual{ display:flex; align-items:center; justify-content:center; }
+.sq-slider-row{ display:flex; align-items:center; gap:0.8rem; margin-top:0.6rem; }
+.sq-readout{ font-family:var(--font-mono); font-size:1.15rem; font-weight:700; }
+</style>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Real Numbers
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">2.5 – 2.6 Radicals &amp; Surds</span>
+<h1 class="hero-title">Roots that refuse<br/>to resolve</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    Some roots simplify away cleanly. Others — like $\sqrt{2}$ — never do. Those unresolved
+    roots are called <b>surds</b>, and they behave by their own precise set of rules.
+</p>
+</div>
+</section>
+<section class="rn-play-banner"><div><b>THIS PAGE IS INTERACTIVE</b><span>Predict first → drag / change / click → watch what changes → explain what you noticed.</span></div><div class="rn-play-pills"><span>DRAG</span><span>CHANGE</span><span>TRY</span><span>WATCH</span></div></section>
+
+<!-- 2.5 RADICAL NOTATION -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 id="radical-notation" class="section-label" style="color: var(--math-accent);">2.5 Radical Notation</h3>
+<h2>$r^n = x \iff r = \sqrt[n]{x}$</h2>
+<p>
+    Let $n$ be a positive integer and $r$ a real number. If $r^n = x$, then $r$ is called the
+    <b>$n$th root</b> of $x$, written $r = \sqrt[n]{x}$. The symbol $\sqrt[n]{\phantom{x}}$ is a
+    <b>radical</b>; $n$ is the <b>index</b> of the radical (earlier called the exponent); $x$ is
+    the <b>radicand</b>.
+</p>
+<p>
+    When $n=2$: $r^2=x$, so $r=\sqrt[2]{x}$ — our familiar square root, usually written $\sqrt{x}$.
+    When $n=3$: the cube root, $\sqrt[3]{x}$. For example $\sqrt[3]{8}=2$, since $2^3=8$.
+</p>
+<div class="def-box">
+<b>Even index, both signs work</b> — $(+2)\times(+2)=4$ and $(-2)\times(-2)=4$, so both $+2$
+and $-2$ are square roots of 4. But it is <b>incorrect</b> to write $\sqrt{4}=\pm2$. By
+convention, when $n$ is even, $\sqrt[n]{x}$ always denotes the <em>positive</em> $n$th root,
+and the negative root is written $-\sqrt[n]{x}$. So $\sqrt{4}=2$ and $-\sqrt{4}=-2$.
+When $n$ is odd, there is exactly one real $n$th root for any $x$: $\sqrt[3]{8}=2$ and
+$\sqrt[5]{-32}=-2$.
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('radical-notation','claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div style="width:100%;">
+<p style="font-size:0.9rem; text-align:center; margin-bottom:0.4rem;">Drag $r$ and watch $r^2$ — find <em>both</em> values that make $r^2=4$.</p>
+<div class="sq-slider-row">
+<span style="font-family:var(--font-mono);">r =</span>
+<input id="rSlider" type="range" min="-3" max="3" step="0.1" style="flex:1;"/>
+<span class="sq-readout" id="rVal">0</span>
+</div>
+<div style="text-align:center; margin-top:0.9rem;">
+<span class="sq-readout" id="r2Val" style="font-size:1.4rem;">r² = 0</span>
+</div>
+<div id="rHit" class="check-result" style="text-align:center; margin-top:0.6rem;"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- THINKING CORNER (2.5) -->
+<section>
+<div style="width:100%; max-width:900px;">
+<div class="thinking-corner">
+<span class="tc-label">Thinking Corner</span>
+<div class="tc-body" style="margin-bottom:0.8rem;">Which of the following statements are <b>false</b>? Tap every one you think is false, then check.</div>
+<div class="mcq-options" id="tcOptions">
+<button class="mcq-option" data-val="1">(1) The square root of 9 is 3 or −3.</button>
+<button class="mcq-option" data-val="2">(2) $\sqrt{9}=3$</button>
+<button class="mcq-option" data-val="3">(3) $-\sqrt{9}=-3$</button>
+<button class="mcq-option" data-val="4">(4) $\sqrt{9}=\pm 3$</button>
+</div>
+<div class="btn-row" style="margin-top:0.8rem;"><button class="btn btn-primary" id="tcCheck">Check my picks</button></div>
+<div id="tcResult" class="check-result" style="margin-top:0.6rem;"></div>
+</div>
+</div>
+</section>
+
+<!-- 2.5.1 FRACTIONAL INDEX -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.5.1 Fractional Index</h3>
+<h2 style="margin-bottom:0.8rem;">$\sqrt[n]{x}$ written as $x^{1/n}$</h2>
+<p>There is another way to represent roots — using fractional indices: we write $\sqrt[n]{x}$ as $x^{1/n}$. For example, $\sqrt[3]{64}$ is $64^{1/3}$ and $\sqrt{25}$ is $25^{1/2}$.</p>
+<div style="overflow-x:auto;">
+<table class="rad-table">
+<tr><th>Power</th><th>Radical Notation</th><th>Index Notation</th><th>Read as</th></tr>
+<tr><td>$2^6=64$</td><td>$2=\sqrt[6]{64}$</td><td>$2=64^{1/6}$</td><td>2 is the 6th root of 64</td></tr>
+<tr><td>$2^5=32$</td><td>$2=\sqrt[5]{32}$</td><td>$2=32^{1/5}$</td><td>2 is the 5th root of 32</td></tr>
+<tr><td>$2^4=16$</td><td>$2=\sqrt[4]{16}$</td><td>$2=16^{1/4}$</td><td>2 is the 4th root of 16</td></tr>
+<tr><td>$2^3=8$</td><td>$2=\sqrt[3]{8}$</td><td>$2=8^{1/3}$</td><td>2 is the cube (3rd) root of 8</td></tr>
+<tr><td>$2^2=4$</td><td>$2=\sqrt{4}$</td><td>$2=4^{1/2}$</td><td>2 is the square (2nd) root of 4</td></tr>
+</table>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.16 (textbook)</span>
+<div class="we-question">Express the following in the form $2^n$: (i) $8$ &nbsp; (ii) $32$ &nbsp; (iii) $\dfrac14$ &nbsp; (iv) $\sqrt2$ &nbsp; (v) $\sqrt[3]{4}$</div>
+<div class="step-flow" id="ex216-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$8=2\times2\times2$, so $8=2^3$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$32=2\times2\times2\times2\times2$, so $32=2^5$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$\dfrac14=\dfrac{1}{2\times2}=\dfrac{1}{2^2}=2^{-2}$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">$\sqrt2 = 2^{1/2}$</div></div>
+<div class="step-item"><span class="step-num">5</span><div class="step-body">$\sqrt[3]{4}=\sqrt[3]{2^2}=2^{2/3}$<div class="verify-note">VERIFY: the textbook scan for part (v) is badly garbled; $2^{2/3}$ is the value consistent with the surviving fragment of the solution.</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex216-play">Play steps</button></div>
+</div>
+
+<div class="def-box">
+Meaning of $x^{m/n}$ (where $m,n$ are positive integers): we interpret $x^{m/n}$ either as the
+$n$th root of the $m$th power of $x$, or as the $m$th power of the $n$th root of $x$:
+$$x^{m/n} = (x^m)^{1/n} = (x^{1/n})^m = \sqrt[n]{x^m} = (\sqrt[n]{x})^m$$
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.17 (textbook)</span>
+<div class="we-question">Find the value of (i) $81^{5/4}$ &nbsp; (ii) $64^{-2/3}$</div>
+<div class="step-flow" id="ex217-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$81^{5/4}=(81^{1/4})^5=(\sqrt[4]{81})^5$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$\sqrt[4]{81}=3$, so this is $3^5=3\times3\times3\times3\times3=243$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$64^{-2/3}=\dfrac{1}{64^{2/3}}=\dfrac{1}{(\sqrt[3]{64})^2}$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">$\sqrt[3]{64}=4$, so this is $\dfrac{1}{4^2}=\dfrac{1}{16}$</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex217-play">Play steps</button></div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('fractional-index','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- 2.6 SURDS -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 id="surds" class="section-label" style="color: var(--math-accent);">2.6 Surds</h3>
+<h2 style="margin-bottom:0.8rem;">Roots you can't peel away</h2>
+<p>$\sqrt4$ resolves to 2, and $\sqrt{0.01}$ resolves to 0.1 — the radical symbol disappears. But
+$\sqrt{18}$ can't be resolved that way. A <b>surd</b> is an irrational root of a rational number:
+$\sqrt[n]{a}$ is a surd provided $n \in \mathbb{N}$, $n>1$, and $a$ is rational (but $\sqrt[n]{a}$
+itself is irrational).</p>
+<div class="def-box">
+$\sqrt2$ is a surd — it is an irrational root of $x^2-2=0$, an equation with rational
+coefficients, and $\sqrt2 = 1.4142135\ldots$ is non-terminating, non-recurring.<br/>
+$\sqrt[3]{3}$ (same as $3^{1/3}$) is a surd — an irrational root of $x^3-3=0$.<br/>
+$\sqrt{\dfrac{1}{25}}=\dfrac15$ is <b>not</b> a surd (it simplifies to a rational number). Likewise
+$\sqrt[4]{\dfrac{16}{81}}=\dfrac23$ is not a surd.<br/>
+$\pi$ is irrational, but it is <b>not</b> a surd — it is not a root of any equation with rational
+coefficients.
+</div>
+<p>Why do surds matter? We usually take $\sqrt2\approx1.414$ and $\sqrt3\approx1.732$ for
+calculation, but $(1.414)^2=1.99936\ne2$ while $\sqrt2$ itself is the exact value. Engineers and
+scientists constructing bridges need that exactness — which is exactly what surds preserve.</p>
+
+<div class="thinking-corner">
+<span class="tc-label">Progress Check</span>
+<div class="tc-body">
+Sort each expression below into <b>Surd</b> (irrational root of a rational number) or
+<b>Not a surd</b> (it actually simplifies to a rational number). Drag each token into the zone
+you think it belongs.
+<div class="verify-note">VERIFY: the original printed list is partly garbled by the PDF extraction (radical indices in particular); the items below are the closest faithful reconstruction, chosen so more than one item legitimately resolves to a rational number — which is the whole point of the check.</div>
+</div>
+<div id="pcStage" style="width:100%; margin-top:0.8rem;"></div>
+<div id="pcExplain" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.6rem;"></div>
+</div>
+
+<div class="thinking-corner" style="margin-top:1rem;">
+<div class="tc-body"><b>2.</b> Are all surds irrational numbers?</div>
+<div class="btn-row" style="margin-top:0.5rem;"><button class="btn btn-ghost" data-reveal="pc2Answer">Reveal answer</button></div>
+<div class="exercise-panel" id="pc2Answer">Yes. By definition a surd is an irrational root of a rational number — irrationality is built into what "surd" means.</div>
+</div>
+<div class="thinking-corner" style="margin-top:1rem;">
+<div class="tc-body"><b>3.</b> Are all irrational numbers surds?</div>
+<div class="btn-row" style="margin-top:0.5rem;"><button class="btn btn-ghost" data-reveal="pc3Answer">Reveal answer</button></div>
+<div class="exercise-panel" id="pc3Answer">No. $\pi$ and $e$ are irrational but are not roots of any equation with rational coefficients, so they are not surds. Every surd is irrational, but not every irrational number is a surd.</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('surds','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- 2.6.1 ORDER OF A SURD -->
+<section>
+<div style="width:100%; max-width:1050px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.6.1 Order of a Surd</h3>
+<h2 style="margin-bottom:0.8rem;">The order of $\sqrt[n]{a}$ is $n$</h2>
+<p>The <b>order</b> of a surd is the index of the root being extracted. The order of $\sqrt[5]{99}$ is 5.</p>
+<div class="def-box">
+<b>(i) Surds of the same order (equiradical surds)</b> — same index. $\sqrt{x}, \sqrt{a^2}, \sqrt{2m}$
+are all 2nd order (quadratic) surds; $\sqrt[3]{5}, \sqrt[3]{x-2}, (ab)^{1/3}$ are all 3rd order (cubic) surds.<br/><br/>
+<b>(ii) Simplest form</b> — a surd is in simplest form when written as a rational factor times an
+irrational factor, with (a) the smallest possible radical index, (b) no fraction under the radical,
+(c) no factor of the form $a^n$ left under an index-$n$ radical.
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.18 (textbook)</span>
+<div class="we-question">Reduce $\sqrt3$, $\sqrt[4]{3}$, $\sqrt[3]{3}$ to surds of the same order.</div>
+<div class="step-flow" id="ex218-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">LCM of the orders 2, 4, 3 is 12.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$\sqrt3=3^{1/2}=3^{6/12}=\sqrt[12]{3^6}=\sqrt[12]{729}$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$\sqrt[4]{3}=3^{1/4}=3^{3/12}=\sqrt[12]{3^3}=\sqrt[12]{27}$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">$\sqrt[3]{3}=3^{1/3}=3^{4/12}=\sqrt[12]{3^4}=\sqrt[12]{81}$ — all now order 12.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex218-play">Play steps</button></div>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.19 (textbook)</span>
+<div class="we-question">1. Express in simplest form: (i) $\sqrt8$ &nbsp; (ii) $\sqrt[3]{192}$ &nbsp;&nbsp; 2. Show that $\sqrt[3]{7} > \sqrt[4]{5}$.</div>
+<div class="step-flow" id="ex219-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$\sqrt8=\sqrt{4\times2}=2\sqrt2$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$\sqrt[3]{192}=\sqrt[3]{4\times4\times4\times3}=4\sqrt[3]{3}$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">LCM of orders 3, 4 is 12. $\sqrt[3]{7}=7^{4/12}=\sqrt[12]{7^4}=\sqrt[12]{2401}$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">$\sqrt[4]{5}=5^{3/12}=\sqrt[12]{5^3}=\sqrt[12]{125}$</div></div>
+<div class="step-item"><span class="step-num">5</span><div class="step-body">Since $\sqrt[12]{2401}>\sqrt[12]{125}$, therefore $\sqrt[3]{7} > \sqrt[4]{5}$.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex219-play">Play steps</button></div>
+</div>
+
+<div class="def-box">
+<b>(iii) Pure and Mixed Surds</b> — a <b>pure surd</b> has coefficient 1 in simplest form
+(e.g. $\sqrt3, \sqrt[3]{6}, \sqrt[4]{7}$); a <b>mixed surd</b> has a coefficient other than 1
+(e.g. $5\sqrt3, 2\sqrt[4]{5}, 3\sqrt[4]{6}$).<br/><br/>
+<b>(iv) Simple and Compound Surds</b> — a single-term surd is <b>simple</b> (e.g. $\sqrt3, 2\sqrt5$);
+an algebraic sum of two or more surds is a <b>compound surd</b> (e.g. $\sqrt5+3\sqrt2$, $3-2\sqrt7$).<br/><br/>
+<b>(v) Binomial Surd</b> — an algebraic sum/difference of exactly two terms, at least one a surd
+(e.g. $\dfrac12-\sqrt{19}$, $5+3\sqrt2$, $\sqrt3-2\sqrt7$).
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.20 (textbook)</span>
+<div class="we-question">Arrange in ascending order: $\sqrt[3]{2},\ \sqrt4,\ \sqrt[4]{3}$</div>
+<p style="font-size:0.9rem;">Drag the three tokens onto the line below, left = smallest, right = largest — by feel first, then use <b>Check order</b>.</p>
+<div id="ordLine" style="width:100%; max-width:640px; margin:0.8rem auto;"></div>
+<div class="btn-row" style="justify-content:center;"><button class="btn btn-primary" id="ordCheck">Check order</button></div>
+<div id="ordResult" class="check-result" style="text-align:center; margin-top:0.6rem;"></div>
+<div class="exercise-tools" style="margin-top:0.8rem;"><button class="btn btn-ghost" data-reveal="ex220Answer">Show worked solution</button></div>
+<div class="exercise-panel" id="ex220Answer">
+LCM of orders 3, 2, 4 is 12.<br/>
+$\sqrt[3]{2}=2^{4/12}=\sqrt[12]{2^4}=\sqrt[12]{16}$<br/>
+$\sqrt4=4^{6/12}=\sqrt[12]{4^6}=\sqrt[12]{4096}$<br/>
+$\sqrt[4]{3}=3^{3/12}=\sqrt[12]{3^3}=\sqrt[12]{27}$<br/>
+Since $\sqrt[12]{16}<\sqrt[12]{27}<\sqrt[12]{4096}$, the ascending order is $\sqrt[3]{2},\ \sqrt[4]{3},\ \sqrt4$.
+</div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('order-of-surd','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- 2.6.2 LAWS OF RADICALS -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color: var(--math-accent);">2.6.2 Laws of Radicals</h3>
+<h2 style="margin-bottom:0.8rem;">Four rules, for positive integers $m,n$ and positive rationals $a,b$</h2>
+<div style="overflow-x:auto;">
+<table class="rad-table">
+<tr><th>#</th><th>Radical Notation</th><th>Index Notation</th></tr>
+<tr><td>1</td><td>$(\sqrt[n]{a})^n = a = \sqrt[n]{a^n}$</td><td>$(a^{1/n})^n = a = (a^n)^{1/n}$</td></tr>
+<tr><td>2</td><td>$\sqrt[n]{a}\cdot\sqrt[n]{b} = \sqrt[n]{ab}$</td><td>$a^{1/n}\cdot b^{1/n}=(ab)^{1/n}$</td></tr>
+<tr><td>3</td><td>$\sqrt[m]{\sqrt[n]{a}} = \sqrt[mn]{a} = \sqrt[n]{\sqrt[m]{a}}$</td><td>$(a^{1/n})^{1/m}=a^{1/mn}=(a^{1/m})^{1/n}$</td></tr>
+<tr><td>4</td><td>$\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}} = \sqrt[n]{\dfrac{a}{b}}$</td><td>$\dfrac{a^{1/n}}{b^{1/n}}=\left(\dfrac{a}{b}\right)^{1/n}$</td></tr>
+</table>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.21 (textbook)</span>
+<div class="we-question">Express each in simplest form and find its order, radicand and coefficient: (i) $\sqrt[3]{108}$ &nbsp; (ii) $(\sqrt[3]{1024})^{-2}$</div>
+<div class="step-flow" id="ex221-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$\sqrt[3]{108}=\sqrt[3]{27\times4}=\sqrt[3]{3^3}\cdot\sqrt[3]{4}$ (Law 2)</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$=3\sqrt[3]{4}$ (Law 1). Order $=3$; radicand $=4$; coefficient $=3$.</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$1024=2^{10}$, so $(\sqrt[3]{1024})^{-2}=\left(\sqrt[3]{2^{10}}\right)^{-2}=\left(\sqrt[3]{2^9}\cdot\sqrt[3]{2}\right)^{-2}$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">$=\left(2^3\sqrt[3]{2}\right)^{-2}=(8\sqrt[3]{2})^{-2}=\dfrac{1}{64\cdot(\sqrt[3]{2})^2}=\dfrac{1}{64}\sqrt[3]{\dfrac14}$</div></div>
+<div class="step-item"><span class="step-num">5</span><div class="step-body">Order $=3$; radicand $=\dfrac14$; coefficient $=\dfrac{1}{64}$.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex221-play">Play steps</button></div>
+</div>
+<div class="def-box">
+<b>Note</b> — since $\sqrt5=\sqrt{25}$ and $\sqrt6=\sqrt{36}$, the numbers
+$\sqrt{26},\sqrt{27},\ldots,\sqrt{35}$ are all surds strictly between $\sqrt5$ and $\sqrt6$.
+Likewise $3\sqrt2=\sqrt{18}$ and $2\sqrt3=\sqrt{12}$, so $\sqrt{13},\sqrt{14},\sqrt{15},\sqrt{17}$
+lie strictly between $2\sqrt3$ and $3\sqrt2$.
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('laws-of-radicals','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- 2.6.3 FOUR BASIC OPERATIONS -->
+<section>
+<div style="width:100%; max-width:1050px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.6.3 Four Basic Operations on Surds</h3>
+<h2 style="margin-bottom:0.8rem;">(i) Addition and Subtraction</h2>
+<div class="def-box">Like surds combine directly: $a\sqrt[n]{b} \pm c\sqrt[n]{b} = (a\pm c)\sqrt[n]{b}$, where $b>0$.</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.22 (textbook)</span>
+<div class="we-question">(i) Add $3\sqrt7$ and $5\sqrt7$ — is the sum rational or irrational? (ii) Subtract $4\sqrt5$ from $7\sqrt5$ — rational or irrational?</div>
+<div class="step-flow" id="ex222-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$3\sqrt7+5\sqrt7=(3+5)\sqrt7=8\sqrt7$ — irrational.</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$7\sqrt5-4\sqrt5=(7-4)\sqrt5=3\sqrt5$ — irrational.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex222-play">Play steps</button></div>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.23 (textbook)</span>
+<div class="we-question">Simplify: (i) $\sqrt{63}-\sqrt{175}+\sqrt{28}$ &nbsp; (ii) $2\sqrt[3]{40}+3\sqrt[3]{625}-4\sqrt[3]{320}$</div>
+<div class="step-flow" id="ex223-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$\sqrt{63}-\sqrt{175}+\sqrt{28}=\sqrt{9\cdot7}-\sqrt{25\cdot7}+\sqrt{4\cdot7}=3\sqrt7-5\sqrt7+2\sqrt7$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$=(3-5+2)\sqrt7=0$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$2\sqrt[3]{40}+3\sqrt[3]{625}-4\sqrt[3]{320}=2\sqrt[3]{8\cdot5}+3\sqrt[3]{125\cdot5}-4\sqrt[3]{64\cdot5}$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">$=2(2\sqrt[3]5)+3(5\sqrt[3]5)-4(4\sqrt[3]5)=4\sqrt[3]5+15\sqrt[3]5-16\sqrt[3]5$</div></div>
+<div class="step-item"><span class="step-num">5</span><div class="step-body">$=(4+15-16)\sqrt[3]5=3\sqrt[3]5$</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex223-play">Play steps</button></div>
+</div>
+
+<h2 style="margin:1.4rem 0 0.8rem;">(ii) Multiplication and Division</h2>
+<div style="overflow-x:auto;">
+<table class="rad-table">
+<tr><th>Multiplication</th><th>Division</th></tr>
+<tr><td>$\sqrt[n]{a}\cdot\sqrt[n]{b}=\sqrt[n]{ab}$</td><td>$\dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}=\sqrt[n]{\dfrac{a}{b}}$</td></tr>
+<tr><td>$a\sqrt[n]{b}\cdot c\sqrt[n]{d}=ac\sqrt[n]{bd}$ &nbsp;($b,d>0$)</td><td>$\dfrac{a\sqrt[n]{b}}{c\sqrt[n]{d}}=\dfrac{a}{c}\sqrt[n]{\dfrac{b}{d}}$ &nbsp;($b,d>0$)</td></tr>
+</table>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.24 (textbook)</span>
+<div class="we-question">Multiply $\sqrt[3]{40}$ and $\sqrt[3]{16}$.</div>
+<div class="step-flow" id="ex224-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$\sqrt[3]{40}\cdot\sqrt[3]{16}=\sqrt[3]{2\cdot2\cdot2\cdot5}\cdot\sqrt[3]{2\cdot2\cdot2\cdot2}$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$=(2\sqrt[3]5)\cdot(2\sqrt[3]2)=4\sqrt[3]5\cdot\sqrt[3]2=4\sqrt[3]{10}$</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex224-play">Play steps</button></div>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.25 (textbook)</span>
+<div class="we-question">Compute, simplest form: $2\sqrt{72}\times5\sqrt{32}\times3\sqrt{50}$</div>
+<div class="step-flow" id="ex225-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$\sqrt{72}=6\sqrt2,\ \sqrt{32}=4\sqrt2,\ \sqrt{50}=5\sqrt2$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$2\sqrt{72}\times5\sqrt{32}\times3\sqrt{50}=(2\cdot6\sqrt2)(5\cdot4\sqrt2)(3\cdot5\sqrt2)$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$=(2\cdot5\cdot3)(6\cdot4\cdot5)(\sqrt2\cdot\sqrt2\cdot\sqrt2)=30\cdot120\cdot2\sqrt2$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">$=7200\sqrt2$</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex225-play">Play steps</button></div>
+</div>
+
+<div class="worked-example">
+<span class="we-label">Example 2.26 (textbook)</span>
+<div class="we-question">Divide $\sqrt[9]{8}$ by $\sqrt[6]{6}$.</div>
+<div class="step-flow" id="ex226-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">LCM of 9 and 6 is 18. $\dfrac{\sqrt[9]8}{\sqrt[6]6}=\dfrac{8^{1/9}}{6^{1/6}}=\dfrac{8^{2/18}}{6^{3/18}}$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$=\dfrac{\sqrt[18]{8^2}}{\sqrt[18]{6^3}}=\sqrt[18]{\dfrac{64}{216}}=\sqrt[18]{\dfrac{8}{27}}$</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex226-play">Play steps</button></div>
+</div>
+
+<!-- ACTIVITY 1 -->
+<div class="thinking-corner" style="margin-top:1.4rem;">
+<span class="tc-label">Activity 1</span>
+<div class="tc-body">
+Is it interesting to see this pattern? $\sqrt[4]{4^4}=4$ and $\sqrt[5]{5^5}=5$ — verify it, using
+Law of Radicals 1 ($(\sqrt[n]{a})^n=a=\sqrt[n]{a^n}$). Can you frame 4 more such surds?
+<div class="verify-note">VERIFY: the printed numbers in this activity box are heavily garbled by the OCR; this reconstruction applies Law 1 (covered on the facing page) to the two numbers that do survive legibly (4 and 5), which is the most defensible reading of "is it interesting to see this pattern?"</div>
+</div>
+<div class="sq-slider-row" style="margin-top:0.8rem;">
+<span style="font-family:var(--font-mono);">n =</span>
+<input id="act1N" type="number" min="2" max="30" value="4" style="width:70px; padding:4px 8px; border-radius:6px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main);"/>
+<button class="btn btn-primary" id="act1Go">Verify $\sqrt[n]{n^n}=n$</button>
+</div>
+<div id="act1Result" class="formula-rule" style="text-align:center; margin-top:0.7rem;"></div>
+</div>
+
+<!-- ACTIVITY 2 -->
+<div class="thinking-corner" style="margin-top:1.4rem;">
+<span class="tc-label">Activity 2</span>
+<div class="tc-body">
+Take a graph sheet and mark a unit square $OABC$ ($OA=AB=BC=OC=1$). In right triangle $OAC$,
+$AC=\sqrt{1^2+1^2}=\sqrt2$ — the diagonal is a surd. Now scale it up: for a chain of $s$ unit
+squares along a diagonal path, $AC = \underbrace{\sqrt2+\sqrt2+\cdots+\sqrt2}_{s\text{ times}} = s\sqrt2$
+(sum of diagonal steps) — compare this with the straight-line Pythagoras computation
+$AC=\sqrt{(s\cdot1)^2+(s\cdot1)^2}=\sqrt{2s^2}=s\sqrt2$ across the big right triangle. Drag the
+slider — are the two methods ever different?
+</div>
+<div class="sq-slider-row" style="margin-top:0.8rem;">
+<span style="font-family:var(--font-mono);">s =</span>
+<input id="act2S" type="range" min="1" max="6" step="1" value="3" style="flex:1;"/>
+<span class="sq-readout" id="act2SVal">3</span>
+</div>
+<div style="display:flex; gap:2rem; flex-wrap:wrap; justify-content:center; margin-top:0.8rem;">
+<div class="formula-card" style="margin:0;"><div class="formula-rule" id="act2Chain">Chain: 3 × √2</div></div>
+<div class="formula-card" style="margin:0;"><div class="formula-rule" id="act2Pyth">Pythagoras: √18</div></div>
+</div>
+<div id="act2Result" class="check-result" style="text-align:center; margin-top:0.6rem;"></div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('surd-operations','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../real-number-line/">← 2.4 The Real Number Line</a>
+<a class="back-link cn-home" href="../">Real Numbers Home</a>
+<a class="back-link" href="../rationalisation/">Next: 2.7 Rationalisation →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/token-physics.js"></script>
+<script src="../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../js/number-line-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Explain radical notation, fractional indices and surds for a Class 9 (Tamil Nadu board) student.";
+    if (topic === 'radical-notation') prompt = "Explain radical notation (nth roots, index, radicand) and why √4 = 2 but not ±2, for a Class 9 student.";
+    else if (topic === 'fractional-index') prompt = "Explain fractional indices (x^(1/n) = nth root of x, and x^(m/n)) for a Class 9 student, with the worked examples 81^(5/4) and 64^(-2/3).";
+    else if (topic === 'surds') prompt = "Explain what a surd is (an irrational root of a rational number), with examples of surds and non-surds like π, for a Class 9 student.";
+    else if (topic === 'order-of-surd') prompt = "Explain the order of a surd, pure/mixed surds, simple/compound surds, and binomial surds, plus how to compare surds of different orders (Example: arrange cube root of 2, square root of 4, 4th root of 3 in ascending order), for a Class 9 student.";
+    else if (topic === 'laws-of-radicals') prompt = "Explain the four laws of radicals for Class 9 Real Numbers, and how to use them to simplify cube root of 108 into simplest form with order, radicand and coefficient.";
+    else if (topic === 'surd-operations') prompt = "Explain addition, subtraction, multiplication and division of surds for a Class 9 student, with worked examples like 2*cube_root(40) + 3*cube_root(625) - 4*cube_root(320).";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- 2.5 slider: r vs r^2 ---------- */
+AlgLib.slider('rSlider', 'rVal', (v) => {
+    document.getElementById('r2Val').textContent = 'r² = ' + (v * v).toFixed(2);
+    const hit = document.getElementById('rHit');
+    if (Math.abs(v - 2) < 0.05) { hit.textContent = 'r = +2 gives r² = 4 — one square root found!'; hit.className = 'check-result check-yes'; }
+    else if (Math.abs(v + 2) < 0.05) { hit.textContent = 'r = −2 also gives r² = 4 — the other square root!'; hit.className = 'check-result check-yes'; }
+    else { hit.textContent = ''; hit.className = 'check-result'; }
+}, { format: v => Number(v).toFixed(1) });
+
+/* ---------- Thinking Corner MCQ (multi-select false statements) ---------- */
+(function () {
+    const correctFalse = new Set(['1', '4']); // "√9 = 3 or −3" and "√9 = ±3" are both false — the radical always means the positive root
+    const picked = new Set();
+    document.querySelectorAll('#tcOptions .mcq-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.disabled) return;
+            btn.classList.toggle('mcq-wrong', false);
+            if (picked.has(btn.dataset.val)) { picked.delete(btn.dataset.val); btn.style.outline = ''; }
+            else { picked.add(btn.dataset.val); btn.style.outline = '2px solid var(--math-accent)'; }
+        });
+    });
+    document.getElementById('tcCheck').addEventListener('click', () => {
+        const ok = picked.size === correctFalse.size && [...picked].every(v => correctFalse.has(v));
+        document.querySelectorAll('#tcOptions .mcq-option').forEach(btn => {
+            btn.disabled = true;
+            if (correctFalse.has(btn.dataset.val)) btn.classList.add('mcq-correct');
+            else if (picked.has(btn.dataset.val)) btn.classList.add('mcq-wrong');
+        });
+        const r = document.getElementById('tcResult');
+        r.textContent = ok
+            ? 'Correct! (1) and (4) are false — √9 (the radical symbol) always names the positive root, 3, never ±3. Statements (2) and (3) are both true.'
+            : 'Not quite — remember √ always denotes the positive root. Statements (1) and (4) both claim √9 can equal −3, which the convention forbids.';
+        r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+    });
+})();
+
+/* ---------- Progress Check: surd vs not-a-surd sorter ---------- */
+const pcItems = [
+    { id: 'a', label: '√36', correct: 'not', note: '√36 = 6, a whole number — rational, not a surd.' },
+    { id: 'b', label: '√50', correct: 'surd', note: '√50 = 5√2, irrational — a surd.' },
+    { id: 'c', label: '√(1/98)', correct: 'surd', note: '√(1/98) is irrational — a surd.' },
+    { id: 'd', label: '√1.44', correct: 'not', note: '√1.44 = 1.2 — rational, not a surd.' },
+    { id: 'e', label: '⁵√32', correct: 'not', note: '⁵√32 = 2, since 2⁵ = 32 — rational, not a surd.' },
+    { id: 'f', label: '√120', correct: 'surd', note: '√120 = 2√30, irrational — a surd.' }
+];
+ExLib.physicsSorter(document.getElementById('pcStage'), pcItems, ['Surd', 'Not a surd'], {
+    zoneKeys: ['surd', 'not'], height: 300,
+    onPlace: (item, ok) => {
+        document.getElementById('pcExplain').textContent = (ok ? '' : 'Not quite — try again. ') + item.note;
+    }
+});
+
+/* ---------- Example 2.20: ascending-order number line ---------- */
+(function () {
+    const line = NumberLineLib.create(document.getElementById('ordLine'), { min: 1, max: 2.2 });
+    const trueOrder = ['cbrt2', 'q4rt3', 'sqrt4']; // ascending: ∛2 ≈1.26 < ⁴√3 ≈1.316 < √4 = 2
+    const p1 = line.addPoint('cbrt2', 1.85, { label: '∛2' });
+    const p2 = line.addPoint('q4rt3', 1.55, { label: '⁴√3' });
+    const p3 = line.addPoint('sqrt4', 1.15, { label: '√4' });
+    document.getElementById('ordCheck').addEventListener('click', () => {
+        const pts = [p1, p2, p3].slice().sort((a, b) => a.value - b.value);
+        const order = pts.map(p => p.id);
+        const ok = order.join(',') === trueOrder.join(',');
+        const r = document.getElementById('ordResult');
+        r.textContent = ok
+            ? 'Correct! ∛2 < ⁴√3 < √4 — reduced to a common 12th-order radical: ¹²√16 < ¹²√27 < ¹²√4096.'
+            : `Current left-to-right order is ${order.map(id => ({ cbrt2: '∛2', q4rt3: '⁴√3', sqrt4: '√4' })[id]).join(' < ')} — keep dragging.`;
+        r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+    });
+})();
+
+/* ---------- Activity 1: verify n-th root of n^n = n ---------- */
+document.getElementById('act1Go').addEventListener('click', () => {
+    const n = Math.max(2, Math.min(30, parseInt(document.getElementById('act1N').value, 10) || 4));
+    const result = document.getElementById('act1Result');
+    result.innerHTML = `$\\sqrt[${n}]{${n}^{${n}}} = (${n}^{${n}})^{1/${n}} = ${n}^{${n}/${n}} = ${n}$ — verified, for every choice of n.`;
+    AlgLib.typeset(result);
+});
+
+/* ---------- Activity 2: chain-of-diagonals vs Pythagoras ---------- */
+AlgLib.slider('act2S', 'act2SVal', (v) => {
+    const s = Math.round(v);
+    document.getElementById('act2Chain').innerHTML = `Chain: ${s} × √2 ≈ ${(s * Math.sqrt(2)).toFixed(3)}`;
+    document.getElementById('act2Pyth').innerHTML = `Pythagoras: √${2 * s * s} ≈ ${Math.sqrt(2 * s * s).toFixed(3)}`;
+    const r = document.getElementById('act2Result');
+    r.textContent = `Both methods give exactly ${s}√2 — the diagonal chain and the straight-line Pythagoras computation always agree.`;
+    r.className = 'check-result check-yes';
+});
+
+/* ---------- worked examples: reveal-steps wiring ---------- */
+['216', '217', '218', '219', '221', '222', '223', '224', '225', '226'].forEach(n => {
+    const id = 'ex' + n + '-steps';
+    document.getElementById(id) && document.getElementById('ex' + n + '-play').addEventListener('click', () => AlgLib.revealSteps(id));
+    document.getElementById(id) && AlgLib.revealSteps(id, 0);
+});
+
+/* ---------- generic hint/answer reveal wiring for standalone panels ---------- */
+document.querySelectorAll('[data-reveal]').forEach(btn => {
+    if (btn.closest('.exercise-card')) return; // handled by AlgLib.wireExercise elsewhere
+    btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.dataset.reveal);
+        if (!panel) return;
+        const opening = !panel.classList.contains('open');
+        panel.classList.toggle('open', opening);
+        if (opening) AlgLib.typeset(panel);
+    });
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

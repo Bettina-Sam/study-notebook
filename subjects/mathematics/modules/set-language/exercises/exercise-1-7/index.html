@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 1.7 • Set Language • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 1.7 — 20 multiple choice questions covering all of Chapter 1, with instant feedback."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 1.7</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Multiple Choice Review</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">20 questions covering the whole chapter. Tap an option for instant feedback — a wrong pick gets you a hint before the answer is revealed.</p>
+<div style="margin-top:1rem; font-family:var(--font-mono); font-size:0.95rem;">Score: <span id="scoreOut">0 / 20</span></div>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-1-1/">1.1</a>
+<a class="ex-set-pill" href="../exercise-1-2/">1.2</a>
+<a class="ex-set-pill" href="../exercise-1-3/">1.3</a>
+<a class="ex-set-pill" href="../exercise-1-4/">1.4</a>
+<a class="ex-set-pill" href="../exercise-1-5/">1.5</a>
+<a class="ex-set-pill" href="../exercise-1-6/">1.6</a>
+<span class="ex-set-pill current">1.7</span>
+</div>
+<div id="mcqHost"></div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-1-6/">← Exercise 1.6</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../../">Set Language Home →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/venn-lib.js"></script>
+<script>
+const mcqs = [
+  { q: "Which of the following is correct?", opts: ["{7} ∈ {1,2,...,10}", "{7} ⊄ {1,2,...,10}", "7 ∈ {1,2,...,10}", "7 ⊆ {1,2,...,10}"], correct: 2, explain: "7 is an element of the set, so ∈ is the right symbol — ⊆ compares two sets, and {7} (as a set) is neither ∈ nor ⊄ this set.", hint: "Compare what's inside the braces on each side — is 7 itself an element, or is {7} being treated as a set here?",
+    visual: 'membership', vd: { label: '{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}', tokens: ['1','2','3','4','5','6','7','8','9','10'], target: '7' } },
+  { q: "P = {x | x ∈ Z, −1 < x < 1} is a", opts: ["Singleton set", "Power set", "Null set", "Subset"], correct: 0, explain: "The only integer strictly between −1 and 1 is 0, so P = {0} — exactly one element.", hint: "Count how many integers actually satisfy −1 < x < 1. There's only one candidate — what does that tell you about the set's size?",
+    visual: 'membership', vd: { label: 'P = { x | x ∈ Z, −1 < x < 1 }', tokens: ['0'], target: '0' } },
+  { q: "U = {x | x ∈ N, x < 10}, A = {x | x ∈ N, 2 ≤ x < 6}. Then A′ is", opts: ["{1, 6, 7, 8, 9}", "{1, 2, 3, 4}", "{2, 3, 4, 5}", "{ }"], correct: 0, explain: "A = {2,3,4,5}, U = {1,...,9}, so A′ = U − A = {1,6,7,8,9}.", hint: "First list out A itself using the given rule, then find everything in U that's NOT in A.",
+    visual: 'venn-complement', vd: { a: [2,3,4,5], universe: [1,2,3,4,5,6,7,8,9], labelA: 'A' } },
+  { q: "If B ⊆ A then n(A∪B) is", opts: ["n(A−B)", "n(B)", "n(B−A)", "n(A)"], correct: 3, explain: "If every element of B is already in A, the union adds nothing new — n(A∪B) = n(A).", hint: "If B is entirely inside A already, does joining B to A add any new elements to A?",
+    visual: 'nested', vd: { outerLabel: 'A', innerLabel: 'B' } },
+  { q: "If A = {x, y, z}, the number of non-empty subsets of A is", opts: ["8", "5", "6", "7"], correct: 3, explain: "Total subsets = 2³ = 8; removing the empty set leaves 7.", hint: "How many total subsets does a 3-element set have (2ⁿ)? Then think about which one you're told to exclude.",
+    visual: 'membership', vd: { label: 'A = { x, y, z }', tokens: ['x','y','z'] }, counter: true },
+  { q: "Which of the following is correct?", opts: ["∅ ∈ {a, b}", "{a, b} ∈ {a, b}", "{a} ⊆ {a, b}", "{a, b} ⊂ {a, b}"], correct: 2, explain: "{a} is a set contained in {a,b}, so {a} ⊆ {a,b} is correct. The others confuse ∈ (element) with ⊆ (subset), or wrongly claim a set is a *proper* subset of itself.", hint: "∈ relates an element to a set; ⊆ relates two sets. Which pair of options here is genuinely set-to-set?",
+    visual: 'nested', vd: { outerLabel: '{a, b}', innerLabel: '{a}' } },
+  { q: "If A∪B = A∩B, then", opts: ["A ⊆ B", "A = B", "A ⊂ B", "B ⊂ A"], correct: 1, explain: "The union and intersection can only coincide when A and B are exactly the same set.", hint: "If two sets' union and intersection are identical, could they possibly be different sets?" },
+  { q: "If B − A = B, then A∩B is", opts: ["A", "B", "U", "∅"], correct: 3, explain: "B − A = B means removing A's elements from B changes nothing — so A and B share nothing, i.e. A∩B = ∅.", hint: "If removing A's elements from B leaves B completely unchanged, what does that say about what A and B have in common?",
+    visual: 'venn-generic', vd: { a: ['p','q'], b: ['r','s'], labelA: 'A', labelB: 'B', op: 'b-a' } },
+  { q: "From a given diagram, n[P(A∩B)] is (figure-dependent — the referenced diagram isn't reproduced here)", opts: ["8", "16", "32", "64"], correct: -1, explain: "This question depends on n(A∩B) shown in a specific textbook diagram. If n(A∩B) = 4 (the commonly published value for this figure), n[P(A∩B)] = 2⁴ = 16 — but check your own textbook's diagram to be sure.", hint: "This one depends on a specific diagram from your textbook — try substituting a plausible n(A∩B) value into n[P(S)] = 2ⁿ⁽ˢ⁾.",
+    stubNote: "Stub question — the textbook's original figure showing n(A∩B) isn't reproduced here. This card is for practice only and never counts toward your score until the real diagram is supplied." },
+  { q: "If n(A) = 10 and n(B) = 15, the minimum and maximum of n(A∩B) is", opts: ["10, 15", "15, 10", "10, 0", "0, 10"], correct: 3, explain: "Minimum is 0 (disjoint sets). Maximum is 10 (the smaller set fully inside the larger one, min(10,15)=10).", hint: "Think about the two extremes: sets that share nothing at all, and one set sitting entirely inside the other.",
+    visual: 'context-circles', vd: { labelA: 'A', countA: 10, labelB: 'B', countB: 15, note: 'Sizes are fixed — how the two sets overlap is what you need to work out.' }, counter: true },
+  { q: "Let A = ∅ and B = P(A). Then A∪B is", opts: ["{∅, {∅}}", "{∅}", "∅", "{0}"], correct: 1, explain: "P(∅) = {∅}. So A∪B = ∅ ∪ {∅} = {∅} (a set containing one element, the empty set).", hint: "Work out P(∅) first — the power set of the empty set has exactly one element.",
+    visual: 'dualset', vd: { items: [ { label: 'A', tokens: [] }, { label: 'B = P(A)', tokens: ['∅'] } ] } },
+  { q: "In a class of 50 boys, 35 play Carrom and 20 play Chess (every boy plays at least one). The number who play both is", opts: ["5", "30", "15", "10"], correct: 0, explain: "n(both) = 35 + 20 − 50 = 5.", hint: "Every boy plays at least one game, so overlap = (sum of the two totals) − (total boys).",
+    visual: 'context-circles', vd: { labelA: 'Carrom', countA: 35, labelB: 'Chess', countB: 20, note: 'Total boys = 50, and every boy plays at least one of the two games.' } },
+  { q: "U = {x : x ∈ N, x < 10}, A = {1,2,3,5,8}, B = {2,5,6,7,9}. Then n(A∩B) is", opts: ["1", "2", "4", "8"], correct: 1, explain: "A∩B = {2, 5}, so n(A∩B) = 2.", hint: "List out A and B fully, then pick out exactly the numbers that appear in both lists.",
+    visual: 'venn-generic', vd: { a: [1,2,3,5,8], b: [2,5,6,7,9], universe: [1,2,3,4,5,6,7,8,9], labelA: 'A', labelB: 'B', op: 'intersection' } },
+  { q: "For any three sets P, Q, R: P − (Q∪R) equals", opts: ["P − (Q∩R)", "(P∩Q) − R", "(P−Q) ∩ (P−R)", "(P−Q) ∪ (P−R)"], correct: 2, explain: "This is De Morgan's law for set difference.", hint: "Try distributing the set difference over the union — does the shape of any option look like a familiar law?" },
+  { q: "Which of the following is true?", opts: ["A − B = A∩B", "A − B = B − A", "(A∪B)′ = A′∪B′", "(A∪B)′ = A′∩B′"], correct: 3, explain: "De Morgan's law for complementation.", hint: "This is one of De Morgan's two set laws — which one talks about the complement of a union?" },
+  { q: "n(A∪B∪C)=100, n(A)=4x, n(B)=6x, n(C)=5x, n(A∩B)=20, n(B∩C)=15, n(A∩C)=25, n(A∩B∩C)=10. Find x.", opts: ["10", "15", "25", "30"], correct: 0, explain: "100 = 15x − (20+15+25) + 10 = 15x − 50, so 15x = 150, x = 10.", hint: "Use the inclusion–exclusion formula for three sets, plug in the given multiples of x, and solve.",
+    counter: true },
+  { q: "For any three sets A, B, C: (A−B) ∩ (B−A) is equal to", opts: ["A only", "B only", "C only", "∅"], correct: 3, explain: "No element can simultaneously be \"in A but not B\" and \"in B but not A\" — these two sets never overlap.", hint: "Can any element be simultaneously 'in A but not B' and 'in B but not A' at the same time? Think carefully." },
+  { q: "The shaded region in a given Venn diagram (figure-dependent — not reproduced here) is typically written as", opts: ["Z − (X∪Y)", "(X∪Y) − Z", "Z − (X∩Y)", "Z ∩ (X∪Y)′"], correct: -1, explain: "Without the original figure we can't confirm which region was shaded — check your textbook's diagram and match the shaded area to one of these four expressions.", hint: "This one depends on the original figure — sketch each expression's region yourself and compare against your textbook's diagram.",
+    visual: 'three-stub', vd: { labelA: 'X', labelB: 'Y', labelC: 'Z' },
+    stubNote: "Stub question — the textbook's original three-set Venn diagram and its shaded region aren't reproduced here (only a blank X/Y/Z outline is shown below). This card is for practice only and never counts toward your score until the real figure is supplied." },
+  { q: "J = three-sided shapes, K = shapes with two equal sides, L = shapes with a right angle. J∩K∩L is", opts: ["Set of isosceles triangles", "Set of equilateral triangles", "Set of isosceles right triangles", "Set of right-angled triangles"], correct: 2, explain: "A shape that is 3-sided (triangle), has two equal sides (isosceles), and has a right angle — that's exactly an isosceles right triangle.", hint: "A shape needs to satisfy all three conditions at once: 3 sides, two equal sides, AND a right angle.",
+    visual: 'shapes', vd: {
+      context: [ { type: 'scalene', label: 'J: 3-sided shapes' }, { type: 'isosceles', label: 'K: two equal sides' }, { type: 'rightAngled', label: 'L: has a right angle' } ],
+      optionShapes: ['isosceles', 'equilateral', 'isoRight', 'rightAngled']
+    } },
+  { q: "40% of people like only one fruit, 35% like only two fruits, 20% like all three. What % like none of the three?", opts: ["5", "8", "10", "15"], correct: 0, explain: "40 + 35 + 20 = 95% like at least one fruit, so 100 − 95 = 5% like none.", hint: "Add up the percentages you're given for liking at least one fruit, then subtract from 100%.",
+    visual: 'percent', vd: { segments: [ { label: 'Only one fruit', pct: 40, cls: 'a' }, { label: 'Only two fruits', pct: 35, cls: 'b' }, { label: 'All three', pct: 20, cls: 'c' } ] } }
+];
+
+/* ---------- small inline visual builders (Exercise 1.7 only) ---------- */
+
+function buildSetContainer(el, vd) {
+    el.innerHTML = `<div class="set-container">
+        <span class="set-container-label">${vd.label}</span>
+        <div class="set-token-row">
+          ${vd.tokens.length ? vd.tokens.map(t => `<span class="set-token ${vd.target !== undefined && String(t) === String(vd.target) ? 'set-token-target' : ''}">${t}</span>`).join('') : '<span class="set-token" style="opacity:.6;">{ }</span>'}
+        </div>
+      </div>`;
+}
+
+function buildDualSetContainer(el, vd) {
+    el.innerHTML = `<div class="set-container-row">
+      ${vd.items.map(it => `<div class="set-container">
+          <span class="set-container-label">${it.label}</span>
+          <div class="set-token-row">${it.tokens.length ? it.tokens.map(t => `<span class="set-token">${t}</span>`).join('') : '<span class="set-token" style="opacity:.6;">{ }</span>'}</div>
+        </div>`).join('')}
+      </div>`;
+}
+
+function buildNested(el, vd) {
+    el.innerHTML = `<svg viewBox="0 0 200 140" class="venn-svg">
+        <rect x="10" y="10" width="180" height="120" rx="18" class="venn-circle venn-circle-a"/>
+        <circle cx="105" cy="72" r="42" class="venn-circle venn-circle-b"/>
+        <text x="22" y="30" class="venn-setlabel venn-setlabel-a">${vd.outerLabel}</text>
+        <text x="88" y="76" class="venn-setlabel venn-setlabel-b">${vd.innerLabel}</text>
+      </svg>`;
+}
+
+function buildVennComplement(el, vd) {
+    el.classList.add('venn-hide-b');
+    const v = VennLib.twoSet(el, { a: vd.a, b: [], labelA: vd.labelA || 'A', labelB: '', universe: vd.universe });
+    v.highlight('ac');
+}
+
+function buildVennGeneric(el, vd) {
+    const v = VennLib.twoSet(el, { a: vd.a, b: vd.b, labelA: vd.labelA || 'A', labelB: vd.labelB || 'B', universe: vd.universe || null });
+    if (vd.op) v.highlight(vd.op);
+}
+
+function buildContextCircles(el, vd) {
+    el.innerHTML = `<svg viewBox="0 0 300 150" class="venn-svg">
+        <circle cx="115" cy="75" r="60" class="venn-circle venn-circle-a"/>
+        <circle cx="185" cy="75" r="60" class="venn-circle venn-circle-b"/>
+        <text x="55" y="32" class="venn-setlabel venn-setlabel-a">${vd.labelA}</text>
+        <text x="245" y="32" class="venn-setlabel venn-setlabel-b" text-anchor="end">${vd.labelB}</text>
+        <text x="55" y="132" class="venn-el">n(${vd.labelA}) = ${vd.countA}</text>
+        <text x="245" y="132" class="venn-el" text-anchor="end">n(${vd.labelB}) = ${vd.countB}</text>
+      </svg>${vd.note ? `<p class="venn-result">${vd.note}</p>` : ''}`;
+}
+
+function buildThreeSetStub(el, vd) {
+    VennLib.threeSet(el, { a: [], b: [], c: [], labelA: vd.labelA, labelB: vd.labelB, labelC: vd.labelC });
+}
+
+function shapeIcon(type) {
+    const box = 'width="42" height="36" viewBox="0 0 60 50"';
+    const stroke = 'fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"';
+    const tick = (x1, y1, x2, y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="currentColor" stroke-width="2"/>`;
+    switch (type) {
+        case 'scalene':
+            return `<svg ${box}><polygon points="6,44 52,38 34,7" ${stroke}/></svg>`;
+        case 'isosceles':
+            return `<svg ${box}><polygon points="30,6 6,44 54,44" ${stroke}/>${tick(18,25,22,27)}${tick(42,25,38,27)}</svg>`;
+        case 'equilateral':
+            return `<svg ${box}><polygon points="30,6 6,44 54,44" ${stroke}/>${tick(17,25,21,27)}${tick(43,25,39,27)}${tick(28,44,32,44)}</svg>`;
+        case 'isoRight':
+            return `<svg ${box}><polygon points="8,44 8,6 50,44" ${stroke}/><rect x="8" y="36" width="8" height="8" fill="none" stroke="currentColor" stroke-width="2"/>${tick(8,20,14,20)}${tick(23,29,27,33)}</svg>`;
+        case 'rightAngled':
+            return `<svg ${box}><polygon points="8,44 8,6 54,44" ${stroke}/><rect x="8" y="36" width="8" height="8" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
+        default:
+            return '';
+    }
+}
+
+function buildShapeContext(el, vd) {
+    el.innerHTML = `<div class="shape-icon-row">
+        ${vd.context.map(c => `<div class="shape-icon-item">${shapeIcon(c.type)}<span>${c.label}</span></div>`).join('')}
+      </div>`;
+}
+
+function buildPercentBar(el, vd) {
+    const total = vd.segments.reduce((s, x) => s + x.pct, 0);
+    const remainder = Math.max(0, 100 - total);
+    el.innerHTML = `<div class="percent-bar">
+        ${vd.segments.map(s => `<div class="percent-seg percent-seg-${s.cls}" style="width:${s.pct}%;" title="${s.label}: ${s.pct}%"><span>${s.pct}%</span></div>`).join('')}
+        <div class="percent-seg percent-seg-unknown" style="width:${remainder}%;" title="Like none of the three?"><span>?</span></div>
+      </div>
+      <div class="percent-legend">
+        ${vd.segments.map(s => `<span class="percent-legend-item"><i class="percent-swatch percent-swatch-${s.cls}"></i>${s.label} (${s.pct}%)</span>`).join('')}
+        <span class="percent-legend-item"><i class="percent-swatch percent-swatch-unknown"></i>None of the three (?)</span>
+      </div>`;
+}
+
+/* ---------- render cards ---------- */
+
+const host = document.getElementById('mcqHost');
+let score = 0;
+
+host.innerHTML = mcqs.map((m, i) => {
+    const stub = m.correct === -1;
+    const optsHtml = m.opts.map((o, j) => {
+        let inner = o;
+        if (m.visual === 'shapes' && m.vd.optionShapes) {
+            inner = `${shapeIcon(m.vd.optionShapes[j])}<span>${o}</span>`;
+        }
+        const extra = [m.counter ? 'mcq-option-counter' : '', m.visual === 'shapes' ? 'mcq-option-shape' : ''].filter(Boolean).join(' ');
+        return `<button class="mcq-option ${extra}" data-i="${j}">${inner}</button>`;
+    }).join('');
+    return `
+  <div class="exercise-card ${stub ? 'stub-question' : ''}" id="mcq${i}">
+    <span class="ex-label"><span class="ex-q-num">Q${i+1}</span>${m.q}</span>
+    ${stub ? `<div class="stub-note">${m.stubNote}</div>` : ''}
+    ${m.visual ? `<div class="mcq-visual" id="mcqViz${i}"></div>` : ''}
+    <div class="mcq-options ${m.counter ? 'mcq-options-counter' : ''}">${optsHtml}</div>
+    <div class="mcq-feedback" id="mcqFb${i}"></div>
+    <div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('mcq${i+1}','claude')" title="Ask Claude"></button></div>
+  </div>`;
+}).join('');
+
+mcqs.forEach((m, i) => {
+    if (!m.visual) return;
+    const el = document.getElementById(`mcqViz${i}`);
+    if (!el) return;
+    switch (m.visual) {
+        case 'membership': buildSetContainer(el, m.vd); break;
+        case 'dualset': buildDualSetContainer(el, m.vd); break;
+        case 'nested': buildNested(el, m.vd); break;
+        case 'venn-complement': buildVennComplement(el, m.vd); break;
+        case 'venn-generic': buildVennGeneric(el, m.vd); break;
+        case 'context-circles': buildContextCircles(el, m.vd); break;
+        case 'three-stub': buildThreeSetStub(el, m.vd); break;
+        case 'shapes': buildShapeContext(el, m.vd); break;
+        case 'percent': buildPercentBar(el, m.vd); break;
+    }
+});
+
+/* ---------- scoring engine (unchanged mechanics: click → disable → mark →
+   live score; the only behavioural change is a hint on the first wrong
+   pick, with the correct answer revealed only on a second wrong pick) ---------- */
+
+mcqs.forEach((m, i) => {
+    const buttons = document.querySelectorAll(`#mcq${i} .mcq-option`);
+    const state = { attempts: 0, answered: false };
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (state.answered || btn.disabled) return;
+            const fb = document.getElementById(`mcqFb${i}`);
+            const chosen = parseInt(btn.dataset.i);
+            if (m.correct === -1) {
+                buttons.forEach(b => b.disabled = true);
+                fb.textContent = m.explain;
+                fb.className = 'mcq-feedback';
+                return;
+            }
+            const isRight = chosen === m.correct;
+            if (isRight) {
+                buttons.forEach(b => b.disabled = true);
+                btn.classList.add('mcq-correct');
+                fb.textContent = 'Correct! ' + m.explain;
+                fb.className = 'mcq-feedback ok';
+                state.answered = true;
+                score++;
+                document.getElementById('scoreOut').textContent = `${score} / 20`;
+            } else {
+                btn.disabled = true;
+                btn.classList.add('mcq-wrong');
+                state.attempts++;
+                if (state.attempts === 1) {
+                    fb.textContent = 'Not quite — ' + (m.hint || 'think again about the definitions involved.');
+                    fb.className = 'mcq-feedback no';
+                } else {
+                    buttons.forEach(b => b.disabled = true);
+                    buttons[m.correct].classList.add('mcq-correct');
+                    fb.textContent = 'The correct option is highlighted above. ' + m.explain;
+                    fb.className = 'mcq-feedback no';
+                    state.answered = true;
+                }
+            }
+        });
+    });
+});
+
+function openAI(topic, model) {
+    const idx = parseInt(String(topic).replace('mcq', ''), 10) - 1;
+    const q = (mcqs[idx] && mcqs[idx].q) || '';
+    const prompt = `I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.7 (MCQ) Question ${idx + 1}: ${q}. Do NOT give me the final answer immediately — give me a hint pointing to the relevant set concept and ask what I think the answer is before confirming.`;
+    launchAIPrompt(model, prompt);
+}
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

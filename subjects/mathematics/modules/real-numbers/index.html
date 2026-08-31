@@ -3,49 +3,73 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Real Numbers • Study Notebook</title>
-<meta name="description" content="Rational numbers, irrational numbers, surds and scientific notation on one number line."/>
+<title>Real Numbers • Class 9 Mathematics • Study Notebook</title>
+<meta name="description" content="Chapter 2 Real Numbers — an interactive Class 9 Mathematics learning journey through rational and irrational numbers, radicals, surds, rationalisation and scientific notation."/>
 <link href="../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../css/article.css" rel="stylesheet"/>
 <link href="../../../../css/algebra.css" rel="stylesheet"/>
-<script>
-    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.body && document.body.setAttribute('data-theme', savedTheme);
-</script>
+<link href="../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>const savedTheme=localStorage.getItem('physics-notebook-theme')||'light';document.documentElement.setAttribute('data-theme',savedTheme);</script>
 <script src="https://unpkg.com/lucide@latest"></script>
+<link href="../../../../css/math-study-system.css" rel="stylesheet"/>
 </head>
 <body>
-<nav class="sticky">
-<div class="nav-bg"></div>
-<a class="logo" href="../../../../index.html#mathematics-path">
-<i data-lucide="arrow-left" width="16"></i>
-    Class 9 Mathematics
-</a>
-<button id="themeBtn">
-<i data-lucide="moon" width="16"></i> Theme
-</button>
-</nav>
-
-<section class="coming-soon-hero">
-<div class="coming-soon-icon">
-<svg viewBox="0 0 56 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 24h48"/></svg>
+<nav class="sticky"><div class="nav-bg"></div><a class="logo" href="../../../../index.html#mathematics-path"><i data-lucide="arrow-left" width="16"></i> Class 9 Mathematics</a><button id="themeBtn"><i data-lucide="moon" width="16"></i> Theme</button></nav>
+<section class="hero rn-home-hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Chapter 2</span>
+<h1 class="hero-title">Real Numbers</h1>
+<p style="margin-top:1.6rem;font-size:1.25rem;max-width:58ch;">Numbers are bigger than counting. In this chapter you will zoom between fractions, uncover numbers that never repeat, build roots, tame surds, and shrink enormous quantities into scientific notation.</p>
+<div class="rn-mission-strip"><span>Predict</span><b>→</b><span>Play</span><b>→</b><span>Observe</span><b>→</b><span>Explain</span></div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('chapter','claude')" title="Ask Claude"></button></div>
 </div>
-<div class="coming-soon-num">Chapter 2</div>
-<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem); margin-top:0.4rem;">Real Numbers</h1>
-<p style="max-width:52ch; margin:1.2rem auto 0;">Rational numbers, irrational numbers, surds and scientific notation on one number line.</p>
-<span class="coming-soon-tag">Coming Soon</span>
-<div>
-<a class="back-link" href="../algebra/">
-<i data-lucide="sparkles" width="15"></i> Start with Algebra, which is ready now
-</a>
+<div class="rn-orbit" aria-hidden="true"><div class="rn-orbit-ring r1"></div><div class="rn-orbit-ring r2"></div><span class="rn-orbit-core">ℝ</span><span class="rn-orbit-dot d1">ℚ</span><span class="rn-orbit-dot d2">√2</span><span class="rn-orbit-dot d3">π</span><span class="rn-orbit-dot d4">10ⁿ</span><div class="math-study-rhythm"><span>Understand</span><b>→</b><span>Explore</span><b>→</b><span>Practise</span><b>→</b><span>Reflect</span></div></div>
+</section>
+<section style="padding-top:1rem;flex-direction:column;align-items:stretch;">
+<div style="width:100%;max-width:1400px;margin:0 auto 2rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Textbook journey · 2.1 → 2.8</h3>
+<h2 style="max-width:26ch;">Eight modules. One connected number universe.</h2>
+<p style="max-width:72ch;">Follow the exact chapter order. Each module mixes explanation, worked examples and a visual experiment. Your progress is remembered on this device.</p>
+<div class="rn-progress-wrap"><div class="rn-progress-head"><span id="rnProgressText">0 / 8 modules explored</span><span id="rnProgressPct">0%</span></div><div class="rn-progress-track"><div id="rnProgressBar"></div></div></div>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+<section class="rn-challenge-zone">
+<div style="width:100%;max-width:1100px;">
+<span class="section-label">Chapter Quest</span><h2>Ready to prove you own the chapter?</h2>
+<p>Exercises 2.1–2.9 keep the textbook questions, but add draggable number lines, live checkers, visual clues, hints and guided AI help.</p>
+<a class="btn btn-primary" href="exercises/">Enter the Practice Arena →</a>
 </div>
 </section>
-<div class="divider" style="margin:2rem 0 0;"></div>
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
-
 <script src="../../../../js/common.js"></script>
-<script>window.onload = () => { if (window.lucide) window.lucide.createIcons(); };</script>
-</body>
-</html>
+<script>
+const topics=[
+["01","2.1","introduction/","Introduction","Meet the number families and discover how Natural, Whole, Integer, Rational and Irrational numbers fit inside ℝ.","family"],
+["02","2.2","rational-and-irrational/#rational-numbers","Rational Numbers","Explore denseness, decimals, recurring patterns and conversion between decimals and p/q.","rational"],
+["03","2.3","rational-and-irrational/#irrational-numbers","Irrational Numbers","Construct √2, recognise non-terminating non-recurring decimals, and see why the number line has no gaps.","irrational"],
+["04","2.4","real-number-line/","Real Numbers","Combine rational + irrational numbers and zoom into the real number line by successive magnification.","real"],
+["05","2.5","radicals-and-surds/#radical-notation","Radical Notation","Control indices, roots and fractional powers while watching equivalent forms change live.","radical"],
+["06","2.6","radicals-and-surds/#surds","Surds","Identify order, simplify pure and mixed surds, compare them, and perform the four basic operations.","surd"],
+["07","2.7","rationalisation/","Rationalisation of Surds","Use factors and conjugates to remove surds from denominators without changing the value.","rationalise"],
+["08","2.8","scientific-notation/","Scientific Notation","Move the decimal, control powers of ten, and calculate with very large and very small quantities.","science"]
+];
+function visual(k){const s='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';const v={
+family:`<svg ${s}><circle class="tv-stroke-2" cx="130" cy="52" r="42"/><circle class="tv-accent" cx="130" cy="52" r="31"/><circle class="tv-ghost" cx="130" cy="52" r="20"/><text x="122" y="57">ℕ</text><text x="174" y="28">ℝ</text></svg>`,
+rational:`<svg ${s}><path class="tv-stroke-2" d="M20 62h220"/><circle class="tv-fill tv-pulse" cx="60" cy="62" r="5"/><circle class="tv-fill tv-pulse" cx="130" cy="62" r="5"/><circle class="tv-fill tv-pulse" cx="200" cy="62" r="5"/><text x="43" y="42">1/2</text><text x="113" y="42">7/12</text><text x="185" y="42">2/3</text></svg>`,
+irrational:`<svg ${s}><path class="tv-accent" d="M55 78V28h50v50z"/><path class="tv-stroke-2 tv-nudge" d="M55 78L105 28"/><text x="118" y="55">√2</text><text x="158" y="55">π</text></svg>`,
+real:`<svg ${s}><path class="tv-stroke-2" d="M15 55h230"/><path class="tv-accent" d="M70 48v14M130 48v14M192 48v14"/><circle class="tv-fill tv-pulse" cx="158" cy="55" r="6"/><text x="145" y="35">√3</text><text x="28" y="88">zoom → zoom → exact point</text></svg>`,
+radical:`<svg ${s}><text x="34" y="63" font-size="34">√</text><path class="tv-accent" d="M70 34h88"/><text x="82" y="63">x</text><text x="172" y="55">↔ x¹⁄ⁿ</text></svg>`,
+surd:`<svg ${s}><text x="25" y="58">2√3</text><path class="tv-accent tv-nudge" d="M92 52h48"/><text x="150" y="58">√12</text><text x="78" y="90">simplify • compare • combine</text></svg>`,
+rationalise:`<svg ${s}><text x="18" y="48">1</text><path class="tv-stroke-2" d="M12 54h70"/><text x="18" y="77">√3+√2</text><path class="tv-accent tv-nudge" d="M95 55h42"/><text x="145" y="63">× conjugate</text></svg>`,
+science:`<svg ${s}><text x="24" y="58">6.02</text><text x="86" y="43">×10</text><text x="126" y="28">23</text><path class="tv-accent tv-nudge" d="M158 53h62"/><circle class="tv-fill tv-pulse" cx="225" cy="53" r="5"/></svg>`};return v[k];}
+const key='rn-ch2-visited';let visited=new Set(JSON.parse(localStorage.getItem(key)||'[]'));
+function update(){document.getElementById('rnProgressText').textContent=`${visited.size} / 8 modules explored`;const p=Math.round(visited.size/8*100);document.getElementById('rnProgressPct').textContent=p+'%';document.getElementById('rnProgressBar').style.width=p+'%';document.querySelectorAll('.topic-card').forEach((c,i)=>c.classList.toggle('rn-visited',visited.has(topics[i][0])))}
+document.getElementById('topicGrid').innerHTML=topics.map(t=>`<a class="topic-card rn-topic-card" data-module="${t[0]}" href="${t[2]}"><div class="topic-visual">${visual(t[5])}</div><div class="topic-body"><span class="topic-num">${t[0]} · ${t[1]}</span><h3>${t[3]}</h3><p>${t[4]}</p><span class="rn-status">○ Not explored</span><span class="topic-action">Start module →</span></div></a>`).join('');
+document.querySelectorAll('.rn-topic-card').forEach(c=>c.addEventListener('click',()=>{visited.add(c.dataset.module);localStorage.setItem(key,JSON.stringify([...visited]));}));
+function updateLabels(){document.querySelectorAll('.rn-topic-card').forEach((c,i)=>{const done=visited.has(topics[i][0]);c.querySelector('.rn-status').textContent=done?'✓ Explored':'○ Not explored';});update();}updateLabels();
+function openAI(topic,model){launchAIPrompt(model,"I am studying Tamil Nadu Class 9 Mathematics Chapter 2 Real Numbers. Give me a friendly chapter map covering 2.1 Introduction, 2.2 Rational Numbers, 2.3 Irrational Numbers, 2.4 Real Numbers, 2.5 Radical Notation, 2.6 Surds, 2.7 Rationalisation of Surds and 2.8 Scientific Notation. Do not lecture me all at once: ask one diagnostic question, then guide me interactively.");}
+window.onload=()=>{if(window.lucide)window.lucide.createIcons();};
+</script>
+</body></html>

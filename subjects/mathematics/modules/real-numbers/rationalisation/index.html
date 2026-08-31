@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.7 Rationalisation of Surds • Real Numbers • Study Notebook</title>
+<meta name="description" content="Rationalising factors, conjugate surds and rationalising the denominator, with a step-through of multiplying by the conjugate."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.def-box{ background:var(--card-bg); border:1px solid var(--border-color); border-left:3px solid var(--math-accent); border-radius:10px; padding:1rem 1.2rem; margin:0.9rem 0; }
+.def-box b{ color:var(--math-accent); }
+.verify-note{ font-size:0.78rem; color:var(--text-muted); font-style:italic; margin-top:0.4rem; }
+.rf-row{ display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-top:0.7rem; }
+.rf-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:160px; }
+</style>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Real Numbers
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">2.7 Rationalisation of Surds</span>
+<h1 class="hero-title">Chasing the root<br/>out of the floor</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    A fraction with a surd sitting in the denominator is awkward to work with. Multiply top and
+    bottom by the right partner surd, and the radical in the denominator disappears completely.
+</p>
+</div>
+</section>
+<section class="rn-play-banner"><div><b>THIS PAGE IS INTERACTIVE</b><span>Predict first → drag / change / click → watch what changes → explain what you noticed.</span></div><div class="rn-play-pills"><span>DRAG</span><span>CHANGE</span><span>TRY</span><span>WATCH</span></div></section>
+
+<!-- 2.7 RATIONALISING FACTOR -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<h3 class="section-label" style="color: var(--math-accent);">2.7 Rationalisation of Surds</h3>
+<h2 style="margin-bottom:0.8rem;">Rationalising factor</h2>
+<p>A <b>rationalising factor</b> is a term that a surd is multiplied (or divided) by to make the
+whole thing rational.</p>
+<div class="def-box">
+(i) $\sqrt3$ is a rationalising factor of $\sqrt3$, since $\sqrt3\times\sqrt3=3$, a rational number.<br/>
+(ii) $\sqrt[7]{5^4}$ is a rationalising factor of $\sqrt[7]{5^3}$, since their product is
+$\sqrt[7]{5^7}=5$, a rational number.
+</div>
+
+<div class="thinking-corner">
+<span class="tc-label">Thinking Corner</span>
+<div class="tc-body">
+1. In example (i) above, could $\sqrt{12}$ also work as a rationalising factor of $\sqrt3$? Can
+you think of any other number that would work?<br/><br/>
+2. Can you think of another rationalising factor for $\sqrt[7]{5^3}$ in example (ii)?<br/><br/>
+3. If a surd can have many rationalising factors, is there an advantage to picking the
+<em>smallest</em> one for calculation?
+</div>
+<div class="btn-row" style="margin-top:0.7rem;"><button class="btn btn-ghost" data-reveal="tcAnswer">Reveal discussion</button></div>
+<div class="exercise-panel" id="tcAnswer">
+1. Yes — $\sqrt3\times\sqrt{12}=\sqrt{36}=6$, rational, so $\sqrt{12}$ works too (so does
+$4\sqrt3$, $9\sqrt3$, any $k\sqrt3$ with $k$ a rational multiple giving a perfect square product).
+There are infinitely many rationalising factors for any surd.<br/>
+2. Any $\sqrt[7]{5^k}$ where $3+k$ is a multiple of 7 works, e.g. $\sqrt[7]{5^{11}}$ — but that's
+far messier than $\sqrt[7]{5^4}$.<br/>
+3. Yes — the smallest rationalising factor keeps the numbers involved as small as possible,
+which makes the arithmetic that follows dramatically easier.
+</div>
+</div>
+
+<div class="thinking-corner" style="margin-top:1.2rem;">
+<span class="tc-label">Progress Check</span>
+<div class="tc-body">Identify a rationalising factor for each surd below, then verify by multiplying it out.</div>
+<div id="pcList" style="margin-top:0.8rem; display:grid; gap:0.7rem;"></div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('rationalising-factor','claude')" title="Ask Claude"></button>
+</div>
+</div>
+</section>
+
+<!-- 2.7.1 CONJUGATE SURDS -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">2.7.1 Conjugate Surds</h3>
+<h2>$\sqrt3+\sqrt2$ and $\sqrt3-\sqrt2$</h2>
+<p>
+    A binomial surd like $\sqrt3+\sqrt2$ has one rational-looking part and one radical part — its
+    rationalising factor has a special form. Surds like $a+\sqrt b$ and $a-\sqrt b$ (or
+    $\sqrt a+\sqrt b$ and $\sqrt a-\sqrt b$) are called <b>conjugate surds</b> — flip the sign in
+    front of the surd to get the conjugate.
+</p>
+<p>Watch what happens when $\sqrt3+\sqrt2$ meets its conjugate $\sqrt3-\sqrt2$:</p>
+<div class="step-flow" id="conj-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$(\sqrt3+\sqrt2)(\sqrt3-\sqrt2)$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$=(\sqrt3)^2-(\sqrt2)^2$ &nbsp; (difference of squares)</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$=3-2$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>$=1$ — rational!</b> The $\sqrt2$/$\sqrt3$ terms cancel completely.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="conj-play">Play steps</button></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('conjugate-surds','claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div style="text-align:center; width:100%;">
+<p style="font-size:0.9rem; margin-bottom:0.6rem;">Pick your own $a,b$ and see the surd part vanish:</p>
+<div class="rf-row" style="justify-content:center;">
+<span style="font-family:var(--font-mono);">√</span><input id="conjA" class="rf-input" type="number" value="3" style="width:70px; min-width:0;"/>
+<span>+</span>
+<span style="font-family:var(--font-mono);">√</span><input id="conjB" class="rf-input" type="number" value="2" style="width:70px; min-width:0;"/>
+</div>
+<div class="formula-card" style="margin-top:1rem;">
+<div class="formula-rule" id="conjLive">(√3+√2)(√3−√2) = 3 − 2 = 1</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EXAMPLE 2.27 -->
+<section>
+<div style="width:100%; max-width:1000px;">
+<div class="worked-example">
+<span class="we-label">Example 2.27 (textbook)</span>
+<div class="we-question">Rationalise the denominator of (i) $\dfrac{7}{\sqrt{14}}$ &nbsp; (ii) $\dfrac{5+\sqrt3}{5-\sqrt3}$</div>
+<div class="step-flow" id="ex227-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">(i) Multiply top and bottom by $\sqrt{14}$: $\dfrac{7}{\sqrt{14}}=\dfrac{7\times\sqrt{14}}{\sqrt{14}\times\sqrt{14}}=\dfrac{7\sqrt{14}}{14}$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$=\dfrac{\sqrt{14}}{2}$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">(ii) Multiply top and bottom by the conjugate $5+\sqrt3$: $\dfrac{5+\sqrt3}{5-\sqrt3}\times\dfrac{5+\sqrt3}{5+\sqrt3}=\dfrac{(5+\sqrt3)^2}{5^2-(\sqrt3)^2}$</div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">$=\dfrac{25+3+10\sqrt3}{25-3}=\dfrac{28+10\sqrt3}{22}$</div></div>
+<div class="step-item"><span class="step-num">5</span><div class="step-body">$=\dfrac{2(14+5\sqrt3)}{22}=\dfrac{14+5\sqrt3}{11}$</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="ex227-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../radicals-and-surds/">← 2.6 Surds</a>
+<a class="back-link cn-home" href="../">Real Numbers Home</a>
+<a class="back-link" href="../scientific-notation/">Next: 2.8 Scientific Notation →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/exercise-engine.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Explain rationalisation of surds for a Class 9 (Tamil Nadu board) student.";
+    if (topic === 'rationalising-factor') prompt = "Explain what a rationalising factor is, with examples like √3 for √3 and how to find rationalising factors for surds such as √18, fifth root of 12, cube root of 49, for a Class 9 student.";
+    else if (topic === 'conjugate-surds') prompt = "Explain conjugate surds (like √3+√2 and √3-√2), why multiplying by the conjugate rationalises a binomial-surd denominator, and walk through rationalising (5+√3)/(5-√3), for a Class 9 student.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Progress Check: rationalising-factor practice ---------- */
+const pcRF = [
+    { q: '\\sqrt{18}', rf: '\\sqrt2', product: '\\sqrt{18}\\times\\sqrt2=\\sqrt{36}=6', note: '√18 = 3√2, so the smallest rationalising factor is √2 (product = 6, rational).' },
+    { q: '\\sqrt[5]{12}', rf: '\\sqrt[5]{12^4}', product: '\\sqrt[5]{12}\\times\\sqrt[5]{12^4}=\\sqrt[5]{12^5}=12', note: 'To rationalise a 5th-root surd √[5]{12}, multiply by √[5]{12⁴} so the powers of 12 add to a multiple of 5.' },
+    { q: '\\sqrt[3]{49}', rf: '\\sqrt[3]{7}', product: '\\sqrt[3]{49}\\times\\sqrt[3]{7}=\\sqrt[3]{343}=7', note: '49 = 7², so ∛49 × ∛7 = ∛(7³) = 7.' },
+    { q: '\\dfrac{1}{\\sqrt[3]{8}}', rf: '\\text{none needed}', product: '\\sqrt[3]{8}=2', note: 'Trick one — ∛8 = 2 is already rational! There is no surd here to rationalise at all.' }
+];
+document.getElementById('pcList').innerHTML = pcRF.map((item, i) => `
+  <div class="worked-example" style="margin:0; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.8rem;">
+    <div>$${item.q}$</div>
+    <button class="btn btn-ghost" data-reveal="pcRF${i}">Reveal rationalising factor</button>
+    <div class="exercise-panel" id="pcRF${i}" style="flex-basis:100%;">Rationalising factor: $${item.rf}$.<br/>Check: $${item.product}$<br/>${item.note}</div>
+  </div>`).join('');
+
+/* ---------- Conjugate live calculator ---------- */
+function conjUpdate() {
+    const a = parseInt(document.getElementById('conjA').value, 10) || 0;
+    const b = parseInt(document.getElementById('conjB').value, 10) || 0;
+    const diff = a - b;
+    document.getElementById('conjLive').innerHTML = `(√${a}+√${b})(√${a}−√${b}) = ${a} − ${b} = ${diff}${diff >= 0 ? ' (rational)' : ' (rational, negative)'}`;
+    AlgLib.typeset(document.getElementById('conjLive'));
+}
+document.getElementById('conjA').addEventListener('input', conjUpdate);
+document.getElementById('conjB').addEventListener('input', conjUpdate);
+conjUpdate();
+
+/* ---------- reveal wiring for standalone panels (thinking corner / progress check) ---------- */
+document.querySelectorAll('[data-reveal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.dataset.reveal);
+        if (!panel) return;
+        const opening = !panel.classList.contains('open');
+        panel.classList.toggle('open', opening);
+        if (opening) AlgLib.typeset(panel);
+    });
+});
+
+/* ---------- worked example reveal-steps ---------- */
+document.getElementById('conj-play').addEventListener('click', () => AlgLib.revealSteps('conj-steps'));
+AlgLib.revealSteps('conj-steps', 0);
+document.getElementById('ex227-play').addEventListener('click', () => AlgLib.revealSteps('ex227-steps'));
+AlgLib.revealSteps('ex227-steps', 0);
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

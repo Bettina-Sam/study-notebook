@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.4-2.5 Motion Graphs • Force and Motion • Study Notebook</title>
+<meta name="description" content="Distance-time and speed-time graphs for rest, uniform speed, speeding up and slowing down — plotted live."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Force and Motion
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 2 · Force and Motion</span>
+<span class="coming-soon-num">2.4–2.5 Motion Graphs</span>
+<h1 class="hero-title">Reading motion straight<br/>off a graph's slope</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">A distance-time graph's slope is speed. A speed-time graph's slope is acceleration, and the area under it is the distance covered. Pick a journey and watch both graphs draw themselves.</p>
+</div>
+</section>
+
+<section style="flex-direction:column;align-items:stretch;">
+<div style="width:100%;max-width:1100px;margin:0 auto;">
+<h3 class="section-label" style="color: var(--math-accent);">01. Pick a Journey</h3>
+<h2>Compare distance-time and speed-time</h2>
+<div class="sim-controls" style="max-width:500px;">
+<div class="slider-group"><label>Journey type</label>
+<select id="journey-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="rest">At rest</option>
+<option value="uniform">Uniform speed (10 m/s)</option>
+<option value="accel" selected>Speeding up (uniform acceleration)</option>
+<option value="decel">Slowing down (uniform deceleration)</option>
+</select></div>
+</div>
+<div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;">
+<div style="flex:1;min-width:280px;"><p style="text-align:center;font-size:0.9rem;color:var(--text-muted);">Distance–Time Graph</p><div class="graph-wrap" id="dtWrap"></div></div>
+<div style="flex:1;min-width:280px;"><p style="text-align:center;font-size:0.9rem;color:var(--text-muted);">Speed–Time Graph</p><div class="graph-wrap" id="stWrap"></div></div>
+</div>
+<div class="etu-card" style="margin-top:1rem;"><span class="etu-tag">Key idea</span><p id="journeyNote" style="font-size:0.95rem;margin-bottom:0;">A straight, tilted distance-time line means uniform speed. A curving-upward distance-time line means the object is speeding up.</p></div>
+</div>
+</section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">If a speed-time graph is a horizontal line at 10 m/s for 5 seconds, what distance (area under the graph) does the object cover, in metres?</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" type="number"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button></div>
+<div class="exercise-panel" id="exHint1">Area of a rectangle = width (time) × height (speed).</div>
+</div>
+</div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 20–23</span><h2>Reading the two graphs</h2><div class="tb-grid"><div class="tb-card"><h3>Distance-time, zero slope</h3><p>Object at rest.</p></div><div class="tb-card"><h3>Distance-time, constant slope</h3><p>Uniform speed.</p></div><div class="tb-card"><h3>Distance-time, increasing slope</h3><p>Speed is increasing (concave curve).</p></div><div class="tb-card"><h3>Speed-time, sloped line</h3><p>Constant, non-zero acceleration; area under the line gives distance.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../acceleration/">← Acceleration</a>
+<a class="back-link" href="../centre-of-gravity-and-stability/">Next: Centre of Gravity & Stability →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const journeys = {
+  rest:{dt:[20,20,20,20,20,20], st:[0,0,0,0,0,0], note:"The distance-time graph is flat: the object is not moving at all."},
+  uniform:{dt:[0,10,20,30,40,50], st:[10,10,10,10,10,10], note:"The distance-time graph is a straight tilted line; the speed-time graph is flat at 10 m/s."},
+  accel:{dt:[0,5,20,45,80,125], st:[10,10,20,30,40,50], note:"The distance-time graph curves upward (concave); the speed-time line slopes upward — uniform acceleration."},
+  decel:{dt:[0,45,80,105,120,125], st:[50,40,30,20,10,0], note:"The distance-time graph curves and flattens; the speed-time line slopes downward — uniform deceleration."}
+};
+function lineChart(id, data, color, unit){
+  const w=280,h=200, maxV = Math.max(...data,1), n=data.length;
+  const pts = data.map((v,i)=>`${20+i*(w-40)/(n-1)},${h-20-(v/maxV)*(h-40)}`).join(' ');
+  document.getElementById(id).innerHTML = `<svg viewBox="0 0 ${w} ${h}">
+    <line x1="20" y1="${h-20}" x2="${w-10}" y2="${h-20}" stroke="var(--border-color)"/>
+    <line x1="20" y1="10" x2="20" y2="${h-20}" stroke="var(--border-color)"/>
+    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3"/>
+    <text x="${w/2}" y="${h-4}" text-anchor="middle" font-size="10" fill="var(--text-muted)">time (s)</text>
+  </svg>`;
+}
+function updateJourney(){
+  const key = document.getElementById('journey-select').value;
+  const j = journeys[key];
+  lineChart('dtWrap', j.dt, 'var(--math-accent)');
+  lineChart('stWrap', j.st, 'var(--math-accent-2)');
+  document.getElementById('journeyNote').textContent = j.note;
+}
+document.getElementById('journey-select').addEventListener('change', updateJourney);
+updateJourney();
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 50, document.getElementById('exResult'));
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

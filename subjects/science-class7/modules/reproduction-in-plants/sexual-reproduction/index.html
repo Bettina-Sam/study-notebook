@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>5.1-5.2 Sexual Reproduction • Reproduction in Plants • Study Notebook</title>
+<meta name="description" content="How a flower becomes a fruit with seeds — pollination, fertilization, and the parts of a flower, explored interactively."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Reproduction in Plants
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 5 · Reproduction and Modification in Plants</span>
+<span class="coming-soon-num">5.1–5.2 Sexual Reproduction</span>
+<h1 class="hero-title">How a flower<br/>becomes a fruit</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Seed is produced from a flower through pollination and fertilization. This is sexual reproduction — and it starts with the four whorls of a flower.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Parts of a Flower</h3>
+<h2>Click each whorl</h2>
+<p>A complete flower has four whorls, from outside in: calyx (sepals), corolla (petals), androecium (stamens —
+male), gynoecium (pistil — female).</p>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Pick a part to see what it does.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Flower part</label>
+<select id="part-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="sepal">Sepal (calyx)</option><option value="petal">Petal (corolla)</option>
+<option value="stamen">Stamen (androecium — male)</option><option value="pistil">Pistil (gynoecium — female)</option>
+</select></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="partOut">Sepals cover and protect the young developing flower bud.</div>
+</div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="partWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Self or Cross Pollination?</h3>
+<h2>Where do the pollen grains travel?</h2>
+<div class="classify-row" id="classifyChips"></div>
+<div class="classify-bins">
+<div class="classify-bin" id="binSelf"><h5>Self Pollination</h5><div class="bin-items"></div></div>
+<div class="classify-bin" id="binCross"><h5>Cross Pollination</h5><div class="bin-items"></div></div>
+</div>
+<p id="classifyScore" style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-muted);"></p>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">After fertilization, the ovary becomes the ______________ and the ovule becomes the ______________.</div>
+<div class="inline-controls"><span>Your answer (2 words):</span><input class="mini-input" id="exAnswer" style="width:220px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 58–64</span><h2>Pollination, then fertilization</h2><div class="tb-grid"><div class="tb-card"><h3>Pollination</h3><p>Transfer of pollen grains from the anther to the stigma.</p></div><div class="tb-card"><h3>Self pollination</h3><p>Anther to stigma of the same flower or same plant — no new variation.</p></div><div class="tb-card"><h3>Cross pollination</h3><p>Anther of one flower to stigma of another plant — introduces variation; needs pollinators like wind, insects, birds.</p></div><div class="tb-card"><h3>Fertilization</h3><p>Fusion of male and female gametes, forming a zygote inside the ovule.</p></div><div class="tb-card"><h3>After fertilization</h3><p>Ovary → fruit. Ovule → seed. Petals, androecium, style and stigma typically fall off.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../">← Reproduction in Plants</a>
+<a class="back-link" href="../asexual-reproduction/">Next: Asexual Reproduction →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const parts = {
+  sepal:{desc:'Green, leaf-like; covers and protects the young bud. Together they form the calyx.', color:'#4a8f4a'},
+  petal:{desc:'Often brightly coloured and scented to attract pollinating insects. Together they form the corolla.', color:'var(--math-accent-2)'},
+  stamen:{desc:'The male part — filament + anther, which produces pollen grains. Together they form the androecium.', color:'#d6c23f'},
+  pistil:{desc:'The female part — ovary, style and stigma. Together it forms the gynoecium. Seeds develop inside the ovary.', color:'var(--math-accent)'}
+};
+function updatePart(){
+  const key = document.getElementById('part-select').value;
+  const p = parts[key];
+  document.getElementById('partOut').textContent = p.desc;
+  document.getElementById('partWrap').innerHTML = `<svg viewBox="0 0 280 200">
+    <ellipse cx="140" cy="60" rx="55" ry="20" fill="${key==='sepal'?p.color:'#cfead1'}" opacity="0.9"/>
+    <ellipse cx="140" cy="100" rx="70" ry="35" fill="${key==='petal'?p.color:'#f6d9e6'}" opacity="0.9"/>
+    <circle cx="100" cy="100" r="14" fill="${key==='stamen'?p.color:'#eee0a0'}"/>
+    <circle cx="180" cy="100" r="14" fill="${key==='stamen'?p.color:'#eee0a0'}"/>
+    <path d="M140 80 L140 150" stroke="${key==='pistil'?p.color:'#c9a0d0'}" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="140" cy="155" r="16" fill="${key==='pistil'?p.color:'#c9a0d0'}"/>
+  </svg>`;
+}
+document.getElementById('part-select').addEventListener('change', updatePart);
+updatePart();
+
+const classifyItems = [
+  ['Wind carries pollen to a different plant\'s flower','cross'],
+  ['A butterfly shakes the same bisexual flower, pollen falls on its own stigma','self'],
+  ['A bee moves pollen from one pumpkin flower to another pumpkin plant','cross'],
+  ['Paddy self-pollinates using gentle wind within the same flower','self']
+];
+let cScore=0, cTotal=0;
+const chipsHost = document.getElementById('classifyChips');
+chipsHost.innerHTML = classifyItems.map((c,i)=>`<button class="classify-chip" data-answer="${c[1]}" data-idx="${i}">${c[0]}</button>`).join('');
+chipsHost.querySelectorAll('.classify-chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    if(chip.dataset.placed) return;
+    const guess = confirm(`Is this SELF pollination (same flower/plant)?\nOK = Self, Cancel = Cross`) ? 'self':'cross';
+    const correct = guess === chip.dataset.answer;
+    chip.classList.add(correct?'correct':'wrong');
+    chip.dataset.placed = '1';
+    cTotal++; if(correct) cScore++;
+    const bin = document.querySelector(guess==='self' ? '#binSelf .bin-items' : '#binCross .bin-items');
+    const tag = document.createElement('div');
+    tag.textContent = chip.textContent + (correct? ' ✓' : ' ✗');
+    tag.style.fontSize = '0.82rem'; tag.style.padding='4px 0';
+    bin.appendChild(tag);
+    document.getElementById('classifyScore').textContent = `Score: ${cScore} / ${cTotal}`;
+  });
+});
+
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('fruit') && val.includes('seed');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct — fruit and seed' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

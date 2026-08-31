@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>3.5 Factorisation • Algebra • Study Notebook</title>
-<meta name="description" content="Run identities and grouping in reverse — find two numbers, split the middle term, and factorise step by step."/>
+<meta content="Run identities and grouping in reverse — find two numbers, split the middle term, and factorise step by step." name="description"/>
 <link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../../css/article.css" rel="stylesheet"/>
@@ -12,7 +13,7 @@
 <script>
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
-<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
     const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -31,7 +32,6 @@
 <i data-lucide="moon" width="16"></i> Theme
 </button>
 </nav>
-
 <section class="hero">
 <div class="text-reveal-wrapper">
 <span class="coming-soon-num">3.5 Factorisation</span>
@@ -42,7 +42,6 @@
 </p>
 </div>
 </section>
-
 <!-- SECTION 1: FIND TWO NUMBERS -->
 <section>
 <div class="split-layout">
@@ -50,6 +49,7 @@
 <h3 class="section-label" style="color: var(--math-accent);">01. Find the Pair</h3>
 <h2 id="ftHeading">Factorise $x^2 + 5x + 6$</h2>
 <p>Find two numbers whose <b>product</b> is 6 and whose <b>sum</b> is 5.</p>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Enter two numbers whose <b>sum</b> and <b>product</b> match the trinomial. Wrong attempts are useful — use them to narrow the factor pair.</span></div>
 <div class="inline-controls">
 <span>First number:</span> <input class="mini-input" id="ftNum1" type="number"/>
 <span>Second number:</span> <input class="mini-input" id="ftNum2" type="number"/>
@@ -69,7 +69,6 @@
 </div>
 </div>
 </section>
-
 <!-- SECTION 2: COMMON FACTOR -->
 <section>
 <div class="split-layout">
@@ -92,7 +91,6 @@ everything simpler. Click each term below.</p>
 </div>
 </div>
 </section>
-
 <!-- WORKED EXAMPLE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -111,7 +109,6 @@ everything simpler. Click each term below.</p>
 </div>
 </div>
 </section>
-
 <!-- EXERCISE -->
 <section>
 <div style="width:100%; max-width:900px;">
@@ -121,8 +118,8 @@ everything simpler. Click each term below.</p>
 <div class="ex-question">Factorise $p^2 - 6p - 16$.</div>
 <div class="inline-controls">
 <span>Two numbers: product −16, sum −6 →</span>
-<input class="mini-input" id="exN1" type="number" placeholder="?"/>
-<input class="mini-input" id="exN2" type="number" placeholder="?"/>
+<input class="mini-input" id="exN1" placeholder="?" type="number"/>
+<input class="mini-input" id="exN2" placeholder="?" type="number"/>
 <button class="btn btn-primary" id="exCheckPair" style="min-height:38px; padding:8px 14px;">Check</button>
 <span class="check-result" id="exPairResult"></span>
 </div>
@@ -145,17 +142,14 @@ everything simpler. Click each term below.</p>
 </div>
 </div>
 </section>
-
-<div class="divider"></div>
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 102–108</span><h2>Factorisation reverses multiplication</h2><p>Multiplying (x+2)(x+3) gives x²+5x+6. Factorising x²+5x+6 returns the factors (x+2)(x+3). The textbook first uses <b>common factors</b> and <b>grouping</b>, then identities and middle-term splitting.</p><div class="tb-example"><div class="head">Textbook Example 3.24–3.26</div><div class="body"><b>Factorise by common factor, grouping and identities.</b><div style="margin-top:.65rem">The textbook revisits square identities, difference of squares, sum/difference of cubes and the three-variable cubic identity in reverse.</div></div></div><h2>3.5.2 Quadratic trinomial ax²+bx+c</h2><ol class="checklist"><li>Multiply a and c to get ac.</li><li>Find two numbers whose <b>product is ac</b> and whose <b>sum is b</b>.</li><li>Split the middle term bx using those numbers.</li><li>Group into pairs and factorise.</li></ol><div class="tb-example"><div class="head">Textbook Example 3.27–3.31</div><div class="body"><b>Factorise several sign variations of 2x²±15x±27 and a substituted quadratic in (x+y).</b><div style="margin-top:.65rem">The tables in the textbook deliberately compare possible pairs, reinforcing that both the required product and sum must match.</div></div></div><p>   </p></div></section><div class="divider"></div>
 <section style="min-height:auto; padding-top:0;">
 <div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
 <a class="back-link" href="../algebraic-identities/">← 3.4 Algebraic Identities</a>
 <a class="back-link" href="../division-of-polynomials/">Next: Division of Polynomials →</a>
 </div>
 </section>
-
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
-
 <script src="../../../../../js/common.js"></script>
 <script src="../../../../../js/algebra-lib.js"></script>
 <script>

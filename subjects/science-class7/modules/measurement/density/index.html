@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.4 Density • Measurement • Study Notebook</title>
+<meta name="description" content="Why an iron ball sinks and a cork floats: density as mass packed into volume, explored with a sink-or-float simulator."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Measurement
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 1 · Measurement</span>
+<span class="coming-soon-num">1.4 Density</span>
+<h1 class="hero-title">Why the ball sinks<br/>and the cork floats</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 42ch;">
+    Density of a substance is the mass of the substance contained in unit volume (1 m³). $D = M / V$. It
+    decides whether an object sinks or floats in a given liquid.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: SINK OR FLOAT SIMULATOR -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Sink or Float?</h3>
+<h2>Drop an object into water</h2>
+<p>Pick a material. Its density is compared with water (1000 kg/m³) to decide whether it sinks or floats.</p>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Choose a material and press "Drop it in".</span></div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Material</label>
+<select id="material-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="cork" data-density="240">Cork (240 kg/m³)</option>
+<option value="wood" data-density="770">Wood (770 kg/m³)</option>
+<option value="ice" data-density="920">Ice (920 kg/m³)</option>
+<option value="iron" data-density="7800">Iron (7800 kg/m³)</option>
+<option value="aluminium" data-density="2700">Aluminium (2700 kg/m³)</option>
+<option value="gold" data-density="19300">Gold (19300 kg/m³)</option>
+</select>
+</div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="dropBtn">Drop it in</button></div>
+<div class="formula-card" style="text-align:center;">
+<div id="sinkFloatOut">Density of water = 1000 kg/m³. Choose a material and drop it in.</div>
+</div>
+</div>
+<div class="visual-col">
+<div class="sink-float-stage" id="stageWrap"><div class="sink-float-object" id="stageObject" style="top:10px;">?</div></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: DENSITY CALCULATOR -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Mass, Volume, Density</h3>
+<h2>Change any two, read the third</h2>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Change mass and volume and watch density update.</span></div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Mass (<span class="value-readout" id="val-mass">89</span> kg)</label>
+<input id="input-mass" max="200" min="1" step="1" type="range" value="89"/>
+</div>
+<div class="slider-group">
+<label>Volume (<span class="value-readout" id="val-vol">0.01</span> m³)</label>
+<input id="input-vol" max="0.1" min="0.001" step="0.001" type="range" value="0.01"/>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div class="formula-rule" id="densityFormula">D = M / V</div>
+<div id="densityValue" style="font-size:1.1rem; color:var(--text-muted);">Density = 8900 kg/m³</div>
+</div>
+<div class="etu-card">
+<span class="etu-tag">Key idea</span>
+<p style="font-size:0.95rem;margin-bottom:0;">Density = Mass / Volume &nbsp;•&nbsp; Mass = Density × Volume &nbsp;•&nbsp; Volume = Mass / Density.
+Rearrange the triangle to find whichever quantity you're missing.</p>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="densityBarWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example (Problem 1.4)</span>
+<div class="we-question">A solid cylinder of mass 280 kg has a volume of 4 m³. Find its density.</div>
+<div class="we-concept">Concept used: Density = Mass ÷ Volume.</div>
+<div class="step-flow" id="we1-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Start with the formula.<div class="step-math">$D = \dfrac{M}{V}$</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Substitute M = 280, V = 4.<div class="step-math">$= \dfrac{280}{4}$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Final answer</b><div class="step-math">$= 70 \text{ kg/m}^3$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we1-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise (Problem 1.5)</span>
+<div class="ex-question">A box made of iron has a volume of 125 cm³. Find its mass if the density of iron is 7.8 g/cm³.</div>
+<div class="inline-controls">
+<span>Your answer (g):</span>
+<input class="mini-input" id="exAnswer" type="number"/>
+<button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">Mass = Volume × Density.</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: 125 × 7.8 = 975 g.</div>
+</div>
+</div>
+</section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 6–8</span><h2>Table 1.5 — Density of common substances</h2><div class="tb-grid"><div class="tb-card"><h3>Air (gas)</h3><p>1.2 kg/m³</p></div><div class="tb-card"><h3>Kerosene</h3><p>800 kg/m³</p></div><div class="tb-card"><h3>Water</h3><p>1,000 kg/m³</p></div><div class="tb-card"><h3>Mercury</h3><p>13,600 kg/m³</p></div><div class="tb-card"><h3>Wood</h3><p>770 kg/m³</p></div><div class="tb-card"><h3>Aluminium</h3><p>2,700 kg/m³</p></div><div class="tb-card"><h3>Iron</h3><p>7,800 kg/m³</p></div><div class="tb-card"><h3>Copper</h3><p>8,900 kg/m³</p></div><div class="tb-card"><h3>Silver</h3><p>10,500 kg/m³</p></div><div class="tb-card"><h3>Gold</h3><p>19,300 kg/m³</p></div></div><p>SI unit of density is kg/m³. The CGS unit is g/cm³, and 1 g/cm³ = 10³ kg/m³. Materials denser than a liquid sink in it; materials rarer than the liquid float — this is why a metal coin sinks but a much heavier wooden log floats.</p></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../volume/">← Volume</a>
+<a class="back-link" href="../measuring-larger-distances/">Next: Measuring Larger Distances →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+/* ---------- Section 1: sink/float ---------- */
+const WATER_DENSITY = 1000;
+document.getElementById('dropBtn').addEventListener('click', () => {
+  const sel = document.getElementById('material-select');
+  const opt = sel.options[sel.selectedIndex];
+  const density = parseFloat(opt.dataset.density);
+  const name = opt.textContent.split(' (')[0];
+  const obj = document.getElementById('stageObject');
+  obj.textContent = name;
+  obj.style.top = '10px';
+  const floats = density < WATER_DENSITY;
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{ obj.style.top = floats ? '128px' : '270px'; }, 60);
+  });
+  document.getElementById('sinkFloatOut').innerHTML = floats
+    ? `${name} (${density} kg/m³) is <b>less dense</b> than water (1000 kg/m³), so it <b>floats</b>.`
+    : `${name} (${density} kg/m³) is <b>more dense</b> than water (1000 kg/m³), so it <b>sinks</b>.`;
+});
+
+/* ---------- Section 2: density calculator ---------- */
+function updateDensity(){
+  const mass = parseFloat(document.getElementById('input-mass').value);
+  const vol = parseFloat(document.getElementById('input-vol').value);
+  document.getElementById('val-mass').textContent = mass;
+  document.getElementById('val-vol').textContent = vol.toFixed(3);
+  const density = mass/vol;
+  document.getElementById('densityFormula').textContent = `D = ${mass} / ${vol.toFixed(3)}`;
+  document.getElementById('densityValue').textContent = `Density = ${density.toFixed(0)} kg/m³`;
+  const wrap = document.getElementById('densityBarWrap');
+  const barH = Math.min(Math.log10(density+1)*40, 250);
+  const color = density < WATER_DENSITY ? 'var(--math-accent-2)' : 'var(--math-accent)';
+  wrap.innerHTML = `<svg viewBox="0 0 260 280">
+    <line x1="20" y1="260" x2="240" y2="260" stroke="var(--border-color)"/>
+    <rect x="90" y="${260-barH}" width="70" height="${barH}" rx="6" fill="${color}" opacity="0.85"/>
+    <text x="125" y="${255-barH}" text-anchor="middle" font-size="14" fill="var(--text-main)" font-weight="700">${density.toFixed(0)}</text>
+    <text x="125" y="278" text-anchor="middle" font-size="11" fill="var(--text-muted)">kg/m³ (log scale)</text>
+  </svg>`;
+}
+['input-mass','input-vol'].forEach(id=>document.getElementById(id).addEventListener('input', updateDensity));
+updateDensity();
+
+/* ---------- Worked example ---------- */
+document.getElementById('we1-play').addEventListener('click', () => AlgLib.revealSteps('we1-steps'));
+AlgLib.revealSteps('we1-steps', 0);
+
+/* ---------- Exercise ---------- */
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 975, document.getElementById('exResult'));
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.5 Measuring Larger Distances • Measurement • Study Notebook</title>
+<meta name="description" content="Kilometres run out in space — meet the astronomical unit and the light year, explored interactively."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Measurement
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 1 · Measurement</span>
+<span class="coming-soon-num">1.5 Measuring Larger Distances</span>
+<h1 class="hero-title">When kilometres<br/>get too small</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 42ch;">
+    For distances to stars, astronomers need bigger units than the kilometre. Two of them: the
+    <b>astronomical unit</b> (for the solar system) and the <b>light year</b> (for deep space).
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: ASTRONOMICAL UNIT -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Astronomical Unit (AU)</h3>
+<h2>Earth's orbit isn't a circle</h2>
+<p>
+    Earth orbits the Sun in an ellipse, so the Earth–Sun distance changes every day: about
+    147.1 million km at <b>perihelion</b> (closest) and 152.1 million km at <b>aphelion</b> (farthest).
+    The <b>average</b>, 149.6 million km, is defined as <b>one astronomical unit (1 AU)</b>.
+</p>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Move Earth around its orbit and watch the Earth–Sun distance change.</span></div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Earth's position in orbit</label>
+<input id="input-orbit" max="100" min="0" step="1" type="range" value="0"/>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="orbitOut">Perihelion — 147.1 million km</div>
+</div>
+<div class="etu-card">
+<span class="etu-tag">Key idea</span>
+<p style="font-size:0.95rem;margin-bottom:0;">1 AU = 149.6 million km = 1.496 × 10¹¹ m. Neptune sits about
+30 AU from the Sun — thirty times farther out than Earth.</p>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="orbitWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: LIGHT YEAR -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Light Year</h3>
+<h2>How far light travels in a year</h2>
+<p>
+    Even AU becomes unwieldy for stars — the nearest one, Proxima Centauri, is 2,68,770 AU away. So
+    astronomers use the <b>light year</b>: the distance light travels in vacuum in one year, at
+    3 × 10⁸ m/s.
+</p>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Change the travel time and watch how far light gets.</span></div>
+<div class="sim-controls">
+<div class="slider-group">
+<label>Time elapsed (<span class="value-readout" id="val-time">1</span> second)</label>
+<input id="input-time" max="10" min="1" step="1" type="range" value="1"/>
+</div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div class="formula-rule" id="lightFormula">Distance = 3 × 10⁸ × 1</div>
+<div id="lightValue" style="font-size:1.1rem; color:var(--text-muted);">= 3 × 10⁸ m (that's most of the way around the Earth, 7.5 times!)</div>
+</div>
+</div>
+<div class="visual-col">
+<div class="graph-wrap" id="lightWrap"></div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example</span>
+<div class="we-question">Show that one light year equals about 9.46 × 10¹⁵ m.</div>
+<div class="we-concept">Concept used: distance = speed × time, with time converted to seconds in one year.</div>
+<div class="step-flow" id="we1-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Seconds in one (non-leap) year.<div class="step-math">$365 \times 24 \times 60 \times 60 = 3.153 \times 10^7 \text{ s}$</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Speed of light in vacuum.<div class="step-math">$3 \times 10^8 \text{ m/s}$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Distance = speed × time.<div class="step-math">$3 \times 10^8 \times 3.153 \times 10^7$</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Final answer</b><div class="step-math">$= 9.46 \times 10^{15} \text{ m}$</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we1-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard">
+<span class="ex-label">Exercise</span>
+<div class="ex-question">Proxima Centauri is 4.22 light-years from Earth. If 1 light year ≈ 9.46 × 10¹⁵ m, roughly
+how many × 10¹⁵ m away is it? (round to 1 decimal place)</div>
+<div class="inline-controls">
+<span>Your answer (× 10¹⁵ m):</span>
+<input class="mini-input" id="exAnswer" type="number" step="0.1"/>
+<button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button>
+<span class="check-result" id="exResult"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="exHint1">Hint 1</button>
+<button class="btn btn-secondary" data-reveal="exAnswerPanel">Show Answer</button>
+</div>
+<div class="exercise-panel" id="exHint1">Multiply 4.22 by 9.46.</div>
+<div class="exercise-panel answer-panel" id="exAnswerPanel">Answer: 4.22 × 9.46 ≈ 39.9 × 10¹⁵ m.</div>
+</div>
+</div>
+</section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 8–10</span><h2>Definitions to remember</h2><div class="tb-grid"><div class="tb-card"><h3>Astronomical unit</h3><p>Average distance between Earth and Sun. 1 AU = 149.6 × 10⁶ km = 1.496 × 10¹¹ m.</p></div><div class="tb-card"><h3>Light year</h3><p>Distance travelled by light in vacuum in one year. 1 light year = 9.46 × 10¹⁵ m.</p></div><div class="tb-card"><h3>Proxima Centauri</h3><p>Nearest star to the solar system: 2,68,770 AU, or 4.22 light-years away.</p></div><div class="tb-card"><h3>Galactic centre</h3><p>Earth is located about 25,000 light-years from the centre of our galaxy.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../density/">← Density</a>
+<a class="back-link" href="../exercises/">Next: Unit Exercises →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+/* ---------- Section 1: elliptical orbit ---------- */
+function updateOrbit(){
+  const t = parseFloat(document.getElementById('input-orbit').value)/100; // 0..1
+  const angle = t*2*Math.PI;
+  const cx=140, cy=140, rx=100, ry=60;
+  const ex = cx + rx*Math.cos(angle);
+  const ey = cy + ry*Math.sin(angle);
+  // distance varies sinusoidally between perihelion and aphelion, matching angle proximity to focus
+  const peri=147.1, aph=152.1;
+  const frac = (1-Math.cos(angle))/2; // 0 at angle 0 (near) .. 1 at angle pi (far)
+  const dist = peri + (aph-peri)*frac;
+  let label = 'Between perihelion and aphelion';
+  if(frac < 0.08) label = 'Perihelion (closest)';
+  else if(frac > 0.92) label = 'Aphelion (farthest)';
+  document.getElementById('orbitOut').textContent = `${label} — ${dist.toFixed(1)} million km`;
+  document.getElementById('orbitWrap').innerHTML = `<svg viewBox="0 0 280 280">
+    <ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="var(--border-color)" stroke-width="2"/>
+    <circle cx="${cx+30}" cy="${cy}" r="14" fill="var(--math-accent-2)"/>
+    <text x="${cx+30}" y="${cy+4}" text-anchor="middle" font-size="10" fill="#fff">Sun</text>
+    <circle cx="${ex}" cy="${ey}" r="7" fill="var(--math-accent)"/>
+    <line x1="${cx+30}" y1="${cy}" x2="${ex}" y2="${ey}" stroke="var(--math-accent)" stroke-width="1.5" stroke-dasharray="3 3"/>
+  </svg>`;
+}
+document.getElementById('input-orbit').addEventListener('input', updateOrbit);
+updateOrbit();
+
+/* ---------- Section 2: light year ---------- */
+function updateLight(){
+  const t = parseInt(document.getElementById('input-time').value);
+  document.getElementById('val-time').textContent = t;
+  const dist = 3e8 * t;
+  document.getElementById('lightFormula').textContent = `Distance = 3 × 10⁸ × ${t}`;
+  document.getElementById('lightValue').textContent = `= ${dist.toExponential(1).replace('e+', ' × 10')} m`;
+  const wrap = document.getElementById('lightWrap');
+  const barW = Math.min(t*24, 240);
+  wrap.innerHTML = `<svg viewBox="0 0 280 160">
+    <circle cx="30" cy="80" r="10" fill="var(--math-accent-2)"/>
+    <rect x="45" y="74" width="${barW}" height="12" rx="6" fill="var(--math-accent)"/>
+    <text x="45" y="60" font-size="11" fill="var(--text-muted)">light travels this far in ${t}s</text>
+  </svg>`;
+}
+document.getElementById('input-time').addEventListener('input', updateLight);
+updateLight();
+
+/* ---------- Worked example ---------- */
+document.getElementById('we1-play').addEventListener('click', () => AlgLib.revealSteps('we1-steps'));
+AlgLib.revealSteps('we1-steps', 0);
+
+/* ---------- Exercise ---------- */
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 39.9, document.getElementById('exResult'), 0.5);
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Matter Around Us • Class 7 Science • Study Notebook</title>
+<meta name="description" content="Class 7 Science Unit 3: atoms, molecules, elements, compounds, chemical formulae, atomicity and the effect of temperature."/>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../css/math-chapter-visuals.css" rel="stylesheet"/>
+<link href="../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html#science7-path">
+<i data-lucide="arrow-left" width="16"></i>
+    Class 7 Science
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Unit 3</span>
+<h1 class="hero-title">Matter Around Us</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    Everything around you — this page, the air you breathe, your own body — is built from the same tiny
+    building blocks. This unit zooms into atoms and molecules, sorts elements from compounds, and shows what
+    heat actually does to them.
+</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Start with atoms and molecules — the vocabulary for everything else. Sort elements
+by their properties, then see how they combine into compounds with a chemical formula. Count atoms for
+atomicity, then finish with what heat actually does to all of this.</p>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+
+<section class="audit-align-card audit-home-alignment" style="max-width:1180px;margin:0 auto 1.5rem"><div class="audit-kicker">Verified against the 2025 Term-1 textbook</div><h2>Learning Objectives</h2><ul><li>Know about the molecules of elements and compounds.</li><li>Write the symbols of common elements.</li><li>Calculate the atomicity of commonly used elements.</li><li>Know about the occurrence of elements and compounds in nature and the human body / air.</li><li>Understand the effects of temperature on solid, liquid and gas.</li></ul></section><div class="divider"></div>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../js/common.js"></script>
+<script>
+const topics = [
+  ["01","3.1–3.2","atoms-and-molecules/","Atoms & Molecules","The basic unit of an element, and what forms when atoms combine.","atommol"],
+  ["02","3.3","elements/","Elements","Matter in its simplest form — metals, non-metals and metalloids.","elem"],
+  ["03","3.4–3.5","compounds-and-formulae/","Compounds & Chemical Formulae","Fixed-proportion combinations of elements, and how to read their formulae.","compound"],
+  ["04","3.6","atomicity/","Atomicity","The total number of atoms in one molecule.","atomicity"],
+  ["05","3.7","effect-of-temperature/","Effect of Temperature","How heating and cooling move matter between solid, liquid and gas.","heat"],
+  ["06","Practice","exercises/","Unit Exercises","MCQs, fill-in-the-blanks and a numerical problem with instant checking.","heat"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   atommol:`<svg ${common}><circle class="tv-accent tv-pulse" cx="70" cy="55" r="14"/><circle class="tv-fill tv-pulse" cx="110" cy="55" r="14"/><text x="150" y="60">molecule</text></svg>`,
+   elem:`<svg ${common}><rect class="tv-accent" x="30" y="30" width="50" height="50" rx="8"/><rect class="tv-stroke-2" x="100" y="30" width="50" height="50" rx="8" fill="none"/><rect x="170" y="30" width="50" height="50" rx="8" fill="none" stroke-dasharray="4 3"/><text x="30" y="98">metal · non-metal · metalloid</text></svg>`,
+   compound:`<svg ${common}><circle class="tv-accent" cx="60" cy="55" r="12"/><circle class="tv-fill" cx="90" cy="40" r="8"/><circle class="tv-fill" cx="90" cy="70" r="8"/><text x="130" y="60">H₂O</text></svg>`,
+   atomicity:`<svg ${common}><circle class="tv-accent tv-pulse" cx="50" cy="55" r="10"/><circle class="tv-accent tv-pulse" cx="80" cy="55" r="10"/><circle class="tv-accent tv-pulse" cx="110" cy="55" r="10"/><text x="140" y="60">count = 3</text></svg>`,
+   heat:`<svg ${common}><g class="tv-accent"><circle cx="50" cy="40" r="6"/><circle cx="75" cy="55" r="6"/><circle cx="60" cy="75" r="6"/></g><path class="tv-stroke-2 tv-nudge" d="M120 55h40m0 0-9-6m9 6-9 6"/><text x="180" y="60">heat →</text></svg>`
+  };
+  return v[key]||v.atommol;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[2]}">
+    <div class="topic-visual">${topicVisual(t[5])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · ${t[1]}</span>
+      <h3>${t[3]}</h3>
+      <p>${t[4]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

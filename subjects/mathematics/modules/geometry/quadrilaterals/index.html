@@ -1,57 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>4.3 Quadrilaterals • Geometry • Study Notebook</title>
-<meta name="description" content="Parallelograms, rhombuses, rectangles, trapeziums and kites — sorted by what their sides, angles and diagonals do."/>
-<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
-<link href="../../../../../css/common.css" rel="stylesheet"/>
-<link href="../../../../../css/article.css" rel="stylesheet"/>
-<link href="../../../../../css/algebra.css" rel="stylesheet"/>
-<script>
-    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.body && document.body.setAttribute('data-theme', savedTheme);
-</script>
-<script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body>
-<nav class="sticky">
-<div class="nav-bg"></div>
-<a class="logo" href="../">
-<i data-lucide="arrow-left" width="16"></i>
-    Geometry
-</a>
-<button id="themeBtn">
-<i data-lucide="moon" width="16"></i> Theme
-</button>
-</nav>
-
-<section class="coming-soon-hero">
-<div class="coming-soon-icon">
-<svg viewBox="0 0 56 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="40" height="32" rx="3"/></svg>
-</div>
-<div class="coming-soon-num">4.3</div>
-<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem); margin-top:0.4rem;">Quadrilaterals</h1>
-<p style="max-width:52ch; margin:1.2rem auto 0;">Parallelograms, rhombuses, rectangles, trapeziums and kites — sorted by what their sides, angles and diagonals do.</p>
-<span class="coming-soon-tag">Coming Soon</span>
-<div>
-<a class="back-link" href="../types-of-angles/">
-<i data-lucide="sparkles" width="15"></i> Start with Types of Angles, which is ready now
-</a>
-</div>
-</section>
-<div class="divider" style="margin:2rem 0 0;"></div>
-<section style="min-height:auto; padding-top:1.5rem;">
-<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-<a class="back-link" href="../types-of-angles/">← 4.2 Types of Angles</a>
-<a class="back-link" href="../parts-of-a-circle/">Next: Parts of a Circle →</a>
-</div>
-</section>
-<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
-
-<script src="../../../../../js/common.js"></script>
-<script>window.onload = () => { if (window.lucide) window.lucide.createIcons(); };</script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quadrilaterals • Geometry • Study Notebook</title><link href="../../../../../assets/icons/favicon.svg" rel="icon"><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/article.css" rel="stylesheet"><link href="../../../../../css/algebra.css" rel="stylesheet"><link href="../../../../../css/math-study-system.css" rel="stylesheet"><link href="../../../../../css/math-chapter-visuals.css" rel="stylesheet"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\(","\)"]]}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://unpkg.com/lucide@latest"></script><link href="../../../../../css/math-audit-fixes.css" rel="stylesheet"/></head><body><nav class="sticky"><div class="nav-bg"></div><a class="logo" href="../"><i data-lucide="arrow-left" width="16"></i> Geometry</a><button id="themeBtn"><i data-lucide="moon" width="16"></i> Theme</button></nav><section class="hero" style="padding-bottom:2rem"><div class="text-reveal-wrapper"><span class="coming-soon-num">4.3</span><h1 class="hero-title">Quadrilaterals</h1><p style="margin-top:1rem;max-width:60ch">Classify four-sided figures, deform them safely, and discover which properties survive.</p><div class="study-flow"><span>Hook</span><span>Understand</span><span>See It</span><span>Explore</span><span>Worked Example</span><span>Quick Check</span></div></div></section><main class="math-note-shell">
+<div class="lesson-block"><div class="lesson-kicker">Hook</div><h2>Four sides can behave in very different ways</h2><p>A quadrilateral is any four-sided polygon. The textbook builds a family: trapezium → parallelogram → rectangle/rhombus → square, with each extra condition creating stronger properties.</p><div class="textbook-box"><b>Key idea:</b> every square is a rhombus and rectangle; every rhombus/rectangle is a parallelogram; every parallelogram is a trapezium under the textbook’s “at least one pair parallel” viewpoint.</div></div>
+<div class="lesson-block"><div class="lesson-kicker">Explore</div><h2>Skew a parallelogram without breaking its properties</h2><div class="interaction-callout">DRAG THE SKEW — WATCH OPPOSITE SIDES STAY PARALLEL</div><div class="widget-controls"><label>Skew <span id="skv">35</span><input id="sk" type="range" min="0" max="80" value="35"></label><span class="live-chip">Opposite angles remain equal</span></div><div class="math-stage"><svg viewBox="0 0 520 300"><polygon id="qp" class="accent-fill" points="130,70 390,70 340,220 80,220"/><line id="qd1" class="secondary" x1="130" y1="70" x2="340" y2="220"/><line id="qd2" class="secondary" x1="390" y1="70" x2="80" y2="220"/><circle class="point" id="qo" cx="235" cy="145" r="7"/><text x="85" y="250">Diagonals bisect each other at O</text></svg></div><script>setTimeout(()=>{let s=document.getElementById('sk'),p=document.getElementById('qp'),v=document.getElementById('skv'),d1=document.getElementById('qd1'),d2=document.getElementById('qd2'),o=document.getElementById('qo');s.oninput=()=>{let k=+s.value,vx=k-40;v.textContent=k;p.setAttribute('points',`${130+vx},70 ${390+vx},70 ${340-vx},220 ${80-vx},220`);d1.setAttribute('x1',130+vx);d1.setAttribute('x2',340-vx);d2.setAttribute('x1',390+vx);d2.setAttribute('x2',80-vx);o.setAttribute('cx',235);};s.oninput()},50)</script></div>
+<div class="lesson-block"><div class="lesson-kicker">Understand</div><h2>Properties worth proving</h2><div class="formula-card"><div class="var-list"><div class="var-row"><span class="var-key">Parallelogram</span><span class="var-desc">opposite sides & angles equal; diagonals bisect</span></div><div class="var-row"><span class="var-key">Rectangle</span><span class="var-desc">parallelogram + four right angles; diagonals equal</span></div><div class="var-row"><span class="var-key">Rhombus</span><span class="var-desc">parallelogram + all sides equal; diagonals perpendicular</span></div><div class="var-row"><span class="var-key">Square</span><span class="var-desc">rectangle + rhombus properties together</span></div></div></div></div>
+<div class="lesson-block"><div class="lesson-kicker">See It</div><h2>Same base, same parallels → same height</h2><div class="interaction-callout">MOVE THE TOP VERTEX — AREA STAYS THE SAME</div><div class="widget-controls"><label>Top position <input id="areaShift" type="range" min="110" max="390" value="260"></label><span id="areaText" class="live-chip">Triangle area = 1/2 bh</span></div><div class="math-stage"><svg viewBox="0 0 520 260"><path class="axis" d="M60 205H460M60 55H460"/><polygon id="atri" class="accent-fill" points="100,205 420,205 260,55"/><polygon class="secondary" points="100,205 420,205 380,55 60,55"/></svg></div><script>setTimeout(()=>{let r=document.getElementById('areaShift'),t=document.getElementById('atri');r.oninput=()=>t.setAttribute('points',`100,205 420,205 ${r.value},55`);r.oninput()},40)</script><p>Sliding the triangle’s top vertex along a line parallel to its base keeps the perpendicular height fixed, so its area does not change.</p></div>
+<div class="lesson-block"><div class="lesson-kicker">Quick Check</div><h2>Why does a rhombus diagonal create right triangles?</h2><div class="thinking-box">Because the diagonals of a rhombus are perpendicular bisectors. This turns diagonal-length questions into Pythagoras problems — exactly what Exercise 4.2 uses.</div></div><section class="audit-align-card audit-section-map"><div class="audit-kicker">Textbook section coverage</div><h2>Exact section map</h2><ul><li>4.3 Quadrilaterals</li><li>4.3.1 Special Names for Some Quadrilaterals</li><li>4.3.2 More Special Names</li><li>4.3.3 Types of Quadrilaterals</li><li>4.3.4 Properties of Quadrilaterals</li><li>4.3.5 Properties of Parallelogram</li></ul><p><b>Notebook rule:</b> keep these textbook ideas together with the existing visual lab; do not replace them with a summary-only card.</p></section><div class="module-bottom-nav"><a href="../types-of-angles/">← Previous</a><a href="../">Chapter Home</a><a href="../parts-of-a-circle/">Next →</a></div></main><div class="divider"></div><footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer><script src="../../../../../js/common.js"></script><script src="../../../../../js/math-chapter-widgets.js"></script><script src="../../../../../js/math-audit-fixes.js"></script></body></html>

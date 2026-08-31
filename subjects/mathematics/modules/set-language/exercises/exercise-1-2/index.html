@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 1.2 • Set Language • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 1.2 — cardinal number, finite/infinite, equal/equivalent, subsets and power sets, now interactive."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.ex-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:140px; }
+.check-row{ display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-top:0.6rem; }
+.set-chip-row{ display:flex; gap:0.4rem; flex-wrap:wrap; margin:0.5rem 0; font-family:var(--font-mono); }
+.set-chip{ padding:4px 10px; border-radius:6px; background:var(--card-bg); border:1px solid var(--border-color); font-size:0.85rem; }
+.stmt-row{ margin:0.9rem 0 0; padding-top:0.8rem; border-top:1px dashed var(--border-color); }
+.stmt-row:first-of-type{ border-top:none; padding-top:0; }
+.small-tile{ max-width:280px; }
+.shape-grid{ display:flex; gap:0.6rem; flex-wrap:wrap; margin:0.6rem 0; }
+.shape-tile{ display:flex; flex-direction:column; align-items:center; gap:0.25rem; padding:0.5rem 0.7rem; border-radius:10px; border:1px solid var(--border-color); background:var(--bg-color); cursor:pointer; font-size:0.75rem; color:var(--text-main); transition:.15s var(--ease-out); }
+.shape-tile svg{ color:var(--text-main); }
+.shape-tile:hover{ border-color:var(--math-accent); }
+.shape-tile.selected{ border-color:var(--math-accent); background:rgba(94,133,255,0.12); }
+.shape-tile.correct{ border-color:#3e8f5c; background:rgba(62,143,92,0.16); }
+.shape-tile.wrong{ border-color:var(--accent-secondary); background:rgba(224,138,44,0.16); }
+.subset-toggle-grid{ display:flex; gap:0.5rem; flex-wrap:wrap; margin:0.6rem 0; }
+.subset-toggle{ padding:7px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.85rem; cursor:pointer; }
+.subset-toggle:hover{ border-color:var(--math-accent); }
+.subset-toggle.selected{ border-color:var(--math-accent); background:rgba(94,133,255,0.12); }
+</style>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 1.2</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Types of Sets</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">10 questions, straight from the textbook — now with hands-on tools for each one.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-1-1/">1.1</a>
+<span class="ex-set-pill current">1.2</span>
+<a class="ex-set-pill" href="../exercise-1-3/">1.3</a>
+<a class="ex-set-pill" href="../exercise-1-4/">1.4</a>
+<a class="ex-set-pill" href="../exercise-1-5/">1.5</a>
+<a class="ex-set-pill" href="../exercise-1-6/">1.6</a>
+<a class="ex-set-pill" href="../exercise-1-7/">1.7</a>
+</div>
+
+<!-- Q1: cardinal number -> numeric checks -->
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span>Find the cardinal number of the following sets.</span>
+<div class="ex-question">
+(i) $M=\{p,q,r,s,t,u\}$ &nbsp; (ii) $P=\{x:x=3n+2, n \in W, x<15\}$<br/>
+(iii) $Q=\{y : y=\frac{4}{3n}, n \in N, 2<n\le5\}$ &nbsp; (iv) $R=\{x : x \in Z, -5 \le x < 5\}$<br/>
+(v) $S$ = the set of all leap years between 1882 and 1906.
+</div>
+<div class="stmt-row"><b>(i)</b> $n(M) =$ <div class="check-row"><input class="ex-input" type="number" id="q1i" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q1i" data-expected="6">Check</button></div><div class="check-result" id="q1iResult"></div></div>
+<div class="stmt-row"><b>(ii)</b> $n(P) =$ <div class="check-row"><input class="ex-input" type="number" id="q1ii" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q1ii" data-expected="5">Check</button></div><div class="check-result" id="q1iiResult"></div></div>
+<div class="stmt-row"><b>(iii)</b> $n(Q) =$ <div class="check-row"><input class="ex-input" type="number" id="q1iii" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q1iii" data-expected="3">Check</button></div><div class="check-result" id="q1iiiResult"></div></div>
+<div class="stmt-row"><b>(iv)</b> $n(R) =$ <div class="check-row"><input class="ex-input" type="number" id="q1iv" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q1iv" data-expected="10">Check</button></div><div class="check-result" id="q1ivResult"></div></div>
+<div class="stmt-row"><b>(v)</b> $n(S) =$ <div class="check-row"><input class="ex-input" type="number" id="q1v" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q1v" data-expected="5">Check</button></div><div class="check-result" id="q1vResult"></div></div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q1Hint">For (v): a year divisible by 4 is a leap year, EXCEPT a century year (ending in 00) unless it's divisible by 400. 1900 is a century year not divisible by 400.</div>
+<div class="exercise-panel answer-panel" id="q1Answer">
+(i) $n(M)=6$ &nbsp; (ii) $P=\{2,5,8,11,14\}$, $n(P)=5$ &nbsp; (iii) $Q=\{\frac{4}{9},\frac{1}{3},\frac{4}{15}\}$, $n(Q)=3$<br/>
+(iv) $R=\{-5,...,4\}$, $n(R)=10$ &nbsp; (v) Leap years: 1884, 1888, 1892, 1896, 1904 (1900 excluded) → $n(S)=5$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q2: finite/infinite -> drag classify -->
+<div class="exercise-card" id="q2">
+<span class="ex-label"><span class="ex-q-num">Q2</span>Identify the following sets as finite or infinite.</span>
+<div class="ex-question">
+(i) $X$ = the set of all districts in Tamil Nadu.<br/>
+(ii) $Y$ = the set of all straight lines passing through a point.<br/>
+(iii) $A=\{x : x \in Z, x<5\}$ &nbsp; (iv) $B=\{x : x^2-5x+6=0, x \in N\}$
+</div>
+<div class="drag-pool" id="q2Pool"></div>
+<div class="drop-bins" id="q2Bins">
+<div class="drop-bin" data-bin="finite" data-bin-label="Finite"></div>
+<div class="drop-bin" data-bin="infinite" data-bin-label="Infinite"></div>
+</div>
+<div class="check-result" id="q2DragResult"></div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q2Answer">
+(i) Finite &nbsp; (ii) Infinite — infinitely many lines pass through one point &nbsp;
+(iii) Infinite — extends through all negative integers too &nbsp;
+(iv) Finite — $x^2-5x+6=(x-2)(x-3)=0$, so $B=\{2,3\}$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q3: equal/equivalent/unequal -> tile choice -->
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>Which of the following sets are equivalent, unequal, or equal?</span>
+<div class="ex-question">
+(i) $A$ = vowels in the English alphabet. $B$ = letters in "VOWEL".<br/>
+(ii) $C=\{2,3,4,5\}$, $D=\{x : x \in W, 1<x<5\}$<br/>
+(iii) $X$ = letters in "LIFE", $Y=\{F,I,L,E\}$<br/>
+(iv) $G=\{x : x \text{ is prime}, 3<x<23\}$, $H=\{x : x \text{ is a divisor of } 18\}$
+</div>
+<div class="stmt-row"><b>(i)</b>
+<div class="set-chip-row"><span class="set-chip">A = { a, e, i, o, u }</span><span class="set-chip">B = { V, O, W, E, L }</span></div>
+<div class="tile-choice small-tile" id="q3t1"><button data-value="Equal">Equal</button><button data-value="Equivalent">Equivalent</button><button data-value="Unequal">Unequal</button></div>
+</div>
+<div class="stmt-row"><b>(ii)</b>
+<div class="set-chip-row"><span class="set-chip">C = { 2, 3, 4, 5 }</span><span class="set-chip">D = { 2, 3, 4 }</span></div>
+<div class="tile-choice small-tile" id="q3t2"><button data-value="Equal">Equal</button><button data-value="Equivalent">Equivalent</button><button data-value="Unequal">Unequal</button></div>
+</div>
+<div class="stmt-row"><b>(iii)</b>
+<div class="set-chip-row"><span class="set-chip">X = { L, I, F, E }</span><span class="set-chip">Y = { F, I, L, E }</span></div>
+<div class="tile-choice small-tile" id="q3t3"><button data-value="Equal">Equal</button><button data-value="Equivalent">Equivalent</button><button data-value="Unequal">Unequal</button></div>
+</div>
+<div class="stmt-row"><b>(iv)</b>
+<div class="set-chip-row"><span class="set-chip">G = { 5, 7, 11, 13, 17, 19 }</span><span class="set-chip">H = { 1, 2, 3, 6, 9, 18 }</span></div>
+<div class="tile-choice small-tile" id="q3t4"><button data-value="Equal">Equal</button><button data-value="Equivalent">Equivalent</button><button data-value="Unequal">Unequal</button></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q3Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q3Answer">
+(i) same count (5), different elements → <b>Equivalent</b><br/>
+(ii) $D=\{2,3,4\}$ — different counts, different elements → <b>Unequal</b><br/>
+(iii) $X=\{L,I,F,E\}=Y$ exactly → <b>Equal</b><br/>
+(iv) both have 6 elements, different elements → <b>Equivalent</b>
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q4: null/singleton -> drag classify -->
+<div class="exercise-card" id="q4">
+<span class="ex-label"><span class="ex-q-num">Q4</span>Identify the following sets as null set or singleton set.</span>
+<div class="ex-question">
+(i) $A=\{x : x \in N, 1<x<2\}$<br/>
+(ii) $B$ = the set of all even natural numbers which are not divisible by 2.<br/>
+(iii) $C=\{0\}$ &nbsp; (iv) $D$ = the set of all triangles having four sides.
+</div>
+<div class="drag-pool" id="q4Pool"></div>
+<div class="drop-bins" id="q4Bins">
+<div class="drop-bin" data-bin="null" data-bin-label="Null Set"></div>
+<div class="drop-bin" data-bin="singleton" data-bin-label="Singleton Set"></div>
+</div>
+<div class="check-result" id="q4DragResult"></div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q4Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q4Answer">
+(i) Null set — no natural number lies strictly between 1 and 2.<br/>
+(ii) Null set — every even number IS divisible by 2, so this description is impossible.<br/>
+(iii) Singleton set — it contains exactly the element 0.<br/>
+(iv) Null set — a triangle by definition has exactly 3 sides.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q4','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q5: disjoint/overlapping -> tile choice -->
+<div class="exercise-card" id="q5">
+<span class="ex-label"><span class="ex-q-num">Q5</span>State which pairs of sets are disjoint or overlapping.</span>
+<div class="ex-question">
+(i) $A=\{f,i,a,s\}$, $B=\{a,n,f,h,s\}$<br/>
+(ii) $C=\{x : x \text{ prime}, x>2\}$, $D=\{x : x \text{ even prime}\}$<br/>
+(iii) $E=\{x : x \text{ factor of } 24\}$, $F=\{x : x \text{ multiple of } 3, x<30\}$
+</div>
+<div class="stmt-row"><b>(i)</b>
+<div class="set-chip-row"><span class="set-chip">A = { f, i, a, s }</span><span class="set-chip">B = { a, n, f, h, s }</span></div>
+<div class="tile-choice small-tile" id="q5t1"><button data-value="Overlapping">Overlapping</button><button data-value="Disjoint">Disjoint</button></div>
+</div>
+<div class="stmt-row"><b>(ii)</b>
+<div class="set-chip-row"><span class="set-chip">D = { 2 }</span><span class="set-chip">C = primes greater than 2</span></div>
+<div class="tile-choice small-tile" id="q5t2"><button data-value="Overlapping">Overlapping</button><button data-value="Disjoint">Disjoint</button></div>
+</div>
+<div class="stmt-row"><b>(iii)</b>
+<div class="set-chip-row"><span class="set-chip">E = { 1,2,3,4,6,8,12,24 }</span><span class="set-chip">F = { 3,6,9,...,27 }</span></div>
+<div class="tile-choice small-tile" id="q5t3"><button data-value="Overlapping">Overlapping</button><button data-value="Disjoint">Disjoint</button></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q5Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q5Answer">
+(i) Overlapping — share $a, f, s$.<br/>
+(ii) Disjoint — $D=\{2\}$, and 2 is excluded from $C$ (which needs $x>2$).<br/>
+(iii) Overlapping — $E=\{1,2,3,4,6,8,12,24\}$ and $F=\{3,6,9,...,27\}$ share 3, 6, 12, 24.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q5','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q6: shape classification -> svg toggle sets -->
+<div class="exercise-card" id="q6">
+<span class="ex-label"><span class="ex-q-num">Q6</span>If $S=\{\text{square, rectangle, circle, rhombus, triangle}\}$, list the elements of:</span>
+<div class="ex-question">
+(i) shapes with 4 equal sides &nbsp; (ii) shapes which have a radius<br/>
+(iii) shapes where the interior angles sum to $180°$ &nbsp; (iv) shapes with 5 sides
+</div>
+<div class="stmt-row"><b>(i)</b> shapes with 4 equal sides — click to select, then Check:
+<div class="shape-grid" id="q6grid1"></div>
+<div class="check-row"><button class="btn btn-primary" data-shapecheck="q6grid1" data-expected="square,rhombus">Check</button></div>
+<div class="check-result" id="q6grid1Result"></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> shapes which have a radius — click to select, then Check:
+<div class="shape-grid" id="q6grid2"></div>
+<div class="check-row"><button class="btn btn-primary" data-shapecheck="q6grid2" data-expected="circle">Check</button></div>
+<div class="check-result" id="q6grid2Result"></div>
+</div>
+<div class="stmt-row"><b>(iii)</b> shapes where interior angles sum to 180° — click to select, then Check:
+<div class="shape-grid" id="q6grid3"></div>
+<div class="check-row"><button class="btn btn-primary" data-shapecheck="q6grid3" data-expected="triangle">Check</button></div>
+<div class="check-result" id="q6grid3Result"></div>
+</div>
+<div class="stmt-row"><b>(iv)</b> shapes with 5 sides — click to select (it's fine to select none!), then Check:
+<div class="shape-grid" id="q6grid4"></div>
+<div class="check-row"><button class="btn btn-primary" data-shapecheck="q6grid4" data-expected="">Check</button></div>
+<div class="check-result" id="q6grid4Result"></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q6Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q6Answer">
+(i) {square, rhombus} &nbsp; (ii) {circle} &nbsp; (iii) {triangle} &nbsp; (iv) $\varnothing$ — none of these shapes have 5 sides.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q6','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q7: subsets of A={a,{a,b}} -> toggle candidates -->
+<div class="exercise-card" id="q7">
+<span class="ex-label"><span class="ex-q-num">Q7</span>If $A=\{a,\{a,b\}\}$, write all the subsets of $A$.</span>
+<div class="ex-question">Treat $\{a,b\}$ itself as a single element of A alongside $a$. Click every candidate below that IS a valid subset of A, then Check.</div>
+<div class="subset-toggle-grid" id="q7Grid">
+<button type="button" class="subset-toggle" data-val="∅">∅</button>
+<button type="button" class="subset-toggle" data-val="{a}">{a}</button>
+<button type="button" class="subset-toggle" data-val="{b}">{b}</button>
+<button type="button" class="subset-toggle" data-val="{a,b}">{a,b}</button>
+<button type="button" class="subset-toggle" data-val="{{a,b}}">{{a,b}}</button>
+<button type="button" class="subset-toggle" data-val="{a,{a,b}}">{a,{a,b}}</button>
+</div>
+<div class="check-row"><button class="btn btn-primary" id="q7Check">Check</button></div>
+<div class="check-result" id="q7Result"></div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q7Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q7Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q7Hint">A has exactly 2 elements: the element "a", and the element "{a,b}" (a set-within-a-set). So it behaves like any other 2-element set for counting subsets — watch out for {b} and {a,b}, which are traps since b alone and the pair {a,b} written as a plain 2-element set are NOT elements of A.</div>
+<div class="exercise-panel answer-panel" id="q7Answer">Subsets: $\varnothing$, $\{a\}$, $\{\{a,b\}\}$, $\{a,\{a,b\}\}$ — 4 subsets in total.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q7','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q8: power sets -->
+<div class="exercise-card" id="q8">
+<span class="ex-label"><span class="ex-q-num">Q8</span>Write down the power set of the following sets:</span>
+<div class="ex-question">(i) $A=\{a,b\}$ &nbsp; (ii) $B=\{1,2,3\}$ &nbsp; (iii) $D=\{p,q,r,s\}$ &nbsp; (iv) $E=\varnothing$</div>
+<div class="stmt-row"><b>(i)</b> Select every subset of $A=\{a,b\}$ to build $P(A)$:
+<div class="subset-toggle-grid" id="q8GridA">
+<button type="button" class="subset-toggle" data-val="∅">∅</button>
+<button type="button" class="subset-toggle" data-val="{a}">{a}</button>
+<button type="button" class="subset-toggle" data-val="{b}">{b}</button>
+<button type="button" class="subset-toggle" data-val="{a,b}">{a,b}</button>
+</div>
+<div class="check-row"><button class="btn btn-primary" id="q8CheckA">Check</button></div>
+<div class="check-result" id="q8AResult"></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> Select every subset of $B=\{1,2,3\}$ to build $P(B)$:
+<div class="subset-toggle-grid" id="q8GridB">
+<button type="button" class="subset-toggle" data-val="∅">∅</button>
+<button type="button" class="subset-toggle" data-val="{1}">{1}</button>
+<button type="button" class="subset-toggle" data-val="{2}">{2}</button>
+<button type="button" class="subset-toggle" data-val="{3}">{3}</button>
+<button type="button" class="subset-toggle" data-val="{1,2}">{1,2}</button>
+<button type="button" class="subset-toggle" data-val="{1,3}">{1,3}</button>
+<button type="button" class="subset-toggle" data-val="{2,3}">{2,3}</button>
+<button type="button" class="subset-toggle" data-val="{1,2,3}">{1,2,3}</button>
+</div>
+<div class="check-row"><button class="btn btn-primary" id="q8CheckB">Check</button></div>
+<div class="check-result" id="q8BResult"></div>
+</div>
+<div class="stmt-row"><b>(iii)</b> $D=\{p,q,r,s\}$ has too many subsets to click individually — find the count instead: $n[P(D)] =$
+<div class="check-row"><input class="ex-input" type="number" id="q8D" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q8D" data-expected="16">Check</button></div>
+<div class="check-result" id="q8DResult"></div>
+</div>
+<div class="stmt-row"><b>(iv)</b> How many subsets does $E=\varnothing$ have?
+<div class="tile-choice small-tile" id="q8E"><button data-value="0">0</button><button data-value="1">1</button><button data-value="2">2</button></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q8Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q8Answer">
+(i) $P(A)=\{\varnothing,\{a\},\{b\},\{a,b\}\}$<br/>
+(ii) $P(B)=\{\varnothing,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}\}$<br/>
+(iii) $P(D)$ has $2^4=16$ subsets: $\varnothing$, all four singles, all six pairs, all four triples, and $D$ itself.<br/>
+(iv) $P(E)=\{\varnothing\}$ — the empty set has exactly one subset, itself.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q8','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q9: subset counts -->
+<div class="exercise-card" id="q9">
+<span class="ex-label"><span class="ex-q-num">Q9</span>Find the number of subsets and proper subsets of:</span>
+<div class="ex-question">(i) $W=\{\text{red, blue, yellow}\}$ &nbsp; (ii) $X=\{x^2 : x \in N, x^2 \le 100\}$</div>
+<div class="stmt-row"><b>(i)</b> Number of subsets of $W$: <div class="check-row"><input class="ex-input" type="number" id="q9i-subsets" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q9i-subsets" data-expected="8">Check</button></div><div class="check-result" id="q9i-subsetsResult"></div>
+Number of proper subsets: <div class="check-row"><input class="ex-input" type="number" id="q9i-proper" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q9i-proper" data-expected="7">Check</button></div><div class="check-result" id="q9i-properResult"></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> First, $n(X) =$ <div class="check-row"><input class="ex-input" type="number" id="q9ii-n" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q9ii-n" data-expected="10">Check</button></div><div class="check-result" id="q9ii-nResult"></div>
+Number of subsets of $X$: <div class="check-row"><input class="ex-input" type="number" id="q9ii-subsets" style="max-width:120px;"/><button class="btn btn-primary" data-numcheck="q9ii-subsets" data-expected="1024">Check</button></div><div class="check-result" id="q9ii-subsetsResult"></div>
+Number of proper subsets: <div class="check-row"><input class="ex-input" type="number" id="q9ii-proper" style="max-width:120px;"/><button class="btn btn-primary" data-numcheck="q9ii-proper" data-expected="1023">Check</button></div><div class="check-result" id="q9ii-properResult"></div>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q9Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q9Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q9Hint">For (ii), first list X in roster form: x can be 1 through 10 since 10² = 100.</div>
+<div class="exercise-panel answer-panel" id="q9Answer">
+(i) $n(W)=3$: subsets $=2^3=8$, proper subsets $=7$.<br/>
+(ii) $X=\{1,4,9,16,25,36,49,64,81,100\}$, $n(X)=10$: subsets $=2^{10}=1024$, proper subsets $=1023$.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q9','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q10: n[P(A)] algebra -->
+<div class="exercise-card" id="q10">
+<span class="ex-label"><span class="ex-q-num">Q10</span></span>
+<div class="ex-question">(i) If $n(A)=4$, find $n[P(A)]$. &nbsp; (ii) If $n(A)=0$, find $n[P(A)]$. &nbsp; (iii) If $n[P(A)]=256$, find $n(A)$.</div>
+<div class="stmt-row"><b>(i)</b> <div class="check-row"><input class="ex-input" type="number" id="q10i" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q10i" data-expected="16">Check</button></div><div class="check-result" id="q10iResult"></div></div>
+<div class="stmt-row"><b>(ii)</b> <div class="check-row"><input class="ex-input" type="number" id="q10ii" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q10ii" data-expected="1">Check</button></div><div class="check-result" id="q10iiResult"></div></div>
+<div class="stmt-row"><b>(iii)</b> <div class="check-row"><input class="ex-input" type="number" id="q10iii" style="max-width:100px;"/><button class="btn btn-primary" data-numcheck="q10iii" data-expected="8">Check</button></div><div class="check-result" id="q10iiiResult"></div></div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q10Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q10Answer">
+(i) $2^4=16$ &nbsp; (ii) $2^0=1$ &nbsp; (iii) $256=2^8$, so $n(A)=8$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q10','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-1-1/">← Exercise 1.1</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-1-3/">Next: Exercise 1.3 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'q1') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 1: Find the cardinal number of the following sets: (i) M={p,q,r,s,t,u} (ii) P={x:x=3n+2, n∈W, x<15} (iii) Q={y:y=4/(3n), n∈N, 2<n≤5} (iv) R={x:x∈Z, -5≤x<5} (v) S = the set of all leap years between 1882 and 1906. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q2') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 2: Identify the following sets as finite or infinite: (i) X = the set of all districts in Tamil Nadu. (ii) Y = the set of all straight lines passing through a point. (iii) A={x:x∈Z, x<5} (iv) B={x:x²-5x+6=0, x∈N}. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q3') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 3: Which of the following sets are equivalent, unequal, or equal? (i) A = vowels in the English alphabet, B = letters in 'VOWEL'. (ii) C={2,3,4,5}, D={x:x∈W, 1<x<5}. (iii) X = letters in 'LIFE', Y={F,I,L,E}. (iv) G={x:x is prime, 3<x<23}, H={x:x is a divisor of 18}. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q4') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 4: Identify the following sets as null set or singleton set: (i) A={x:x∈N, 1<x<2} (ii) B = the set of all even natural numbers which are not divisible by 2. (iii) C={0} (iv) D = the set of all triangles having four sides. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q5') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 5: State which pairs of sets are disjoint or overlapping: (i) A={f,i,a,s}, B={a,n,f,h,s} (ii) C={x:x prime, x>2}, D={x:x even prime} (iii) E={x:x factor of 24}, F={x:x multiple of 3, x<30}. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q6') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 6: If S={square, rectangle, circle, rhombus, triangle}, list the elements of: (i) shapes with 4 equal sides (ii) shapes which have a radius (iii) shapes where the interior angles sum to 180° (iv) shapes with 5 sides. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q7') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 7: If A={a,{a,b}}, write all the subsets of A. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q8') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 8: Write down the power set of the following sets: (i) A={a,b} (ii) B={1,2,3} (iii) D={p,q,r,s} (iv) E=∅. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q9') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 9: Find the number of subsets and proper subsets of: (i) W={red, blue, yellow} (ii) X={x² : x∈N, x²≤100}. Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    else if (topic === 'q10') prompt = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.2 Question 10: (i) If n(A)=4, find n[P(A)]. (ii) If n(A)=0, find n[P(A)]. (iii) If n[P(A)]=256, find n(A). Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Q1, Q8(iii), Q9, Q10: numeric checks ---------- */
+document.querySelectorAll('[data-numcheck]').forEach(btn => {
+    const id = btn.dataset.numcheck;
+    const expected = parseFloat(btn.dataset.expected);
+    btn.addEventListener('click', () => {
+        AlgLib.checkNumeric(document.getElementById(id), expected, document.getElementById(id + 'Result'));
+    });
+});
+
+/* ---------- Q2: finite/infinite drag classify ---------- */
+ExLib.dragClassify(null, document.getElementById('q2Pool'), document.querySelectorAll('#q2Bins .drop-bin'), [
+    { id: 'i', label: '(i) Districts in Tamil Nadu', bin: 'finite' },
+    { id: 'ii', label: '(ii) Lines through a point', bin: 'infinite' },
+    { id: 'iii', label: '(iii) A = {x∈Z, x<5}', bin: 'infinite' },
+    { id: 'iv', label: '(iv) B = {x²-5x+6=0, x∈N}', bin: 'finite' }
+], {
+    onPlace(item, ok, placed, total) {
+        const r = document.getElementById('q2DragResult');
+        r.textContent = ok ? `${placed}/${total} correctly placed.` : `Not quite — try the other bin for "${item.label}".`;
+        r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+    },
+    onComplete() {
+        const r = document.getElementById('q2DragResult');
+        r.textContent = 'All four sorted correctly!';
+        r.className = 'check-result check-yes';
+    }
+});
+
+/* ---------- Q3: equal/equivalent/unequal tiles ---------- */
+ExLib.tileChoice(document.getElementById('q3t1'), 'Equivalent');
+ExLib.tileChoice(document.getElementById('q3t2'), 'Unequal');
+ExLib.tileChoice(document.getElementById('q3t3'), 'Equal');
+ExLib.tileChoice(document.getElementById('q3t4'), 'Equivalent');
+
+/* ---------- Q4: null/singleton drag classify ---------- */
+ExLib.dragClassify(null, document.getElementById('q4Pool'), document.querySelectorAll('#q4Bins .drop-bin'), [
+    { id: 'i', label: '(i) A={x∈N, 1<x<2}', bin: 'null' },
+    { id: 'ii', label: '(ii) Even naturals not div. by 2', bin: 'null' },
+    { id: 'iii', label: '(iii) C = {0}', bin: 'singleton' },
+    { id: 'iv', label: '(iv) Triangles with 4 sides', bin: 'null' }
+], {
+    onPlace(item, ok, placed, total) {
+        const r = document.getElementById('q4DragResult');
+        r.textContent = ok ? `${placed}/${total} correctly placed.` : `Not quite — try the other bin for "${item.label}".`;
+        r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+    },
+    onComplete() {
+        const r = document.getElementById('q4DragResult');
+        r.textContent = 'All four sorted correctly!';
+        r.className = 'check-result check-yes';
+    }
+});
+
+/* ---------- Q5: disjoint/overlapping tiles ---------- */
+ExLib.tileChoice(document.getElementById('q5t1'), 'Overlapping');
+ExLib.tileChoice(document.getElementById('q5t2'), 'Disjoint');
+ExLib.tileChoice(document.getElementById('q5t3'), 'Overlapping');
+
+/* ---------- Q6: shape SVG toggle-select ---------- */
+const SHAPES = {
+    square: '<svg width="40" height="40" viewBox="0 0 40 40"><rect x="4" y="4" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>',
+    rectangle: '<svg width="40" height="40" viewBox="0 0 40 40"><rect x="2" y="10" width="36" height="20" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>',
+    circle: '<svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>',
+    rhombus: '<svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,2 38,20 20,38 2,20" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>',
+    triangle: '<svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,4 36,36 4,36" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>'
+};
+function buildShapeGrid(gridId) {
+    const host = document.getElementById(gridId);
+    host.innerHTML = Object.entries(SHAPES).map(([name, svg]) =>
+        `<button type="button" class="shape-tile" data-shape="${name}">${svg}<span>${name}</span></button>`
+    ).join('');
+    host.querySelectorAll('.shape-tile').forEach(t => {
+        t.addEventListener('click', () => t.classList.toggle('selected'));
+    });
+}
+['q6grid1', 'q6grid2', 'q6grid3', 'q6grid4'].forEach(buildShapeGrid);
+document.querySelectorAll('[data-shapecheck]').forEach(btn => {
+    const gridId = btn.dataset.shapecheck;
+    const expected = btn.dataset.expected ? btn.dataset.expected.split(',') : [];
+    btn.addEventListener('click', () => {
+        const host = document.getElementById(gridId);
+        const selected = [...host.querySelectorAll('.shape-tile.selected')].map(t => t.dataset.shape);
+        const ok = ExLib.sameSet(selected, expected);
+        host.querySelectorAll('.shape-tile').forEach(t => {
+            t.classList.remove('correct', 'wrong');
+            const shouldBeSelected = expected.includes(t.dataset.shape);
+            if (shouldBeSelected) t.classList.add('correct');
+            else if (t.classList.contains('selected')) t.classList.add('wrong');
+        });
+        const r = document.getElementById(gridId + 'Result');
+        r.textContent = ok ? 'Correct!' : 'Not quite — green tiles show the correct set, orange tiles are ones you picked wrongly.';
+        r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+    });
+});
+
+/* ---------- Q7: subsets of A={a,{a,b}} toggle ---------- */
+document.querySelectorAll('#q7Grid .subset-toggle').forEach(t => t.addEventListener('click', () => t.classList.toggle('selected')));
+document.getElementById('q7Check').addEventListener('click', () => {
+    const expected = ['∅', '{a}', '{{a,b}}', '{a,{a,b}}'];
+    const selected = [...document.querySelectorAll('#q7Grid .subset-toggle.selected')].map(t => t.dataset.val);
+    const ok = ExLib.sameSet(selected, expected);
+    document.querySelectorAll('#q7Grid .subset-toggle').forEach(t => {
+        t.classList.remove('correct', 'wrong');
+        if (expected.includes(t.dataset.val)) t.classList.add('correct');
+        else if (t.classList.contains('selected')) t.classList.add('wrong');
+    });
+    const r = document.getElementById('q7Result');
+    r.textContent = ok ? 'Correct! Those are exactly the 4 subsets of A.' : 'Not quite — green are genuine subsets of A, orange are traps you picked.';
+    r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+/* ---------- Q8: power set toggles + numeric + tile ---------- */
+function wirePowerSetToggle(gridId, checkBtnId, resultId, allValues) {
+    document.querySelectorAll('#' + gridId + ' .subset-toggle').forEach(t => t.addEventListener('click', () => t.classList.toggle('selected')));
+    document.getElementById(checkBtnId).addEventListener('click', () => {
+        const selected = [...document.querySelectorAll('#' + gridId + ' .subset-toggle.selected')].map(t => t.dataset.val);
+        const ok = ExLib.sameSet(selected, allValues);
+        document.querySelectorAll('#' + gridId + ' .subset-toggle').forEach(t => t.classList.add('correct'));
+        const r = document.getElementById(resultId);
+        r.textContent = ok ? 'Correct! You built the whole power set.' : `You have ${selected.length} of ${allValues.length} — the power set means EVERY subset must be selected.`;
+        r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+    });
+}
+wirePowerSetToggle('q8GridA', 'q8CheckA', 'q8AResult', ['∅', '{a}', '{b}', '{a,b}']);
+wirePowerSetToggle('q8GridB', 'q8CheckB', 'q8BResult', ['∅', '{1}', '{2}', '{3}', '{1,2}', '{1,3}', '{2,3}', '{1,2,3}']);
+ExLib.tileChoice(document.getElementById('q8E'), '1');
+
+['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 1.4 • Set Language • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 1.4 — commutative and associative properties of union and intersection."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 1.4</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Commutative &amp; Associative</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">5 questions, straight from the textbook — with live Venn comparators.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1100px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-1-1/">1.1</a>
+<a class="ex-set-pill" href="../exercise-1-2/">1.2</a>
+<a class="ex-set-pill" href="../exercise-1-3/">1.3</a>
+<span class="ex-set-pill current">1.4</span>
+<a class="ex-set-pill" href="../exercise-1-5/">1.5</a>
+<a class="ex-set-pill" href="../exercise-1-6/">1.6</a>
+<a class="ex-set-pill" href="../exercise-1-7/">1.7</a>
+</div>
+
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span>$P=\{1,2,5,7,9\}$, $Q=\{2,3,5,9,11\}$, $R=\{3,4,5,7,9\}$, $S=\{2,3,4,5,8\}$. Find:</span>
+<div class="ex-question">(i) $(P\cap Q)\cap R$ &nbsp; (ii) $(P\cap Q)\cup S$ &nbsp; (iii) $(Q\cup S)\cap R$</div>
+<div class="check-row">
+<span>(i)</span><input class="mini-input" id="q1a1" style="width:120px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q1c1">Check</button><span class="check-result" id="q1r1"></span>
+</div>
+<div class="check-row">
+<span>(ii)</span><input class="mini-input" id="q1a2" style="width:150px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q1c2">Check</button><span class="check-result" id="q1r2"></span>
+</div>
+<div class="check-row">
+<span>(iii)</span><input class="mini-input" id="q1a3" style="width:120px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q1c3">Check</button><span class="check-result" id="q1r3"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q1Hint">Work each innermost bracket first: find $P\cap Q$ and $Q\cup S$ before combining the result with $R$ or $S$.</div>
+<div class="exercise-panel answer-panel" id="q1Answer">
+(i) $P\cap Q=\{2,5,9\}$, so $(P\cap Q)\cap R = \{5,9\}$<br/>
+(ii) $(P\cap Q)\cup S = \{2,5,9\}\cup\{2,3,4,5,8\} = \{2,3,4,5,8,9\}$<br/>
+(iii) $Q\cup S=\{2,3,4,5,8,9,11\}$, so $(Q\cup S)\cap R = \{3,4,5,9\}$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-4-q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q2">
+<span class="ex-label"><span class="ex-q-num">Q2</span>Test the commutative property of union and intersection for:</span>
+<div class="ex-question">$P=\{x : x \text{ is a real number between 2 and 7}\}$, $Q=\{x : x \text{ is a rational number between 2 and 7}\}$</div>
+<div class="ex-note" style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">$P$ and $Q$ have infinitely many elements, so the diagrams below use a small finite stand-in ($Q\subseteq P$, same as the real question) — press Compare and watch both circles shade at once.</div>
+<div class="venn-controls" id="q2Controls">
+<button class="venn-op-btn" data-op="union">Compare P∪Q vs Q∪P</button>
+<button class="venn-op-btn" data-op="intersection">Compare P∩Q vs Q∩P</button>
+</div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+<div><div class="venn-stage" id="q2VennL"></div><div class="venn-result" id="q2ResultL" style="text-align:center;"></div></div>
+<div><div class="venn-stage" id="q2VennR"></div><div class="venn-result" id="q2ResultR" style="text-align:center;"></div></div>
+</div>
+<div class="venn-result" id="q2Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Does the picture confirm $P\cup Q = Q\cup P$ and $P\cap Q = Q\cap P$?</span>
+<input class="mini-input" id="q2Ans" style="width:80px;" placeholder="yes/no"/>
+<button class="btn btn-primary" id="q2c1">Check</button><span class="check-result" id="q2r1"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q2Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q2Hint">Every rational number is also a real number, so $Q \subseteq P$. What does that make $P \cup Q$ and $P \cap Q$?</div>
+<div class="exercise-panel answer-panel" id="q2Answer">
+Since $Q \subseteq P$: $P\cup Q = P = Q\cup P$, and $P\cap Q = Q = Q\cap P$. Both orders give the same set —
+commutative property holds (as it always does for union and intersection, for any two sets).
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-4-q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>$A=\{p,q,r,s\}$, $B=\{m,n,q,s,t\}$, $C=\{m,n,p,q,s\}$. Verify the associative property of union.</span>
+<div class="ex-question">Check that $A\cup(B\cup C) = (A\cup B)\cup C$.</div>
+<div class="btn-row"><button class="btn btn-primary" id="q3Play">▶ Play associative steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q3LabelL">A ∪ (B ∪ C)</div><div class="venn-stage" id="q3VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q3LabelR">(A ∪ B) ∪ C</div><div class="venn-stage" id="q3VennR"></div></div>
+</div>
+<div class="venn-result" id="q3Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Final set (both sides) =</span>
+<input class="mini-input" id="q3Ans" style="width:200px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q3c1">Check</button><span class="check-result" id="q3r1"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-secondary" data-reveal="q3Steps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="q3Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q3Steps">
+<div class="step-flow" id="q3Steps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">B∪C = {m,n,p,q,s,t}, so A∪(B∪C) = {m,n,p,q,r,s,t}</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">A∪B = {m,n,p,q,r,s,t}, so (A∪B)∪C = {m,n,p,q,r,s,t}</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="q3Answer">Both sides equal $\{m,n,p,q,r,s,t\}$ — associative property of union verified.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-4-q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q4">
+<span class="ex-label"><span class="ex-q-num">Q4</span>$A=\{-1,1,2,5,7\}$, $B=\{3,5,6,13\}$, $C=\{2,3,5,9\}$. Verify the associative property of intersection.</span>
+<div class="ex-question">Check that $A\cap(B\cap C) = (A\cap B)\cap C$.</div>
+<div class="btn-row"><button class="btn btn-primary" id="q4Play">▶ Play associative steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q4LabelL">A ∩ (B ∩ C)</div><div class="venn-stage" id="q4VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q4LabelR">(A ∩ B) ∩ C</div><div class="venn-stage" id="q4VennR"></div></div>
+</div>
+<div class="venn-result" id="q4Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Final set (both sides) =</span>
+<input class="mini-input" id="q4Ans" style="width:120px;" placeholder="{ }"/>
+<button class="btn btn-primary" id="q4c1">Check</button><span class="check-result" id="q4r1"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-secondary" data-reveal="q4Steps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="q4Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q4Steps">
+<div class="step-flow" id="q4Steps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">B∩C = {3,5}, so A∩(B∩C) = {5}</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">A∩B = {5}, so (A∩B)∩C = {5}</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="q4Answer">Both sides equal $\{5\}$ — associative property of intersection verified.</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-4-q4','claude')" title="Ask Claude"></button></div>
+</div>
+
+<div class="exercise-card" id="q5">
+<span class="ex-label"><span class="ex-q-num">Q5</span>$A=\{x:x=2n, n\in W, n<4\}$, $B=\{x:x=2n, n\in N, n\ge4\}$, $C=\{0,1,2,5,6\}$. Verify the associative property of intersection.</span>
+<div class="ex-question">Check that $A\cap(B\cap C) = (A\cap B)\cap C$.</div>
+<div class="ex-note" style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.6rem;">$B$ has infinitely many elements ($8,10,12,\dots$) — the diagram below uses a finite sample $\{8,10,12,14,16\}$, which is enough since every element of $B$ is $\ge 8$, too big to matter here.</div>
+<div class="btn-row"><button class="btn btn-primary" id="q5Play">▶ Play associative steps</button></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.6rem;">
+<div><div style="text-align:center; font-weight:700;" id="q5LabelL">A ∩ (B ∩ C)</div><div class="venn-stage" id="q5VennL"></div></div>
+<div><div style="text-align:center; font-weight:700;" id="q5LabelR">(A ∩ B) ∩ C</div><div class="venn-stage" id="q5VennR"></div></div>
+</div>
+<div class="venn-result" id="q5Match" style="text-align:center; font-weight:700; margin-top:0.4rem;"></div>
+<div class="check-row">
+<span>Final set (both sides) =</span>
+<input class="mini-input" id="q5Ans" style="width:100px;" placeholder="{ } or empty"/>
+<button class="btn btn-primary" id="q5c1">Check</button><span class="check-result" id="q5r1"></span>
+</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="q5Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="q5Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="q5Hint">A = {0,2,4,6} (from n=0,1,2,3). B = {8,10,12,...} (from n=4,5,6,...) — every element of B is at least 8, larger than anything in C.</div>
+<div class="exercise-panel answer-panel" id="q5Answer">
+$B\cap C = \varnothing$ (every element of B is $\ge 8$, too big to be in C), so $A\cap(B\cap C)=\varnothing$.<br/>
+$A\cap B = \varnothing$ (A's largest element is 6, smaller than B's smallest, 8), so $(A\cap B)\cap C=\varnothing$.<br/>
+Both sides equal $\varnothing$ — verified.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('ex1-4-q5','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-1-3/">← Exercise 1.3</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-1-5/">Next: Exercise 1.5 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/venn-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    const base = "I am solving Class 9 Mathematics, Chapter 1 Set Language, Exercise 1.4 Question ";
+    const tail = ". Do NOT give me the final answer immediately — start with a hint, point me to the relevant set concept, and ask what I think the next step is.";
+    if (topic === 'ex1-4-q1') prompt = base + "1: P={1,2,5,7,9}, Q={2,3,5,9,11}, R={3,4,5,7,9}, S={2,3,4,5,8}. Find (i) (P∩Q)∩R (ii) (P∩Q)∪S (iii) (Q∪S)∩R" + tail;
+    if (topic === 'ex1-4-q2') prompt = base + "2: Test the commutative property of union and intersection for P = {x : x is a real number between 2 and 7}, Q = {x : x is a rational number between 2 and 7}" + tail;
+    if (topic === 'ex1-4-q3') prompt = base + "3: A={p,q,r,s}, B={m,n,q,s,t}, C={m,n,p,q,s}. Verify the associative property of union: A∪(B∪C) = (A∪B)∪C" + tail;
+    if (topic === 'ex1-4-q4') prompt = base + "4: A={-1,1,2,5,7}, B={3,5,6,13}, C={2,3,5,9}. Verify the associative property of intersection: A∩(B∩C) = (A∩B)∩C" + tail;
+    if (topic === 'ex1-4-q5') prompt = base + "5: A={x:x=2n, n∈W, n<4}, B={x:x=2n, n∈N, n≥4}, C={0,1,2,5,6}. Verify the associative property of intersection: A∩(B∩C) = (A∩B)∩C" + tail;
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Q1: nested operations ---------- */
+document.getElementById('q1c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q1a1'), ['5','9'], document.getElementById('q1r1')));
+document.getElementById('q1c2').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q1a2'), ['2','3','4','5','8','9'], document.getElementById('q1r2')));
+document.getElementById('q1c3').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q1a3'), ['3','4','5','9'], document.getElementById('q1r3')));
+
+/* ---------- Q2: commutative comparator (mirrored twoSet diagrams) ---------- */
+const q2Prep = ['1','2','3','4','5','6','7','8'];
+const q2Pset = ['2','3','4','5','6','7'];
+const q2Qset = ['3','5','7'];
+const q2Left = VennLib.twoSet(document.getElementById('q2VennL'), { a: q2Pset, b: q2Qset, universe: q2Prep, labelA: 'P', labelB: 'Q' });
+const q2Right = VennLib.twoSet(document.getElementById('q2VennR'), { a: q2Qset, b: q2Pset, universe: q2Prep, labelA: 'Q', labelB: 'P' });
+document.getElementById('q2Controls').querySelectorAll('[data-op]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('q2Controls').querySelectorAll('[data-op]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const op = btn.dataset.op;
+        q2Left.highlight(op);
+        q2Right.highlight(op);
+        const lr = q2Left.result(op), rr = q2Right.result(op);
+        document.getElementById('q2ResultL').innerHTML = `<b>P${op === 'union' ? '∪' : '∩'}Q</b> = ${lr.text}`;
+        document.getElementById('q2ResultR').innerHTML = `<b>Q${op === 'union' ? '∪' : '∩'}P</b> = ${rr.text}`;
+        const match = ExLib.sameSet(lr.set, rr.set);
+        document.getElementById('q2Match').innerHTML = match ? '<span class="check-yes">MATCH ✓ — order does not change the result</span>' : '<span class="check-no">Not matching</span>';
+    });
+});
+document.getElementById('q2c1').addEventListener('click', () => ExLib.checkTextAnswer(document.getElementById('q2Ans'), ['yes'], document.getElementById('q2r1')));
+
+/* ---------- Staged associative-property demo helper (Q3/Q4/Q5) ---------- */
+function assocDemo(cfg) {
+    const left = VennLib.threeSet(document.getElementById(cfg.leftEl), cfg.data);
+    const right = VennLib.threeSet(document.getElementById(cfg.rightEl), cfg.data);
+    document.getElementById(cfg.playBtn).addEventListener('click', () => {
+        const delay = 900;
+        cfg.leftSteps.forEach((s, i) => setTimeout(() => {
+            left.highlight(s.fn);
+            document.getElementById(cfg.leftLabelEl).textContent = s.label;
+        }, i * delay));
+        cfg.rightSteps.forEach((s, i) => setTimeout(() => {
+            right.highlight(s.fn);
+            document.getElementById(cfg.rightLabelEl).textContent = s.label;
+        }, i * delay));
+        const steps = Math.max(cfg.leftSteps.length, cfg.rightSteps.length);
+        setTimeout(() => {
+            const lr = left.result(cfg.finalFn, cfg.finalLeftLabel);
+            const rr = right.result(cfg.finalFn, cfg.finalRightLabel);
+            const match = ExLib.sameSet(lr.set, rr.set);
+            document.getElementById(cfg.matchEl).innerHTML = match
+                ? `<span class="check-yes">MATCH ✓ — both equal ${lr.text || '{ }'}</span>`
+                : '<span class="check-no">Not matching — check your sets.</span>';
+        }, steps * delay + 150);
+    });
+}
+
+/* Q3: associative union */
+assocDemo({
+    leftEl: 'q3VennL', rightEl: 'q3VennR', playBtn: 'q3Play', matchEl: 'q3Match',
+    leftLabelEl: 'q3LabelL', rightLabelEl: 'q3LabelR',
+    data: { a: ['p','q','r','s'], b: ['m','n','q','s','t'], c: ['m','n','p','q','s'], labelA: 'A', labelB: 'B', labelC: 'C' },
+    leftSteps: [
+        { label: 'B ∪ C', fn: (A,B,C) => B || C },
+        { label: 'A ∪ (B ∪ C)', fn: (A,B,C) => A || B || C }
+    ],
+    rightSteps: [
+        { label: 'A ∪ B', fn: (A,B,C) => A || B },
+        { label: '(A ∪ B) ∪ C', fn: (A,B,C) => A || B || C }
+    ],
+    finalFn: (A,B,C) => A || B || C, finalLeftLabel: 'A∪(B∪C)', finalRightLabel: '(A∪B)∪C'
+});
+document.getElementById('q3c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q3Ans'), ['m','n','p','q','r','s','t'], document.getElementById('q3r1')));
+
+/* Q4: associative intersection */
+assocDemo({
+    leftEl: 'q4VennL', rightEl: 'q4VennR', playBtn: 'q4Play', matchEl: 'q4Match',
+    leftLabelEl: 'q4LabelL', rightLabelEl: 'q4LabelR',
+    data: { a: ['-1','1','2','5','7'], b: ['3','5','6','13'], c: ['2','3','5','9'], labelA: 'A', labelB: 'B', labelC: 'C' },
+    leftSteps: [
+        { label: 'B ∩ C', fn: (A,B,C) => B && C },
+        { label: 'A ∩ (B ∩ C)', fn: (A,B,C) => A && B && C }
+    ],
+    rightSteps: [
+        { label: 'A ∩ B', fn: (A,B,C) => A && B },
+        { label: '(A ∩ B) ∩ C', fn: (A,B,C) => A && B && C }
+    ],
+    finalFn: (A,B,C) => A && B && C, finalLeftLabel: 'A∩(B∩C)', finalRightLabel: '(A∩B)∩C'
+});
+document.getElementById('q4c1').addEventListener('click', () => ExLib.checkSetAnswer(document.getElementById('q4Ans'), ['5'], document.getElementById('q4r1')));
+
+/* Q5: associative intersection (disjoint sets, result empty) */
+assocDemo({
+    leftEl: 'q5VennL', rightEl: 'q5VennR', playBtn: 'q5Play', matchEl: 'q5Match',
+    leftLabelEl: 'q5LabelL', rightLabelEl: 'q5LabelR',
+    data: { a: ['0','2','4','6'], b: ['8','10','12','14','16'], c: ['0','1','2','5','6'], labelA: 'A', labelB: 'B', labelC: 'C' },
+    leftSteps: [
+        { label: 'B ∩ C', fn: (A,B,C) => B && C },
+        { label: 'A ∩ (B ∩ C)', fn: (A,B,C) => A && B && C }
+    ],
+    rightSteps: [
+        { label: 'A ∩ B', fn: (A,B,C) => A && B },
+        { label: '(A ∩ B) ∩ C', fn: (A,B,C) => A && B && C }
+    ],
+    finalFn: (A,B,C) => A && B && C, finalLeftLabel: 'A∩(B∩C)', finalRightLabel: '(A∩B)∩C'
+});
+document.getElementById('q5c1').addEventListener('click', () => {
+    const v = document.getElementById('q5Ans').value.trim().toLowerCase();
+    const ok = v === '' || v === '{}' || v === '{ }' || v === 'empty' || v === 'phi' || v === '∅';
+    const resultEl = document.getElementById('q5r1');
+    resultEl.textContent = ok ? 'Correct! Both sides are ∅.' : 'Not quite — both sides should come out empty.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+['q1','q2','q3','q4','q5'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.4 Types of Sets • Set Language • Study Notebook</title>
+<meta name="description" content="Empty, singleton, finite, infinite sets, cardinal number, equal vs equivalent sets, and the universal set."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Set Language
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">1.4 Types of Sets</span>
+<h1 class="hero-title">Not every set<br/>looks the same</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    Some sets have nothing in them, some have exactly one thing, some go on forever. Sorting sets
+    into these categories is the vocabulary the rest of the chapter depends on.
+</p>
+</div>
+</section>
+
+<!-- SECTION 1: EMPTY / SINGLETON / FINITE / INFINITE -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent);">01. Empty, Singleton, Finite, Infinite</h3>
+<h2 style="margin-bottom:1rem;">Four basic shapes a set can take</h2>
+<div class="var-list">
+<div class="var-row"><span class="var-key">∅</span><span class="var-desc"><b>Empty (Null / Void) Set</b> — has no elements at all. Written $\varnothing$ or $\{\ \}$. E.g. the set of odd integers divisible by 2.</span></div>
+<div class="var-row"><span class="var-key">{a}</span><span class="var-desc"><b>Singleton Set</b> — has exactly one element. E.g. the set of all even prime numbers = {2}.</span></div>
+<div class="var-row"><span class="var-key">n</span><span class="var-desc"><b>Finite Set</b> — the counting stops somewhere. E.g. the set of all factors of 36.</span></div>
+<div class="var-row"><span class="var-key">∞</span><span class="var-desc"><b>Infinite Set</b> — the counting never stops. E.g. {5, 10, 15, ...}, the set of all points on a line.</span></div>
+</div>
+<p style="margin-top:0.5rem; font-size:0.9rem; color:var(--text-muted);"><b>Note:</b> the empty set is finite (it has zero elements, and zero is a number you can count to).</p>
+
+<h3 style="margin-top:2rem;">Classify each one</h3>
+<div id="classifyGrid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin-top:1rem;"></div>
+
+<div class="thinking-corner">
+<span class="tc-label">Thinking Corner</span>
+<div class="tc-body">Are $\{0\}$ and $\{\varnothing\}$ the same set? Are they both empty sets? Inspect what's actually
+inside each container below before you decide.</div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1rem;">
+<div class="formula-card" style="margin:0; text-align:center;">
+<div style="font-family:var(--font-mono); margin-bottom:0.5rem;">X = {0}</div>
+<button class="btn btn-secondary" data-tc="tcX">Inspect X</button>
+<div id="tcX-out" style="margin-top:0.6rem; font-size:0.88rem; color:var(--text-muted); min-height:1.4rem;"></div>
+</div>
+<div class="formula-card" style="margin:0; text-align:center;">
+<div style="font-family:var(--font-mono); margin-bottom:0.5rem;">Y = {∅}</div>
+<button class="btn btn-secondary" data-tc="tcY">Inspect Y</button>
+<div id="tcY-out" style="margin-top:0.6rem; font-size:0.88rem; color:var(--text-muted); min-height:1.4rem;"></div>
+</div>
+</div>
+<div class="tc-reveal">
+<button class="btn btn-ghost" data-reveal="tc1Answer">Reveal explanation</button>
+<div class="exercise-panel" id="tc1Answer">Neither is the empty set. $n(X) = 1$ — X contains one element, the number 0.
+$n(Y) = 1$ too — Y contains one element, and that element happens to be the empty set $\varnothing$ itself.
+Only $\varnothing$ (or $\{\ \}$), with <b>zero</b> elements, is actually empty. So $X \ne Y$, and neither is a null set.</div>
+</div>
+</div>
+
+<div class="thinking-corner">
+<span class="tc-label">Thinking Corner</span>
+<div class="tc-body">Is the set of natural numbers $N = \{1, 2, 3, 4, ...\}$ finite? Try counting them below — keep
+clicking and see what happens.</div>
+<div class="formula-card" style="margin:1rem 0; text-align:center;">
+<div id="tcNList" style="font-family:var(--font-mono); min-height:1.6rem; word-break:break-word;">1</div>
+<button class="btn btn-secondary" id="tcNNext" style="margin-top:0.7rem;">Count the next natural number</button>
+<div id="tcNMsg" style="margin-top:0.6rem; font-size:0.85rem; color:var(--text-muted);"></div>
+</div>
+<div class="tc-reveal">
+<button class="btn btn-ghost" data-reveal="tc2Answer">Reveal explanation</button>
+<div class="exercise-panel" id="tc2Answer">No — however many you count, there's always a next one ($n+1$), so the counting process
+never terminates. That's exactly the definition of an <b>infinite set</b>: N has no last element.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: CARDINAL NUMBER -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Cardinal Number — n(A)</h3>
+<h2>How many elements?</h2>
+<p>
+    For a finite set $A$, the number of elements it has is its <b>cardinal number</b>, written $n(A)$.
+    Type a roster-form set to see its cardinal number computed live.
+</p>
+<div class="inline-controls">
+<span style="font-family:var(--font-mono);">A = {</span>
+<input id="cardInput" class="mini-input" style="width:200px;" type="text" value="1, 2, 3, 4, 5, 7, 9, 11"/>
+<span style="font-family:var(--font-mono);">}</span>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('cardinal', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div style="padding:1rem; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:0.6rem;">
+<div style="font-size:0.9rem; color:var(--text-muted);">Cardinal Number</div>
+<div id="cardResult" class="formula-rule" style="font-size:2.2rem; min-width:120px; text-align:center;">8</div>
+<div style="font-family:var(--font-mono); font-size:0.95rem;" id="cardLabel">n(A) = 8</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3: EQUAL VS EQUIVALENT -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent);">03. Equal Sets vs. Equivalent Sets</h3>
+<h2 style="margin-bottom:1rem;">Same elements, or just the same count?</h2>
+<p style="max-width:70ch;">
+    Two sets are <b>equal</b> ($A = B$) if they contain exactly the same elements. Two finite sets are
+    <b>equivalent</b> ($A \leftrightarrow B$) if they simply have the same number of elements —
+    equal sets are always equivalent, but equivalent sets need not be equal.
+</p>
+<div id="eqGrid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin-top:1.3rem;"></div>
+</div>
+</section>
+
+<!-- SECTION 4: UNIVERSAL SET -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">04. The Universal Set</h3>
+<h2 style="margin-bottom:1rem;">The set of everything under discussion</h2>
+<p>A <b>Universal Set</b> $U$ contains every element relevant to the sets you're discussing. If
+$A = \{\text{Earth, Mars, Jupiter}\}$, a natural universal set is $U = $ all planets of the solar system —
+every set you'd compare $A$ against lives inside $U$.</p>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example">
+<span class="we-label">Example 1.5 (textbook)</span>
+<div class="we-question">Are $A = \{x : x \in N, 4 \le x \le 8\}$ and $B = \{4, 5, 6, 7, 8\}$ equal sets?</div>
+<div class="step-flow" id="we-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Write A in roster form.<div class="step-math">A = {4, 5, 6, 7, 8}</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Compare with B.<div class="step-math">B = {4, 5, 6, 7, 8}</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Final answer</b><div class="step-math">Every element matches exactly, so A and B are equal sets.</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISES -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+
+<div class="exercise-card" id="ex1">
+<span class="ex-label">Exercise 1.2 · Q1(i)</span>
+<div class="ex-question">Find the cardinal number of $M = \{p, q, r, s, t, u\}$.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex1Hint">Just count how many elements are listed.</div>
+<div class="exercise-panel answer-panel" id="ex1Answer">Answer: $n(M) = 6$</div>
+</div>
+
+<div class="exercise-card" id="ex2">
+<span class="ex-label">Exercise 1.2 · Q2(iii)</span>
+<div class="ex-question">Is $A = \{x : x \in Z, x < 5\}$ finite or infinite?</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex2Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex2Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex2Hint">Z is the set of integers — it extends forever in the negative direction too.</div>
+<div class="exercise-panel answer-panel" id="ex2Answer">Answer: Infinite — it includes 4, 3, 2, 1, 0, −1, −2, ... with no smallest integer.</div>
+</div>
+
+<div class="exercise-card" id="ex3">
+<span class="ex-label">Exercise 1.2 · Q4(iii)</span>
+<div class="ex-question">Is $C = \{0\}$ a null set or a singleton set?</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex3Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex3Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex3Hint">$\{0\}$ is not the same thing as $\{\ \}$ — it contains the number zero as an element.</div>
+<div class="exercise-panel answer-panel" id="ex3Answer">Answer: Singleton set — it has exactly one element, the number 0.</div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../representation-of-sets/">← 1.3 Representation of Sets</a>
+<a class="back-link cn-home" href="../">Set Language Home</a>
+<a class="back-link" href="../subsets-and-power-sets/">Next: Subsets &amp; Power Sets →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Explain cardinal number of a set, n(A), for a Class 9 student.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Section 1: classify empty/singleton/finite/infinite ---------- */
+const classifyItems = [
+  { label: 'The set of all family members in your house', answer: 'Finite' },
+  { label: '{x : x is an odd integer and divisible by 2}', answer: 'Empty' },
+  { label: 'The set of all even prime numbers', answer: 'Singleton' },
+  { label: '{5, 10, 15, 20, ...}', answer: 'Infinite' },
+  { label: 'The set of all points on a line', answer: 'Infinite' },
+  { label: '{x : 3 < x < 5, x ∈ N}', answer: 'Singleton' }
+];
+const cTypes = ['Empty', 'Singleton', 'Finite', 'Infinite'];
+document.getElementById('classifyGrid').innerHTML = classifyItems.map((it, i) => `
+  <div class="worked-example" style="margin:0;">
+    <div style="font-family:var(--font-mono); font-size:0.92rem; margin-bottom:0.8rem; min-height:2.4rem;">${it.label}</div>
+    <div class="mcq-options" id="cgOpts${i}">
+      ${cTypes.map(t => `<button class="mcq-option" data-t="${t}">${t}</button>`).join('')}
+    </div>
+    <div class="mcq-feedback" id="cgFb${i}"></div>
+  </div>`).join('');
+classifyItems.forEach((it, i) => {
+    document.querySelectorAll(`#cgOpts${i} .mcq-option`).forEach(btn => {
+        btn.addEventListener('click', () => {
+            const opts = document.querySelectorAll(`#cgOpts${i} .mcq-option`);
+            opts.forEach(o => o.disabled = true);
+            const fb = document.getElementById(`cgFb${i}`);
+            if (btn.dataset.t === it.answer) {
+                btn.classList.add('mcq-correct');
+                fb.textContent = 'Correct!'; fb.className = 'mcq-feedback ok';
+            } else {
+                btn.classList.add('mcq-wrong');
+                opts.forEach(o => { if (o.dataset.t === it.answer) o.classList.add('mcq-correct'); });
+                fb.textContent = `Not quite — this is ${it.answer}.`; fb.className = 'mcq-feedback no';
+            }
+        });
+    });
+});
+
+/* ---------- Thinking Corner 1: {0} vs {∅} ---------- */
+document.querySelector('[data-tc="tcX"]').addEventListener('click', () => {
+    document.getElementById('tcX-out').innerHTML = 'n(X) = 1 &nbsp; — element: the number <b>0</b>';
+});
+document.querySelector('[data-tc="tcY"]').addEventListener('click', () => {
+    document.getElementById('tcY-out').innerHTML = 'n(Y) = 1 &nbsp; — element: the empty set <b>∅</b>';
+});
+document.querySelectorAll('.thinking-corner [data-reveal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.dataset.reveal);
+        const opening = !panel.classList.contains('open');
+        panel.classList.toggle('open', opening);
+        if (opening) AlgLib.typeset(panel);
+    });
+});
+
+/* ---------- Thinking Corner 2: is N finite? ---------- */
+let tcN = 1, tcNClicks = 0;
+document.getElementById('tcNNext').addEventListener('click', () => {
+    tcN++; tcNClicks++;
+    const list = document.getElementById('tcNList');
+    list.textContent = (tcN <= 12 ? Array.from({ length: tcN }, (_, i) => i + 1).join(', ') : `1, 2, 3, ... , ${tcN}`) + (tcN > 60 ? ', ...' : '');
+    if (tcNClicks >= 8) {
+        document.getElementById('tcNMsg').textContent = `You've clicked ${tcNClicks} times and still haven't reached the last natural number — because there isn't one. Try reaching "the end"!`;
+    }
+});
+
+/* ---------- Section 2: cardinal number ---------- */
+function updateCardinal() {
+    const raw = document.getElementById('cardInput').value;
+    const items = raw.split(',').map(s => s.trim()).filter(Boolean);
+    document.getElementById('cardResult').textContent = items.length;
+    document.getElementById('cardLabel').textContent = `n(A) = ${items.length}`;
+}
+document.getElementById('cardInput').addEventListener('input', updateCardinal);
+updateCardinal();
+
+/* ---------- Section 3: equal vs equivalent ---------- */
+const eqPairs = [
+  { a: '{ball, bat}', b: '{History, Geography}', answer: 'Equivalent', why: 'Same count (2 elements each) but different elements — equivalent, not equal.' },
+  { a: '{1, 2, 3, 4}', b: '{4, 2, 3, 1}', answer: 'Equal', why: 'Exactly the same elements, just listed in a different order.' },
+  { a: '{p, q, r, s, t}', b: '{4, 5, 6, 7, 8}', answer: 'Equivalent', why: 'Same count (5 each), completely different elements.' },
+  { a: '{2, 3}', b: '{2, 3, 4}', answer: 'Neither', why: 'Different elements AND different counts (2 vs 3).' }
+];
+const eqTypes = ['Equal', 'Equivalent', 'Neither'];
+document.getElementById('eqGrid').innerHTML = eqPairs.map((p, i) => `
+  <div class="worked-example" style="margin:0;">
+    <div style="font-family:var(--font-mono); font-size:0.92rem; margin-bottom:0.8rem;">A = ${p.a}<br/>B = ${p.b}</div>
+    <div class="mcq-options" id="eqOpts${i}">
+      ${eqTypes.map(t => `<button class="mcq-option" data-t="${t}">${t}</button>`).join('')}
+    </div>
+    <div class="mcq-feedback" id="eqFb${i}"></div>
+  </div>`).join('');
+eqPairs.forEach((p, i) => {
+    document.querySelectorAll(`#eqOpts${i} .mcq-option`).forEach(btn => {
+        btn.addEventListener('click', () => {
+            const opts = document.querySelectorAll(`#eqOpts${i} .mcq-option`);
+            opts.forEach(o => o.disabled = true);
+            const fb = document.getElementById(`eqFb${i}`);
+            if (btn.dataset.t === p.answer) {
+                btn.classList.add('mcq-correct');
+                fb.textContent = p.why; fb.className = 'mcq-feedback ok';
+            } else {
+                btn.classList.add('mcq-wrong');
+                opts.forEach(o => { if (o.dataset.t === p.answer) o.classList.add('mcq-correct'); });
+                fb.textContent = p.why; fb.className = 'mcq-feedback no';
+            }
+        });
+    });
+});
+
+/* ---------- Worked example / exercises ---------- */
+document.getElementById('we-play').addEventListener('click', () => AlgLib.revealSteps('we-steps'));
+AlgLib.revealSteps('we-steps', 0);
+['ex1', 'ex2', 'ex3'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

@@ -1,0 +1,2171 @@
+                                                     REAL NUMBERS
+
+                                              "When I consider what people generally want in
+
+                                              calculating, I found that it always is a number"
+
+                                                                                                  - Al-Khwarizmi
+
+                                              Al-Khwarizmi, a Persian scholar, is
+                                              credited with identification of surds as
+                                              something noticeable in mathematics.
+                                              He referred to the irrational numbers
+                                              as `inaudible', which was later translated to the
+                                              Latin word `surdus' (meaning `deaf ' or `mute'). In
+                                              mathematics, a surd came to mean a root (radical) that
+                                              cannot be expressed (spoken) as a rational number.
+
+Learning Outcomes
+
+Â To know that there exists infinitely many rational numbers between two given
+     rational numbers.
+
+Â To represent rational and irrational numbers on number line and express them in
+     decimal form.
+
+Â To visualise the real numbers on the number line.
+Â To identify surds.
+Â To carry out basic operations of addition, subtraction, multiplication and division
+
+     using surds.
+Â To rationalise denominators of surds.
+Â To understand the scientific notation.
+
+2.1 Introduction
+
+Numbers, numbers, everywhere!
+Â Do you have a phone at home? How many digits does its dial have?
+Â What is the Pincode of your locality? How is it useful?
+Â When you park a vehicle, do you get a `token'? What is its purpose?
+Â Have you handled 24 `carat' gold? How do you decide its purity?
+Â How high is the `power' of your spectacles?
+
+                                                                                                Real Numbers 41
+
+2-Real Numbers.indd 41                                                                                           12/16/2024 3:24:30 PM
+                                                 How much water does the overhead tank in
+                                                       your house can hold?
+
+                                                 Does your friend have fever? What is his
+                                                       body temperature?
+
+                                                 You have learnt about many types of numbers so far.
+                                                 Now is the time to extend the ideas further.
+
+                                          2.2 Rational Numbers
+
+                                                 When you want to count the number of
+                                                 books in your cupboard, you start with
+                                                  1, 2, 3, ... and so on. These counting numbers 1,
+                                                 2, 3, ... , are called Natural numbers. You know to
+                                                 show these numbers on a line (see Fig. 2.1).
+
+                  1 234567 8 9
+
+                                                              Fig. 2.1
+
+      We use N to denote the set of all Natural numbers.
+ N = { 1, 2, 3, ... }
+If the cupboard is empty (since no books are there). To denote such a situation we use the
+symbol 0. Including zero as a digit you can now consider the numbers 0, 1, 2, 3, ... and call
+them Whole numbers. With this additional entity, the number line will look as shown below
+
+                0 123456 7 89
+
+                                                              Fig. 2.2
+
+      We use W to denote the set of all Whole numbers.
+ W = { 0, 1, 2, 3, ... }
+
+      Certain conventions lead to more varieties of numbers. Let us agree that certain
+conventions may be thought of as "positive" denoted by a `+' sign. A thing that is `up' or
+`forward' or `more' or `increasing' is positive; and anything that is `down' or `backward' or
+`less' or `decreasing' is "negative" denoted by a `­' sign.
+
+      You can treat natural numbers as positive numbers and rename them as positive
+integers; thereby you have enabled the entry of negative integers ­1, ­2, ­3, ... .
+Note that ­2 is "more negative" than ­1. Therefore, among ­1 and ­2, you find that ­2 is
+smaller and ­1 is bigger. Are ­2 and ­1 smaller or greater than ­3? Think about it.
+The number line at this stage may be given as follows:
+
+                       ­4 ­3 ­2 ­1 0 1 2 3 4
+
+                                                              Fig. 2.3
+
+  42 9th Standard Mathematics
+
+2-Real Numbers.indd 42  12/16/2024 3:24:30 PM
+      We use Z to denote the set of all Integers.
+ Z= { ..., ­3, ­2, ­1, 0, 1, 2, 3, ... }.
+
+                        When you look at the figures (Fig. 2.2 and 2.3) above, you are sure to get amused by the
+
+gap between any pair of consecutive integers. Could there be some numbers in between?
+
+                        You have come across fractions                      already. How will you mark the point that shows                                 1  on
+                                                                                                                                                            2
+
+Z? It is just midway between 0 and 1.                                                In  the   same  way,     you  can  plot  1  ,  1  ,  1  ,     2  3     ... etc.
+                                                                                                                              3     4     5           4
+                                                                            a
+These                   are all fractions of the form                       b  where a and b are integers with one restriction that
+
+b  0. (Why?) If a fraction is in decimal form, even then the setting is same.
+
+                        Because of the connection between fractions and ratios of lengths, we name them as
+
+Rational numbers. Here is a rough picture of the situation:
+
+                        ­7 ­6 ­5 ­4.3 ­4 ­3 ­2 ­1 ­0.5 0 0.5 1                                             2       3    4 4.8 5              6           7
+
+                                                                                         Fig. 2.4
+
+A rational number is a fraction indicating the quotient of two integers, excluding division
+by zero.
+
+                        Since a fraction can have many equivalent fractions , there are many possible forms for
+
+the same rational number.                                    Thus     1  ,  2  ,  8         all these denote the same rational number.
+                                                                      3     6     24
+
+2.2.1 Denseness Property of Rational Numbers
+
+                        Consider       a,  b  where       a  >  b  and   their       AM(Arithmetic         Mean)      given  by  a  +     b     .  Is this AM
+                                                                                                                                    2
+a rational number? Let us see.
+
+                        If a =   p     (p, q integers        and q    ! 0);       b=        r  (r,  s integers and    s ! 0), then
+                                 q                                                          s
+
+                                 a  +  b  =   p  +     r  =  ps + qr        which is a rational number.
+                                    2         q        s       2qs
+
+                                                 2
+
+                        We have to show that this rational number lies between a and b.
+
+                        a  -  `  a  +  bj=    2a - a -       b     =  a-    b     which        is  > 0 since a>b.
+                                    2              2                    2
+
+                                 Therefore,      a  >`    a  +  b  j...                             (1)
+                                                             2
+
+                        `  a  +  bj-      b=  a+       b-    2b    =  a-    b     which        is  > 0 since a>b.
+                              2                        2                2
+
+                                 Therefore,      `  a  +  b  j  >  b                 ... (2)
+                                                       2
+
+                        From     (1)   and    (2)   we    see    that    a  >`    a  +   b  j  >b,  which  can  be    visualized    as    follows:
+                                                                                     2
+
+                                                                                                                                          Real Numbers 43
+
+2-Real Numbers.indd 43                                                                                                                                         12/16/2024 3:24:37 PM
+                        b                                                              a+ b                                                                             a
+
+                                                                                          2
+
+                                                             Fig. 2.5
+
+      Thus, for any two rational numbers, their average/mid point is rational. Proceeding
+similarly, we can generate infinitely many rational numbers.
+
+                        Example 2.1                 Find        any  two    rational      numbers          between                 1  and      2   .
+                                                                                                                                   2           3
+
+Solution 1                                                               1          2      1     1         2           1     3  +     4j=      1      7         7
+                                                                         2          3      2     2         3           2        6              2      6         12
+                        A   rational number between                         and        =      `      +        j  =        `                        `     j  =
+
+                        A   rational    number         between           1  and   7     =    1    `  1  +     7     j=       1  `  6+    7  j  =      1  `  13  j=      13
+                                                                         2        12         2       2        12             2      12                2     12          24
+
+                        Hence two rational numbers between                              1    and      2       are       7       and      13    (of course, there are
+                                                                                        2             3                 12               24
+                        many more!)
+
+                        There is an interesting result that could help you to write instantly rational numbers
+
+                        between any two given rational numbers.
+
+   Result
+
+If  p                   and    r  are any two rational numbers such that                                p  <     r  ,  then        p+ r        is a rational number,
+    q                          s                                                                        q        s                 q+ s
+                                  p     p  +  r
+such that                         q  <  q  +  s  <  r  .
+                                                    s
+
+                        Let us    take the same example:                    Find    any two rational                   numbers between                         1   and      2
+                                                                                                                                                               2            3
+
+Solution 2
+
+1  <  2                 gives     1  <  1  +  2  <  2     or    1  <  3  <  2  gives    1    <  1  +    3  <     3     <  3  +     2  <  2     or     1  <  4   <  3    <   5  1  2
+2     3                           2     2  +  3     3           2     5     3           2       2  +    5        5        5  +     3     3            2     7      5        8     3
+
+Solution 3
+      Any more new methods to solve? Yes, if decimals are your favourites, then the above
+
+example can be given an alternate solution as follows:
+
+                                                 1  = 0.5 and         2     =  0.66...
+                                                 2                    3
+                                                                               1             2
+                        Hence rational numbers                     between     2    and      3   can     be      listed as            0.51,    0.57,0.58,...
+
+Solution 4
+
+                        There is one more way to solve some problems. For example, to find four rational
+
+numbers between                               4  and      3  ,  note  that     the  LCM       of   9  and        5  is    45;   so    we       can    write        4    =   20  and
+                                              9           5                                                                                                        9        45
+3                       27
+5  =                    45  .
+
+                        Therefore, four rational numbers between                                4    and      3     are      21    ,  22    ,  23     ,     24  ,  ...
+                                                                                                9             5              45       45       45           45
+
+44 9th Standard Mathematics
+
+2-Real Numbers.indd 44                                                                                                                                                            12/16/2024 3:24:45 PM
+                                                            Exercise 2.1
+
+1.                      Which arrow best shows the position of       11   on the number line?
+                                                                     3
+                                                 A                                         B CD
+
+                              ­5 ­4 ­3 ­2 ­1 0 1 2 3 4 5
+
+2.                      Find any three rational numbers between      -7      and  2   .
+                                                                     11           11
+
+3.                      Find  any  five  rational  numbers  between  (i)  1  and  1   (ii)  0.1 and  0.11  (iii) ­1 and ­2
+                                                                          4       5
+
+2.3 Irrational Numbers
+
+                        You know that each rational number is assigned to a point on the                      2
+
+number line and learnt about the denseness property of the rational numbers.                                              1
+
+Does it mean that the line is entirely filled with the rational numbers and
+
+there are no more numbers on the number line? Let us explore.
+
+      Consider an isosceles right-angled triangle whose base and height                                           1
+are each 1 unit long. Using Pythagoras theorem, the hypotenuse can                                            Fig.2.6
+
+be seen having a length 12 + 12 = 2 (see Fig. 2.6 ). Greeks found that this 2 is neither
+a whole number nor an ordinary fraction. The belief of relationship between points on the
+number line and all numbers was shattered! 2 was called an irrational number.
+
+An irrational number is a number that cannot be expressed as an ordinary ratio of two integers.
+
+Examples                                                                     GOLDEN RATIO (1:1.6)
+1. Apart from 2 , one can
+                                                             The Golden Ratio has                    a                 b
+      produce a number of examples                          been heralded as the
+      for such irrational numbers.
+      Hereareafew: 5, 7, 2 3,f                              most beautiful ratio in
+
+2.  , the ratio of the circumference                        art and architecture.                          a+b
+      of a circle to the diameter of that
+      same circle, is another example                       Take a line segment and                  a+b : a = a : b
+      for an irrational number.
+                                                            divide it into two smaller segments such that the
+3. e, also known as Euler's
+      number, is another common                             ratio of the whole line segment (a+b) to segment
+      irrational number.
+                                                            a is the same as the ratio of segment a to the
+
+                                                            segment b.
+
+                                                            This gives the proportion       a+       b  =  a
+                                                                                              a            b
+
+                                                            Notice that `a' is the geometric mean of a+b and b.
+
+4. The golden ratio, also known as golden mean, or golden section, is a number often
+      stumbled upon when taking the ratios of distances in simple geometric figures such
+      as the pentagon, the pentagram, decagon and dodecahedron, etc., it is an irrational
+      number.
+
+                                                                                                           Real Numbers 45
+
+2-Real Numbers.indd 45                                                                                                    12/16/2024 3:24:45 PM
+2.3.1 Irrational Numbers on the Number Line
+      Where are the points on the number line that correspond to the irrational numbers?
+
+As an example, let us locate 2 on the number line. This is easy.
+
+Remember that 2 is the length of the diagonal of the square whose side is 1 unit
+
+(How?)Simply construct a square and transfer the length of one of its diagonals to our
+
+number line. (see Fig.2.7).
+
+                                                1
+
+                                            -2  12       2
+
+­4 ­3 ­2 ­1 0 1 2 3 4
+
+                                                Fig.2.7
+
+      We draw a circle with centre at 0         Squares on grid sheets can be used to
+on the number line,with a radius equal          produce irrational lengths.
+to that of diagonal of the square. This
+
+circle cuts the number line in two points, Here are a few examples :
+
+locating 2 on the right of 0 and ­ 2
+
+on its left. (You wanted to locate 2 ;                            5              10
+you have also got a bonus in ­ 2 )                       5            10
+
+      You started with Natural numbers
+
+and extended it to rational numbers
+
+and then irrational numbers. You may
+
+wonder if further extension on the
+
+number line waits for us. Fortunately                        8 or             2
+it stops and you can learn about it in                         22         22
+higher classes.                                                       2 22
+                                                         8                22
+      Representation of a Rational
+                                                                              2
+                                                                      3
+number as terminating and non                                            2
+                                                                           =
+                                                                               18
+
+terminating decimal helps us to
+
+understand irrational numbers. Let us see the decimal expansion of rational numbers.
+
+2.3.2 Decimal Representation of a Rational Number
+
+      If you have a rational number written as a fraction, you get the decimal representation
+by long division. Study the following examples where the remainder is always zero.
+
+               46 9th Standard Mathematics                                             12/16/2024 3:24:46 PM
+
+2-Real Numbers.indd 46
+Consider the examples,
+
+                          0.875                      0.84                         2.71875
+                        8 7.000
+                                                     25 21.00               32 87.00000
+                           64
+                            60                       200                       64
+                            56
+                              40                          100                  230
+                              40
+                                                          100                  224
+                               0
+                                                          0                        60
+                                                                                   32
+
+                                                                                   280
+
+                        7  =   0.875                 21   =    0.84                256
+                        8                            25                             240
+
+                                                                                       224
+
+                                                                                        160
+
+                                                                                        160
+
+                                                                                        0
+
+                                                                               - 87     =   - 2.71875
+                                                                                32
+
+       Note
+
+These show that the process could lead to a decimal with finite
+number of decimal places. They are called terminating decimals.
+
+Can the decimal representation of a rational number lead to forms of decimals that do not
+terminate? The following examples (with non-zero remainder) throw some light on this point.
+
+                        Example 2.2  Represent the following as The reciprocals of Natural Numbers are
+                                       -4        11                      Rational numbers. It is interesting to note
+decimal form                   (i)     11  (ii)  75                      their decimal forms. See the first ten.
+
+Solution                                                                 S.No. Reciprocal    Decimal
+
+                           0.3636....               0.1466...            1  1  = 1.0         Representation
+                        11 4.0000              75 11.0000                   1                Terminating
+
+                            33                     75
+
+                        70                           350                 2  1  =  0.5        Terminating
+                        66                           300                    2
+
+                           40                        500                 3  1  =  0.3        Non-terminating
+                           33                        450                    3                Recurring
+
+                           70                        500                 4  1  =  0.25       Terminating
+                           66                        450                    4                Terminating
+                            4                         50
+                                                                         5  1  =  0.2
+                            h                          h                    5
+
+                        Thus we see that,  -4  =  - 0.36  11   =  0.146  6  1  =  0.16       Non-terminating
+                                           11             75                6                Recurring
+
+                                                                                             Real Numbers 47
+
+2-Real Numbers.indd 47                                                                                    12/16/2024 3:24:47 PM
+                        A rational number can be expressed by                     7   1      =  0.142857  Non-terminating
+                        (i) either a terminating                                      7                   Recurring
+
+                        (ii) or a non-terminating and recurring                   8   1      =  0.125     Terminating
+                              (repeating) decimal expansion.                          8
+                                                                                                          Non-terminating
+                        The converse of this statement is also true.              9   1      =  0. 1      Recurring
+                                                                                      9
+                                                                                                          Terminating
+      That is, if the decimal expansion of a number                               10  1      =  0.1
+is terminating or non-terminating and recurring,                                      10
+
+then the number is a rational number.
+
+                        Note
+
+In this case the decimal expansion does not terminate!
+The remainders repeat again and again! We get non-terminating but recurring block of digits.
+
+2.3.3 Period of Decimal
+      In the decimal expansion of the rational numbers, the number of repeating decimals is
+
+called the length of the period of decimals.
+
+For example,
+
+                        (i)    25   =  3.571428 has the length of the period of decimal = 6
+                               7
+
+                        (ii)   27   =  0.245 has the length of the period of decimal            =2
+                               110
+
+                        Example 2.3        Express the rational number            1   in recurring decimal form by using
+                                                                                  27
+
+the recurring decimal expansion of                             1  .  Hence write  59  in recurring decimal form.
+                                                               3                  27
+
+Solution                               1
+                                       3
+                        We know that       = 0.3
+
+                        Therefore,     1   =  1   #  1  =  1   #  0.333... =  0.037037... =  0.037
+                                       27     9      3     9
+
+                        Also,          59  =  2  5   =2+       5
+                                       27        27            27
+
+                                           =  2  +  `5  #  1   j
+                                                           27
+
+                        = 2 + (5 # 0.037) = 2 + (5 # 0.037037037...) = 2 + 0.185185... = 2.185185... = 2.185
+
+2.3.4 Conversion of Terminating Decimals into Rational Numbers
+      Let us now try to convert a terminating decimal, say 2.945 as rational number in the
+
+fraction form.
+ 2.945 = 2 + 0.945
+
+ 48 9th Standard Mathematics
+
+2-Real Numbers.indd 48                                                                                            12/16/2024 3:24:48 PM
+                             2.945        =      2  +  9   +    4   +    5
+                                                       10      100     1000
+
+                                          =      2+    900     +    40     +    5     (making   denominators common)
+                                                       1000        1000       1000
+
+                                          =      2  +  945
+                                                       1000
+
+                                          =      2945      or  589    which is required
+                                                 1000          200
+
+                        (In  the  above,  is  it    possible   to   write     directly   2.945  =  2945  ?)
+                                                                                                   1000
+
+                        Example 2.4            Convert the following decimal numbers in the form of          p        ,  where  p
+                                                                                                             q
+and q are integers and q ! 0: (i) 0.35 (ii) 2.176 (iii) ­ 0.0028
+
+Solution                                         35            7
+                                                 100           20
+                        (i)       0.35    =             =
+
+                        (ii)      2.176   =      2176      =   272
+                                                 1000          125
+
+                        (iii) ­0.0028     =      - 28      =   -7
+                                                 10000         2500
+
+2.3.5 Conversion of Non-terminating and recurring decimals into Rational Numbers
+
+                        It was very easy to handle a terminating decimal. When we come across a decimal
+
+such as 2.4, we get rid of the decimal point, by just divide it by 10.
+
+                        Thus 2.4 =  24    ,  which      is  simplified        as  12  .  But, when we have a decimal such as 2.4 ,
+                                    10                                            5
+
+the problem is that we have infinite number of 4s and hence will need infinite number of 0s
+
+in the denominator. For example,
+
+                                  2.4     =      2  +  4
+                                                       10
+
+                                  2.44    =   2  +  4   +      4
+                                                    10        100
+
+                                  2.444   =   2  +  4   +      4   +    4
+                                                    10        100     1000
+
+                        How tough it is to have infinite 4's and work with them. We need to get rid of the
+
+infinite sequence in some way. The good thing about the infinite sequence is that even if we
+
+pull away one , two or more 4 out of it, the sequence still remains infinite.
+
+                        Let x = 2. 4                               ...(1)
+
+                        Then, 10x = 24. 4  ...(2) [When you multiply by 10, the decimal moves one
+                        place to the right but you still have infinite 4s left over).
+
+                        Subtract the first equation from the second to get,
+
+9x = 24. 4 ­ 2. 4 = 22 (Infinite 4s subtract out the infinite 4s and the left out is
+        24 ­ 2 = 22)
+
+                                                                                                             Real Numbers 49
+
+2-Real Numbers.indd 49                                                                                                   12/16/2024 3:24:50 PM
+                           x  =    22    , the required value.
+                                   9
+
+      We use the same exact logic to convert any number with a non terminating repeating
+part into a fraction.
+
+                        Example 2.5       Convert the following decimal numbers in the form of
+
+p  ^  p, q              !  Z  and  q  !  0h.
+q
+
+                        (i) 0.3 (ii) 2.124 (iii) 0.45 (iv) 0.568
+
+Solution
+
+                        (i) Let x = 0.3 = 0.3333...                           (1)
+
+ (Here period of decimal is 1, multiply equation (1) by 10)
+
+                              10 x = 3.3333...                                (2)
+
+                           (2) ­ (1): 9 x = 3 or                  x  =     1
+                                                                           3
+
+                        (ii) Let x = 2.124 = 2.124124124... (1)
+
+ (Here period of decimal is 3, multiply equation (1) by 1000.)
+
+                           1000 x = 2124.124124124...                         (2)
+
+                           (2)­(1): 999 x = 2122               x  =   2122
+                                                                      999
+
+                        (iii) Let x = 0.45 = 0.45555...                       (1)
+
+ (Here the repeating decimal digit is 5, which is the second digit after the decimal
+             point, multiply equation (1) by 10)
+
+                              10 x = 4.5555...                                (2)
+
+ (Now period of decimal is 1, multiply equation (2) by 10)
+
+ 100 x = 45.5555...                                                           (3)
+
+                           (3) ­ (2):         90 x = 41 or  x  =  41
+                                                                  90
+
+                        (iv) Let x = 0.568 = 0.5686868...                     (1)
+
+ (Here the repeating decimal digit is 68, which is the second digit after the decimal
+             point, so multiply equation (1) by 10)
+
+ 10 x = 5.686868...                                                           (2)
+
+ (Now period of decimal is 2, multiply equation (2) by 100)
+
+1000 x = 568.686868...                                                        (3)
+
+                           (3) ­ (2):    990 x = 563 or x      =  563   .
+                                                                  990
+
+50 9th Standard Mathematics
+
+2-Real Numbers.indd 50                                                                          12/16/2024 3:24:52 PM
+                           Note
+
+                        To determine whether the decimal form of a rational number will terminate or non - terminate,
+                        we can make use of the following rule
+
+If a rational number                                 p  ,  q!0        can be expressed      in  the  form  2m    p  5n  ,  where  p!Z  and
+                                                     q                                                           #
+
+m, n ! W, then rational number will have a terminating decimal expansion. Otherwise,
+
+the rational number will have a non- terminating and recurring decimal expansion
+
+                        Example 2.6
+                                            Without actual division, classify the decimal expansion of the
+
+following numbers as terminating or non ­ terminating and recurring.
+
+                        (i)  13                (ii)  - 71                       (iii)  43             (iv)       31
+                             64                      125                               375                       400
+
+Solution                        13   =  13  ,              So     13   has a terminating decimal      expansion.
+      (a)                       64      26                        64
+      (b)
+      (c)                       - 71    =  - 71  ,         So     - 71  has a terminating decimal          expansion.
+      (d)                       125         53                    125
+
+                                43    =      43      ,     So     43    has  a  non    ­ terminating  recurring       decimal  expansion.
+                                375        31 # 53                375
+
+                                31    =      31  52  ,     So     31    has a terminating decimal expansion.
+                                400        24 #                   400
+
+                        Example 2.7                                                                           1 = 0.9999...
+                                           Verify that 1 = 0.9                                                7 = 6.9999...
+                                                                                                            3.7 = 3.6999...
+Solution
+                                                                                                     The pattern suggests that
+                        Let x = 0.9 = 0.99999...                                (1)                  any terminating decimal
+                                                                                                     can be represented as a non-
+                        (Multiply equation (1) by 10)                                                terminating and recurring
+                                                                                                     decimal expansion with an
+                             10 x = 9.99999... (2)                                                   endless block of 9's.
+
+Subtract (1) from (2)
+
+9x = 9 or x =1
+      Thus, 0.9 = 1
+
+                                                                                Exercise 2.2
+
+1. Express the following rational numbers into decimal and state the kind of decimal expansion
+
+                        (i)  2  (ii)                 -     5  3                        (iii)  22           (iv)  327
+                             7                                11                              3                  200
+
+2.                      Express     1      in decimal form. Find the length of the period of decimals.
+                                    13
+
+                                                                                                                           Real Numbers 51
+
+2-Real Numbers.indd 51                                                                                                                 12/16/2024 3:24:56 PM
+3.                      Express    the rational      n11u1m. bHeren3c13e  in recurring decimal form by using               the   recurring
+                        decimal    expansion of                                  71
+                                                                          write  33  in recurring decimal    form.
+
+4. Express the following decimal expression into rational numbers.
+
+                        (i) 0.24                  (ii) 2.327              (iii) ­5.132
+
+                        (iv) 3.17                 (v) 17.215              (vi) - 21.2137
+
+5. Without actual division, find which of the following rational numbers have terminating
+
+                        decimal expansion.
+
+                        (i)   7                   (ii)  21                (iii)  4   9                       (iv)  219
+                             128                        15                           35                            2200
+
+2.3.6 Decimal Representation to Identify Irrational Numbers
+      It can be shown that irrational numbers, when expressed as decimal numbers, do not
+
+terminate nor do they repeat. For example, the decimal representation of the number 
+starts with 3.14159265358979..., but no finite number of digits can represent  exactly, nor
+does it repeat.
+
+      Consider the following decimal expansions:
+
+                        (i) 0.1011001110001111... (ii) 3.012012120121212...
+                        (iii) 12.230223300222333000... (in) 2 = 1.4142135624...
+
+                        Are the above numbers terminating (or) recurring and non- terminating? No... They
+
+are neither terminating, nor non­terminating and recurring. Hence they are not rational
+                                                                                         p
+numbers. They cannot be written in the form of                                           q  ,  where  p,  q  !Z    and  q  ! 0.  They  are
+
+irrational numbers.
+
+A number having non- terminating and non- recurring decimal expansion is an irrational number.
+
+                        Example 2.8
+                                              Find the decimal expansion of 3 .
+
+Solution                                          1.7320508...                                 We often write 2 = 1.414,
+             
+
+                                   1 3.00,00,00,00,00,...                                      3 = 1.732,  = 3.14 etc. These
+
+                                                  1                                            are only approximate values and
+
+                                   27 200                                                      not exact values. In the case of
+
+                                                  189                                          the irrational number , we take
+
+ 343 1100                                                                                      frequently    22    (which  gives  the
+                                    1029                                                                     7
+
+                                            3462        7100                                   value 3.142857) to be its correct
+                                                        6924                                   value but in reality these are
+                                         346405                                                only approximations. This is
+                                                         1760000                               because, the decimal expansion
+                                      34641008           1732025                               of an irrational number is non-
+                                                                                               terminating and non-recurring.
+                                                            279750000                          None of them gives an exact value!
+                                                            277128064
+
+                                                               2621936
+
+52 9th Standard Mathematics
+
+2-Real Numbers.indd 52                                                                                                                 12/16/2024 3:24:58 PM
+      Thus, by division method, 3 = 1.7320508...
+
+      It is found that the square root of every positive non-perfect square number is an
+irrational number. 2 , 3 , 5 , 6 , 7 , ... are all irrational numbers.
+
+                        Example 2.9       Classify the numbers as rational or irrational:                  (vi)  2
+                        (i) 10          (ii) 49 (iii) 0.025 (iv) 0.76 (v) 2.505500555...                         2
+
+Solution
+      (i) 10 is an irrational number ( since 10 is not a perfect square number).
+
+                        (ii)  49  =7=   7  ,  a  rational number(since 49  is   a  perfect  square number).
+                                        1
+
+                        (iii) 0.025 is a rational number (since it is a terminating decimal).
+
+                        (iv) 0.76 = 0.7666.... is a rational number ( since it is a non ­ terminating and
+                              recurring decimal expansion).
+
+                        (v) 2.505500555.... is an irrational number ( since it is a non ­ terminating and
+                              non­recurring decimal).
+
+                        (vi)  2   =        2=       1   is an irrational number ( since 2 is not a perfect square
+                              2         2# 2         2
+
+                              number).
+
+                        Note
+
+                        The above example(vi)    it is not to be misunderstood as  p  form, because both p and q must
+                                                                                   q
+                        be integers and not an irrational number.
+
+    Example 2.10
+                         Find any 3 irrational numbers between 0.12 and 0.13 .
+
+Solution
+      Three irrational numbers between 0.12 and 0.13 are
+
+0.12010010001..., 0.12040040004..., 0.12070070007...
+
+                        Note
+
+                        We state (without proof) an important result worth remembering.
+
+                        If `a' is a rational number and b is an irrational number then each one of the
+
+following is an irrational number:                                              (iv)  a  ;  (v)      b  .
+      (i) a + b ; (ii) a ­ b ; (iii) a b ;                                            b              a
+
+For example, when you consider the rational number 4 and the irrational number 5 ,
+
+then                          4+ 5 ,4­        5 ,4  5,  4  ,  5    ... are all  irrational numbers.
+                                                        5     4
+
+                                                                                                        Real Numbers 53
+
+2-Real Numbers.indd 53                                                                                           12/16/2024 3:24:59 PM
+    Example 2.11
+                         Give any two rational numbers lying between 0.5151151115.... and
+
+0.5353353335...
+Solution Two rational numbers between the given two irrational numbers are 0.5152 and 0.5352
+
+Example 2.12  Find whether x and y are rational or irrational in the following.
+ (i) a = 2 + 3 , b = 2 - 3 ; x = a + b, y = a - b
+
+                        (ii) a = 2 + 7, b = 2 - 7 ; x = a + b, y = a - b
+
+                        (iii) a =  75 , b =    3  ;   x = ab,   y=   a  N ot e  From these
+                        (iv) a =   18 , b =    3  ;  x = ab,   y=   ab  examples, it is clear that the sum ,
+                                                                    b
+                                                                        difference, product, quotient of any two
+Solution                                                                irrational numbers could be rational or
+     (i) Given that a = 2 + 3 , b = 2 - 3                               irrational.
+
+x = a + b = (2 + 3 ) +(2 ­ 3 ) = 4 ,
+
+a rational number.
+
+y = a ­ b = (2 + 3 ) ­ (2­ 3 ) = 2 3 , an irrational number.
+
+      (ii) Given that a = 2 +7 , b = 2 ­7
+x = a + b = ( 2 +7 ) +( 2 ­7) = 2 2 , an irrational number.
+y = a ­ b = ( 2 +7 )­( 2 ­7) = 14 , a rational number.
+
+                        (iii) Given that a = 75 , b = 3
+
+x = ab = 75 # 3 = 75 # 3 = 5 # 5 # 3 # 3 = 5 # 3 = 15, a rational number.
+
+y                       =          a  =  75 =        75  =  25 = 5, rational number.
+                                   b     3           3
+
+                        (iv) Given that a = 18 , b = 3
+
+x = ab = 18 # 3 = 18 # 3 = 6 # 3 # 3 = 3 6 , an irrational number.
+
+y                       =          a  =  18 =     18     =  6 , an irrational number.
+                                   b     3        3
+
+    Example 2.13
+                           Represent 9.3 on a number line.
+
+Solution
+      Â Draw a line and mark a point A on it.
+      Â Mark a point B such that AB = 9.3 cm.
+      Â Mark a point C on this line such that BC = 1 cm.
+      Â Find the midpoint of AC by drawing perpendicular bisector of AC and let it be O
+      Â With O as center and OC = OA as radius, draw a semicircle.
+
+ 54 9th Standard Mathematics
+
+2-Real Numbers.indd 54                                                                                        12/16/2024 3:25:03 PM
+                        Â Draw a line BD, which is perpendicular to AB at B.
+                        Â With B as centre BD as radius draw an arc which intersects the line AC at E.
+                        Â Now BD = 9.3 , which can be marked in the number line as the value of
+
+                             BE = BD = 9.3
+
+                                                                      9.3 cm
+
+                                                                                            1cm
+                        0 1 2 3 4 5 6 7 8 9 10
+
+                                     cm                                           9.3cm
+
+                                                                      Fig.2.8
+
+                                               Exercise 2.3
+
+1. Represent the following irrational numbers on the number line.
+
+                        (i) 3        (ii) 4.7  (iii) 6.5
+
+2. Find any two irrational numbers between
+
+                        (i) 0.3010011000111.... and 0.3020020002....  (ii)     6  and            12  (iii) 2 and 3
+                                                                               7                 13
+
+3. Find any two rational numbers between 2.2360679..... and 2.236505500....
+
+2.4 Real Numbers
+
+      The real numbers consist of all the rational numbers and all the irrational numbers.
+      Real numbers can be thought of as points on an infinitely long number line called the
+real line, where the points corresponding to integers are equally spaced.
+
+                                               Real Numbers
+
+                                     Rational                                                        Irrational
+                                     Numbers                                                         Numbers
+
+                        Terminating            Non-terminating                                   Non-terminating
+                                                and Recurring                                    and non-recurring
+
+                                                                                                            Real Numbers 55
+
+2-Real Numbers.indd 55                                                                                           12/16/2024 3:25:03 PM
+      Any real number can be determined by a possibly infinite decimal representation, (as we
+have already seen decimal representation of the rational numbers and the irrational numbers).
+
+2.4.1 The Real Number Line
+      Visualisation through Successive Magnification.
+      We can visualise the representation of numbers on the number line, as if we glimpse
+
+through a magnifying glass.
+
+    Example 2.14
+                         Represent 4.863 on the number line.
+
+Solution
+      4.863 lies between 4 and 5(see Fig. 2.9)
+      (i) Divide the distance between 4 and 5 into 10 equal intervals.
+      (ii) Mark the point 4.8 which is second from the left of 5 and eighth from the right of 4
+      (iii) 4.86 lies between 4.8 and 4.9. Divide the distance into 10 equal intervals.
+      (iv) Mark the point 4.86 which is fourth from the left of 4.9 and sixth from the right of 4.8
+      (v) 4.863 lies between 4.86 and 4.87. Divide the distance into 10 equal intervals.
+      (vi)Mark point 4.863 which is seventh from the left of 4.87 and third from the right of
+             4.86.
+
+                        -3 -2 -1 0  1  2  3  4  5  6  7
+
+                        4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0
+
+                        4.80 4.81 4.82 4.83 4.84 4.85 4.86 4.87 4.88 4.89 4.90
+
+                        4.860 4.861 4.862 4.863 4.864 4.865 4.866 4.867 4.868 4.869 4.870
+
+Example 2.15                                       Fig. 2.9
+                   
+                             Represent 3.45 on the number line upto 4 decimal places.
+
+Solution
+      3.45 = 3.45454545.....
+
+56 9th Standard Mathematics
+
+2-Real Numbers.indd 56                                                                     12/16/2024 3:25:04 PM
+ = 3.4545 ( correct to 4 decimal places).
+      The number lies between 3 and 4
+
+                        -4 -3 -2 -1 0  1  2  3                4  5  6
+
+                        3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0
+
+                        3.40 3.41 3.42 3.43 3.44 3.45 3.46 3.47 3.48 3.49 3.50
+
+                        3.450 3.451 3.452 3.453 3.454 3.455 3.456 3.457 3.458 3.459 3.460
+
+                        3.4540 3.4541 3.4542 3.4543 3.4544 3.4545 3.4546 3.4547 3.4548 3.4549 3.4550
+                                                                         Fig. 2.10
+
+                                            Exercise 2.4
+
+1. Represent the following numbers on the number line.
+     (i) 5.348 (ii) 6.4 upto 3 decimal places. (iii) 4.73 upto 4 decimal places.
+
+2.5 Radical Notation                                                Note
+
+      Let n be a positive integer and r be a real number. If    It is worth spending some
+rn = x, then r is called the nth root of x and we write        time on the concepts of the
+ n x = r                                                        `square root' and the `cube
+                                                              root', for better understanding
+      The symbol n (read as nth root) is called a radical;
+n is the index of the radical (hitherto we named it as                     of surds.
+exponent); and x is called the radicand.
+
+                                                                                           Real Numbers 57
+
+2-Real Numbers.indd 57                                                                                12/16/2024 3:25:04 PM
+      What happens when n = 2? Then we get r 2 = x, so that r is 2 x , our good old friend,
+the square root of x. Thus 2 16 is written as 16 , and when n =3, we get the cube root of x,
+namely 3 x . For example, 3 8 is cube root of 8, giving 2. (Is not 8 = 23?)
+
+                        How many square roots are there for 4? Since (+2)×(+2)
+
+= 4 and also (­2)×(­2) = 4, we can say that both +2 and ­2 are Thinking Corner
+
+square roots of 4. But it is incorrect to write that 4 = ± 2 .                                            Which one of the
+                                                                                                          following is false?
+This is because, when n is even, it is an accepted convention to
+reserve the symbol n x for the positive nth root and to denote                                            (1) The square root of
+the negative nth root by ­ n x . Therefore we need to write                                                    9 is 3 or ­3.
+
+  4 = 2 and - 4 =- 2.                                                                                     (2) 9 = 3
+      When n is odd, for any value of x, there is exactly one real                                        (3) - 9 = - 3
+
+nth root. For example, 3 8 = 2 and 5 -32 =- 2.
+
+2.5.1 Fractional Index                                                                                    (4) 9 = ± 3
+
+                        Consider again results of the form r = n x .
+
+                        In the adjacent notation, the index of the radical (namely Root Index Radical Symbol
+
+n which is 3 here) tells you how many times the answer (that                                              3 64 = 4
+is 4) must be multiplied with itself to yield the radicand.
+
+                        To express the powers and roots, there is one more way Radicand Number
+
+of representation. It involves the use of fractional indices.
+
+                                                                                                    1
+
+                                           We write n x as x n .
+
+                        With this notation, for example
+
+                                                         1                                             1
+
+                                         3 64 is 643 and 25 is 252 .
+
+Observe in the following table just some representative patterns arising out of this new acquaintance:
+
+                        Power    Radical Notation Index Notation                                          Read as
+
+                        26 = 64  2 = 6 64                                 1                               2 is the 6th root of 64
+
+                                                            2 = 646
+
+                        25 = 32  2 = 5 32                                 1                               2 is the 5th root of 32
+
+                                                            2 = 325
+
+                        24 = 16  2 = 4 16                                1                                2 is the 4th root of 16
+
+                                                            2 = 164
+
+                        23 = 8   2= 3 8                                1                                  2 is the cube root of 8
+                                                                                                          meaning 2 is the 3rd root of 8
+                                                            2 = 83
+
+                        22 = 4   2 = 2 4 or simply                     1                                  2 is the square root of 4
+                                       2= 4                                                               meaning 2 is the 2nd root of 4
+                                                            2 = 42
+
+58 9th Standard Mathematics
+
+2-Real Numbers.indd 58                                                                                                                    12/16/2024 3:25:06 PM
+    Example 2.16                            Express the following in the form 2n :
+
+ (i) 8                                      (ii) 32            (iii) 1         (iv) 2 (v) 8 .
+Solution                                                             4
+
+                        (i) 8 = 2×2×2; therefore 8 = 23
+
+                        (ii) 32 = 2×2×2×2×2 = 25 (iii)                                        1 = 1 = 1 = 2-2
+                        (iv) 2 = 21/2                                                         4 2×2 22
+
+                        (v)      8=     2×     2×     2     = 221 3                                                      3
+
+                                                                        which may be written as 22
+
+                     m
+
+Meaning of x n , (where m and n are Positive Integers)
+                                m
+     We interpret x n either as the nth root of the mth power of x or as the mth power of
+
+the nth root of x.                      m
+
+                                                         1        1
+
+                        In= symbols, x n (x= m )n or (x n )m n x m or (n x )m
+
+Example 2.17                                                                5         -2
+
+                                            Find the value of (i) 814 (ii) 64 3
+
+Solution                         ( ) 5      5  = 4 34 5 = 35 = 3× 3× 3× 3× 3 = 243
+       (i)                      814 = 4 81
+      (ii)
+                                    -2  1      ( ) =    1         =     1   (How?) = 1
+                                                                        42                16
+                                64 3 =      2                  2
+
+                                        64 3          3 64
+
+                                                                        Exercise 2.5
+
+1. Write the following in the form of 5n:
+
+                        (i) 625                  1                      (iii) 5               (iv) 125
+                                            (ii)
+
+                                                 5
+
+2. Write the following in the form of 4n:
+
+                        (i) 16              (ii) 8                      (iii) 32
+
+3. Find the value of                                                              -3                            -2
+
+                                 1                          2           (iii) 9 2             (vi) 16245 3
+
+                        (i) (49)2           (ii) (243)5
+
+4. Use a fractional index to write:                                       ( )5                                                      7
+
+                        (i) 5               (ii) 2 7                    (iii) 3 49            (iv)                          3  1
+                                                                                                                               100
+
+                                                                                                                                    Real Numbers 59
+
+2-Real Numbers.indd 59                                                                                                                 12/16/2024 3:25:07 PM
+5. Find the 5th root of
+
+       (i) 32               (ii) 243    (iii) 100000              1024
+                                                             (iv)
+2.6 Surds
+                                                                  3125
+
+      Having familiarized with the concept of Real numbers, representing them on the
+number line and manipulating them, we now learn about surds, a distinctive way of
+representing certain approximate values.
+
+                        Can you simplify 4 and remove the symbol? Yes; one can replace 4 by the
+
+number 2. How about 1 ? It is easy; without symbol, the answer is 1 . What about
+                             9                                          3
+
+0.01 ?. This is also easy and the solution is 0.1
+    In the cases of 4 , 1 and 0.01 , you can resolve to get a solution and make sure
+                               9
+
+that the symbol is not seen in your solution. Is this possible at all times?
+
+      Consider 18 . Can you evaluate it and also remove the radical symbol? Surds are
+unresolved radicals, such as square root of 2, cube root of 5, etc.
+
+      They are irrational roots of equations with rational coefficients.
+
+A surd is an irrational root of a rational number. n a is a surd, provided n  , n ! 1 , `a'
+
+is rational.
+
+      Examples : 2 is a surd. It is an irrational root of the equation x2 = 2. (Note that
+x2 ­ 2 = 0 is an equation with rational coefficients. 2 is irrational and may be shown as
+
+1.4142135... a non-recurring, non-terminating decimal).
+
+                                                           1
+
+       3 3 (which is same as 33 ) is a surd since it is an irrational root of the equation
+
+x3 ­ 3 = 0. ( 3 is irrational and may be shown as 1.7320508... a non-recurring,
+non-terminating decimal).
+
+      You will learn solving (quadratic) equations like x2 ­ 6x + 7 = 0 in your next class. This
+
+is an equation with rational coefficients and one of its roots is 3 + 2 , which is a surd.
+
+                        Is 1 a surd? No; it can be simplified and written as rational number 1 . How about
+                        25                                                    5
+
+4 16 ? It is not a surd because it can be simplified as 2 .
+81                                                    3
+
+                        The famous irrational number p is not a surd! Though it is irrational, it cannot be
+
+expressed as a rational number under the symbol. (In other words, it is not a root of any
+
+equation with rational co-efficients).
+
+60 9th Standard Mathematics
+
+2-Real Numbers.indd 60                                                           12/16/2024 3:25:08 PM
+    Why surds are important? For calculation purposes we assume approximate value as
+2 = 1.414 , 3 = 1.732 and so on.
+
+( ) ( )  2 2 = (1.414)2 = 1.99936  2 ;         3 2 = (1.732)2 = 3.999824  3
+
+      Hence, we observe that 2 and 3 represent the more accurate and precise values than
+their assumed values. Engineers and scientists need more accurate values while constructing
+the bridges and for architectural works. Thus it becomes essential to learn surds.
+
+                               Progress Check
+
+                        1. Which is the odd one out? Justify your answer.
+                              (i) 36 , 50 , 1 , 1.44 , 5 32 , 120
+                                              98
+                             (ii) 7 , 48, 3 36, 5 + 3, 1.21, 1
+                                                                                      10
+
+                        2. Are all surds irrational numbers? - Discuss with your answer.
+                        3. Are all irrational numbers surds? Verify with some examples.
+
+2.6.1 Order of a Surd
+      The order of a surd is the index of the root to be extracted. The order of the surd n a
+
+is n. What is the order of 5 99 ? It is 5.
+
+Surds can be classified in different ways:
+
+(i) Surds of same order : Surds of same order are surds for which the index of the root to
+
+be extracted is same. (They are also called equiradical surds).
+
+For example,                        3
+
+                          x , a 2, 2 m are all 2nd order (called quadratic) surds .
+
+                                            1
+
+                          3 5, 3 (x - 2), (ab)3 are all 3rd order (called cubic) surds.
+
+                                            2
+
+                          3, 3 10, 4 6 and 85 are surds of different order.
+
+(ii) S implest form of a surd : A surd is said to be in simplest form, when it is expressed
+     as the product of a rational factor and an irrational factor. In this form the surd has
+
+(a) the smallest possible index of the radical sign.
+ (b) no fraction under the radical sign.
+ (c) no factor is of the form an, where a is a positive integer under index n.
+
+                                                                                          Real Numbers 61
+
+2-Real Numbers.indd 61                                                                    12/16/2024 3:25:09 PM
+Example 2.18  Can you reduce the following numbers to surds of same order :
+
+(i) 3                      (ii) 4 3               (iii) 3 3
+
+Solution
+
+                           1                         1                         1
+
+                        (i) 3 = 32                (ii) 4 3 = 34     (iii) 3 3 = 33
+
+                           6                                     3             4
+
+                        = 312 = 312  = 312
+
+                        =  12 36                  =  12 3                      = 12 34
+
+                                                        3
+
+                        = 12 729 = 12 27  = 12 81
+
+                        The last row has surds of same order.
+
+Example 2.19
+
+      1. Express the surds in the simplest form: i) 8               ii) 3 192
+      2. Show that 3 7 > 4 5 .
+Solution
+      1. (i) 8 = 4×2 = 2 2
+
+ (ii) 3 192 = 3 4 × 4 × 4 × 3 = 4 3 3
+
+                        2. 3 7 = 12 74 = 12 2401
+
+                        1           3
+
+4 5 = 54 = 512 = 12 53 = 12 125
+
+12 2401 > 12 125
+
+ Therefore, 3 7 > 4 5 .
+
+(iii)Pure and Mixed Surds : A surd is called a pure surd if its coefficient in its simplest form
+     is 1. For example, 3 , 3 6 , 4 7 , 5 49 are pure surds. A surd is called a mixed surd if
+     its co-efficient in its simplest form is other than 1. For example, 5 3 , 2 4 5 , 3 4 6 are
+     mixed surds.
+
+(iv)Simple and Compound Surds : A surd with a single term is said to be a simple surd.
+
+                        For example, 3 , 2 5 are simple surds. The algebraic sum of two (or more) surds is
+
+                        called a compound surd. For example,        5 + 3 2, 3 -2 7, 5 - 7 2 + 6 3 are
+                        compound surds.
+
+62 9th Standard Mathematics
+
+2-Real Numbers.indd 62                                                                  12/16/2024 3:25:11 PM
+(v)Binomial Surd : A binomial surd is an algebraic sum (or difference) of 2 terms both of
+      which could be surds or one could be a rational number and another a surd. For
+
+                        example,   1-        19, 5 + 3    2,     3 -2  7 are binomial surds.
+                                   2
+
+    Example 2.20 Arrange in ascending order: 3 2, 2 4, 4 3
+
+Solution
+      The order of the surds 3 2, 2 4 and 4 3 are 3, 2, 4.
+
+                        L.C.M. of 3, 2, 4 = 12.
+
+                               32  =   2  1    =  2142    =  12  24  = 12 16  ;  2 4 = 421  = 4162  = 12 46 = 12 4096
+                                          3
+
+                               43  =   3  1    =  3132    =  12  33  = 12 27
+                                          4
+
+                        The ascending order of the surds 3 2, 4 3, 2 4 is 12 16 < 12 27 < 12 4096
+
+that is, 3 2 , 4 3 , 2 4 .
+
+2.6.2 Laws of Radicals
+
+      For positive integers m, n and positive rational numbers a and b, it is worth remembering
+the following properties of radicals:
+
+                        S.No.          Radical Notation                                  Index Notation
+
+                        ( ) 1.     n a n = a = n an                    ( )1 n               1
+
+                                                                       a n = a = (an )n
+
+                        2. n a × n b = n ab                            11                1
+
+                                                                       a n ×bn =(ab)n
+
+                        3.     m n a = mn a = n m a                           1                1
+
+                                                                       ( ) ( ) 1 m    1     1n
+
+                                                                       a n =a mn = a m
+
+                        4.         na =na                              1         1
+
+                                   nb          b                       an     = ab n
+
+                                                                         1
+
+                                                                       bn
+
+We shall now discuss certain problems which require the laws of radicals for simplifying.
+
+    Example 2.21 Express each of the following surds in its simplest form (i) 3 108
+
+(ii) 3 (1024)-2 and find its order, radicand and coefficient.
+
+                                                                                                                          Real Numbers 63
+
+2-Real Numbers.indd 63                                                                                                 12/16/2024 3:25:12 PM
+Solution                   3 108 = 3 27 × 4                                                                    2 108
+      (i)                                                                                                      2 54
+                                                                                                               3 27
+ = 3 33 × 4                                                                                                    39
+                                                                                                               33
+ = 3 33 × 3 4 (Laws of radicals - ii)
+                                                                                                                      1
+ = 3× 3 4 ( Laws of radicals- i)
+
+order = 3; radicand = 4; coefficient = 3
+
+                                 -2                                -2                                          2  1024
+                        ( ) ( ) (ii)         23  ×23    ×23                                                    2   512
+                        3  1024      =    3                   ×2                                               2   256
+                                                                                                               2   128
+                                                                                                               2    64
+                                                                                                               2    32
+               ( )                                                 -2                                          2    16
+                                                                   
+ =  3                                                              
+                                             23 ×23 ×23 ×2                 [Laws of radicals - (i)]
+
+ =  3 23                                                                      -2
+                                                                            
+                                             × 3 23     × 3 23     ×  3  2        [Laws  of  radicals ­ (ii)]
+
+                                                                            
+
+ = 2×2                                           ×  2×  3  2  -2   [Laws      of  radicals  ­  (i)]            28
+                                                                                                               24
+                                                                              2                                22
+ = 8 ×                                       3   2  -2  =    1  2  ×  1
+                                                                      32                                               1
+                                                            8 
+
+ = 1 3 1
+                              64 4
+
+                        order = 3 ; radicand = 1 ; coefficient = 1
+                                             4                              64
+
+                        (These results can also be obtained using index notation).
+
+ Not e 
+
+Consider the numbers 5 and 6. As 5 = 25 and 6 = 36
+
+Therefore, 26, 27, 28, 29, 30, 31, 32, 33, 34, and 35 are surds
+between 5 and 6.
+Consider 3 2 = 32 ×2 = 18 , 2 3 = 22 × 3 = 12
+Therefore, 17, 15, 14, 13 are surds between 2 3 and 3 2 .
+
+2.6.3 Four Basic Operations on Surds
+         (i) Addition and subtraction of surds : Like surds can be added and subtracted
+              using the following rules:
+
+a n b ± cn b = (a ± c)n b, where b > 0.
+
+ 64 9th Standard Mathematics
+
+2-Real Numbers.indd 64                                                                                                    12/16/2024 3:25:14 PM
+    Example 2.22 (i) Add 3 7 and 5 7 . Check whether the sum is rational or
+irrational. (ii) Subtract 4 5 from 7 5 . Is the answer rational or irrational?
+Solution
+
+         (i) 3 7 + 5 7 = (3 + 5) 7 = 8 7 . The answer is irrational.
+        (ii) 7 5 - 4 5 = (7 - 4) 5 = 3 5 . The answer is irrational.
+
+Example 2.23 Simplify the following:
+
+      (i) 63 - 175 +    28                         (ii) 23 40 + 33 625 - 4 3 320
+Solution                28 =                       9×7 - 25×7 + 4 ×7
+
+      (i) 63 - 175 +
+
+= 3 7 - 5 7 + 2 7
+
+( ) = 3 7 + 2 7 - 5 7
+
+= 5 7 - 5 7
+= 0
+
+      (ii) 2 3 40 + 3 3 625 - 4 3 320
+ = 2 3 8 ×5 + 3 3 125×5 - 4 3 64 ×5
+
+ = 2 3 23 ×5 + 3 3 53 ×5 - 4 3 43 ×5
+
+ = 2 × 2 3 5 + 3 × 5 3 5 - 4 × 4 3 5
+
+ = 4 3 5 + 15 3 5 - 16 3 5
+
+ = (4 + 15 - 16)3 5 = 3 3 5
+
+(ii) Multiplication and division of surds
+
+                        Like surds can be multiplied or divided by using the following rules:
+
+                        Multiplication property of surds  Division property of surds
+
+                        (i) n a × n b = n ab              (iii) n a = n a
+                                                          nb                      b
+                        (ii) a n b ×cn d = acn bd
+                             where b,d > 0                (iv) a n b = a n b where b,d > 0
+                                                                cn d c d
+
+                                                                                               Real Numbers 65
+
+2-Real Numbers.indd 65                                                                         12/16/2024 3:25:16 PM
+Example 2.24
+
+Multiply 3 40 and 3 16 .
+
+Solution
+
+                               ( ) ( ) 3 40 × 3 16 = 3 2×2×2×5 × 3 2×2×2×2                      4×3 2×5
+                                        ( ) ( ) ( ) = 2× 3 5 × 2× 3 2 = 4× 3 2 × 3 5 =
+
+                                               = 4 3 10
+
+Example 2.25
+
+Compute and give the answer in the simplest form: 2 72 ´5 32 ´ 3 50
+
+Solution                    ( ) ( ) ( ) 32 × 3 50 = 2×6 2 × 5×4 2 × 3×5 2                   Let us simplify:
+2 72 ×5                                                                                       72 = 36×2 = 6 2
+                                              = 2×5×3×6×4×5× 2× 2× 2                          32 = 16×2 = 4 2
+                                              = 3600×2 2                                      50 = 25×2 = 5 2
+                                              = 7200 2
+
+Example 2.26
+
+Divide 9 8 by 6 6 .
+
+Solution
+
+                               1
+
+                        98  =  89      (Note that 18 is the LCM of 6 and 9)
+                        66
+                                 1
+
+                               66
+
+                                    2
+
+=                              818     (How?)
+
+                                  3
+
+                               618     1
+
+                                 82    18                                 1
+                                 63
+                            =              (How    ?)   =     6  8×8   6  18              Activity - 1
+                                                                 ×6×            Is it interesting to see this pattern ?
+
+                                  1                     1           1           4 4 = 4 4 and 5 5 = 5 5
+
+= 287 18                                        2  3    18       2  6        2
+                                                3                3           3
+                                           =                =          =  6     15      15  24  24
+                                                      
+
+                                                                                Verify it. Can you frame 4 such new
+
+                                                                                surds?
+
+66 9th Standard Mathematics
+
+2-Real Numbers.indd 66                                                                                                   12/16/2024 3:25:17 PM
+                              Activity - 2
+
+Take a graph sheet and mark O, A, B, C as follows.
+
+                               Y                              In the square OABC,
+                        2                                         OA = AB = BC = OC = 1unit
+
+                        1.5                                   Consider right angled DOAC
+                                                                   AC = 12 + 12
+                        1     A          B
+                                                                        = 2 unit [By Pythagoras theorem]
+                                     2
+                                                      2X
+                        0.5
+                                                              The length of the diagonal (hypotenuse)
+                              C                                    AC = 2 , which is a surd.
+X -0.5 O 0.5 1 1.5
+
+                        -0.5
+
+                              Y
+
+Consider the following graphs:
+
+                                 Y                                                    Y
+                                                                               3C
+                        3C                                         B           2.5                                        B
+                                                                               2
+                                      2                                  3 1.5                    18
+                                                                               1
+                        2.5                                                    0.5                                       A
+                                                                                         1 1.5 2 2.5 3 X
+                                              E                       X -0.5O 0.5
+                        2                                                      -0.5             3
+
+                                                   2
+
+                        1.5
+
+                                                             D
+                        1
+
+                        0.5                                     2
+
+                                                              A
+X -0.5O 0.5 1 1.5 2 2.5 3 X
+
+          -0.5
+
+                                 Y                                    Y
+
+Let us try to find the length of AC in two different ways :
+
+  AC = AD + DE + EC                                                   AC = OA2 +OC 2 = 32 + 32
+(diagonals of units squares)                                                = 9+9
+
+          = 2+ 2+ 2                                                   AC = 18 units
+    AC = 3 2 units
+
+      Are they equal? Discuss. Can you verify the same by taking different squares of different
+lengths?
+
+                                                                                         Real Numbers 67
+
+2-Real Numbers.indd 67                                                                                                       12/16/2024 3:25:17 PM
+                                                         Exercise 2.6
+
+1. Simplify the following using addition and subtraction properties of surds:
+    (i) 5 3 + 18 3 - 2 3 (ii) 4 3 5 + 23 5 - 33 5
+
+    (iii) 3 75 + 5 48 - 243  (iv) 53 40 + 23 625 - 33 320
+
+2. Simplify the following using multiplication and division properties of surds:
+
+                        (i) 3 ´ 5 ´ 2                    (ii) 35 ¸ 7          (iii) 3 27 ´ 3 8 ´ 3 125
+
+                        ( )( ) (iv) 7 a - 5 b 7 a + 5 b         225 -  25        16
+                                                                729    144       81
+                                                         (v)                  ÷
+                                                                            
+                                                              
+
+3. If 2 = 1.414, 3 = 1.732, 5 = 2.236, 10 = 3.162 , then find the values of the
+      following correct to 3 places of decimals.
+
+                        (i) 40 - 20    (ii) 300 + 90 - 8
+
+4. Arrange surds in descending order : (i) 3 5, 9 4, 6 3 (ii) 2 3 5, 3 4 7 , 3
+5. Can you get a pure surd when you find
+
+     (i) the sum of two surds (ii) the difference of two surds
+     (iii) the product of two surds (iv) the quotient of two surds
+    Justify each answer with an example.
+
+6. Can you get a rational number when you compute
+     (i) the sum of two surds (ii) the difference of two surds
+     (iii) the product of two surds (iv) the quotient of two surds
+    Justify each answer with an example.
+
+2.7 Rationalisation of Surds
+
+      Rationalising factor is a term with which a term is multiplied or divided to make the
+whole term rational.
+
+Examples:
+         (i) 3 is a rationalising factor of 3 (since 3 × 3 = the rational number 3)
+
+        (ii) 7 54 is a rationalising factor of 7 53 (since their product = 7 57 = 5 , a rational)
+
+  Thinking Corner
+  1. In the example (i) above, can 12 also be a rationalising factor? Can you think of
+
+      any other number as a rationalising factor for 3 ?
+  2. Can you think of any other number as a rationalising factor for 7 53 in example (ii) ?
+  3. If there can be many rationalising factors for an expression containing a surd, is there
+
+      any advantage in choosing the smallest among them for manipulation?
+
+ 68 9th Standard Mathematics
+
+2-Real Numbers.indd 68                                                               12/16/2024 3:25:19 PM
+                        Progress Check
+
+      Identify a rationalising factor for each one of the following surds and verify the
+same in each case:
+
+                        (i) 18     (ii) 5 12                (iii) 3 49         (iv) 1
+                                                                                      8
+
+2.7.1 Conjugate Surds
+      Can you guess a rationalising factor for 3 + 2 ? This surd has one rational part and
+
+one radical part. In such cases, the rationalising factor has an interesting form.
+
+                        A rationalising factor for 3 + 2 is 3 - 2 . You can very easily check this.
+
+                        ( )( ) ( ) 3 + 2 3 - 2 = 32 -    2
+
+                                                     2
+
+                                        = 9-2
+
+                                        = 7, a rational.
+
+                        What is the rationalising factor for a + b where a and b are rational numbers? Is it
+
+a - b ? Check it. What could be the rationalising factor for a + b where a and b are
+
+rational numbers? Is it a - b ? Or, is it - a + b ? Investigate.
+
+      Surds like a + b and a - b are called conjugate surds. What is the conjugate of
+  b +a ? It is - b +a . You would have perhaps noted by now that a conjugate is usually
+obtained by changing the sign in front of the surd!
+
+    Example 2.27                   Rationalise the denominator of (i) 7                  (ii) 5 + 3
+Solution                                                                         14           5- 3
+
+                        (i) Multiply both numerator and denominator by the rationalising factor 14 .
+
+ 7 = 7 × 14 = 7 14 = 14
+                        14 14 14 14                         2
+
+                        (( )) (( )) ( ( )) (ii)                          2
+
+                        5+ 3       5+ 3 5+ 3                       5+ 3
+                        5- 3
+                                =           ×               =               2
+
+                                   5- 3 5+ 3                   52 -     3
+
+                                   ( ) 52 +    2
+
+                                           3 +2×5× 3
+
+                                =           25 - 3
+
+ = 25 + 3 + 10 3 = 28 + 10 3 = 2×[14 + 5 3]
+                                        22                     22                    22
+
+ = 14 + 5 3
+                                 11
+
+                                                                                         Real Numbers 69
+
+2-Real Numbers.indd 69                                                                                12/16/2024 3:25:20 PM
+                                                                    Exercise 2.7
+
+1. Rationalise the denominator
+
+                             1                          5                      (iii)  75   (iv)  35
+                        (i)                       (ii)
+                                                                                      18         6
+                              50                      35
+
+2. Rationalise the denominator and simplify
+
+                        (i)     48 + 32      (ii)                                         5 3+ 2
+
+                                27 - 18                                                     3+ 2
+
+                        (iii)  2 6- 5        (iv)                                             5- 5
+                                                                                            6 +2 6 -2
+                               3 5 -2 6
+
+3. Find the value of a and b if 7 - 2 = a 7 + b
+                                          7 +2
+
+4.                      If x =    5  +  2,  then  find  the  value  of  x2  +  1
+                                                                               x2
+
+5. Given 2 = 1.414 , find the value of                                  8-5 2         (to 3 places of decimals).
+
+                                                                        3-2 2
+
+2.8 Scientific Notation
+
+                        Suppose you are told that the diameter
+
+of the Sun is 13,92,000 km and that of the
+
+Earth is 12,740 km, it would seem to be a
+
+daunting task to compare them. In contrast, if
+13,92,000 is written as 1.392 ×106 and 12,740
+
+as 1.274×104, one will feel comfortable. This
+
+sort of representation is known as scientific notation.
+
+                               1.392 × 106        14 ×102           108.
+                        Since 1.274×104           13
+
+      You can imagine 108 Earths could line up across the face of the sun.
+      Scientific notation is a way of representing numbers that are too large or too small, to be
+conveniently written in decimal form. It allows the numbers to be easily recorded and handled.
+
+2.8.1 Writing a Decimal Number in Scientific Notation
+      Here are steps to help you to represent a number in scientific form:
+         (i) Move the decimal point so that there is only one non-zero digit to its left.
+        (ii) Count the number of digits between the old and new decimal point. This gives
+              `n', the power of 10.
+
+ 70 9th Standard Mathematics
+
+2-Real Numbers.indd 70                                                                                            12/16/2024 3:25:21 PM
+   (iii) If the decimal is shifted to the left, the exponent n is positive. If the decimal is
+         shifted to the right, the exponent n is negative.
+
+Expressing a number N in the form of N = a ×10n where, 1  a < 10 and `n' is an
+                           integer is called as Scientific Notation.
+
+                        The following table of base 10 examples may make things clearer:
+
+                        Decimal notation         Scientific          Decimal notation     Scientific
+                                                  notation                                notation
+                        100                     1 × 102            0.01                1 × 10-2
+                        1,000                   1 × 103            0.001               1 × 10-3
+                        10,000                  1 × 104            0.0001              1 × 10-4
+                        1,00,000                1 × 105            0.00001             1 × 10-5
+                        10,00,000               1 × 106            0.000001            1 × 10-6
+                        1,00,00,000             1 × 107            0.0000001           1 × 10-7
+
+                        Let us look into few more examples.
+
+    Example 2.28                 Express in scientific notation (i) 9768854 (ii) 0.04567891
+
+(iii) 72006865.48
+Solution
+
+(i) 9 7                          6              8               8     5 4 . 0 = 9.768854 ´106
+
+                           6              5     4               3     2  1
+
+ The decimal point is to be moved six places to the left. Therefore n = 6.
+
+(ii)0 . 0                                 45                 6        7 8 9 1 = 4.567891×10-2
+
+
+
+                           1                 2
+
+ The decimal point is to be moved two places to the right. Therefore n = -2 .
+
+(iii) 7 2                     0 0 6 8 6 5 . 4 8 = 7.200686548 ×107
+
+                        7     6              5  4            3     2     1
+
+                        The decimal point is to be moved seven places to the left. Therefore n = 7 .
+
+2.8.2 Converting Scientific Notation to Decimal Form
+      The reverse process of converting a number in scientific notation to the decimal form
+
+is easily done when the following steps are followed:
+         (i) Write the decimal number.
+
+                                                                                          Real Numbers 71
+
+2-Real Numbers.indd 71                                                                                12/16/2024 3:25:22 PM
+                        (ii) Move the decimal point by the number of places specified by the power of 10, to
+                              the right if positive, or to the left if negative. Add zeros if necessary.
+
+                        (iii) Rewrite the number in decimal form.
+
+Example 2.29 Write the following numbers in decimal form:
+ (i) 6.34 ´104 (ii) 2.00367 ×10-5
+
+Solution
+(i)V 6.34 ´104
+
+Þ 6 . 3                                           4 0 0 = 63400
+
+                                                  2     3  4
+ 1
+
+(ii) 2.00367 ×10-5
+
+                        00  0  0                     0 2 .00367
+
+ 5                          4  3                     2     1
+
+= 0.0000200367
+
+2.8.3 Arithmetic of Numbers in Scientific Notation
+         (i) If the indices in the scientific notation of two numbers are the same, addition (or
+              subtraction) is easily performed.
+
+Example 2.30 The mass of the Earth is 5.97×1024 kg and that of the Moon is
+
+0.073 ×1024 kg. What is their total mass?
+Solution
+
+                        Total mass = 5.97×1024 kg + 0.073 ×1024 kg
+
+                            = (5.97 + 0.073) ×1024 kg
+
+                            = 6.043 ×1024 kg
+
+                        (ii) The product or quotient of numbers in scientific notation can be easily done if
+                             we make use of the laws of radicals appropriately.
+
+Example 2.31 Write the following in scientific notation :
+
+                        (i) (50000000)4                    (ii) (0.00000005)3
+
+                        (iii) (300000)3 ×(2000)4           (iv) (4000000)3 ÷ (0.00002)4
+
+72 9th Standard Mathematics
+
+2-Real Numbers.indd 72                                                                   12/16/2024 3:25:22 PM
+Solution
+
+( ) (i) (50000000)4 = 5.0×107 4                                                                   3  5.0×10-8 3
+
+                                                                           0.00000005 =
+                                                                           ( ) ( ) (ii)
+
+                                  ( ) = (5.0)4 × 107 4                                 ( ) ( ) = 5.0 3 × 10-8 3
+
+                                  = 625.0×1028                                         = (125.0)×(10)-24
+
+                                  = 6.25×102×1028                                      = 1.25×102 ×10-24
+
+                                  = 6.25×1030                                          = 1.25×10-22
+
+(iii) (300000)3 ×(2000)4                                                   (iv) (4000000)3 ÷ (0.00002)4
+
+                        ( ) ( ) = 3                 4                                  3             2.0×10-5 4
+                        3.0 ×105          2.0 ×103
+                                   ×                                                    ÷
+                                                                           ( ) ( ) =
+                                                                           4.0 ×106
+
+                        ( ) ( ) = (3.0)3 × 105 3 ×(2.0)4 × 103 4                  3        3            2.0 4 × 10-5  4
+                        ( ) ( ) = (27.0)× 1015 ×(16.0)× 1012               ( ) ( ) ( ) ( ) =106
+                        ( ) ( ) ( ) ( ) = 2.7×101 × 1015 × 1.6×101 × 1012  4.0     ×                 ÷
+
+                        = 2.7 ×1.6×101 ×1015 ×101 ×1012                    = 64.0×1018
+                                                                              16.0 ×10-20
+
+                                                                           = 4 ×1018 ×10+20
+
+                        = 4.32×101+15+1+12 = 4.32×1029                     = 4.0×1038
+
+Thinking Corner
+
+         1. Write two numbers in scientific notation whose product is 2. 83104.
+         2. Write two numbers in scientific notation whose quotient is 2. 83104.
+
+                                                         Exercise 2.8
+
+1. Represent the following numbers in the scientific notation:
+
+                        (i) 569430000000                 (ii) 2000.57
+
+                        (iii) 0.0000006000               (iv) 0.0009000002
+
+2. Write the following numbers in decimal form:
+
+                        (i) 3.459´106                    (ii) 5.678 ´104
+
+                        (iii) 1.00005×10-5               (iv) 2.530009×10-7
+
+3. Represent the following numbers in scientific notation:
+
+                        (i) (300000)2 ×(20000)4          (ii) (0.000001)11 ÷ (0.005)3
+
+                        { } { } (iii) (0.00003)6 ×(0.00005)4 ÷ (0.009)3 ×(0.05)2
+
+                                                                                                        Real Numbers 73
+
+2-Real Numbers.indd 73                                                                                                12/16/2024 3:25:24 PM
+4. Represent the following information in scientific notation:
+     (i) The world population is nearly 7000,000,000.
+     (ii) One light year means the distance 9460528400000000 km.
+     (iii) Mass of an electron is 0.000 000 000 000 000 000 000 000 000 00091093822 kg.
+
+5. Simplify:                                              (ii) (1.598×1017) ­ (4.58 ×1015)
+                                                          (iv) (8.41 × 104) ' (4.3 × 105)
+     (i) (2.75 × 107) + (1.23 × 108)
+     (iii) (1.02 × 1010) × (1.20 × 10­3)
+
+                        Activity - 3
+
+The following list shows the mean distance of the planets of the solar system from the
+Sun. Complete the following table. Then arrange in order of magnitude starting with the
+distance of the planet closest to the Sun.
+
+                             Planet                        Decimal form  Scientific Notation
+                                                               (in Km)         (in Km)
+                        Jupiter
+                                                          58000000        7.78´ 108
+                        Mercury                                           2.28´ 108
+                        Mars                              2870000000
+                                                          108000000       1.5´ 108
+                        Uranus                            4500000000      1.43´ 108
+                        Venus
+                        Neptune
+                        Earth
+
+                        Saturn
+
+                                                          Exercise 2.9
+
+                        Multiple Choice Questions
+
+1. If n is a natural number then n is
+
+                        (1) always a natural number.      (2) always an irrational number.
+
+                        (3) always a rational number      (4) may be rational or irrational
+
+2. Which of the following is not true?.
+
+                        (1) Every rational number is a real number. (2) Every integer is a rational number.
+
+                        (3) Every real number is an irrational number. (4) Every natural number is a whole number.
+
+3. Which one of the following, regarding sum of two irrational numbers, is true?
+
+                        (1) always an irrational number.  (2) may be a rational or an irrational number.
+
+                        (3) always a rational number.     (4) always an integer.
+
+4. Which one of the following has a terminating decimal expansion?.
+
+74 9th Standard Mathematics
+
+2-Real Numbers.indd 74                                                                                       12/16/2024 3:25:25 PM
+                        (1)    5                   (2)  8                 (3)  14       (4)  1
+                               64                       9                      15            12
+
+5. Which one of the following is an irrational number
+
+                        (1) 25                     (2)      9             (3)  7        (4) 
+                                                            4                  11
+
+6. An irrational number between 2 and 2.5 is
+
+                        (1) 11                     (2) 5                  (3) 2.5       (4) 8
+
+7.                      The smallest rational number by which             1  should be multiplied so that its decimal
+                                                                          3
+                        expansion terminates with one place of decimal is
+
+                        (1)    1                   (2)  3                 (3) 3         (4) 30
+                               10                       10
+                            1                                      5
+8.                      If  7  =   0.142857  then  the  value  of  7  is
+
+                        (1) 0.142857               (2) 0.714285           (3) 0.571428  (4) 0.714285
+
+9. Find the odd one out of the following.
+
+                        (1) 32 # 2                 (2)     27             (3) 72 # 8    (4)   54
+                                                           3                                  18
+
+10. 0.34 + 0.34 =
+
+                        (1) 0.687                  (2) 0.68               (3) 0.68      (4) 0.687
+
+11. Which of the following statement is false?
+      (1) The square root of 25 is 5 or -5 (3) 25 = 5
+      (2) - 25 = - 5  (4) 25 = ± 5
+
+12. Which one of the following is not a rational number?
+
+             8                                          7                 (3) 0.01      (4) 13
+       (1)                                         (2)
+
+             18                                         3
+13. 27 + 12 =
+
+                        (1) 39                     (2) 5 6                (3) 5 3       (4) 3 5
+                                                                          (3) 8         (4) 16
+14. If 80 = k 5, then k =
+
+                        (1) 2                      (2) 4
+
+15. 4 7 × 2 3 =                                    (2) 8 21               (3) 8 10      (4) 6 21
+      (1) 6 10
+
+16. When written with a rational denominator, the expression 2 3 can be simplified as
+                                                                                        32
+                               2                         3                      6            2
+                        (1)                        (2)                    (3)           (4)
+
+                              3                         2                      3             3
+
+                                                                                                  Real Numbers 75
+
+2-Real Numbers.indd 75                                                                                12/16/2024 3:25:28 PM
+       ( )2
+
+17. When 2 5 - 2 is simplified, we get
+
+                        (1) 4 5 + 2 2                (2) 22 - 4 10                (3) 8 - 4 10              (4) 2 10 -2
+                                                                                  (3) 102                        106
+                                 -3               -3
+                                                                                       32                   (4) 36
+18. (0.000729) 4 × (0.09) 4 = ______
+                            103
+                        (1)                          (2) 105
+                                                          35
+                             33
+
+19. If 9x = 3 92 , then x = ______
+
+                        (1) 2                        (2) 4                        (3) 1                     (4) 5
+                        3                                3                        3                               3
+
+20.The length and breadth of a rectangular plot are 5×105 and 4×104 metres
+
+                        respectively. Its area is ______.
+
+                        (1) 9×101 m2                 (2) 9×109 m2                 (3) 2×1010 m2             (4) 20×1020 m2
+
+Points to Remember
+
+ When the decimal expansion of                                        p  ,  q!0   terminates     that  is,  comes     to  an      end,  the
+                                                                      q
+
+                        decimal is called a terminating decimal.
+                                                         p
+                        In the decimal expansion of      q  ,  q!  0  when  the   remainder      is  not   zero,  we  have  a  repeating
+
+                        (recurring) block of digits in the quotient. In this case, the decimal expansion is called
+
+                        non-terminating and recurring.
+                                               p                                                         p
+ If a rational number                          q  ,  q!  0  can    be expressed   in     the  form   2m # 5n      ,  where     p  !  Z  and
+
+                        m, n ! W, then the rational number will have a terminating decimals. Otherwise, the
+
+   rational number will have a non-terminating repeating (recurring) decimal.
+ A rational number can be expressed either a terminating or a non- terminating
+
+                        recurring decimal.
+
+ An irrational number is a non-terminating and non-recurring decimal, i.e. it cannot be
+                                         p
+                        written in form  q  ,  where  p  and   q   are      both  integers  and  q!    0.
+
+ The union of all rational numbers and all irrational numbers is called the set of real
+
+   numbers.
+ Every real number is either a rational number or an irratonal number.
+ If a real number is not rational number, then it must be an irrational number.
+ If `a' is a positive rational number, `n' is a positive integer and if n a is an irrational
+
+   number, then n a is called as a surd.
+ If `m', `n' are positive integers and a, b are positive rational numbers, then
+
+( ) (i) n a n = a = n an (ii) n a × n b = n ab (iii) m n a = mn a = n m a (iv) n a = n a
+                                                                                                                          nb            b
+
+ The process of multiplying a surd by another surd to get a rational number is called
+
+   Rationalisation.
+ Expressing a number N in the form of N = a ×10n where, 1  a < 10 and `n' is an
+
+                        integer is called as Scientific Notation.
+
+76 9th Standard Mathematics
+
+2-Real Numbers.indd 76                                                                                                                     12/16/2024 3:25:30 PM
+       ICT Corner-1
+
+                          Expected Result is shown in this picture
+ Step ­ 1
+ Open the Browser and copy and paste the Link given below
+ (or) by typing the URL given (or) Scan the QR Code.
+ Step - 2
+ GeoGebra workbook named "Real Numbers" will open. There are several worksheets in the
+ workbook. Open the worksheet named "Square root spiral ­ 1st part"
+ Step-3
+ Drag the slider named "Steps ". The construction of Square root of numbers 2,3,4,5,.... will
+ appear step by step.
+ Step-4
+ By dragging the slider named "Unit segment" you can enlarge the diagram for more clarity.
+ Now you can draw the same in a paper and measure the values obtained
+
+Browse in the link
+Union of Sets: https://www.ggbm.at/m6GQc6mQ
+
+        ICT Corner-2
+
+                      Expected Result is
+                    shown in this picture
+
+Step ­ 1
+Open the Browser type the URL Link given below
+(or) Scan the QR Code. GeoGebra work sheet
+named "Real Numbers" will open. In the work sheet there are two activities. 1. Rationalising
+the denominator for surds and 2. Law of exponents.
+In the first activity procedure for rationalising the denominator is given. Also, example is given
+under. To change the values of a and b enter the value in the input box given.
+Step - 2
+In the second activity law of exponents is given. Also, example is given on right side. To change
+the value of m and n move the sliders and check the answers.
+
+   Browse in the link
+   Real Numbers: https://ggbm.at/BYEWDpHU or Scan the QR Code.
+
+                                                                                                                        Real Numbers 77
+
+2-Real Numbers.indd 77                                                                         12/16/2024 3:25:30 PM
+                                 aa1x2x++b1by2y++cc1  =0
+                                                       =0
+
+                                                      2
+

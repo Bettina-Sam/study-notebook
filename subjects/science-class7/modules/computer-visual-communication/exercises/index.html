@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unit 7 Exercises • Computer – Visual Communication • Study Notebook</title>
+<meta name="description" content="Textbook-style practice questions for Class 7 Science Unit 7 — Computer, Visual Communication."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Computer – Visual Communication
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 7 · Computer – Visual Communication</span>
+<span class="coming-soon-num">Practice </span>
+<h1 class="hero-title">Unit Exercises</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Quick questions covering files, folders and visual communication tools.</p>
+</div>
+</section>
+
+<section style="flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+
+<h3 class="section-label" style="color: var(--math-accent);">Choose the best answer</h3>
+<div class="exercise-card" style="margin-bottom:1.2rem;">
+<div class="ex-question">1. The output we get from any application is commonly referred to as a</div>
+<div class="classify-row" data-mcq="1">
+<button class="classify-chip" data-correct="false">a) folder</button>
+<button class="classify-chip" data-correct="true">b) file</button>
+<button class="classify-chip" data-correct="false">c) program</button>
+<button class="classify-chip" data-correct="false">d) drive</button>
+</div>
+</div>
+
+<h3 class="section-label" style="color: var(--math-accent-2);">Fill in the blanks</h3>
+<div class="exercise-card" id="fb1" style="margin-bottom:1.2rem;">
+<div class="ex-question">2. Notes can be typed and saved using the ______________ application.</div>
+<div class="inline-controls"><input class="mini-input" id="fb1-input" style="width:200px;" type="text"/><button class="btn btn-primary" data-fb="fb1" style="min-height:38px;padding:8px 14px;">Check</button><span class="check-result" id="fb1-result"></span></div>
+</div>
+
+</div>
+</section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 89–95</span><h2>Quick recap</h2><div class="tb-grid"><div class="tb-card"><h3>File</h3><p>Output of an application.</p></div><div class="tb-card"><h3>Folder</h3><p>Storage space for many files.</p></div><div class="tb-card"><h3>Photostory</h3><p>Turns ordered photos + music into video.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../visual-communication-tools/">← Visual Communication Tools</a>
+<a class="back-link" href="../../../../../index.html#science7-path">Back to Class 7 Science →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+document.querySelectorAll('[data-mcq]').forEach(row=>{
+  row.querySelectorAll('.classify-chip').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(row.dataset.answered) return;
+      row.dataset.answered = '1';
+      row.querySelectorAll('.classify-chip').forEach(b=>{
+        b.classList.add(b.dataset.correct==='true' ? 'correct' : (b===btn ? 'wrong' : ''));
+      });
+    });
+  });
+});
+const fbAnswers = { fb1: ['notepad'] };
+document.querySelectorAll('[data-fb]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const key = btn.dataset.fb;
+    const val = document.getElementById(key+'-input').value.trim().toLowerCase();
+    const ok = fbAnswers[key].some(a=>val.includes(a));
+    document.getElementById(key+'-result').textContent = ok ? '✓ Correct' : '✗ Try again';
+    document.getElementById(key+'-result').className = 'check-result ' + (ok?'check-yes':'check-no');
+  });
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

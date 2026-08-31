@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Computer – Visual Communication • Class 7 Science • Study Notebook</title>
+<meta name="description" content="Class 7 Science Unit 7: files and folders, and visual communication tools like Paint and Photostory."/>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../css/math-chapter-visuals.css" rel="stylesheet"/>
+<link href="../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html#science7-path">
+<i data-lucide="arrow-left" width="16"></i>
+    Class 7 Science
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Unit 7</span>
+<h1 class="hero-title">Computer – Visual Communication</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    A computer isn't just for typing — it's a tool for organizing ideas and communicating them visually.
+    This short unit covers how files and folders keep your work organized, and how tools like Paint and
+    Photostory turn pictures into stories.
+</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Start with the basics of files and folders — how your work gets organized. Then
+try out visual communication tools yourself, including a mini drawing canvas and a step-by-step photo story
+builder.</p>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+
+<section class="audit-align-card audit-home-alignment" style="max-width:1180px;margin:0 auto 1.5rem"><div class="audit-kicker">Verified against the 2025 Term-1 textbook</div><h2>Learning Objectives</h2><ul><li>Differentiate a file from a folder.</li><li>Know how to create a file and a folder.</li><li>Use the system application "Paint" to create images.</li><li>Use the system application "Photostory" to create video from images.</li></ul></section><div class="divider"></div>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../js/common.js"></script>
+<script>
+const topics = [
+  ["01","7.1","files-and-folders/","Files & Folders","What a file is, what a folder is, and how to organize them.","files"],
+  ["02","7.2–7.3","visual-communication-tools/","Visual Communication Tools","Draw on a mini canvas and build a photo story step by step.","tools"],
+  ["03","Practice","exercises/","Unit Exercises","Quick MCQ and fill-in-the-blank with instant checking.","tools"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   files:`<svg ${common}><path class="tv-accent" d="M35 30h60l15 15h65v45H35Z"/><rect class="tv-fill" x="60" y="55" width="26" height="30"/></svg>`,
+   tools:`<svg ${common}><rect class="tv-accent" x="40" y="25" width="150" height="55" rx="6"/><circle class="tv-fill tv-pulse" cx="80" cy="52" r="8"/><path class="tv-stroke-2" d="M100 60l25-16 30 13"/></svg>`
+  };
+  return v[key]||v.files;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[2]}">
+    <div class="topic-visual">${topicVisual(t[5])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · ${t[1]}</span>
+      <h3>${t[3]}</h3>
+      <p>${t[4]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

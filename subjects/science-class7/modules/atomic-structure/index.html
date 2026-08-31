@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Atomic Structure • Class 7 Science • Study Notebook</title>
+<meta name="description" content="Class 7 Science Unit 4: atomic theories, sub-atomic particles, atomic number, mass number and valency."/>
+<link href="../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../css/math-chapter-visuals.css" rel="stylesheet"/>
+<link href="../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../../../../index.html#science7-path">
+<i data-lucide="arrow-left" width="16"></i>
+    Class 7 Science
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Unit 4</span>
+<h1 class="hero-title">Atomic Structure</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    If every atom is built from the same three particles, what makes carbon different from iron? This unit
+    goes inside the atom — through a century of competing theories, down to protons, neutrons, electrons,
+    and the numbers that identify every element.
+</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Trace how the atomic model evolved, meet the three sub-atomic particles, learn how
+atomic and mass number identify an element, then see how valency decides which atoms bond with which.</p>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+
+<section class="audit-align-card audit-home-alignment" style="max-width:1180px;margin:0 auto 1.5rem"><div class="audit-kicker">Verified against the 2025 Term-1 textbook</div><h2>Learning Objectives</h2><ul><li>Know the structure of an atom.</li><li>Know the position of the sub-atomic particles.</li><li>Understand and compare the properties of sub-atomic particles.</li><li>Understand the terms atomic number and mass number.</li><li>Calculate the number of protons, electrons and neutrons in an atom.</li><li>Understand the term valency.</li></ul></section><div class="divider"></div>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../js/common.js"></script>
+<script>
+const topics = [
+  ["01","4.1","atomic-theories/","Atomic Theories","How Dalton, Thomson and Rutherford each reshaped the atom.","theory"],
+  ["02","4.2","subatomic-particles/","The Sub-Atomic Particles","Protons, neutrons and electrons — charge, mass and location.","particles"],
+  ["03","4.3","atomic-number-and-mass-number/","Atomic Number & Mass Number","Counting protons and neutrons to identify an element.","numbers"],
+  ["04","4.4","valency/","Valency","The combining power of an atom.","valency"],
+  ["05","Practice","exercises/","Unit Exercises","MCQs, fill-in-the-blanks and a numerical problem with instant checking.","valency"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   theory:`<svg ${common}><circle class="tv-accent tv-pulse" cx="60" cy="55" r="28"/><circle class="tv-fill" cx="140" cy="55" r="10"/><ellipse class="tv-stroke-2" cx="140" cy="55" rx="45" ry="16"/><text x="195" y="60">1808 → 1911</text></svg>`,
+   particles:`<svg ${common}><circle class="tv-accent" cx="130" cy="55" r="14"/><ellipse class="tv-stroke-2" cx="130" cy="55" rx="60" ry="20"/><circle class="tv-fill tv-pulse" cx="190" cy="55" r="5"/></svg>`,
+   numbers:`<svg ${common}><circle class="tv-accent tv-pulse" cx="70" cy="55" r="20"/><text x="70" y="60" text-anchor="middle" font-size="12" fill="#fff">Z</text><circle class="tv-fill tv-pulse" cx="170" cy="55" r="20"/><text x="170" y="60" text-anchor="middle" font-size="12" fill="#fff">A</text></svg>`,
+   valency:`<svg ${common}><circle class="tv-accent" cx="130" cy="55" r="18"/><line class="tv-stroke-2" x1="130" y1="55" x2="70" y2="25"/><line class="tv-stroke-2" x1="130" y1="55" x2="70" y2="85"/><line class="tv-stroke-2" x1="130" y1="55" x2="190" y2="25"/><line class="tv-stroke-2" x1="130" y1="55" x2="190" y2="85"/></svg>`
+  };
+  return v[key]||v.theory;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[2]}">
+    <div class="topic-visual">${topicVisual(t[5])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · ${t[1]}</span>
+      <h3>${t[3]}</h3>
+      <p>${t[4]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

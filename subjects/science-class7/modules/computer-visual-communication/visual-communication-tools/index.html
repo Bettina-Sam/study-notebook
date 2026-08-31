@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>7.2-7.3 Visual Communication Tools • Computer – Visual Communication • Study Notebook</title>
+<meta name="description" content="Photos, drawings and animations communicate ideas more easily than words alone — try a mini drawing canvas."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Computer – Visual Communication
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 7 · Computer – Visual Communication</span>
+<span class="coming-soon-num">7.2–7.3 Visual Communication Tools</span>
+<h1 class="hero-title">A picture explains<br/>what words can't</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">A visual communication device — photos, drawings, animations, cinema — helps explain a concept more easily than plain text, and it sticks in memory better too.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Try a Mini Paint Canvas</h3>
+<h2>Draw something yourself</h2>
+<p>Just like the "Paint" application, click and drag on the canvas to draw.</p>
+<div class="interaction-cue"><strong>Draw</strong><span class="cue-copy">Click and drag on the canvas below.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Colour</label>
+<select id="paint-color" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="#1f9d7c">Teal</option><option value="#d9762c">Orange</option><option value="#3a6fd8">Blue</option><option value="#d64545">Red</option>
+</select></div>
+</div>
+<div class="btn-row"><button class="btn btn-secondary" id="clearCanvas">Clear Canvas</button></div>
+</div>
+<div class="visual-col">
+<canvas id="paintCanvas" height="220" style="width:100%;max-width:320px;border:2px solid var(--border-color);border-radius:12px;background:#fff;cursor:crosshair;touch-action:none;" width="320"></canvas>
+</div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Build a Photo Story — Step by Step</h3>
+<h2>How Microsoft Photostory makes a video</h2>
+<div class="sim-controls">
+<div class="slider-group"><label>Step (<span class="value-readout" id="val-story">1</span> of 6)</label><input id="input-story" max="6" min="1" step="1" type="range" value="1"/></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="storyOut">Step 1: Open Microsoft Photostory, select "Begin a new story".</div>
+</div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">Which application is used to draw and edit pictures in Windows?</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" style="width:160px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 91–95</span><h2>Visual communication devices</h2><div class="tb-grid"><div class="tb-card"><h3>Visual communication device</h3><p>Anything that explains a concept through pictures — photos, drawings, animations. Cinema is a good example.</p></div><div class="tb-card"><h3>Photo gallery</h3><p>A collection of photos, often beautified using editing software.</p></div><div class="tb-card"><h3>Photostory</h3><p>Ordered photos + text + music, converted into a video using software like Microsoft Photostory.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../files-and-folders/">← Files & Folders</a>
+<a class="back-link" href="../exercises/">Next: Unit Exercises →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const canvas = document.getElementById('paintCanvas');
+const ctx = canvas.getContext('2d');
+ctx.fillStyle = '#fff'; ctx.fillRect(0,0,canvas.width,canvas.height);
+let drawing = false;
+function pos(e){
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width/rect.width, scaleY = canvas.height/rect.height;
+  const cx = (e.touches? e.touches[0].clientX : e.clientX) - rect.left;
+  const cy = (e.touches? e.touches[0].clientY : e.clientY) - rect.top;
+  return {x: cx*scaleX, y: cy*scaleY};
+}
+function start(e){ drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); }
+function move(e){
+  if(!drawing) return;
+  const p = pos(e);
+  ctx.lineWidth = 4; ctx.lineCap='round';
+  ctx.strokeStyle = document.getElementById('paint-color').value;
+  ctx.lineTo(p.x,p.y); ctx.stroke();
+  e.preventDefault();
+}
+function end(){ drawing = false; }
+canvas.addEventListener('mousedown', start);
+canvas.addEventListener('mousemove', move);
+canvas.addEventListener('mouseup', end);
+canvas.addEventListener('mouseleave', end);
+canvas.addEventListener('touchstart', start);
+canvas.addEventListener('touchmove', move);
+canvas.addEventListener('touchend', end);
+document.getElementById('clearCanvas').addEventListener('click', ()=>{ ctx.fillStyle='#fff'; ctx.fillRect(0,0,canvas.width,canvas.height); });
+
+const storySteps = [
+  'Step 1: Open Microsoft Photostory, select "Begin a new story".',
+  'Step 2: Click "Import Picture" and choose your saved images; edit them if needed.',
+  'Step 3: Add small text captions to each picture, then give animation effects.',
+  'Step 4: Select background music through "Select Music".',
+  'Step 5: Choose a title for the story and pick where to save the video.',
+  'Step 6: Click "View your story" — your finished video is ready!'
+];
+document.getElementById('input-story').addEventListener('input', ()=>{
+  const i = parseInt(document.getElementById('input-story').value);
+  document.getElementById('val-story').textContent = i;
+  document.getElementById('storyOut').textContent = storySteps[i-1];
+});
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('paint');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct — Paint' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

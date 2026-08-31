@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unit 5 Exercises • Reproduction in Plants • Study Notebook</title>
+<meta name="description" content="Textbook-style practice questions for Class 7 Science Unit 5 — Reproduction and Modification in Plants."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Reproduction in Plants
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 5 · Reproduction and Modification in Plants</span>
+<span class="coming-soon-num">Practice </span>
+<h1 class="hero-title">Unit Exercises</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Multiple choice, fill in the blanks and short questions covering pollination, asexual reproduction, and plant modifications.</p>
+</div>
+</section>
+
+<section style="flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+
+<h3 class="section-label" style="color: var(--math-accent);">Choose the best answer</h3>
+<div class="exercise-card" style="margin-bottom:1.2rem;">
+<div class="ex-question">1. Vegetative propagation by leaves takes place in</div>
+<div class="classify-row" data-mcq="1">
+<button class="classify-chip" data-correct="true">a) bryophyllum</button>
+<button class="classify-chip" data-correct="false">b) fungi</button>
+<button class="classify-chip" data-correct="false">c) virus</button>
+<button class="classify-chip" data-correct="false">d) bacteria</button>
+</div>
+</div>
+<div class="exercise-card" style="margin-bottom:1.2rem;">
+<div class="ex-question">2. Asexual reproduction in yeast is</div>
+<div class="classify-row" data-mcq="2">
+<button class="classify-chip" data-correct="false">a) spore formation</button>
+<button class="classify-chip" data-correct="false">b) fragmentation</button>
+<button class="classify-chip" data-correct="false">c) pollination</button>
+<button class="classify-chip" data-correct="true">d) budding</button>
+</div>
+</div>
+
+<h3 class="section-label" style="color: var(--math-accent-2);">Fill in the blanks</h3>
+<div class="exercise-card" id="fb1" style="margin-bottom:1.2rem;">
+<div class="ex-question">3. The male reproductive part of a flower is ______________.</div>
+<div class="inline-controls"><input class="mini-input" id="fb1-input" style="width:200px;" type="text"/><button class="btn btn-primary" data-fb="fb1" style="min-height:38px;padding:8px 14px;">Check</button><span class="check-result" id="fb1-result"></span></div>
+</div>
+<div class="exercise-card" id="fb2" style="margin-bottom:1.2rem;">
+<div class="ex-question">4. Onion and garlic are examples of an underground stem called a ______________.</div>
+<div class="inline-controls"><input class="mini-input" id="fb2-input" style="width:200px;" type="text"/><button class="btn btn-primary" data-fb="fb2" style="min-height:38px;padding:8px 14px;">Check</button><span class="check-result" id="fb2-result"></span></div>
+</div>
+
+</div>
+</section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 71–72</span><h2>Quick recap</h2><div class="tb-grid"><div class="tb-card"><h3>Sexual reproduction</h3><p>Pollination + fertilization → seed and fruit.</p></div><div class="tb-card"><h3>Asexual reproduction</h3><p>No pollination — vegetative propagation, budding, fragmentation, spores.</p></div><div class="tb-card"><h3>Modifications</h3><p>Roots, stems and leaves reshaped for storage, support or defence.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../modifications-of-plant-parts/">← Modifications of Plant Parts</a>
+<a class="back-link" href="../../../../../index.html#science7-path">Back to Class 7 Science →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+document.querySelectorAll('[data-mcq]').forEach(row=>{
+  row.querySelectorAll('.classify-chip').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(row.dataset.answered) return;
+      row.dataset.answered = '1';
+      row.querySelectorAll('.classify-chip').forEach(b=>{
+        b.classList.add(b.dataset.correct==='true' ? 'correct' : (b===btn ? 'wrong' : ''));
+      });
+    });
+  });
+});
+const fbAnswers = { fb1: ['androecium','stamen'], fb2: ['bulb'] };
+document.querySelectorAll('[data-fb]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const key = btn.dataset.fb;
+    const val = document.getElementById(key+'-input').value.trim().toLowerCase();
+    const ok = fbAnswers[key].some(a=>val.includes(a));
+    document.getElementById(key+'-result').textContent = ok ? '✓ Correct' : '✗ Try again';
+    document.getElementById(key+'-result').className = 'check-result ' + (ok?'check-yes':'check-no');
+  });
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

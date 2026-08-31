@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.2 Speed & Velocity • Force and Motion • Study Notebook</title>
+<meta name="description" content="Speed is distance over time; velocity is displacement over time — explored with a there-and-back journey."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Force and Motion
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 2 · Force and Motion</span>
+<span class="coming-soon-num">2.2 Speed & Velocity</span>
+<h1 class="hero-title">Same trip, two very<br/>different numbers</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Speed = Distance / Time. Velocity = Displacement / Time. If you double back on yourself, your speed can be large while your velocity is small — or even negative.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. A There-and-Back Trip</h3>
+<h2>Car travels east, then turns back</h2>
+<p>A car travels east, then makes a U-turn and travels west. Set both legs of the journey and the total time,
+and compare speed with velocity.</p>
+<div class="interaction-cue"><strong>Drag</strong><span class="cue-copy">Change each leg's distance and the total time.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Leg 1 — travels east (<span class="value-readout" id="val-d1">5</span> km)</label><input id="input-d1" max="15" min="0" step="1" type="range" value="5"/></div>
+<div class="slider-group"><label>Leg 2 — travels west (<span class="value-readout" id="val-d2">7</span> km)</label><input id="input-d2" max="15" min="0" step="1" type="range" value="7"/></div>
+<div class="slider-group"><label>Total time (<span class="value-readout" id="val-t">0.2</span> h)</label><input id="input-t" max="1" min="0.1" step="0.05" type="range" value="0.2"/></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="svOut">Speed = 60 km/h, Velocity = −10 km/h (west)</div>
+</div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="svWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Worked Example</h3>
+<div class="worked-example"><span class="we-label">Example</span>
+<div class="we-question">An athlete takes 25 s to complete a 200 m sprint on a straight track. Find her speed and velocity.</div>
+<div class="we-concept">Concept used: on a straight track, distance = displacement.</div>
+<div class="step-flow" id="we1-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Speed = Distance / Time.<div class="step-math">$= 200/25 = 8 \text{ m/s}$</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Velocity = Displacement / Time.<div class="step-math">$= 200/25 = 8 \text{ m/s}$</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Final answer</b> — both are 8 m/s here, since the track is a straight line.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we1-play">Play steps</button></div>
+</div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">A car travels with uniform velocity, covering 100 m in 4 seconds. Find its velocity in m/s.</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" type="number"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 16–18</span><h2>Definitions and units</h2><div class="tb-grid"><div class="tb-card"><h3>Speed</h3><p>Speed = Distance / Time. SI unit: m/s.</p></div><div class="tb-card"><h3>Velocity</h3><p>Velocity = Displacement / Time. SI unit: m/s, with direction.</p></div><div class="tb-card"><h3>Uniform vs non-uniform</h3><p>Uniform speed covers equal distances in equal times; non-uniform speed covers unequal distances.</p></div><div class="tb-card"><h3>1 km/h</h3><p>= 5/18 m/s (since 1 km = 1000 m and 1 h = 3600 s).</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../distance-and-displacement/">← Distance & Displacement</a>
+<a class="back-link" href="../acceleration/">Next: Acceleration →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+function updateSV(){
+  const d1 = parseFloat(document.getElementById('input-d1').value);
+  const d2 = parseFloat(document.getElementById('input-d2').value);
+  const t = parseFloat(document.getElementById('input-t').value);
+  document.getElementById('val-d1').textContent = d1;
+  document.getElementById('val-d2').textContent = d2;
+  document.getElementById('val-t').textContent = t.toFixed(2);
+  const totalDist = d1+d2;
+  const speed = totalDist/t;
+  const displacement = d1-d2;
+  const velocity = displacement/t;
+  document.getElementById('svOut').innerHTML = `Speed = ${speed.toFixed(1)} km/h &nbsp;•&nbsp; Velocity = ${velocity.toFixed(1)} km/h (${velocity>=0?'east':'west'})`;
+  const scale=10, ox=140,oy=100;
+  document.getElementById('svWrap').innerHTML = `<svg viewBox="0 0 280 200">
+    <line x1="20" y1="${oy}" x2="260" y2="${oy}" stroke="var(--border-color)"/>
+    <circle cx="${ox}" cy="${oy}" r="5" fill="var(--text-muted)"/>
+    <path d="M${ox} ${oy-10} h${d1*scale}" stroke="var(--math-accent)" stroke-width="3" marker-end="url(#a1)"/>
+    <path d="M${ox+d1*scale} ${oy+10} h${-d2*scale}" stroke="var(--math-accent-2)" stroke-width="3" marker-end="url(#a2)"/>
+    <text x="${ox}" y="${oy+35}" font-size="11" fill="var(--text-muted)">start / end area</text>
+    <defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L6,3L0,6Z" fill="var(--math-accent)"/></marker>
+    <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0L6,3L0,6Z" fill="var(--math-accent-2)"/></marker></defs>
+  </svg>`;
+}
+['input-d1','input-d2','input-t'].forEach(id=>document.getElementById(id).addEventListener('input', updateSV));
+updateSV();
+document.getElementById('we1-play').addEventListener('click', () => AlgLib.revealSteps('we1-steps'));
+AlgLib.revealSteps('we1-steps', 0);
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    AlgLib.checkNumeric(document.getElementById('exAnswer'), 25, document.getElementById('exResult'));
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

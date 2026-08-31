@@ -305,3 +305,329 @@
   .btn-row .btn{ min-width:100%; }
   .coming-soon-hero{ padding-top:16vh; }
 }
+
+/* ------------------------------------------------------------------
+   VENN DIAGRAMS (Set Language chapter — js/venn-lib.js)
+   ------------------------------------------------------------------ */
+.venn-stage{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:0.75rem; }
+.venn-svg{ width:100%; height:100%; max-width:420px; max-height:320px; }
+.venn-circle{ fill:none; stroke-width:2; }
+.venn-circle-a{ stroke:var(--math-accent); }
+.venn-circle-b{ stroke:var(--math-accent-2); }
+.venn-universe{ fill:none; stroke:var(--text-muted); stroke-width:1.4; stroke-dasharray:5 4; }
+.venn-ulabel{ fill:var(--text-muted); font:12px var(--font-mono); }
+.venn-setlabel{ font:700 15px var(--font-serif); }
+.venn-setlabel-a{ fill:var(--math-accent); }
+.venn-setlabel-b{ fill:var(--math-accent-2); }
+.venn-el{ fill:var(--text-main); font:11px var(--font-mono); }
+.venn-el-both{ font-weight:700; }
+.venn-el-outside{ fill:var(--text-muted); }
+
+/* Elements pop into their region with a small spring overshoot instead of
+   appearing instantly — makes the diagram read as a live scene. */
+@keyframes venn-el-pop{ from{ opacity:0; transform:scale(.55) translateY(5px); } to{ opacity:1; transform:none; } }
+.venn-el-pop{ animation:venn-el-pop .4s cubic-bezier(.34,1.56,.64,1) both; transform-box:fill-box; transform-origin:center; }
+
+/* Idle breathing on the circle outlines so the canvas feels "running" even
+   before the student clicks anything. */
+@keyframes venn-breathe{ 0%,100%{ opacity:1; } 50%{ opacity:.72; } }
+
+.venn-shade{
+  opacity:0.42; stroke:none; transform-box:fill-box; transform-origin:center;
+  transition:opacity .28s var(--ease-out), transform .32s var(--ease-out);
+}
+.venn-shade-enter{ opacity:0 !important; transform:scale(0.82); }
+.venn-shade-out{ opacity:0 !important; transform:scale(1.08); }
+.venn-shade-union{ fill:var(--math-accent); }
+.venn-shade-inter{ fill:#3e8f5c; }
+.venn-shade-a{ fill:var(--math-accent); }
+.venn-shade-b{ fill:var(--math-accent-2); }
+.venn-shade-sym{ fill:#c0392b; }
+.venn-controls{ display:flex; gap:0.5rem; flex-wrap:wrap; margin:0.9rem 0; }
+.venn-op-btn{
+  padding:8px 13px; border-radius:99px; border:1px solid var(--border-color); background:transparent;
+  color:var(--text-main); font-family:var(--font-mono); cursor:pointer; font-size:0.82rem;
+}
+.venn-op-btn.active{ background:var(--math-accent); color:#fff; border-color:var(--math-accent); }
+.venn-result{ font-family:var(--font-mono); font-size:0.95rem; min-height:1.6rem; padding:0.6rem 0.2rem; }
+.venn-count{ color:var(--text-muted); }
+
+/* ------------------------------------------------------------------
+   MULTIPLE CHOICE (Exercise 1.7)
+   ------------------------------------------------------------------ */
+.mcq-options{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:0.6rem; margin-top:0.9rem; }
+.mcq-option{
+  text-align:left; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color);
+  background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.88rem; cursor:pointer;
+}
+.mcq-option:hover{ border-color:var(--math-accent); }
+.mcq-option.mcq-correct{ background:rgba(62,143,92,0.18); border-color:#3e8f5c; }
+.mcq-option.mcq-wrong{ background:rgba(224,138,44,0.18); border-color:var(--accent-secondary); }
+.mcq-option:disabled{ cursor:default; opacity:0.85; }
+.mcq-feedback{ margin-top:0.7rem; font-size:0.85rem; font-weight:600; min-height:1.2rem; }
+.mcq-feedback.ok{ color:#3e8f5c; }
+.mcq-feedback.no{ color:var(--accent-secondary); }
+
+/* ------------------------------------------------------------------
+   EXERCISE SET LISTS (Chapter Exercises pages)
+   ------------------------------------------------------------------ */
+.ex-set-nav{ display:flex; flex-wrap:wrap; gap:0.6rem; margin:1.2rem 0 2rem; }
+.ex-set-pill{
+  padding:8px 16px; border-radius:99px; border:1px solid var(--border-color); background:var(--card-bg);
+  color:var(--text-main); font-family:var(--font-mono); font-size:0.85rem; font-weight:600;
+}
+.ex-set-pill:hover{ border-color:var(--math-accent); color:var(--math-accent); }
+.ex-set-pill.current{ background:var(--math-accent); color:#fff; border-color:var(--math-accent); }
+.ex-q-num{ font-family:var(--font-mono); color:var(--math-accent-2); font-weight:700; font-size:0.85rem; margin-right:0.4rem; }
+.additional-practice{ border-left-color:#3e8f5c; }
+.additional-practice .ex-label{ color:#3e8f5c; }
+.chapter-nav-footer{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+  width:100%; max-width:900px; margin:0 auto; padding:1.5rem 0;
+}
+.chapter-nav-footer a{ font-size:0.9rem; }
+.chapter-nav-footer .cn-home{ color:var(--text-muted); font-weight:600; }
+
+/* ------------------------------------------------------------------
+   THREE-SET VENN (js/venn-lib.js threeSet)
+   ------------------------------------------------------------------ */
+.venn-svg-3{ max-width:460px; max-height:360px; }
+.venn-circle-c{ stroke:#c0392b; }
+.venn-setlabel-c{ fill:#c0392b; }
+
+/* ------------------------------------------------------------------
+   REUSABLE EXERCISE INTERACTIONS (js/exercise-engine.js)
+   ------------------------------------------------------------------ */
+.drag-pool{ display:flex; flex-wrap:wrap; gap:0.5rem; margin:0.9rem 0; min-height:2.4rem; }
+.drag-chip{
+  padding:7px 14px; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg);
+  font-family:var(--font-mono); font-size:0.88rem; cursor:grab; user-select:none; transition:.2s var(--ease-out);
+}
+.drag-chip.dragging{ opacity:0.4; }
+.drag-chip.placed{ cursor:default; }
+.drag-chip.chip-correct{ border-color:#3e8f5c; background:rgba(62,143,92,0.16); }
+.drag-chip.chip-shake{ animation:chip-shake .4s; border-color:var(--accent-secondary); }
+@keyframes chip-shake{
+  10%,90%{ transform:translateX(-1px); } 20%,80%{ transform:translateX(2px); }
+  30%,50%,70%{ transform:translateX(-4px); } 40%,60%{ transform:translateX(4px); }
+}
+.drag-chip.chip-pop{ animation:chip-pop .45s cubic-bezier(.34,1.56,.64,1); }
+@keyframes chip-pop{ 0%{ transform:scale(.5); opacity:.4; } 60%{ transform:scale(1.12); opacity:1; } 100%{ transform:scale(1); } }
+.drop-bin.bin-pulse{ animation:bin-pulse .42s var(--ease-out); border-color:#3e8f5c; }
+@keyframes bin-pulse{ 0%{ box-shadow:0 0 0 0 rgba(62,143,92,0.35); } 100%{ box-shadow:0 0 0 10px rgba(62,143,92,0); } }
+.drop-bins{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:0.7rem; margin:0.9rem 0; }
+.drop-bin{
+  min-height:88px; border:2px dashed var(--border-color); border-radius:10px; padding:0.6rem;
+  display:flex; flex-wrap:wrap; align-content:flex-start; gap:0.4rem; transition:.2s var(--ease-out);
+}
+.drop-bin::before{
+  content:attr(data-bin-label); display:block; width:100%; font-size:0.72rem; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--text-muted); margin-bottom:0.3rem;
+}
+.drop-bin.drag-over{ border-color:var(--math-accent); background:rgba(94,133,255,0.08); }
+
+.tile-choice{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:0.6rem; margin-top:0.9rem; }
+.tile-choice [data-value]{
+  text-align:left; padding:10px 14px; border-radius:8px; border:1px solid var(--border-color);
+  background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.88rem; cursor:pointer;
+  transition:.2s var(--ease-out);
+}
+.tile-choice [data-value]:hover{ border-color:var(--math-accent); }
+.tile-choice [data-value].tile-correct{ background:rgba(62,143,92,0.18); border-color:#3e8f5c; }
+.tile-choice [data-value].tile-wrong{ background:rgba(224,138,44,0.18); border-color:var(--accent-secondary); }
+.tile-choice [data-value].disabled{ cursor:default; opacity:0.85; }
+
+.input-correct{ border-color:#3e8f5c !important; background:rgba(62,143,92,0.1); }
+.input-wrong{ border-color:var(--accent-secondary) !important; background:rgba(224,138,44,0.1); }
+
+.stub-question{ border-left-color:var(--accent-secondary) !important; }
+.stub-question .stub-note{
+  font-size:0.82rem; color:var(--accent-secondary); font-weight:600; margin-bottom:0.6rem;
+}
+
+/* ------------------------------------------------------------------
+   TOKEN PHYSICS (js/token-physics.js) — draggable-with-momentum tokens
+   and drop zones for the flagship "live simulation" interactions.
+   ------------------------------------------------------------------ */
+.phys-stage{
+  position:relative; width:100%; overflow:hidden; border-radius:14px;
+  background:
+    radial-gradient(circle at 1px 1px, var(--border-subtle) 1px, transparent 0) 0 0/22px 22px,
+    var(--bg-color);
+  border:1px solid var(--border-color); touch-action:none;
+}
+.phys-token{
+  position:absolute; top:0; left:0; width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--card-bg); border:2px solid var(--math-accent); color:var(--text-main);
+  font-family:var(--font-mono); font-weight:700; font-size:0.82rem;
+  box-shadow:0 2px 6px rgba(0,0,0,0.14); cursor:grab; user-select:none; touch-action:none;
+  will-change:transform; z-index:2;
+}
+.phys-token.phys-grabbed{ cursor:grabbing; box-shadow:0 10px 22px rgba(0,0,0,0.24); z-index:6; border-color:var(--math-accent-2); }
+.phys-token.phys-in-a{ border-color:var(--math-accent); }
+.phys-token.phys-in-b{ border-color:var(--math-accent-2); }
+.phys-token.phys-correct{ border-color:#3e8f5c; background:rgba(62,143,92,0.15); }
+.phys-token.phys-wrong{ animation:chip-shake .4s; border-color:var(--accent-secondary); }
+
+.phys-zone{ position:absolute; border:2px dashed var(--border-color); border-radius:14px; transition:border-color .2s, background .2s; z-index:1; }
+.phys-zone-label{
+  position:absolute; top:8px; left:12px; font-size:0.72rem; text-transform:uppercase;
+  letter-spacing:0.06em; color:var(--text-muted); font-weight:700; pointer-events:none; z-index:1;
+}
+.phys-zone.phys-zone-active{ border-color:var(--math-accent); background:rgba(108,79,214,0.08); }
+.phys-zone.phys-zone-good{ border-color:#3e8f5c; background:rgba(62,143,92,0.08); }
+.phys-zone.phys-zone-bad{ border-color:var(--accent-secondary); background:rgba(224,138,44,0.08); }
+
+/* ------------------------------------------------------------------
+   EXERCISE 1.7 MCQ VISUALS — membership tokens, nested subset shapes,
+   context Venn circles, percentage bars, inline shape icons, counter
+   tiles. Used by subjects/mathematics/modules/set-language/exercises/exercise-1-7/
+   ------------------------------------------------------------------ */
+.mcq-visual{ display:flex; flex-direction:column; align-items:center; gap:0.5rem; margin:0.9rem 0; }
+.mcq-visual .venn-svg{ max-width:360px; }
+
+.set-container{
+  display:inline-flex; flex-direction:column; align-items:center; gap:0.6rem;
+  border:2px solid var(--math-accent); border-radius:16px; padding:0.9rem 1.3rem;
+  background:var(--tile-a);
+}
+.set-container-label{ font-family:var(--font-mono); font-weight:700; color:var(--math-accent); font-size:0.85rem; }
+.set-token-row{ display:flex; flex-wrap:wrap; gap:0.4rem; justify-content:center; max-width:340px; }
+.set-token{
+  font-family:var(--font-mono); font-size:0.85rem; padding:4px 11px; border-radius:99px;
+  background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-main);
+}
+.set-token-target{ border-color:var(--math-accent-2); background:var(--tile-b); font-weight:700; box-shadow:0 0 0 2px var(--tile-b); }
+.set-container-row{ display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+
+.venn-hide-b .venn-circle-b, .venn-hide-b .venn-setlabel-b{ display:none; }
+
+.mcq-option-counter{
+  font-size:1.35rem; font-weight:700; text-align:center; justify-content:center;
+  font-family:var(--font-mono); letter-spacing:0.03em; background:var(--line-subtle);
+}
+.mcq-options-counter{ grid-template-columns:repeat(auto-fit,minmax(90px,1fr)); }
+
+.mcq-option-shape{ display:flex; align-items:center; gap:0.7rem; text-align:left; }
+.mcq-option-shape svg{ flex:0 0 auto; color:var(--math-accent); }
+.shape-icon-row{ display:flex; gap:1.3rem; flex-wrap:wrap; justify-content:center; }
+.shape-icon-item{ display:flex; flex-direction:column; align-items:center; gap:0.35rem; font-size:0.76rem; color:var(--text-muted); text-align:center; max-width:100px; }
+.shape-icon-item svg{ color:var(--math-accent-2); }
+
+.percent-bar{
+  display:flex; width:100%; max-width:480px; height:38px; border-radius:8px; overflow:hidden;
+  border:1px solid var(--border-color);
+}
+.percent-seg{ display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:0.78rem; color:#fff; }
+.percent-seg-a{ background:var(--math-accent); }
+.percent-seg-b{ background:var(--math-accent-2); }
+.percent-seg-c{ background:#3e8f5c; }
+.percent-seg-unknown{
+  background:repeating-linear-gradient(45deg, var(--line-subtle), var(--line-subtle) 6px, var(--border-color) 6px, var(--border-color) 12px);
+  color:var(--text-muted);
+}
+.percent-legend{ display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:0.2rem; font-size:0.78rem; color:var(--text-muted); justify-content:center; }
+.percent-legend-item{ display:flex; align-items:center; gap:6px; }
+.percent-swatch{ width:10px; height:10px; border-radius:3px; display:inline-block; }
+.percent-swatch-a{ background:var(--math-accent); }
+.percent-swatch-b{ background:var(--math-accent-2); }
+.percent-swatch-c{ background:#3e8f5c; }
+.percent-swatch-unknown{ background:repeating-linear-gradient(45deg, var(--line-subtle), var(--line-subtle) 3px, var(--border-color) 3px, var(--border-color) 6px); }
+
+/* ------------------------------------------------------------------
+   THINKING CORNER (textbook callout — Set Language chapter)
+   ------------------------------------------------------------------ */
+.thinking-corner{
+  background:var(--card-bg); border:1px solid var(--border-color); border-left:3px solid var(--math-accent-2);
+  border-radius:10px; padding:1.2rem 1.5rem; margin:1.5rem 0;
+}
+.thinking-corner .tc-label{
+  display:inline-block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:700;
+  color:var(--math-accent-2); margin-bottom:0.5rem;
+}
+.thinking-corner .tc-body{ font-size:0.95rem; }
+.thinking-corner .tc-reveal{ margin-top:0.9rem; }
+
+/* ------------------------------------------------------------------
+   NUMBER LINE (js/number-line-lib.js) — Real Numbers chapter
+   ------------------------------------------------------------------ */
+.numline-wrap{ width:100%; }
+.numline-svg{ width:100%; height:auto; max-height:140px; overflow:visible; }
+.numline-axis{ stroke:var(--text-muted); stroke-width:1.6; }
+.numline-arrow{ fill:var(--text-muted); }
+.numline-tick{ stroke:var(--text-muted); stroke-width:1.2; }
+.numline-tick-zero{ stroke:var(--text-main); stroke-width:2; }
+.numline-ticklabel{ font:11px var(--font-mono); fill:var(--text-muted); }
+.numline-interval{ fill:var(--math-accent); opacity:0.25; rx:3; }
+.numline-point circle{ fill:var(--card-bg); stroke:var(--math-accent); stroke-width:2.5; transition:stroke .2s; }
+.numline-point.numline-dragging circle{ stroke:var(--math-accent-2); filter:drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
+.numline-point:focus{ outline:none; }
+.numline-point:focus circle{ stroke:var(--math-accent-2); }
+.numline-plabel{ font:700 12px var(--font-mono); fill:var(--text-main); }
+.numline-point.numline-irrational circle{ stroke:#c0392b; }
+.numline-point.numline-rational circle{ stroke:#3e8f5c; }
+
+/* ------------------------------------------------------------------
+   DECIMAL EXPANSION TRACE (js/decimal-lib.js) — Real Numbers chapter
+   ------------------------------------------------------------------ */
+.decimal-trace{ font-family:var(--font-mono); }
+.decimal-trace-head{ font-size:1.1rem; margin-bottom:0.8rem; display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+.decimal-frac{ font-weight:700; }
+.decimal-arrow{ color:var(--text-muted); }
+.decimal-result{ font-weight:700; color:var(--math-accent); opacity:0; transition:opacity .4s var(--ease-out); }
+.decimal-result.decimal-result-in{ opacity:1; }
+.decimal-steps{ max-height:280px; overflow-y:auto; padding-right:0.4rem; }
+.decimal-step{
+  display:flex; gap:0.7rem; align-items:center; padding:0.4rem 0; font-size:0.88rem;
+  opacity:0; transform:translateX(-6px); animation:decimal-step-in .35s var(--ease-out) forwards;
+  border-top:1px solid var(--line-subtle);
+}
+.decimal-step:first-child{ border-top:none; }
+@keyframes decimal-step-in{ to{ opacity:1; transform:none; } }
+.decimal-step-num{
+  flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--line-subtle);
+  color:var(--math-accent); display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700;
+}
+.decimal-step-repeat-new, .decimal-step-repeat-orig{ background:rgba(224,138,44,0.12); border-radius:6px; }
+.decimal-repeat-flag{
+  margin:0.5rem 0; padding:0.6rem 0.9rem; background:rgba(224,138,44,0.12); border-left:3px solid var(--math-accent-2);
+  border-radius:6px; font-size:0.85rem; font-family:var(--font-sans); opacity:0; animation:decimal-step-in .4s var(--ease-out) forwards;
+}
+
+
+/* ------------------------------------------------------------------
+   CONTEXTUAL INTERACTION CUES
+   Keep instructions beside the exact control/visual the learner uses.
+   ------------------------------------------------------------------ */
+.interaction-cue{
+  display:flex; align-items:flex-start; gap:.7rem; margin:.85rem 0 1rem;
+  padding:.8rem 1rem; border:1px dashed var(--math-accent); border-radius:10px;
+  background:var(--tile-ab); color:var(--text-main); font-size:.88rem;
+}
+.interaction-cue strong{color:var(--math-accent); text-transform:uppercase; letter-spacing:.05em; font-size:.76rem; white-space:nowrap;}
+.interaction-cue .cue-copy{color:var(--text-muted); line-height:1.45;}
+.interaction-cue.compact{padding:.65rem .8rem; margin:.6rem 0 .75rem;}
+.chapter-flow-note{max-width:72ch; margin-top:1rem; padding:1rem 1.1rem; border-left:3px solid var(--math-accent); background:var(--tile-ab); border-radius:0 10px 10px 0;}
+.chapter-flow-note b{color:var(--math-accent);}
+.exercise-arena{display:grid; gap:1.2rem;}
+.challenge-card{background:var(--card-bg); border:1px solid var(--border-color); border-radius:14px; padding:1.35rem;}
+.challenge-head{display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap;}
+.challenge-kicker{font-family:var(--font-mono); font-size:.75rem; color:var(--math-accent); text-transform:uppercase; letter-spacing:.06em;}
+.challenge-card h3{margin:.3rem 0 .4rem;}
+.challenge-card p{max-width:none;}
+.challenge-feedback{min-height:1.5rem; margin-top:.7rem; font-weight:700;}
+.challenge-feedback.ok{color:#3e8f5c}.challenge-feedback.no{color:var(--math-accent-2)}
+.choice-row{display:flex; gap:.55rem; flex-wrap:wrap; margin:.8rem 0;}
+.choice-chip{border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); border-radius:999px; padding:.55rem .85rem; cursor:pointer; font-family:var(--font-mono);}
+.choice-chip:hover,.choice-chip.selected{border-color:var(--math-accent); background:var(--tile-a);}
+.practice-progress{height:9px; background:var(--line-subtle); border-radius:99px; overflow:hidden; margin:.5rem 0 1.2rem;}
+.practice-progress>span{display:block; height:100%; width:0; background:var(--math-accent); transition:width .25s ease;}
+
+/* --- Hybrid textbook depth additions --- */
+.textbook-deep-dive{min-height:auto!important;padding:4rem 6vw!important;background:linear-gradient(180deg,rgba(124,58,237,.035),transparent 22%,rgba(14,165,233,.025));}
+.textbook-deep-dive .tb-shell{width:100%;max-width:1080px;margin:auto;}
+.textbook-ribbon{display:inline-flex;align-items:center;gap:.55rem;padding:.55rem .85rem;border:1px solid color-mix(in srgb,var(--math-accent) 32%,transparent);border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--math-accent);background:color-mix(in srgb,var(--math-accent) 8%,var(--bg));margin-bottom:1.1rem}
+.textbook-deep-dive h2{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.6rem);margin:1.8rem 0 .75rem}.textbook-deep-dive h3{font-size:1.06rem;margin:.7rem 0}.textbook-deep-dive p{line-height:1.8;color:var(--text-2)}
+.textbook-deep-dive .tb-callout,.textbook-deep-dive .tb-example,.textbook-deep-dive .tb-card{border:1px solid var(--border);border-radius:18px;padding:1rem 1.1rem;background:color-mix(in srgb,var(--surface) 92%,transparent);margin:1rem 0;box-shadow:0 10px 34px rgba(0,0,0,.05)}
+.textbook-deep-dive .tb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}.textbook-deep-dive .tb-example .head,.textbook-deep-dive .tb-label{font-weight:800;color:var(--math-accent);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em}.textbook-deep-dive .textbook-badge{display:inline-flex;padding:.4rem .7rem;border-radius:999px;background:rgba(14,165,233,.08);font-size:.78rem;font-weight:700;color:var(--math-accent-2)}

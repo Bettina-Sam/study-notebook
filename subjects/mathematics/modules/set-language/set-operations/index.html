@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.5 Set Operations • Set Language • Study Notebook</title>
+<meta name="description" content="Complement, union, intersection, difference and symmetric difference — with a fully interactive Venn diagram."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Set Language
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">1.5 Set Operations</span>
+<h1 class="hero-title">Five ways to<br/>combine two sets</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    Union, intersection, difference, symmetric difference and complement — five operations, and one
+    diagram (the Venn diagram) that makes every one of them obvious at a glance.
+</p>
+</div>
+</section>
+
+<!-- DEFINITIONS -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent);">01. The Five Operations</h3>
+<h2 style="margin-bottom:1rem;">Notation you'll use constantly</h2>
+<div class="var-list">
+<div class="var-row"><span class="var-key">A′</span><span class="var-desc"><b>Complement</b> — everything in the universal set $U$ that is <em>not</em> in $A$. $A' = \{x : x \in U, x \notin A\}$.</span></div>
+<div class="var-row"><span class="var-key">∪</span><span class="var-desc"><b>Union</b> — everything in $A$ or $B$ or both. $A \cup B = \{x : x \in A \text{ or } x \in B\}$.</span></div>
+<div class="var-row"><span class="var-key">∩</span><span class="var-desc"><b>Intersection</b> — everything common to both $A$ and $B$. $A \cap B = \{x : x \in A \text{ and } x \in B\}$.</span></div>
+<div class="var-row"><span class="var-key">−</span><span class="var-desc"><b>Difference</b> — elements in $A$ but not $B$ (or vice versa). $A - B = \{x : x \in A, x \notin B\}$.</span></div>
+<div class="var-row"><span class="var-key">Δ</span><span class="var-desc"><b>Symmetric Difference</b> — everything in exactly one of the two sets. $A \Delta B = (A-B) \cup (B-A)$.</span></div>
+</div>
+</div>
+</section>
+
+<!-- MASTER INTERACTIVE VENN -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent-2);">02. Try Every Operation</h3>
+<h2>Pick an operation, watch it shade</h2>
+<p>
+    $U = \{a,b,c,d,e,g,i,o,u\}$, &nbsp; $A = \{a,e,i,o,u\}$ (the vowels), &nbsp; $B = \{b,c,e,o\}$.
+</p>
+<div class="venn-controls" id="opControls">
+<button class="venn-op-btn" data-op="union">A ∪ B</button>
+<button class="venn-op-btn" data-op="intersection">A ∩ B</button>
+<button class="venn-op-btn" data-op="a-b">A − B</button>
+<button class="venn-op-btn" data-op="b-a">B − A</button>
+<button class="venn-op-btn" data-op="ac">A′</button>
+<button class="venn-op-btn" data-op="bc">B′</button>
+<button class="venn-op-btn" data-op="symdiff">A Δ B</button>
+</div>
+<div class="venn-result" id="opResult">Tap an operation above.</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('setops', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="venn-stage" id="opVenn"></div>
+</div>
+</div>
+</section>
+
+<!-- WORKED EXAMPLE -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent);">Worked Example</h3>
+<div class="worked-example" style="display:grid; grid-template-columns:1.2fr 1fr; gap:1.5rem; align-items:center;">
+<div>
+<span class="we-label">Example 1.14 (textbook)</span>
+<div class="we-question">If $A = \{-3,-2,1,4\}$ and $B = \{0,1,2,4\}$, find (i) $A - B$ (ii) $B - A$.</div>
+<div class="step-flow" id="we-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$A - B$: keep elements of A that are NOT in B.<div class="step-math">A − B = {−3, −2}</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$B - A$: keep elements of B that are NOT in A.<div class="step-math">B − A = {0, 2}</div></div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="we-play">Play steps</button></div>
+</div>
+<div class="venn-stage" id="weVenn" style="min-height:220px;"></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISES -->
+<section>
+<div style="width:100%; max-width:1100px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+
+<div class="exercise-card" id="ex1" style="display:grid; grid-template-columns:1.2fr 1fr; gap:1.5rem; align-items:start;">
+<div>
+<span class="ex-label">Exercise 1.3 · Q3</span>
+<div class="ex-question">$U=\{a,..,h\}$, &nbsp;$A=\{b,d,f,h\}$, &nbsp;$B=\{a,d,e,h\}$. Find (i) $A'$ &nbsp;(ii) $A \cup B$ &nbsp;(iii) $A \cap B$.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex1Hint">Use the buttons on the diagram to the right to shade each part before checking the answer.</div>
+<div class="exercise-panel answer-panel" id="ex1Answer">
+(i) $A' = \{a, c, e, g\}$ &nbsp; (ii) $A \cup B = \{a,b,d,e,f,h\}$ &nbsp; (iii) $A \cap B = \{d, h\}$
+</div>
+</div>
+<div>
+<div class="venn-controls" id="ex1Controls" style="margin-bottom:0.5rem;">
+<button class="venn-op-btn" data-op="ac">A′</button>
+<button class="venn-op-btn" data-op="union">A∪B</button>
+<button class="venn-op-btn" data-op="intersection">A∩B</button>
+</div>
+<div class="venn-stage" id="ex1Venn"></div>
+<div class="venn-result" id="ex1Result"></div>
+</div>
+</div>
+
+<div class="exercise-card" id="ex2">
+<span class="ex-label">Exercise 1.3 · Q5(iii)</span>
+<div class="ex-question">Find the symmetric difference between $X = \{5, 6, 7\}$ and $Y = \{5, 7, 9, 10\}$.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex2Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex2Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex2Hint">$X \Delta Y = (X-Y) \cup (Y-X)$ — everything in exactly one of the two sets.</div>
+<div class="exercise-panel answer-panel" id="ex2Answer">Answer: $X - Y = \{6\}$, $Y - X = \{9, 10\}$, so $X \Delta Y = \{6, 9, 10\}$</div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../subsets-and-power-sets/">← 1.4 Subsets &amp; Power Sets</a>
+<a class="back-link cn-home" href="../">Set Language Home</a>
+<a class="back-link" href="../properties-of-operations/">Next: Properties of Set Operations →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/venn-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Explain the set operations union, intersection, difference, symmetric difference and complement, using a Venn diagram, for a Class 9 student.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Master interactive Venn ---------- */
+const opDiagram = VennLib.twoSet(document.getElementById('opVenn'), {
+    a: ['a', 'e', 'i', 'o', 'u'], b: ['b', 'c', 'e', 'o'],
+    universe: ['a', 'b', 'c', 'd', 'e', 'g', 'i', 'o', 'u'], labelA: 'A', labelB: 'B'
+});
+VennLib.wireControls(document.getElementById('opControls'), opDiagram, document.getElementById('opResult'));
+
+/* ---------- Worked example diagram (fixed to A-B) ---------- */
+const weDiagram = VennLib.twoSet(document.getElementById('weVenn'), {
+    a: [-3, -2, 1, 4], b: [0, 1, 2, 4], labelA: 'A', labelB: 'B'
+});
+weDiagram.highlight('a-b');
+
+/* ---------- Exercise 1: own interactive Venn ---------- */
+const ex1Diagram = VennLib.twoSet(document.getElementById('ex1Venn'), {
+    a: ['b', 'd', 'f', 'h'], b: ['a', 'd', 'e', 'h'],
+    universe: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], labelA: 'A', labelB: 'B'
+});
+VennLib.wireControls(document.getElementById('ex1Controls'), ex1Diagram, document.getElementById('ex1Result'));
+
+/* ---------- Worked example / exercise wiring ---------- */
+document.getElementById('we-play').addEventListener('click', () => AlgLib.revealSteps('we-steps'));
+AlgLib.revealSteps('we-steps', 0);
+['ex1', 'ex2'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

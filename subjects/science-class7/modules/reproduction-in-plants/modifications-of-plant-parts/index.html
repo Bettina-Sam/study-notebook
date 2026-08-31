@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>5.4 Modifications of Plant Parts • Reproduction in Plants • Study Notebook</title>
+<meta name="description" content="Roots, stems and leaves reshaped for storage, support, protection or catching insects — explored by example."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Reproduction in Plants
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 5 · Reproduction and Modification in Plants</span>
+<span class="coming-soon-num">5.4 Modifications of Plant Parts</span>
+<h1 class="hero-title">When a root stops<br/>being just a root</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Roots, stems and leaves sometimes change shape and structure to do a different job — storing food, giving support, or even trapping insects.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Spot the Modification</h3>
+<h2>Root, stem or leaf — and why</h2>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Pick a plant and see which part is modified, and why.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Plant</label>
+<select id="mod-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="carrot">Carrot</option><option value="banyan">Banyan Tree</option>
+<option value="opuntia">Opuntia (cactus)</option><option value="potato">Potato</option>
+<option value="pea">Pea (Pisum)</option><option value="nepenthes">Nepenthes (pitcher plant)</option>
+</select></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="modOut">Carrot's tap root swells to store food — a conical shaped root.</div>
+</div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="modWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">Ginger is often mistaken for a root, but it's actually an underground ______________.</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" style="width:160px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 64–70</span><h2>Root, stem and leaf modifications</h2><div class="tb-grid"><div class="tb-card"><h3>Root — storage</h3><p>Carrot (conical), radish (spindle), beet root (top-shaped) — all swollen tap roots.</p></div><div class="tb-card"><h3>Root — support</h3><p>Banyan's prop roots, sugarcane's stilt roots grow from stems for extra support.</p></div><div class="tb-card"><h3>Stem — aerial</h3><p>Opuntia's stem is flattened and green to do photosynthesis; leaves reduce to spines to save water.</p></div><div class="tb-card"><h3>Stem — underground</h3><p>Ginger and turmeric (rhizome), potato (tuber), onion (bulb), Colocasia (corm) — all store food.</p></div><div class="tb-card"><h3>Leaf — tendrils and traps</h3><p>Pea's leaflets become climbing tendrils; Nepenthes' leaf becomes a flask that digests insects for nitrogen.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../asexual-reproduction/">← Asexual Reproduction</a>
+<a class="back-link" href="../exercises/">Next: Unit Exercises →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const mods = {
+  carrot:{part:'Root', desc:"Carrot's tap root swells to store food — a conical shaped root.", color:'var(--math-accent-2)'},
+  banyan:{part:'Root', desc:"Banyan grows prop roots down from its branches for extra mechanical support.", color:'var(--math-accent)'},
+  opuntia:{part:'Stem & Leaf', desc:"Opuntia's stem flattens and turns green to photosynthesize; its leaves reduce to spines to save water.", color:'#4a8f4a'},
+  potato:{part:'Stem', desc:"Potato is an underground stem (a tuber) with dormant buds called 'eyes' that sprout new plants.", color:'#a97c50'},
+  pea:{part:'Leaf', desc:"Pea's terminal leaflets modify into thin tendrils that coil around supports to help it climb.", color:'var(--math-accent)'},
+  nepenthes:{part:'Leaf', desc:"Nepenthes' leaf becomes a flask-shaped trap that digests insects to get the nitrogen it needs.", color:'#9c6bd6'}
+};
+function updateMod(){
+  const key = document.getElementById('mod-select').value;
+  const m = mods[key];
+  document.getElementById('modOut').innerHTML = `<b>${m.part} modification:</b> ${m.desc}`;
+  document.getElementById('modWrap').innerHTML = `<svg viewBox="0 0 280 160">
+    <path d="M140 20v50" stroke="#4a8f4a" stroke-width="4"/>
+    <ellipse cx="140" cy="100" rx="26" ry="45" fill="${m.color}" opacity="0.85"/>
+    <text x="140" y="150" text-anchor="middle" font-size="12" fill="var(--text-muted)">${m.part}</text>
+  </svg>`;
+}
+document.getElementById('mod-select').addEventListener('change', updateMod);
+updateMod();
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('stem');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct — stem (rhizome)' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

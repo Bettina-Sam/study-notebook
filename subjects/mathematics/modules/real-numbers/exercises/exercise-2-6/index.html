@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 2.6 • Real Numbers • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 2.6 — addition, subtraction, multiplication and division of surds, ordering surds, and pure-surd/rational-number discussion questions."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.ex-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:170px; }
+.check-row{ display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-top:0.6rem; }
+.verify-note{ font-size:0.78rem; color:var(--text-muted); font-style:italic; margin-top:0.4rem; }
+.sub-q{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-top:0.8rem; }
+.sub-card{ background:var(--card-bg); border:1px solid var(--border-color); border-radius:10px; padding:0.9rem; }
+</style>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 2.6</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Operating on Surds</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">6 questions from the textbook — add, subtract, multiply and divide surds, order them, and reason about when the results turn rational.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1100px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-2-5/">2.5</a>
+<span class="ex-set-pill current">2.6</span>
+<a class="ex-set-pill" href="../exercise-2-7/">2.7</a>
+</div>
+
+<!-- Q1 -->
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span>Simplify using addition and subtraction properties of surds:</span>
+<div class="ex-question">
+(i) $5\sqrt3+18\sqrt3-2\sqrt3$ &nbsp; (ii) $4\sqrt[3]5+2\sqrt[3]5-3\sqrt[3]5$<br/>
+(iii) $\sqrt{75}+\sqrt{48}-\sqrt{243}$ &nbsp; (iv) $5\sqrt[3]{40}+2\sqrt[3]{625}-3\sqrt[3]{320}$
+</div>
+<div class="sub-q">
+<div class="sub-card"><div class="check-row"><span>(i)</span><input class="ex-input" id="q1i" type="text" placeholder="e.g. 21√3"/><button class="btn btn-primary" data-check="q1i">Check</button></div><div class="check-result" id="q1iResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(ii)</span><input class="ex-input" id="q1ii" type="text" placeholder="e.g. 3∛5"/><button class="btn btn-primary" data-check="q1ii">Check</button></div><div class="check-result" id="q1iiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iii)</span><input class="ex-input" id="q1iii" type="text" placeholder="value"/><button class="btn btn-primary" data-check="q1iii">Check</button></div><div class="check-result" id="q1iiiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iv)</span><input class="ex-input" id="q1iv" type="text" placeholder="e.g. 8∛5"/><button class="btn btn-primary" data-check="q1iv">Check</button></div><div class="check-result" id="q1ivResult"></div></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q1Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q1Answer">Show Steps</button></div>
+<div class="exercise-panel" id="q1Hint">Like surds add/subtract by combining their coefficients only — the radical part never changes. First reduce every term to the same surd (e.g. √75 = 5√3) before combining.</div>
+<div class="exercise-panel answer-panel" id="q1Answer">
+(i) $(5+18-2)\sqrt3=21\sqrt3$<br/>
+(ii) $(4+2-3)\sqrt[3]5=3\sqrt[3]5$<br/>
+(iii) $\sqrt{75}=5\sqrt3,\ \sqrt{48}=4\sqrt3,\ \sqrt{243}=9\sqrt3 \Rightarrow (5+4-9)\sqrt3=0$<br/>
+(iv) $\sqrt[3]{40}=2\sqrt[3]5,\ \sqrt[3]{625}=5\sqrt[3]5,\ \sqrt[3]{320}=4\sqrt[3]5 \Rightarrow 5(2\sqrt[3]5)+2(5\sqrt[3]5)-3(4\sqrt[3]5)=(10+10-12)\sqrt[3]5=8\sqrt[3]5$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q2 -->
+<div class="exercise-card" id="q2">
+<span class="ex-label"><span class="ex-q-num">Q2</span>Simplify using multiplication and division properties of surds:</span>
+<div class="ex-question">
+(i) $\sqrt3\times\sqrt5\times\sqrt2$ &nbsp; (ii) $\sqrt{35}\times\sqrt7$ &nbsp; (iii) $\sqrt[3]{27}\times\sqrt[3]8\times\sqrt[3]{125}$<br/>
+(iv) $(7\sqrt a-5\sqrt b)(7\sqrt a+5\sqrt b)$ &nbsp; (v) $\sqrt{\dfrac{225}{729}}-\sqrt{\dfrac{25}{144}}\times\sqrt{\dfrac{16}{81}}$
+<div class="verify-note">VERIFY: part (v)'s exact grouping of division/subtraction was garbled in the scan; the reading above (evaluate each root, then multiply before subtracting) gives a clean fraction and is the most defensible reconstruction.</div>
+</div>
+<div class="sub-q">
+<div class="sub-card"><div class="check-row"><span>(i)</span><input class="ex-input" id="q2i" type="text" placeholder="e.g. √30"/><button class="btn btn-primary" data-check="q2i">Check</button></div><div class="check-result" id="q2iResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(ii)</span><input class="ex-input" id="q2ii" type="text" placeholder="e.g. 7√5"/><button class="btn btn-primary" data-check="q2ii">Check</button></div><div class="check-result" id="q2iiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iii)</span><input class="ex-input" id="q2iii" type="number" placeholder="value"/><button class="btn btn-primary" data-check="q2iii">Check</button></div><div class="check-result" id="q2iiiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iv)</span><input class="ex-input" id="q2iv" type="text" placeholder="e.g. 49a-25b"/><button class="btn btn-primary" data-check="q2iv">Check</button></div><div class="check-result" id="q2ivResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(v)</span><input class="ex-input" id="q2v" type="text" placeholder="e.g. 10/27"/><button class="btn btn-primary" data-check="q2v">Check</button></div><div class="check-result" id="q2vResult"></div></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q2Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q2Answer">Show Steps</button></div>
+<div class="exercise-panel" id="q2Hint">Same-order radicals multiply/divide under one radical sign: $\sqrt a\sqrt b=\sqrt{ab}$. Part (iv) is a difference-of-squares pattern.</div>
+<div class="exercise-panel answer-panel" id="q2Answer">
+(i) $\sqrt{3\times5\times2}=\sqrt{30}$<br/>
+(ii) $\sqrt{35\times7}=\sqrt{245}=7\sqrt5$<br/>
+(iii) $3\times2\times5=30$ (all perfect cubes — a rational product)<br/>
+(iv) $(7\sqrt a)^2-(5\sqrt b)^2=49a-25b$<br/>
+(v) $\sqrt{\dfrac{225}{729}}=\dfrac{15}{27}=\dfrac59;\ \sqrt{\dfrac{25}{144}}=\dfrac{5}{12};\ \sqrt{\dfrac{16}{81}}=\dfrac49$. Then $\dfrac{5}{12}\times\dfrac49=\dfrac{5}{27}$, so $\dfrac59-\dfrac{5}{27}=\dfrac{15-5}{27}=\dfrac{10}{27}$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q3 -->
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>Using $\sqrt2=1.414$, $\sqrt3=1.732$, $\sqrt5=2.236$, $\sqrt{10}=3.162$, find (to 3 decimal places):</span>
+<div class="ex-question">(i) $\sqrt{40}-\sqrt{20}$ &nbsp; (ii) $\sqrt{300}+\sqrt{90}-\sqrt8$</div>
+<div class="sub-q">
+<div class="sub-card"><div class="check-row"><span>(i)</span><input class="ex-input" id="q3i" type="number" step="0.001" placeholder="value"/><button class="btn btn-primary" data-check="q3i">Check</button></div><div class="check-result" id="q3iResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(ii)</span><input class="ex-input" id="q3ii" type="number" step="0.001" placeholder="value"/><button class="btn btn-primary" data-check="q3ii">Check</button></div><div class="check-result" id="q3iiResult"></div></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q3Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q3Answer">Show Steps</button></div>
+<div class="exercise-panel" id="q3Hint">Reduce each surd to a multiple of the given surds first: √40 = 2√10, √20 = 2√5, √300 = 10√3, √90 = 3√10, √8 = 2√2.</div>
+<div class="exercise-panel answer-panel" id="q3Answer">
+(i) $\sqrt{40}-\sqrt{20}=2\sqrt{10}-2\sqrt5=2(3.162)-2(2.236)=6.324-4.472=1.852$<br/>
+(ii) $\sqrt{300}+\sqrt{90}-\sqrt8=10\sqrt3+3\sqrt{10}-2\sqrt2=17.320+9.486-2.828=23.978$
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q4: descending order via number line -->
+<div class="exercise-card" id="q4">
+<span class="ex-label"><span class="ex-q-num">Q4</span>Arrange in descending order:</span>
+<div class="ex-question">(i) $\sqrt[3]5,\ \sqrt[9]4,\ \sqrt[6]3$ &nbsp; (ii) $2\sqrt[3]5,\ 3\sqrt[4]7,\ \sqrt3$</div>
+<p style="font-size:0.9rem; margin-top:0.6rem;">Round (i) — drag left = largest, right = smallest:</p>
+<div id="ordLine4i" style="width:100%; max-width:640px; margin:0.6rem auto;"></div>
+<div class="btn-row" style="justify-content:center;"><button class="btn btn-primary" id="ord4iCheck">Check order</button></div>
+<div id="ord4iResult" class="check-result" style="text-align:center; margin-top:0.4rem;"></div>
+<p style="font-size:0.9rem; margin-top:1.2rem;">Round (ii) — drag left = largest, right = smallest:</p>
+<div id="ordLine4ii" style="width:100%; max-width:640px; margin:0.6rem auto;"></div>
+<div class="btn-row" style="justify-content:center;"><button class="btn btn-primary" id="ord4iiCheck">Check order</button></div>
+<div id="ord4iiResult" class="check-result" style="text-align:center; margin-top:0.4rem;"></div>
+<div class="exercise-tools" style="margin-top:0.8rem;"><button class="btn btn-secondary" data-reveal="q4Answer">Show Steps</button></div>
+<div class="exercise-panel answer-panel" id="q4Answer">
+(i) $\sqrt[3]5\approx1.710,\ \sqrt[6]3\approx1.201,\ \sqrt[9]4\approx1.167$. Descending: $\sqrt[3]5,\ \sqrt[6]3,\ \sqrt[9]4$.<br/>
+(ii) $3\sqrt[4]7\approx4.879,\ 2\sqrt[3]5\approx3.420,\ \sqrt3\approx1.732$. Descending: $3\sqrt[4]7,\ 2\sqrt[3]5,\ \sqrt3$.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q4','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q5 -->
+<div class="exercise-card" id="q5">
+<span class="ex-label"><span class="ex-q-num">Q5</span>Can you get a <b>pure surd</b> when you find:</span>
+<div class="ex-question">(i) the sum of two surds &nbsp; (ii) the difference of two surds &nbsp; (iii) the product of two surds &nbsp; (iv) the quotient of two surds — justify each with an example.</div>
+<div id="q5Grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.8rem; margin-top:0.8rem;"></div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q5','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q6 -->
+<div class="exercise-card" id="q6">
+<span class="ex-label"><span class="ex-q-num">Q6</span>Can you get a <b>rational number</b> when you compute:</span>
+<div class="ex-question">(i) the sum of two surds &nbsp; (ii) the difference of two surds &nbsp; (iii) the product of two surds &nbsp; (iv) the quotient of two surds — justify each with an example.</div>
+<div id="q6Grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.8rem; margin-top:0.8rem;"></div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q6','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-2-5/">← Exercise 2.5</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-2-7/">Next: Exercise 2.7 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../../js/number-line-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    const base = "I am solving Class 9 Mathematics (Tamil Nadu board), Chapter 2 Real Numbers, Exercise 2.6. ";
+    if (topic === 'q1') prompt = base + "Question 1: Simplify (i) 5√3+18√3-2√3 (ii) 4∛5+2∛5-3∛5 (iii) √75+√48-√243 (iv) 5∛40+2∛625-3∛320 using addition/subtraction properties of surds. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q2') prompt = base + "Question 2: Simplify products/quotients of surds like √3×√5×√2, √35×√7, ∛27×∛8×∛125, (7√a-5√b)(7√a+5√b), and a fraction of nested square roots, using multiplication/division properties of surds. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q3') prompt = base + "Question 3: Given √2=1.414, √3=1.732, √5=2.236, √10=3.162, find √40-√20 and √300+√90-√8 correct to 3 decimal places. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q4') prompt = base + "Question 4: Arrange in descending order (i) cube root of 5, 9th root of 4, 6th root of 3 (ii) 2 times cube root of 5, 3 times 4th root of 7, square root of 3. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q5') prompt = base + "Question 5: Can the sum, difference, product, or quotient of two surds ever be a pure surd? Justify each with an example. Do NOT give me the final answer immediately — start with a hint and ask what I think first.";
+    else if (topic === 'q6') prompt = base + "Question 6: Can the sum, difference, product, or quotient of two surds ever be a rational number? Justify each with an example. Do NOT give me the final answer immediately — start with a hint and ask what I think first.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- numeric/text answer checking ---------- */
+function checkNum(inputId, expected, resultId, tol) {
+    AlgLib.checkNumeric(document.getElementById(inputId), expected, document.getElementById(resultId), tol || 0.02);
+}
+function checkTxt(inputId, variants, resultId) {
+    ExLib.checkTextAnswer(document.getElementById(inputId), variants, document.getElementById(resultId));
+}
+const checks = {
+    q1i: () => checkTxt('q1i', ['21√3', '21*√3', '21 √3'], 'q1iResult'),
+    q1ii: () => checkTxt('q1ii', ['3∛5', '3 ∛5', 'cbrt(5)*3', '3cbrt5'], 'q1iiResult'),
+    q1iii: () => checkNum('q1iii', 0, 'q1iiiResult', 0.01),
+    q1iv: () => checkTxt('q1iv', ['8∛5', '8 ∛5', '8cbrt5'], 'q1ivResult'),
+    q2i: () => checkTxt('q2i', ['√30', '30^(1/2)', 'sqrt(30)', 'sqrt30'], 'q2iResult'),
+    q2ii: () => checkTxt('q2ii', ['7√5', '7 √5', '7sqrt5'], 'q2iiResult'),
+    q2iii: () => checkNum('q2iii', 30, 'q2iiiResult'),
+    q2iv: () => checkTxt('q2iv', ['49a-25b', '49a - 25b'], 'q2ivResult'),
+    q2v: () => checkNum('q2v', 10 / 27, 'q2vResult', 0.005),
+    q3i: () => checkNum('q3i', 1.852, 'q3iResult', 0.01),
+    q3ii: () => checkNum('q3ii', 23.978, 'q3iiResult', 0.01)
+};
+document.querySelectorAll('[data-check]').forEach(btn => {
+    btn.addEventListener('click', () => { const fn = checks[btn.dataset.check]; if (fn) fn(); });
+});
+
+/* ---------- Q4: descending-order number lines ---------- */
+function wireDescOrder(containerId, checkBtnId, resultId, items, trueDescOrder) {
+    const line = NumberLineLib.create(document.getElementById(containerId), { min: items.minV, max: items.maxV });
+    const pts = items.list.map((it, i) => line.addPoint(it.id, items.startVals[i], { label: it.label }));
+    document.getElementById(checkBtnId).addEventListener('click', () => {
+        const order = pts.slice().sort((a, b) => b.value - a.value).map(p => p.id);
+        const ok = order.join(',') === trueDescOrder.join(',');
+        const r = document.getElementById(resultId);
+        r.textContent = ok ? 'Correct — that is the descending order!' : `Currently (left→right = largest→smallest): ${order.map(id => items.list.find(x => x.id === id).label).join(' > ')} — keep adjusting.`;
+        r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+    });
+}
+wireDescOrder('ordLine4i', 'ord4iCheck', 'ord4iResult', {
+    minV: 1, maxV: 1.9,
+    list: [{ id: 'a', label: '∛5' }, { id: 'b', label: '⁹√4' }, { id: 'c', label: '⁶√3' }],
+    startVals: [1.2, 1.75, 1.5]
+}, ['a', 'c', 'b']); // ∛5 (1.710) > ⁶√3 (1.201) > ⁹√4 (1.167)
+
+wireDescOrder('ordLine4ii', 'ord4iiCheck', 'ord4iiResult', {
+    minV: 1, maxV: 5.2,
+    list: [{ id: 'a', label: '2∛5' }, { id: 'b', label: '3⁴√7' }, { id: 'c', label: '√3' }],
+    startVals: [2.5, 4.5, 1.5]
+}, ['b', 'a', 'c']); // 3⁴√7 (4.879) > 2∛5 (3.420) > √3 (1.732)
+
+/* ---------- Q5 / Q6: discussion reveal cards ---------- */
+const q5Data = [
+    { op: 'Sum', ex: '\\sqrt2+\\sqrt8=\\sqrt2+2\\sqrt2=3\\sqrt2', verdict: 'Yes — possible', note: 'When the two surds share the same radical part after simplifying, their sum is a pure surd.' },
+    { op: 'Difference', ex: '\\sqrt8-\\sqrt2=2\\sqrt2-\\sqrt2=\\sqrt2', verdict: 'Yes — possible', note: 'Same idea in reverse — the difference collapses to a single pure surd.' },
+    { op: 'Product', ex: '\\sqrt2\\times\\sqrt3=\\sqrt6', verdict: 'Yes — possible', note: 'Multiplying two different pure surds under the same index often gives another pure surd (though √2×√8=4 shows it can also turn fully rational).' },
+    { op: 'Quotient', ex: '\\dfrac{\\sqrt6}{\\sqrt3}=\\sqrt2', verdict: 'Yes — possible', note: 'Dividing two surds can also land exactly on a pure surd.' }
+];
+const q6Data = [
+    { op: 'Sum', ex: '\\sqrt2+\\sqrt3\\approx3.146', verdict: 'No — never for two (unlike) pure surds', note: 'The sum of two distinct pure surds is always irrational — it can never simplify to a rational number.' },
+    { op: 'Difference', ex: '\\sqrt3-\\sqrt2\\approx0.318', verdict: 'No — never for two (unlike) pure surds', note: 'Same reasoning as the sum: the irrational parts never cancel unless the two surds are identical (giving 0, which is rational — the one exception!).' },
+    { op: 'Product', ex: '\\sqrt2\\times\\sqrt8=\\sqrt{16}=4', verdict: 'Yes — possible', note: 'If the product under the radical is a perfect square (or perfect nth power), the result is rational.' },
+    { op: 'Quotient', ex: '\\sqrt8\\div\\sqrt2=\\sqrt4=2', verdict: 'Yes — possible', note: 'Likewise, dividing can leave a perfect square (or nth power) under the radical, giving a rational quotient.' }
+];
+function renderDiscussion(gridId, data) {
+    document.getElementById(gridId).innerHTML = data.map((d, i) => `
+      <div class="worked-example" style="margin:0;">
+        <div style="font-weight:700; margin-bottom:0.4rem;">${d.op}</div>
+        <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.6rem;">${d.verdict}</div>
+        <button class="btn btn-ghost" data-reveal="${gridId}-${i}">Show example</button>
+        <div class="exercise-panel" id="${gridId}-${i}">$${d.ex}$<br/>${d.note}</div>
+      </div>`).join('');
+}
+renderDiscussion('q5Grid', q5Data);
+renderDiscussion('q6Grid', q6Data);
+
+/* ---------- generic reveal wiring (thinking-corner style panels outside exercise-card) ---------- */
+document.querySelectorAll('[data-reveal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.dataset.reveal);
+        if (!panel) return;
+        const opening = !panel.classList.contains('open');
+        panel.classList.toggle('open', opening);
+        if (opening) AlgLib.typeset(panel);
+    });
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+
+<script id="rn-second-hint-runtime">
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.exercise-card').forEach((card,idx)=>{const tools=card.querySelector('.exercise-tools');if(!tools||tools.querySelector('.rn-hint2-btn'))return;const panel=document.createElement('div');panel.className='exercise-panel rn-hint2-panel';panel.id=(card.id||('q'+idx))+'StrategyHint';panel.innerHTML='<b>Hint 2 · Strategy:</b> Use the interactive representation on this question to test one step at a time. Translate what you see back into the number rule or algebraic operation before opening the answer.';card.appendChild(panel);const b=document.createElement('button');b.className='btn btn-ghost rn-hint2-btn';b.textContent='Hint 2';b.onclick=()=>panel.classList.toggle('show');const answer=[...tools.querySelectorAll('button')].find(x=>/answer/i.test(x.textContent));tools.insertBefore(b,answer||null);});});
+</script>
+</body>
+</html>

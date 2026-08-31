@@ -3,18 +3,24 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Set Language • Study Notebook</title>
-<meta name="description" content="Describing, comparing and combining collections of objects using set notation."/>
+<title>Set Language • Class 9 Mathematics • Study Notebook</title>
+<meta name="description" content="Class 9 Set Language: what makes a set, the kinds of sets there are, set operations and Venn diagrams, the laws those operations obey, and counting with cardinality."/>
 <link href="../../../../assets/icons/favicon.svg" rel="icon"/>
 <link href="../../../../css/common.css" rel="stylesheet"/>
 <link href="../../../../css/article.css" rel="stylesheet"/>
 <link href="../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../css/set-language.css" rel="stylesheet"/>
 <script>
     const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     document.body && document.body.setAttribute('data-theme', savedTheme);
 </script>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
+<link href="../../../../css/math-study-system.css" rel="stylesheet"/>
 </head>
 <body>
 <nav class="sticky">
@@ -28,24 +34,79 @@
 </button>
 </nav>
 
-<section class="coming-soon-hero">
-<div class="coming-soon-icon">
-<svg viewBox="0 0 56 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 40 a20 20 0 1 0 0.1 0 M40 40 a20 20 0 1 0 0.1 0"/></svg>
-</div>
-<div class="coming-soon-num">Chapter 1</div>
-<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem); margin-top:0.4rem;">Set Language</h1>
-<p style="max-width:52ch; margin:1.2rem auto 0;">Describing, comparing and combining collections of objects using set notation.</p>
-<span class="coming-soon-tag">Coming Soon</span>
-<div>
-<a class="back-link" href="../algebra/">
-<i data-lucide="sparkles" width="15"></i> Start with Algebra, which is ready now
-</a>
-</div>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Chapter 1</span>
+<h1 class="hero-title">Set Language</h1>
+<p style="margin-top: 1.6rem; font-size: 1.25rem; max-width: 56ch;">
+    You already sort things into groups without thinking about it. Set language just gives that habit
+    a precise notation — one that turns out to describe collections, logic and even word problems about
+    people and their hobbies.
+</p>
+<div class="math-study-rhythm"><span>Understand</span><b>→</b><span>Explore</span><b>→</b><span>Practise</span><b>→</b><span>Reflect</span></div></div>
 </section>
-<div class="divider" style="margin:2rem 0 0;"></div>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1400px; margin:0 auto 3rem;">
+<h3 class="section-label" style="color:var(--math-accent);">Learn in this order</h3>
+<p style="max-width:70ch;">Start with what a set even is and how to write one down, then the different
+kinds of sets you'll meet. From there, combine sets with the standard operations and picture them with
+Venn diagrams, discover the algebraic laws those operations follow, meet De Morgan's laws, and finish by
+using all of it to solve real counting problems.</p>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('chapter', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="topic-grid three-col" id="topicGrid"></div>
+</section>
+
+<div class="divider"></div>
 <footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
 
 <script src="../../../../js/common.js"></script>
-<script>window.onload = () => { if (window.lucide) window.lucide.createIcons(); };</script>
+<script>
+function openAI(topic, model) {
+    let prompt = "Give a Class 9 student a friendly overview of the Set Language chapter: what a set is, types of sets, set operations, Venn diagrams, the algebraic properties/laws (commutative, associative, distributive, De Morgan's), and cardinality applications.";
+    launchAIPrompt(model, prompt);
+}
+const topics = [
+  ["01","1.1–1.2","sets-and-notation/","What Is a Set?","Well-defined collections and membership notation (∈, ∉).","sets"],
+  ["02","1.3","representation-of-sets/","Representation of Sets","Descriptive, set-builder and roster form — three ways to write the same set.","repr"],
+  ["03","1.4","types-of-sets/","Types of Sets","Empty, singleton, finite, infinite sets, cardinal number, and equal vs. equivalent sets.","types"],
+  ["04","1.4","subsets-and-power-sets/","Subsets &amp; Power Sets","Subsets, proper subsets, disjoint/overlapping sets, and the power set.","subsets"],
+  ["05","1.5","set-operations/","Set Operations","Complement, union, intersection, difference and symmetric difference — with a live Venn diagram.","ops"],
+  ["06","1.6","properties-of-operations/","Properties of Set Operations","Commutative, associative and distributive laws, tested on real sets.","props"],
+  ["07","1.7","de-morgans-laws/","De Morgan's Laws","How complement interacts with union, intersection and set difference.","demorgan"],
+  ["08","1.8","cardinality/","Cardinality Applications","Use n(A∪B) = n(A)+n(B)−n(A∩B) to solve real counting problems.","card"],
+  ["09","Practice","exercises/","Chapter Exercises","All textbook exercises 1.1–1.7 — 72 questions with hints and answers.","exercises"]
+];
+function topicVisual(key){
+  const common='viewBox="0 0 260 104" aria-hidden="true" fill="none" stroke="currentColor"';
+  const v={
+   sets:`<svg ${common}><path class="tv-accent" d="M65 18Q42 52 65 86"/><path class="tv-accent" d="M195 18Q218 52 195 86"/><circle class="tv-fill tv-pulse" cx="105" cy="40" r="6"/><circle class="tv-fill-2 tv-pulse" cx="135" cy="66" r="6"/><circle class="tv-fill tv-pulse" cx="160" cy="42" r="6"/><text x="85" y="98">{ elements }</text></svg>`,
+   repr:`<svg ${common}><text x="20" y="46" font-family="var(--font-mono)" font-size="13">words</text><path class="tv-accent tv-nudge" d="M20 60h40m0 0-8-6m8 6-8 6"/><text x="90" y="46" class="tv-flicker">{x : x...}</text><path class="tv-stroke-2" d="M90 60h40m0 0-8-6m8 6-8 6"/><text x="170" y="46">{1,2,3}</text></svg>`,
+   types:`<svg ${common}><circle class="tv-ghost" cx="45" cy="46" r="17"/><text x="38" y="80">∅</text><circle class="tv-accent" cx="110" cy="46" r="17"/><circle class="tv-fill" cx="110" cy="46" r="4"/><text x="88" y="80">singleton</text><circle class="tv-stroke-2" cx="190" cy="46" r="22"/><circle class="tv-fill-2" cx="180" cy="38" r="4"/><circle class="tv-fill-2" cx="200" cy="50" r="4"/><circle class="tv-fill-2" cx="186" cy="58" r="4"/><text x="168" y="86">finite</text></svg>`,
+   subsets:`<svg ${common}><circle class="tv-stroke-2" cx="140" cy="52" r="42"/><circle class="tv-accent tv-pulse" cx="115" cy="52" r="20"/><text x="180" y="30">B</text><text x="105" y="56">A</text><text x="55" y="90">A ⊆ B</text></svg>`,
+   ops:`<svg ${common}><circle class="tv-accent" cx="100" cy="52" r="34"/><circle class="tv-stroke-2" cx="150" cy="52" r="34"/><ellipse class="tv-fill tv-flicker" cx="125" cy="52" rx="13" ry="30"/><text x="75" y="98">A ∩ B</text></svg>`,
+   props:`<svg ${common}><rect class="tv-accent" x="30" y="34" width="42" height="36" rx="5"/><rect class="tv-stroke-2" x="95" y="34" width="42" height="36" rx="5"/><path class="tv-accent tv-nudge" d="M145 52h35m0 0-8-6m8 6-8 6"/><text x="188" y="48">A∪B</text><text x="188" y="66">=B∪A</text></svg>`,
+   demorgan:`<svg ${common}><rect class="tv-ghost" x="20" y="14" width="220" height="76" rx="8"/><text x="28" y="30">U</text><circle class="tv-accent" cx="105" cy="54" r="28"/><circle class="tv-stroke-2" cx="150" cy="54" r="28"/><text class="tv-flicker" x="92" y="90">(A∪B)′</text></svg>`,
+   card:`<svg ${common}><circle class="tv-accent" cx="95" cy="50" r="30"/><circle class="tv-stroke-2" cx="145" cy="50" r="30"/><circle class="tv-fill tv-pulse" cx="120" cy="50" r="5"/><text x="45" y="96">n(A)+n(B)−n(A∩B)</text></svg>`,
+   exercises:`<svg ${common}><rect class="tv-ghost" x="30" y="16" width="80" height="72" rx="4"/><path class="tv-accent" d="M42 34h56M42 48h56M42 62h30"/><circle class="tv-fill tv-pulse" cx="170" cy="52" r="30"/><text x="152" y="58" style="fill:#fff; font-weight:700;">✓</text></svg>`
+  };
+  return v[key]||v.sets;
+}
+document.getElementById('topicGrid').innerHTML = topics.map(t => `
+  <a class="topic-card" href="${t[2]}">
+    <div class="topic-visual">${topicVisual(t[5])}</div>
+    <div class="topic-body">
+      <span class="topic-num">${t[0]} · ${t[1]}</span>
+      <h3>${t[3]}</h3>
+      <p>${t[4]}</p>
+      <span class="topic-action">Open module →</span>
+    </div>
+  </a>`).join('');
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
 </body>
 </html>

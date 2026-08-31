@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 2.4 • Real Numbers • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 2.4 — representing decimals on the number line using successive magnification, now interactive."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.ex-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:220px; }
+.check-row{ display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-top:0.7rem; }
+.rn-mag-stage > div{ margin-bottom:0.5rem; }
+</style>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 2.4</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Successive Magnification</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">1 question, three parts — zoom in on the number line to place each decimal exactly.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:900px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-2-1/">2.1</a>
+<a class="ex-set-pill" href="../exercise-2-2/">2.2</a>
+<a class="ex-set-pill" href="../exercise-2-3/">2.3</a>
+<span class="ex-set-pill current">2.4</span>
+</div>
+
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span>Represent the following numbers on the number line.</span>
+<div class="ex-question">(i) $5.348$ &nbsp; (ii) $6.\overline4$, correct to 3 decimal places &nbsp; (iii) $4.\overline{73}$, correct to 4 decimal places</div>
+
+<h3 style="margin-top:1rem; font-size:1.05rem;">(i) $5.348$</h3>
+<div class="rn-mag-row" style="display:flex; gap:0.6rem; margin:0.5rem 0;">
+<button class="btn btn-secondary" id="magBtnI">Zoom in →</button>
+<button class="btn btn-ghost" id="resetBtnI">Restart</button>
+</div>
+<div class="rn-mag-stage" id="magStageI"></div>
+<p class="rn-mini" id="capI" style="font-size:0.82rem; color:var(--text-muted);">5.348 already has 3 decimal digits — no rounding needed. Click "Zoom in" to locate it step by step.</p>
+
+<h3 style="margin-top:1.4rem; font-size:1.05rem;">(ii) $6.\overline4$, correct to 3 decimal places</h3>
+<div class="rn-mag-row" style="display:flex; gap:0.6rem; margin:0.5rem 0;">
+<button class="btn btn-secondary" id="magBtnII">Zoom in →</button>
+<button class="btn btn-ghost" id="resetBtnII">Restart</button>
+</div>
+<div class="rn-mag-stage" id="magStageII"></div>
+<p class="rn-mini" id="capII" style="font-size:0.82rem; color:var(--text-muted);">First round $6.\overline4=6.4444\ldots$ to 3 places: $6.444$.</p>
+
+<h3 style="margin-top:1.4rem; font-size:1.05rem;">(iii) $4.\overline{73}$, correct to 4 decimal places</h3>
+<div class="rn-mag-row" style="display:flex; gap:0.6rem; margin:0.5rem 0;">
+<button class="btn btn-secondary" id="magBtnIII">Zoom in →</button>
+<button class="btn btn-ghost" id="resetBtnIII">Restart</button>
+</div>
+<div class="rn-mag-stage" id="magStageIII"></div>
+<p class="rn-mini" id="capIII" style="font-size:0.82rem; color:var(--text-muted);">First round $4.\overline{73}=4.737373\ldots$ to 4 places: $4.7374$.</p>
+
+<div class="check-row" style="margin-top:1rem;">
+<label style="font-size:0.9rem;">Type all three final rounded values, comma-separated:</label>
+</div>
+<div class="check-row">
+<input class="ex-input" type="text" id="finalInput" placeholder="e.g. 5.348, 6.444, 4.7374" style="min-width:280px;"/>
+<button class="btn btn-primary" id="finalCheckBtn">Check</button>
+</div>
+<div class="check-result" id="finalResult"></div>
+
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q1Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q1Hint">For a recurring decimal, first round to the required number of places, then use successive magnification exactly like Example 2.14 to find where that rounded value sits.</div>
+<div class="exercise-panel answer-panel" id="q1Answer">
+(i) $5.348$ lies between $5.34$ and $5.35$, specifically at the 8th thousandth after $5.340$.<br/>
+(ii) $6.\overline4 \approx 6.444$ (3 d.p.), between $6.44$ and $6.45$.<br/>
+(iii) $4.\overline{73} \approx 4.7374$ (4 d.p.), between $4.737$ and $4.738$.
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-2-3/">← Exercise 2.3</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-2-5/">Next: Exercise 2.5 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script src="../../../../../../js/token-physics.js"></script>
+<script src="../../../../../../js/number-line-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'q1') prompt = "I am solving Class 9 Mathematics, Chapter 2 Real Numbers, Exercise 2.4 Question 1: Represent 5.348 on the number line; represent 6.4 recurring correct to 3 decimal places; represent 4.73 recurring correct to 4 decimal places, all using successive magnification. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    launchAIPrompt(model, prompt);
+}
+
+function buildMagnification(stageId, levels, btnId, resetId, capId, defaultCap) {
+  let idx = 0;
+  const stageEl = document.getElementById(stageId);
+  const capEl = document.getElementById(capId);
+  document.getElementById(btnId).addEventListener('click', () => {
+    if (idx >= levels.length) return;
+    const lvl = levels[idx];
+    const container = document.createElement('div');
+    stageEl.appendChild(container);
+    const nl = NumberLineLib.create(container, { min: lvl.min, max: lvl.max, height: 90 });
+    lvl.marks.forEach((m,i) => nl.addPoint('m'+idx+'-'+i, m, { fixed: true, cls: 'numline-fixed', label: m }));
+    if (lvl.value !== undefined) nl.addPoint('v'+idx, lvl.value, { fixed: true, cls: 'numline-highlight', label: lvl.value });
+    capEl.textContent = lvl.caption;
+    idx++;
+    if (idx >= levels.length) document.getElementById(btnId).textContent = 'Done!';
+  });
+  document.getElementById(resetId).addEventListener('click', () => {
+    stageEl.innerHTML = '';
+    idx = 0;
+    document.getElementById(btnId).textContent = 'Zoom in →';
+    capEl.textContent = defaultCap;
+  });
+}
+
+buildMagnification('magStageI', [
+  { min: -3, max: 8, marks: [5,6], caption: '5.348 lies between 5 and 6.' },
+  { min: 5, max: 6, marks: [5.3,5.4], value: 5.34, caption: 'Divide 5–6 into tenths. 5.348 lies between 5.3 and 5.4.' },
+  { min: 5.3, max: 5.4, marks: [5.34,5.35], caption: 'Divide 5.3–5.4 into hundredths. 5.348 lies between 5.34 and 5.35.' },
+  { min: 5.34, max: 5.35, marks: [5.348], value: 5.348, caption: 'Divide 5.34–5.35 into thousandths. Found 5.348!' }
+], 'magBtnI', 'resetBtnI', 'capI', '5.348 already has 3 decimal digits — no rounding needed. Click "Zoom in" to locate it step by step.');
+
+buildMagnification('magStageII', [
+  { min: -3, max: 8, marks: [6,7], caption: '6.444 lies between 6 and 7.' },
+  { min: 6, max: 7, marks: [6.4,6.5], caption: 'Divide 6–7 into tenths. 6.444 lies between 6.4 and 6.5.' },
+  { min: 6.4, max: 6.5, marks: [6.44,6.45], caption: 'Divide 6.4–6.5 into hundredths. 6.444 lies between 6.44 and 6.45.' },
+  { min: 6.44, max: 6.45, marks: [6.444], value: 6.444, caption: 'Divide 6.44–6.45 into thousandths. Found 6.444!' }
+], 'magBtnII', 'resetBtnII', 'capII', 'First round 6.4 recurring to 3 places: 6.444.');
+
+buildMagnification('magStageIII', [
+  { min: -3, max: 8, marks: [4,5], caption: '4.7374 lies between 4 and 5.' },
+  { min: 4, max: 5, marks: [4.7,4.8], caption: 'Divide 4–5 into tenths. 4.7374 lies between 4.7 and 4.8.' },
+  { min: 4.7, max: 4.8, marks: [4.73,4.74], caption: 'Divide 4.7–4.8 into hundredths. 4.7374 lies between 4.73 and 4.74.' },
+  { min: 4.73, max: 4.74, marks: [4.737,4.738], caption: 'Divide 4.73–4.74 into thousandths. 4.7374 lies between 4.737 and 4.738.' },
+  { min: 4.737, max: 4.738, marks: [4.7374], value: 4.7374, caption: 'Divide 4.737–4.738 into ten-thousandths. Found 4.7374!' }
+], 'magBtnIII', 'resetBtnIII', 'capIII', 'First round 4.73 recurring to 4 places: 4.7374.');
+
+document.getElementById('finalCheckBtn').addEventListener('click', () => {
+  const raw = document.getElementById('finalInput').value;
+  const parts = raw.split(',').map(s => parseFloat(s.trim()));
+  const expected = [5.348, 6.444, 4.7374];
+  const r = document.getElementById('finalResult');
+  if (parts.length < 3 || parts.some(isNaN)) { r.textContent = 'Enter three numbers, comma-separated.'; r.className = 'check-result check-no'; return; }
+  const ok = parts.every((v,i) => Math.abs(v - expected[i]) < 0.0005);
+  r.textContent = ok ? 'All three correct!' : 'Not quite — check the rounding on parts (ii) and (iii).';
+  r.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+});
+
+AlgLib.wireExercise(document.getElementById('q1'));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+
+<script id="rn-second-hint-runtime">
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.exercise-card').forEach((card,idx)=>{const tools=card.querySelector('.exercise-tools');if(!tools||tools.querySelector('.rn-hint2-btn'))return;const panel=document.createElement('div');panel.className='exercise-panel rn-hint2-panel';panel.id=(card.id||('q'+idx))+'StrategyHint';panel.innerHTML='<b>Hint 2 · Strategy:</b> Use the interactive representation on this question to test one step at a time. Translate what you see back into the number rule or algebraic operation before opening the answer.';card.appendChild(panel);const b=document.createElement('button');b.className='btn btn-ghost rn-hint2-btn';b.textContent='Hint 2';b.onclick=()=>panel.classList.toggle('show');const answer=[...tools.querySelectorAll('button')].find(x=>/answer/i.test(x.textContent));tools.insertBefore(b,answer||null);});});
+</script>
+</body>
+</html>

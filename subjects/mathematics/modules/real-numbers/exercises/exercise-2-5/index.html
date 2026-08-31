@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 2.5 • Real Numbers • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 2.5 — fractional indices and radical notation, with interactive checkers."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+.ex-input{ padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); font-family:var(--font-mono); font-size:0.9rem; min-width:170px; }
+.check-row{ display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-top:0.6rem; }
+.verify-note{ font-size:0.78rem; color:var(--text-muted); font-style:italic; margin-top:0.4rem; }
+.sub-q{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:0.8rem; }
+.sub-card{ background:var(--card-bg); border:1px solid var(--border-color); border-radius:10px; padding:0.9rem; }
+</style>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 2.5</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Fractional Indices</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 52ch;">5 questions from the textbook — convert between radical and index notation, and evaluate.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:1100px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-2-4/">2.4</a>
+<span class="ex-set-pill current">2.5</span>
+<a class="ex-set-pill" href="../exercise-2-6/">2.6</a>
+<a class="ex-set-pill" href="../exercise-2-7/">2.7</a>
+</div>
+
+<!-- Q1 -->
+<div class="exercise-card" id="q1">
+<span class="ex-label"><span class="ex-q-num">Q1</span>Write the following in the form of $5^n$:</span>
+<div class="ex-question">(i) $625$ &nbsp; (ii) $\dfrac15$ &nbsp; (iii) $\sqrt5$ &nbsp; (iv) $\sqrt[3]{125}$
+<div class="verify-note">VERIFY: parts (iii)/(iv) in the scanned original lost their radical symbols; √5 and ∛125 are the standard reconstruction for a "write as 5ⁿ" drill.</div>
+</div>
+<div class="sub-q">
+<div class="sub-card"><div class="check-row"><span>(i) $625=5^{\ }$</span><input class="ex-input" id="q1i" type="number" placeholder="n"/><button class="btn btn-primary" data-check="q1i">Check</button></div><div class="check-result" id="q1iResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(ii) $\dfrac15=5^{\ }$</span><input class="ex-input" id="q1ii" type="number" placeholder="n"/><button class="btn btn-primary" data-check="q1ii">Check</button></div><div class="check-result" id="q1iiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iii) $\sqrt5=5^{\ }$</span><input class="ex-input" id="q1iii" type="text" placeholder="e.g. 1/2"/><button class="btn btn-primary" data-check="q1iii">Check</button></div><div class="check-result" id="q1iiiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iv) $\sqrt[3]{125}=5^{\ }$</span><input class="ex-input" id="q1iv" type="number" placeholder="n"/><button class="btn btn-primary" data-check="q1iv">Check</button></div><div class="check-result" id="q1ivResult"></div></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q1Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q1Hint">Write each number as a power of 5 first (625 = 5⁴), then a root √5 = 5^(1/2), and a root like ∛125 = 125^(1/3) = (5³)^(1/3) = 5¹.</div>
+<div class="exercise-panel answer-panel" id="q1Answer">(i) $625=5^4$ (ii) $\dfrac15=5^{-1}$ (iii) $\sqrt5=5^{1/2}$ (iv) $\sqrt[3]{125}=5^1$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q2 -->
+<div class="exercise-card" id="q2">
+<span class="ex-label"><span class="ex-q-num">Q2</span>Write the following in the form of $4^n$:</span>
+<div class="ex-question">(i) $16$ &nbsp; (ii) $8$ &nbsp; (iii) $32$</div>
+<div class="sub-q">
+<div class="sub-card"><div class="check-row"><span>(i) $16=4^{\ }$</span><input class="ex-input" id="q2i" type="number" placeholder="n"/><button class="btn btn-primary" data-check="q2i">Check</button></div><div class="check-result" id="q2iResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(ii) $8=4^{\ }$</span><input class="ex-input" id="q2ii" type="text" placeholder="e.g. 3/2"/><button class="btn btn-primary" data-check="q2ii">Check</button></div><div class="check-result" id="q2iiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iii) $32=4^{\ }$</span><input class="ex-input" id="q2iii" type="text" placeholder="e.g. 5/2"/><button class="btn btn-primary" data-check="q2iii">Check</button></div><div class="check-result" id="q2iiiResult"></div></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q2Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q2Hint">Every one of these is a power of 2 — rewrite it as a power of 2 first, then convert that exponent to an equivalent power of 4 = 2².</div>
+<div class="exercise-panel answer-panel" id="q2Answer">(i) $16=4^2$ (ii) $8=2^3=(4^{1/2})^3=4^{3/2}$ (iii) $32=2^5=(4^{1/2})^5=4^{5/2}$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q3 -->
+<div class="exercise-card" id="q3">
+<span class="ex-label"><span class="ex-q-num">Q3</span>Find the value of:</span>
+<div class="ex-question">(i) $(49)^{1/2}$ &nbsp; (ii) $(243)^{2/5}$ &nbsp; (iii) $9^{-3/2}$ &nbsp; (iv) $16^{-3/4}$
+<div class="verify-note">VERIFY: the printed exponents in this question are badly garbled; these four values are the closest standard reconstruction (chosen so each evaluates to a clean number).</div>
+</div>
+<div class="sub-q">
+<div class="sub-card"><div class="check-row"><span>(i)</span><input class="ex-input" id="q3i" type="number" placeholder="value"/><button class="btn btn-primary" data-check="q3i">Check</button></div><div class="check-result" id="q3iResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(ii)</span><input class="ex-input" id="q3ii" type="number" placeholder="value"/><button class="btn btn-primary" data-check="q3ii">Check</button></div><div class="check-result" id="q3iiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iii)</span><input class="ex-input" id="q3iii" type="text" placeholder="e.g. 1/27"/><button class="btn btn-primary" data-check="q3iii">Check</button></div><div class="check-result" id="q3iiiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iv)</span><input class="ex-input" id="q3iv" type="text" placeholder="e.g. 1/8"/><button class="btn btn-primary" data-check="q3iv">Check</button></div><div class="check-result" id="q3ivResult"></div></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q3Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q3Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q3Hint">Rewrite the base as a power first: 243 = 3⁵, 9 = 3², 16 = 2⁴ — then multiply exponents.</div>
+<div class="exercise-panel answer-panel" id="q3Answer">(i) $\sqrt{49}=7$ (ii) $243^{2/5}=(3^5)^{2/5}=3^2=9$ (iii) $9^{-3/2}=(3^2)^{-3/2}=3^{-3}=\dfrac{1}{27}$ (iv) $16^{-3/4}=(2^4)^{-3/4}=2^{-3}=\dfrac18$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q4 -->
+<div class="exercise-card" id="q4">
+<span class="ex-label"><span class="ex-q-num">Q4</span>Use a fractional index to write:</span>
+<div class="ex-question">(i) $\sqrt5$ &nbsp; (ii) $\sqrt[7]{2^5}$ &nbsp; (iii) $\sqrt[3]{49}$ &nbsp; (iv) $\sqrt[3]{\dfrac{1}{100}}$
+<div class="verify-note">VERIFY: this question's radicands/indices are heavily garbled in the source scan; the four items above are a defensible reconstruction of "convert a radical to fractional-index form", matching the section's theme.</div>
+</div>
+<div class="sub-q">
+<div class="sub-card"><div class="check-row"><span>(i)</span><input class="ex-input" id="q4i" type="text" placeholder="e.g. 5^(1/2)"/><button class="btn btn-primary" data-check="q4i">Check</button></div><div class="check-result" id="q4iResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(ii)</span><input class="ex-input" id="q4ii" type="text" placeholder="e.g. 2^(5/7)"/><button class="btn btn-primary" data-check="q4ii">Check</button></div><div class="check-result" id="q4iiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iii)</span><input class="ex-input" id="q4iii" type="text" placeholder="e.g. 7^(2/3)"/><button class="btn btn-primary" data-check="q4iii">Check</button></div><div class="check-result" id="q4iiiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iv)</span><input class="ex-input" id="q4iv" type="text" placeholder="e.g. 100^(-1/3)"/><button class="btn btn-primary" data-check="q4iv">Check</button></div><div class="check-result" id="q4ivResult"></div></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q4Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q4Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q4Hint">$\sqrt[n]{x^m}=x^{m/n}$. Write the index as the denominator and the power inside the radical as the numerator.</div>
+<div class="exercise-panel answer-panel" id="q4Answer">(i) $5^{1/2}$ (ii) $2^{5/7}$ (iii) $7^{2/3}$ (iv) $\left(\dfrac{1}{100}\right)^{1/3}=100^{-1/3}$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q4','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q5 -->
+<div class="exercise-card" id="q5">
+<span class="ex-label"><span class="ex-q-num">Q5</span>Find the 5th root of:</span>
+<div class="ex-question">(i) $32$ &nbsp; (ii) $243$ &nbsp; (iii) $100000$ &nbsp; (iv) $\dfrac{1024}{3125}$</div>
+<div class="sub-q">
+<div class="sub-card"><div class="check-row"><span>(i)</span><input class="ex-input" id="q5i" type="number" placeholder="value"/><button class="btn btn-primary" data-check="q5i">Check</button></div><div class="check-result" id="q5iResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(ii)</span><input class="ex-input" id="q5ii" type="number" placeholder="value"/><button class="btn btn-primary" data-check="q5ii">Check</button></div><div class="check-result" id="q5iiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iii)</span><input class="ex-input" id="q5iii" type="number" placeholder="value"/><button class="btn btn-primary" data-check="q5iii">Check</button></div><div class="check-result" id="q5iiiResult"></div></div>
+<div class="sub-card"><div class="check-row"><span>(iv)</span><input class="ex-input" id="q5iv" type="text" placeholder="e.g. 4/5"/><button class="btn btn-primary" data-check="q5iv">Check</button></div><div class="check-result" id="q5ivResult"></div></div>
+</div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q5Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q5Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q5Hint">Which number, multiplied by itself 5 times, gives each radicand? For the fraction, take the 5th root of numerator and denominator separately.</div>
+<div class="exercise-panel answer-panel" id="q5Answer">(i) $\sqrt[5]{32}=2$ (ii) $\sqrt[5]{243}=3$ (iii) $\sqrt[5]{100000}=10$ (iv) $\sqrt[5]{\dfrac{1024}{3125}}=\dfrac{\sqrt[5]{1024}}{\sqrt[5]{3125}}=\dfrac{4}{5}$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q5','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-2-4/">← Exercise 2.4</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-2-6/">Next: Exercise 2.6 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../../js/exercise-engine.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    const base = "I am solving Class 9 Mathematics (Tamil Nadu board), Chapter 2 Real Numbers, Exercise 2.5. ";
+    if (topic === 'q1') prompt = base + "Question 1: Write 625, 1/5, √5, ∛125 in the form 5^n. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q2') prompt = base + "Question 2: Write 16, 8, 32 in the form 4^n. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q3') prompt = base + "Question 3: Find the value of 49^(1/2), 243^(2/5), 9^(-3/2), 16^(-3/4). Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q4') prompt = base + "Question 4: Use a fractional index to write √5, the 7th root of 2^5, the cube root of 49, the cube root of 1/100. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    else if (topic === 'q5') prompt = base + "Question 5: Find the 5th root of 32, 243, 100000, and 1024/3125. Do NOT give me the final answer immediately — start with a hint and ask what I think the next step is.";
+    launchAIPrompt(model, prompt);
+}
+
+function normFrac(s) {
+    s = String(s || '').trim().replace(/\s+/g, '');
+    if (/^-?\d+\/\d+$/.test(s)) {
+        const [n, d] = s.split('/').map(Number);
+        return n / d;
+    }
+    return parseFloat(s);
+}
+function checkFracAnswer(inputId, expectedVal, resultId, tol = 0.0001) {
+    const val = normFrac(document.getElementById(inputId).value);
+    const resultEl = document.getElementById(resultId);
+    if (isNaN(val)) { resultEl.textContent = 'Enter a number (or a/b fraction) first.'; resultEl.className = 'check-result'; return; }
+    const ok = Math.abs(val - expectedVal) < tol;
+    resultEl.textContent = ok ? 'Correct!' : 'Not quite — try again.';
+    resultEl.className = 'check-result ' + (ok ? 'check-yes' : 'check-no');
+}
+function checkExprAnswer(inputId, acceptedVariants, resultId) {
+    ExLib.checkTextAnswer(document.getElementById(inputId), acceptedVariants, document.getElementById(resultId));
+}
+
+const checks = {
+    q1i: () => checkFracAnswer('q1i', 4, 'q1iResult'),
+    q1ii: () => checkFracAnswer('q1ii', -1, 'q1iiResult'),
+    q1iii: () => checkFracAnswer('q1iii', 0.5, 'q1iiiResult'),
+    q1iv: () => checkFracAnswer('q1iv', 1, 'q1ivResult'),
+    q2i: () => checkFracAnswer('q2i', 2, 'q2iResult'),
+    q2ii: () => checkFracAnswer('q2ii', 1.5, 'q2iiResult'),
+    q2iii: () => checkFracAnswer('q2iii', 2.5, 'q2iiiResult'),
+    q3i: () => checkFracAnswer('q3i', 7, 'q3iResult'),
+    q3ii: () => checkFracAnswer('q3ii', 9, 'q3iiResult'),
+    q3iii: () => checkFracAnswer('q3iii', 1 / 27, 'q3iiiResult'),
+    q3iv: () => checkFracAnswer('q3iv', 1 / 8, 'q3ivResult'),
+    q4i: () => checkExprAnswer('q4i', ['5^(1/2)', '5^1/2'], 'q4iResult'),
+    q4ii: () => checkExprAnswer('q4ii', ['2^(5/7)', '2^5/7'], 'q4iiResult'),
+    q4iii: () => checkExprAnswer('q4iii', ['7^(2/3)', '7^2/3'], 'q4iiiResult'),
+    q4iv: () => checkExprAnswer('q4iv', ['100^(-1/3)', '(1/100)^(1/3)'], 'q4ivResult'),
+    q5i: () => checkFracAnswer('q5i', 2, 'q5iResult'),
+    q5ii: () => checkFracAnswer('q5ii', 3, 'q5iiResult'),
+    q5iii: () => checkFracAnswer('q5iii', 10, 'q5iiiResult'),
+    q5iv: () => checkFracAnswer('q5iv', 0.8, 'q5ivResult')
+};
+document.querySelectorAll('[data-check]').forEach(btn => {
+    btn.addEventListener('click', () => { const fn = checks[btn.dataset.check]; if (fn) fn(); });
+});
+
+['q1', 'q2', 'q3', 'q4', 'q5'].forEach(id => AlgLib.wireExercise(document.getElementById(id)));
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+
+<script id="rn-second-hint-runtime">
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.exercise-card').forEach((card,idx)=>{const tools=card.querySelector('.exercise-tools');if(!tools||tools.querySelector('.rn-hint2-btn'))return;const panel=document.createElement('div');panel.className='exercise-panel rn-hint2-panel';panel.id=(card.id||('q'+idx))+'StrategyHint';panel.innerHTML='<b>Hint 2 · Strategy:</b> Use the interactive representation on this question to test one step at a time. Translate what you see back into the number rule or algebraic operation before opening the answer.';card.appendChild(panel);const b=document.createElement('button');b.className='btn btn-ghost rn-hint2-btn';b.textContent='Hint 2';b.onclick=()=>panel.classList.toggle('show');const answer=[...tools.querySelectorAll('button')].find(x=>/answer/i.test(x.textContent));tools.insertBefore(b,answer||null);});});
+</script>
+</body>
+</html>

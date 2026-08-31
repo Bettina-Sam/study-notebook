@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.6 Properties of Set Operations • Set Language • Study Notebook</title>
+<meta name="description" content="Commutative, associative and distributive laws for union and intersection, verified on real sets and Venn diagrams."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/set-language.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Set Language
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">1.6 Properties of Set Operations</span>
+<h1 class="hero-title">Do set operations<br/>obey the same rules as numbers?</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 46ch;">
+    Numbers have commutative, associative and distributive laws. It turns out union and intersection
+    follow the very same patterns.
+</p>
+</div>
+</section>
+
+<!-- COMMUTATIVE -->
+<section>
+<div class="split-layout">
+<div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">1.6.1 Commutative Property</h3>
+<h2>Order doesn't matter</h2>
+<p>
+    For any two sets, $A \cup B = B \cup A$ and $A \cap B = B \cap A$. Let $A=\{b,e,f,g\}$,
+    $B=\{c,e,g,h\}$ — switch the order below and watch the shaded region (and the result) stay identical.
+</p>
+<div class="venn-controls" id="commControls">
+<button class="venn-op-btn" data-op="union">A ∪ B</button>
+<button class="venn-op-btn" data-op="union-rev">B ∪ A</button>
+<button class="venn-op-btn" data-op="intersection">A ∩ B</button>
+<button class="venn-op-btn" data-op="intersection-rev">B ∩ A</button>
+</div>
+<div class="venn-result" id="commResult">Tap an option — the shading is the same either way.</div>
+<div class="var-list">
+<div class="var-row"><span class="var-key">Note</span><span class="var-desc">Set <em>difference</em> is <b>not</b> commutative: {a,b,c} − {b,c,d} = {a}, but {b,c,d} − {a,b,c} = {d}.</span></div>
+</div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('commutative', 'claude')" title="Ask Claude"></button>
+</div>
+</div>
+<div class="visual-col">
+<div class="venn-stage" id="commVenn"></div>
+</div>
+</div>
+</section>
+
+<!-- ASSOCIATIVE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">1.6.2 Associative Property</h3>
+<h2 style="margin-bottom:1rem;">Grouping doesn't matter</h2>
+<p>For any three sets, $A \cup (B \cup C) = (A \cup B) \cup C$ and $A \cap (B \cap C) = (A \cap B) \cap C$
+— whichever pair you combine first, the final result is the same. Let $A=\{-1,0,1,2\}$, $B=\{-3,0,2,3\}$,
+$C=\{0,1,3,4\}$. Pick a law, then step through each grouping on its own diagram and watch both sides land
+on the identical shaded region.</p>
+<div class="identity-tabs" id="assocLawTabs">
+<button class="identity-tab active" data-law="union">Union: A∪(B∪C) = (A∪B)∪C</button>
+<button class="identity-tab" data-law="inter">Intersection: A∩(B∩C) = (A∩B)∩C</button>
+</div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:0.6rem;">
+<div class="worked-example" style="margin:0;">
+<div class="venn-controls" id="assocLeftControls">
+<button class="venn-op-btn" data-step="inner">Step 1: (B∘C)</button>
+<button class="venn-op-btn" data-step="full">Step 2: A∘(B∘C)</button>
+</div>
+<div class="venn-stage" id="assocLeftVenn"></div>
+<div class="venn-result" id="assocLeftResult">Tap Step 1, then Step 2.</div>
+</div>
+<div class="worked-example" style="margin:0;">
+<div class="venn-controls" id="assocRightControls">
+<button class="venn-op-btn" data-step="inner">Step 1: (A∘B)</button>
+<button class="venn-op-btn" data-step="full">Step 2: (A∘B)∘C</button>
+</div>
+<div class="venn-stage" id="assocRightVenn"></div>
+<div class="venn-result" id="assocRightResult">Tap Step 1, then Step 2.</div>
+</div>
+</div>
+<div class="venn-result" id="assocMatch" style="text-align:center; font-weight:700; min-height:1.8rem;"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('associative', 'claude')" title="Ask Claude"></button>
+</div>
+<div class="worked-example">
+<span class="we-label">Example 1.19 (textbook)</span>
+<div class="we-question">Let $A=\{-1,0,1,2\}$, $B=\{-3,0,2,3\}$, $C=\{0,1,3,4\}$. Verify $A \cup (B \cup C) = (A \cup B) \cup C$.</div>
+<div class="step-flow" id="assoc-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Compute $B \cup C$ first.<div class="step-math">B ∪ C = {−3, 0, 1, 2, 3, 4}</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Then $A \cup (B \cup C)$.<div class="step-math">= {−3, −1, 0, 1, 2, 3, 4}</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Now compute $A \cup B$ first instead.<div class="step-math">A ∪ B = {−3, −1, 0, 1, 2, 3}</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">Then $(A \cup B) \cup C$.<div class="step-math">= {−3, −1, 0, 1, 2, 3, 4}</div></div></div>
+<div class="step-item"><span class="step-num">5</span><div class="step-body"><b>Same result either way</b> — the property holds.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="assoc-play">Play steps</button></div>
+</div>
+<div class="worked-example">
+<span class="we-label">Example 1.20 (textbook)</span>
+<div class="we-question">Let $A=\{1,2,3,4\}$, $B=\{2,4,6\}$, $C=\{3,4,5\}$. Verify $A \cap (B \cap C) = (A \cap B) \cap C$.</div>
+<div class="step-flow" id="assoc2-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Compute $B \cap C$ first.<div class="step-math">B ∩ C = {4}</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Then $A \cap (B \cap C)$.<div class="step-math">= {4}</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Now compute $A \cap B$ first instead.<div class="step-math">A ∩ B = {2, 4}</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body">Then $(A \cap B) \cap C$.<div class="step-math">= {4}</div></div></div>
+<div class="step-item"><span class="step-num">5</span><div class="step-body"><b>Same result either way</b> — {4} — the property holds.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="assoc2-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- DISTRIBUTIVE -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent);">1.6.3 Distributive Property</h3>
+<h2 style="margin-bottom:1rem;">Union and intersection distribute over each other</h2>
+<p>Just like $a(b+c) = ab + ac$ for numbers:</p>
+<div class="formula-card">
+<div class="formula-rule">A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C) &nbsp;— intersection over union</div>
+<div class="formula-rule">A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C) &nbsp;— union over intersection</div>
+</div>
+<p>Let $A=\{0,2,4,6,8\}$, $B=\{2,3,5,7\}$, $C=\{5,6,7,8\}$. Pick a law below, then shade each side of the
+equation on its own diagram and compare.</p>
+<div class="identity-tabs" id="distLawTabs">
+<button class="identity-tab active" data-law="iou">A∩(B∪C) = (A∩B)∪(A∩C)</button>
+<button class="identity-tab" data-law="uoi">A∪(B∩C) = (A∪B)∩(A∪C)</button>
+</div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:0.6rem;">
+<div class="worked-example" style="margin:0;">
+<div class="venn-controls"><button class="venn-op-btn" id="distLeftBtn">Shade LHS</button></div>
+<div class="venn-stage" id="distLeftVenn"></div>
+<div class="venn-result" id="distLeftResult">Tap to shade the left-hand side.</div>
+</div>
+<div class="worked-example" style="margin:0;">
+<div class="venn-controls"><button class="venn-op-btn" id="distRightBtn">Shade RHS</button></div>
+<div class="venn-stage" id="distRightVenn"></div>
+<div class="venn-result" id="distRightResult">Tap to shade the right-hand side.</div>
+</div>
+</div>
+<div class="venn-result" id="distMatch" style="text-align:center; font-weight:700; min-height:1.8rem;"></div>
+<div class="ai-links">
+<span class="ai-label">Ask AI:</span>
+<button class="ai-btn" onclick="openAI('distributive', 'claude')" title="Ask Claude"></button>
+</div>
+<div class="worked-example">
+<span class="we-label">Example 1.21 (textbook)</span>
+<div class="we-question">$A=\{0,2,4,6,8\}$, $B$=primes under 11 $=\{2,3,5,7\}$, $C=\{5,6,7,8\}$. Verify $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.</div>
+<div class="step-flow" id="dist-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$B \cup C = \{2,3,5,6,7,8\}$, so $A \cap (B \cup C)$<div class="step-math">= {0,2,4,6,8} ∩ {2,3,5,6,7,8} = {2, 6, 8}</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$A \cap B = \{2\}$ and $A \cap C = \{6, 8\}$, so $(A \cap B) \cup (A \cap C)$<div class="step-math">= {2} ∪ {6, 8} = {2, 6, 8}</div></div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body"><b>Both sides equal {2, 6, 8}</b> — verified.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="dist-play">Play steps</button></div>
+</div>
+<div class="worked-example">
+<span class="we-label">Example 1.22 (textbook)</span>
+<div class="we-question">$A=\{0,2,4,6,8\}$, $B=\{2,3,5,7\}$, $C=\{5,6,7,8\}$. Verify $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.</div>
+<div class="step-flow" id="dist2-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$B \cap C = \{5,7\}$, so $A \cup (B \cap C)$<div class="step-math">= {0,2,4,6,8} ∪ {5,7} = {0,2,4,5,6,7,8}</div></div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$A \cup B = \{0,2,3,4,5,6,7,8\}$ and $A \cup C = \{0,2,4,5,6,7,8\}$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">$(A \cup B) \cap (A \cup C)$<div class="step-math">= {0, 2, 4, 5, 6, 7, 8}</div></div></div>
+<div class="step-item"><span class="step-num">4</span><div class="step-body"><b>Both sides equal {0, 2, 4, 5, 6, 7, 8}</b> — verified.</div></div>
+</div>
+<div class="btn-row"><button class="btn btn-primary" id="dist2-play">Play steps</button></div>
+</div>
+</div>
+</section>
+
+<!-- EXERCISES -->
+<section>
+<div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+
+<div class="exercise-card" id="ex1">
+<span class="ex-label">Exercise 1.4 · Q3</span>
+<div class="ex-question">$A=\{p,q,r,s\}$, $B=\{m,n,q,s,t\}$, $C=\{m,n,p,q,s\}$. Verify the associative property of union.</div>
+<div class="exercise-tools">
+<button class="btn btn-ghost" data-reveal="ex1Hint">Hint</button>
+<button class="btn btn-secondary" data-reveal="ex1Steps">Show Steps</button>
+<button class="btn btn-secondary" data-reveal="ex1Answer">Show Answer</button>
+</div>
+<div class="exercise-panel" id="ex1Hint">Compute B∪C first, then A∪(B∪C). Then compute A∪B first, then (A∪B)∪C. Compare.</div>
+<div class="exercise-panel" id="ex1Steps">
+<div class="step-flow" id="ex1Steps-inner">
+<div class="step-item step-in"><span class="step-num">1</span><div class="step-body">B ∪ C = {m, n, p, q, s, t}, so A ∪ (B ∪ C) = {m, n, p, q, r, s, t}</div></div>
+<div class="step-item step-in"><span class="step-num">2</span><div class="step-body">A ∪ B = {m, n, p, q, r, s, t}, so (A ∪ B) ∪ C = {m, n, p, q, r, s, t}</div></div>
+</div>
+</div>
+<div class="exercise-panel answer-panel" id="ex1Answer">Answer: Both sides equal $\{m, n, p, q, r, s, t\}$ — associative property verified.</div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../set-operations/">← 1.5 Set Operations</a>
+<a class="back-link cn-home" href="../">Set Language Home</a>
+<a class="back-link" href="../de-morgans-laws/">Next: De Morgan's Laws →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script src="../../../../../js/venn-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    let prompt = "";
+    if (topic === 'commutative') prompt = "Explain the commutative property of set union and intersection (A∪B=B∪A, A∩B=B∩A) for a Class 9 student, and why set difference is NOT commutative.";
+    else if (topic === 'associative') prompt = "Explain the associative property of set union and intersection for three sets (grouping doesn't matter) for a Class 9 student, with a worked example.";
+    else if (topic === 'distributive') prompt = "Explain the distributive properties of set operations — A∩(B∪C)=(A∩B)∪(A∩C) and A∪(B∩C)=(A∪B)∩(A∪C) — for a Class 9 student, with a worked example.";
+    launchAIPrompt(model, prompt);
+}
+
+/* ---------- Commutative diagram ---------- */
+const commDiagram = VennLib.twoSet(document.getElementById('commVenn'), {
+    a: ['b', 'e', 'f', 'g'], b: ['c', 'e', 'g', 'h'], labelA: 'A', labelB: 'B'
+});
+document.getElementById('commControls').querySelectorAll('[data-op]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('commControls').querySelectorAll('[data-op]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const op = btn.dataset.op.replace('-rev', '');
+        commDiagram.highlight(op);
+        const r = commDiagram.result(op);
+        const swapped = btn.dataset.op.includes('rev');
+        const label = swapped ? r.label.split(' ').reverse().join(' ') : r.label;
+        document.getElementById('commResult').innerHTML = `<b>${label}</b> = ${r.text} &nbsp; — identical to the other order.`;
+    });
+});
+
+/* ---------- Associative twin diagrams ---------- */
+const assocSets = { a: [-1, 0, 1, 2], b: [-3, 0, 2, 3], c: [0, 1, 3, 4] };
+const assocLeft = VennLib.threeSet(document.getElementById('assocLeftVenn'), Object.assign({ labelA: 'A', labelB: 'B', labelC: 'C' }, assocSets));
+const assocRight = VennLib.threeSet(document.getElementById('assocRightVenn'), Object.assign({ labelA: 'A', labelB: 'B', labelC: 'C' }, assocSets));
+let assocLaw = 'union';
+const assocPreds = {
+    union: { inner: (A, B, C) => B || C, full: (A, B, C) => A || B || C, innerR: (A, B, C) => A || B, innerLbl: 'B ∪ C', fullLbl: 'A ∪ (B ∪ C)', innerRLbl: 'A ∪ B', fullRLbl: '(A ∪ B) ∪ C' },
+    inter: { inner: (A, B, C) => B && C, full: (A, B, C) => A && B && C, innerR: (A, B, C) => A && B, innerLbl: 'B ∩ C', fullLbl: 'A ∩ (B ∩ C)', innerRLbl: 'A ∩ B', fullRLbl: '(A ∩ B) ∩ C' }
+};
+let assocLeftStep = null, assocRightStep = null;
+function assocApply(side, step) {
+    const p = assocPreds[assocLaw];
+    const diagram = side === 'L' ? assocLeft : assocRight;
+    const resultEl = document.getElementById(side === 'L' ? 'assocLeftResult' : 'assocRightResult');
+    let fn, label;
+    if (step === 'inner') { fn = side === 'L' ? p.inner : p.innerR; label = side === 'L' ? p.innerLbl : p.innerRLbl; }
+    else { fn = p.full; label = side === 'L' ? p.fullLbl : p.fullRLbl; }
+    diagram.highlight(fn);
+    const r = diagram.result(fn, label);
+    resultEl.innerHTML = `<b>${r.label}</b> = ${r.text}`;
+    if (side === 'L') assocLeftStep = step; else assocRightStep = step;
+    checkAssocMatch();
+}
+function checkAssocMatch() {
+    const el = document.getElementById('assocMatch');
+    if (assocLeftStep === 'full' && assocRightStep === 'full') {
+        const p = assocPreds[assocLaw];
+        const rL = assocLeft.result(p.full, p.fullLbl), rR = assocRight.result(p.full, p.fullRLbl);
+        el.textContent = rL.text === rR.text ? `MATCH ✓ — both groupings give ${rL.text}` : 'Not matching — check your sets.';
+        el.style.color = rL.text === rR.text ? '#3e8f5c' : 'var(--math-accent-2)';
+    } else {
+        el.textContent = '';
+    }
+}
+document.getElementById('assocLeftControls').querySelectorAll('[data-step]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('assocLeftControls').querySelectorAll('[data-step]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        assocApply('L', btn.dataset.step);
+    });
+});
+document.getElementById('assocRightControls').querySelectorAll('[data-step]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('assocRightControls').querySelectorAll('[data-step]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        assocApply('R', btn.dataset.step);
+    });
+});
+document.getElementById('assocLawTabs').querySelectorAll('.identity-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('assocLawTabs').querySelectorAll('.identity-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        assocLaw = btn.dataset.law;
+        assocLeft.clear(); assocRight.clear();
+        assocLeftStep = assocRightStep = null;
+        document.getElementById('assocLeftResult').textContent = 'Tap Step 1, then Step 2.';
+        document.getElementById('assocRightResult').textContent = 'Tap Step 1, then Step 2.';
+        document.getElementById('assocMatch').textContent = '';
+        document.getElementById('assocLeftControls').querySelectorAll('[data-step]').forEach(b => {
+            b.classList.remove('active');
+            b.textContent = b.dataset.step === 'inner' ? `Step 1: (${assocPreds[assocLaw].innerLbl})` : `Step 2: ${assocPreds[assocLaw].fullLbl}`;
+        });
+        document.getElementById('assocRightControls').querySelectorAll('[data-step]').forEach(b => {
+            b.classList.remove('active');
+            b.textContent = b.dataset.step === 'inner' ? `Step 1: (${assocPreds[assocLaw].innerRLbl})` : `Step 2: ${assocPreds[assocLaw].fullRLbl}`;
+        });
+    });
+});
+
+/* ---------- Distributive twin diagrams ---------- */
+const distSets = { a: [0, 2, 4, 6, 8], b: [2, 3, 5, 7], c: [5, 6, 7, 8] };
+const distLeft = VennLib.threeSet(document.getElementById('distLeftVenn'), Object.assign({ labelA: 'A', labelB: 'B', labelC: 'C' }, distSets));
+const distRight = VennLib.threeSet(document.getElementById('distRightVenn'), Object.assign({ labelA: 'A', labelB: 'B', labelC: 'C' }, distSets));
+let distLaw = 'iou';
+const distPreds = {
+    iou: { l: (A, B, C) => A && (B || C), lLbl: 'A ∩ (B ∪ C)', r: (A, B, C) => (A && B) || (A && C), rLbl: '(A ∩ B) ∪ (A ∩ C)' },
+    uoi: { l: (A, B, C) => A || (B && C), lLbl: 'A ∪ (B ∩ C)', r: (A, B, C) => (A || B) && (A || C), rLbl: '(A ∪ B) ∩ (A ∪ C)' }
+};
+function distShade(side) {
+    const p = distPreds[distLaw];
+    const diagram = side === 'L' ? distLeft : distRight;
+    const resultEl = document.getElementById(side === 'L' ? 'distLeftResult' : 'distRightResult');
+    const fn = side === 'L' ? p.l : p.r, label = side === 'L' ? p.lLbl : p.rLbl;
+    diagram.highlight(fn);
+    const r = diagram.result(fn, label);
+    resultEl.innerHTML = `<b>${r.label}</b> = ${r.text}`;
+    const otherEl = document.getElementById(side === 'L' ? 'distRightResult' : 'distLeftResult');
+    if (otherEl.dataset.done === '1') updateDistMatch();
+    resultEl.dataset.done = '1';
+}
+function updateDistMatch() {
+    const p = distPreds[distLaw];
+    const rL = distLeft.result(p.l, p.lLbl), rR = distRight.result(p.r, p.rLbl);
+    const el = document.getElementById('distMatch');
+    el.textContent = rL.text === rR.text ? `MATCH ✓ — both sides equal ${rL.text}` : 'Not matching — check your sets.';
+    el.style.color = rL.text === rR.text ? '#3e8f5c' : 'var(--math-accent-2)';
+}
+document.getElementById('distLeftBtn').addEventListener('click', () => distShade('L'));
+document.getElementById('distRightBtn').addEventListener('click', () => distShade('R'));
+document.getElementById('distLawTabs').querySelectorAll('.identity-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.getElementById('distLawTabs').querySelectorAll('.identity-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        distLaw = btn.dataset.law;
+        distLeft.clear(); distRight.clear();
+        document.getElementById('distLeftResult').textContent = 'Tap to shade the left-hand side.';
+        document.getElementById('distLeftResult').dataset.done = '0';
+        document.getElementById('distRightResult').textContent = 'Tap to shade the right-hand side.';
+        document.getElementById('distRightResult').dataset.done = '0';
+        document.getElementById('distMatch').textContent = '';
+    });
+});
+
+/* ---------- Steps ---------- */
+document.getElementById('assoc-play').addEventListener('click', () => AlgLib.revealSteps('assoc-steps'));
+AlgLib.revealSteps('assoc-steps', 0);
+document.getElementById('assoc2-play').addEventListener('click', () => AlgLib.revealSteps('assoc2-steps'));
+AlgLib.revealSteps('assoc2-steps', 0);
+document.getElementById('dist-play').addEventListener('click', () => AlgLib.revealSteps('dist-steps'));
+AlgLib.revealSteps('dist-steps', 0);
+document.getElementById('dist2-play').addEventListener('click', () => AlgLib.revealSteps('dist2-steps'));
+AlgLib.revealSteps('dist2-steps', 0);
+AlgLib.wireExercise(document.getElementById('ex1'));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>

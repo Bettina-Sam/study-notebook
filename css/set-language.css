@@ -1,0 +1,84 @@
+/* ------------------------------------------------------------------
+   SET LANGUAGE — chapter-scoped layout & polish overrides
+   Loaded only by Chapter 1 (Set Language) pages, after article.css and
+   algebra.css. article.css's `section{min-height:100vh}` is tuned for
+   full-screen single-simulation slides (Physics/Chemistry/Biology,
+   heavier Algebra visuals) — on Set Language's denser, multi-block
+   pages that rule leaves large dead whitespace above/below short
+   sections. This file corrects layout rhythm and raises visual weight
+   for this chapter only; it does not touch article.css/common.css so
+   no other subject or chapter is affected.
+   ------------------------------------------------------------------ */
+
+section{
+  min-height:auto !important;
+  align-items:stretch !important;
+  padding:3.2rem 5vw !important;
+}
+.hero{
+  padding-top:8vh !important;
+  padding-bottom:1.5rem !important;
+  min-height:auto !important;
+}
+@media (max-width:768px){
+  section{ padding:2.4rem 5vw !important; }
+  .hero{ padding-top:6vh !important; }
+}
+
+/* Tighten the gap between stacked sections; give each a subtle
+   separator so the page reads as one continuous sheet, not a stack of
+   disconnected full screens. */
+section + section{ border-top:1px solid var(--line-subtle); }
+section:first-of-type{ border-top:none; }
+
+/* ------------------------------------------------------------------
+   VISUAL WEIGHT — make diagrams the focal point, not a small island
+   ------------------------------------------------------------------ */
+.visual-col{
+  display:flex; align-items:center; justify-content:center;
+  background:var(--card-bg); border:1px solid var(--border-color); border-radius:16px;
+  padding:1.5rem; min-height:340px;
+  box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 8px 24px -12px rgba(0,0,0,0.10);
+}
+.venn-stage{ min-height:300px; }
+.venn-svg{ max-width:480px; max-height:380px; }
+.venn-svg-3{ max-width:500px; max-height:400px; }
+
+.split-layout{ display:grid; grid-template-columns:1.15fr 1fr; gap:2.2rem; align-items:center; width:100%; max-width:1180px; }
+@media (max-width:900px){
+  .split-layout{ grid-template-columns:1fr; }
+  .visual-col{ order:-1; min-height:280px; }
+}
+
+/* ------------------------------------------------------------------
+   CARD ELEVATION — give cards a touch of depth instead of flat outline
+   ------------------------------------------------------------------ */
+.exercise-card, .worked-example, .formula-card, .thinking-corner{
+  box-shadow:0 1px 2px rgba(0,0,0,0.03), 0 6px 18px -10px rgba(0,0,0,0.08);
+  transition:box-shadow .25s var(--ease-out), transform .25s var(--ease-out);
+}
+.exercise-card:hover, .worked-example:hover{
+  box-shadow:0 2px 4px rgba(0,0,0,0.05), 0 12px 28px -12px rgba(0,0,0,0.14);
+}
+
+/* ------------------------------------------------------------------
+   ASK AI ROW — currently a near-invisible text line; give it presence
+   ------------------------------------------------------------------ */
+.ai-links{
+  display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;
+  margin-top:1.1rem; padding:0.55rem 0.7rem;
+  background:var(--line-subtle); border-radius:99px; width:fit-content;
+}
+.ai-label{ font-size:0.78rem; font-weight:700; color:var(--text-muted); margin-right:0.15rem; padding-left:0.3rem; }
+.ai-btn{
+  width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+  background:var(--card-bg); border:1px solid var(--border-color); cursor:pointer; padding:6px;
+  transition:transform .15s var(--ease-out), border-color .15s;
+}
+.ai-btn:hover{ transform:translateY(-2px); border-color:var(--math-accent); }
+.ai-btn svg{ width:100%; height:100%; }
+
+/* ------------------------------------------------------------------
+   SECTION LABEL RHYTHM — a bit more breathing room under kickers
+   ------------------------------------------------------------------ */
+.section-label{ display:inline-block; margin-bottom:0.4rem; }

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exercise 2.8 • Real Numbers • Study Notebook</title>
+<meta name="description" content="Textbook Exercise 2.8 — scientific notation: writing decimal numbers in scientific form, converting back, and arithmetic with powers of ten."/>
+<link href="../../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../../css/real-numbers.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="../../../../../../css/math-study-system.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Chapter Exercises
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+
+<section class="hero" style="padding-top:18vh;">
+<div class="text-reveal-wrapper">
+<span class="coming-soon-num">Exercise 2.8</span>
+<h1 class="hero-title" style="font-size:clamp(2.2rem,5vw,3.4rem);">Scientific Notation Practice</h1>
+<p style="margin-top: 1.2rem; font-size: 1.15rem; max-width: 58ch;">Convert between decimal and scientific notation, and simplify products, quotients and powers of very large or very small numbers.</p>
+</div>
+</section>
+
+<section style="padding-top:0; flex-direction:column; align-items:stretch;">
+<div style="width:100%; max-width:950px; margin:0 auto;">
+<div class="ex-set-nav">
+<a class="ex-set-pill" href="../exercise-2-1/">2.1</a>
+<a class="ex-set-pill" href="../exercise-2-2/">2.2</a>
+<a class="ex-set-pill" href="../exercise-2-3/">2.3</a>
+<a class="ex-set-pill" href="../exercise-2-4/">2.4</a>
+<a class="ex-set-pill" href="../exercise-2-5/">2.5</a>
+<a class="ex-set-pill" href="../exercise-2-6/">2.6</a>
+<a class="ex-set-pill" href="../exercise-2-7/">2.7</a>
+<span class="ex-set-pill current">2.8</span>
+<a class="ex-set-pill" href="../exercise-2-9/">2.9</a>
+</div>
+
+<!-- Q1 -->
+<div class="exercise-card" id="q1">
+<span class="ex-label">Q1</span>
+<div class="ex-question">Represent the following numbers in scientific notation:</div>
+<div class="stmt-row"><b>(i)</b> 569430000000
+  <div class="btn-row" style="margin-top:0.4rem; flex-wrap:wrap;">
+    <input type="text" id="q1a" class="sci-input" placeholder="a"/> <span>× 10^</span> <input type="text" id="q1an" class="sci-input" placeholder="n" style="width:60px;"/>
+    <button class="btn btn-secondary" data-check="q1">Check</button>
+  </div>
+</div>
+<div class="stmt-row"><b>(ii)</b> 2000.57
+  <div class="btn-row" style="margin-top:0.4rem; flex-wrap:wrap;">
+    <input type="text" id="q1b" class="sci-input" placeholder="a"/> <span>× 10^</span> <input type="text" id="q1bn" class="sci-input" placeholder="n" style="width:60px;"/>
+    <button class="btn btn-secondary" data-check="q1">Check</button>
+  </div>
+</div>
+<div class="stmt-row"><b>(iii)</b> 0.0000006000
+  <div class="btn-row" style="margin-top:0.4rem; flex-wrap:wrap;">
+    <input type="text" id="q1c" class="sci-input" placeholder="a"/> <span>× 10^</span> <input type="text" id="q1cn" class="sci-input" placeholder="n" style="width:60px;"/>
+    <button class="btn btn-secondary" data-check="q1">Check</button>
+  </div>
+</div>
+<div class="stmt-row"><b>(iv)</b> 0.0009000002
+  <div class="btn-row" style="margin-top:0.4rem; flex-wrap:wrap;">
+    <input type="text" id="q1d" class="sci-input" placeholder="a"/> <span>× 10^</span> <input type="text" id="q1dn" class="sci-input" placeholder="n" style="width:60px;"/>
+    <button class="btn btn-secondary" data-check="q1">Check</button>
+  </div>
+</div>
+<div class="check-result" id="q1Result"></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q1Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q1Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q1Hint">Move the decimal point so exactly one non-zero digit is to its left. Left move → positive exponent; right move → negative exponent.</div>
+<div class="exercise-panel answer-panel" id="q1Answer">(i) $5.6943 \times 10^{11}$ &nbsp; (ii) $2.00057 \times 10^{3}$ &nbsp; (iii) $6.000 \times 10^{-7}$ &nbsp; (iv) $9.000002 \times 10^{-4}$</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q1','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q2 -->
+<div class="exercise-card" id="q2">
+<span class="ex-label">Q2</span>
+<div class="ex-question">Write the following numbers in decimal form:</div>
+<div class="stmt-row"><b>(i)</b> $3.459 \times 10^{6}$
+  <div class="btn-row" style="margin-top:0.4rem;"><input type="text" id="q2a" placeholder="decimal value" style="width:180px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color); font-family:var(--font-mono);"/><button class="btn btn-secondary" data-check="q2">Check</button></div>
+</div>
+<div class="stmt-row"><b>(ii)</b> $5.678 \times 10^{4}$
+  <div class="btn-row" style="margin-top:0.4rem;"><input type="text" id="q2b" placeholder="decimal value" style="width:180px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color); font-family:var(--font-mono);"/><button class="btn btn-secondary" data-check="q2">Check</button></div>
+</div>
+<div class="stmt-row"><b>(iii)</b> $1.00005 \times 10^{-5}$
+  <div class="btn-row" style="margin-top:0.4rem;"><input type="text" id="q2c" placeholder="decimal value" style="width:180px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color); font-family:var(--font-mono);"/><button class="btn btn-secondary" data-check="q2">Check</button></div>
+</div>
+<div class="stmt-row"><b>(iv)</b> $2.530009 \times 10^{-7}$
+  <div class="btn-row" style="margin-top:0.4rem;"><input type="text" id="q2d" placeholder="decimal value" style="width:180px; padding:0.5rem; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color); font-family:var(--font-mono);"/><button class="btn btn-secondary" data-check="q2">Check</button></div>
+</div>
+<div class="check-result" id="q2Result"></div>
+<div class="exercise-tools"><button class="btn btn-ghost" data-reveal="q2Hint">Hint 1</button><button class="btn btn-secondary" data-reveal="q2Answer">Show Answer</button></div>
+<div class="exercise-panel" id="q2Hint">Move the decimal point |n| places — right for positive n, left for negative n — padding with zeros as needed.</div>
+<div class="exercise-panel answer-panel" id="q2Answer">(i) 3459000 &nbsp; (ii) 56780 &nbsp; (iii) 0.0000100005 &nbsp; (iv) 0.0000002530009</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q2','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q3 -->
+<div class="exercise-card" id="q3">
+<span class="ex-label">Q3</span>
+<div class="ex-question">Represent the following in scientific notation:</div>
+<div class="worked-example" style="margin:0.6rem 0;">
+<div class="we-question">(i) $(300000)^2 \times (20000)^4$</div>
+<div class="step-flow" id="q3i-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$= (3.0\times10^{5})^2 \times (2.0\times10^{4})^4 = 9\times10^{10} \times 16\times10^{16}$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$= 144 \times 10^{26}$<div class="step-math">= $1.44 \times 10^{28}$</div></div></div>
+</div>
+<button class="btn btn-ghost" data-reveal-steps="q3i-steps">Show working</button>
+</div>
+<div class="worked-example" style="margin:0.6rem 0;">
+<div class="we-question">(ii) $(0.000001)^{11} \times (0.005)^3$</div>
+<div class="step-flow" id="q3ii-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$= (1.0\times10^{-6})^{11} \times (5.0\times10^{-3})^3 = 1\times10^{-66} \times 125\times10^{-9}$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">$= 125 \times 10^{-75}$<div class="step-math">= $1.25 \times 10^{-73}$</div></div></div>
+</div>
+<button class="btn btn-ghost" data-reveal-steps="q3ii-steps">Show working</button>
+</div>
+<div class="worked-example" style="margin:0.6rem 0;">
+<div class="we-question">(iii) $\dfrac{(0.00003)^6 \times (0.00005)^4}{(0.009)^3 \times (0.05)^2}$</div>
+<div class="step-flow" id="q3iii-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">Numerator $= (3\times10^{-5})^6 (5\times10^{-5})^4 = 729\times10^{-30} \times 625\times10^{-20} = 455625\times10^{-50} = 4.55625\times10^{-44}$</div></div>
+<div class="step-item"><span class="step-num">2</span><div class="step-body">Denominator $= (9\times10^{-3})^3 (5\times10^{-2})^2 = 729\times10^{-9} \times 25\times10^{-4} = 18225\times10^{-13} = 1.8225\times10^{-9}$</div></div>
+<div class="step-item"><span class="step-num">3</span><div class="step-body">Ratio $= \dfrac{4.55625}{1.8225}\times10^{-44+9} = 2.5\times10^{-35}$<div class="step-math">= $2.5 \times 10^{-35}$</div></div></div>
+</div>
+<button class="btn btn-ghost" data-reveal-steps="q3iii-steps">Show working</button>
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q3','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q4 -->
+<div class="exercise-card" id="q4">
+<span class="ex-label">Q4</span>
+<div class="ex-question">Represent the following information in scientific notation:</div>
+<div class="stmt-row"><b>(i)</b> The world population is nearly 7,000,000,000.</div>
+<div class="stmt-row"><b>(ii)</b> One light year means the distance 9,460,528,400,000,000 km.</div>
+<div class="stmt-row"><b>(iii)</b> Mass of an electron is 0.00000000000000000000000000000091093822 kg.</div>
+<div class="exercise-tools"><button class="btn btn-secondary" data-reveal="q4Answer">Show Answer</button></div>
+<div class="exercise-panel answer-panel" id="q4Answer">
+(i) $7 \times 10^{9}$ &nbsp; (ii) $9.4605284 \times 10^{15}$ km &nbsp; (iii) $9.1093822 \times 10^{-31}$ kg
+<!-- VERIFY: the electron-mass digit string in the source extraction was fragmented across broken lines; the reconstructed exponent (-31) matches the well-known physical value of the electron's mass, used here as the check. -->
+</div>
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q4','claude')" title="Ask Claude"></button></div>
+</div>
+
+<!-- Q5 -->
+<div class="exercise-card" id="q5">
+<span class="ex-label">Q5</span>
+<div class="ex-question">Simplify:</div>
+<div class="worked-example" style="margin:0.6rem 0;">
+<div class="we-question">(i) $(2.75 \times 10^{7}) + (1.23 \times 10^{8})$</div>
+<div class="step-flow" id="q5i-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$= (2.75\times10^{7}) + (12.3\times10^{7}) = 15.05 \times 10^{7}$<div class="step-math">= $1.505 \times 10^{8}$</div></div></div>
+</div>
+<button class="btn btn-ghost" data-reveal-steps="q5i-steps">Show working</button>
+</div>
+<div class="worked-example" style="margin:0.6rem 0;">
+<div class="we-question">(ii) $(1.598 \times 10^{17}) \times (4.58 \times 10^{15})$</div>
+<div class="step-flow" id="q5ii-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$= (1.598 \times 4.58) \times 10^{17+15} = 7.31884 \times 10^{32}$<div class="step-math">= $7.31884 \times 10^{32}$</div></div></div>
+</div>
+<button class="btn btn-ghost" data-reveal-steps="q5ii-steps">Show working</button>
+</div>
+<div class="worked-example" style="margin:0.6rem 0;">
+<div class="we-question">(iii) $(1.02 \times 10^{10}) \times (1.20 \times 10^{-3})$</div>
+<div class="step-flow" id="q5iii-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$= (1.02 \times 1.20) \times 10^{10-3} = 1.224 \times 10^{7}$<div class="step-math">= $1.224 \times 10^{7}$</div></div></div>
+</div>
+<button class="btn btn-ghost" data-reveal-steps="q5iii-steps">Show working</button>
+</div>
+<div class="worked-example" style="margin:0.6rem 0;">
+<div class="we-question">(iv) $(8.41 \times 10^{4}) \div (4.3 \times 10^{5})$</div>
+<div class="step-flow" id="q5iv-steps">
+<div class="step-item"><span class="step-num">1</span><div class="step-body">$= \dfrac{8.41}{4.3} \times 10^{4-5} \approx 1.9558 \times 10^{-1}$<div class="step-math">≈ $1.9558 \times 10^{-1}$</div></div></div>
+</div>
+<button class="btn btn-ghost" data-reveal-steps="q5iv-steps">Show working</button>
+</div>
+<!-- VERIFY: the original operators in Q5 (ii)-(iv) were rendered as garbled glyphs (×/÷/+) by PDF extraction; reconstructed here as ×, ×, ÷ respectively to match the standard published version of this exercise. -->
+<div class="ai-links"><span class="ai-label">Ask AI:</span><button class="ai-btn" onclick="openAI('q5','claude')" title="Ask Claude"></button></div>
+</div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+<section style="min-height:auto; padding-top:1.5rem;">
+<div class="chapter-nav-footer">
+<a class="back-link" href="../exercise-2-7/">← Exercise 2.7</a>
+<a class="back-link cn-home" href="../">All Exercises</a>
+<a class="back-link" href="../exercise-2-9/">Exercise 2.9 →</a>
+</div>
+</section>
+
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Mathematics Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+
+<script src="../../../../../../js/common.js"></script>
+<script src="../../../../../../js/algebra-lib.js"></script>
+<script>
+function openAI(topic, model) {
+    const map = {
+        q1: "Explain how to convert a plain decimal number into Class 9 scientific notation (a × 10^n, 1 ≤ a < 10), with an example like 569430000000.",
+        q2: "Explain how to convert a number in scientific notation, like 3.459 × 10^6, back into plain decimal form for a Class 9 student.",
+        q3: "Explain how to simplify an expression like (300000)^2 × (20000)^4 using scientific notation and laws of exponents.",
+        q4: "Explain how to write a very large or very small real-world quantity (like world population or an electron's mass) in scientific notation.",
+        q5: "Explain how to add, multiply, and divide two numbers written in scientific notation, for a Class 9 student."
+    };
+    launchAIPrompt(model, map[topic] || map.q1);
+}
+
+/* ---------- Q1: scientific-notation coefficient+exponent checker ---------- */
+const q1Expected = {
+    a: [5.6943, 11], b: [2.00057, 3], c: [6.0, -7], d: [9.000002, -4]
+};
+document.querySelectorAll('[data-check="q1"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        let correct = 0, total = 0;
+        Object.entries(q1Expected).forEach(([k, [ec, en]]) => {
+            const cIn = document.getElementById('q1' + k), nIn = document.getElementById('q1' + k + 'n');
+            if (!cIn.value && !nIn.value) return;
+            total++;
+            const c = parseFloat(cIn.value), n = parseFloat(nIn.value);
+            const ok = Math.abs(c - ec) < 0.01 && n === en;
+            cIn.classList.toggle('input-correct', ok); cIn.classList.toggle('input-wrong', !ok);
+            nIn.classList.toggle('input-correct', ok); nIn.classList.toggle('input-wrong', !ok);
+            if (ok) correct++;
+        });
+        const out = document.getElementById('q1Result');
+        out.textContent = total === 0 ? 'Fill in at least one part first.' : `${correct} / ${total} filled parts correct.`;
+        out.className = 'check-result ' + (total > 0 && correct === total ? 'check-yes' : 'check-no');
+    });
+});
+
+/* ---------- Q2: decimal-form numeric checker ---------- */
+const q2Expected = { a: 3459000, b: 56780, c: 0.0000100005, d: 0.0000002530009 };
+document.querySelectorAll('[data-check="q2"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        let correct = 0, total = 0;
+        Object.entries(q2Expected).forEach(([k, ev]) => {
+            const inp = document.getElementById('q2' + k);
+            if (!inp.value) return;
+            total++;
+            const v = parseFloat(inp.value);
+            const ok = Math.abs(v - ev) / ev < 0.001;
+            inp.classList.toggle('input-correct', ok); inp.classList.toggle('input-wrong', !ok);
+            if (ok) correct++;
+        });
+        const out = document.getElementById('q2Result');
+        out.textContent = total === 0 ? 'Fill in at least one part first.' : `${correct} / ${total} filled parts correct.`;
+        out.className = 'check-result ' + (total > 0 && correct === total ? 'check-yes' : 'check-no');
+    });
+});
+
+document.querySelectorAll('[data-reveal-steps]').forEach(btn => {
+    btn.addEventListener('click', () => AlgLib.revealSteps(btn.dataset.revealSteps));
+});
+['q3i-steps','q3ii-steps','q3iii-steps','q5i-steps','q5ii-steps','q5iii-steps','q5iv-steps'].forEach(id => AlgLib.revealSteps(id, 0));
+
+document.querySelectorAll('.exercise-card').forEach(c => AlgLib.wireExercise(c));
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+
+<script id="rn-second-hint-runtime">
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.exercise-card').forEach((card,idx)=>{const tools=card.querySelector('.exercise-tools');if(!tools||tools.querySelector('.rn-hint2-btn'))return;const panel=document.createElement('div');panel.className='exercise-panel rn-hint2-panel';panel.id=(card.id||('q'+idx))+'StrategyHint';panel.innerHTML='<b>Hint 2 · Strategy:</b> Use the interactive representation on this question to test one step at a time. Translate what you see back into the number rule or algebraic operation before opening the answer.';card.appendChild(panel);const b=document.createElement('button');b.className='btn btn-ghost rn-hint2-btn';b.textContent='Hint 2';b.onclick=()=>panel.classList.toggle('show');const answer=[...tools.querySelectorAll('button')].find(x=>/answer/i.test(x.textContent));tools.insertBefore(b,answer||null);});});
+</script>
+</body>
+</html>

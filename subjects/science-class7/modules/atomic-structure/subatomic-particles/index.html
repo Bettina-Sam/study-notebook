@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>4.2 The Sub-Atomic Particles • Atomic Structure • Study Notebook</title>
+<meta name="description" content="Protons, neutrons and electrons — their charge, mass, and where each one lives inside the atom."/>
+<link href="../../../../../assets/icons/favicon.svg" rel="icon"/>
+<link href="../../../../../css/common.css" rel="stylesheet"/>
+<link href="../../../../../css/article.css" rel="stylesheet"/>
+<link href="../../../../../css/algebra.css" rel="stylesheet"/>
+<link href="../../../../../css/science7.css" rel="stylesheet"/>
+<script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+</script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    const savedTheme = localStorage.getItem('physics-notebook-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body && document.body.setAttribute('data-theme', savedTheme);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<nav class="sticky">
+<div class="nav-bg"></div>
+<a class="logo" href="../">
+<i data-lucide="arrow-left" width="16"></i>
+    Atomic Structure
+</a>
+<button id="themeBtn">
+<i data-lucide="moon" width="16"></i> Theme
+</button>
+</nav>
+<section class="hero">
+<div class="text-reveal-wrapper">
+<span class="sci-chip">Unit 4 · Atomic Structure</span>
+<span class="coming-soon-num">4.2 The Sub-Atomic Particles</span>
+<h1 class="hero-title">Three particles,<br/>every atom</h1>
+<p style="margin-top: 1.6rem; font-size: 1.3rem; max-width: 44ch;">Every atom of every element is built from just three particles: protons and neutrons packed into the nucleus, and electrons orbiting around it.</p>
+</div>
+</section>
+
+<section><div class="split-layout"><div class="content-col">
+<h3 class="section-label" style="color: var(--math-accent);">01. Meet the Particles</h3>
+<h2>Charge, mass, and location</h2>
+<div class="interaction-cue"><strong>Try</strong><span class="cue-copy">Click a particle to see its properties.</span></div>
+<div class="sim-controls">
+<div class="slider-group"><label>Particle</label>
+<select id="particle-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);">
+<option value="proton">Proton (p)</option><option value="neutron">Neutron (n)</option><option value="electron">Electron (e)</option>
+</select></div>
+</div>
+<div class="formula-card" style="text-align:center;">
+<div id="particleOut">Proton — charge +1, mass 1.6726 × 10⁻²⁷ kg, found in the nucleus.</div>
+</div>
+<div class="etu-card"><span class="etu-tag">Key idea</span><p style="font-size:0.95rem;margin-bottom:0;">Protons and neutrons together are called nucleons. An electron's mass is negligible compared to a proton or neutron — so an atom's mass depends almost entirely on its nucleus.</p></div>
+</div>
+<div class="visual-col"><div class="graph-wrap" id="particleWrap"></div></div>
+</div></section>
+<section><div style="width:100%; max-width:900px;">
+<h3 class="section-label" style="color: var(--math-accent-2);">Try Yourself</h3>
+<div class="exercise-card" id="exCard"><span class="ex-label">Exercise</span>
+<div class="ex-question">Which sub-atomic particle has no charge at all?</div>
+<div class="inline-controls"><span>Your answer:</span><input class="mini-input" id="exAnswer" style="width:180px;" type="text"/><button class="btn btn-primary" id="exCheck" style="min-height:38px; padding:8px 14px;">Check</button><span class="check-result" id="exResult"></span></div>
+</div></div></section>
+
+<section class="textbook-deep-dive"><div class="tb-shell"><div class="textbook-ribbon">TEXTBOOK DEEP DIVE · Full concept coverage</div><span class="textbook-badge">Textbook pp. 45–46</span><h2>Table 4.1 — Charge and mass of sub-atomic particles</h2><div class="tb-grid"><div class="tb-card"><h3>Proton</h3><p>Charge +1, mass 1.6726 × 10⁻²⁷ kg, discovered by Goldstein.</p></div><div class="tb-card"><h3>Electron</h3><p>Charge −1, mass 9.1093 × 10⁻³¹ kg, discovered by J.J. Thomson.</p></div><div class="tb-card"><h3>Neutron</h3><p>Charge 0, mass 1.6749 × 10⁻²⁷ kg, discovered by James Chadwick.</p></div><div class="tb-card"><h3>Electrical neutrality</h3><p>Total negative charge (electrons) equals total positive charge (protons), so the atom overall is neutral.</p></div></div></div></section><div class="divider"></div>
+<section style="min-height:auto; padding-top:0;">
+<div style="width:100%; max-width:900px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+<a class="back-link" href="../atomic-theories/">← Atomic Theories</a>
+<a class="back-link" href="../atomic-number-and-mass-number/">Next: Atomic Number & Mass Number →</a>
+</div>
+</section>
+<footer class="site-credit"><strong>Study Notebook</strong><span>Interactive Science Learning</span><span>Designed &amp; developed by Bettina Anne Sam</span></footer>
+<script src="../../../../../js/common.js"></script>
+<script src="../../../../../js/algebra-lib.js"></script>
+<script>
+
+const particles = {
+  proton:{charge:'+1', mass:'1.6726 × 10⁻²⁷ kg', loc:'nucleus', color:'var(--math-accent-2)'},
+  neutron:{charge:'0', mass:'1.6749 × 10⁻²⁷ kg', loc:'nucleus', color:'#9c9c9c'},
+  electron:{charge:'−1', mass:'9.1093 × 10⁻³¹ kg (negligible)', loc:'orbiting the nucleus', color:'var(--math-accent)'}
+};
+function updateParticle(){
+  const key = document.getElementById('particle-select').value;
+  const p = particles[key];
+  const name = key.charAt(0).toUpperCase()+key.slice(1);
+  document.getElementById('particleOut').textContent = `${name} — charge ${p.charge}, mass ${p.mass}, found ${key==='electron'?p.loc:'in the '+p.loc}.`;
+  let svg = `<circle cx="140" cy="80" r="18" fill="var(--math-accent-2)" opacity="0.3"/>`;
+  if(key==='electron'){
+    svg += `<ellipse cx="140" cy="80" rx="70" ry="25" fill="none" stroke="var(--border-color)"/><circle cx="210" cy="80" r="8" fill="${p.color}"/>`;
+  } else {
+    svg += `<circle cx="140" cy="80" r="16" fill="${p.color}"/>`;
+  }
+  document.getElementById('particleWrap').innerHTML = `<svg viewBox="0 0 280 160">${svg}</svg>`;
+}
+document.getElementById('particle-select').addEventListener('change', updateParticle);
+updateParticle();
+AlgLib.wireExercise(document.getElementById('exCard'));
+document.getElementById('exCheck').addEventListener('click', () => {
+    const val = document.getElementById('exAnswer').value.trim().toLowerCase();
+    const ok = val.includes('neutron');
+    const res = document.getElementById('exResult');
+    res.textContent = ok ? '✓ Correct — Neutron' : '✗ Try again';
+    res.className = 'check-result ' + (ok?'check-yes':'check-no');
+});
+
+AlgLib.typeset();
+window.onload = () => { if (window.lucide) window.lucide.createIcons(); };
+</script>
+</body>
+</html>
